@@ -20,7 +20,11 @@
            data-resistor-title="{% translate 'Calculateur : code couleur des résistances' %}"
            data-band1="{% translate '1re bague' %}" data-band2="{% translate '2e bague' %}" data-multiplier="{% translate 'Multiplicateur' %}"
            data-colors="{% translate 'noir,marron,rouge,orange,jaune,vert,bleu,violet,gris,blanc' %}"
-           data-bias-title="{% translate 'Calculateur : polarisation du transistor' %}" data-bias-hint="{% translate 'Transistor au silicium : VBE ≈ 0,7 V.' %}"></div>
+           data-bias-title="{% translate 'Calculateur : polarisation du transistor' %}" data-bias-hint="{% translate 'Transistor au silicium : VBE ≈ 0,7 V.' %}"
+           data-frequency="{% translate 'Fréquence f' %}" data-capacitance="{% translate 'Capacité C' %}" data-inductance="{% translate 'Inductance L' %}"
+           data-reactance-title="{% translate 'Calculateur : réactance' %}" data-reactance-hint="{% translate 'Saisissez la fréquence, puis C, L ou les deux.' %}"
+           data-cutoff-title="{% translate 'Calculateur : fréquence de coupure' %}" data-cutoff-hint="{% translate 'Saisissez R, puis C (filtre RC) ou L (filtre RL).' %}"
+           data-resonance-title="{% translate 'Calculateur : fréquence de résonance' %}"></div>
     {% endif %}
     {% if section.annexes.exists %}
       <section class="panel" aria-labelledby="annexes" style="margin-top:1.5rem">

@@ -11,7 +11,7 @@ ALLOWED_TAGS = {
 ALLOWED_ATTRIBUTES = {"a": ["href", "title"], "img": ["src", "alt", "title"]}
 # Calculateurs du cours (US-13) : un paragraphe « [[calc:<nom>]] » seul devient un emplacement inerte,
 # rempli par static/acad/js/calculators.js. Remplacé APRÈS bleach : seuls ces noms fixes peuvent sortir.
-CALCULATORS = ("ohm", "divider", "resistor", "bias")
+CALCULATORS = ("ohm", "divider", "resistor", "bias", "reactance", "cutoff", "resonance")
 CALC_MARKER = re.compile(r"<p>\[\[calc:(%s)\]\]</p>" % "|".join(CALCULATORS))
 # Schémas du cours : ajustés à la largeur et liés à leur fichier pleine taille (agrandissement sur téléphone).
 # Seuls les SVG servis par le site (/static/content/) sont concernés, après nettoyage par bleach.

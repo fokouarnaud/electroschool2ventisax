@@ -1,5 +1,5 @@
 // Calculateurs du cours (US-13), non notés. Le serveur place des emplacements inertes
-// <div class="calc" data-calc="ohm|divider|resistor|bias"> ; les libellés traduits viennent de #calc-labels.
+// <div class="calc" data-calc="ohm|divider|resistor|bias|reactance|cutoff|resonance"> ; les libellés traduits viennent de #calc-labels.
 (function () {
   "use strict";
   var slots = document.querySelectorAll(".calc[data-calc]");
@@ -114,6 +114,40 @@
         if (isNaN(V) || isNaN(R) || isNaN(B) || R === 0) { f.out.textContent = L.fillAll; return; }
         var ib = Math.max(0, (V - 0.7) / R);
         f.out.textContent = "IB = (VBB − 0" + (L.decimal || ",") + "7 V) / RB = " + show(ib, "A") + " ; IC = β × IB = " + show(B * ib, "A");
+      }
+      slot.addEventListener("input", run);
+      run();
+    },
+    reactance: function (slot) {
+      var f = frame(slot, L.reactanceTitle, null); // la consigne s'affiche dans le résultat tant qu'il est vide
+      var fr = field(f.grid, L.frequency, "Hz", "50"), c = field(f.grid, L.capacitance, "F", "1µ"), l = field(f.grid, L.inductance, "H", "100m");
+      function run() {
+        var F = parse(fr.value), C = parse(c.value), H = parse(l.value), parts = [];
+        if (F > 0 && C > 0) parts.push("Xc = 1 / (2π × f × C) = " + show(1 / (2 * Math.PI * F * C), "Ω"));
+        if (F > 0 && H > 0) parts.push("XL = 2π × f × L = " + show(2 * Math.PI * F * H, "Ω"));
+        f.out.textContent = parts.length ? parts.join(" ; ") : L.reactanceHint;
+      }
+      slot.addEventListener("input", run);
+      run();
+    },
+    cutoff: function (slot) {
+      var f = frame(slot, L.cutoffTitle, null);
+      var r = field(f.grid, L.resistance, "Ω", "1k"), c = field(f.grid, L.capacitance, "F", "100n"), l = field(f.grid, L.inductance, "H", "10m");
+      function run() {
+        var R = parse(r.value), C = parse(c.value), H = parse(l.value), parts = [];
+        if (R > 0 && C > 0) parts.push("fc (RC) = 1 / (2π × R × C) = " + show(1 / (2 * Math.PI * R * C), "Hz"));
+        if (R > 0 && H > 0) parts.push("fc (RL) = R / (2π × L) = " + show(R / (2 * Math.PI * H), "Hz"));
+        f.out.textContent = parts.length ? parts.join(" ; ") : L.cutoffHint;
+      }
+      slot.addEventListener("input", run);
+      run();
+    },
+    resonance: function (slot) {
+      var f = frame(slot, L.resonanceTitle, null);
+      var l = field(f.grid, L.inductance, "H", "10m"), c = field(f.grid, L.capacitance, "F", "100n");
+      function run() {
+        var H = parse(l.value), C = parse(c.value);
+        f.out.textContent = (H > 0 && C > 0) ? "f0 = 1 / (2π × √(L × C)) = " + show(1 / (2 * Math.PI * Math.sqrt(H * C)), "Hz") : L.fillAll;
       }
       slot.addEventListener("input", run);
       run();

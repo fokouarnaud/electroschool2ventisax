@@ -32,6 +32,12 @@ def test_every_documented_calculator_is_accepted():
         assert f'data-calc="{kind}"' in render_markdown(f"[[calc:{kind}]]")
 
 
+def test_part_two_calculators_are_accepted():
+    """US-42 : réactance, fréquence de coupure et résonance (Partie 2)."""
+    for kind in ("reactance", "cutoff", "resonance"):
+        assert f'<div class="calc" data-calc="{kind}"></div>' in render_markdown(f"[[calc:{kind}]]")
+
+
 def test_unknown_calculator_stays_plain_text():
     html = render_markdown("[[calc:rm-rf]]")
 
