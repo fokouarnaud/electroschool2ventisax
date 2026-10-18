@@ -3,7 +3,7 @@
 > Les instructions du projet sont dans **AGENTS.md**, qui est la source de vérité. En cas de divergence, AGENTS.md prime.
 > Ce fichier en reprend le contenu pour Claude Code.
 
-Plateforme de formation et d'évaluation en ligne inspirée des principes d'interface de Cisco NetAcad, forkée d'Acad Ventisax (dépôt `school2ventisax`). Première formation : électronique, Parties 1 et 2.
+Plateforme de formation et d'évaluation en ligne inspirée des principes d'interface de Cisco NetAcad, forkée d'Acad Ventisax (dépôt `school2ventisax`). Première formation : électronique, Parties 1 à 3.
 Hébergement visé : PythonAnywhere gratuit, compte `electroacadventisax` (https://electroacadventisax.pythonanywhere.com/fr/).
 
 ## Commandes utiles
@@ -55,6 +55,22 @@ Les réponses Q1 à Q16 du grill d'Acad Ventisax (`school2ventisax/AGENTS.md`) r
 | E27 | Calculateurs et schémas de la Partie 2 ? (2026-10-18) | Trois calculateurs : réactance, fréquence de coupure, résonance ; `tools/schemas.py` étendu aux courbes (sinusoïdes, réponse en fréquence) |
 | E28 | Matériel des mini-projets de la Partie 2 ? (2026-10-18) | Oscilloscope et générateur basse fréquence, plus une variante « multimètre seul » avec transformateur 230 V → 9 ou 12 V AC |
 | E29 | Ordre entre parties et mise en ligne ? (2026-10-18) | Aucun verrou entre parties (conseil dans la description) ; relecture validée d'emblée : commit sur `develop`, questions publiées, fusion dans `main`, déploiement |
+| E30 | Périmètre de la Partie 3 ? (2026-10-18) | Chapitres 8 à 11, 4 modules dans la formation `electro` : M8 amplificateurs à transistor, M9 oscillateurs, M10 transformateur, M11 alimentations (dossiers `p3/m8` à `p3/m11`) ; le chapitre 12 (test final) n'est pas repris, l'examen de la Partie 3 en tient lieu |
+| E31 | Titre et ordre de la Partie 3 ? (2026-10-18) | « Amplification, oscillateurs et alimentations » / « Amplifiers, oscillators and power supplies » ; description conseillant de la suivre après les Parties 1 et 2, aucun verrou |
+| E32 | Volume de la Partie 3 ? (2026-10-18) | E12 inchangé : 6 à 8 sections dont 1 mini-projet, 15 questions de quiz (≥ 4 numériques, ≥ 1 appariement, ≥ 1 sur schéma) et 12 d'examen par module, soit 108 questions ; 2 ou 3 schémas par section |
+| E33 | Niveau mathématique de la Partie 3 ? (2026-10-18) | Règle E26 : aucun nombre complexe ; gain exprimé en rapport, pas de décibels au-delà de −3 dB ; formules : −RC/RE, −Rf/Rin, 1 + Rf/Rin, f = 1/(2π√(LC)), Ns/Np, Zp/Zs = (Np/Ns)², ondulation ≈ I/(f·C) |
+| E34 | Sections de M8 ? (2026-10-18) | Rôle de l'amplificateur et gain ; polarisation stable (pont de base, résistance d'émetteur) ; gain de l'émetteur commun ; émetteur suiveur ; analyser un amplificateur (droite de charge, point de repos) ; JFET amplificateur ; AOP inverseur et non inverseur ; mini-projet |
+| E35 | Sections de M9, M10 et M11 ? (2026-10-18) | M9 : rétroaction et conditions d'oscillation, Colpitts, Hartley, Armstrong, quartz et oscillateur RC à AOP (ouverture), concevoir et dépanner, mini-projet. M10 : principe et rapport de transformation, tensions et courants, puissance et rendement, adaptation d'impédance, transformateurs en communication, mini-projet. M11 : rappel du redressement (renvoi à M2), pont de diodes et valeurs crête, lissage, ondulation, régulation Zener (renvoi à M2), régulateur intégré 78xx, mini-projet |
+| E36 | Sécurité du secteur ? (2026-10-18) | Aucun travail côté 230 V : transformateur moulé ou adaptateur mural 230 V → 9 ou 12 V AC, mesures au secondaire seulement, consigne de sécurité en tête de chaque mini-projet |
+| E37 | Variantes des mini-projets de la Partie 3 ? (2026-10-18) | Règle E28 pour chaque module : variante oscilloscope + générateur basse fréquence et variante « multimètre seul » (M9 : oscillateur basse fréquence vérifié par un buzzer ou une LED) |
+| E38 | Calculateurs de la Partie 3 ? (2026-10-18) | `[[calc:gain]]` (émetteur commun, AOP inverseur et non inverseur), `[[calc:transformer]]` (rapport, tension et courant au secondaire), `[[calc:ripple]]` (ondulation et condensateur de lissage) ; `[[calc:resonance]]` réutilisé en M9 ; CSS + JS du projet toujours < 60 Ko |
+| E39 | Relecture et mise en ligne de la Partie 3 ? (2026-10-18) | Comme E29 : questions relues d'emblée, commit sur `develop`, fusion dans `main`, `deploy.sh`, parcours de fumée en production avec le certificat de la Partie 3 |
+| E40 | Documentation ? (2026-10-18) | Partie 3 sortie du hors scope dans AGENTS.md et CLAUDE.md ; description de la formation « Du courant continu aux amplificateurs, oscillateurs et alimentations… » |
+| E41 | Signe du gain ? (2026-10-18) | Chaque énoncé précise « en valeur absolue » ou « avec son signe » (valeur négative attendue, déjà acceptée par la notation) ; gain sans unité (unité vide, comme β et Q) |
+| E42 | Schémas de la Partie 3 ? (2026-10-18) | `tools/schemas.py` étendu : AOP, transformateur, quartz, pont de diodes, régulateur 78xx, buzzer ; courbes de tension lissée avec ondulation, d'entrée et sortie en opposition de phase, de démarrage d'une oscillation |
+| E43 | Questions sur schéma de la Partie 3 ? (2026-10-18) | Une par module : M8 la résistance qui fixe le gain, M9 le réseau de rétroaction, M10 le secondaire, M11 le condensateur de lissage |
+| E44 | Découpage des commits ? (2026-10-18) | `feat(courses)` calculateurs (TDD), `feat(content)` Partie 3, `style(ui)` après l'audit `audit_p3.js`, `docs` ; puis fusion dans `main` et déploiement |
+| E45 | Rang des parties et des modules ? (2026-10-18) | Rang unique : une partie par rang dans sa formation, un module par rang dans sa partie (contraintes `unique_partie_order` et `unique_module_order`, migration `courses/0005`), pour que trois parties et leurs colonnes « Examen P1, P2, P3 » restent dans un ordre sans ambiguïté |
 | E22 | Dépôt et disque ? | GitHub `fokouarnaud/electroschool2ventisax` ; `develop` → `main` (suivi par le serveur) ; < 150 Mo de disque ; 1 sauvegarde SQLite quotidienne |
 
 ## GOALS
@@ -67,14 +83,20 @@ Les réponses Q1 à Q16 du grill d'Acad Ventisax (`school2ventisax/AGENTS.md`) r
    - **M6 Les filtres RC et RL** : rappel de trigonométrie, RC série et impédance, passe-bas, passe-haut, fréquence de coupure et −3 dB, déphasage, filtres RL, mini-projet ;
    - **M7 La résonance** : LC série, LC parallèle, courbe de réponse, bande passante et facteur Q, ouverture vers les oscillateurs, mini-projet.
    Volume identique à la Partie 1 (E12) ; relecture validée par le responsable du projet, questions publiées au déploiement.
-4. **Quiz de module** : entraînement illimité, correction et explication après envoi ; types QCM une/plusieurs réponses, vrai/faux, **numérique avec unité et tolérance** (angles en degrés « ° » compris), **appariement / glisser-déposer**, **zone cliquable sur schéma**.
-5. **Calculateurs interactifs** dans les sections, non notés : loi d'Ohm, diviseur de tension, code couleur des résistances, polarisation (Partie 1) ; réactance Xc/XL, fréquence de coupure RC/RL, fréquence de résonance LC (Partie 2).
-6. **Examen de partie** (un par partie) : banque séparée, 70 % pour réussir, 3 tentatives, 60 min chronométrées côté serveur, mélange, sauvegarde au clic, reprise après coupure, envoi automatique, meilleure note retenue.
-7. **Catalogue et inscription** : catalogue public ; inscription libre aux formations ouvertes ou par code de promotion ; e-mail vérifié ; mot de passe oublié par e-mail ; un apprenant peut suivre plusieurs formations.
-8. **Certificat et badges** : certificat PDF par partie réussie (Partie 1 et Partie 2), numéro unique vérifiable sur `/verify/<uuid>/` ; badges par module terminé et par partie réussie.
-9. **Espace formateur** (front, mobile) : tableau apprenants × modules de ses promotions, carnet de notes détaillé par tentative et par question, taux de réussite par question, export CSV, annonces et dates limites indicatives.
-10. **Back-office Django Unfold** : comptes, promotions, codes de promotion, contenu, relecture et publication des questions (refusée si FR ou EN non relu), réglage des examens.
-11. **Interface** : bilingue `/fr/` et `/en/`, patterns NetAcad, charte Ventisax déclinée « électronique », mobile d'abord.
+4. **Contenu Partie 3 « Amplification, oscillateurs et alimentations »** (chapitres 8 à 11 du livre, servant uniquement de plan, E30) : 4 modules originaux dans la même formation `electro`, à la suite de la Partie 2 :
+   - **M8 Les amplificateurs à transistor** : rôle de l'amplificateur et gain, polarisation stable par pont de base et résistance d'émetteur, gain de l'émetteur commun, émetteur suiveur, analyse (droite de charge, point de repos), JFET amplificateur, AOP inverseur et non inverseur, mini-projet ;
+   - **M9 Les oscillateurs** : rétroaction et conditions d'oscillation, Colpitts, Hartley, Armstrong, quartz et oscillateur RC à AOP en ouverture, concevoir et dépanner, mini-projet ;
+   - **M10 Le transformateur** : principe et rapport de transformation, tensions et courants, puissance et rendement, adaptation d'impédance, transformateurs en communication, mini-projet ;
+   - **M11 Les alimentations** : rappel du redressement (renvoi à M2), pont de diodes et valeurs crête, lissage par condensateur, ondulation, régulation Zener (renvoi à M2), régulateur intégré 78xx, mini-projet.
+   Volume E12 (108 questions), relues d'emblée et publiées au déploiement (E39) ; une question sur schéma par module (E43).
+5. **Quiz de module** : entraînement illimité, correction et explication après envoi ; types QCM une/plusieurs réponses, vrai/faux, **numérique avec unité et tolérance** (angles en degrés « ° » compris), **appariement / glisser-déposer**, **zone cliquable sur schéma**.
+6. **Calculateurs interactifs** dans les sections, non notés : loi d'Ohm, diviseur de tension, code couleur des résistances, polarisation (Partie 1) ; réactance Xc/XL, fréquence de coupure RC/RL, fréquence de résonance LC (Partie 2) ; gain d'un amplificateur (émetteur commun, AOP), transformateur (rapport, tension et courant), ondulation et condensateur de lissage (Partie 3), la résonance LC servant aussi aux oscillateurs.
+7. **Examen de partie** (un par partie) : banque séparée, 70 % pour réussir, 3 tentatives, 60 min chronométrées côté serveur, mélange, sauvegarde au clic, reprise après coupure, envoi automatique, meilleure note retenue.
+8. **Catalogue et inscription** : catalogue public ; inscription libre aux formations ouvertes ou par code de promotion ; e-mail vérifié ; mot de passe oublié par e-mail ; un apprenant peut suivre plusieurs formations.
+9. **Certificat et badges** : certificat PDF par partie réussie (Parties 1, 2 et 3), numéro unique vérifiable sur `/verify/<uuid>/` ; badges par module terminé et par partie réussie.
+10. **Espace formateur** (front, mobile) : tableau apprenants × modules de ses promotions, carnet de notes détaillé par tentative et par question, taux de réussite par question, export CSV, annonces et dates limites indicatives.
+11. **Back-office Django Unfold** : comptes, promotions, codes de promotion, contenu, relecture et publication des questions (refusée si FR ou EN non relu), réglage des examens.
+12. **Interface** : bilingue `/fr/` et `/en/`, patterns NetAcad, charte Ventisax déclinée « électronique », mobile d'abord.
 
 ### 2. Contraintes techniques
 - **Python** le plus récent proposé par PythonAnywhere ; **Django 5.2 LTS** ; **SQLite** (un seul fichier, sauvegarde quotidienne, 1 copie gardée).
@@ -84,19 +106,22 @@ Les réponses Q1 à Q16 du grill d'Acad Ventisax (`school2ventisax/AGENTS.md`) r
 - **PythonAnywhere gratuit** (compte `electroacadventisax`) : quota de 512 Mo, **cible < 150 Mo** (code + venv + base + médias) ; une seule web app ; pas de tâche planifiée ; internet sortant sur liste blanche ; e-mail sortant par **Gmail SMTP** seulement.
 - **Poids** : < 200 Ko par page à la première visite ; CSS + JS du projet < 60 Ko (nouveaux calculateurs compris) ; schémas en SVG, images éventuelles en WebP ; pas de Pillow.
 - **i18n** : `i18n_patterns` (`/fr/` par défaut, `/en/`), gettext pour l'interface, modeltranslation pour le contenu, repli sur le FR.
-- **Contenu versionné** : `content/electro/` (manifeste JSON, Markdown fr/en, `questions.json` par module ; Partie 2 dans `p2/m5` à `p2/m7`, numérotation continue), importé par `import_content` (idempotent).
+- **Contenu versionné** : `content/electro/` (manifeste JSON, Markdown fr/en, `questions.json` par module ; Partie 2 dans `p2/m5` à `p2/m7`, Partie 3 dans `p3/m8` à `p3/m11`, numérotation continue), importé par `import_content` (idempotent).
 - **Niveau mathématique de la Partie 2** : aucun nombre complexe ; impédance par Pythagore (Z = √(R² + X²)), déphasage par tan/arctan, décibels limités à « −3 dB ≈ 70,7 % ».
-- **Schémas générés** par `tools/schemas.py` (symboles CEI, version anglaise automatique), étendu aux courbes (sinusoïdes, déphasage, réponse en fréquence sur axe logarithmique, résonance) ; jamais retouchés à la main.
-- **Mini-projets de la Partie 2** : consignes à l'oscilloscope et au générateur basse fréquence, avec une variante « multimètre seul » (transformateur 230 V → 9 ou 12 V AC).
-- **Parties non bloquantes** : la Partie 2 est accessible sans avoir réussi la Partie 1 ; sa description conseille de la suivre après.
+- **Niveau mathématique de la Partie 3** (E33) : même règle ; gain en rapport (sans décibels), AOP par −Rf/Rin et 1 + Rf/Rin, oscillateurs par f = 1/(2π√(LC)), transformateur par Ns/Np et (Np/Ns)², ondulation ≈ I/(f·C) ; chaque énoncé de gain précise « en valeur absolue » ou « avec son signe » (E41).
+- **Schémas générés** par `tools/schemas.py` (symboles CEI, version anglaise automatique), étendu aux courbes (sinusoïdes, déphasage, réponse en fréquence sur axe logarithmique, résonance) puis aux symboles et courbes de la Partie 3 (AOP, transformateur, quartz, pont de diodes, régulateur 78xx, buzzer ; tension lissée et ondulation, opposition de phase, démarrage d'oscillation) ; jamais retouchés à la main.
+- **Mini-projets des Parties 2 et 3** : consignes à l'oscilloscope et au générateur basse fréquence, avec une variante « multimètre seul » (transformateur 230 V → 9 ou 12 V AC).
+- **Sécurité du secteur (Partie 3, E36)** : aucun montage ni mesure côté 230 V ; transformateur moulé ou adaptateur mural seulement, mesures au secondaire, consigne de sécurité en tête de chaque mini-projet.
+- **Parties non bloquantes** : les Parties 2 et 3 sont accessibles sans avoir réussi les précédentes ; leur description conseille de les suivre dans l'ordre.
 - **Sécurité** : DEBUG=False et HTTPS en production, CSRF, CSP sans script en ligne, Markdown nettoyé par bleach, identifiants publics UUID, verrouillage anti force brute, limitation des inscriptions, secrets dans `.env`.
 - **Livraison** : commits sur `develop`, questions relues rendues publiques, fusion dans `main` (suivie par le serveur), puis `deploy.sh` (pull, install, migrate, import, publication des questions relues, compilemessages, collectstatic, check --deploy, reload).
 - **Droits** : contenu 100 % original ; le PDF de référence n'est jamais committé ni cité textuellement.
 
 ### 3. Périmètre strictement hors scope
 - Reproduction du texte, des figures, des exercices ou des projets du livre *Complete Electronics Self-Teaching Guide* ; tout texte, question, logo ou asset de NetAcad/Cisco.
-- **Partie 3 et suivantes** (chapitres 8 et au-delà du livre : amplificateurs à transistor, AOP, oscillateurs, transformateur, alimentations, test final), jusqu'à nouvelle décision.
-- Nombres complexes et calcul de décibels au-delà de −3 dB dans la Partie 2.
+- **Chapitre 12 du livre (test final) et toute Partie 4**, jusqu'à nouvelle décision : l'examen de la Partie 3 tient lieu de bilan.
+- Nombres complexes et calcul de décibels au-delà de −3 dB dans les Parties 2 et 3 (gain exprimé en rapport).
+- Tout montage ou toute mesure côté secteur 230 V dans les mini-projets.
 - Simulateur de circuits (type Packet Tracer / SPICE) et laboratoires virtuels.
 - Valeurs numériques aléatoires par tentative (questions paramétrées) ; réponse libre rédigée ; correction manuelle.
 - Évaluation pratique notée, saisie des mesures dans l'app, dépôt de fichiers par les apprenants.
@@ -129,6 +154,7 @@ Script `.playwright-mcp/audit.js` : 12 écrans, 360 et 1280 px, thèmes clair et
 - **Budget CSS + JS < 60 Ko** : précisé comme portant sur les fichiers du projet (48 Ko non compressés) ; HTMX vendoré (51 Ko, 16 Ko compressé), imposé par Q13 et déjà présent dans Acad Ventisax, n'y est pas compté.
 
 - **Partie 2 (2026-10-18)** : script `.playwright-mcp/audit_p2.js` (11 écrans : fiche du catalogue, tableau de bord, module, sections à calculateur, section anglaise, mini-projet, examen, quiz et résultat de M6), 360 et 1280 px, thèmes clair et sombre : aucun défaut de contraste, aucun débordement, aucune erreur console, pages de 43 à 126 Ko à la première visite (quiz de M6 : 126 Ko). Ajustements : `.course + .course` sépare les parties sur le tableau de bord ; `.partie-desc` porte la description d'une partie ; dans les tableaux du cours, en-têtes et première colonne ne se coupent plus (le tableau défile dans son cadre) ; les calculateurs n'affichent pas deux fois la consigne ; l'aide d'une question en degrés parle d'angle et non de préfixes SI ; le tableau formateur abrège les examens en « Examen P1 / P2 » avec une légende, comme les modules ; les sources des schémas de circuit portent leur valeur à l'intérieur de la boucle. L'audit des 12 écrans de la Partie 1 reste sans régression.
+- **Partie 3 (2026-10-18)** : script `.playwright-mcp/audit_p3.js` (13 écrans : fiche du catalogue, tableau de bord à trois parties, module M8, sections à calculateur gain, transformateur et ondulation, section anglaise du Colpitts, mini-projet de M11, examen, quiz et résultat de M8, tableau formateur, dates limites), 360 et 1280 px, thèmes clair et sombre : aucun défaut de contraste, aucun débordement, aucune erreur console, pages de 45 à 129 Ko à la première visite (quiz de M8 : 129 Ko). Ajustement : avec onze modules et trois examens, le tableau formateur défilait à 1280 px et coupait la colonne « Tentatives » ; les colonnes M1 à M11 portent la classe `mod` (rembourrage horizontal réduit, contenu centré) et le tableau tient en entier. Tableau de bord : chaque carte d'examen nomme sa partie (« Examen de la Partie 3 », « Part 3 exam ») et la formation n'est plus répétée au-dessus de chaque partie (`{% ifchanged %}`). Revue écran par écran : la fiche du catalogue et le tableau de bord numérotent les parties (« Partie 3 : », classe `partie-num`), puisque les descriptions renvoient aux « Parties 1 et 2 » ; le rond d'une section non lue prend la même emprise que la coche (`.section-list .dot-todo`) ; sous 400 px, le chevron des modules à terminer reste à droite quand le badge est masqué ; dans les calculateurs, les listes déroulantes occupent toute la largeur (`field-wide`) pour que « Double alternance (100 Hz) » ne soit pas tronqué. Gabarits partiels : `templates/includes/partie_heading.html` (titre numéroté d'une partie, partagé par la fiche du catalogue et le tableau de bord) et `templates/courses/_calc_labels.html` (libellés traduits des dix calculateurs, sortis de `section_detail.html`). Liste de contrôle du skill design-taste-frontend mesurée écran par écran par `.playwright-mcp/preflight_p3.js` (13 écrans, 360 et 1280 px) : zéro tiret long, aucun libellé de bouton sur deux lignes, un seul rayon de bouton (pilule), un seul accent (teal ; jaune et rouge réservés aux états), aucun champ sans libellé, aucune animation, aucun débordement ; « Ce qu'il reste à faire » répété sur le tableau de bord mène à trois examens différents, chacun dans sa carte. Exceptions inchangées : lien du pied de page et zones des questions sur schéma, doublées par des boutons radio de 44 px. L'audit de la Partie 2 reste sans régression.
 
 ## PRD
 
@@ -203,6 +229,18 @@ Chaque story porte une étiquette : **[B]** règle métier backend (modèles, se
 - US-46 [B] : En tant que responsable, les 81 questions de la Partie 2, relues en FR et en EN, sont publiées par `publish_reviewed` au déploiement ; une question incohérente est signalée et reste en brouillon.
 - US-47 [B][F] : En tant que formateur, mon tableau, mon carnet de notes, le taux de réussite par question et l'export CSV couvrent aussi M5 à M7 et l'examen de la Partie 2, sans changement de code.
 
+**Partie 3 « Amplification, oscillateurs et alimentations »**
+- US-48 [B][F] : En tant qu'apprenant inscrit à la formation Électronique, je vois la Partie 3 (M8 Les amplificateurs à transistor, M9 Les oscillateurs, M10 Le transformateur, M11 Les alimentations) dans le sommaire et sur mon tableau de bord, et je la suis sans avoir réussi les examens des Parties 1 et 2 ; sa description me conseille de la suivre après elles.
+- US-49 [B] : En tant qu'apprenant, je réponds à une question de gain sans unité (« 10 », « -10 », « 4,7 ») ; si l'énoncé demande le gain « en valeur absolue », −10 est faux quand 10 est attendu ; s'il le demande « avec son signe », seule la valeur signée est juste ; une unité saisie (« 10 V ») rend la réponse fausse.
+- US-50 [F] : En tant qu'apprenant, j'utilise dans les sections de la Partie 3 trois calculateurs non notés : gain (émetteur commun −RC/RE, AOP inverseur −Rf/Rin, AOP non inverseur 1 + Rf/Rin), transformateur (Np, Ns, Up → Us, et courant au secondaire), ondulation (I, f, C → ΔU, ou ΔU → C) ; ils s'utilisent au clavier, en FR et en EN ; en M9, le calculateur de résonance LC donne la fréquence d'un oscillateur.
+- US-51 [B] : En tant qu'apprenant, je réponds dans chaque module de la Partie 3 à une question sur schéma : M8 la résistance qui fixe le gain, M9 le réseau de rétroaction, M10 l'enroulement secondaire, M11 le condensateur de lissage ; tout ou rien, comme les autres questions sur schéma.
+- US-52 [B][F] : En tant qu'apprenant, je consulte le mini-projet de chaque module de la Partie 3 avec deux variantes de mesure (oscilloscope et générateur basse fréquence, ou multimètre seul) ; en M10 et M11, le mini-projet commence par la consigne de sécurité : aucun montage ni mesure côté 230 V, transformateur moulé ou adaptateur mural 230 V → 9 ou 12 V AC, mesures au secondaire seulement.
+- US-53 [B] : En tant qu'apprenant ayant terminé M8, M9, M10 et M11, je passe l'examen de la Partie 3 (70 %, 3 tentatives, 60 min) ; s'il est réussi, j'obtiens un badge de partie et un troisième certificat, distinct de ceux des Parties 1 et 2, vérifiable sur `/verify/<numéro>/` ; tant qu'un module manque, je vois lequel.
+- US-54 [B] : En tant qu'admin, j'importe la Partie 3 avec `import_content` (idempotent, deux passages = même état) ; les garde-fous du contenu vérifient p1, p2 et p3 (fichiers FR et EN, volumes E12, schémas référencés existants, calculateurs présents, variantes et sécurité des mini-projets, énoncés de gain précisant valeur absolue ou signe).
+- US-55 [B] : En tant que responsable, les 108 questions de la Partie 3, relues en FR et en EN, sont publiées par `publish_reviewed` au déploiement ; une question incohérente est signalée et reste en brouillon.
+- US-56 [B][F] : En tant que formateur, mon tableau (« Examen P3 » abrégé avec sa légende), mon carnet de notes, le taux de réussite par question, les dates limites et l'export CSV couvrent aussi M8 à M11 et l'examen de la Partie 3, sans changement de code.
+- US-57 [B] : En tant que visiteur, je vois au catalogue la description de la formation mise à jour (« Du courant continu aux amplificateurs, oscillateurs et alimentations… ») et les trois parties avec leur description, en FR et en EN.
+
 ### Modélisation logique des données
 `*` = champ traduit (fr/en) par modeltranslation, avec repli sur le fr. 🆕 = entité nouvelle, ✏️ = entité modifiée par rapport à school2ventisax.
 Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certificate et Promotion portent un `public_id` (UUID v4, unique, non modifiable) : c'est le seul identifiant exposé (URL, formulaires, ancres). Les clés entières restent internes.
@@ -251,6 +289,20 @@ Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certif
 - Règle ajoutée : une saisie en degrés est lue sans préfixe SI (« 45° » vaut 45) ; `format_quantity(v, "°")` n'ajoute jamais de préfixe.
 - Règle ajoutée : la progression d'une partie ne dépend que de ses propres modules ; aucun lien d'accès entre parties.
 
+**Partie 3 : aucune entité nouvelle ; une migration de contraintes (E45)**
+| Entité | Évolution |
+|---|---|
+| Formation | `electro` : `description` mise à jour (« Du courant continu aux amplificateurs, oscillateurs et alimentations… »), FR et EN |
+| Partie | 3e ligne de la formation `electro` : `slug` = `p3`, `order` = 3, titre « Amplification, oscillateurs et alimentations » / « Amplifiers, oscillators and power supplies », description « à suivre après les Parties 1 et 2 » ; 1-1 Assessment `part_exam` (70 %, 3 tentatives, 60 min) |
+| Module | 4 lignes, `order` 1 à 4 dans `p3`, dossiers `p3/m8` à `p3/m11` (numérotation continue des dossiers et des schémas) ; chacune avec son Assessment `module_quiz` |
+| Section | 28 lignes (M8 : 8, M9 : 7, M10 : 6, M11 : 7, dont un mini-projet `practical` par module) |
+| Question | 108 lignes (`external_id` `e-p3-m<N>-qNN`, 15 `quiz` et 12 `exam` par module) ; `unit` vide pour les gains et les rapports (comme β et Q), V, A, Ω, W, Hz, F, H sinon ; aucun nouveau `qtype` ; 4 questions `hotspot` dont le SVG vient de `content/electro/p3/m<N>/schemas/` |
+| Badge, Certificate | inchangés : unique (user, partie) donne un badge et un certificat pour la Partie 3 |
+- Règle ajoutée : un gain négatif est une valeur numérique ordinaire (|saisie − attendu| ≤ |attendu| × tolérance / 100) ; l'énoncé fixe seul si le signe est attendu.
+- Règle ajoutée (TDD) : une grandeur sans unité (gain, rapport) s'affiche sans préfixe SI (`format_quantity(Decimal("0.05"), "")` donne « 0,05 », jamais « 50 m ») ; le signe moins typographique U+2212 des énoncés est lu comme « - » (« −10 » vaut -10).
+- Règle ajoutée (E45) : Partie unique (formation, order) et Module unique (partie, order), en plus de Partie unique (formation, slug) ; migration `courses/0005`, seul changement de schéma de la Partie 3.
+- Règle ajoutée : trois noms de calculateur de plus (`gain`, `transformer`, `ripple`) dans la liste fermée de `courses/rendering.py` ; tout autre nom reste du texte.
+
 ### Exigences non fonctionnelles
 - **Performance** : TTFB < 500 ms sur PythonAnywhere pour les pages de cours ; ≤ 10 requêtes SQL par page de cours ; ≤ 20 pour le carnet de notes d'une promotion de 30 apprenants.
 - **Poids** : < 200 Ko transférés à la première visite d'une page de cours ; CSS + JS < 60 Ko au total (calculateurs et interactions compris).
@@ -259,6 +311,7 @@ Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certif
 - **Fiabilité** : aucune réponse d'examen perdue lors d'un rechargement ou d'une coupure.
 - **Confidentialité** : un apprenant ne voit que ses données ; un formateur, que ses promotions ; aucune IP stockée en clair.
 - **Partie 2** : poids et performance identiques à la Partie 1 (< 200 Ko, ≤ 10 requêtes SQL par page de cours) ; CSS + JS du projet < 60 Ko avec les trois nouveaux calculateurs.
+- **Partie 3** : mêmes budgets (< 200 Ko par page à la première visite, ≤ 10 requêtes SQL par page de cours) ; CSS + JS du projet < 60 Ko avec les six calculateurs des Parties 2 et 3 ; disque toujours < 150 Mo avec les schémas de M8 à M11.
 
 ### Écarts d'implémentation validés (backend TDD, 2026-10-18)
 Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-dessus.
@@ -297,6 +350,8 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
 
 23. **Partie 2 rédigée (2026-10-18)** : `content/electro/p2/` contient M5 Le courant alternatif (7 sections), M6 Les filtres RC et RL (8) et M7 La résonance (7), en FR et en EN, et 81 questions (par module : 15 de quiz et 12 d'examen, relues d'emblée selon E29). Les déphasages se saisissent et s'affichent en degrés (« 45° », jamais de préfixe SI, `assessments/scoring.py`). `Partie.description` (traduite, migration `courses/0004`) est lue par l'import et affichée au catalogue et au tableau de bord. Trois calculateurs sont ajoutés : `[[calc:reactance]]`, `[[calc:cutoff]]` et `[[calc:resonance]]`. `tools/schemas.py` produit les 40 schémas de M5 à M7 (bobine CEI, condensateur variable, écran d'oscilloscope, courbes sur axe logarithmique) et les 3 schémas des questions sur schéma, dans `content/electro/p2/m<N>/schemas/`. Garde-fous ajoutés (`courses/tests/test_content_files.py`) : trois modules p2, deux variantes de mesure et la sécurité en tête de chaque mini-projet (US-43), calculateurs présents, au moins deux déphasages en degrés, relecture validée. Chaque valeur numérique a été recalculée par sa formule (écart < 0,1 %).
 
+24. **Partie 3 rédigée (2026-10-18)** : `content/electro/p3/` contient M8 Les amplificateurs à transistor (8 sections), M9 Les oscillateurs (7), M10 Le transformateur (6) et M11 Les alimentations (7), en FR et en EN, et 108 questions (par module : 15 de quiz et 12 d'examen, relues d'emblée selon E39). La description de la formation annonce les trois parties. Les gains et les rapports se notent sans unité ; chaque énoncé de gain précise « en valeur absolue » ou « avec son signe » (garde-fou), le signe moins typographique « − » est lu comme « - » et une grandeur sans unité s'affiche sans préfixe SI (`assessments/scoring.py`). Trois calculateurs sont ajoutés : `[[calc:gain]]`, `[[calc:transformer]]` et `[[calc:ripple]]` ; M9 réutilise `[[calc:resonance]]`. `tools/schemas.py` produit les 48 schémas de M8 à M11 (AOP, transformateur, quartz, pont de diodes, régulateur 78xx, courbes de lissage et de démarrage d'oscillation) et les 4 schémas des questions sur schéma, rangés par `question_dir()` dans `content/electro/p3/m<N>/schemas/`. Garde-fous ajoutés (`courses/tests/test_content_files.py`) : quatre modules p3 et leur nombre de sections, deux variantes de mesure et la sécurité en tête de chaque mini-projet (230 V en M10 et M11), calculateurs présents, une question sur schéma par module, import de l'examen de la Partie 3 (70 %, 3 tentatives, 60 min) et publication des 108 questions ; tests de vues dans `courses/tests/test_part_three.py`. Page des dates limites du formateur : les quiz sont listés par partie puis par module (avant, M8 s'intercalait entre M1 et M2). Chaque valeur numérique attendue est calculée par sa formule dans le script de rédaction, puis vérifiée à la main (écart < 0,1 %). CSS + JS du projet : 55 Ko.
+
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.
 
@@ -332,3 +387,14 @@ Une story n'est terminée que si **tous** les critères applicables sont vrais. 
 19. Tous les schémas proviennent de `tools/schemas.py` (FR et EN), aucun SVG retouché à la main ; 2 ou 3 schémas par section.
 20. Chaque mini-projet porte les deux variantes (oscilloscope, multimètre seul) et une consigne de sécurité pour le transformateur.
 21. Après déploiement : les 81 questions de la Partie 2 sont publiées, l'examen de la Partie 2 se lance pour un compte de test ayant terminé M5 à M7, et son certificat se vérifie sur `/verify/`.
+
+**Contenu Partie 3**
+22. Par module de M8 à M11 : 6 à 8 sections dont 1 mini-projet, 15 questions de quiz (≥ 4 numériques, ≥ 1 appariement, ≥ 1 sur schéma) et 12 d'examen, vérifié par `courses/tests/test_content_files.py` ; les sections suivent E34 et E35.
+23. Chaque valeur numérique attendue est recalculée à la main par sa formule (écart < 0,1 %) et consignée (valeur, unité, tolérance) avant d'entrer dans `questions.json` ; chaque énoncé donne un exemple de saisie (avec préfixe quand l'unité en admet) ; chaque énoncé de gain précise « en valeur absolue » ou « avec son signe », vérifié par un garde-fou.
+24. Aucun nombre complexe, aucun décibel au-delà de −3 dB ; gains exprimés en rapport.
+25. Tous les schémas (sections et questions sur schéma) proviennent de `tools/schemas.py`, en FR et en EN, symboles CEI, aucun SVG retouché à la main ; 2 ou 3 schémas par section.
+26. Chaque mini-projet porte les deux variantes (oscilloscope + générateur basse fréquence, multimètre seul) ; ceux de M10 et M11 commencent par la consigne de sécurité du secteur (E36), vérifiée par un garde-fou ; aucune consigne ne fait travailler côté 230 V.
+27. Les calculateurs `gain`, `transformer` et `ripple` ont été développés test d'abord (rendu de l'emplacement, nom inconnu refusé), sont présents dans les sections prévues (E38), utilisables au clavier en FR et en EN, et le budget CSS + JS du projet reste < 60 Ko.
+28. Tests de vues de la Partie 3 (`courses/tests/test_part_three.py`) : accès sans les Parties 1 et 2, examen fermé tant qu'un module manque, examen réussi → badge et certificat distinct vérifiable, cloisonnement (autre apprenant, formateur d'une autre promotion, anonyme).
+29. Audit `.playwright-mcp/audit_p3.js` : 360 et 1280 px, thèmes clair et sombre, /fr/ et /en/, sans défaut de contraste, débordement ni erreur console, pages < 200 Ko ; audits des Parties 1 et 2 sans régression.
+30. Après déploiement : les 108 questions de la Partie 3 sont publiées, l'examen de la Partie 3 se lance pour un compte de test ayant terminé M8 à M11, et son certificat se vérifie sur `/verify/` ; disque < 150 Mo mesuré.
