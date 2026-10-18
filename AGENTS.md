@@ -11,7 +11,9 @@ Hébergement visé : PythonAnywhere gratuit, compte `electroacadventisax` (https
 | `python -m venv .venv` puis `.venv/Scripts/python -m pip install -r requirements-dev.txt` | Environnement local (Windows) |
 | `.venv/Scripts/python -m pytest` | Toute la suite de tests (TDD : test rouge d'abord) |
 | `.venv/Scripts/python manage.py makemigrations --check --dry-run` | Aucune migration oubliée |
-| `.venv/Scripts/python manage.py import_content content/electro/formation.json` | Import idempotent du contenu |
+| `.venv/Scripts/python manage.py import_content content/electro/formation.json` | Import idempotent du contenu (ne publie jamais) |
+| `.venv/Scripts/python manage.py publish_reviewed` | Publie les questions relues en FR et en EN ; signale les incohérentes |
+| `bash ~/electroschool2ventisax/deploy.sh` (console PythonAnywhere) | Pull, dépendances, migrations, import, publication des questions relues, collectstatic, check, rechargement |
 | `DJANGO_DEBUG=0 DJANGO_SECRET_KEY=<clé de test> .venv/Scripts/python manage.py check --deploy` | Réglages de production |
 
 ## Sécurité (règle absolue)
@@ -46,6 +48,7 @@ Les réponses Q1 à Q16 du grill d'Acad Ventisax (`school2ventisax/AGENTS.md`) r
 | E20 | Pratique ? | 1 mini-projet original par module (consignes, schéma SVG, nomenclature, tableau de mesures), affiché, non noté |
 | E21 | Expéditeur des e-mails ? | Boîte Gmail désignée par l'utilisateur ; adresse et mot de passe d'application dans `.env` uniquement |
 | E23 | fpdf2 tire Pillow et fonttools (~40 Mo) : que faire ? (2026-10-18) | Mini-générateur PDF en Python pur dans `certificates/pdf.py` (Helvetica standard, WinAnsi) ; fpdf2 retiré des dépendances |
+| E24 | Relecture des questions de la Partie 1 ? (2026-10-18) | Validée par le responsable du projet : les 108 questions sont marquées relues (FR et EN) et publiées par `publish_reviewed`, lancé à chaque déploiement |
 | E22 | Dépôt et disque ? | GitHub `fokouarnaud/electroschool2ventisax` ; `develop` → `main` (suivi par le serveur) ; < 150 Mo de disque ; 1 sauvegarde SQLite quotidienne |
 
 ## GOALS
@@ -100,6 +103,14 @@ Skill design-taste-frontend, lecture : interface produit d'une plateforme de for
 - **Calculateurs** (`static/acad/js/calculators.js`) : chargés seulement sur les sections qui en contiennent ; libellés traduits passés par un élément caché à attributs `data-` (aucun script en ligne).
 - **Typographie** : aucun tiret cadratin ni demi-cadratin visible ; deux-points intégrés aux chaînes traduites (« Votre réponse : » / « Your answer: »).
 - **Validation visuelle** : script Playwright `.playwright-mcp/shots.js` (dossier ignoré par git) sur 1280px et 360px, trois rôles, contrôles automatiques : erreurs console et CSP, débordement horizontal (`clientWidth`), boutons sur deux lignes, poids transféré. Dernier passage : 0 erreur, 0 débordement, page la plus lourde 66 Ko (tentative avec HTMX, non compressé).
+
+### Audit graphique (2026-10-18)
+Script `.playwright-mcp/audit.js` : 12 écrans, 360 et 1280 px, thèmes clair et sombre. Résultat : contraste AA sans défaut, aucun débordement, aucune erreur console, `lang` correct, toutes les images avec texte alternatif, pages de 6 à 84 Ko à la première visite (quiz avec HTMX : 84 Ko).
+- **Schémas du cours** : ajustés à la largeur et liés à leur fichier pleine taille (`a.figure-zoom`, ajouté par `courses/rendering.py`) ; sur téléphone, un toucher ouvre le SVG, agrandi à deux doigts. Le défilement horizontal a été essayé puis écarté (schéma paraissant coupé). Les SVG portent `width`/`height` (dimensions intrinsèques).
+- **Examen verrouillé** : modules à terminer en liste de liens numérotés avec badge « À terminer » (masqué sous 400 px), et non plus en cercles ressemblant à des choix de réponse.
+- **Connexion** : « Mot de passe oublié ? » et « Créer un compte » deviennent deux cibles de 44 px sous le bouton, au lieu de deux petits liens accolés.
+- **Cibles tactiles** : titre de formation du catalogue (44 px) et liens de tentatives du suivi (36 px). Exceptions assumées : le lien du pied de page (dans une phrase) et les zones des questions sur schéma, doublées par des boutons radio de 44 px.
+- **Budget CSS + JS < 60 Ko** : précisé comme portant sur les fichiers du projet (48 Ko non compressés) ; HTMX vendoré (51 Ko, 16 Ko compressé), imposé par Q13 et déjà présent dans Acad Ventisax, n'y est pas compté.
 
 ## PRD
 
@@ -230,6 +241,10 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
 16. **Calculateurs du cours (US-13)** : un paragraphe Markdown réduit à `[[calc:ohm]]`, `[[calc:divider]]`, `[[calc:resistor]]` ou `[[calc:bias]]` devient, **après** le nettoyage bleach, un emplacement inerte `<div class="calc" data-calc="…">` ; tout autre nom reste du texte et le balisage HTML ne peut pas forger cet emplacement.
 17. **Correction lisible** : valeur attendue d'une question numérique affichée avec préfixe SI et séparateur de la langue (`assessments.scoring.format_quantity` : « 2,553 mA » / « 2.553 mA ») ; correction d'un appariement ligne par ligne (`AttemptQuestion.pair_rows` : réponse donnée, attendue, juste ou fausse).
 18. **Catalogue** : chaque formation indique si l'utilisateur y est déjà inscrit (bouton « Continuer » au lieu de « S'inscrire ») ; le tableau formateur liste les tentatives envoyées de chaque apprenant (lien vers le détail, US-28) ; une promotion unique est présélectionnée dans les formulaires formateur.
+
+19. **Contenu de la Partie 1 rédigé** (2026-10-18) : `content/electro/` contient 4 modules (8, 7, 7 et 7 sections dont un mini-projet chacun), 29 sections en FR et en EN, 108 questions (par module : 15 de quiz dont au moins 5 numériques, 1 appariement et 1 sur schéma ; 12 d'examen). Texte, exercices et schémas sont originaux : le livre de référence n'a servi que de plan (E2). Les questions sont arrivées avec `reviewed` à faux (E12) ; le responsable du projet a validé leur relecture le 2026-10-18 (E24) : elles portent désormais `reviewed` à vrai et sont publiées. Toute nouvelle question entre à nouveau avec `reviewed` à faux. Les garde-fous du contenu (`courses/tests/test_content_files.py`) s'exécutent désormais tous ; le test de publication vérifie que seules les questions relues se publient.
+20. **Schémas générés** : `python tools/schemas.py` produit les 50 schémas des sections (symboles CEI, fond clair intégré pour le mode sombre) dans `static/content/electro/m<N>/`, leur version anglaise dans `static/content/electro/en/m<N>/` (libellés traduits, virgules décimales converties) et les 4 schémas des questions sur schéma dans `content/electro/p1/m<N>/schemas/`, avec les coordonnées des zones. Modifier un schéma = modifier sa fonction puis relancer le script ; ne jamais retoucher les SVG à la main.
+21. **Questions numériques** : valeur attendue en unité de base (ex. `0.002553` A) ; chaque énoncé donne un exemple de saisie avec préfixe (« 2,5 mA »), car une saisie sans préfixe est lue en unité de base. Tolérance de 2 % par défaut, élargie quand la réponse est une plage physique (0,7 V d'une diode : 15 %).
 
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.
