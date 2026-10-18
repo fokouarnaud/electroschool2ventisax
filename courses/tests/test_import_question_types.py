@@ -162,3 +162,50 @@ def test_part_two_import_is_idempotent_and_publishes_only_reviewed_questions(par
     attempt = start_attempt(learner, Assessment.quiz_for(m5))
     save_answer(attempt, phase.public_id, [], text="45,5 °")
     assert submit_attempt(attempt).score_pct == 100
+
+
+@pytest.fixture
+def part_three_dir(tmp_path):
+    """Manifeste à trois parties ; la Partie 3 (dossier p3/m8) contient un gain signé, une question sur schéma et un brouillon."""
+    gain = {"id": "e-p3-m8-gain", "type": "numeric", "usage": "quiz", "reviewed": REVIEWED,
+            "prompt": {"fr": "Gain avec son signe ?", "en": "Gain with its sign?"}, "numeric": {"value": "-10", "unit": ""}}
+    hotspot = {**QUESTIONS[2], "id": "e-p3-m8-hot", "usage": "quiz", "svg": "schemas/ampli.svg"}
+    draft = {**gain, "id": "e-p3-m8-draft", "reviewed": {"fr": False, "en": True}}
+    for folder in ("p1/m1", "p2/m5", "p3/m8/schemas"):
+        (tmp_path / folder).mkdir(parents=True)
+    (tmp_path / "p3" / "m8" / "schemas" / "ampli.svg").write_text(SVG, encoding="utf-8")
+    (tmp_path / "p3" / "m8" / "questions.json").write_text(json.dumps([gain, hotspot, draft], ensure_ascii=False), encoding="utf-8")
+
+    def partie(slug, order, folder):
+        return {"slug": slug, "order": order, "title": {"fr": slug, "en": slug},
+                "modules": [{"order": 1, "dir": folder, "title": {"fr": folder, "en": folder}, "sections": []}]}
+
+    manifest = {"slug": "electro", "open": True, "title": {"fr": "Électronique", "en": "Electronics"},
+                "parties": [partie("p1", 1, "p1/m1"), partie("p2", 2, "p2/m5"), partie("p3", 3, "p3/m8")]}
+    (tmp_path / "formation.json").write_text(json.dumps(manifest), encoding="utf-8")
+    return tmp_path
+
+
+@pytest.mark.django_db
+def test_part_three_import_is_idempotent_and_publishes_only_reviewed_questions(part_three_dir, learner):
+    """US-54, US-55, US-49 et US-51 : import répété d'une troisième partie, publication des seules questions relues."""
+    from assessments.models import Assessment
+    from assessments.services import save_answer, start_attempt, submit_attempt
+    from courses.models import Module, Partie
+
+    run_import(part_three_dir)
+    call_command("publish_reviewed", stdout=__import__("io").StringIO())
+    run_import(part_three_dir)
+
+    assert list(Partie.objects.order_by("order").values_list("slug", flat=True)) == ["p1", "p2", "p3"]
+    m8 = Module.objects.get(partie__slug="p3")
+    gain = Question.objects.get(external_id="e-p3-m8-gain")
+    assert (gain.module, gain.unit, gain.numeric_value, gain.status) == (m8, "", Decimal("-10"), Question.Status.PUBLISHED)
+    assert Question.objects.get(external_id="e-p3-m8-hot").hotspot_svg == SVG
+    assert Question.objects.get(external_id="e-p3-m8-draft").status == Question.Status.DRAFT
+    assert Question.objects.filter(module=m8).count() == 3
+
+    attempt = start_attempt(learner, Assessment.quiz_for(m8))
+    save_answer(attempt, gain.public_id, [], text="−10")
+    assert attempt.attempt_questions.count() == 2  # gain et schéma publiés ; le brouillon n'est pas tiré
+    assert submit_attempt(attempt).score_pct == 50

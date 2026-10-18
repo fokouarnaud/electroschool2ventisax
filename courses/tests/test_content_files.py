@@ -293,3 +293,113 @@ def test_part_two_questions_are_reviewed_in_both_languages():
     for module, questions in questions_by_module():
         if module["dir"].startswith("p2/"):
             assert questions and all(q["reviewed"] == {"fr": True, "en": True} for q in questions), module["dir"]
+
+
+# --- Partie 3 « Amplification, oscillateurs et alimentations » (AGENTS.md, E30 à E44) ---------------------------------
+
+P3_MODULES = ["p3/m8", "p3/m9", "p3/m10", "p3/m11"]
+
+
+
+def test_part_three_has_the_four_modules_of_chapters_eight_to_eleven():
+    """US-48 : M8 à M11 dans la formation electro, description conseillant de suivre d'abord les Parties 1 et 2."""
+    p3 = part("p3")
+    assert p3["order"] == 3
+    assert [m["dir"] for m in p3["modules"]] == P3_MODULES
+    assert_bilingual(p3, "description", "p3")
+    assert "Parties 1 et 2" in p3["description"]["fr"] and "Parts 1 and 2" in p3["description"]["en"]
+
+
+def test_formation_description_covers_the_three_parts():
+    """US-57 : la fiche du catalogue annonce les amplificateurs, oscillateurs et alimentations."""
+    description = manifest()["description"]
+    assert "amplificateurs" in description["fr"] and "alimentations" in description["fr"]
+    assert "amplifiers" in description["en"] and "power supplies" in description["en"]
+
+
+def test_part_three_section_counts_follow_the_plan():
+    """E34 et E35 : M8 8 sections, M9 7, M10 6, M11 7 (mini-projet compris)."""
+    assert [len(m["sections"]) for m in part("p3")["modules"]] == [8, 7, 6, 7]
+
+
+def test_part_three_mini_projects_offer_both_measurement_variants_and_put_safety_first():
+    """US-52 et E36 : deux variantes de mesure ; sécurité du secteur en tête ; jamais de travail côté 230 V."""
+    for module in part("p3")["modules"]:
+        [practical] = [s for s in module["sections"] if s["kind"] == "practical"]
+        for lang, headings in PRACTICAL_HEADINGS.items():
+            text = (CONTENT / module["dir"] / f"{practical['file']}.{lang}.md").read_text(encoding="utf-8")
+            positions = [text.find(h) for h in headings]
+            assert -1 not in positions, f"{module['dir']}.{lang} : titres attendus {headings}"
+            assert positions[2] < positions[0], f"{module['dir']}.{lang} : la sécurité vient avant les variantes"
+            if module["dir"] in ("p3/m10", "p3/m11"):
+                assert "230 V" in text, f"{module['dir']}.{lang} : consigne du secteur 230 V absente"
+
+
+def test_part_three_sections_use_their_calculators():
+    """US-50 et E38 : gain (M8), résonance (M9), transformateur (M10), ondulation (M11), en français et en anglais."""
+    for module, kind in zip(part("p3")["modules"], ("gain", "resonance", "transformer", "ripple")):
+        for lang in LANGS:
+            texts = [(CONTENT / module["dir"] / f"{s['file']}.{lang}.md").read_text(encoding="utf-8") for s in module["sections"]]
+            assert any(f"[[calc:{kind}]]" in t for t in texts), f"{module['dir']}.{lang} : [[calc:{kind}]] absent"
+
+
+def test_part_three_has_one_hotspot_question_per_module():
+    """US-51 et E43 : une question sur schéma par module de la Partie 3."""
+    counts = {m["dir"]: sum(q["type"] == "hotspot" for q in qs) for m, qs in questions_by_module() if m["dir"] in P3_MODULES}
+    assert list(counts) == P3_MODULES
+    assert all(n >= 1 for n in counts.values()), counts
+
+
+def test_part_three_gain_prompts_say_whether_the_sign_counts():
+    """US-49 et E41 : tout énoncé de gain sans unité précise « en valeur absolue » ou « avec son signe »."""
+    markers = {"fr": ("valeur absolue", "avec son signe"), "en": ("absolute value", "with its sign")}
+    gains = 0
+    for module, questions in questions_by_module():
+        if module["dir"] not in P3_MODULES:
+            continue
+        for q in questions:
+            if q["type"] == "numeric" and q["numeric"]["unit"] == "" and "gain" in q["prompt"]["fr"].lower():
+                gains += 1
+                for lang, words in markers.items():
+                    assert any(w in q["prompt"][lang] for w in words), f"{q['id']}.{lang} : signe du gain non précisé"
+    assert gains >= 2, "au moins deux questions de gain dans la Partie 3"
+
+
+def test_part_three_questions_are_reviewed_in_both_languages():
+    """E39 : relecture de la Partie 3 validée d'emblée ; ses 108 questions sont publiées au déploiement (US-55)."""
+    total = 0
+    for module, questions in questions_by_module():
+        if module["dir"] in P3_MODULES:
+            assert questions and all(q["reviewed"] == {"fr": True, "en": True} for q in questions), module["dir"]
+            total += len(questions)
+    assert total == 108
+
+
+@pytest.mark.django_db
+def test_importing_the_content_builds_part_three_and_its_exam():
+    """US-53 et US-54 : M8 à M11 importés dans l'ordre ; examen de la Partie 3 à 70 %, 3 tentatives, 60 min."""
+    from assessments.models import Assessment
+    from courses.models import Partie
+
+    call_command("import_content", str(CONTENT / "formation.json"), verbosity=0)
+    call_command("import_content", str(CONTENT / "formation.json"), verbosity=0)
+
+    p3 = Partie.objects.get(formation__slug="electro", slug="p3")
+    assert list(p3.modules.order_by("order").values_list("title_fr", flat=True)) == [
+        "Les amplificateurs à transistor", "Les oscillateurs", "Le transformateur", "Les alimentations"]
+    assert Section.objects.filter(module__partie=p3).count() == 28
+    exam = Assessment.exam_for(p3)
+    assert (exam.pass_threshold, exam.max_attempts, exam.duration_minutes) == (70, 3, 60)
+
+
+@pytest.mark.django_db
+def test_publish_reviewed_publishes_the_108_questions_of_part_three():
+    """US-55 : après import, publish_reviewed publie les 108 questions relues de la Partie 3, 48 d'examen."""
+    import io
+
+    call_command("import_content", str(CONTENT / "formation.json"), verbosity=0)
+    call_command("publish_reviewed", stdout=io.StringIO())
+
+    published = Question.objects.published().filter(module__partie__slug="p3")
+    assert published.count() == 108
+    assert published.filter(usage="exam").count() == 48

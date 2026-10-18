@@ -3,8 +3,8 @@
   "open": true,
   "title": {"fr": "Électronique", "en": "Electronics"},
   "description": {
-    "fr": "Du courant continu au filtrage et à la résonance : comprendre, calculer et monter ses circuits.",
-    "en": "From direct current to filters and resonance: understand, calculate and build your circuits."
+    "fr": "Du courant continu aux amplificateurs, oscillateurs et alimentations : comprendre, calculer et monter ses circuits.",
+    "en": "From direct current to amplifiers, oscillators and power supplies: understand, calculate and build your circuits."
   },
   "parties": [
     {
@@ -184,6 +184,109 @@
             {"order": 5, "file": "05-accord", "kind": "content", "title": {"fr": "S'accorder sur une station", "en": "Tuning in to a station"}},
             {"order": 6, "file": "06-oscillateurs", "kind": "content", "title": {"fr": "Vers les oscillateurs", "en": "Towards oscillators"}},
             {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : trouver la résonance", "en": "Mini-project: find the resonance"}}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "p3",
+      "order": 3,
+      "title": {"fr": "Amplification, oscillateurs et alimentations", "en": "Amplifiers, oscillators and power supplies"},
+      "description": {
+        "fr": "À suivre après les Parties 1 et 2 : le transistor, la résonance et la mesure à l'oscilloscope y sont supposés acquis.",
+        "en": "Best taken after Parts 1 and 2: transistors, resonance and oscilloscope measurements are assumed known."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p3/m8",
+          "title": {"fr": "Les amplificateurs à transistor", "en": "Transistor amplifiers"},
+          "duration_hours": 10,
+          "competence": {
+            "fr": "Polariser un transistor de façon stable, calculer le gain d'un émetteur commun, d'un émetteur suiveur et d'un montage à AOP, et le mesurer.",
+            "en": "Bias a transistor in a stable way, calculate the gain of a common-emitter stage, an emitter follower and an op-amp circuit, and measure it."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, examen de la partie, puis mini-projet d'amplificateur en atelier.",
+            "en": "Module quiz, part exam, then an amplifier mini-project in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-role-gain", "kind": "content", "title": {"fr": "Le rôle de l'amplificateur et le gain", "en": "What an amplifier does, and gain"}},
+            {"order": 2, "file": "02-polarisation", "kind": "content", "title": {"fr": "Une polarisation stable", "en": "Stable biasing"}},
+            {"order": 3, "file": "03-emetteur-commun", "kind": "content", "title": {"fr": "Le gain de l'émetteur commun", "en": "The gain of the common-emitter stage"}},
+            {"order": 4, "file": "04-emetteur-suiveur", "kind": "content", "title": {"fr": "L'émetteur suiveur", "en": "The emitter follower"}},
+            {"order": 5, "file": "05-analyse", "kind": "content", "title": {"fr": "Analyser un amplificateur", "en": "Analysing an amplifier"}},
+            {"order": 6, "file": "06-jfet", "kind": "content", "title": {"fr": "Le JFET amplificateur", "en": "The JFET as an amplifier"}},
+            {"order": 7, "file": "07-aop", "kind": "content", "title": {"fr": "L'amplificateur opérationnel", "en": "The operational amplifier"}},
+            {"order": 8, "file": "08-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : un amplificateur à émetteur commun", "en": "Mini-project: a common-emitter amplifier"}}
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p3/m9",
+          "title": {"fr": "Les oscillateurs", "en": "Oscillators"},
+          "duration_hours": 8,
+          "competence": {
+            "fr": "Expliquer les conditions d'oscillation, calculer la fréquence d'un oscillateur Colpitts, Hartley, Armstrong ou à pont de Wien, et dépanner un oscillateur.",
+            "en": "Explain the conditions for oscillation, calculate the frequency of a Colpitts, Hartley, Armstrong or Wien-bridge oscillator, and troubleshoot an oscillator."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, examen de la partie, puis mini-projet d'oscillateur en atelier.",
+            "en": "Module quiz, part exam, then an oscillator mini-project in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-retroaction", "kind": "content", "title": {"fr": "Rétroaction et conditions d'oscillation", "en": "Feedback and the conditions for oscillation"}},
+            {"order": 2, "file": "02-colpitts", "kind": "content", "title": {"fr": "L'oscillateur Colpitts", "en": "The Colpitts oscillator"}},
+            {"order": 3, "file": "03-hartley", "kind": "content", "title": {"fr": "L'oscillateur Hartley", "en": "The Hartley oscillator"}},
+            {"order": 4, "file": "04-armstrong", "kind": "content", "title": {"fr": "L'oscillateur Armstrong", "en": "The Armstrong oscillator"}},
+            {"order": 5, "file": "05-quartz-rc", "kind": "content", "title": {"fr": "Quartz et oscillateur RC", "en": "Crystals and RC oscillators"}},
+            {"order": 6, "file": "06-conception", "kind": "content", "title": {"fr": "Concevoir et dépanner un oscillateur", "en": "Designing and troubleshooting an oscillator"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : un oscillateur à pont de Wien", "en": "Mini-project: a Wien-bridge oscillator"}}
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p3/m10",
+          "title": {"fr": "Le transformateur", "en": "The transformer"},
+          "duration_hours": 6,
+          "competence": {
+            "fr": "Calculer les tensions, les courants, la puissance et l'impédance ramenée d'un transformateur, et le mesurer sans travailler côté secteur.",
+            "en": "Calculate the voltages, currents, power and reflected impedance of a transformer, and measure it without working on the mains side."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, examen de la partie, puis mini-projet de mesure en atelier.",
+            "en": "Module quiz, part exam, then a measurement mini-project in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-principe", "kind": "content", "title": {"fr": "Principe et rapport de transformation", "en": "How it works, and the turns ratio"}},
+            {"order": 2, "file": "02-tensions-courants", "kind": "content", "title": {"fr": "Tensions et courants", "en": "Voltages and currents"}},
+            {"order": 3, "file": "03-puissance", "kind": "content", "title": {"fr": "Puissance et rendement", "en": "Power and efficiency"}},
+            {"order": 4, "file": "04-adaptation", "kind": "content", "title": {"fr": "L'adaptation d'impédance", "en": "Impedance matching"}},
+            {"order": 5, "file": "05-communication", "kind": "content", "title": {"fr": "Les transformateurs en communication", "en": "Transformers in communication circuits"}},
+            {"order": 6, "file": "06-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : mesurer un transformateur", "en": "Mini-project: measure a transformer"}}
+          ]
+        },
+        {
+          "order": 4,
+          "dir": "p3/m11",
+          "title": {"fr": "Les alimentations", "en": "Power supplies"},
+          "duration_hours": 8,
+          "competence": {
+            "fr": "Dimensionner une alimentation continue : redresseur, condensateur de lissage, régulation par Zener ou par régulateur intégré, et vérifier l'ondulation.",
+            "en": "Size a DC power supply: rectifier, smoothing capacitor, Zener or integrated regulation, and check the ripple."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, examen de la partie, puis montage d'une alimentation 5 V en atelier.",
+            "en": "Module quiz, part exam, then building a 5 V supply in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-redressement", "kind": "content", "title": {"fr": "Rappel : le redressement", "en": "Refresher: rectification"}},
+            {"order": 2, "file": "02-pont", "kind": "content", "title": {"fr": "Le pont de diodes et les valeurs crête", "en": "The diode bridge and peak values"}},
+            {"order": 3, "file": "03-lissage", "kind": "content", "title": {"fr": "Le lissage par condensateur", "en": "Smoothing with a capacitor"}},
+            {"order": 4, "file": "04-ondulation", "kind": "content", "title": {"fr": "L'ondulation résiduelle", "en": "Residual ripple"}},
+            {"order": 5, "file": "05-zener", "kind": "content", "title": {"fr": "Rappel : la régulation par Zener", "en": "Refresher: Zener regulation"}},
+            {"order": 6, "file": "06-regulateur", "kind": "content", "title": {"fr": "Le régulateur intégré 78xx", "en": "The 78xx integrated regulator"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : une alimentation 5 V", "en": "Mini-project: a 5 V supply"}}
           ]
         }
       ]

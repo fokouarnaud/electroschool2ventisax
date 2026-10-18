@@ -2,7 +2,7 @@
 
 Usage : python tools/schemas.py
 Écrit les schémas des sections dans static/content/electro/m<N>/ et ceux des questions sur schéma dans
-content/electro/p<P>/m<N>/schemas/ (p1 pour les modules 1 à 4, p2 pour les modules 5 à 7). Les zones des questions sur schéma sont affichées pour questions.json.
+content/electro/p<P>/m<N>/schemas/ (p1 pour les modules 1 à 4, p2 pour 5 à 7, p3 pour 8 à 11). Les zones des questions sur schéma sont affichées pour questions.json.
 Tous les dessins sont originaux ; aucun n'est repris du livre de référence.
 """
 import math
@@ -1402,6 +1402,788 @@ def m7_amortie():
     return d
 
 
+# --- Partie 3 : symboles et outils de tracé ---------------------------------------------------------------------------
+
+EN.update({
+    # Module 8
+    "ve = 50 mV crête": "vin = 50 mV peak", "vs = 2 V crête": "vout = 2 V peak", "alimentation": "power supply",
+    "Av = vs / ve = 40": "Av = vout / vin = 40", "ve presque plat à cette échelle": "vin almost flat at this scale",
+    "VB ≈ 2,1 V": "VB ≈ 2.1 V", "RB seule": "RB only", "pont + RE": "divider + RE", "saturation": "saturation",
+    "ve (mV)": "vin (mV)", "vs (V)": "vout (V)", "vs en opposition de phase : Av ≈ −39": "vout in antiphase: Av ≈ −39",
+    "base : ve": "base: vin", "émetteur : vs, 0,7 V plus bas": "emitter: vout, 0.7 V lower",
+    "Q (5,1 V ; 1,4 mA)": "Q (5.1 V; 1.4 mA)", "écrêtage : blocage": "clipping: cut-off", "écrêtage : saturation": "clipping: saturation",
+    "point de repos": "quiescent point", "IDSS = 8 mA": "IDSS = 8 mA", "Q (−1,5 V ; 3,1 mA)": "Q (−1.5 V; 3.1 mA)",
+    "Av = −Rf / Rin = −4,7": "Av = −Rf / Rin = −4.7", "Av = 1 + Rf / Rin = 5,7": "Av = 1 + Rf / Rin = 5.7",
+    # Module 9
+    "gain A": "gain A", "réseau de rétroaction B": "feedback network B", "sortie": "output", "A × B ≥ 1": "A × B ≥ 1",
+    "démarrage : A × B > 1": "start-up: A × B > 1", "régime établi : A × B = 1": "steady state: A × B = 1",
+    "f = 1 / (2π × √(L × Céq))": "f = 1 / (2π × √(L × Ceq))", "Céq = C1 × C2 / (C1 + C2)": "Ceq = C1 × C2 / (C1 + C2)",
+    "Céq = 5 nF": "Ceq = 5 nF", "Céq": "Ceq", "f = 1 / (2π × √((L1 + L2) × C))": "f = 1 / (2π × √((L1 + L2) × C))",
+    "2,2 nF : 339 kHz": "2.2 nF: 339 kHz", "bobine de réaction": "feedback winding", "circuit accordé": "tuned circuit",
+    "points du même côté : en phase": "dots on the same side: in phase", "points opposés : en opposition": "opposite dots: antiphase",
+    "quartz 32,768 kHz": "32.768 kHz crystal", "Q ≈ 50 000": "Q ≈ 50,000", "circuit LC : Q ≈ 50": "LC circuit: Q ≈ 50",
+    "pont de Wien": "Wien bridge", "f = 1 / (2π × R × C) ≈ 1 kHz": "f = 1 / (2π × R × C) ≈ 1 kHz",
+    "1. Choisir la fréquence f": "1. Choose the frequency f", "2. Choisir L, calculer C": "2. Choose L, calculate C",
+    "3. Vérifier A × B ≥ 1 et la phase": "3. Check A × B ≥ 1 and the phase", "4. Mesurer f et ajuster": "4. Measure f and adjust",
+    "Base de temps : 0,25 ms/div": "Timebase: 0.25 ms/div", "T = 4 div × 0,25 ms = 1 ms": "T = 4 div × 0.25 ms = 1 ms",
+    "f = 1 / T = 1 kHz": "f = 1 / T = 1 kHz",
+    # Module 10
+    "primaire Np": "primary Np", "secondaire Ns": "secondary Ns", "noyau feuilleté": "laminated core", "flux": "flux",
+    "primaire": "primary", "secondaire": "secondary", "Us / Up = Ns / Np": "Us / Up = Ns / Np",
+    "R charge": "R load", "Ns < Np : abaisseur": "Ns < Np: step-down", "Ns > Np : élévateur": "Ns > Np: step-up",
+    "Pp = 14 W": "Pp = 14 W", "Ps = 12 W": "Ps = 12 W", "pertes fer et cuivre : 2 W": "iron and copper losses: 2 W",
+    "η = 12 / 14 ≈ 86 %": "η = 12 / 14 ≈ 86 %", "transformateur": "transformer",
+    "Primaire : 230 V ~ 50 Hz": "Primary: 230 V ~ 50 Hz", "Secondaire : 12 V ~ 1 A": "Secondary: 12 V ~ 1 A",
+    "Puissance : 12 VA": "Rating: 12 VA", "amplificateur": "amplifier", "haut-parleur 8 Ω": "8 Ω loudspeaker",
+    "Zp = 800 Ω": "Zp = 800 Ω", "vu du primaire": "seen from the primary", "Zp = 8 × 10² = 800 Ω": "Zp = 8 × 10² = 800 Ω",
+    "transformateur FI accordé : 455 kHz": "tuned IF transformer: 455 kHz", "isolement galvanique": "galvanic isolation",
+    "aucune liaison électrique": "no electrical connection", "masse du montage": "circuit ground",
+    # Module 11
+    "redresseur": "rectifier", "filtre": "filter", "régulateur": "regulator", "charge": "load",
+    "12 V eff": "12 V rms", "entrée : 17 V crête": "input: 17 V peak", "sortie : 16,3 V crête": "output: 16.3 V peak",
+    "pont de diodes": "diode bridge", "sortie : 15,6 V crête, 100 Hz": "output: 15.6 V peak, 100 Hz",
+    "redressé seul": "rectified only", "lissé": "smoothed", "ΔU ≈ 2,3 V": "ΔU ≈ 2.3 V",
+    "C = 1 000 µF : ΔU ≈ 5 V": "C = 1,000 µF: ΔU ≈ 5 V", "C = 4 700 µF : ΔU ≈ 1,1 V": "C = 4,700 µF: ΔU ≈ 1.1 V",
+    "charge du condensateur": "capacitor charging", "décharge dans la charge": "discharge into the load",
+    "Us = 9,1 V": "Us = 9.1 V", "seuil : Ue ≈ 13,1 V": "threshold: Ue ≈ 13.1 V", "Ue (V)": "Ue (V)", "Us (V)": "Us (V)",
+    "pont": "bridge",
+})
+
+
+def wave(d, x0, y0, w, amp, periods, color=ACCENT, phase_deg=0.0, steps=120, rectify=None):
+    """Petite sinusoïde dessinée en pixels ; rectify = "half" ou "full" pour un signal redressé."""
+    pts = []
+    for k in range(steps + 1):
+        v = math.sin(2 * math.pi * periods * k / steps + math.radians(phase_deg))
+        if rectify == "half":
+            v = max(v, 0)
+        elif rectify == "full":
+            v = abs(v)
+        pts.append((x0 + w * k / steps, y0 - amp * v))
+    d.wire(*pts, color=color, width=2)
+
+
+def block(d, x, y, w, h, label, size=12):
+    d.add(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" rx="8" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(x + w / 2, y + h / 2 + 4, label, size=size, weight="600")
+
+
+def amp_block(d, cx, cy, label="A", size=44):
+    """Amplificateur vu comme un bloc triangulaire ; renvoie l'entrée et la sortie."""
+    half = size / 2
+    d.add(f'<polygon points="{fmt(cx - half)},{fmt(cy - half)} {fmt(cx - half)},{fmt(cy + half)} {fmt(cx + half)},{fmt(cy)}" '
+          f'fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+    if label:
+        d.text(cx - half / 3, cy + 5, label, weight="700", color=ACCENT)
+    return (cx - half, cy), (cx + half, cy)
+
+
+def opamp(d, cx, cy, flip=False):
+    """AOP (triangle) ; renvoie l'entrée −, l'entrée + et la sortie. flip : entrée + en haut."""
+    d.add(f'<polygon points="{fmt(cx - 35)},{fmt(cy - 38)} {fmt(cx - 35)},{fmt(cy + 38)} {fmt(cx + 35)},{fmt(cy)}" '
+          f'fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+    top, bottom = (cx - 55, cy - 17), (cx - 55, cy + 17)
+    d.wire(top, (cx - 35, top[1])); d.wire(bottom, (cx - 35, bottom[1])); d.wire((cx + 35, cy), (cx + 55, cy))
+    minus, plus = (bottom, top) if flip else (top, bottom)
+    d.add(f'<text x="{fmt(cx - 27)}" y="{fmt(minus[1] + 5)}" font-size="16" font-weight="700" fill="{INK}">−</text>')
+    d.add(f'<text x="{fmt(cx - 28)}" y="{fmt(plus[1] + 5)}" font-size="16" font-weight="700" fill="{INK}">+</text>')
+    return minus, plus, (cx + 55, cy)
+
+
+def transformer(d, cx, top, n_p=1, n_s=1, dots=None, core=True):
+    """Transformateur vertical : enroulements de n segments (4 spires dessinées chacun) ; renvoie p1, p2, s1, s2."""
+    xp, xs = cx - 20, cx + 20
+    p_bottom, s_bottom = top + 40 * n_p, top + 40 * n_s
+    for k in range(n_p):
+        d.inductor((xp, top + 40 * k), (xp, top + 40 * (k + 1)))
+    for k in range(n_s):
+        d.inductor((xs, top + 40 * (k + 1)), (xs, top + 40 * k))
+    if core:
+        bottom = max(p_bottom, s_bottom)
+        d.wire((cx - 4, top - 4), (cx - 4, bottom + 4)); d.wire((cx + 4, top - 4), (cx + 4, bottom + 4))
+    if dots:
+        d.add(f'<circle cx="{fmt(xp - 12)}" cy="{fmt(top + 6)}" r="3.5" fill="{ACCENT}"/>')
+        sy = top + 6 if dots == "same" else s_bottom - 6
+        d.add(f'<circle cx="{fmt(xs + 12)}" cy="{fmt(sy)}" r="3.5" fill="{ACCENT}"/>')
+    return (xp, top), (xp, p_bottom), (xs, top), (xs, s_bottom)
+
+
+def crystal(d, a, b, label=None, value=None, side=1):
+    body = ('<line x1="0" y1="0" x2="8" y2="0"/><line x1="8" y1="-13" x2="8" y2="13"/>'
+            '<rect x="13" y="-10" width="14" height="20" fill="#fcfefe"/><line x1="32" y1="-13" x2="32" y2="13"/><line x1="32" y1="0" x2="40" y2="0"/>')
+    mid = d._two(a, b, body, 40)
+    d._label(mid, a, b, label, value, side)
+    return mid
+
+
+def bridge(d, cx, cy, r):
+    """Pont de diodes en losange : alternatif en haut et en bas, + à droite, − à gauche ; renvoie haut, droite, bas, gauche."""
+    t, rt, bt, lt = (cx, cy - r), (cx + r, cy), (cx, cy + r), (cx - r, cy)
+    d.diode(t, rt); d.diode(bt, rt); d.diode(lt, t); d.diode(lt, bt)
+    for p in (t, rt, bt, lt):
+        d.dot(p)
+    return t, rt, bt, lt
+
+
+def regulator(d, cx, cy, label="7805"):
+    """Régulateur intégré à trois broches ; renvoie entrée, sortie, masse."""
+    d.add(f'<rect x="{fmt(cx - 38)}" y="{fmt(cy - 24)}" width="76" height="48" rx="4" fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+    d.text(cx, cy + 4, label, weight="700")
+    d.text(cx - 34, cy - 10, "IN", size=9, color=SOFT, anchor="start"); d.text(cx + 34, cy - 10, "OUT", size=9, color=SOFT, anchor="end")
+    d.text(cx, cy + 20, "GND", size=9, color=SOFT)
+    return (cx - 38, cy), (cx + 38, cy), (cx, cy + 24)
+
+
+def speaker(d, x, y):
+    """Haut-parleur, bornes à gauche (x, y − 10) et (x, y + 10)."""
+    d.add(f'<rect x="{fmt(x)}" y="{fmt(y - 12)}" width="14" height="24" fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<polygon points="{fmt(x + 14)},{fmt(y - 12)} {fmt(x + 34)},{fmt(y - 28)} {fmt(x + 34)},{fmt(y + 28)} {fmt(x + 14)},{fmt(y + 12)}" '
+          f'fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+    return (x, y - 6), (x, y + 6)
+
+
+def terminal(d, p, label=None, anchor="start"):
+    d.add(f'<circle cx="{fmt(p[0])}" cy="{fmt(p[1])}" r="4" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    if label:
+        d.text(p[0] + (10 if anchor == "start" else -10), p[1] + 5, label, anchor=anchor, weight="600", color=ACCENT)
+
+
+def rail(d, x1, x2, y, label):
+    d.wire((x1, y), (x2, y))
+    d.text(x1 - 8, y + 5, label, anchor="end", weight="600")
+
+
+def smoothed(t_ms, umax, i, c, f_ripple=100):
+    """Tension lissée (double alternance par défaut) : décharge linéaire I / C entre deux crêtes."""
+    period = 1000 / f_ripple
+    v, out, prev_t = umax, [], 0.0
+    for k in range(len(t_ms)):
+        t = t_ms[k]
+        rect = umax * abs(math.sin(math.pi * t / period))
+        v = max(rect, v - i / c * (t - prev_t) / 1000)
+        prev_t = t
+        out.append((t, v))
+    return out
+
+
+# --- Module 8 : les amplificateurs à transistor -----------------------------------------------------------------------
+
+def m8_bloc():
+    d = Drawing(520, 210, "Un amplificateur reçoit un petit signal et fournit un signal plus grand, grâce à l'énergie de son alimentation")
+    wave(d, 30, 120, 110, 6, 2)
+    d.arrow((150, 120), (200, 120), color=INK)
+    i, o = amp_block(d, 250, 120, "A", size=80)
+    d.arrow((290, 120), (350, 120), color=INK)
+    wave(d, 370, 120, 120, 45, 2)
+    d.arrow((250, 30), (250, 78), "alimentation", offset=(48, -12))
+    d.text(85, 160, "ve = 50 mV crête", size=12, color=SOFT, weight="600")
+    d.text(430, 190, "vs = 2 V crête", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m8_signaux():
+    d = Drawing(480, 260, "Signaux d'entrée et de sortie : 50 mV crête à l'entrée, 2 V crête à la sortie, soit Av = 40")
+    d.graph(60, 30, 360, 180, (0, 2.2), (-2.5, 2.5),
+            [(sine(2, 2.2, 1), ACCENT, "vs", (0.27, 2.15)), (sine(0.05, 2.2, 1), SOFT, "ve", (1.62, 0.3))],
+            "t (ms)", "u (V)", xticks=[(1, "1"), (2, "2")], yticks=[(2, "2"), (-2, "−2")])
+    d.text(240, 248, "Av = vs / ve = 40", color=ACCENT, weight="600")
+    return d
+
+
+def m8_pont():
+    d = Drawing(480, 280, "Polarisation par pont de base et résistance d'émetteur : R1 = 47 kΩ, R2 = 10 kΩ, RC = 3,9 kΩ, RE = 1 kΩ")
+    b, c, e = d.bjt(270, 130)
+    rail(d, 150, 282, 30, "+12 V")
+    d.resistor((150, 30), (150, 130), "R1", "47 kΩ")
+    d.resistor((150, 130), (150, 250), "R2", "10 kΩ")
+    d.wire((150, 130), b); d.dot((150, 130))
+    d.resistor((282, 30), c, "RC", "3,9 kΩ")
+    d.resistor(e, (282, 250), "RE", "1 kΩ")
+    d.wire((150, 250), (282, 250)); d.ground((216, 250))
+    d.text(190, 122, "VB ≈ 2,1 V", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m8_beta():
+    d = Drawing(480, 260, "Courant de collecteur selon β : il varie avec RB seule, il reste presque constant avec le pont et RE")
+    rth, vth = 47e3 * 10e3 / 57e3, 12 * 10 / 57
+    stable = [(b, 1000 * (vth - 0.7) / (1000 + rth / (b + 1))) for b in range(100, 301, 10)]
+    simple = [(b, min(2.45, 0.013 * b)) for b in range(100, 301, 5)]
+    d.graph(60, 30, 360, 180, (80, 310), (0, 3),
+            [(simple, SOFT, "RB seule", (205, 2.65)), (stable, ACCENT, "pont + RE", (215, 1.0))],
+            "β", "IC (mA)", xticks=[(100, "100"), (200, "200"), (300, "300")], yticks=[(1.3, "1,3"), (2.45, "2,45")])
+    d.text(370, 50, "saturation", size=11, color=SOFT)
+    return d
+
+
+def m8_ec():
+    d = Drawing(500, 310, "Amplificateur à émetteur commun : C1 et C2 de liaison, RE1 non découplée, RE2 découplée par CE")
+    b, c, e = d.bjt(270, 120)
+    rail(d, 150, 282, 30, "+12 V")
+    d.resistor((150, 30), (150, 120), "R1", "47 kΩ")
+    d.resistor((150, 120), (150, 270), "R2", "10 kΩ")
+    d.capacitor((70, 120), (150, 120), "C1", "10 µF"); d.dot((150, 120)); d.wire((150, 120), b)
+    terminal(d, (70, 120), "ve", anchor="end")
+    d.resistor((282, 30), c, "RC", "3,9 kΩ")
+    d.dot(c); d.wire(c, (330, 78)); d.capacitor((330, 78), (400, 78), "C2", "10 µF"); terminal(d, (430, 78), "vs"); d.wire((400, 78), (430, 78))
+    d.resistor(e, (282, 206), "RE1", "100 Ω"); d.dot((282, 206))
+    d.resistor((282, 206), (282, 270), "RE2", "910 Ω", side=-1)
+    d.wire((282, 206), (360, 206)); d.capacitor((360, 206), (360, 270), "CE", "100 µF")
+    d.wire((150, 270), (360, 270)); d.ground((216, 270))
+    return d
+
+
+def m8_inversion():
+    d = Drawing(480, 340, "Entrée et sortie de l'émetteur commun : la sortie est 39 fois plus grande et en opposition de phase")
+    d.graph(60, 20, 360, 100, (0, 2.2), (-60, 60), [(sine(50, 2.2, 1), SOFT, "ve", (1.55, 52))], "t (ms)", "ve (mV)",
+            yticks=[(50, "50"), (-50, "−50")])
+    d.graph(60, 180, 360, 110, (0, 2.2), (-2.4, 2.4), [(sine(1.95, 2.2, 1, 180), ACCENT, "vs", (0.6, 2.1))], "t (ms)", "vs (V)",
+            yticks=[(1.95, "1,95"), (-1.95, "−1,95")], xticks=[(1, "1"), (2, "2")])
+    x = 60 + 0.25 / 2.2 * 360
+    d.add(f'<line x1="{fmt(x)}" y1="30" x2="{fmt(x)}" y2="290" stroke="{SOFT}" stroke-dasharray="4 3"/>')
+    d.text(240, 330, "vs en opposition de phase : Av ≈ −39", color=ACCENT, weight="600")
+    return d
+
+
+def m8_suiveur():
+    d = Drawing(480, 280, "Émetteur suiveur : la sortie est prise sur l'émetteur, le collecteur va directement au +12 V")
+    b, c, e = d.bjt(270, 120)
+    rail(d, 150, 282, 30, "+12 V")
+    d.wire(c, (282, 30))
+    d.resistor((150, 30), (150, 120), "R1", "10 kΩ")
+    d.resistor((150, 120), (150, 250), "R2", "10 kΩ")
+    d.capacitor((70, 120), (150, 120), "C1", "10 µF"); d.dot((150, 120)); d.wire((150, 120), b)
+    terminal(d, (70, 120), "ve", anchor="end")
+    d.wire(e, (282, 175)); d.dot((282, 175))
+    d.resistor((282, 175), (282, 250), "RE", "1 kΩ", side=-1)
+    d.wire((282, 175), (330, 175)); d.capacitor((330, 175), (400, 175), "C2", "10 µF"); d.wire((400, 175), (430, 175)); terminal(d, (430, 175), "vs")
+    d.wire((150, 250), (282, 250)); d.ground((216, 250))
+    return d
+
+
+def m8_suiveur_signaux():
+    d = Drawing(480, 260, "Base et émetteur du suiveur : même forme, même amplitude, l'émetteur 0,7 V plus bas")
+    base = [(t, 6 + v) for t, v in sine(1, 2.2, 1)]
+    emit = [(t, 5.3 + v) for t, v in sine(0.98, 2.2, 1)]
+    d.graph(60, 30, 360, 180, (0, 2.2), (0, 8), [(base, SOFT, "base : ve", (1.3, 7.4)), (emit, ACCENT, "émetteur : vs, 0,7 V plus bas", (0.55, 3.6))],
+            "t (ms)", "u (V)", xticks=[(1, "1"), (2, "2")], yticks=[(6, "6"), (5.3, "5,3")])
+    return d
+
+
+def m8_droite():
+    d = Drawing(480, 270, "Droite de charge : IC sat = 12 V / 4,9 kΩ ≈ 2,45 mA, VCE max = 12 V ; point de repos au milieu")
+    d.graph(70, 30, 340, 190, (0, 13), (0, 2.8), [([(0, 2.449), (12, 0)], ACCENT, "droite de charge", (8.6, 1.05))],
+            "VCE (V)", "IC (mA)", marks=[((5.12, 1.405), "Q (5,1 V ; 1,4 mA)")],
+            xticks=[(5.12, "5,1"), (12, "12")], yticks=[(1.405, "1,4"), (2.449, "2,45")])
+    return d
+
+
+def m8_ecretage():
+    d = Drawing(480, 260, "Signal trop grand : la sortie est écrêtée en haut (blocage) et en bas (saturation)")
+    pts = [(t, min(12, max(0.2, 6 + 7.5 * v))) for t, v in sine(1, 2.2, 1, steps=240)]
+    d.graph(60, 30, 360, 180, (0, 2.2), (0, 13), [(pts, ACCENT, "")], "t (ms)", "VCE (V)", yticks=[(12, "12"), (6, "6")])
+    d.text(150, 40, "écrêtage : blocage", anchor="start", size=12, color=SOFT, weight="600")
+    d.text(260, 232, "écrêtage : saturation", anchor="start", size=12, color=SOFT, weight="600")
+    return d
+
+
+def m8_jfet_ampli():
+    d = Drawing(500, 290, "Amplificateur à JFET en source commune : polarisation automatique par RS")
+    g, dr, s = d.jfet(270, 120)
+    rail(d, 180, 284, 30, "+12 V")
+    d.resistor((284, 30), dr, "RD", "2,2 kΩ")
+    d.dot(dr); d.wire(dr, (330, 78)); d.capacitor((330, 78), (400, 78), "C2", "10 µF"); d.wire((400, 78), (430, 78)); terminal(d, (430, 78), "vs")
+    d.capacitor((80, 130), (180, 130), "C1", "100 nF"); d.dot((180, 130)); d.wire((180, 130), g)
+    terminal(d, (80, 130), "ve", anchor="end")
+    d.resistor((180, 130), (180, 250), "RG", "1 MΩ", side=-1)
+    d.dot((284, 180)); d.wire(s, (284, 180))
+    d.resistor((284, 180), (284, 250), "RS", "470 Ω", side=-1)
+    d.wire((284, 180), (360, 180)); d.capacitor((360, 180), (360, 250), "CS", "100 µF")
+    d.wire((180, 250), (360, 250)); d.ground((270, 250))
+    return d
+
+
+def m8_jfet_courbe():
+    d = Drawing(480, 260, "Courbe de transfert du JFET : ID = 8 mA à VGS = 0, blocage à −4 V ; point de repos vers −1,5 V")
+    pts = [(-4 + k * 0.05, 8 * (1 + (-4 + k * 0.05) / 4) ** 2) for k in range(81)]
+    d.graph(60, 30, 340, 180, (-4.5, 0.5), (0, 9), [(pts, ACCENT, "")], "VGS (V)", "ID (mA)",
+            marks=[((-1.5, 3.125), "")], xticks=[(-4, "−4"), (-1.5, "−1,5")], yticks=[(8, "8"), (3.125, "3,1")])
+    d.text(198, 132, "Q (−1,5 V ; 3,1 mA)", anchor="end", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m8_aop_inverseur():
+    d = Drawing(480, 240, "AOP inverseur : Av = −Rf / Rin = −47 kΩ / 10 kΩ = −4,7")
+    minus, plus, out = opamp(d, 290, 140)
+    d.resistor((100, minus[1]), (200, minus[1]), "Rin", "10 kΩ"); d.dot((200, minus[1])); d.wire((200, minus[1]), minus)
+    terminal(d, (100, minus[1]), "ve", anchor="end")
+    d.wire((200, minus[1]), (200, 60)); d.resistor((200, 60), (370, 60), "Rf", "47 kΩ"); d.wire((370, 60), (370, 140))
+    d.dot((370, 140)); d.wire(out, (420, 140)); terminal(d, (420, 140), "vs")
+    d.wire(plus, (215, plus[1]), (215, 190)); d.ground((215, 190))
+    d.text(290, 230, "Av = −Rf / Rin = −4,7", color=ACCENT, weight="600")
+    return d
+
+
+def m8_aop_non_inverseur():
+    d = Drawing(480, 310, "AOP non inverseur : Av = 1 + Rf / Rin = 1 + 47 kΩ / 10 kΩ = 5,7")
+    minus, plus, out = opamp(d, 290, 130, flip=True)
+    d.wire((100, plus[1]), plus); terminal(d, (100, plus[1]), "ve", anchor="end")
+    d.wire(minus, (200, minus[1]), (200, 200)); d.dot((200, 200))
+    d.resistor((370, 200), (200, 200), "Rf", "47 kΩ", side=-1); d.wire(out, (420, 130)); d.dot((370, 130)); d.wire((370, 130), (370, 200))
+    terminal(d, (420, 130), "vs")
+    d.resistor((200, 200), (200, 270), "Rin", "10 kΩ", side=-1); d.ground((200, 270))
+    d.text(330, 300, "Av = 1 + Rf / Rin = 5,7", color=ACCENT, weight="600")
+    return d
+
+
+# --- Module 9 : les oscillateurs --------------------------------------------------------------------------------------
+
+def m9_boucle():
+    d = Drawing(500, 230, "Boucle d'un oscillateur : l'amplificateur de gain A et le réseau de rétroaction B ramènent la sortie à l'entrée")
+    i, o = amp_block(d, 250, 80, "A", size=70)
+    d.wire(o, (440, 80)); terminal(d, (440, 80), "sortie")
+    d.wire((380, 80), (380, 170), (310, 170)); d.dot((380, 80))
+    block(d, 190, 150, 120, 40, "B")
+    d.wire((190, 170), (120, 170), (120, 80)); d.arrow((120, 80), i, color=INK)
+    d.text(250, 135, "gain A", size=12, color=SOFT)
+    d.text(250, 212, "réseau de rétroaction B", size=12, color=SOFT)
+    d.text(60, 40, "A × B ≥ 1", anchor="start", color=ACCENT, weight="700")
+    return d
+
+
+def m9_demarrage():
+    d = Drawing(480, 260, "Démarrage d'un oscillateur : un bruit minuscule grandit tant que A × B > 1, puis l'amplitude se stabilise")
+    pts = []
+    for k in range(601):
+        t = 12 * k / 600
+        amp = 10 / (1 + 199 * math.exp(-t / 0.9))
+        pts.append((t, amp * math.sin(2 * math.pi * t * 1.5)))
+    d.graph(60, 30, 360, 180, (0, 12), (-11, 11), [(pts, ACCENT, "")], "t", "u")
+    d.text(110, 236, "démarrage : A × B > 1", anchor="start", size=12, color=SOFT, weight="600")
+    d.text(300, 236, "régime établi : A × B = 1", anchor="start", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def lc_tank(d, kind):
+    """Réseau LC d'un oscillateur sous un amplificateur : Colpitts (deux C) ou Hartley (deux L)."""
+    i, o = amp_block(d, 250, 70, "A", size=60)
+    d.wire(o, (370, 70), (370, 150)); d.dot((370, 150))
+    d.wire(i, (130, 70), (130, 150)); d.dot((130, 150))
+    if kind == "colpitts":
+        d.wire((130, 150), (205, 150)); d.inductor((205, 150), (295, 150), "L", "100 µH"); d.wire((295, 150), (370, 150))
+        d.capacitor((130, 150), (130, 240), "C1", "10 nF", side=-1); d.capacitor((370, 150), (370, 240), "C2", "10 nF")
+    else:
+        d.wire((130, 150), (234, 150)); d.capacitor((234, 150), (266, 150), "C", "2,2 nF"); d.wire((266, 150), (370, 150))
+        d.inductor((130, 150), (130, 240), "L1", "50 µH", side=-1); d.inductor((370, 150), (370, 240), "L2", "50 µH")
+    d.wire((130, 240), (370, 240)); d.ground((250, 240))
+
+
+def m9_colpitts():
+    d = Drawing(500, 300, "Oscillateur Colpitts : la bobine L et le diviseur capacitif C1, C2 fixent la fréquence")
+    lc_tank(d, "colpitts")
+    d.text(250, 292, "f = 1 / (2π × √(L × Céq))", color=ACCENT, weight="600")
+    return d
+
+
+def m9_ceq():
+    d = Drawing(480, 170, "Deux condensateurs de 10 nF en série équivalent à un seul de 5 nF")
+    d.wire((40, 70), (70, 70)); d.capacitor((70, 70), (130, 70), "C1", "10 nF"); d.wire((130, 70), (160, 70))
+    d.capacitor((160, 70), (220, 70), "C2", "10 nF"); d.wire((220, 70), (250, 70))
+    d.text(285, 76, "=", size=22, weight="700")
+    d.wire((320, 70), (350, 70)); d.capacitor((350, 70), (410, 70), "Céq", "5 nF"); d.wire((410, 70), (440, 70))
+    d.text(240, 140, "Céq = C1 × C2 / (C1 + C2)", color=ACCENT, weight="600")
+    return d
+
+
+def m9_hartley():
+    d = Drawing(500, 300, "Oscillateur Hartley : deux bobines L1, L2 et un condensateur C fixent la fréquence")
+    lc_tank(d, "hartley")
+    d.text(250, 292, "f = 1 / (2π × √((L1 + L2) × C))", color=ACCENT, weight="600")
+    return d
+
+
+def m9_hartley_courbe():
+    d = Drawing(480, 260, "Fréquence du Hartley (L1 + L2 = 100 µH) selon C : plus C est grand, plus f est basse")
+    pts = [(c / 10, 1 / (2 * math.pi * math.sqrt(100e-6 * c / 10 * 1e-9)) / 1000) for c in range(5, 51)]
+    d.graph(60, 30, 360, 180, (0, 5.5), (0, 800), [(pts, ACCENT, "")], "C (nF)", "f (kHz)",
+            marks=[((2.2, 339.3), "2,2 nF : 339 kHz")], xticks=[(1, "1"), (2.2, "2,2"), (5, "5")], yticks=[(339.3, "339"), (711.8, "712")])
+    return d
+
+
+def m9_armstrong():
+    d = Drawing(500, 300, "Oscillateur Armstrong : une bobine de réaction couplée au circuit accordé ramène le signal à l'entrée")
+    i, o = amp_block(d, 250, 70, "A", size=60)
+    p1, p2, s1, s2 = transformer(d, 250, 150, dots="same")
+    d.wire(i, (140, 70), (140, 150), p1)
+    d.wire(o, (380, 70), (380, 150)); d.dot((380, 150)); d.wire((380, 150), s1)
+    d.capacitor((380, 150), (380, 240), "C", "10 nF")
+    d.wire(p2, (230, 240)); d.wire(s2, (270, 240)); d.wire((230, 240), (380, 240)); d.ground((300, 240))
+    d.text(200, 285, "bobine de réaction", anchor="end", size=12, color=SOFT, weight="600")
+    d.text(330, 285, "circuit accordé", anchor="start", size=12, color=SOFT, weight="600")
+    return d
+
+
+def m9_points():
+    d = Drawing(520, 230, "Le sens des enroulements, repéré par des points, décide si la tension renvoyée est en phase ou inversée")
+    for dx, dots, phase, legend in ((0, "same", 0, "points du même côté : en phase"), (260, "opposite", 180, "points opposés : en opposition")):
+        transformer(d, 130 + dx, 60, dots=dots)
+        wave(d, 20 + dx, 80, 60, 18, 1)
+        wave(d, 180 + dx, 80, 60, 18, 1, phase_deg=phase)
+        d.text(130 + dx, 200, legend, size=11, color=ACCENT, weight="600")
+    return d
+
+
+def m9_quartz():
+    d = Drawing(480, 220, "Le quartz : un résonateur au facteur Q bien plus élevé qu'un circuit LC, donc une fréquence très stable")
+    crystal(d, (60, 90), (200, 90), "X", "quartz 32,768 kHz")
+    d.text(130, 160, "Q ≈ 50 000", size=16, color=ACCENT, weight="700")
+    d.inductor((290, 90), (360, 90), "L"); d.capacitor((360, 90), (420, 90), "C")
+    d.text(355, 160, "circuit LC : Q ≈ 50", size=14, color=SOFT, weight="600")
+    return d
+
+
+def m9_wien():
+    d = Drawing(500, 320, "Oscillateur à pont de Wien : R = 10 kΩ, C = 16 nF, gain de 3 réglé par Rf = 20 kΩ et Rin = 10 kΩ")
+    minus, plus, out = opamp(d, 300, 140, flip=True)
+    d.wire(out, (440, 140)); d.dot((400, 140)); terminal(d, (440, 140), "vs")
+    d.wire((400, 140), (400, 50)); d.resistor((400, 50), (300, 50), "R", "10 kΩ"); d.capacitor((300, 50), (220, 50), "C", "16 nF")
+    d.wire((220, 50), (170, 50), (170, plus[1])); d.dot((170, plus[1])); d.wire((170, plus[1]), plus)
+    d.resistor((170, plus[1]), (170, 240), "R", "10 kΩ"); d.wire((170, plus[1]), (100, plus[1])); d.capacitor((100, plus[1]), (100, 240), "C", "16 nF", side=-1)
+    d.wire((100, 240), (170, 240)); d.ground((135, 240))
+    d.wire(minus, (230, minus[1]), (230, 210)); d.dot((230, 210))
+    d.wire((400, 140), (400, 210)); d.resistor((400, 210), (230, 210), "Rf", "20 kΩ", side=-1)
+    d.resistor((230, 210), (230, 280), "Rin", "10 kΩ"); d.ground((230, 280))
+    d.text(360, 300, "pont de Wien", size=12, color=SOFT, weight="600")
+    return d
+
+
+def m9_procedure():
+    d = Drawing(460, 280, "Concevoir un oscillateur LC en quatre étapes")
+    steps = ("1. Choisir la fréquence f", "2. Choisir L, calculer C", "3. Vérifier A × B ≥ 1 et la phase", "4. Mesurer f et ajuster")
+    for k, label in enumerate(steps):
+        block(d, 80, 20 + 65 * k, 300, 42, label, size=13)
+        if k < 3:
+            d.arrow((230, 62 + 65 * k), (230, 84 + 65 * k), color=ACCENT)
+    return d
+
+
+def m9_ecran():
+    d = Drawing(540, 300, "Mesurer la fréquence à l'oscilloscope : une période occupe 4 divisions à 0,25 ms/div, soit 1 kHz")
+    x0, y0, div = 40, 30, 30
+    d.add(f'<rect x="{x0}" y="{y0}" width="{10 * div}" height="{8 * div}" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    for i in range(1, 10):
+        d.add(f'<line x1="{x0 + i * div}" y1="{y0}" x2="{x0 + i * div}" y2="{y0 + 8 * div}" stroke="{SOFT}" stroke-width="0.6" stroke-dasharray="2 3"/>')
+    for j in range(1, 8):
+        d.add(f'<line x1="{x0}" y1="{y0 + j * div}" x2="{x0 + 10 * div}" y2="{y0 + j * div}" stroke="{SOFT}" stroke-width="0.6" stroke-dasharray="2 3"/>')
+    pts = [(x0 + 10 * div * k / 200, y0 + 4 * div - 2.5 * div * math.sin(2 * math.pi * (10 * k / 200) / 4)) for k in range(201)]
+    d.wire(*pts, color=ACCENT, width=2.5)
+    d.text(355, 80, "Base de temps : 0,25 ms/div", anchor="start", size=12)
+    d.text(355, 140, "T = 4 div × 0,25 ms = 1 ms", anchor="start", size=12, color=ACCENT, weight="600")
+    d.text(355, 165, "f = 1 / T = 1 kHz", anchor="start", size=12, color=ACCENT, weight="600")
+    return d
+
+
+# --- Module 10 : le transformateur ------------------------------------------------------------------------------------
+
+def m10_principe():
+    d = Drawing(500, 260, "Principe du transformateur : deux enroulements sur un même noyau ; le flux variable du primaire induit une tension au secondaire")
+    d.add(f'<path d="M150 40 H350 V220 H150 Z M190 80 V180 H310 V80 Z" fill="#dfe8ea" fill-rule="evenodd" stroke="{INK}" stroke-width="2"/>')
+    for k in range(6):
+        y = 92 + 15 * k
+        d.add(f'<ellipse cx="170" cy="{y}" rx="30" ry="6" fill="none" stroke="{ACCENT}" stroke-width="2.5"/>')
+    for k in range(3):
+        y = 115 + 15 * k
+        d.add(f'<ellipse cx="330" cy="{y}" rx="30" ry="6" fill="none" stroke="{ACCENT}" stroke-width="2.5"/>')
+    d.ac_source((60, 170), (60, 90), "~")
+    d.wire((60, 90), (60, 70), (140, 70), (140, 92)); d.wire((60, 170), (60, 190), (140, 190), (140, 167))
+    d.wire((360, 115), (380, 115), (380, 100), (430, 100), (430, 110)); d.lamp((430, 110), (430, 160)); d.wire((430, 160), (430, 175), (380, 175), (380, 145), (360, 145))
+    d.arrow((230, 60), (290, 60), "flux", offset=(0, -6))
+    d.text(170, 245, "primaire Np", weight="600"); d.text(330, 245, "secondaire Ns", weight="600")
+    d.text(250, 135, "noyau feuilleté", size=11, color=SOFT)
+    return d
+
+
+def m10_symbole():
+    d = Drawing(440, 210, "Symbole du transformateur : primaire à gauche, secondaire à droite, deux traits pour le noyau")
+    p1, p2, s1, s2 = transformer(d, 220, 60, n_p=2, n_s=1)
+    d.wire(p1, (120, 60)); d.wire(p2, (120, 140)); terminal(d, (120, 60)); terminal(d, (120, 140))
+    d.wire(s1, (320, 60)); d.wire(s2, (320, 100)); terminal(d, (320, 60)); terminal(d, (320, 100))
+    d.arrow((100, 135), (100, 65), "Up", offset=(-18, 0)); d.arrow((345, 95), (345, 65), "Us", offset=(18, 0))
+    d.text(160, 175, "primaire", size=12, color=SOFT, weight="600"); d.text(280, 175, "secondaire", size=12, color=SOFT, weight="600")
+    d.text(220, 200, "Us / Up = Ns / Np", color=ACCENT, weight="600")
+    return d
+
+
+def m10_abaisseur():
+    d = Drawing(500, 240, "Transformateur abaisseur 230 V vers 12 V chargé par une résistance : Ip est 19 fois plus petit que Is")
+    p1, p2, s1, s2 = transformer(d, 250, 60, n_p=2, n_s=1)
+    d.ac_source((80, 160), (80, 60), "Up", "230 V")
+    d.wire((80, 60), (80, 40), (230, 40), p1); d.wire((80, 160), (80, 200), (230, 200), p2)
+    d.wire(s1, (270, 40), (400, 40), (400, 60)); d.resistor((400, 60), (400, 120), "R charge", "12 Ω"); d.wire((400, 120), (400, 140), (270, 140), s2)
+    d.arrow((140, 40), (190, 40), "Ip", offset=(0, -8)); d.arrow((310, 40), (360, 40), "Is", offset=(0, -8))
+    return d
+
+
+def m10_types():
+    d = Drawing(500, 220, "Abaisseur ou élévateur : tout dépend du rapport entre le nombre de spires du secondaire et du primaire")
+    transformer(d, 130, 50, n_p=2, n_s=1)
+    transformer(d, 370, 50, n_p=1, n_s=2)
+    d.text(130, 175, "Ns < Np : abaisseur", color=ACCENT, weight="600")
+    d.text(370, 175, "Ns > Np : élévateur", color=ACCENT, weight="600")
+    return d
+
+
+def m10_bilan():
+    d = Drawing(500, 230, "Bilan de puissance : 14 W absorbés au primaire, 12 W fournis au secondaire, 2 W de pertes")
+    block(d, 190, 60, 120, 60, "transformateur")
+    d.arrow((50, 90), (188, 90), "Pp = 14 W", offset=(0, -10)); d.arrow((312, 90), (450, 90), "Ps = 12 W", offset=(0, -10))
+    d.arrow((250, 122), (250, 175), color=SOFT)
+    d.text(250, 195, "pertes fer et cuivre : 2 W", size=12, color=SOFT, weight="600")
+    d.text(250, 222, "η = 12 / 14 ≈ 86 %", color=ACCENT, weight="700")
+    return d
+
+
+def m10_plaque():
+    d = Drawing(420, 200, "Plaque signalétique d'un transformateur : tensions, courant du secondaire et puissance apparente")
+    d.add(f'<rect x="60" y="30" width="300" height="140" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(210, 70, "Primaire : 230 V ~ 50 Hz", weight="600"); d.text(210, 105, "Secondaire : 12 V ~ 1 A", weight="600")
+    d.text(210, 140, "Puissance : 12 VA", color=ACCENT, weight="700")
+    return d
+
+
+def m10_adaptation():
+    d = Drawing(520, 220, "Adapter un haut-parleur de 8 Ω à un amplificateur qui attend 800 Ω : transformateur de rapport 10 pour 1")
+    block(d, 30, 60, 120, 60, "amplificateur")
+    p1, p2, s1, s2 = transformer(d, 260, 50, n_p=2, n_s=1)
+    d.wire((150, 75), (200, 75), (200, 50), p1); d.wire((150, 105), (200, 105), (200, 130), p2)
+    a, b = speaker(d, 380, 70)
+    d.wire(s1, (330, 50), (330, a[1]), a); d.wire(s2, (330, 90), (330, b[1]), b)
+    d.text(230, 170, "Zp = 800 Ω", color=ACCENT, weight="600"); d.text(400, 130, "haut-parleur 8 Ω", size=12, color=SOFT, weight="600")
+    d.text(260, 205, "10 : 1", weight="700")
+    return d
+
+
+def m10_equivalent():
+    d = Drawing(460, 200, "Vu du primaire, le haut-parleur de 8 Ω se comporte comme une résistance de 800 Ω")
+    block(d, 30, 60, 120, 60, "amplificateur")
+    d.wire((150, 75), (300, 75), (300, 80)); d.resistor((300, 80), (300, 140), "Zp", "800 Ω"); d.wire((300, 140), (300, 145), (150, 145), (150, 105))
+    d.text(230, 50, "vu du primaire", size=12, color=SOFT, weight="600")
+    d.text(230, 185, "Zp = 8 × 10² = 800 Ω", color=ACCENT, weight="600")
+    return d
+
+
+def m10_fi():
+    d = Drawing(480, 230, "Transformateur accordé d'un récepteur : un condensateur sur chaque enroulement, accord sur 455 kHz")
+    p1, p2, s1, s2 = transformer(d, 240, 60, n_p=2, n_s=2, core=False)
+    d.wire(p1, (150, 60)); d.wire(p2, (150, 140)); d.capacitor((150, 60), (150, 140), "C", "", side=-1)
+    d.wire(s1, (330, 60)); d.wire(s2, (330, 140)); d.capacitor((330, 60), (330, 140), "C")
+    d.wire((150, 60), (90, 60)); d.wire((150, 140), (90, 140)); d.dot((150, 60)); d.dot((150, 140))
+    d.wire((330, 60), (400, 60)); d.wire((330, 140), (400, 140)); d.dot((330, 60)); d.dot((330, 140))
+    d.text(240, 200, "transformateur FI accordé : 455 kHz", color=ACCENT, weight="600")
+    return d
+
+
+def m10_isolement():
+    d = Drawing(480, 230, "Isolement galvanique : le secondaire n'a aucune liaison électrique avec le secteur")
+    p1, p2, s1, s2 = transformer(d, 240, 50, n_p=2, n_s=2)
+    d.wire(p1, (120, 50)); d.wire(p2, (120, 130)); terminal(d, (120, 50), "230 V", anchor="end"); terminal(d, (120, 130))
+    d.wire(s1, (360, 50)); d.wire(s2, (360, 130)); terminal(d, (360, 50)); terminal(d, (360, 130)); d.ground((360, 130))
+    d.add(f'<line x1="240" y1="20" x2="240" y2="165" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="5 4"/>')
+    d.text(240, 190, "isolement galvanique", color=ACCENT, weight="600")
+    d.text(240, 212, "aucune liaison électrique", size=12, color=SOFT)
+    d.text(380, 175, "masse du montage", anchor="start", size=11, color=SOFT)
+    d.w = 520
+    return d
+
+
+# --- Module 11 : les alimentations ------------------------------------------------------------------------------------
+
+def m11_chaine():
+    d = Drawing(640, 200, "Chaîne d'une alimentation : transformateur, redresseur, filtre, régulateur, puis la charge")
+    labels = ("transformateur", "redresseur", "filtre", "régulateur", "charge")
+    for k, label in enumerate(labels):
+        x = 20 + 125 * k
+        block(d, x, 40, 104, 44, label, size=12)
+        if k < 4:
+            d.arrow((x + 104, 62), (x + 125, 62), color=INK)
+    wave(d, 30, 140, 84, 22, 2)
+    wave(d, 155, 150, 84, 30, 2, rectify="full")
+    pts = [(280 + 84 * t / 20, 150 - 30 * v / 15.6) for t, v in smoothed([k * 0.1 for k in range(201)], 15.6, 0.5, 0.0022)]
+    d.wire(*pts, color=ACCENT, width=2)
+    d.wire((405, 125), (489, 125), color=ACCENT, width=2.5)
+    d.text(72, 185, "12 V eff", size=11, color=SOFT)
+    return d
+
+
+def m11_simple():
+    d = Drawing(480, 260, "Redressement simple alternance de 12 V efficaces : 17 V crête à l'entrée, 16,3 V crête après la diode")
+    t = [k * 0.2 for k in range(201)]
+    d.graph(60, 30, 360, 180, (0, 40), (-19, 19),
+            [([(x, 16.97 * math.sin(2 * math.pi * x / 20)) for x in t], SOFT, "entrée : 17 V crête", (22, -16)),
+             ([(x, max(0, 16.97 * math.sin(2 * math.pi * x / 20) - 0.7)) for x in t], ACCENT, "sortie : 16,3 V crête", (11, 17.2))],
+            "t (ms)", "u (V)", xticks=[(20, "20"), (40, "40")], yticks=[(16.27, "16,3")])
+    return d
+
+
+def m11_pont():
+    d = Drawing(480, 290, "Pont de quatre diodes : à chaque alternance, deux diodes conduisent et le courant traverse la charge dans le même sens")
+    t, rt, bt, lt = bridge(d, 240, 140, 62)
+    d.ac_source((80, 190), (80, 90), "~", "12 V eff")
+    d.wire((80, 90), (80, 40), (240, 40), t); d.wire((80, 190), (80, 230), (240, 230), bt)
+    d.wire(rt, (400, 140), (400, 160)); d.resistor((400, 160), (400, 250), "R", "")
+    d.wire(lt, (140, 140), (140, 260), (400, 260), (400, 250))
+    d.text(318, 130, "+", size=16, color=ACCENT, weight="700"); d.text(162, 130, "−", size=16, color=ACCENT, weight="700")
+    return d
+
+
+def m11_double():
+    d = Drawing(480, 260, "Redressement double alternance : 15,6 V crête après les deux diodes conductrices, ondulation à 100 Hz")
+    t = [k * 0.2 for k in range(201)]
+    d.graph(60, 30, 360, 180, (0, 40), (-19, 19),
+            [([(x, 16.97 * math.sin(2 * math.pi * x / 20)) for x in t], SOFT, ""),
+             ([(x, max(0, 16.97 * abs(math.sin(2 * math.pi * x / 20)) - 1.4)) for x in t], ACCENT, "sortie : 15,6 V crête, 100 Hz", (14, 18))],
+            "t (ms)", "u (V)", xticks=[(10, "10"), (20, "20"), (40, "40")], yticks=[(15.57, "15,6")])
+    return d
+
+
+def m11_lissage_circuit():
+    d = Drawing(500, 230, "Lissage : le condensateur réservoir C est placé en parallèle sur la charge, juste après le pont")
+    d.ac_source((60, 160), (60, 70), "~", "12 V eff")
+    d.wire((60, 70), (60, 50), (110, 50), (110, 75)); d.wire((60, 160), (60, 180), (110, 180), (110, 135))
+    block(d, 100, 75, 70, 60, "pont")
+    d.wire((170, 90), (230, 90), (230, 50), (420, 50)); d.wire((170, 120), (230, 120), (230, 190), (420, 190))
+    d.dot((300, 50)); d.dot((300, 190))
+    d.capacitor((300, 50), (300, 190), "C", "2 200 µF"); d.wire((420, 50), (420, 90)); d.resistor((420, 90), (420, 150), "R", "≈ 31 Ω"); d.wire((420, 150), (420, 190))
+    d.text(240, 45, "+", size=14, color=ACCENT, weight="700")
+    return d
+
+
+def m11_lissage_courbe():
+    d = Drawing(480, 260, "Tension lissée : le condensateur se charge aux crêtes et se décharge dans la charge entre deux crêtes")
+    t = [k * 0.1 for k in range(401)]
+    rect = [(x, 15.6 * abs(math.sin(math.pi * x / 10))) for x in t]
+    d.graph(60, 30, 360, 180, (0, 40), (0, 18), [(rect, SOFT, "redressé seul", (25.5, 17.4)), (smoothed(t, 15.6, 0.5, 0.0022), ACCENT, "lissé", (11, 17.4))],
+            "t (ms)", "u (V)", xticks=[(10, "10"), (20, "20"), (40, "40")], yticks=[(15.6, "15,6")])
+    return d
+
+
+def m11_ondulation():
+    d = Drawing(480, 260, "Ondulation résiduelle : ΔU ≈ I / (f × C) = 0,5 A / (100 Hz × 2 200 µF) ≈ 2,3 V")
+    t = [k * 0.05 for k in range(601)]
+    px, py = d.graph(60, 30, 360, 180, (0, 38), (11, 16.5), [(smoothed(t, 15.6, 0.5, 0.0022), ACCENT, "")], "t (ms)", "u (V)",
+                     xticks=[(10, "10"), (20, "20")], yticks=[(15.6, "15,6"), (13.3, "13,3")])
+    d.add(f'<line x1="{fmt(px(29.9))}" y1="{fmt(py(13.33))}" x2="{fmt(px(32))}" y2="{fmt(py(13.33))}" stroke="{SOFT}" stroke-dasharray="4 3"/>')
+    d.add(f'<line x1="{fmt(px(30))}" y1="{fmt(py(15.6))}" x2="{fmt(px(32))}" y2="{fmt(py(15.6))}" stroke="{SOFT}" stroke-dasharray="4 3"/>')
+    d.arrow((px(32), py(13.33)), (px(32), py(15.6)), color=ACCENT); d.arrow((px(32), py(15.6)), (px(32), py(13.33)), color=ACCENT)
+    d.text(px(32) + 8, py(14.3), "ΔU ≈ 2,3 V", anchor="start", color=ACCENT, weight="600")
+    d.w = 500
+    return d
+
+
+def m11_condensateurs():
+    d = Drawing(480, 260, "Effet de la capacité sous 0,5 A : 1 000 µF laisse 5 V d'ondulation, 4 700 µF environ 1,1 V")
+    t = [k * 0.1 for k in range(401)]
+    d.graph(60, 30, 360, 180, (0, 40), (8, 17),
+            [(smoothed(t, 15.6, 0.5, 0.001), SOFT, "C = 1 000 µF : ΔU ≈ 5 V", (12, 9)), (smoothed(t, 15.6, 0.5, 0.0047), ACCENT, "C = 4 700 µF : ΔU ≈ 1,1 V", (12, 16.4))],
+            "t (ms)", "u (V)", xticks=[(10, "10"), (20, "20"), (40, "40")], yticks=[(15.6, "15,6")])
+    return d
+
+
+def m11_zener():
+    d = Drawing(480, 240, "Régulation par diode Zener : Rs absorbe l'écart entre Ue = 15 V et Uz = 9,1 V")
+    d.battery((60, 170), (60, 70), "Ue", "15 V")
+    d.wire((60, 70), (60, 40), (110, 40)); d.resistor((110, 40), (230, 40), "Rs", "200 Ω")
+    d.wire((230, 40), (400, 40)); d.dot((290, 40))
+    d.wire((290, 40), (290, 80)); d.diode((290, 150), (290, 80), "Z", "9,1 V", side=-1, kind="zener"); d.wire((290, 150), (290, 200))
+    d.wire((400, 40), (400, 80)); d.resistor((400, 80), (400, 150), "R", "455 Ω"); d.wire((400, 150), (400, 200))
+    d.wire((400, 200), (60, 200), (60, 170)); d.dot((290, 200))
+    d.arrow((470, 190), (470, 50), "Us", offset=(18, 0))
+    d.w = 510
+    return d
+
+
+def m11_zener_courbe():
+    d = Drawing(480, 260, "Tension de sortie selon la tension d'entrée : au-delà d'environ 13,1 V, la Zener la maintient à 9,1 V")
+    pts = [(u / 10, min(9.1, u / 10 * 455 / 655)) for u in range(0, 201)]
+    d.graph(60, 30, 360, 180, (0, 20), (0, 11), [(pts, ACCENT, "")], "Ue (V)", "Us (V)",
+            marks=[((13.1, 9.1), "seuil : Ue ≈ 13,1 V")], xticks=[(13.1, "13,1"), (20, "20")], yticks=[(9.1, "9,1")])
+    return d
+
+
+def m11_regulateur():
+    d = Drawing(500, 220, "Régulateur 7805 : 5 V stables en sortie, avec un condensateur de 330 nF à l'entrée et de 100 nF à la sortie")
+    i, o, g = regulator(d, 250, 70)
+    d.wire((60, 70), i); terminal(d, (60, 70), "Ue", anchor="end"); d.dot((140, 70))
+    d.wire(o, (440, 70)); terminal(d, (440, 70), "5 V"); d.dot((360, 70))
+    d.capacitor((140, 70), (140, 170), "", "330 nF", side=-1); d.capacitor((360, 70), (360, 170), "", "100 nF")
+    d.wire(g, (250, 170)); d.wire((60, 170), (440, 170)); d.dot((250, 170)); d.ground((250, 170))
+    return d
+
+
+def m11_alim_complete():
+    d = Drawing(640, 250, "Alimentation 5 V complète : transformateur 230 V vers 12 V, pont, condensateur de 2 200 µF et régulateur 7805")
+    p1, p2, s1, s2 = transformer(d, 90, 60, n_p=2, n_s=1)
+    d.wire(p1, (30, 60)); d.wire(p2, (30, 140)); terminal(d, (30, 60)); terminal(d, (30, 140))
+    t, rt, bt, lt = bridge(d, 210, 110, 40)
+    d.wire(s1, (110, 40), (210, 40), t); d.wire(s2, (110, 180), (210, 180), bt)
+    d.wire(rt, (300, 110), (300, 70)); d.wire((300, 70), (350, 70))
+    d.wire(lt, (150, 110), (150, 210), (600, 210))
+    d.dot((330, 70)); d.capacitor((330, 70), (330, 210), "C", "2 200 µF", side=-1)
+    i, o, g = regulator(d, 420, 70)
+    d.wire((330, 70), i); d.wire(g, (420, 210)); d.dot((420, 210))
+    d.wire(o, (600, 70)); d.dot((520, 70)); d.capacitor((520, 70), (520, 210), "", "100 nF")
+    terminal(d, (600, 70), "5 V"); terminal(d, (600, 210))
+    return d
+
+
+# --- Questions sur schéma de la Partie 3 ------------------------------------------------------------------------------
+
+def q_m8_aop():
+    d = Drawing(480, 220, "Amplificateur inverseur sans légendes")
+    minus, plus, out = opamp(d, 290, 140)
+    d.resistor((100, minus[1]), (200, minus[1])); d.dot((200, minus[1])); d.wire((200, minus[1]), minus); terminal(d, (100, minus[1]))
+    d.wire((200, minus[1]), (200, 60)); d.resistor((200, 60), (370, 60)); d.wire((370, 60), (370, 140))
+    d.dot((370, 140)); d.wire(out, (420, 140)); terminal(d, (420, 140))
+    d.wire(plus, (215, plus[1]), (215, 190)); d.ground((215, 190))
+    d.zone("rf", 255, 40, 70, 40); d.zone("rin", 120, 105, 60, 40); d.zone("aop", 255, 105, 70, 70)
+    return d
+
+
+def q_m9_oscillateur():
+    d = Drawing(500, 280, "Oscillateur sans légendes")
+    i, o = amp_block(d, 250, 70, "", size=60)
+    d.wire(o, (370, 70), (370, 150)); d.dot((370, 150)); d.wire(i, (130, 70), (130, 150)); d.dot((130, 150))
+    d.wire((130, 150), (205, 150)); d.inductor((205, 150), (295, 150)); d.wire((295, 150), (370, 150))
+    d.capacitor((130, 150), (130, 240)); d.capacitor((370, 150), (370, 240))
+    d.wire((130, 240), (370, 240)); d.ground((250, 240))
+    d.wire((370, 70), (450, 70)); d.dot((370, 70)); terminal(d, (450, 70))
+    d.zone("amplificateur", 215, 38, 70, 64); d.zone("reaction", 120, 135, 260, 115); d.zone("sortie", 425, 50, 45, 40)
+    return d
+
+
+def q_m10_transfo():
+    d = Drawing(500, 230, "Transformateur alimentant une charge, sans légendes")
+    p1, p2, s1, s2 = transformer(d, 250, 60, n_p=2, n_s=1)
+    d.ac_source((80, 160), (80, 60))
+    d.wire((80, 60), (80, 40), (230, 40), p1); d.wire((80, 160), (80, 200), (230, 200), p2)
+    d.wire(s1, (270, 40), (400, 40), (400, 60)); d.resistor((400, 60), (400, 120)); d.wire((400, 120), (400, 140), (270, 140), s2)
+    d.zone("primaire", 205, 60, 36, 80); d.zone("secondaire", 259, 56, 36, 48); d.zone("charge", 380, 65, 40, 50)
+    return d
+
+
+def q_m11_alim():
+    d = Drawing(560, 230, "Alimentation sans légendes")
+    t, rt, bt, lt = bridge(d, 150, 110, 45)
+    d.ac_source((40, 160), (40, 60))
+    d.wire((40, 60), (40, 40), (150, 40), t); d.wire((40, 160), (40, 180), (150, 180), bt)
+    d.wire(rt, (240, 110), (240, 70), (290, 70)); d.wire(lt, (90, 110), (90, 205), (520, 205))
+    d.dot((270, 70)); d.capacitor((270, 70), (270, 205))
+    i, o, g = regulator(d, 380, 70, "")
+    d.wire((270, 70), i); d.wire(g, (380, 205)); d.dot((380, 205)); d.wire(o, (520, 70)); terminal(d, (520, 70)); terminal(d, (520, 205))
+    d.zone("pont", 110, 70, 80, 80); d.zone("condensateur", 245, 115, 50, 50); d.zone("regulateur", 340, 44, 80, 52)
+    return d
+
+
 # --- Schémas des questions sur zone cliquable -------------------------------------------------------------------------
 
 def q_m1_circuit():
@@ -1487,12 +2269,32 @@ SECTION_DIAGRAMS = {
         m6_coupure, m6_attenuation, m6_dephasage, m6_triangle_phi, m6_rl_passe_bas, m6_rl_courbe],
     7: [m7_rlc_serie, m7_xl_xc, m7_courbe_i, m7_courbe_r, m7_bande, m7_q, m7_lc_parallele, m7_z_parallele, m7_accord, m7_stations,
         m7_echange, m7_amortie],
+    8: [m8_bloc, m8_signaux, m8_pont, m8_beta, m8_ec, m8_inversion, m8_suiveur, m8_suiveur_signaux, m8_droite, m8_ecretage,
+        m8_jfet_ampli, m8_jfet_courbe, m8_aop_inverseur, m8_aop_non_inverseur],
+    9: [m9_boucle, m9_demarrage, m9_colpitts, m9_ceq, m9_hartley, m9_hartley_courbe, m9_armstrong, m9_points, m9_quartz, m9_wien,
+        m9_procedure, m9_ecran],
+    10: [m10_principe, m10_symbole, m10_abaisseur, m10_types, m10_bilan, m10_plaque, m10_adaptation, m10_equivalent, m10_fi,
+         m10_isolement],
+    11: [m11_chaine, m11_simple, m11_pont, m11_double, m11_lissage_circuit, m11_lissage_courbe, m11_ondulation, m11_condensateurs,
+         m11_zener, m11_zener_courbe, m11_regulateur, m11_alim_complete],
 }
-QUESTION_DIAGRAMS = {1: q_m1_circuit, 2: q_m2_circuit, 3: q_m3_npn, 4: q_m4_switch, 5: q_m5_sinus, 6: q_m6_passe_haut, 7: q_m7_courbe}
+QUESTION_DIAGRAMS = {1: q_m1_circuit, 2: q_m2_circuit, 3: q_m3_npn, 4: q_m4_switch, 5: q_m5_sinus, 6: q_m6_passe_haut, 7: q_m7_courbe,
+                     8: q_m8_aop, 9: q_m9_oscillateur, 10: q_m10_transfo, 11: q_m11_alim}
 
 
 def file_name(func):
     return func.__name__.split("_", 1)[1].replace("_", "-") + ".svg"
+
+
+PARTS = {"p1": range(1, 5), "p2": range(5, 8), "p3": range(8, 12)}
+
+
+def question_dir(module):
+    """Dossier des schémas des questions sur schéma : content/electro/<partie>/m<N>/schemas."""
+    part = next((slug for slug, modules in PARTS.items() if module in modules), None)
+    if part is None:
+        raise ValueError(f"module {module} hors des parties 1 à 3")
+    return ROOT / "content" / "electro" / part / f"m{module}" / "schemas"
 
 
 def main():
@@ -1505,7 +2307,7 @@ def main():
                 (out / file_name(func)).write_text(func().svg(), encoding="utf-8")
     LANG = "fr"
     for module, func in QUESTION_DIAGRAMS.items():
-        out = ROOT / "content" / "electro" / ("p1" if module <= 4 else "p2") / f"m{module}" / "schemas"
+        out = question_dir(module)
         out.mkdir(parents=True, exist_ok=True)
         drawing = func()
         (out / file_name(func)).write_text(drawing.svg(), encoding="utf-8")
