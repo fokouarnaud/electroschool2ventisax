@@ -185,6 +185,8 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 /* Tableau de bord */
 .page-head { display: grid; gap: .25rem; margin-bottom: 1.5rem; }
 .course { display: grid; gap: 1.25rem; }
+.course + .course { margin-top: 2.25rem; } /* une formation peut avoir plusieurs parties : chacune forme un bloc */
+.partie-desc { margin: .1rem 0 .85rem; max-width: 62ch; }
 @media (min-width: 900px) { .course { grid-template-columns: 1fr 280px; align-items: start; } }
 .course-meter { display: flex; align-items: center; gap: .75rem; }
 .course-meter .meter { flex: 1; }
@@ -544,6 +546,7 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 .prose img[src$=".svg"] { width: 100%; max-width: 36rem; height: auto; border: 1px solid var(--line); }
 /* Tableaux du cours (mesures des mini-projets) : défilement horizontal plutôt que débordement sur téléphone */
 .prose table { display: block; max-width: 100%; overflow-x: auto; }
+.prose th, .prose td:first-child { white-space: nowrap; } /* « 160 Hz » ou « Vs / Ve » ne se coupent pas ; le tableau défile */
 /* Grille de lecture : un enfant de grille ne doit pas s'élargir au contenu le plus long (titres anglais du sommaire) */
 .reader > * { min-width: 0; }
 .outline a { overflow-wrap: anywhere; }

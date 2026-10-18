@@ -25,7 +25,11 @@
           <input type="hidden" name="question" value="{{ row.question.public_id }}">
           <input type="hidden" name="time_spent" value="0" data-time-spent>
           {% if row.question.qtype == "numeric" %}
-            <p class="hint">{% translate "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés (ex. 4,7 k)." %}</p>
+            {% if row.question.unit == "°" %}
+              <p class="hint">{% translate "Saisissez un angle en degrés : virgule ou point, sans préfixe (ex. 26,6)." %}</p>
+            {% else %}
+              <p class="hint">{% translate "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés (ex. 4,7 k)." %}</p>
+            {% endif %}
             <div class="field numeric">
               <label for="a-{{ row.question.public_id }}">{% translate "Votre réponse" %}</label>
               <div class="unit-input">

@@ -123,3 +123,18 @@ def test_schematic_edited_after_publication_is_never_rendered_if_active(client, 
     html = client.get(f"/fr/tentatives/{attempt.public_id}/").content.decode()
 
     assert "onload" not in html
+
+
+@pytest.mark.parametrize("lang, hint", [("fr", "Saisissez un angle en degrés"), ("en", "Enter an angle in degrees")])
+@pytest.mark.django_db
+def test_angle_question_hint_does_not_offer_si_prefixes(client, enrolled, module, lang, hint):
+    """US-41 : l'aide d'une question en degrés parle d'angle, pas des préfixes p n µ m k M G (refusés sur les degrés)."""
+    q = published(module, "numeric", numeric_value=Decimal("45"), unit="°")
+    q.publish()
+    attempt = start_attempt(enrolled, Assessment.quiz_for(module))
+    client.force_login(enrolled)
+
+    html = client.get(f"/{lang}/tentatives/{attempt.public_id}/").content.decode()
+
+    assert hint in html
+    assert "p n µ m k M G" not in html

@@ -16,7 +16,7 @@
             <th scope="col">{% translate "Apprenant" %}</th>
             <th scope="col">{% translate "Promotion" %}</th>
             {% for module in table.modules %}<th scope="col" title="{{ module.title }}">M{{ forloop.counter }}</th>{% endfor %}
-            {% for partie in table.parties %}<th scope="col">{% blocktranslate with p=partie.title %}Examen {{ p }}{% endblocktranslate %}</th>{% endfor %}
+            {% for partie in table.parties %}<th scope="col" title="{{ partie.title }}">{% blocktranslate with n=forloop.counter %}Examen P{{ n }}{% endblocktranslate %}</th>{% endfor %}
             <th scope="col">{% translate "Tentatives" %}</th>
           </tr>
         </thead>
@@ -47,7 +47,8 @@
         </tbody>
       </table>
     </div>
-    <p class="muted small legend">{% for module in table.modules %}M{{ forloop.counter }} : {{ module.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p class="muted small legend">{% for module in table.modules %}M{{ forloop.counter }} : {{ module.title }}{% if not forloop.last %}, {% endif %}{% endfor %}<br>
+      {% for partie in table.parties %}P{{ forloop.counter }} : {{ partie.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
   </section>
 {% empty %}
   <section class="panel empty"><h2>{% translate "Aucune promotion" %}</h2><p class="muted">{% translate "Aucune promotion ne vous est rattachée. Demandez à l'administrateur de vous ajouter." %}</p></section>

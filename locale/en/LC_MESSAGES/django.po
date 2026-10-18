@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 13:09+0100\n"
+"POT-Creation-Date: 2026-10-18 17:53+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -217,7 +217,7 @@ msgstr "image"
 msgid "valeur attendue"
 msgstr "expected value"
 
-#: .\assessments\models.py:48 .\templates\assessments\attempt.html:33
+#: .\assessments\models.py:48 .\templates\assessments\attempt.html:37
 msgid "unité"
 msgstr "unit"
 
@@ -339,8 +339,7 @@ msgstr "In a cohort"
 msgid "Catalogue"
 msgstr "Catalogue"
 
-#: .\catalog\models.py:11 .\catalog\views.py:53
-#: .\templates\catalog\join.html:9
+#: .\catalog\models.py:11 .\catalog\views.py:53 .\templates\catalog\join.html:9
 msgid "Code de promotion"
 msgstr "Cohort code"
 
@@ -423,12 +422,12 @@ msgstr "French"
 msgid "English"
 msgstr "English"
 
-#: .\courses\models.py:11 .\courses\models.py:30 .\courses\models.py:45
-#: .\courses\models.py:73 .\courses\models.py:89 .\progress\models.py:19
+#: .\courses\models.py:11 .\courses\models.py:30 .\courses\models.py:46
+#: .\courses\models.py:74 .\courses\models.py:90 .\progress\models.py:19
 msgid "titre"
 msgstr "title"
 
-#: .\courses\models.py:13
+#: .\courses\models.py:13 .\courses\models.py:31
 msgid "description"
 msgstr "description"
 
@@ -440,27 +439,27 @@ msgstr "open in the catalogue"
 msgid "Visible dans le catalogue public et ouverte à l’inscription libre."
 msgstr "Listed in the public catalogue and open to self-enrolment."
 
-#: .\courses\models.py:47
+#: .\courses\models.py:48
 msgid "durée (heures)"
 msgstr "duration (hours)"
 
-#: .\courses\models.py:48
+#: .\courses\models.py:49
 msgid "compétence visée"
 msgstr "target skill"
 
-#: .\courses\models.py:49
+#: .\courses\models.py:50
 msgid "modalités d'évaluation"
 msgstr "assessment method"
 
-#: .\courses\models.py:68
+#: .\courses\models.py:69
 msgid "Contenu"
 msgstr "Content"
 
-#: .\courses\models.py:69
+#: .\courses\models.py:70
 msgid "Activités pratiques"
 msgstr "Practical activities"
 
-#: .\courses\models.py:76
+#: .\courses\models.py:77
 msgid "contenu (Markdown)"
 msgstr "content (Markdown)"
 
@@ -547,70 +546,69 @@ msgstr "Hello, %(name)s"
 msgid "Annonces"
 msgstr "Announcements"
 
-#: .\templates\accounts\dashboard.html:24
+#: .\templates\accounts\dashboard.html:25
 msgid "Progression"
 msgstr "Progress"
 
-#: .\templates\accounts\dashboard.html:31
-#: .\templates\accounts\dashboard.html:33
+#: .\templates\accounts\dashboard.html:32
+#: .\templates\accounts\dashboard.html:34
 msgid "Terminé"
 msgstr "Completed"
 
-#: .\templates\accounts\dashboard.html:33
-#: .\templates\catalog\catalogue.html:19
-#: .\templates\catalog\formation_detail.html:16
-#: .\templates\catalog\formation_detail.html:25
+#: .\templates\accounts\dashboard.html:34 .\templates\catalog\catalogue.html:19
+#: .\templates\catalog\formation_detail.html:17
+#: .\templates\catalog\formation_detail.html:26
 #, python-format
 msgid "%(h)s h"
 msgstr "%(h)s h"
 
-#: .\templates\accounts\dashboard.html:41
+#: .\templates\accounts\dashboard.html:42
 msgid "Examen de la partie"
 msgstr "Part exam"
 
-#: .\templates\accounts\dashboard.html:43
+#: .\templates\accounts\dashboard.html:44
 msgid "Tous les modules sont terminés. L'examen est ouvert."
 msgstr "All modules are completed. The exam is open."
 
-#: .\templates\accounts\dashboard.html:44
+#: .\templates\accounts\dashboard.html:45
 msgid "Voir l'examen"
 msgstr "View the exam"
 
-#: .\templates\accounts\dashboard.html:46
+#: .\templates\accounts\dashboard.html:47
 msgid ""
 "Il s'ouvre quand tous les modules sont terminés : sections lues et quiz "
 "envoyé."
 msgstr ""
 "It opens once every module is completed: sections read and quiz submitted."
 
-#: .\templates\accounts\dashboard.html:47
+#: .\templates\accounts\dashboard.html:48
 msgid "Ce qu'il reste à faire"
 msgstr "What is left to do"
 
-#: .\templates\accounts\dashboard.html:53
+#: .\templates\accounts\dashboard.html:54
 msgid "Aucune formation pour le moment"
 msgstr "No course yet"
 
-#: .\templates\accounts\dashboard.html:54
+#: .\templates\accounts\dashboard.html:55
 msgid ""
 "Vous n'êtes inscrit à aucune formation. Choisissez-en une dans le catalogue "
 "ou saisissez le code de votre promotion."
 msgstr ""
-"You are not enrolled in any course yet. Pick one from the catalogue or enter"
-" your cohort code."
+"You are not enrolled in any course yet. Pick one from the catalogue or enter "
+"your cohort code."
 
-#: .\templates\accounts\dashboard.html:55
+#: .\templates\accounts\dashboard.html:56
 msgid "Voir le catalogue"
 msgstr "Browse the catalogue"
 
-#: .\templates\accounts\dashboard.html:55
+#: .\templates\accounts\dashboard.html:56
 msgid "J'ai un code"
 msgstr "I have a code"
 
 #: .\templates\accounts\email\password_reset.txt:1
 msgid ""
-"Vous avez demandé à changer votre mot de passe Electro Acad Ventisax. Ouvrez"
-" ce lien :"
+"Vous avez demandé à changer votre mot de passe Electro Acad Ventisax. Ouvrez "
+"ce lien :"
 msgstr ""
 "You asked to change your Electro Acad Ventisax password. Open this link:"
 
@@ -638,8 +636,8 @@ msgstr "To activate your Electro Acad Ventisax account, open this link:"
 
 #: .\templates\accounts\email\verify_email.txt:7
 msgid ""
-"Sans confirmation, le compte est supprimé au bout de 7 jours. Si vous n'êtes"
-" pas à l'origine de cette inscription, ignorez ce message."
+"Sans confirmation, le compte est supprimé au bout de 7 jours. Si vous n'êtes "
+"pas à l'origine de cette inscription, ignorez ce message."
 msgstr ""
 "Without confirmation, the account is deleted after 7 days. If you did not "
 "sign up, ignore this message."
@@ -759,8 +757,8 @@ msgid ""
 "Saisissez l'adresse e-mail de votre compte : nous vous enverrons un lien "
 "pour choisir un nouveau mot de passe."
 msgstr ""
-"Enter your account's e-mail address: we will send you a link to choose a new"
-" password."
+"Enter your account's e-mail address: we will send you a link to choose a new "
+"password."
 
 #: .\templates\accounts\password_reset_form.html:9
 msgid "Envoyer le lien"
@@ -779,8 +777,8 @@ msgstr "Learn electronics at your own pace."
 
 #: .\templates\accounts\signup.html:7
 msgid ""
-"Un compte gratuit vous donne accès aux cours ouverts, aux quiz et à l'examen"
-" de chaque partie."
+"Un compte gratuit vous donne accès aux cours ouverts, aux quiz et à l'examen "
+"de chaque partie."
 msgstr ""
 "A free account gives you the open courses, the quizzes and the exam of each "
 "part."
@@ -811,8 +809,8 @@ msgstr "Already registered?"
 
 #: .\templates\accounts\signup_done.html:6
 msgid ""
-"Si les informations sont valides, un lien de confirmation vient de vous être"
-" envoyé. Ouvrez-le pour activer votre compte."
+"Si les informations sont valides, un lien de confirmation vient de vous être "
+"envoyé. Ouvrez-le pour activer votre compte."
 msgstr ""
 "If the details are valid, a confirmation link has just been sent to you. "
 "Open it to activate your account."
@@ -822,8 +820,8 @@ msgid ""
 "Sans confirmation, le compte est supprimé au bout de 7 jours. Pensez à "
 "regarder dans les courriers indésirables."
 msgstr ""
-"Without confirmation, the account is deleted after 7 days. Remember to check"
-" your spam folder."
+"Without confirmation, the account is deleted after 7 days. Remember to check "
+"your spam folder."
 
 #: .\templates\admin\accounts\promotion\import.html:3
 #, python-format
@@ -901,59 +899,64 @@ msgstr "Quiz: %(m)s"
 msgid "Temps restant"
 msgstr "Time left"
 
-#: .\templates\assessments\attempt.html:28
+#: .\templates\assessments\attempt.html:29
+msgid ""
+"Saisissez un angle en degrés : virgule ou point, sans préfixe (ex. 26,6)."
+msgstr "Enter an angle in degrees: comma or dot, no prefix (e.g. 26.6)."
+
+#: .\templates\assessments\attempt.html:31
 msgid ""
 "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés "
 "(ex. 4,7 k)."
 msgstr ""
 "Enter a value: comma or dot, prefixes p n µ m k M G accepted (e.g. 4.7 k)."
 
-#: .\templates\assessments\attempt.html:30
+#: .\templates\assessments\attempt.html:34
 #: .\templates\assessments\result.html:63
 msgid "Votre réponse"
 msgstr "Your answer"
 
-#: .\templates\assessments\attempt.html:37
+#: .\templates\assessments\attempt.html:41
 msgid "Associez chaque élément à sa correspondance."
 msgstr "Match each item with its counterpart."
 
-#: .\templates\assessments\attempt.html:44
+#: .\templates\assessments\attempt.html:48
 msgid "Choisir"
 msgstr "Choose"
 
-#: .\templates\assessments\attempt.html:51
+#: .\templates\assessments\attempt.html:55
 msgid "Cliquez la bonne zone du schéma, ou choisissez-la dans la liste."
 msgstr "Click the right area of the diagram, or pick it from the list."
 
-#: .\templates\assessments\attempt.html:62
+#: .\templates\assessments\attempt.html:66
 msgid "Plusieurs réponses possibles."
 msgstr "Several answers possible."
 
-#: .\templates\assessments\attempt.html:62
+#: .\templates\assessments\attempt.html:66
 msgid "Une seule réponse."
 msgstr "One answer only."
 
-#: .\templates\assessments\attempt.html:73
+#: .\templates\assessments\attempt.html:77
 msgid "Enregistrer cette réponse"
 msgstr "Save this answer"
 
-#: .\templates\assessments\attempt.html:77
+#: .\templates\assessments\attempt.html:81
 msgid "Aucune question publiée pour le moment."
 msgstr "No published question yet."
 
-#: .\templates\assessments\attempt.html:82
+#: .\templates\assessments\attempt.html:86
 msgid "Une fois envoyé, l'examen ne peut plus être modifié."
 msgstr "Once submitted, the exam can no longer be changed."
 
-#: .\templates\assessments\attempt.html:82
+#: .\templates\assessments\attempt.html:86
 msgid "Vous verrez la correction juste après l'envoi."
 msgstr "You will see the answers right after submitting."
 
-#: .\templates\assessments\attempt.html:83
+#: .\templates\assessments\attempt.html:87
 msgid "Envoyer l'examen"
 msgstr "Submit the exam"
 
-#: .\templates\assessments\attempt.html:83
+#: .\templates\assessments\attempt.html:87
 msgid "Voir la correction"
 msgstr "See the answers"
 
@@ -997,11 +1000,10 @@ msgstr "You have used all your attempts. Talk to your trainer."
 #: .\templates\assessments\exam.html:24
 msgid ""
 "Le chrono démarre dès que vous commencez. Chaque réponse est enregistrée "
-"immédiatement : si la connexion coupe, revenez sur cette page pour "
-"reprendre."
+"immédiatement : si la connexion coupe, revenez sur cette page pour reprendre."
 msgstr ""
-"The timer starts as soon as you begin. Every answer is saved immediately: if"
-" the connection drops, come back to this page to resume."
+"The timer starts as soon as you begin. Every answer is saved immediately: if "
+"the connection drops, come back to this page to resume."
 
 #: .\templates\assessments\exam.html:25
 msgid "Commencer l'examen"
@@ -1053,8 +1055,7 @@ msgstr[0] "%(n)s attempt left."
 msgstr[1] "%(n)s attempts left."
 
 #: .\templates\assessments\result.html:14
-msgid ""
-"Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez."
+msgid "Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez."
 msgstr ""
 "This quiz does not count towards your grade. Retake it as often as you like."
 
@@ -1163,11 +1164,11 @@ msgstr "Course catalogue"
 
 #: .\templates\catalog\catalogue.html:6
 msgid ""
-"Des cours en ligne avec quiz et examen, en français et en anglais. Commencez"
-" quand vous voulez."
+"Des cours en ligne avec quiz et examen, en français et en anglais. Commencez "
+"quand vous voulez."
 msgstr ""
-"Online courses with quizzes and exams, in French and English. Start whenever"
-" you like."
+"Online courses with quizzes and exams, in French and English. Start whenever "
+"you like."
 
 #: .\templates\catalog\catalogue.html:18
 #, python-format
@@ -1203,39 +1204,38 @@ msgstr "Have a cohort code?"
 msgid "Rejoindre ma promotion"
 msgstr "Join my cohort"
 
-#: .\templates\catalog\formation_detail.html:19
+#: .\templates\catalog\formation_detail.html:20
 msgid ""
 "Examen chronométré en fin de partie ; certificat vérifiable si vous le "
 "réussissez."
 msgstr ""
 "Timed exam at the end of the part; a verifiable certificate if you pass it."
 
-#: .\templates\catalog\formation_detail.html:23
+#: .\templates\catalog\formation_detail.html:24
 msgid "Inscription"
 msgstr "Enrolment"
 
-#: .\templates\catalog\formation_detail.html:25
+#: .\templates\catalog\formation_detail.html:26
 msgid "Durée"
 msgstr "Duration"
 
-#: .\templates\catalog\formation_detail.html:26
+#: .\templates\catalog\formation_detail.html:27
 msgid "Modules"
 msgstr "Modules"
 
-#: .\templates\catalog\formation_detail.html:27
+#: .\templates\catalog\formation_detail.html:28
 msgid "Langues"
 msgstr "Languages"
 
-#: .\templates\catalog\formation_detail.html:31
+#: .\templates\catalog\formation_detail.html:32
 msgid "J'ai déjà un compte"
 msgstr "I already have an account"
 
-#: .\templates\catalog\formation_detail.html:33
+#: .\templates\catalog\formation_detail.html:34
 msgid ""
 "Inscription gratuite. Les quiz sont illimités ; l'examen accepte trois "
 "tentatives."
-msgstr ""
-"Free enrolment. Quizzes are unlimited; the exam allows three attempts."
+msgstr "Free enrolment. Quizzes are unlimited; the exam allows three attempts."
 
 #: .\templates\catalog\join.html:6
 msgid ""
@@ -1379,7 +1379,7 @@ msgid "Compétence visée"
 msgstr "Target skill"
 
 #: .\templates\courses\module_detail.html:20
-#: .\templates\courses\section_detail.html:33
+#: .\templates\courses\section_detail.html:37
 msgid "Sections"
 msgstr "Sections"
 
@@ -1467,19 +1467,51 @@ msgstr "Calculator: transistor biasing"
 msgid "Transistor au silicium : VBE ≈ 0,7 V."
 msgstr "Silicon transistor: VBE ≈ 0.7 V."
 
+#: .\templates\courses\section_detail.html:24
+msgid "Fréquence f"
+msgstr "Frequency f"
+
+#: .\templates\courses\section_detail.html:24
+msgid "Capacité C"
+msgstr "Capacitance C"
+
+#: .\templates\courses\section_detail.html:24
+msgid "Inductance L"
+msgstr "Inductance L"
+
+#: .\templates\courses\section_detail.html:25
+msgid "Calculateur : réactance"
+msgstr "Calculator: reactance"
+
+#: .\templates\courses\section_detail.html:25
+msgid "Saisissez la fréquence, puis C, L ou les deux."
+msgstr "Enter the frequency, then C, L or both."
+
+#: .\templates\courses\section_detail.html:26
+msgid "Calculateur : fréquence de coupure"
+msgstr "Calculator: cut-off frequency"
+
+#: .\templates\courses\section_detail.html:26
+msgid "Saisissez R, puis C (filtre RC) ou L (filtre RL)."
+msgstr "Enter R, then C (RC filter) or L (RL filter)."
+
 #: .\templates\courses\section_detail.html:27
+msgid "Calculateur : fréquence de résonance"
+msgstr "Calculator: resonant frequency"
+
+#: .\templates\courses\section_detail.html:31
 msgid "Annexes à télécharger"
 msgstr "Downloadable appendices"
 
-#: .\templates\courses\section_detail.html:34
+#: .\templates\courses\section_detail.html:38
 msgid "Précédent"
 msgstr "Previous"
 
-#: .\templates\courses\section_detail.html:36
+#: .\templates\courses\section_detail.html:40
 msgid "Suivant"
 msgstr "Next"
 
-#: .\templates\courses\section_detail.html:38
+#: .\templates\courses\section_detail.html:42
 msgid "Fin du module"
 msgstr "End of module"
 
@@ -1502,8 +1534,7 @@ msgstr "New announcement"
 
 #: .\templates\progress\announcements.html:9
 msgid ""
-"Elle s'affiche sur le tableau de bord des apprenants de la promotion "
-"choisie."
+"Elle s'affiche sur le tableau de bord des apprenants de la promotion choisie."
 msgstr "It appears on the dashboard of the learners in the chosen cohort."
 
 #: .\templates\progress\announcements.html:14
@@ -1629,8 +1660,8 @@ msgstr "Export as CSV"
 
 #: .\templates\progress\trainer_table.html:19
 #, python-format
-msgid "Examen %(p)s"
-msgstr "Exam %(p)s"
+msgid "Examen P%(n)s"
+msgstr "Exam P%(n)s"
 
 #: .\templates\progress\trainer_table.html:20
 msgid "Tentatives"
@@ -1658,22 +1689,12 @@ msgstr[1] "%(n)s submitted"
 msgid "Aucun apprenant dans ces promotions."
 msgstr "No learner in these cohorts."
 
-#: .\templates\progress\trainer_table.html:53
+#: .\templates\progress\trainer_table.html:54
 msgid "Aucune promotion"
 msgstr "No cohort"
 
-#: .\templates\progress\trainer_table.html:53
+#: .\templates\progress\trainer_table.html:54
 msgid ""
 "Aucune promotion ne vous est rattachée. Demandez à l'administrateur de vous "
 "ajouter."
 msgstr "No cohort is assigned to you. Ask the administrator to add you."
-
-#~ msgid ""
-#~ "Votre compte n'est rattaché à aucune promotion. Le centre vous inscrira "
-#~ "avant le début des cours."
-#~ msgstr ""
-#~ "Your account is not linked to a cohort yet. The centre will enrol you before"
-#~ " classes start."
-
-#~ msgid "Mot de passe oublié : demandez-le à votre formateur."
-#~ msgstr "Forgot your password? Ask your trainer."
