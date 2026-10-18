@@ -247,6 +247,15 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
 20. **Schémas générés** : `python tools/schemas.py` produit les 50 schémas des sections (symboles CEI, fond clair intégré pour le mode sombre) dans `static/content/electro/m<N>/`, leur version anglaise dans `static/content/electro/en/m<N>/` (libellés traduits, virgules décimales converties) et les 4 schémas des questions sur schéma dans `content/electro/p1/m<N>/schemas/`, avec les coordonnées des zones. Modifier un schéma = modifier sa fonction puis relancer le script ; ne jamais retoucher les SVG à la main.
 21. **Questions numériques** : valeur attendue en unité de base (ex. `0.002553` A) ; chaque énoncé donne un exemple de saisie avec préfixe (« 2,5 mA »), car une saisie sans préfixe est lue en unité de base. Tolérance de 2 % par défaut, élargie quand la réponse est une plage physique (0,7 V d'une diode : 15 %).
 
+22. **Déploiement initial (2026-10-18)** sur https://electroacadventisax.pythonanywhere.com/ :
+    - **Code et environnement** : clone de `main` dans `~/electroschool2ventisax`, environnement virtuel `~/.virtualenvs/electro` (Python 3.13.1), fichier WSGI `/var/www/electroacadventisax_pythonanywhere_com_wsgi.py` (charge `config.settings`), fichiers statiques `/static/` → `staticfiles/` et `/media/` → `media/`.
+    - **Secrets** : `.env` serveur avec droits 600 ; la clé secrète a été générée sur le serveur et les réglages e-mail téléversés depuis le `.env` local, sans transiter en clair.
+    - **Compte admin** : utilisateur `admin` ; mot de passe aléatoire dans `~/admin_password.txt` (droits 600), à changer à la première connexion.
+    - **Mises à jour** : `bash ~/electroschool2ventisax/deploy.sh`, puis, si l'environnement virtuel change, bouton « Reload » de l'onglet Web (toucher le fichier WSGI ne suffit pas à activer un nouvel environnement virtuel).
+    - **Constats** : HTTP → HTTPS en 301 et HSTS d'un an assurés par Django ; disque utilisé : 106 Mo ; 108 questions publiées.
+    - **Plan gratuit** : le site est désactivé le **18 novembre 2026** si personne ne clique « Run until 1 month from today » dans l'onglet Web ; à refaire chaque mois.
+    - **Écart à E17** : aucun jeton d'API n'a été créé ; le déploiement s'est fait par la console et l'onglet Web, pour qu'aucun jeton n'apparaisse en clair dans les échanges.
+
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.
 
