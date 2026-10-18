@@ -1,0 +1,274 @@
+[
+  {
+    "id": "e-p1-m4-q01", "section": "01-interrupteur", "type": "matching", "usage": "quiz",
+    "prompt": {"fr": "Associez chaque état du transistor à son comportement.", "en": "Match each transistor state with its behaviour."},
+    "explanation": {"fr": "Bloqué : IC = 0, interrupteur ouvert. Saturé : VCE ≈ 0,2 V, interrupteur fermé. Linéaire : IC = β × IB, amplification.", "en": "Cut off: IC = 0, open switch. Saturated: VCE ≈ 0.2 V, closed switch. Linear: IC = β × IB, amplification."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "pairs": [
+      {"left": {"fr": "Bloqué", "en": "Cut off"}, "right": {"fr": "Interrupteur ouvert, IC = 0", "en": "Open switch, IC = 0"}},
+      {"left": {"fr": "Saturé", "en": "Saturated"}, "right": {"fr": "Interrupteur fermé, VCE ≈ 0,2 V", "en": "Closed switch, VCE ≈ 0.2 V"}},
+      {"left": {"fr": "Régime linéaire", "en": "Linear region"}, "right": {"fr": "Amplification, IC = β × IB", "en": "Amplification, IC = β × IB"}}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q02", "section": "01-interrupteur", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Un transistor saturé (VCE = 0,2 V) commande une lampe de 100 mA. Quelle puissance dissipe-t-il ? (exemple : 0,05 W)", "en": "A saturated transistor (VCE = 0.2 V) drives a 100 mA lamp. What power does it dissipate? (example: 0.05 W)"},
+    "explanation": {"fr": "P = VCE × IC = 0,2 × 0,1 = 0,02 W.", "en": "P = VCE × IC = 0.2 × 0.1 = 0.02 W."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.02", "unit": "W", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-q03", "section": "01-interrupteur", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Pourquoi une commutation doit-elle être franche, sans rester en régime linéaire ?", "en": "Why must switching be clean, without lingering in the linear region?"},
+    "explanation": {"fr": "En régime linéaire, VCE et IC sont tous deux importants : le transistor dissipe beaucoup et chauffe.", "en": "In the linear region, both VCE and IC are large: the transistor dissipates a lot and heats up."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Parce que le transistor y chauffe beaucoup", "en": "Because the transistor heats up a lot there"}, "correct": true},
+      {"text": {"fr": "Parce que la lampe y brille plus fort", "en": "Because the lamp shines brighter there"}, "correct": false},
+      {"text": {"fr": "Parce que le gain y est nul", "en": "Because the gain is zero there"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q04", "section": "02-calcul-rb", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "VCC = 9 V, charge de 100 Ω dans le collecteur. Quel est le courant de saturation ? (VCE sat = 0,2 V ; exemple : 50 mA)", "en": "VCC = 9 V, 100 Ω load in the collector. What is the saturation current? (VCE sat = 0.2 V; example: 50 mA)"},
+    "explanation": {"fr": "IC sat = (9 − 0,2) / 100 = 88 mA.", "en": "IC sat = (9 − 0.2) / 100 = 88 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.088", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-q05", "section": "02-calcul-rb", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "IC sat = 88 mA et β min = 100. Quel courant de base viser avec une marge de 2 ? (exemple : 1 mA)", "en": "IC sat = 88 mA and β min = 100. What base current should you aim for with a margin of 2? (example: 1 mA)"},
+    "explanation": {"fr": "IB min = 88 / 100 = 0,88 mA ; avec la marge : 1,76 mA.", "en": "IB min = 88 / 100 = 0.88 mA; with the margin: 1.76 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.00176", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-q06", "section": "02-calcul-rb", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Commande de 5 V, IB visé = 1,76 mA, VBE = 0,7 V. Calculez RB. (exemple : 1,5 kΩ)", "en": "5 V control, target IB = 1.76 mA, VBE = 0.7 V. Calculate RB. (example: 1.5 kΩ)"},
+    "explanation": {"fr": "RB = (5 − 0,7) / 1,76 mA ≈ 2,44 kΩ, puis 2,2 kΩ en valeur normalisée.", "en": "RB = (5 − 0.7) / 1.76 mA ≈ 2.44 kΩ, then 2.2 kΩ as a standard value."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "2443", "unit": "Ω", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-q07", "section": "02-calcul-rb", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Le calcul donne RB = 2,44 kΩ. Quelle valeur normalisée choisir ?", "en": "The calculation gives RB = 2.44 kΩ. Which standard value should you choose?"},
+    "explanation": {"fr": "On prend la valeur inférieure, 2,2 kΩ : elle donne plus de courant de base et une saturation plus sûre.", "en": "Take the lower value, 2.2 kΩ: it gives more base current and a safer saturation."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "2,2 kΩ", "en": "2.2 kΩ"}, "correct": true},
+      {"text": {"fr": "2,7 kΩ", "en": "2.7 kΩ"}, "correct": false},
+      {"text": {"fr": "10 kΩ", "en": "10 kΩ"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q08", "section": "02-calcul-rb", "type": "hotspot", "usage": "quiz",
+    "prompt": {"fr": "Sur ce montage de commutation, cliquez sur la résistance de base.", "en": "On this switching circuit, click the base resistor."},
+    "explanation": {"fr": "La résistance de base relie l'entrée de commande à la base du transistor, à gauche.", "en": "The base resistor connects the control input to the transistor's base, on the left."},
+    "reviewed": {"fr": true, "en": true},
+    "svg": "schemas/m4-switch.svg",
+    "choices": [
+      {"text": {"fr": "Résistance de base", "en": "Base resistor"}, "correct": true, "shape": {"x": 160, "y": 135, "w": 60, "h": 30}},
+      {"text": {"fr": "Transistor", "en": "Transistor"}, "correct": false, "shape": {"x": 240, "y": 120, "w": 60, "h": 60}},
+      {"text": {"fr": "Lampe", "en": "Lamp"}, "correct": false, "shape": {"x": 260, "y": 50, "w": 50, "h": 45}}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q09", "section": "03-charges", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "VCC = 9 V, LED rouge (2 V), transistor saturé (0,2 V), résistance de LED de 330 Ω. Quel courant traverse la LED ? (exemple : 12 mA)", "en": "VCC = 9 V, red LED (2 V), saturated transistor (0.2 V), 330 Ω LED resistor. What current flows through the LED? (example: 12 mA)"},
+    "explanation": {"fr": "I = (9 − 2 − 0,2) / 330 ≈ 20,6 mA.", "en": "I = (9 − 2 − 0.2) / 330 ≈ 20.6 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.0206", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-q10", "section": "03-charges", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "À quoi sert la diode de roue libre placée sur la bobine d'un relais ?", "en": "What is the flyback diode across a relay coil for?"},
+    "explanation": {"fr": "À la coupure, la bobine produit une surtension ; la diode lui offre un chemin et protège le transistor.", "en": "At switch-off, the coil produces a voltage spike; the diode gives it a path and protects the transistor."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Protéger le transistor de la surtension à la coupure", "en": "Protect the transistor from the spike at switch-off"}, "correct": true},
+      {"text": {"fr": "Allumer un voyant", "en": "Light up an indicator"}, "correct": false},
+      {"text": {"fr": "Augmenter le courant dans la bobine", "en": "Increase the current in the coil"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q11", "section": "03-charges", "type": "truefalse", "usage": "quiz",
+    "prompt": {"fr": "Vrai ou faux : la diode de roue libre se monte en inverse, cathode côté +VCC.", "en": "True or false: the flyback diode is fitted in reverse, cathode towards +VCC."},
+    "explanation": {"fr": "Vrai : elle ne conduit qu'au moment de la coupure.", "en": "True: it only conducts at switch-off."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": true},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q12", "section": "04-capteur", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Comment évolue la résistance d'une LDR quand la lumière augmente ?", "en": "How does an LDR's resistance change as the light increases?"},
+    "explanation": {"fr": "Elle diminue : forte dans le noir, faible en pleine lumière.", "en": "It decreases: high in the dark, low in full light."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Elle diminue", "en": "It decreases"}, "correct": true},
+      {"text": {"fr": "Elle augmente", "en": "It increases"}, "correct": false},
+      {"text": {"fr": "Elle ne change pas", "en": "It does not change"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q13", "section": "04-capteur", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Diviseur de la veilleuse : R1 = 10 kΩ en haut, LDR = 500 Ω en bas, VCC = 9 V. Quelle tension à vide au point milieu ? (exemple : 1,2 V)", "en": "Night light divider: R1 = 10 kΩ at the top, LDR = 500 Ω at the bottom, VCC = 9 V. What is the unloaded midpoint voltage? (example: 1.2 V)"},
+    "explanation": {"fr": "V = 9 × 0,5 / 10,5 ≈ 0,43 V : sous le seuil, le transistor reste bloqué.", "en": "V = 9 × 0.5 / 10.5 ≈ 0.43 V: below the threshold, the transistor stays off."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.4286", "unit": "V", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-q14", "section": "05-deux-transistors", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Deux transistors de gain 100 sont montés en Darlington. Quel est environ le gain total ?", "en": "Two transistors of gain 100 are connected as a Darlington. About what is the total gain?"},
+    "explanation": {"fr": "Les gains se multiplient : 100 × 100 = 10 000.", "en": "The gains multiply: 100 × 100 = 10,000."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "10 000", "en": "10,000"}, "correct": true},
+      {"text": {"fr": "200", "en": "200"}, "correct": false},
+      {"text": {"fr": "100", "en": "100"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-q15", "section": "06-jfet-commutation", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Comment bloque-t-on un JFET canal N ?", "en": "How do you turn off an N-channel JFET?"},
+    "explanation": {"fr": "On porte la grille sous VGS(off), donc à une tension négative par rapport à la source.", "en": "Take the gate below VGS(off), that is to a negative voltage relative to the source."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "En rendant la grille assez négative", "en": "By making the gate negative enough"}, "correct": true},
+      {"text": {"fr": "En reliant la grille à la source", "en": "By tying the gate to the source"}, "correct": false},
+      {"text": {"fr": "En envoyant un courant dans la grille", "en": "By sending current into the gate"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x01", "section": "01-interrupteur", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Un transistor commandé n'a aucun courant de base. La lampe dans son collecteur est-elle allumée ?", "en": "A switching transistor has no base current. Is the lamp in its collector on?"},
+    "explanation": {"fr": "Sans courant de base, le transistor est bloqué : la lampe est éteinte.", "en": "With no base current, the transistor is cut off: the lamp is off."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Non, elle est éteinte", "en": "No, it is off"}, "correct": true},
+      {"text": {"fr": "Oui, à pleine puissance", "en": "Yes, at full power"}, "correct": false},
+      {"text": {"fr": "Oui, à moitié", "en": "Yes, at half power"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x02", "section": "01-interrupteur", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Pourquoi commander une charge par un transistor plutôt que directement par la sortie d'un microcontrôleur ?", "en": "Why drive a load through a transistor rather than directly from a microcontroller output?"},
+    "explanation": {"fr": "La sortie ne fournit que quelques milliampères ; le transistor fait le lien avec une charge gourmande, éventuellement sous une tension plus élevée.", "en": "The output only supplies a few milliamperes; the transistor bridges to a demanding load, possibly at a higher voltage."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "La sortie ne fournit que peu de courant", "en": "The output supplies little current"}, "correct": true},
+      {"text": {"fr": "La charge peut avoir besoin d'une tension plus élevée", "en": "The load may need a higher voltage"}, "correct": true},
+      {"text": {"fr": "Le transistor augmente la tension de la sortie", "en": "The transistor raises the output voltage"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x03", "section": "02-calcul-rb", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "VCC = 12 V, charge de 240 Ω. Quel est le courant de saturation ? (VCE sat = 0,2 V ; exemple : 30 mA)", "en": "VCC = 12 V, 240 Ω load. What is the saturation current? (VCE sat = 0.2 V; example: 30 mA)"},
+    "explanation": {"fr": "IC sat = (12 − 0,2) / 240 ≈ 49,2 mA.", "en": "IC sat = (12 − 0.2) / 240 ≈ 49.2 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.04917", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-x04", "section": "02-calcul-rb", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Le transistor est déjà saturé. On double le courant de base. Que devient IC ?", "en": "The transistor is already saturated. The base current is doubled. What happens to IC?"},
+    "explanation": {"fr": "IC est fixé par la charge : il ne bouge plus au-delà de la saturation.", "en": "IC is set by the load: it no longer changes beyond saturation."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Il ne change presque pas", "en": "It hardly changes"}, "correct": true},
+      {"text": {"fr": "Il double", "en": "It doubles"}, "correct": false},
+      {"text": {"fr": "Il s'annule", "en": "It drops to zero"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x05", "section": "02-calcul-rb", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : pour calculer RB, on utilise le gain maximal indiqué par la fiche technique.", "en": "True or false: to calculate RB, you use the maximum gain given in the datasheet."},
+    "explanation": {"fr": "Faux : on utilise le gain minimal, pour que tous les exemplaires saturent.", "en": "False: use the minimum gain, so that every part saturates."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x06", "section": "03-charges", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Quelles charges exigent une diode de roue libre quand un transistor les commande ?", "en": "Which loads need a flyback diode when driven by a transistor?"},
+    "explanation": {"fr": "Toutes les charges inductives : relais, moteur, électroaimant. Une LED n'est pas inductive.", "en": "Every inductive load: relay, motor, electromagnet. An LED is not inductive."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Un relais", "en": "A relay"}, "correct": true},
+      {"text": {"fr": "Un moteur", "en": "A motor"}, "correct": true},
+      {"text": {"fr": "Une LED", "en": "An LED"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x07", "section": "03-charges", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "VCC = 5 V, LED blanche (3 V), transistor saturé (0,2 V). Quelle résistance de LED pour 18 mA ? (exemple : 150 Ω)", "en": "VCC = 5 V, white LED (3 V), saturated transistor (0.2 V). What LED resistor for 18 mA? (example: 150 Ω)"},
+    "explanation": {"fr": "R = (5 − 3 − 0,2) / 0,018 = 100 Ω.", "en": "R = (5 − 3 − 0.2) / 0.018 = 100 Ω."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "100", "unit": "Ω", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m4-x08", "section": "04-capteur", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Dans la veilleuse, on échange la LDR et la résistance R1. Que se passe-t-il ?", "en": "In the night light, the LDR and resistor R1 are swapped. What happens?"},
+    "explanation": {"fr": "Le comportement s'inverse : la lampe s'allume à la lumière et s'éteint dans le noir.", "en": "The behaviour is reversed: the lamp turns on in the light and off in the dark."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "La lampe s'allume à la lumière", "en": "The lamp turns on in the light"}, "correct": true},
+      {"text": {"fr": "Rien ne change", "en": "Nothing changes"}, "correct": false},
+      {"text": {"fr": "La lampe reste toujours allumée", "en": "The lamp stays on all the time"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x09", "section": "04-capteur", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Comment régler la luminosité à laquelle la veilleuse s'allume ?", "en": "How do you set the light level at which the night light turns on?"},
+    "explanation": {"fr": "On remplace R1 par une résistance ajustable, en série avec une petite résistance qui protège la base.", "en": "Replace R1 with a trimmer, in series with a small resistor that protects the base."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Avec une résistance ajustable à la place de R1", "en": "With a trimmer in place of R1"}, "correct": true},
+      {"text": {"fr": "En changeant la couleur de la LED", "en": "By changing the LED colour"}, "correct": false},
+      {"text": {"fr": "En retirant le transistor", "en": "By removing the transistor"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x10", "section": "05-deux-transistors", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Quelles sont les contreparties d'un montage Darlington ?", "en": "What are the drawbacks of a Darlington pair?"},
+    "explanation": {"fr": "VBE double (environ 1,4 V) et VCE sat reste vers 0,7 à 1 V, d'où plus d'échauffement. Le gain, lui, augmente.", "en": "VBE doubles (about 1.4 V) and VCE sat stays around 0.7 to 1 V, so more heating. The gain, however, goes up."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Une tension base-émetteur d'environ 1,4 V", "en": "A base-emitter voltage of about 1.4 V"}, "correct": true},
+      {"text": {"fr": "Une tension de saturation plus élevée", "en": "A higher saturation voltage"}, "correct": true},
+      {"text": {"fr": "Un gain plus faible", "en": "A lower gain"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x11", "section": "05-deux-transistors", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Dans deux étages en cascade, le premier transistor sature. Que fait le second ?", "en": "In two cascaded stages, the first transistor saturates. What does the second do?"},
+    "explanation": {"fr": "Le premier ramène sa sortie vers 0 V et prive le second de courant de base : le second se bloque.", "en": "The first pulls its output towards 0 V and starves the second of base current: the second turns off."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Il se bloque", "en": "It turns off"}, "correct": true},
+      {"text": {"fr": "Il sature aussi", "en": "It saturates too"}, "correct": false},
+      {"text": {"fr": "Il amplifie", "en": "It amplifies"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m4-x12", "section": "06-jfet-commutation", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : comme un NPN, un JFET canal N est bloqué tant qu'on ne commande pas sa grille.", "en": "True or false: like an NPN, an N-channel JFET is off until its gate is driven."},
+    "explanation": {"fr": "Faux : à VGS = 0, le JFET canal N conduit ; il faut une tension négative pour le bloquer.", "en": "False: at VGS = 0 the N-channel JFET conducts; a negative voltage is needed to turn it off."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  }
+]

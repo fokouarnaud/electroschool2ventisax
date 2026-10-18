@@ -1,0 +1,111 @@
+{
+  "slug": "electro",
+  "open": true,
+  "title": {"fr": "Électronique", "en": "Electronics"},
+  "description": {
+    "fr": "Du courant continu au transistor en commutation : comprendre, calculer et monter ses premiers circuits.",
+    "en": "From direct current to the transistor switch: understand, calculate and build your first circuits."
+  },
+  "parties": [
+    {
+      "slug": "p1",
+      "order": 1,
+      "title": {"fr": "Courant continu et semi-conducteurs", "en": "Direct current and semiconductors"},
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p1/m1",
+          "title": {"fr": "Révision du courant continu", "en": "Direct current review"},
+          "duration_hours": 10,
+          "competence": {
+            "fr": "Calculer tensions, courants, résistances et puissances dans un circuit à courant continu, et les mesurer.",
+            "en": "Calculate voltages, currents, resistances and powers in a DC circuit, and measure them."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis mini-projet sur plaque d'essai évalué en atelier.",
+            "en": "Module quiz, then a breadboard mini-project assessed in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-courant-tension-resistance", "kind": "content", "title": {"fr": "Courant, tension et résistance", "en": "Current, voltage and resistance"}},
+            {"order": 2, "file": "02-loi-ohm", "kind": "content", "title": {"fr": "La loi d'Ohm", "en": "Ohm's law"}},
+            {"order": 3, "file": "03-serie-parallele", "kind": "content", "title": {"fr": "Résistances en série et en parallèle", "en": "Resistors in series and in parallel"}},
+            {"order": 4, "file": "04-puissance", "kind": "content", "title": {"fr": "La puissance électrique", "en": "Electrical power"}},
+            {"order": 5, "file": "05-diviseur-tension", "kind": "content", "title": {"fr": "Le diviseur de tension", "en": "The voltage divider"}},
+            {"order": 6, "file": "06-diviseur-courant", "kind": "content", "title": {"fr": "Le diviseur de courant", "en": "The current divider"}},
+            {"order": 7, "file": "07-condensateur", "kind": "content", "title": {"fr": "Interrupteurs et condensateurs en continu", "en": "Switches and capacitors in DC circuits"}},
+            {"order": 8, "file": "08-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : vérifier la loi d'Ohm", "en": "Mini-project: check Ohm's law"}}
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p1/m2",
+          "title": {"fr": "La diode", "en": "The diode"},
+          "duration_hours": 8,
+          "competence": {
+            "fr": "Choisir, orienter et protéger une diode, une LED ou une diode Zener dans un montage simple.",
+            "en": "Choose, orient and protect a diode, an LED or a Zener diode in a simple circuit."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis mini-projet LED évalué en atelier.",
+            "en": "Module quiz, then an LED mini-project assessed in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-jonction-pn", "kind": "content", "title": {"fr": "Semi-conducteurs et jonction PN", "en": "Semiconductors and the PN junction"}},
+            {"order": 2, "file": "02-polarisation", "kind": "content", "title": {"fr": "Polarisation directe et inverse", "en": "Forward and reverse bias"}},
+            {"order": 3, "file": "03-caracteristique", "kind": "content", "title": {"fr": "La caractéristique de la diode", "en": "The diode characteristic"}},
+            {"order": 4, "file": "04-led", "kind": "content", "title": {"fr": "La LED et sa résistance série", "en": "The LED and its series resistor"}},
+            {"order": 5, "file": "05-redressement", "kind": "content", "title": {"fr": "Le redressement", "en": "Rectification"}},
+            {"order": 6, "file": "06-zener", "kind": "content", "title": {"fr": "La diode Zener", "en": "The Zener diode"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : la LED et sa résistance", "en": "Mini-project: the LED and its resistor"}}
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p1/m3",
+          "title": {"fr": "Le transistor", "en": "The transistor"},
+          "duration_hours": 10,
+          "competence": {
+            "fr": "Identifier un transistor, calculer ses courants et sa polarisation, et le tester au multimètre.",
+            "en": "Identify a transistor, calculate its currents and biasing, and test it with a multimeter."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis mesure du gain d'un transistor en atelier.",
+            "en": "Module quiz, then measuring a transistor's gain in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-structure", "kind": "content", "title": {"fr": "Structure du transistor bipolaire", "en": "Structure of the bipolar transistor"}},
+            {"order": 2, "file": "02-courants-gain", "kind": "content", "title": {"fr": "Courants et gain en courant", "en": "Currents and current gain"}},
+            {"order": 3, "file": "03-polarisation", "kind": "content", "title": {"fr": "Polariser la base", "en": "Biasing the base"}},
+            {"order": 4, "file": "04-regimes", "kind": "content", "title": {"fr": "Blocage, régime linéaire et saturation", "en": "Cut-off, linear region and saturation"}},
+            {"order": 5, "file": "05-tester", "kind": "content", "title": {"fr": "Tester un transistor au multimètre", "en": "Testing a transistor with a multimeter"}},
+            {"order": 6, "file": "06-jfet", "kind": "content", "title": {"fr": "Le transistor à effet de champ (JFET)", "en": "The junction field-effect transistor (JFET)"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : mesurer le gain β", "en": "Mini-project: measure the gain β"}}
+          ]
+        },
+        {
+          "order": 4,
+          "dir": "p1/m4",
+          "title": {"fr": "Le transistor en commutation", "en": "The transistor switch"},
+          "duration_hours": 8,
+          "competence": {
+            "fr": "Dimensionner un transistor utilisé en interrupteur pour commander une LED, une lampe ou un relais.",
+            "en": "Size a transistor used as a switch to drive an LED, a lamp or a relay."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, examen de la partie, puis mini-projet de lampe automatique en atelier.",
+            "en": "Module quiz, part exam, then an automatic lamp mini-project in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-interrupteur", "kind": "content", "title": {"fr": "Le transistor comme interrupteur", "en": "The transistor as a switch"}},
+            {"order": 2, "file": "02-calcul-rb", "kind": "content", "title": {"fr": "Calculer la résistance de base", "en": "Calculating the base resistor"}},
+            {"order": 3, "file": "03-charges", "kind": "content", "title": {"fr": "Commander une LED ou un relais", "en": "Driving an LED or a relay"}},
+            {"order": 4, "file": "04-capteur", "kind": "content", "title": {"fr": "Commander avec un capteur", "en": "Switching from a sensor"}},
+            {"order": 5, "file": "05-deux-transistors", "kind": "content", "title": {"fr": "Montages à deux transistors", "en": "Two-transistor circuits"}},
+            {"order": 6, "file": "06-jfet-commutation", "kind": "content", "title": {"fr": "Commuter avec un JFET", "en": "Switching with a JFET"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : lampe automatique de nuit", "en": "Mini-project: automatic night lamp"}}
+          ]
+        }
+      ]
+    }
+  ]
+}

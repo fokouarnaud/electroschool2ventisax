@@ -1,0 +1,276 @@
+[
+  {
+    "id": "e-p1-m3-q01", "section": "01-structure", "type": "matching", "usage": "quiz",
+    "prompt": {"fr": "Associez chaque broche du transistor bipolaire à son rôle.", "en": "Match each lead of the bipolar transistor with its role."},
+    "explanation": {"fr": "La base commande, le collecteur recueille le courant principal, l'émetteur émet les porteurs.", "en": "The base controls, the collector collects the main current, the emitter emits the carriers."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "pairs": [
+      {"left": {"fr": "Base", "en": "Base"}, "right": {"fr": "Commande", "en": "Control"}},
+      {"left": {"fr": "Collecteur", "en": "Collector"}, "right": {"fr": "Recueille le courant principal", "en": "Collects the main current"}},
+      {"left": {"fr": "Émetteur", "en": "Emitter"}, "right": {"fr": "Émet les porteurs de charge", "en": "Emits the charge carriers"}}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q02", "section": "01-structure", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Sur le symbole d'un transistor NPN, où pointe la flèche de l'émetteur ?", "en": "On an NPN transistor symbol, which way does the emitter arrow point?"},
+    "explanation": {"fr": "Pour un NPN, la flèche sort ; pour un PNP, elle entre.", "en": "For an NPN the arrow points out; for a PNP it points in."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vers l'extérieur", "en": "Outwards"}, "correct": true},
+      {"text": {"fr": "Vers l'intérieur", "en": "Inwards"}, "correct": false},
+      {"text": {"fr": "Il n'y a pas de flèche", "en": "There is no arrow"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q03", "section": "01-structure", "type": "hotspot", "usage": "quiz",
+    "prompt": {"fr": "Sur ce transistor NPN, cliquez sur l'émetteur.", "en": "On this NPN transistor, click the emitter."},
+    "explanation": {"fr": "L'émetteur est la broche qui porte la flèche, ici en bas.", "en": "The emitter is the lead carrying the arrow, here at the bottom."},
+    "reviewed": {"fr": true, "en": true},
+    "svg": "schemas/m3-npn.svg",
+    "choices": [
+      {"text": {"fr": "Base", "en": "Base"}, "correct": false, "shape": {"x": 80, "y": 72, "w": 60, "h": 36}},
+      {"text": {"fr": "Collecteur", "en": "Collector"}, "correct": false, "shape": {"x": 132, "y": 20, "w": 50, "h": 40}},
+      {"text": {"fr": "Émetteur", "en": "Emitter"}, "correct": true, "shape": {"x": 132, "y": 116, "w": 50, "h": 40}}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q04", "section": "02-courants-gain", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Un transistor a un gain β = 150. Quel courant de collecteur donne un courant de base de 50 µA ? (exemple : 3 mA)", "en": "A transistor has a gain β = 150. What collector current does a 50 µA base current give? (example: 3 mA)"},
+    "explanation": {"fr": "IC = β × IB = 150 × 50 µA = 7,5 mA.", "en": "IC = β × IB = 150 × 50 µA = 7.5 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.0075", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m3-q05", "section": "02-courants-gain", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "IB = 0,05 mA et IC = 7,5 mA. Quel est le courant d'émetteur ? (exemple : 8 mA)", "en": "IB = 0.05 mA and IC = 7.5 mA. What is the emitter current? (example: 8 mA)"},
+    "explanation": {"fr": "IE = IB + IC = 7,55 mA.", "en": "IE = IB + IC = 7.55 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.00755", "unit": "A", "tolerance_pct": 1}
+  },
+  {
+    "id": "e-p1-m3-q06", "section": "02-courants-gain", "type": "truefalse", "usage": "quiz",
+    "prompt": {"fr": "Vrai ou faux : tous les transistors d'un même modèle ont exactement le même gain β.", "en": "True or false: all transistors of the same model have exactly the same gain β."},
+    "explanation": {"fr": "Faux. β varie beaucoup d'un exemplaire à l'autre : on calcule avec la valeur minimale.", "en": "False. β varies a lot from part to part: calculate with the minimum value."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q07", "section": "03-polarisation", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "VBB = 5 V, RB = 100 kΩ. Calculez le courant de base (VBE = 0,7 V). (exemple : 20 µA)", "en": "VBB = 5 V, RB = 100 kΩ. Calculate the base current (VBE = 0.7 V). (example: 20 µA)"},
+    "explanation": {"fr": "IB = (5 − 0,7) / 100 000 = 43 µA.", "en": "IB = (5 − 0.7) / 100,000 = 43 µA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.000043", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m3-q08", "section": "03-polarisation", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "VCC = 12 V, RC = 1 kΩ et IC = 4,3 mA. Que vaut VCE ? (exemple : 5 V)", "en": "VCC = 12 V, RC = 1 kΩ and IC = 4.3 mA. What is VCE? (example: 5 V)"},
+    "explanation": {"fr": "VCE = VCC − RC × IC = 12 − 4,3 = 7,7 V.", "en": "VCE = VCC − RC × IC = 12 − 4.3 = 7.7 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "7.7", "unit": "V", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m3-q09", "section": "03-polarisation", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Comment mesure-t-on le gain réel d'un transistor dans un montage ?", "en": "How do you measure a transistor's real gain in a circuit?"},
+    "explanation": {"fr": "On mesure IB et IC, puis on calcule leur rapport IC / IB.", "en": "Measure IB and IC, then work out their ratio IC / IB."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "En divisant IC mesuré par IB mesuré", "en": "By dividing measured IC by measured IB"}, "correct": true},
+      {"text": {"fr": "En mesurant VCE", "en": "By measuring VCE"}, "correct": false},
+      {"text": {"fr": "En lisant le code couleur", "en": "By reading the colour code"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q10", "section": "04-regimes", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Le courant de base est nul. Dans quel régime est le transistor ?", "en": "The base current is zero. Which region is the transistor in?"},
+    "explanation": {"fr": "IB = 0 : le transistor est bloqué, IC ≈ 0.", "en": "IB = 0: the transistor is cut off, IC ≈ 0."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Bloqué", "en": "Cut off"}, "correct": true},
+      {"text": {"fr": "Saturé", "en": "Saturated"}, "correct": false},
+      {"text": {"fr": "Linéaire", "en": "Linear"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q11", "section": "04-regimes", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Un transistor saturé présente environ quelle tension VCE ?", "en": "About what VCE does a saturated transistor show?"},
+    "explanation": {"fr": "Saturé, VCE tombe vers 0,2 V : le transistor se comporte comme un interrupteur fermé.", "en": "When saturated, VCE falls to about 0.2 V: the transistor behaves like a closed switch."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Environ 0,2 V", "en": "About 0.2 V"}, "correct": true},
+      {"text": {"fr": "Environ VCC", "en": "About VCC"}, "correct": false},
+      {"text": {"fr": "Environ VCC / 2", "en": "About VCC / 2"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q12", "section": "04-regimes", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "VCC = 12 V et RC = 1 kΩ. Quel est environ le courant de collecteur à saturation ? (exemple : 5 mA)", "en": "VCC = 12 V and RC = 1 kΩ. About what is the collector current at saturation? (example: 5 mA)"},
+    "explanation": {"fr": "IC sat ≈ VCC / RC = 12 mA (en négligeant les 0,2 V de VCE).", "en": "IC sat ≈ VCC / RC = 12 mA (neglecting the 0.2 V of VCE)."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.012", "unit": "A", "tolerance_pct": 3}
+  },
+  {
+    "id": "e-p1-m3-q13", "section": "05-tester", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "En mode diode, pointe rouge sur la base et noire sur l'émetteur d'un NPN en bon état. Que lit-on ?", "en": "In diode mode, red probe on the base and black on the emitter of a good NPN. What do you read?"},
+    "explanation": {"fr": "La jonction base-émetteur est passante dans ce sens : environ 0,6 à 0,7 V.", "en": "The base-emitter junction conducts this way: about 0.6 to 0.7 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Environ 0,65 V", "en": "About 0.65 V"}, "correct": true},
+      {"text": {"fr": "OL", "en": "OL"}, "correct": false},
+      {"text": {"fr": "0 V", "en": "0 V"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q14", "section": "05-tester", "type": "truefalse", "usage": "quiz",
+    "prompt": {"fr": "Vrai ou faux : entre collecteur et émetteur d'un transistor en bon état, le mode diode affiche OL dans les deux sens.", "en": "True or false: between collector and emitter of a good transistor, diode mode shows OL both ways."},
+    "explanation": {"fr": "Vrai : il y a deux jonctions tête-bêche entre collecteur et émetteur.", "en": "True: there are two back-to-back junctions between collector and emitter."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": true},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-q15", "section": "06-jfet", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Qu'est-ce qui commande un JFET ?", "en": "What controls a JFET?"},
+    "explanation": {"fr": "La tension grille-source VGS ; la grille ne consomme presque aucun courant.", "en": "The gate-source voltage VGS; the gate draws almost no current."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "La tension grille-source", "en": "The gate-source voltage"}, "correct": true},
+      {"text": {"fr": "Le courant de base", "en": "The base current"}, "correct": false},
+      {"text": {"fr": "Le courant de drain", "en": "The drain current"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x01", "section": "01-structure", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Pourquoi faut-il consulter la fiche technique avant de câbler un transistor ?", "en": "Why should you read the datasheet before wiring a transistor?"},
+    "explanation": {"fr": "L'ordre des broches E, B, C change d'un modèle à l'autre.", "en": "The order of the E, B, C leads changes from one model to another."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "L'ordre des broches dépend du modèle", "en": "The lead order depends on the model"}, "correct": true},
+      {"text": {"fr": "Pour connaître sa couleur", "en": "To find out its colour"}, "correct": false},
+      {"text": {"fr": "Ce n'est pas nécessaire", "en": "It is not necessary"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x02", "section": "01-structure", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : dans un transistor, un petit courant de base commande un courant de collecteur bien plus grand.", "en": "True or false: in a transistor, a small base current controls a much larger collector current."},
+    "explanation": {"fr": "Vrai : c'est tout l'intérêt du transistor.", "en": "True: that is the whole point of the transistor."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": true},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x03", "section": "02-courants-gain", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "On mesure IB = 20 µA et IC = 4 mA. Quel est le gain β ? (saisissez un nombre sans unité, exemple : 120)", "en": "IB = 20 µA and IC = 4 mA are measured. What is the gain β? (enter a number without a unit, example: 120)"},
+    "explanation": {"fr": "β = IC / IB = 4 mA / 20 µA = 200.", "en": "β = IC / IB = 4 mA / 20 µA = 200."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "200", "unit": "", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m3-x04", "section": "02-courants-gain", "type": "single", "usage": "exam",
+    "prompt": {"fr": "La fiche technique indique hFE entre 110 et 450. Quelle valeur utiliser pour un calcul fiable ?", "en": "The datasheet gives hFE between 110 and 450. Which value should you use for a reliable calculation?"},
+    "explanation": {"fr": "On calcule avec la valeur minimale, 110, pour que le montage fonctionne avec tous les exemplaires.", "en": "Calculate with the minimum value, 110, so the circuit works with every part."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "110", "en": "110"}, "correct": true},
+      {"text": {"fr": "280", "en": "280"}, "correct": false},
+      {"text": {"fr": "450", "en": "450"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x05", "section": "03-polarisation", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "VBB = 3 V, RB = 47 kΩ, VBE = 0,7 V. Calculez IB. (exemple : 20 µA)", "en": "VBB = 3 V, RB = 47 kΩ, VBE = 0.7 V. Calculate IB. (example: 20 µA)"},
+    "explanation": {"fr": "IB = (3 − 0,7) / 47 000 ≈ 48,9 µA.", "en": "IB = (3 − 0.7) / 47,000 ≈ 48.9 µA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.00004894", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m3-x06", "section": "03-polarisation", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Le calcul de VCE = VCC − RC × β × IB donne une valeur négative. Qu'en conclure ?", "en": "The calculation VCE = VCC − RC × β × IB gives a negative value. What do you conclude?"},
+    "explanation": {"fr": "Le circuit ne peut pas fournir β × IB : le transistor est saturé, VCE ≈ 0,2 V.", "en": "The circuit cannot supply β × IB: the transistor is saturated, VCE ≈ 0.2 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Le transistor est saturé", "en": "The transistor is saturated"}, "correct": true},
+      {"text": {"fr": "Le transistor est bloqué", "en": "The transistor is cut off"}, "correct": false},
+      {"text": {"fr": "Le transistor est inversé", "en": "The transistor is reversed"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x07", "section": "04-regimes", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Quelles affirmations décrivent le régime linéaire ?", "en": "Which statements describe the linear region?"},
+    "explanation": {"fr": "En régime linéaire, IC = β × IB presque indépendamment de VCE : c'est le régime de l'amplification.", "en": "In the linear region, IC = β × IB almost regardless of VCE: it is the amplification region."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "IC = β × IB", "en": "IC = β × IB"}, "correct": true},
+      {"text": {"fr": "C'est le régime de l'amplification", "en": "It is the amplification region"}, "correct": true},
+      {"text": {"fr": "VCE ≈ 0,2 V", "en": "VCE ≈ 0.2 V"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x08", "section": "04-regimes", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Où place-t-on le point de repos Q pour avoir le plus de marge en amplification ?", "en": "Where is the quiescent point Q placed to get the most room for amplification?"},
+    "explanation": {"fr": "Vers le milieu de la droite de charge, autour de VCE ≈ VCC / 2.", "en": "Around the middle of the load line, near VCE ≈ VCC / 2."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vers le milieu de la droite de charge", "en": "Around the middle of the load line"}, "correct": true},
+      {"text": {"fr": "Tout près de la saturation", "en": "Right next to saturation"}, "correct": false},
+      {"text": {"fr": "Tout près du blocage", "en": "Right next to cut-off"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x09", "section": "05-tester", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Une jonction affiche 0,01 V dans les deux sens en mode diode. Quel est le diagnostic ?", "en": "A junction reads 0.01 V both ways in diode mode. What is the diagnosis?"},
+    "explanation": {"fr": "Une lecture proche de 0 V signale une jonction en court-circuit : le transistor est hors service.", "en": "A reading near 0 V means a shorted junction: the transistor is dead."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Jonction en court-circuit", "en": "Shorted junction"}, "correct": true},
+      {"text": {"fr": "Jonction en bon état", "en": "Junction in good order"}, "correct": false},
+      {"text": {"fr": "C'est un PNP", "en": "It is a PNP"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x10", "section": "05-tester", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Les deux jonctions conduisent avec la pointe noire sur la base. De quel type de transistor s'agit-il ?", "en": "Both junctions conduct with the black probe on the base. What type of transistor is it?"},
+    "explanation": {"fr": "Pour un PNP, les diodes sont retournées : elles conduisent avec la pointe noire sur la base.", "en": "For a PNP the diodes are reversed: they conduct with the black probe on the base."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "PNP", "en": "PNP"}, "correct": true},
+      {"text": {"fr": "NPN", "en": "NPN"}, "correct": false},
+      {"text": {"fr": "JFET", "en": "JFET"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x11", "section": "06-jfet", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Un JFET canal N a sa grille reliée à la source (VGS = 0). Que fait-il ?", "en": "An N-channel JFET has its gate tied to the source (VGS = 0). What does it do?"},
+    "explanation": {"fr": "À VGS = 0, le canal est grand ouvert : le courant de drain vaut IDSS, son maximum.", "en": "At VGS = 0, the channel is wide open: the drain current is IDSS, its maximum."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Il conduit au maximum (IDSS)", "en": "It conducts at its maximum (IDSS)"}, "correct": true},
+      {"text": {"fr": "Il est bloqué", "en": "It is cut off"}, "correct": false},
+      {"text": {"fr": "Il se détruit", "en": "It is destroyed"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m3-x12", "section": "06-jfet", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : la grille d'un JFET consomme un courant important, comme la base d'un bipolaire.", "en": "True or false: a JFET's gate draws a large current, like the base of a bipolar transistor."},
+    "explanation": {"fr": "Faux : polarisée en inverse, la grille ne consomme presque aucun courant.", "en": "False: reverse-biased, the gate draws almost no current."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  }
+]

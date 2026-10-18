@@ -1,0 +1,272 @@
+[
+  {
+    "id": "e-p1-m2-q01", "section": "01-jonction-pn", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Qu'apporte un dopage de type N au silicium ?", "en": "What does N-type doping add to silicon?"},
+    "explanation": {"fr": "Le dopage N apporte des électrons libres ; le dopage P crée des trous.", "en": "N doping adds free electrons; P doping creates holes."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Des électrons libres", "en": "Free electrons"}, "correct": true},
+      {"text": {"fr": "Des trous", "en": "Holes"}, "correct": false},
+      {"text": {"fr": "Un isolant", "en": "An insulator"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q02", "section": "01-jonction-pn", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Sur une diode, comment repère-t-on la cathode ?", "en": "On a diode, how do you find the cathode?"},
+    "explanation": {"fr": "La bague peinte sur le boîtier marque la cathode, comme le trait vertical du symbole.", "en": "The painted band on the package marks the cathode, like the vertical bar of the symbol."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Par la bague peinte sur le boîtier", "en": "By the painted band on the package"}, "correct": true},
+      {"text": {"fr": "C'est toujours la patte la plus longue", "en": "It is always the longer leg"}, "correct": false},
+      {"text": {"fr": "Les deux pattes sont équivalentes", "en": "Both legs are the same"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q03", "section": "02-polarisation", "type": "truefalse", "usage": "quiz",
+    "prompt": {"fr": "Vrai ou faux : une diode passante limite d'elle-même le courant qui la traverse.", "en": "True or false: a conducting diode limits the current through it by itself."},
+    "explanation": {"fr": "Faux. Une diode passante ne limite pas le courant : une résistance ou la charge doit le faire.", "en": "False. A conducting diode does not limit current: a resistor or the load must do it."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q04", "section": "02-polarisation", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Une diode est montée avec sa cathode du côté + de la pile. Dans quel état est-elle ?", "en": "A diode is fitted with its cathode on the + side of the battery. What state is it in?"},
+    "explanation": {"fr": "Cathode au +, c'est la polarisation inverse : la diode est bloquée.", "en": "Cathode to + is reverse bias: the diode is blocked."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Bloquée", "en": "Blocked"}, "correct": true},
+      {"text": {"fr": "Passante", "en": "Conducting"}, "correct": false},
+      {"text": {"fr": "Détruite", "en": "Destroyed"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q05", "section": "03-caracteristique", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Une pile de 5 V alimente une résistance de 470 Ω et une diode au silicium passante (0,7 V). Quel est le courant ? (exemple : 4,5 mA)", "en": "A 5 V cell feeds a 470 Ω resistor and a conducting silicon diode (0.7 V). What is the current? (example: 4.5 mA)"},
+    "explanation": {"fr": "I = (5 − 0,7) / 470 ≈ 9,15 mA.", "en": "I = (5 − 0.7) / 470 ≈ 9.15 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.009149", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-q06", "section": "03-caracteristique", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Quelle tension mesure-t-on environ aux bornes d'une diode au silicium passante ? (exemple : 1,2 V)", "en": "What voltage do you measure roughly across a conducting silicon diode? (example: 1.2 V)"},
+    "explanation": {"fr": "Environ 0,7 V : c'est le seuil du silicium.", "en": "About 0.7 V: this is the silicon threshold."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.7", "unit": "V", "tolerance_pct": 15}
+  },
+  {
+    "id": "e-p1-m2-q07", "section": "03-caracteristique", "type": "truefalse", "usage": "quiz",
+    "prompt": {"fr": "Vrai ou faux : on peut calculer le courant d'une diode avec I = U / R comme pour une résistance.", "en": "True or false: you can calculate a diode's current with I = U / R as for a resistor."},
+    "explanation": {"fr": "Faux. La caractéristique d'une diode n'est pas une droite : elle ne suit pas la loi d'Ohm.", "en": "False. A diode's characteristic is not a straight line: it does not follow Ohm's law."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q08", "section": "04-led", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Calculez la résistance série d'une LED rouge (2 V) alimentée sous 9 V avec 20 mA. (exemple : 220 Ω)", "en": "Calculate the series resistor for a red LED (2 V) fed from 9 V at 20 mA. (example: 220 Ω)"},
+    "explanation": {"fr": "R = (9 − 2) / 0,02 = 350 Ω ; on choisit ensuite 330 Ω ou 390 Ω.", "en": "R = (9 − 2) / 0.02 = 350 Ω; then choose 330 Ω or 390 Ω."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "350", "unit": "Ω", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-q09", "section": "04-led", "type": "matching", "usage": "quiz",
+    "prompt": {"fr": "Associez chaque couleur de LED à sa tension de seuil typique.", "en": "Match each LED colour with its typical threshold voltage."},
+    "explanation": {"fr": "Rouge vers 1,8 V, vert vers 2,1 V, bleu vers 3 V.", "en": "Red around 1.8 V, green around 2.1 V, blue around 3 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "pairs": [
+      {"left": {"fr": "LED rouge", "en": "Red LED"}, "right": {"fr": "environ 1,8 V", "en": "about 1.8 V"}},
+      {"left": {"fr": "LED verte", "en": "Green LED"}, "right": {"fr": "environ 2,1 V", "en": "about 2.1 V"}},
+      {"left": {"fr": "LED bleue", "en": "Blue LED"}, "right": {"fr": "environ 3 V", "en": "about 3 V"}}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q10", "section": "04-led", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Quelle patte d'une LED est l'anode ?", "en": "Which leg of an LED is the anode?"},
+    "explanation": {"fr": "La patte la plus longue est l'anode ; le méplat du boîtier est côté cathode.", "en": "The longer leg is the anode; the flat edge of the package is on the cathode side."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "La patte la plus longue", "en": "The longer leg"}, "correct": true},
+      {"text": {"fr": "La patte côté méplat", "en": "The leg on the flat side"}, "correct": false},
+      {"text": {"fr": "La patte la plus courte", "en": "The shorter leg"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q11", "section": "04-led", "type": "hotspot", "usage": "quiz",
+    "prompt": {"fr": "Sur ce schéma, cliquez sur la LED.", "en": "On this diagram, click the LED."},
+    "explanation": {"fr": "La LED se reconnaît aux deux petites flèches qui sortent du symbole de diode.", "en": "The LED is recognised by the two small arrows coming out of the diode symbol."},
+    "reviewed": {"fr": true, "en": true},
+    "svg": "schemas/m2-circuit.svg",
+    "choices": [
+      {"text": {"fr": "Diode", "en": "Diode"}, "correct": false, "shape": {"x": 115, "y": 20, "w": 55, "h": 40}},
+      {"text": {"fr": "Résistance", "en": "Resistor"}, "correct": false, "shape": {"x": 205, "y": 25, "w": 60, "h": 30}},
+      {"text": {"fr": "LED", "en": "LED"}, "correct": true, "shape": {"x": 320, "y": 90, "w": 60, "h": 55}}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q12", "section": "05-redressement", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Avec une seule diode en série, quelle partie d'une tension alternative atteint la charge ?", "en": "With a single diode in series, which part of an alternating voltage reaches the load?"},
+    "explanation": {"fr": "Seules les alternances positives passent : c'est le redressement simple alternance.", "en": "Only the positive half-cycles pass: this is half-wave rectification."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Les alternances positives seulement", "en": "Only the positive half-cycles"}, "correct": true},
+      {"text": {"fr": "Les deux alternances", "en": "Both half-cycles"}, "correct": false},
+      {"text": {"fr": "Rien du tout", "en": "Nothing at all"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q13", "section": "05-redressement", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "La tension d'entrée a une crête de 12 V. Quelle est la crête après une diode au silicium ? (exemple : 10 V)", "en": "The input voltage peaks at 12 V. What is the peak after a silicon diode? (example: 10 V)"},
+    "explanation": {"fr": "La diode prend environ 0,7 V : 12 − 0,7 = 11,3 V.", "en": "The diode takes about 0.7 V: 12 − 0.7 = 11.3 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "11.3", "unit": "V", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-q14", "section": "06-zener", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Comment monte-t-on une diode Zener utilisée comme régulateur ?", "en": "How is a Zener diode fitted when used as a regulator?"},
+    "explanation": {"fr": "En inverse, cathode côté positif, avec une résistance série.", "en": "In reverse, cathode on the positive side, with a series resistor."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "En inverse, avec une résistance série", "en": "In reverse, with a series resistor"}, "correct": true},
+      {"text": {"fr": "En direct, sans résistance", "en": "Forward, without a resistor"}, "correct": false},
+      {"text": {"fr": "En inverse, directement sur la pile", "en": "In reverse, straight across the battery"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-q15", "section": "06-zener", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Régulateur Zener : E = 12 V, Vz = 5,1 V, R = 330 Ω. Quel courant traverse R ? (exemple : 15 mA)", "en": "Zener regulator: E = 12 V, Vz = 5.1 V, R = 330 Ω. What current flows through R? (example: 15 mA)"},
+    "explanation": {"fr": "I = (12 − 5,1) / 330 ≈ 20,9 mA.", "en": "I = (12 − 5.1) / 330 ≈ 20.9 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.02091", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-x01", "section": "01-jonction-pn", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Quelle tension faut-il environ pour franchir la barrière d'une jonction PN au silicium ?", "en": "About what voltage is needed to cross the barrier of a silicon PN junction?"},
+    "explanation": {"fr": "Environ 0,6 à 0,7 V pour le silicium.", "en": "About 0.6 to 0.7 V for silicon."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Environ 0,7 V", "en": "About 0.7 V"}, "correct": true},
+      {"text": {"fr": "Environ 5 V", "en": "About 5 V"}, "correct": false},
+      {"text": {"fr": "Environ 0,07 V", "en": "About 0.07 V"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x02", "section": "01-jonction-pn", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : la flèche du symbole de la diode indique le sens passant du courant.", "en": "True or false: the arrow of the diode symbol shows the forward direction of current."},
+    "explanation": {"fr": "Vrai : de l'anode vers la cathode.", "en": "True: from the anode to the cathode."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": true},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x03", "section": "02-polarisation", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Pourquoi place-t-on une diode en série à l'entrée d'un appareil alimenté par pile ?", "en": "Why is a diode placed in series at the input of a battery-powered device?"},
+    "explanation": {"fr": "Elle bloque le courant si la pile est branchée à l'envers et protège l'appareil.", "en": "It blocks the current if the battery is fitted the wrong way round, protecting the device."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Pour le protéger d'une pile branchée à l'envers", "en": "To protect it from a reversed battery"}, "correct": true},
+      {"text": {"fr": "Pour augmenter la tension", "en": "To increase the voltage"}, "correct": false},
+      {"text": {"fr": "Pour éclairer l'appareil", "en": "To light up the device"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x04", "section": "02-polarisation", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Une diode est polarisée en inverse sous 6 V. Quelles affirmations sont exactes ?", "en": "A diode is reverse-biased with 6 V. Which statements are correct?"},
+    "explanation": {"fr": "Bloquée, la diode laisse passer un courant quasi nul et presque toute la tension se retrouve à ses bornes.", "en": "When blocked, the diode passes almost no current and nearly all the voltage appears across it."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Le courant est presque nul", "en": "The current is almost zero"}, "correct": true},
+      {"text": {"fr": "Presque toute la tension est aux bornes de la diode", "en": "Almost all the voltage is across the diode"}, "correct": true},
+      {"text": {"fr": "La diode a 0,7 V à ses bornes", "en": "The diode has 0.7 V across it"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x05", "section": "03-caracteristique", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "Une pile de 9 V alimente une diode au silicium et une résistance de 1 kΩ en série. Quel est le courant ? (exemple : 5 mA)", "en": "A 9 V battery feeds a silicon diode and a 1 kΩ resistor in series. What is the current? (example: 5 mA)"},
+    "explanation": {"fr": "I = (9 − 0,7) / 1 000 = 8,3 mA.", "en": "I = (9 − 0.7) / 1,000 = 8.3 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.0083", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-x06", "section": "04-led", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Le calcul donne 350 Ω pour la résistance d'une LED. Quelle valeur normalisée garde le courant sous la valeur visée ?", "en": "The calculation gives 350 Ω for an LED resistor. Which standard value keeps the current below the target?"},
+    "explanation": {"fr": "Une résistance plus grande donne un courant plus faible : on prend la valeur au-dessus, 390 Ω.", "en": "A larger resistor gives a smaller current: take the value above, 390 Ω."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "390 Ω", "en": "390 Ω"}, "correct": true},
+      {"text": {"fr": "330 Ω", "en": "330 Ω"}, "correct": false},
+      {"text": {"fr": "100 Ω", "en": "100 Ω"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x07", "section": "04-led", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "Une LED blanche (3 V) est alimentée sous 5 V avec une résistance de 100 Ω. Quel est le courant ? (exemple : 15 mA)", "en": "A white LED (3 V) is fed from 5 V through a 100 Ω resistor. What is the current? (example: 15 mA)"},
+    "explanation": {"fr": "I = (5 − 3) / 100 = 20 mA.", "en": "I = (5 − 3) / 100 = 20 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.02", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-x08", "section": "05-redressement", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Qu'est-ce qui rapproche la sortie d'un redresseur d'une tension continue ?", "en": "What brings a rectifier's output closer to a steady DC voltage?"},
+    "explanation": {"fr": "Le pont de diodes garde les deux alternances et le condensateur de filtrage comble les creux.", "en": "The diode bridge keeps both half-cycles and the smoothing capacitor fills the dips."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Un pont de quatre diodes", "en": "A bridge of four diodes"}, "correct": true},
+      {"text": {"fr": "Un condensateur de filtrage", "en": "A smoothing capacitor"}, "correct": true},
+      {"text": {"fr": "Une LED en série", "en": "An LED in series"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x09", "section": "05-redressement", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : après un redressement simple alternance, la tension de sortie est parfaitement constante.", "en": "True or false: after half-wave rectification, the output voltage is perfectly steady."},
+    "explanation": {"fr": "Faux : elle ne change plus de signe, mais elle varie par bosses.", "en": "False: it no longer changes sign, but it varies in bumps."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x10", "section": "06-zener", "type": "single", "usage": "exam",
+    "prompt": {"fr": "La pile d'un régulateur Zener de 5,1 V passe de 12 V à 10 V. Que devient la tension de sortie ?", "en": "The battery of a 5.1 V Zener regulator drops from 12 V to 10 V. What happens to the output voltage?"},
+    "explanation": {"fr": "Tant que la Zener conduit, elle maintient environ 5,1 V : c'est le rôle du régulateur.", "en": "As long as the Zener conducts, it holds about 5.1 V: that is the regulator's job."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Elle reste vers 5,1 V", "en": "It stays around 5.1 V"}, "correct": true},
+      {"text": {"fr": "Elle tombe à 3,1 V", "en": "It falls to 3.1 V"}, "correct": false},
+      {"text": {"fr": "Elle monte à 10 V", "en": "It rises to 10 V"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m2-x11", "section": "06-zener", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "Une Zener de 5,1 V conduit 21 mA à vide. Quelle puissance dissipe-t-elle ? (exemple : 0,2 W)", "en": "A 5.1 V Zener conducts 21 mA with no load. What power does it dissipate? (example: 0.2 W)"},
+    "explanation": {"fr": "P = 5,1 × 0,021 ≈ 0,107 W.", "en": "P = 5.1 × 0.021 ≈ 0.107 W."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.1071", "unit": "W", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m2-x12", "section": "06-zener", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : polarisée en direct, une Zener se comporte comme une diode ordinaire.", "en": "True or false: forward-biased, a Zener behaves like an ordinary diode."},
+    "explanation": {"fr": "Vrai : environ 0,7 V à ses bornes en direct.", "en": "True: about 0.7 V across it when forward-biased."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": true},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": false}
+    ]
+  }
+]

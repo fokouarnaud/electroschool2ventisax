@@ -1,0 +1,274 @@
+[
+  {
+    "id": "e-p1-m1-q01", "section": "01-courant-tension-resistance", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Comment branche-t-on un ampèremètre pour mesurer le courant dans une lampe ?", "en": "How do you connect an ammeter to measure the current through a lamp?"},
+    "explanation": {"fr": "Le courant doit traverser l'appareil : on ouvre le circuit et on y insère l'ampèremètre, en série.", "en": "The current must flow through the meter: you open the circuit and insert the ammeter, in series."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "En série avec la lampe", "en": "In series with the lamp"}, "correct": true},
+      {"text": {"fr": "En parallèle sur la lampe", "en": "In parallel across the lamp"}, "correct": false},
+      {"text": {"fr": "Directement aux bornes de la pile", "en": "Directly across the battery"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q02", "section": "01-courant-tension-resistance", "type": "truefalse", "usage": "quiz",
+    "prompt": {"fr": "Vrai ou faux : une tension se mesure toujours entre deux points du circuit.", "en": "True or false: a voltage is always measured between two points of the circuit."},
+    "explanation": {"fr": "Vrai. La tension est une différence entre deux points, d'où le voltmètre branché en parallèle.", "en": "True. Voltage is a difference between two points, which is why the voltmeter is connected in parallel."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": true},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q03", "section": "01-courant-tension-resistance", "type": "matching", "usage": "quiz",
+    "prompt": {"fr": "Associez chaque grandeur à son unité.", "en": "Match each quantity with its unit."},
+    "explanation": {"fr": "Tension en volts, courant en ampères, résistance en ohms, puissance en watts.", "en": "Voltage in volts, current in amperes, resistance in ohms, power in watts."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "pairs": [
+      {"left": {"fr": "Tension", "en": "Voltage"}, "right": {"fr": "Volt (V)", "en": "Volt (V)"}},
+      {"left": {"fr": "Courant", "en": "Current"}, "right": {"fr": "Ampère (A)", "en": "Ampere (A)"}},
+      {"left": {"fr": "Résistance", "en": "Resistance"}, "right": {"fr": "Ohm (Ω)", "en": "Ohm (Ω)"}},
+      {"left": {"fr": "Puissance", "en": "Power"}, "right": {"fr": "Watt (W)", "en": "Watt (W)"}}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q04", "section": "01-courant-tension-resistance", "type": "hotspot", "usage": "quiz",
+    "prompt": {"fr": "Sur ce schéma, cliquez sur l'interrupteur.", "en": "On this diagram, click the switch."},
+    "explanation": {"fr": "L'interrupteur est le contact mobile entre deux petits cercles, en haut du circuit.", "en": "The switch is the moving contact between two small circles, at the top of the circuit."},
+    "reviewed": {"fr": true, "en": true},
+    "svg": "schemas/m1-circuit.svg",
+    "choices": [
+      {"text": {"fr": "Générateur", "en": "Source"}, "correct": false, "shape": {"x": 30, "y": 80, "w": 60, "h": 80}},
+      {"text": {"fr": "Interrupteur", "en": "Switch"}, "correct": true, "shape": {"x": 115, "y": 15, "w": 70, "h": 40}},
+      {"text": {"fr": "Résistance", "en": "Resistor"}, "correct": false, "shape": {"x": 215, "y": 25, "w": 50, "h": 30}},
+      {"text": {"fr": "Lampe", "en": "Lamp"}, "correct": false, "shape": {"x": 325, "y": 95, "w": 50, "h": 50}}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q05", "section": "02-loi-ohm", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Une résistance de 4,7 kΩ est alimentée sous 12 V. Quel courant la traverse ? (exemple de saisie : 2,5 mA)", "en": "A 4.7 kΩ resistor is supplied with 12 V. What current flows through it? (input example: 2.5 mA)"},
+    "explanation": {"fr": "I = U / R = 12 V / 4,7 kΩ ≈ 2,55 mA.", "en": "I = U / R = 12 V / 4.7 kΩ ≈ 2.55 mA."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.002553", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-q06", "section": "02-loi-ohm", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Une résistance est traversée par 20 mA quand on lui applique 5 V. Quelle est sa valeur ? (exemple : 330 Ω)", "en": "A resistor carries 20 mA when 5 V is applied to it. What is its value? (example: 330 Ω)"},
+    "explanation": {"fr": "R = U / I = 5 V / 0,02 A = 250 Ω.", "en": "R = U / I = 5 V / 0.02 A = 250 Ω."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "250", "unit": "Ω", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-q07", "section": "02-loi-ohm", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "On double la tension aux bornes d'une même résistance. Que devient le courant ?", "en": "The voltage across the same resistor is doubled. What happens to the current?"},
+    "explanation": {"fr": "I = U / R : avec R constant, le courant est proportionnel à la tension, il double.", "en": "I = U / R: with R constant, current is proportional to voltage, so it doubles."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Il double", "en": "It doubles"}, "correct": true},
+      {"text": {"fr": "Il est divisé par deux", "en": "It is halved"}, "correct": false},
+      {"text": {"fr": "Il ne change pas", "en": "It does not change"}, "correct": false},
+      {"text": {"fr": "Il est multiplié par quatre", "en": "It is multiplied by four"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q08", "section": "03-serie-parallele", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Quelle est la résistance équivalente de 1 kΩ, 2,2 kΩ et 3,3 kΩ en série ? (exemple : 4,7 kΩ)", "en": "What is the equivalent resistance of 1 kΩ, 2.2 kΩ and 3.3 kΩ in series? (example: 4.7 kΩ)"},
+    "explanation": {"fr": "En série, on additionne : 1 + 2,2 + 3,3 = 6,5 kΩ.", "en": "In series, add them up: 1 + 2.2 + 3.3 = 6.5 kΩ."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "6500", "unit": "Ω", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-q09", "section": "03-serie-parallele", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Deux résistances de 10 kΩ sont branchées en parallèle. Quelle est leur résistance équivalente ?", "en": "Two 10 kΩ resistors are connected in parallel. What is their equivalent resistance?"},
+    "explanation": {"fr": "Deux résistances égales en parallèle valent la moitié de l'une d'elles : 5 kΩ.", "en": "Two equal resistors in parallel are worth half of one of them: 5 kΩ."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "5 kΩ", "en": "5 kΩ"}, "correct": true},
+      {"text": {"fr": "10 kΩ", "en": "10 kΩ"}, "correct": false},
+      {"text": {"fr": "20 kΩ", "en": "20 kΩ"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q10", "section": "03-serie-parallele", "type": "multiple", "usage": "quiz",
+    "prompt": {"fr": "Quelles affirmations sur des résistances en parallèle sont exactes ?", "en": "Which statements about resistors in parallel are correct?"},
+    "explanation": {"fr": "En parallèle, toutes les résistances ont la même tension et la résistance équivalente est plus petite que la plus petite d'entre elles. Le courant, lui, se partage.", "en": "In parallel, all resistors share the same voltage and the equivalent resistance is smaller than the smallest of them. The current, however, is shared."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Elles ont toutes la même tension", "en": "They all have the same voltage"}, "correct": true},
+      {"text": {"fr": "La résistance équivalente est plus petite que la plus petite", "en": "The equivalent resistance is smaller than the smallest one"}, "correct": true},
+      {"text": {"fr": "Elles sont toutes traversées par le même courant", "en": "The same current flows through all of them"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q11", "section": "04-puissance", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Quelle puissance dissipe une résistance de 100 Ω alimentée sous 10 V ? (exemple : 0,5 W)", "en": "What power does a 100 Ω resistor dissipate on 10 V? (example: 0.5 W)"},
+    "explanation": {"fr": "P = U² / R = 100 / 100 = 1 W.", "en": "P = U² / R = 100 / 100 = 1 W."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "1", "unit": "W", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-q12", "section": "04-puissance", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Le courant dans une résistance double. Que devient la puissance dissipée ?", "en": "The current through a resistor doubles. What happens to the power dissipated?"},
+    "explanation": {"fr": "P = R × I² : le courant est au carré, la puissance est multipliée par quatre.", "en": "P = R × I²: the current is squared, so the power is multiplied by four."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Elle est multipliée par quatre", "en": "It is multiplied by four"}, "correct": true},
+      {"text": {"fr": "Elle double", "en": "It doubles"}, "correct": false},
+      {"text": {"fr": "Elle ne change pas", "en": "It does not change"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q13", "section": "05-diviseur-tension", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Diviseur de tension : Ve = 12 V, R1 = 10 kΩ en haut, R2 = 4,7 kΩ en bas. Calculez Vs. (exemple : 6 V)", "en": "Voltage divider: Vin = 12 V, R1 = 10 kΩ at the top, R2 = 4.7 kΩ at the bottom. Calculate Vout. (example: 6 V)"},
+    "explanation": {"fr": "Vs = 12 × 4,7 / (10 + 4,7) ≈ 3,84 V.", "en": "Vout = 12 × 4.7 / (10 + 4.7) ≈ 3.84 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "3.837", "unit": "V", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-q14", "section": "06-diviseur-courant", "type": "single", "usage": "quiz",
+    "prompt": {"fr": "Deux branches en parallèle : 1 kΩ et 2 kΩ. Laquelle est parcourue par le plus grand courant ?", "en": "Two parallel branches: 1 kΩ and 2 kΩ. Which one carries the larger current?"},
+    "explanation": {"fr": "Même tension sur les deux branches : la moins résistante, 1 kΩ, laisse passer le plus de courant (le double).", "en": "Same voltage on both branches: the lower resistance, 1 kΩ, carries the most current (twice as much)."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "La branche de 1 kΩ", "en": "The 1 kΩ branch"}, "correct": true},
+      {"text": {"fr": "La branche de 2 kΩ", "en": "The 2 kΩ branch"}, "correct": false},
+      {"text": {"fr": "Les deux reçoivent le même courant", "en": "Both carry the same current"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-q15", "section": "07-condensateur", "type": "numeric", "usage": "quiz",
+    "prompt": {"fr": "Quelle est la constante de temps d'un circuit avec R = 10 kΩ et C = 100 µF ? (exemple : 0,5 s)", "en": "What is the time constant of a circuit with R = 10 kΩ and C = 100 µF? (example: 0.5 s)"},
+    "explanation": {"fr": "τ = R × C = 10 000 × 0,000 1 = 1 s.", "en": "τ = R × C = 10,000 × 0.000 1 = 1 s."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "1", "unit": "s", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-x01", "section": "01-courant-tension-resistance", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Combien vaut 4,7 kΩ en ohms ?", "en": "How much is 4.7 kΩ in ohms?"},
+    "explanation": {"fr": "Le préfixe k multiplie par 1 000 : 4 700 Ω.", "en": "The k prefix multiplies by 1,000: 4,700 Ω."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "4 700 Ω", "en": "4,700 Ω"}, "correct": true},
+      {"text": {"fr": "470 Ω", "en": "470 Ω"}, "correct": false},
+      {"text": {"fr": "47 000 Ω", "en": "47,000 Ω"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x02", "section": "01-courant-tension-resistance", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : dans un circuit ouvert, le courant continue de circuler faiblement.", "en": "True or false: in an open circuit, a small current keeps flowing."},
+    "explanation": {"fr": "Faux. Une boucle ouverte ne laisse passer aucun courant.", "en": "False. An open loop lets no current through."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x03", "section": "02-loi-ohm", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "Quelle tension faut-il appliquer à une résistance de 2,2 kΩ pour y faire passer 5 mA ? (exemple : 9 V)", "en": "What voltage must be applied to a 2.2 kΩ resistor to pass 5 mA through it? (example: 9 V)"},
+    "explanation": {"fr": "U = R × I = 2,2 kΩ × 5 mA = 11 V.", "en": "U = R × I = 2.2 kΩ × 5 mA = 11 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "11", "unit": "V", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-x04", "section": "02-loi-ohm", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Sur un graphique U en fonction de I, deux résistances donnent deux droites. Que signifie la droite la plus raide ?", "en": "On a U against I graph, two resistors give two lines. What does the steeper line mean?"},
+    "explanation": {"fr": "La pente vaut R : la droite la plus raide correspond à la plus grande résistance.", "en": "The slope equals R: the steeper line belongs to the larger resistance."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "La résistance la plus grande", "en": "The larger resistance"}, "correct": true},
+      {"text": {"fr": "La résistance la plus petite", "en": "The smaller resistance"}, "correct": false},
+      {"text": {"fr": "Le courant le plus fort", "en": "The higher current"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x05", "section": "03-serie-parallele", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "Quelle est la résistance équivalente de 4 kΩ et 12 kΩ en parallèle ? (exemple : 1,5 kΩ)", "en": "What is the equivalent resistance of 4 kΩ and 12 kΩ in parallel? (example: 1.5 kΩ)"},
+    "explanation": {"fr": "Req = (4 × 12) / (4 + 12) = 48 / 16 = 3 kΩ.", "en": "Req = (4 × 12) / (4 + 12) = 48 / 16 = 3 kΩ."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "3000", "unit": "Ω", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-x06", "section": "03-serie-parallele", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Une résistance porte les anneaux jaune, violet, rouge. Quelle est sa valeur ?", "en": "A resistor has yellow, violet, red bands. What is its value?"},
+    "explanation": {"fr": "Jaune = 4, violet = 7, rouge = × 100 : 4 700 Ω, soit 4,7 kΩ.", "en": "Yellow = 4, violet = 7, red = × 100: 4,700 Ω, that is 4.7 kΩ."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "4,7 kΩ", "en": "4.7 kΩ"}, "correct": true},
+      {"text": {"fr": "47 Ω", "en": "47 Ω"}, "correct": false},
+      {"text": {"fr": "470 kΩ", "en": "470 kΩ"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x07", "section": "04-puissance", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Une résistance doit dissiper 0,3 W. Quel modèle choisir ?", "en": "A resistor must dissipate 0.3 W. Which part should you choose?"},
+    "explanation": {"fr": "On garde une marge d'environ le double : 0,6 W au moins, donc un modèle de 1 W. Un 1/4 W serait déjà dépassé.", "en": "Keep a margin of about twice: at least 0.6 W, so a 1 W part. A 1/4 W part would already be overloaded."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Un modèle de 1 W", "en": "A 1 W part"}, "correct": true},
+      {"text": {"fr": "Un modèle de 1/4 W", "en": "A 1/4 W part"}, "correct": false},
+      {"text": {"fr": "N'importe lequel : la puissance ne compte pas", "en": "Any of them: power does not matter"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x08", "section": "05-diviseur-tension", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Diviseur de deux résistances égales sous 12 V. On branche en sortie une charge de même valeur. Que vaut la sortie ?", "en": "A divider made of two equal resistors on 12 V. A load of the same value is connected to the output. What is the output?"},
+    "explanation": {"fr": "R2 en parallèle avec la charge vaut R / 2 : Vs = 12 × 0,5 / 1,5 = 4 V au lieu de 6 V.", "en": "R2 in parallel with the load is R / 2: Vout = 12 × 0.5 / 1.5 = 4 V instead of 6 V."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "4 V", "en": "4 V"}, "correct": true},
+      {"text": {"fr": "6 V", "en": "6 V"}, "correct": false},
+      {"text": {"fr": "8 V", "en": "8 V"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x09", "section": "05-diviseur-tension", "type": "multiple", "usage": "exam",
+    "prompt": {"fr": "Pour qu'une charge perturbe peu un diviseur de tension, que faut-il ?", "en": "For a load to disturb a voltage divider only slightly, what is needed?"},
+    "explanation": {"fr": "La charge doit être grande devant R2 (au moins dix fois) : elle consomme alors peu de courant. Une charge petite fait chuter Vs.", "en": "The load must be large compared with R2 (at least ten times): it then draws little current. A small load makes Vout drop."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Une charge au moins dix fois plus grande que R2", "en": "A load at least ten times larger than R2"}, "correct": true},
+      {"text": {"fr": "Une charge qui consomme peu de courant", "en": "A load that draws little current"}, "correct": true},
+      {"text": {"fr": "Une charge plus petite que R2", "en": "A load smaller than R2"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x10", "section": "06-diviseur-courant", "type": "numeric", "usage": "exam",
+    "prompt": {"fr": "Une pile de 6 V alimente 1 kΩ et 2 kΩ en parallèle. Quel courant total fournit-elle ? (exemple : 4 mA)", "en": "A 6 V cell feeds 1 kΩ and 2 kΩ in parallel. What total current does it supply? (example: 4 mA)"},
+    "explanation": {"fr": "6 mA dans 1 kΩ et 3 mA dans 2 kΩ : la pile fournit 9 mA (loi des nœuds).", "en": "6 mA in 1 kΩ and 3 mA in 2 kΩ: the cell supplies 9 mA (current law)."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [],
+    "numeric": {"value": "0.009", "unit": "A", "tolerance_pct": 2}
+  },
+  {
+    "id": "e-p1-m1-x11", "section": "07-condensateur", "type": "single", "usage": "exam",
+    "prompt": {"fr": "Un condensateur est chargé à travers une résistance. À quel pourcentage de la tension de la pile est-il au bout d'une constante de temps ?", "en": "A capacitor charges through a resistor. What percentage of the cell voltage does it reach after one time constant?"},
+    "explanation": {"fr": "Au bout de τ, il atteint environ 63 % ; il est considéré chargé au bout de 5 τ.", "en": "After τ it reaches about 63 %; it is considered charged after 5 τ."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Environ 63 %", "en": "About 63 %"}, "correct": true},
+      {"text": {"fr": "50 %", "en": "50 %"}, "correct": false},
+      {"text": {"fr": "100 %", "en": "100 %"}, "correct": false}
+    ]
+  },
+  {
+    "id": "e-p1-m1-x12", "section": "07-condensateur", "type": "truefalse", "usage": "exam",
+    "prompt": {"fr": "Vrai ou faux : une fois chargé, un condensateur laisse passer le courant continu.", "en": "True or false: once charged, a capacitor lets direct current through."},
+    "explanation": {"fr": "Faux. En régime établi, un condensateur bloque le courant continu.", "en": "False. In steady state, a capacitor blocks direct current."},
+    "reviewed": {"fr": true, "en": true},
+    "choices": [
+      {"text": {"fr": "Vrai", "en": "True"}, "correct": false},
+      {"text": {"fr": "Faux", "en": "False"}, "correct": true}
+    ]
+  }
+]
