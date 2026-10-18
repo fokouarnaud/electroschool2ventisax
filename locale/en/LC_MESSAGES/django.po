@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:27+0100\n"
+"POT-Creation-Date: 2026-10-18 13:09+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -476,7 +476,7 @@ msgstr "published on"
 msgid "date limite"
 msgstr "deadline"
 
-#: .\progress\views.py:94 .\progress\views.py:188 .\progress\views.py:213
+#: .\progress\views.py:94 .\progress\views.py:192 .\progress\views.py:217
 #: .\templates\progress\trainer_table.html:17
 msgid "Promotion"
 msgstr "Cohort"
@@ -508,23 +508,23 @@ msgstr "yes"
 msgid "non"
 msgstr "no"
 
-#: .\progress\views.py:183
+#: .\progress\views.py:187
 msgid "Titre"
 msgstr "Title"
 
-#: .\progress\views.py:184
+#: .\progress\views.py:188
 msgid "Message"
 msgstr "Message"
 
-#: .\progress\views.py:208 .\templates\progress\deadlines.html:15
+#: .\progress\views.py:212 .\templates\progress\deadlines.html:15
 msgid "Quiz ou examen"
 msgstr "Quiz or exam"
 
-#: .\progress\views.py:209 .\templates\progress\deadlines.html:27
+#: .\progress\views.py:213 .\templates\progress\deadlines.html:27
 msgid "Date limite"
 msgstr "Deadline"
 
-#: .\progress\views.py:232
+#: .\progress\views.py:236
 msgid "Choisissez un quiz ou un examen de la formation de cette promotion."
 msgstr "Choose a quiz or an exam from this cohort's course."
 
@@ -683,20 +683,24 @@ msgstr "Incorrect username or password."
 msgid "Mot de passe"
 msgstr "Password"
 
-#: .\templates\accounts\login.html:29
-msgid "Mot de passe oublié ?"
-msgstr "Forgot your password?"
-
-#: .\templates\accounts\login.html:29 .\templates\accounts\signup.html:2
-#: .\templates\accounts\signup.html:15 .\templates\base.html:48
-msgid "Créer un compte"
-msgstr "Create an account"
-
-#: .\templates\accounts\login.html:31
+#: .\templates\accounts\login.html:30
 #: .\templates\accounts\password_reset_complete.html:7
 #: .\templates\accounts\signup.html:33
 msgid "Se connecter"
 msgstr "Sign in"
+
+#: .\templates\accounts\login.html:32
+msgid "Aide à la connexion"
+msgstr "Sign-in help"
+
+#: .\templates\accounts\login.html:33
+msgid "Mot de passe oublié ?"
+msgstr "Forgot your password?"
+
+#: .\templates\accounts\login.html:34 .\templates\accounts\signup.html:2
+#: .\templates\accounts\signup.html:15 .\templates\base.html:48
+msgid "Créer un compte"
+msgstr "Create an account"
 
 #: .\templates\accounts\password_reset_complete.html:2
 #: .\templates\accounts\password_reset_complete.html:5
@@ -973,6 +977,10 @@ msgstr[1] "%(n)s attempts left"
 #: .\templates\assessments\exam.html:14
 msgid "L'examen s'ouvre quand ces modules sont terminés :"
 msgstr "The exam opens once these modules are completed:"
+
+#: .\templates\assessments\exam.html:16
+msgid "À terminer"
+msgstr "To finish"
 
 #: .\templates\assessments\exam.html:19
 msgid "Un examen est en cours. Le chrono continue de tourner."

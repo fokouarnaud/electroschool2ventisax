@@ -539,3 +539,31 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 .calc-grid { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
 .calc .unit-input { max-width: none; }
 .calc-out { display: block; margin-top: .9rem; padding: .7rem .9rem; border-radius: var(--radius-sm); background: var(--teal-wash); color: var(--teal-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Schémas du cours : pleine largeur de lecture, plafonnés pour rester nets */
+.prose img[src$=".svg"] { width: 100%; max-width: 36rem; height: auto; border: 1px solid var(--line); }
+/* Tableaux du cours (mesures des mini-projets) : défilement horizontal plutôt que débordement sur téléphone */
+.prose table { display: block; max-width: 100%; overflow-x: auto; }
+/* Grille de lecture : un enfant de grille ne doit pas s'élargir au contenu le plus long (titres anglais du sommaire) */
+.reader > * { min-width: 0; }
+.outline a { overflow-wrap: anywhere; }
+
+/* --- Retouches de l'audit graphique (2026-10-18), voir AGENTS.md « Audit graphique » --- */
+/* Schémas : toujours entiers (ajustés à la largeur) ; sur téléphone, un toucher ouvre le fichier pleine taille,
+   que l'on agrandit à deux doigts. Le défilement horizontal a été écarté : le schéma paraissait coupé. */
+.figure-zoom { display: block; max-width: 36rem; border-radius: var(--radius-sm); cursor: zoom-in; }
+.figure-zoom img { margin: 0; }
+.figure-zoom:hover img { border-color: var(--field-line); }
+/* Liens d'aide de la connexion : deux cibles tactiles de 44 px, séparées. */
+.auth-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .75rem; }
+.auth-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .92rem; }
+/* Titre de formation du catalogue : zone cliquable à la hauteur d'un doigt. */
+.course-card-body h2 a { display: inline-flex; align-items: center; min-height: 44px; }
+/* Liens vers les tentatives (suivi formateur). */
+.attempts-pop a { display: inline-flex; align-items: center; min-height: 36px; }
+/* Examen verrouillé : modules à terminer, présentés comme des liens et non comme des choix. */
+.todo-list { margin-top: 1rem; }
+.todo-list .num { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; flex-shrink: 0; border-radius: 999px; background: var(--mist); font-size: .82rem; font-weight: 600; color: var(--muted); }
+.todo-list .badge { margin-left: auto; white-space: nowrap; }
+.todo-list a > .icon:last-child { color: var(--muted); }
+@media (max-width: 400px) { .todo-list .badge { display: none; } } /* redondant avec l'encadré au-dessus : la place va au titre */

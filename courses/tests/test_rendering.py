@@ -47,3 +47,18 @@ def test_markup_cannot_forge_a_calculator_slot():
     html = render_markdown('<div class="calc" data-calc="ohm" onclick="alert(1)"></div>')
 
     assert "data-calc" not in html and "onclick" not in html
+
+
+def test_diagrams_link_to_their_full_size_file():
+    html = render_markdown("![Loi d'Ohm](/static/content/electro/m1/ohm-circuit.svg)")
+
+    assert '<a class="figure-zoom" href="/static/content/electro/m1/ohm-circuit.svg">' in html
+    assert '<img alt="Loi d\'Ohm" src="/static/content/electro/m1/ohm-circuit.svg"></a>' in html
+
+
+def test_other_images_are_not_wrapped():
+    assert "figure-zoom" not in render_markdown("![Photo](/media/epi.webp)")
+
+
+def test_external_svg_is_never_linked():
+    assert "figure-zoom" not in render_markdown("![x](https://evil.example/x.svg)")

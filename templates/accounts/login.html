@@ -26,10 +26,13 @@
       <div class="field">
         <label for="{{ form.password.id_for_label }}">{% translate "Mot de passe" %}</label>
         <input type="password" name="password" id="{{ form.password.id_for_label }}" autocomplete="current-password" required>
-        <span class="help"><a href="{% url 'password_reset' %}">{% translate "Mot de passe oublié ?" %}</a> · <a href="{% url 'signup' %}">{% translate "Créer un compte" %}</a></span>
       </div>
       <button class="btn" type="submit">{% translate "Se connecter" %}</button>
     </form>
+    <nav class="auth-links" aria-label="{% translate 'Aide à la connexion' %}">
+      <a href="{% url 'password_reset' %}">{% translate "Mot de passe oublié ?" %}</a>
+      <a href="{% url 'signup' %}">{% translate "Créer un compte" %}</a>
+    </nav>
   </section>
 </div>
 {% endblock %}
