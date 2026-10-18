@@ -8,9 +8,10 @@ SI_PREFIXES = {
     "p": Decimal("1e-12"), "n": Decimal("1e-9"), "u": Decimal("1e-6"), "µ": Decimal("1e-6"), "μ": Decimal("1e-6"),
     "m": Decimal("1e-3"), "k": Decimal("1e3"), "M": Decimal("1e6"), "G": Decimal("1e9"),
 }
+DEGREE = "°"  # déphasage (US-41) : jamais de préfixe SI
 # Saisie normalisée en NFKC : le signe ohm U+2126 devient oméga U+03A9, le micro U+00B5 devient mu U+03BC.
 UNIT_ALIASES = {"ohm": "Ω", "ohms": "Ω", "Ohm": "Ω", "Ohms": "Ω"}
-QUANTITY = re.compile(r"^([+-]?\d+(?:[.,]\d+)?(?:[eE][+-]?\d+)?)\s*([pnuµμmkMG]?)\s*([A-Za-zΩΩ]*)$")
+QUANTITY = re.compile(r"^([+-]?\d+(?:[.,]\d+)?(?:[eE][+-]?\d+)?)\s*([pnuµμmkMG]?)\s*([A-Za-zΩΩ]*|°)$")
 
 
 def score_answer(qtype, correct_ids, selected_ids):
@@ -30,6 +31,8 @@ def parse_quantity(text):
     if not match:
         return None
     number, prefix, unit = match.groups()
+    if prefix and unit == DEGREE:
+        return None
     try:
         value = Decimal(number.replace(",", "."))
     except InvalidOperation:
@@ -46,9 +49,12 @@ def format_quantity(value, unit):
     """Decimal("0.002553"), "A" -> « 2,553 mA » (préfixe d'ingénieur, séparateur décimal de la langue active)."""
     from django.utils.formats import get_format
 
-    exponent = 0 if value == 0 else max(-12, min(9, (value.adjusted() // 3) * 3))
+    # Les degrés (déphasage, US-41) ne prennent ni préfixe SI ni espace : « 63,4° ».
+    exponent = 0 if value == 0 or unit == DEGREE else max(-12, min(9, (value.adjusted() // 3) * 3))
     scaled = (value.scaleb(-exponent)).normalize()
     number = format(scaled, "f").replace(".", get_format("DECIMAL_SEPARATOR"))
+    if unit == DEGREE:
+        return f"{number}{DEGREE}"
     return f"{number} {DISPLAY_PREFIXES[exponent]}{unit}".strip()
 
 

@@ -238,6 +238,23 @@ def test_expected_value_is_shown_with_an_si_prefix(module, value, unit, lang, sh
         assert q.expected_value_display() == shown
 
 
+@pytest.mark.parametrize("value, lang, shown", [
+    ("63.4", "fr", "63,4°"),
+    ("63.4", "en", "63.4°"),
+    ("0.5", "fr", "0,5°"),       # jamais « 500 m° »
+    ("-45", "fr", "-45°"),
+    ("1200", "en", "1200°"),     # jamais « 1,2 k° »
+])
+@pytest.mark.django_db
+def test_expected_angle_is_shown_in_degrees_without_si_prefix(module, value, lang, shown):
+    """US-41 : un déphasage attendu s'affiche en degrés, sans préfixe ni espace."""
+    from django.utils import translation
+
+    q = reviewed(module, "numeric", numeric_value=Decimal(value), unit="°")
+    with translation.override(lang):
+        assert q.expected_value_display() == shown
+
+
 @pytest.mark.django_db
 def test_matching_feedback_lists_the_learners_pairs_with_their_verdict(learner, module, matching_q):
     r, c, l, d = (str(p.public_id) for p in matching_q.pairs.all())

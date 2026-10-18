@@ -79,3 +79,31 @@ def test_hotspot_is_all_or_nothing_on_the_clicked_zone():
 def test_ohm_sign_and_greek_omega_are_the_same_unit():
     assert parse_quantity("4.7 k\u2126") == (Decimal("4700"), "\u03a9")
     assert score_numeric(Decimal("4700"), "\u2126", Decimal("2"), "4.7 k\u03a9") == 1
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("45°", (Decimal("45"), "°")),
+    ("45 °", (Decimal("45"), "°")),
+    ("-63,4°", (Decimal("-63.4"), "°")),
+    ("90.0 °", (Decimal("90.0"), "°")),
+])
+def test_parse_quantity_reads_degrees(text, expected):
+    """US-41 : un déphasage se saisit en degrés, avec ou sans espace, virgule ou point."""
+    assert parse_quantity(text) == expected
+
+
+@pytest.mark.parametrize("text", ["°", "4 k°", "45 m°", "45°°"])
+def test_parse_quantity_refuses_si_prefixes_on_degrees(text):
+    assert parse_quantity(text) is None
+
+
+@pytest.mark.parametrize("answer, score", [
+    ("45°", 1),
+    ("45,9 °", 1),     # écart 2,0 %
+    ("46°", 0),        # écart 2,2 %
+    ("45", 1),         # unité facultative
+    ("45 rad", 0),     # autre unité
+    ("45 V", 0),
+])
+def test_score_numeric_in_degrees(answer, score):
+    assert score_numeric(Decimal("45"), "°", Decimal("2"), answer) == Fraction(score)
