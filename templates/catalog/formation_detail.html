@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% load i18n acad_i18n %}
+{% block title %}{{ row.formation.title }}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1{{ row.formation|lang_attr:"title" }}>{{ row.formation.title }}</h1>
+  <p class="muted">{% blocktranslate with h=row.hours %}{{ h }} h de formation{% endblocktranslate %}</p>
+</div>
+<section class="panel">
+  <p{{ row.formation|lang_attr:"description" }}>{{ row.formation.description }}</p>
+  <ol class="modules">
+    {% for partie in row.parties %}<li><span{{ partie|lang_attr:"title" }}>{{ partie.title }}</span></li>{% endfor %}
+  </ol>
+</section>
+{% endblock %}

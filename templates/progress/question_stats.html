@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Réussite par question" %}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{% translate "Réussite par question" %}</h1>
+  <p class="muted">{% translate "Sur les tentatives envoyées de vos apprenants. Un taux très bas peut signaler une question mal posée." %}</p>
+</div>
+<table class="breakdown">
+  <thead><tr><th scope="col">{% translate "Module" %}</th><th scope="col">{% translate "Question" %}</th><th scope="col">{% translate "Réponses" %}</th><th scope="col">{% translate "Réussite" %}</th></tr></thead>
+  <tbody>
+    {% for stat in stats %}
+      <tr>
+        <td>{{ stat.question.module.title }}</td>
+        <th scope="row">{{ stat.question.prompt }}</th>
+        <td>{{ stat.answers }}</td>
+        <td>{% if stat.success_pct is None %}—{% else %}{{ stat.success_pct }} %{% endif %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Dates limites" %}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{% translate "Dates limites" %}</h1>
+  <p class="muted">{% translate "Indicatives : rien n'est bloqué, mais les apprenants qui n'ont pas fini à temps sont marqués « en retard »." %}</p>
+</div>
+<form class="panel" method="post">{% csrf_token %}
+  {{ form.promotion.label_tag }} {{ form.promotion }} {{ form.promotion.errors }}
+  <label for="id_target">{% translate "Quiz ou examen" %}</label>
+  <select name="target" id="id_target">
+    {% for t in targets %}
+      <optgroup label="{{ t.promotion.name }}">
+        {% for m in t.modules %}<option value="quiz:{{ m.public_id }}">{% blocktranslate with m=m.title %}Quiz : {{ m }}{% endblocktranslate %}</option>{% endfor %}
+        {% for p in t.parties %}<option value="exam:{{ p.public_id }}">{% blocktranslate with p=p.title %}Examen : {{ p }}{% endblocktranslate %}</option>{% endfor %}
+      </optgroup>
+    {% endfor %}
+  </select>
+  {{ form.target.errors }}
+  {{ form.due_at.label_tag }} <input type="datetime-local" name="due_at" id="id_due_at" required> {{ form.due_at.errors }}
+  <button class="btn" type="submit">{% translate "Enregistrer" %}</button>
+</form>
+<section class="panel">
+  <ul>
+    {% for deadline in deadlines %}<li>{{ deadline.promotion.name }} · {{ deadline.assessment }} · {{ deadline.due_at|date:"DATETIME_FORMAT" }}</li>
+    {% empty %}<li class="muted">{% translate "Aucune date limite." %}</li>{% endfor %}
+  </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}{% load i18n static acad_svg %}
+{% block title %}{% if attempt.assessment.is_exam %}{% translate "Examen" %}{% else %}{% translate "Quiz" %}{% endif %}{% endblock %}
+{% block content %}
+<div data-attempt
+     data-saving="{% translate 'Enregistrement…' %}"
+     data-saved="{% translate 'Réponse enregistrée' %}"
+     data-failed="{% translate 'Échec de l’enregistrement. Vérifiez la connexion puis recochez.' %}"
+     data-closed="{% translate 'Temps écoulé : la tentative est envoyée.' %}"
+     data-answered-label="{% translate '%(done)s / %(total)s répondues' %}">
+  <div class="attempt-bar">
+    <h1>{% if attempt.assessment.is_exam %}{% blocktranslate with p=attempt.assessment.partie.title %}Examen : {{ p }}{% endblocktranslate %}{% else %}{% blocktranslate with m=attempt.assessment.module.title %}Quiz : {{ m }}{% endblocktranslate %}{% endif %}</h1>
+    <span class="answered" data-answered aria-live="polite"></span>
+    {% if remaining_seconds is not None %}
+      <span class="timer" data-remaining="{{ remaining_seconds }}">{% include "icons/clock.svg" %}<span class="visually-hidden">{% translate "Temps restant" %}</span><output>{% widthratio remaining_seconds 60 1 %} min</output></span>
+    {% endif %}
+  </div>
+
+  <div class="questions">
+    {% for row in rows %}
+      <form class="panel" id="q-{{ row.question.public_id }}" method="post" action="{% url 'save_answer' attempt.public_id %}"
+            hx-post="{% url 'save_answer' attempt.public_id %}" hx-trigger="change" hx-swap="none">{% csrf_token %}
+        <fieldset class="question">
+          <legend>{{ forloop.counter }}. {{ row.question.prompt }}</legend>
+          {% if row.question.image %}<img src="{{ row.question.image.url }}" alt="" loading="lazy">{% endif %}
+          <input type="hidden" name="question" value="{{ row.question.public_id }}">
+          <input type="hidden" name="time_spent" value="0" data-time-spent>
+          {% if row.question.qtype == "numeric" %}
+            <p class="hint">{% translate "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés (ex. 4,7 k)." %}</p>
+            <div class="field numeric">
+              <label for="a-{{ row.question.public_id }}">{% translate "Votre réponse" %}{% if row.question.unit %} ({{ row.question.unit }}){% endif %}</label>
+              <input type="text" inputmode="decimal" autocomplete="off" name="answer_text" id="a-{{ row.question.public_id }}" value="{{ row.answer_text }}" maxlength="50">
+            </div>
+          {% elif row.question.qtype == "matching" %}
+            <p class="hint">{% translate "Associez chaque élément à sa correspondance." %}</p>
+            <div class="matching">
+              {% for left in row.lefts %}
+                <div class="field match-row">
+                  <label for="p-{{ left.pair.public_id }}">{{ left.pair.left }}</label>
+                  <select name="pair_{{ left.pair.public_id }}" id="p-{{ left.pair.public_id }}">
+                    <option value="">—</option>
+                    {% for right in row.rights %}<option value="{{ right.public_id }}"{% if left.chosen == right.public_id|stringformat:"s" %} selected{% endif %}>{{ right.right }}</option>{% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% elif row.question.qtype == "hotspot" %}
+            <p class="hint">{% translate "Cliquez la bonne zone du schéma, ou choisissez-la dans la liste." %}</p>
+            <div class="hotspot" data-hotspot>{{ row.question.hotspot_svg|inert_svg }}</div>
+            <div class="choices">
+              {% for choice in row.choices %}
+                <label class="choice" data-zone="{{ choice.shape.x }},{{ choice.shape.y }},{{ choice.shape.w }},{{ choice.shape.h }}">
+                  <input type="radio" name="choices" value="{{ choice.public_id }}"{% if choice.public_id in row.selected %} checked{% endif %}>
+                  <span>{{ choice.text }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="hint">{% if row.question.qtype == "multiple" %}{% translate "Plusieurs réponses possibles." %}{% else %}{% translate "Une seule réponse." %}{% endif %}</p>
+            <div class="choices">
+              {% for choice in row.choices %}
+                <label class="choice">
+                  <input type="{% if row.question.qtype == 'multiple' %}checkbox{% else %}radio{% endif %}" name="choices" value="{{ choice.public_id }}"{% if choice.public_id in row.selected %} checked{% endif %}>
+                  <span>{{ choice.text }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <p class="save-state" aria-live="polite"></p>
+          <button class="btn btn-ghost save-btn" type="submit">{% translate "Enregistrer cette réponse" %}</button>
+        </fieldset>
+      </form>
+    {% empty %}
+      <section class="panel empty"><p class="muted">{% translate "Aucune question publiée pour le moment." %}</p></section>
+    {% endfor %}
+  </div>
+
+  <form class="submit-zone" method="post" action="{% url 'submit_attempt' attempt.public_id %}">{% csrf_token %}
+    <p class="muted">{% if attempt.assessment.is_exam %}{% translate "Une fois envoyé, l'examen ne peut plus être modifié." %}{% else %}{% translate "Vous verrez la correction juste après l'envoi." %}{% endif %}</p>
+    <button class="btn" type="submit">{% if attempt.assessment.is_exam %}{% translate "Envoyer l'examen" %}{% else %}{% translate "Voir la correction" %}{% endif %}</button>
+  </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'vendor/htmx.min.js' %}" defer></script>
+<script src="{% static 'acad/js/attempt.js' %}" defer></script>
+{% endblock %}

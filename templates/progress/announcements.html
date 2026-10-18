@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Annonces" %}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>{% translate "Annonces" %}</h1></div>
+<form class="panel" method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" type="submit">{% translate "Publier l'annonce" %}</button>
+</form>
+{% for announcement in announcements %}
+  <section class="panel">
+    <h2>{{ announcement.title }}</h2>
+    <p class="muted">{{ announcement.promotion.name }} · {{ announcement.published_at|date:"DATETIME_FORMAT" }}</p>
+    <p>{{ announcement.body|linebreaksbr }}</p>
+  </section>
+{% endfor %}
+{% endblock %}

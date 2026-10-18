@@ -1,0 +1,22 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Détail de la tentative" %}{% endblock %}
+{% block content %}
+<a class="crumb" href="{% url 'trainer_table' %}">{% include "icons/chevron-left.svg" %}{% translate "Suivi" %}</a>
+<div class="page-head">
+  <h1>{{ attempt.user.get_full_name|default:attempt.user.username }} · {{ attempt.assessment }}</h1>
+  <p class="muted">{% blocktranslate with n=attempt.number s=attempt.score_pct|floatformat:0 %}Tentative {{ n }} · {{ s }} %{% endblocktranslate %}</p>
+</div>
+<table class="breakdown">
+  <thead><tr><th scope="col">{% translate "Question" %}</th><th scope="col">{% translate "Réponse" %}</th><th scope="col">{% translate "Résultat" %}</th><th scope="col">{% translate "Temps" %}</th></tr></thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        <th scope="row">{{ row.question.prompt }}</th>
+        <td>{{ row.answer|default:"—" }}</td>
+        <td>{% if row.score == 1 %}{% translate "Juste" %}{% elif row.score > 0 %}{% translate "Partiel" %}{% else %}{% translate "Faux" %}{% endif %}</td>
+        <td>{% blocktranslate with s=row.time_spent_s %}{{ s }} s{% endblocktranslate %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

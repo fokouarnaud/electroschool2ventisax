@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n acad_i18n %}
+{% block title %}{% translate "Catalogue" %}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{% translate "Catalogue des formations" %}</h1>
+</div>
+{% for row in rows %}
+  <section class="panel" aria-labelledby="formation-{{ row.formation.public_id }}">
+    <h2 id="formation-{{ row.formation.public_id }}"{{ row.formation|lang_attr:"title" }}>
+      <a href="{% url 'formation_detail' row.formation.public_id %}">{{ row.formation.title }}</a>
+    </h2>
+    <p class="muted"{{ row.formation|lang_attr:"description" }}>{{ row.formation.description }}</p>
+    <p class="muted">{% blocktranslate count n=row.parties|length with h=row.hours %}{{ n }} partie · {{ h }} h{% plural %}{{ n }} parties · {{ h }} h{% endblocktranslate %}</p>
+  </section>
+{% empty %}
+  <section class="panel empty"><h2>{% translate "Aucune formation ouverte pour le moment" %}</h2></section>
+{% endfor %}
+{% endblock %}

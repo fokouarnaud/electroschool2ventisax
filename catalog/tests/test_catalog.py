@@ -1,0 +1,50 @@
+"""US-01 : catalogue public des formations ouvertes."""
+import pytest
+
+from courses.models import Formation, Module, Partie
+
+
+@pytest.fixture
+def open_formation(db):
+    formation = Formation.objects.create(
+        title_fr="Électronique", title_en="Electronics", slug="electro", is_open=True,
+        description_fr="Du courant continu au transistor.",
+    )
+    partie = Partie.objects.create(formation=formation, title_fr="DC et semi-conducteurs", order=1, slug="p1")
+    Module.objects.create(partie=partie, title_fr="Révision DC", order=1, duration_hours=6)
+    Module.objects.create(partie=partie, title_fr="La diode", order=2, duration_hours=4)
+    return formation
+
+
+@pytest.fixture
+def closed_formation(db):
+    return Formation.objects.create(title_fr="Froid", slug="froid", is_open=False)
+
+
+def test_anonymous_visitor_sees_only_open_formations(client, open_formation, closed_formation):
+    response = client.get("/fr/catalogue/")
+
+    assert response.status_code == 200
+    assert [row["formation"] for row in response.context["rows"]] == [open_formation]
+
+
+def test_catalogue_entry_sums_the_module_hours_and_lists_the_parts(client, open_formation):
+    [row] = client.get("/fr/catalogue/").context["rows"]
+
+    assert row["hours"] == 10
+    assert [p.title for p in row["parties"]] == ["DC et semi-conducteurs"]
+
+
+def test_catalogue_is_served_in_english(client, open_formation):
+    assert "Electronics" in client.get("/en/catalogue/").content.decode()
+
+
+def test_open_formation_has_a_public_detail_page(client, open_formation):
+    response = client.get(f"/fr/catalogue/{open_formation.public_id}/")
+
+    assert response.status_code == 200
+    assert "Du courant continu au transistor." in response.content.decode()
+
+
+def test_closed_formation_detail_is_not_found(client, closed_formation):
+    assert client.get(f"/fr/catalogue/{closed_formation.public_id}/").status_code == 404

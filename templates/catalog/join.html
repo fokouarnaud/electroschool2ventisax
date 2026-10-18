@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Rejoindre une promotion" %}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{% translate "Rejoindre une promotion" %}</h1>
+  <p class="muted">{% translate "Saisissez le code à 8 caractères donné par votre formateur." %}</p>
+</div>
+<form class="panel" method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" type="submit">{% translate "Rejoindre" %}</button>
+</form>
+{% endblock %}

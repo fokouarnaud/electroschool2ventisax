@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Vérification de certificat" %}{% endblock %}
+{% block content %}
+<section class="panel" aria-labelledby="titre-verif">
+  <h1 id="titre-verif">{% translate "Certificat valide" %}</h1>
+  <p class="muted">{% blocktranslate with n=certificate.public_id %}Numéro {{ n }}{% endblocktranslate %}</p>
+  <dl>
+    <dt>{% translate "Titulaire" %}</dt><dd>{{ certificate.holder_name }}</dd>
+    <dt>{% translate "Formation" %}</dt><dd>{{ certificate.partie.formation.title }} : {{ certificate.partie.title }}</dd>
+    <dt>{% translate "Délivré le" %}</dt><dd>{{ certificate.issued_at|date:"DATE_FORMAT" }}</dd>
+    <dt>{% translate "Statut" %}</dt><dd><span class="badge badge-done">{% translate "valide" %}</span></dd>
+  </dl>
+</section>
+{% endblock %}

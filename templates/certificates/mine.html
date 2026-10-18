@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Certificats et badges" %}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>{% translate "Certificats et badges" %}</h1></div>
+{% if not user.first_name or not user.last_name %}
+  <form class="panel" method="post">{% csrf_token %}
+    <h2>{% translate "Votre nom sur le certificat" %}</h2>
+    <p class="muted">{% translate "Renseignez votre prénom et votre nom tels qu'ils doivent figurer sur vos certificats." %}</p>
+    {{ form.as_p }}
+    <button class="btn" type="submit">{% translate "Enregistrer" %}</button>
+  </form>
+{% endif %}
+<section class="panel">
+  <h2>{% translate "Certificats" %}</h2>
+  <ul>
+    {% for certificate in certificates %}
+      <li>{{ certificate.partie.title }} · {{ certificate.score_pct|floatformat:0 }} % ·
+        <a href="{% url 'certificate_pdf' certificate.public_id %}">{% translate "Télécharger le PDF" %}</a> ·
+        <a href="{% url 'verify_certificate' certificate.public_id %}">{% translate "Lien de vérification" %}</a></li>
+    {% empty %}
+      <li class="muted">{% translate "Réussissez l'examen d'une partie pour obtenir son certificat." %}</li>
+    {% endfor %}
+  </ul>
+</section>
+<section class="panel">
+  <h2>{% translate "Badges" %}</h2>
+  <ul class="badges">
+    {% for badge in badges %}<li><span class="badge badge-done">{{ badge.get_kind_display }}</span> {% if badge.module %}{{ badge.module.title }}{% else %}{{ badge.partie.title }}{% endif %}</li>
+    {% empty %}<li class="muted">{% translate "Terminez un module pour gagner votre premier badge." %}</li>{% endfor %}
+  </ul>
+</section>
+{% endblock %}
