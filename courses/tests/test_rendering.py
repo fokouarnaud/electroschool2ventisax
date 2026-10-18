@@ -18,3 +18,32 @@ def test_tables_and_images_are_kept():
     html = render_markdown("| a |\n|---|\n| 1 |\n\n![EPI](/media/epi.webp)")
     assert "<table>" in html
     assert '<img alt="EPI" src="/media/epi.webp">' in html
+
+
+def test_calculator_marker_becomes_an_inert_widget_slot():
+    html = render_markdown("Essayez :\n\n[[calc:ohm]]")
+
+    assert '<div class="calc" data-calc="ohm"></div>' in html
+    assert "[[calc" not in html
+
+
+def test_every_documented_calculator_is_accepted():
+    for kind in ("ohm", "divider", "resistor", "bias"):
+        assert f'data-calc="{kind}"' in render_markdown(f"[[calc:{kind}]]")
+
+
+def test_unknown_calculator_stays_plain_text():
+    html = render_markdown("[[calc:rm-rf]]")
+
+    assert "data-calc" not in html
+    assert "[[calc:rm-rf]]" in html
+
+
+def test_calculator_marker_inside_a_sentence_is_not_expanded():
+    assert "data-calc" not in render_markdown("Le marqueur [[calc:ohm]] doit être seul sur sa ligne.")
+
+
+def test_markup_cannot_forge_a_calculator_slot():
+    html = render_markdown('<div class="calc" data-calc="ohm" onclick="alert(1)"></div>')
+
+    assert "data-calc" not in html and "onclick" not in html

@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n acad_i18n %}
+{% extends "base.html" %}{% load i18n static acad_i18n %}
 {% block title %}{{ section.title }}{% endblock %}
 {% block content %}
 <div class="reader">
@@ -11,6 +11,17 @@
       {% if fallback_fr %}<span class="badge" lang="fr" title="{% translate 'Contenu disponible en français uniquement' %}">FR</span>{% endif %}
     </div>
     <div class="prose"{% if fallback_fr %} lang="fr"{% endif %}>{{ body_html|safe }}</div>
+    {% if 'data-calc' in body_html %}{% get_current_language as lang %}
+      <div id="calc-labels" hidden data-decimal="{% if lang == 'fr' %},{% else %}.{% endif %}"
+           data-ohm-title="{% translate 'Calculateur : loi d’Ohm' %}" data-ohm-hint="{% translate 'Remplissez deux des trois grandeurs : la troisième est calculée.' %}"
+           data-voltage="{% translate 'Tension U' %}" data-current="{% translate 'Intensité I' %}" data-resistance="{% translate 'Résistance R' %}"
+           data-divider-title="{% translate 'Calculateur : diviseur de tension' %}" data-vin="{% translate 'Tension d’entrée Ve' %}"
+           data-fill-all="{% translate 'Remplissez toutes les valeurs.' %}"
+           data-resistor-title="{% translate 'Calculateur : code couleur des résistances' %}"
+           data-band1="{% translate '1re bague' %}" data-band2="{% translate '2e bague' %}" data-multiplier="{% translate 'Multiplicateur' %}"
+           data-colors="{% translate 'noir,marron,rouge,orange,jaune,vert,bleu,violet,gris,blanc' %}"
+           data-bias-title="{% translate 'Calculateur : polarisation du transistor' %}" data-bias-hint="{% translate 'Transistor au silicium : VBE ≈ 0,7 V.' %}"></div>
+    {% endif %}
     {% if section.annexes.exists %}
       <section class="panel" aria-labelledby="annexes" style="margin-top:1.5rem">
         <h2 id="annexes">{% translate "Annexes à télécharger" %}</h2>
@@ -30,3 +41,4 @@
   </article>
 </div>
 {% endblock %}
+{% block scripts %}{% if 'data-calc' in body_html %}<script src="{% static 'acad/js/calculators.js' %}" defer></script>{% endif %}{% endblock %}

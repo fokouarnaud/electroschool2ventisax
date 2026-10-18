@@ -48,3 +48,22 @@ def test_open_formation_has_a_public_detail_page(client, open_formation):
 
 def test_closed_formation_detail_is_not_found(client, closed_formation):
     assert client.get(f"/fr/catalogue/{closed_formation.public_id}/").status_code == 404
+
+
+def test_catalogue_marks_the_formations_the_learner_already_follows(client, learner, open_formation):
+    from catalog.models import Enrollment
+
+    Formation.objects.create(title_fr="Électricité", slug="elec", is_open=True)
+    Enrollment.objects.create(user=learner, formation=open_formation)
+    client.force_login(learner)
+
+    rows = client.get("/fr/catalogue/").context["rows"]
+
+    assert {row["formation"].slug: row["enrolled"] for row in rows} == {"electro": True, "elec": False}
+
+
+def test_detail_page_counts_modules_for_the_visitor(client, open_formation):
+    row = client.get(f"/fr/catalogue/{open_formation.public_id}/").context["row"]
+
+    assert row["module_count"] == 2
+    assert row["enrolled"] is False

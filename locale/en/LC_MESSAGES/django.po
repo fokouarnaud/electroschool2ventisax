@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 18:09+0100\n"
+"POT-Creation-Date: 2026-10-18 12:27+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -14,85 +14,137 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\admin.py:21 .\accounts\admin.py:22
-msgid "Acad Ventisax"
-msgstr "Acad Ventisax"
+#: .\accounts\admin.py:37 .\accounts\admin.py:38
+msgid "Electro Acad Ventisax"
+msgstr "Electro Acad Ventisax"
 
-#: .\accounts\admin.py:26
+#: .\accounts\admin.py:42
 msgid "Fichier CSV (username;first_name;last_name;email)"
 msgstr "CSV file (username;first_name;last_name;email)"
 
-#: .\accounts\admin.py:39
+#: .\accounts\admin.py:54
+msgid "Régénérer le code d'accès"
+msgstr "Regenerate the join code"
+
+#: .\accounts\admin.py:59
+#, python-format
+msgid "%(n)d code régénéré : l'ancien ne fonctionne plus."
+msgid_plural "%(n)d codes régénérés : les anciens ne fonctionnent plus."
+msgstr[0] "%(n)d code regenerated: the old one no longer works."
+msgstr[1] "%(n)d codes regenerated: the old ones no longer work."
+
+#: .\accounts\admin.py:62
+msgid "Désactiver le code d'accès"
+msgstr "Deactivate the join code"
+
+#: .\accounts\admin.py:66
+msgid "Activer le code d'accès"
+msgstr "Activate the join code"
+
+#: .\accounts\admin.py:75 .\templates\progress\_trainer_nav.html:3
+#: .\templates\progress\attempt_review.html:5
 msgid "Apprenants"
 msgstr "Learners"
 
-#: .\accounts\admin.py:41
+#: .\accounts\admin.py:77
 msgid "Importer un CSV"
 msgstr "Import a CSV"
 
-#: .\accounts\admin.py:61
+#: .\accounts\admin.py:97
 msgid "Importer des apprenants"
 msgstr "Import learners"
 
-#: .\accounts\models.py:8 .\templates\progress\trainer_table.html:15
+#: .\accounts\models.py:18 .\templates\progress\trainer_table.html:16
 msgid "Apprenant"
 msgstr "Learner"
 
-#: .\accounts\models.py:9
+#: .\accounts\models.py:19
 msgid "Formateur"
 msgstr "Trainer"
 
-#: .\accounts\models.py:10
+#: .\accounts\models.py:20 .\catalog\models.py:13
 msgid "Administrateur"
 msgstr "Administrator"
 
-#: .\accounts\models.py:12
+#: .\accounts\models.py:22
 msgid "rôle"
 msgstr "role"
 
-#: .\accounts\models.py:19
-msgid "promotion"
-msgstr "cohort"
+#: .\accounts\models.py:23
+msgid "e-mail vérifié"
+msgstr "e-mail verified"
 
-#: .\accounts\models.py:52
+#: .\accounts\models.py:56
 msgid "nom"
 msgstr "name"
 
-#: .\accounts\models.py:54
+#: .\accounts\models.py:58
 msgid "date de début"
 msgstr "start date"
 
-#: .\accounts\models.py:60
+#: .\accounts\models.py:64
 msgid "formateurs"
 msgstr "trainers"
+
+#: .\accounts\models.py:66
+msgid "code d'accès"
+msgstr "join code"
+
+#: .\accounts\models.py:67
+msgid "code d'accès actif"
+msgstr "join code active"
+
+#: .\accounts\signup.py:39 .\templates\accounts\signup.html:28
+msgid "Site web"
+msgstr "Website"
+
+#: .\accounts\signup.py:53
+msgid "Un compte utilise déjà cette adresse e-mail."
+msgstr "An account already uses this e-mail address."
+
+#: .\accounts\signup.py:87
+msgid "Confirmez votre inscription à Electro Acad Ventisax"
+msgstr "Confirm your Electro Acad Ventisax registration"
 
 #: .\accounts\throttling.py:38
 msgid "Trop de tentatives de connexion. Réessayez dans quelques minutes."
 msgstr "Too many sign-in attempts. Try again in a few minutes."
 
-#: .\assessments\admin.py:24
+#: .\accounts\views.py:47
+msgid "Trop d'inscriptions depuis cette connexion. Réessayez dans une heure."
+msgstr "Too many sign-ups from this connection. Try again in an hour."
+
+#: .\accounts\views.py:66
+msgid "Ce lien de confirmation est invalide ou a déjà servi."
+msgstr "This confirmation link is invalid or has already been used."
+
+#: .\accounts\views.py:70
+msgid "Adresse confirmée. Vous pouvez vous connecter."
+msgstr "Address confirmed. You can now sign in."
+
+#: .\assessments\admin.py:33
 msgid "Marquer comme relues (FR et EN)"
 msgstr "Mark as reviewed (FR and EN)"
 
-#: .\assessments\admin.py:29
+#: .\assessments\admin.py:38
 #, python-format
 msgid "%(n)d question marquée relue."
 msgid_plural "%(n)d questions marquées relues."
 msgstr[0] "%(n)d question marked as reviewed."
 msgstr[1] "%(n)d questions marked as reviewed."
 
-#: .\assessments\admin.py:33
+#: .\assessments\admin.py:42
 msgid "Publier les questions sélectionnées"
 msgstr "Publish selected questions"
 
-#: .\assessments\admin.py:45
+#: .\assessments\admin.py:54
 #, python-format
 msgid "%(n)d question publiée."
 msgid_plural "%(n)d questions publiées."
 msgstr[0] "%(n)d question published."
 msgstr[1] "%(n)d questions published."
 
-#: .\assessments\admin.py:49
+#: .\assessments\admin.py:58
 #, python-format
 msgid "Refusée %(reason)s"
 msgstr "Refused %(reason)s"
@@ -109,112 +161,270 @@ msgstr "Multiple-answer MCQ"
 msgid "Vrai / Faux"
 msgstr "True / False"
 
-#: .\assessments\models.py:24 .\assessments\models.py:92
+#: .\assessments\models.py:22
+msgid "Réponse numérique"
+msgstr "Numeric answer"
+
+#: .\assessments\models.py:23
+msgid "Appariement"
+msgstr "Matching"
+
+#: .\assessments\models.py:24
+msgid "Zone cliquable sur schéma"
+msgstr "Clickable area on a diagram"
+
+#: .\assessments\models.py:27 .\assessments\models.py:143
 msgid "Quiz de module"
 msgstr "Module quiz"
 
-#: .\assessments\models.py:25 .\assessments\models.py:93
+#: .\assessments\models.py:28 .\assessments\models.py:144
 msgid "Examen de partie"
 msgstr "Part exam"
 
-#: .\assessments\models.py:28
+#: .\assessments\models.py:31
 msgid "Brouillon"
 msgstr "Draft"
 
-#: .\assessments\models.py:29
+#: .\assessments\models.py:32
 msgid "Publiée"
 msgstr "Published"
 
-#: .\assessments\models.py:33
+#: .\assessments\models.py:36
 msgid "type"
 msgstr "type"
 
-#: .\assessments\models.py:34
+#: .\assessments\models.py:37
 msgid "usage"
 msgstr "usage"
 
-#: .\assessments\models.py:35
+#: .\assessments\models.py:38
 msgid "statut"
 msgstr "status"
 
-#: .\assessments\models.py:36
+#: .\assessments\models.py:39
 msgid "énoncé"
 msgstr "question text"
 
-#: .\assessments\models.py:37
+#: .\assessments\models.py:40
 msgid "explication"
 msgstr "explanation"
 
-#: .\assessments\models.py:40
+#: .\assessments\models.py:43
 msgid "image"
 msgstr "image"
 
-#: .\assessments\models.py:43
+#: .\assessments\models.py:47
+msgid "valeur attendue"
+msgstr "expected value"
+
+#: .\assessments\models.py:48 .\templates\assessments\attempt.html:33
+msgid "unité"
+msgstr "unit"
+
+#: .\assessments\models.py:49
+msgid "tolérance (%)"
+msgstr "tolerance (%)"
+
+#: .\assessments\models.py:51
+msgid "schéma SVG"
+msgstr "SVG diagram"
+
+#: .\assessments\models.py:52
 msgid "relue en français"
 msgstr "reviewed in French"
 
-#: .\assessments\models.py:44
+#: .\assessments\models.py:53
 msgid "relue en anglais"
 msgstr "reviewed in English"
 
-#: .\assessments\models.py:58
+#: .\assessments\models.py:67
 msgid "La question doit être relue en français et en anglais."
 msgstr "The question must be reviewed in French and in English."
 
-#: .\assessments\models.py:62
+#: .\assessments\models.py:71
 msgid "Un QCM à une réponse doit avoir exactement une bonne réponse."
 msgstr "A single-answer MCQ must have exactly one correct answer."
 
-#: .\assessments\models.py:64
+#: .\assessments\models.py:73
 msgid "Un QCM à plusieurs réponses doit avoir au moins deux bonnes réponses."
 msgstr "A multiple-answer MCQ must have at least two correct answers."
 
-#: .\assessments\models.py:66
+#: .\assessments\models.py:75
 msgid "Une question Vrai/Faux doit avoir deux choix dont un seul correct."
 msgstr "A True/False question must have two choices with exactly one correct."
 
-#: .\assessments\models.py:79
-msgid "texte"
-msgstr "text"
+#: .\assessments\models.py:78
+msgid "Une question numérique doit avoir une valeur attendue."
+msgstr "A numeric question needs an expected value."
 
 #: .\assessments\models.py:80
-msgid "bonne réponse"
-msgstr "correct answer"
+msgid "Une question numérique n'a pas de choix."
+msgstr "A numeric question has no choices."
 
-#: .\assessments\models.py:102
-msgid "seuil de réussite (%)"
-msgstr "pass mark (%)"
+#: .\assessments\models.py:82
+msgid "Une question d'appariement doit avoir au moins deux paires."
+msgstr "A matching question needs at least two pairs."
 
-#: .\assessments\models.py:103
-msgid "tentatives maximum"
-msgstr "maximum attempts"
+#: .\assessments\models.py:85
+msgid "Une question sur schéma doit avoir un schéma SVG."
+msgstr "A diagram question needs an SVG diagram."
 
-#: .\assessments\models.py:104
-msgid "durée (minutes)"
-msgstr "duration (minutes)"
-
-#: .\assessments\models.py:105
-msgid "questions par module"
-msgstr "questions per module"
-
-#: .\assessments\models.py:106
-msgid "mélanger questions et choix"
-msgstr "shuffle questions and choices"
-
-#: .\config\settings.py:101
-msgid "Français"
-msgstr "French"
-
-#: .\config\settings.py:101
-msgid "English"
-msgstr "English"
-
-#: .\config\uploads.py:47
+#: .\assessments\models.py:87 .\config\uploads.py:47
 msgid "Ce SVG contient du script ou un lien actif : il est refusé."
 msgstr "This SVG contains a script or an active link: it is rejected."
 
-#: .\courses\models.py:11 .\courses\models.py:26 .\courses\models.py:41
-#: .\courses\models.py:69 .\courses\models.py:85
+#: .\assessments\models.py:89
+msgid "Une question sur schéma doit avoir exactement une bonne zone."
+msgstr "A diagram question needs exactly one right area."
+
+#: .\assessments\models.py:91
+msgid "Chaque zone d'une question sur schéma doit avoir une forme."
+msgstr "Every area of a diagram question needs a shape."
+
+#: .\assessments\models.py:112
+msgid "texte"
+msgstr "text"
+
+#: .\assessments\models.py:113
+msgid "bonne réponse"
+msgstr "correct answer"
+
+#: .\assessments\models.py:116
+msgid "zone"
+msgstr "area"
+
+#: .\assessments\models.py:130
+msgid "élément"
+msgstr "item"
+
+#: .\assessments\models.py:131
+msgid "correspondance"
+msgstr "match"
+
+#: .\assessments\models.py:153
+msgid "seuil de réussite (%)"
+msgstr "pass mark (%)"
+
+#: .\assessments\models.py:154
+msgid "tentatives maximum"
+msgstr "maximum attempts"
+
+#: .\assessments\models.py:155
+msgid "durée (minutes)"
+msgstr "duration (minutes)"
+
+#: .\assessments\models.py:156
+msgid "questions par module"
+msgstr "questions per module"
+
+#: .\assessments\models.py:157
+msgid "mélanger questions et choix"
+msgstr "shuffle questions and choices"
+
+#: .\catalog\admin.py:11
+msgid "groupe"
+msgstr "group"
+
+#: .\catalog\admin.py:15
+msgid "Groupe ouvert (sans promotion)"
+msgstr "Open group (no cohort)"
+
+#: .\catalog\admin.py:15
+msgid "En promotion"
+msgstr "In a cohort"
+
+#: .\catalog\models.py:10 .\templates\base.html:28 .\templates\base.html:33
+#: .\templates\catalog\catalogue.html:2
+#: .\templates\catalog\formation_detail.html:4
+msgid "Catalogue"
+msgstr "Catalogue"
+
+#: .\catalog\models.py:11 .\catalog\views.py:53
+#: .\templates\catalog\join.html:9
+msgid "Code de promotion"
+msgstr "Cohort code"
+
+#: .\catalog\models.py:12
+msgid "Import CSV"
+msgstr "CSV import"
+
+#: .\catalog\models.py:19
+msgid "promotion"
+msgstr "cohort"
+
+#: .\catalog\models.py:21
+msgid "origine"
+msgstr "source"
+
+#: .\catalog\models.py:22
+msgid "inscrit le"
+msgstr "enrolled on"
+
+#: .\catalog\models.py:37
+msgid "La promotion doit appartenir à la formation choisie."
+msgstr "The cohort must belong to the chosen course."
+
+#: .\catalog\views.py:65
+msgid "Ce code est inconnu ou n'est plus actif."
+msgstr "This code is unknown or no longer active."
+
+#: .\certificates\models.py:12
+msgid "Module terminé"
+msgstr "Module completed"
+
+#: .\certificates\models.py:13
+msgid "Partie réussie"
+msgstr "Part passed"
+
+#: .\certificates\models.py:40
+msgid "numéro"
+msgstr "number"
+
+#: .\certificates\models.py:44
+msgid "titulaire"
+msgstr "holder"
+
+#: .\certificates\models.py:45
+msgid "score (%)"
+msgstr "score (%)"
+
+#: .\certificates\models.py:46
+msgid "délivré le"
+msgstr "issued on"
+
+#: .\certificates\views.py:57
+msgid "Certificat de réussite"
+msgstr "Certificate of achievement"
+
+#: .\certificates\views.py:59
+msgid "a réussi l'examen de la partie"
+msgstr "has passed the exam of the part"
+
+#: .\certificates\views.py:61
+#, python-format
+msgid "Score : %(score)s %%"
+msgstr "Score: %(score)s %%"
+
+#: .\certificates\views.py:62
+#, python-format
+msgid "Délivré le %(date)s"
+msgstr "Issued on %(date)s"
+
+#: .\certificates\views.py:63
+#, python-format
+msgid "Vérification : %(url)s"
+msgstr "Verification: %(url)s"
+
+#: .\config\settings.py:129
+msgid "Français"
+msgstr "French"
+
+#: .\config\settings.py:129
+msgid "English"
+msgstr "English"
+
+#: .\courses\models.py:11 .\courses\models.py:30 .\courses\models.py:45
+#: .\courses\models.py:73 .\courses\models.py:89 .\progress\models.py:19
 msgid "titre"
 msgstr "title"
 
@@ -222,63 +432,106 @@ msgstr "title"
 msgid "description"
 msgstr "description"
 
-#: .\courses\models.py:43
+#: .\courses\models.py:16
+msgid "ouverte au catalogue"
+msgstr "open in the catalogue"
+
+#: .\courses\models.py:17
+msgid "Visible dans le catalogue public et ouverte à l’inscription libre."
+msgstr "Listed in the public catalogue and open to self-enrolment."
+
+#: .\courses\models.py:47
 msgid "durée (heures)"
 msgstr "duration (hours)"
 
-#: .\courses\models.py:44
+#: .\courses\models.py:48
 msgid "compétence visée"
 msgstr "target skill"
 
-#: .\courses\models.py:45
+#: .\courses\models.py:49
 msgid "modalités d'évaluation"
 msgstr "assessment method"
 
-#: .\courses\models.py:64
+#: .\courses\models.py:68
 msgid "Contenu"
 msgstr "Content"
 
-#: .\courses\models.py:65
+#: .\courses\models.py:69
 msgid "Activités pratiques"
 msgstr "Practical activities"
 
-#: .\courses\models.py:72
+#: .\courses\models.py:76
 msgid "contenu (Markdown)"
 msgstr "content (Markdown)"
 
-#: .\progress\views.py:77 .\templates\progress\trainer_table.html:16
+#: .\progress\models.py:20
+msgid "message"
+msgstr "message"
+
+#: .\progress\models.py:21
+msgid "publiée le"
+msgstr "published on"
+
+#: .\progress\models.py:35
+msgid "date limite"
+msgstr "deadline"
+
+#: .\progress\views.py:94 .\progress\views.py:188 .\progress\views.py:213
+#: .\templates\progress\trainer_table.html:17
 msgid "Promotion"
 msgstr "Cohort"
 
-#: .\progress\views.py:77 .\templates\accounts\login.html:23
+#: .\progress\views.py:94 .\templates\accounts\login.html:23
 #: .\templates\admin\accounts\promotion\import.html:9
 msgid "Identifiant"
 msgstr "Username"
 
-#: .\progress\views.py:77
+#: .\progress\views.py:94
 msgid "Nom"
 msgstr "Name"
 
-#: .\progress\views.py:79
+#: .\progress\views.py:96
 #, python-format
 msgid "Examen %(partie)s (%%)"
 msgstr "Exam %(partie)s (%%)"
 
-#: .\progress\views.py:79
+#: .\progress\views.py:96
 #, python-format
 msgid "Tentatives %(partie)s"
 msgstr "Attempts %(partie)s"
 
-#: .\progress\views.py:84
+#: .\progress\views.py:101
 msgid "oui"
 msgstr "yes"
 
-#: .\progress\views.py:84
+#: .\progress\views.py:101
 msgid "non"
 msgstr "no"
 
+#: .\progress\views.py:183
+msgid "Titre"
+msgstr "Title"
+
+#: .\progress\views.py:184
+msgid "Message"
+msgstr "Message"
+
+#: .\progress\views.py:208 .\templates\progress\deadlines.html:15
+msgid "Quiz ou examen"
+msgstr "Quiz or exam"
+
+#: .\progress\views.py:209 .\templates\progress\deadlines.html:27
+msgid "Date limite"
+msgstr "Deadline"
+
+#: .\progress\views.py:232
+msgid "Choisissez un quiz ou un examen de la formation de cette promotion."
+msgstr "Choose a quiz or an exam from this cohort's course."
+
 #: .\templates\accounts\dashboard.html:2 .\templates\accounts\dashboard.html:5
-#: .\templates\assessments\exam.html:4 .\templates\courses\module_detail.html:7
+#: .\templates\assessments\exam.html:4 .\templates\base.html:25
+#: .\templates\certificates\mine.html:40
+#: .\templates\courses\module_detail.html:7
 msgid "Mes cours"
 msgstr "My courses"
 
@@ -287,56 +540,112 @@ msgstr "My courses"
 msgid "Bonjour, %(name)s"
 msgstr "Hello, %(name)s"
 
-#: .\templates\accounts\dashboard.html:13
+#: .\templates\accounts\dashboard.html:9
+#: .\templates\progress\_trainer_nav.html:5
+#: .\templates\progress\announcements.html:2
+#: .\templates\progress\announcements.html:5
+msgid "Annonces"
+msgstr "Announcements"
+
+#: .\templates\accounts\dashboard.html:24
 msgid "Progression"
 msgstr "Progress"
 
-#: .\templates\accounts\dashboard.html:20
-#: .\templates\accounts\dashboard.html:22
+#: .\templates\accounts\dashboard.html:31
+#: .\templates\accounts\dashboard.html:33
 msgid "Terminé"
 msgstr "Completed"
 
-#: .\templates\accounts\dashboard.html:22
+#: .\templates\accounts\dashboard.html:33
+#: .\templates\catalog\catalogue.html:19
+#: .\templates\catalog\formation_detail.html:16
+#: .\templates\catalog\formation_detail.html:25
 #, python-format
 msgid "%(h)s h"
 msgstr "%(h)s h"
 
-#: .\templates\accounts\dashboard.html:30
+#: .\templates\accounts\dashboard.html:41
 msgid "Examen de la partie"
 msgstr "Part exam"
 
-#: .\templates\accounts\dashboard.html:32
+#: .\templates\accounts\dashboard.html:43
 msgid "Tous les modules sont terminés. L'examen est ouvert."
 msgstr "All modules are completed. The exam is open."
 
-#: .\templates\accounts\dashboard.html:33
+#: .\templates\accounts\dashboard.html:44
 msgid "Voir l'examen"
 msgstr "View the exam"
 
-#: .\templates\accounts\dashboard.html:35
+#: .\templates\accounts\dashboard.html:46
 msgid ""
 "Il s'ouvre quand tous les modules sont terminés : sections lues et quiz "
 "envoyé."
 msgstr ""
 "It opens once every module is completed: sections read and quiz submitted."
 
-#: .\templates\accounts\dashboard.html:36
+#: .\templates\accounts\dashboard.html:47
 msgid "Ce qu'il reste à faire"
 msgstr "What is left to do"
 
-#: .\templates\accounts\dashboard.html:42
+#: .\templates\accounts\dashboard.html:53
 msgid "Aucune formation pour le moment"
 msgstr "No course yet"
 
-#: .\templates\accounts\dashboard.html:43
+#: .\templates\accounts\dashboard.html:54
 msgid ""
-"Votre compte n'est rattaché à aucune promotion. Le centre vous inscrira "
-"avant le début des cours."
+"Vous n'êtes inscrit à aucune formation. Choisissez-en une dans le catalogue "
+"ou saisissez le code de votre promotion."
 msgstr ""
-"Your account is not linked to a cohort yet. The centre will enrol you before "
-"classes start."
+"You are not enrolled in any course yet. Pick one from the catalogue or enter"
+" your cohort code."
+
+#: .\templates\accounts\dashboard.html:55
+msgid "Voir le catalogue"
+msgstr "Browse the catalogue"
+
+#: .\templates\accounts\dashboard.html:55
+msgid "J'ai un code"
+msgstr "I have a code"
+
+#: .\templates\accounts\email\password_reset.txt:1
+msgid ""
+"Vous avez demandé à changer votre mot de passe Electro Acad Ventisax. Ouvrez"
+" ce lien :"
+msgstr ""
+"You asked to change your Electro Acad Ventisax password. Open this link:"
+
+#: .\templates\accounts\email\password_reset.txt:5
+#, python-format
+msgid "Votre identifiant : %(username)s"
+msgstr "Your username: %(username)s"
+
+#: .\templates\accounts\email\password_reset.txt:7
+msgid "Si vous n'êtes pas à l'origine de cette demande, ignorez ce message."
+msgstr "If you did not make this request, ignore this message."
+
+#: .\templates\accounts\email\password_reset_subject.txt:1
+msgid "Changement de mot de passe"
+msgstr "Password change"
+
+#: .\templates\accounts\email\verify_email.txt:1
+#, python-format
+msgid "Bonjour %(name)s,"
+msgstr "Hello %(name)s,"
+
+#: .\templates\accounts\email\verify_email.txt:3
+msgid "Pour activer votre compte Electro Acad Ventisax, ouvrez ce lien :"
+msgstr "To activate your Electro Acad Ventisax account, open this link:"
+
+#: .\templates\accounts\email\verify_email.txt:7
+msgid ""
+"Sans confirmation, le compte est supprimé au bout de 7 jours. Si vous n'êtes"
+" pas à l'origine de cette inscription, ignorez ce message."
+msgstr ""
+"Without confirmation, the account is deleted after 7 days. If you did not "
+"sign up, ignore this message."
 
 #: .\templates\accounts\login.html:2 .\templates\accounts\login.html:15
+#: .\templates\base.html:34
 msgid "Connexion"
 msgstr "Sign in"
 
@@ -363,8 +672,8 @@ msgid "En français et en anglais"
 msgstr "In French and in English"
 
 #: .\templates\accounts\login.html:16
-msgid "Utilisez l'identifiant remis par le centre."
-msgstr "Use the username given to you by the centre."
+msgid "Utilisez votre identifiant, ou celui remis par le centre."
+msgstr "Use your username, or the one given by the centre."
 
 #: .\templates\accounts\login.html:18
 msgid "Identifiant ou mot de passe incorrect."
@@ -375,12 +684,142 @@ msgid "Mot de passe"
 msgstr "Password"
 
 #: .\templates\accounts\login.html:29
-msgid "Mot de passe oublié : demandez-le à votre formateur."
-msgstr "Forgot your password? Ask your trainer."
+msgid "Mot de passe oublié ?"
+msgstr "Forgot your password?"
+
+#: .\templates\accounts\login.html:29 .\templates\accounts\signup.html:2
+#: .\templates\accounts\signup.html:15 .\templates\base.html:48
+msgid "Créer un compte"
+msgstr "Create an account"
 
 #: .\templates\accounts\login.html:31
+#: .\templates\accounts\password_reset_complete.html:7
+#: .\templates\accounts\signup.html:33
 msgid "Se connecter"
 msgstr "Sign in"
+
+#: .\templates\accounts\password_reset_complete.html:2
+#: .\templates\accounts\password_reset_complete.html:5
+msgid "Mot de passe changé"
+msgstr "Password changed"
+
+#: .\templates\accounts\password_reset_complete.html:6
+msgid "Vous pouvez vous connecter avec votre nouveau mot de passe."
+msgstr "You can now sign in with your new password."
+
+#: .\templates\accounts\password_reset_confirm.html:2
+#: .\templates\accounts\password_reset_confirm.html:5
+msgid "Nouveau mot de passe"
+msgstr "New password"
+
+#: .\templates\accounts\password_reset_confirm.html:10
+#: .\templates\progress\deadlines.html:32
+msgid "Enregistrer"
+msgstr "Save"
+
+#: .\templates\accounts\password_reset_confirm.html:13
+msgid "Ce lien est invalide ou a déjà servi. Demandez-en un nouveau."
+msgstr "This link is invalid or has already been used. Ask for a new one."
+
+#: .\templates\accounts\password_reset_confirm.html:14
+msgid "Demander un nouveau lien"
+msgstr "Ask for a new link"
+
+#: .\templates\accounts\password_reset_done.html:2
+#: .\templates\accounts\password_reset_done.html:5
+#: .\templates\accounts\signup_done.html:2
+#: .\templates\accounts\signup_done.html:5
+msgid "Vérifiez vos e-mails"
+msgstr "Check your e-mail"
+
+#: .\templates\accounts\password_reset_done.html:6
+msgid ""
+"Si un compte correspond à cette adresse, un lien vient de lui être envoyé. "
+"Il reste valable 24 heures."
+msgstr ""
+"If an account matches this address, a link has just been sent to it. It "
+"stays valid for 24 hours."
+
+#: .\templates\accounts\password_reset_done.html:7
+#: .\templates\accounts\signup_done.html:8
+msgid "Aller à la connexion"
+msgstr "Go to sign in"
+
+#: .\templates\accounts\password_reset_form.html:2
+#: .\templates\accounts\password_reset_form.html:5
+msgid "Mot de passe oublié"
+msgstr "Forgotten password"
+
+#: .\templates\accounts\password_reset_form.html:6
+msgid ""
+"Saisissez l'adresse e-mail de votre compte : nous vous enverrons un lien "
+"pour choisir un nouveau mot de passe."
+msgstr ""
+"Enter your account's e-mail address: we will send you a link to choose a new"
+" password."
+
+#: .\templates\accounts\password_reset_form.html:9
+msgid "Envoyer le lien"
+msgstr "Send the link"
+
+#: .\templates\accounts\password_reset_form.html:11
+msgid ""
+"Pas d'adresse e-mail sur votre compte ? Demandez un nouveau mot de passe à "
+"votre formateur."
+msgstr ""
+"No e-mail address on your account? Ask your trainer for a new password."
+
+#: .\templates\accounts\signup.html:6
+msgid "Apprenez l'électronique à votre rythme."
+msgstr "Learn electronics at your own pace."
+
+#: .\templates\accounts\signup.html:7
+msgid ""
+"Un compte gratuit vous donne accès aux cours ouverts, aux quiz et à l'examen"
+" de chaque partie."
+msgstr ""
+"A free account gives you the open courses, the quizzes and the exam of each "
+"part."
+
+#: .\templates\accounts\signup.html:9
+msgid "Des quiz illimités, corrigés et expliqués"
+msgstr "Unlimited quizzes, marked and explained"
+
+#: .\templates\accounts\signup.html:10
+msgid "Un certificat vérifiable pour chaque partie réussie"
+msgstr "A verifiable certificate for every part you pass"
+
+#: .\templates\accounts\signup.html:11
+msgid "Un code de promotion ? Vous le saisirez après l'inscription"
+msgstr "A cohort code? You will enter it after signing up"
+
+#: .\templates\accounts\signup.html:16
+msgid "Un lien de confirmation vous sera envoyé par e-mail."
+msgstr "A confirmation link will be sent to you by e-mail."
+
+#: .\templates\accounts\signup.html:31
+msgid "Créer mon compte"
+msgstr "Create my account"
+
+#: .\templates\accounts\signup.html:33
+msgid "Déjà inscrit ?"
+msgstr "Already registered?"
+
+#: .\templates\accounts\signup_done.html:6
+msgid ""
+"Si les informations sont valides, un lien de confirmation vient de vous être"
+" envoyé. Ouvrez-le pour activer votre compte."
+msgstr ""
+"If the details are valid, a confirmation link has just been sent to you. "
+"Open it to activate your account."
+
+#: .\templates\accounts\signup_done.html:7
+msgid ""
+"Sans confirmation, le compte est supprimé au bout de 7 jours. Pensez à "
+"regarder dans les courriers indésirables."
+msgstr ""
+"Without confirmation, the account is deleted after 7 days. Remember to check"
+" your spam folder."
 
 #: .\templates\admin\accounts\promotion\import.html:3
 #, python-format
@@ -411,6 +850,7 @@ msgid "Importer"
 msgstr "Import"
 
 #: .\templates\assessments\attempt.html:2 .\templates\assessments\exam.html:2
+#: .\templates\progress\trainer_table.html:39
 msgid "Examen"
 msgstr "Exam"
 
@@ -440,11 +880,15 @@ msgid "%%(done)s / %%(total)s répondues"
 msgstr "%%(done)s / %%(total)s answered"
 
 #: .\templates\assessments\attempt.html:11 .\templates\assessments\exam.html:7
+#: .\templates\progress\attempt_review.html:10
+#: .\templates\progress\deadlines.html:20
 #, python-format
 msgid "Examen : %(p)s"
 msgstr "Exam: %(p)s"
 
 #: .\templates\assessments\attempt.html:11
+#: .\templates\progress\attempt_review.html:10
+#: .\templates\progress\deadlines.html:19
 #, python-format
 msgid "Quiz : %(m)s"
 msgstr "Quiz: %(m)s"
@@ -453,35 +897,59 @@ msgstr "Quiz: %(m)s"
 msgid "Temps restant"
 msgstr "Time left"
 
-#: .\templates\assessments\attempt.html:24
+#: .\templates\assessments\attempt.html:28
+msgid ""
+"Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés "
+"(ex. 4,7 k)."
+msgstr ""
+"Enter a value: comma or dot, prefixes p n µ m k M G accepted (e.g. 4.7 k)."
+
+#: .\templates\assessments\attempt.html:30
+#: .\templates\assessments\result.html:63
+msgid "Votre réponse"
+msgstr "Your answer"
+
+#: .\templates\assessments\attempt.html:37
+msgid "Associez chaque élément à sa correspondance."
+msgstr "Match each item with its counterpart."
+
+#: .\templates\assessments\attempt.html:44
+msgid "Choisir"
+msgstr "Choose"
+
+#: .\templates\assessments\attempt.html:51
+msgid "Cliquez la bonne zone du schéma, ou choisissez-la dans la liste."
+msgstr "Click the right area of the diagram, or pick it from the list."
+
+#: .\templates\assessments\attempt.html:62
 msgid "Plusieurs réponses possibles."
 msgstr "Several answers possible."
 
-#: .\templates\assessments\attempt.html:24
+#: .\templates\assessments\attempt.html:62
 msgid "Une seule réponse."
 msgstr "One answer only."
 
-#: .\templates\assessments\attempt.html:36
+#: .\templates\assessments\attempt.html:73
 msgid "Enregistrer cette réponse"
 msgstr "Save this answer"
 
-#: .\templates\assessments\attempt.html:40
+#: .\templates\assessments\attempt.html:77
 msgid "Aucune question publiée pour le moment."
 msgstr "No published question yet."
 
-#: .\templates\assessments\attempt.html:45
+#: .\templates\assessments\attempt.html:82
 msgid "Une fois envoyé, l'examen ne peut plus être modifié."
 msgstr "Once submitted, the exam can no longer be changed."
 
-#: .\templates\assessments\attempt.html:45
+#: .\templates\assessments\attempt.html:82
 msgid "Vous verrez la correction juste après l'envoi."
 msgstr "You will see the answers right after submitting."
 
-#: .\templates\assessments\attempt.html:46
+#: .\templates\assessments\attempt.html:83
 msgid "Envoyer l'examen"
 msgstr "Submit the exam"
 
-#: .\templates\assessments\attempt.html:46
+#: .\templates\assessments\attempt.html:83
 msgid "Voir la correction"
 msgstr "See the answers"
 
@@ -521,10 +989,11 @@ msgstr "You have used all your attempts. Talk to your trainer."
 #: .\templates\assessments\exam.html:24
 msgid ""
 "Le chrono démarre dès que vous commencez. Chaque réponse est enregistrée "
-"immédiatement : si la connexion coupe, revenez sur cette page pour reprendre."
+"immédiatement : si la connexion coupe, revenez sur cette page pour "
+"reprendre."
 msgstr ""
-"The timer starts as soon as you begin. Every answer is saved immediately: if "
-"the connection drops, come back to this page to resume."
+"The timer starts as soon as you begin. Every answer is saved immediately: if"
+" the connection drops, come back to this page to resume."
 
 #: .\templates\assessments\exam.html:25
 msgid "Commencer l'examen"
@@ -547,6 +1016,7 @@ msgid "Aucune tentative pour le moment."
 msgstr "No attempt yet."
 
 #: .\templates\assessments\result.html:2
+#: .\templates\progress\attempt_review.html:17
 msgid "Résultat"
 msgstr "Result"
 
@@ -575,7 +1045,8 @@ msgstr[0] "%(n)s attempt left."
 msgstr[1] "%(n)s attempts left."
 
 #: .\templates\assessments\result.html:14
-msgid "Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez."
+msgid ""
+"Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez."
 msgstr ""
 "This quiz does not count towards your grade. Retake it as often as you like."
 
@@ -604,6 +1075,7 @@ msgid "Correct"
 msgstr "Correct"
 
 #: .\templates\assessments\result.html:43
+#: .\templates\progress\attempt_review.html:23
 msgid "Partiel"
 msgstr "Partial"
 
@@ -611,15 +1083,28 @@ msgstr "Partial"
 msgid "Incorrect"
 msgstr "Incorrect"
 
-#: .\templates\assessments\result.html:50
-msgid "Votre réponse"
-msgstr "Your answer"
+#: .\templates\assessments\result.html:46
+msgid "Votre réponse :"
+msgstr "Your answer:"
 
-#: .\templates\assessments\result.html:54
+#: .\templates\assessments\result.html:46
+msgid "Valeur attendue :"
+msgstr "Expected value:"
+
+#: .\templates\assessments\result.html:53
+#, python-format
+msgid "Vous : %(g)s"
+msgstr "You: %(g)s"
+
+#: .\templates\assessments\result.html:53
+msgid "Sans réponse"
+msgstr "No answer"
+
+#: .\templates\assessments\result.html:67
 msgid "Sans réponse."
 msgstr "No answer."
 
-#: .\templates\base.html:7
+#: .\templates\base.html:7 .\templates\certificates\verify.html:9
 msgid "Formation"
 msgstr "Training"
 
@@ -628,8 +1113,8 @@ msgid "Aller au contenu"
 msgstr "Skip to content"
 
 #: .\templates\base.html:18
-msgid "Formation et évaluation"
-msgstr "Training and assessment"
+msgid "Électronique, formation et évaluation"
+msgstr "Electronics, training and assessment"
 
 #: .\templates\base.html:20
 msgid "Navigation principale"
@@ -639,17 +1124,220 @@ msgstr "Main navigation"
 msgid "Suivi"
 msgstr "Progress"
 
-#: .\templates\base.html:26
+#: .\templates\base.html:26 .\templates\certificates\mine.html:22
+msgid "Certificats"
+msgstr "Certificates"
+
+#: .\templates\base.html:30
 msgid "Gestion"
 msgstr "Admin"
 
-#: .\templates\base.html:38
+#: .\templates\base.html:45
 msgid "Déconnexion"
 msgstr "Sign out"
 
-#: .\templates\base.html:50
+#: .\templates\base.html:64
 msgid "Ventisax, centre de formation à Yaoundé."
 msgstr "Ventisax, training centre in Yaoundé."
+
+#: .\templates\catalog\_enroll_action.html:3
+msgid "Continuer"
+msgstr "Continue"
+
+#: .\templates\catalog\_enroll_action.html:6
+#: .\templates\catalog\_enroll_action.html:9
+msgid "S'inscrire"
+msgstr "Enrol"
+
+#: .\templates\catalog\catalogue.html:5
+msgid "Catalogue des formations"
+msgstr "Course catalogue"
+
+#: .\templates\catalog\catalogue.html:6
+msgid ""
+"Des cours en ligne avec quiz et examen, en français et en anglais. Commencez"
+" quand vous voulez."
+msgstr ""
+"Online courses with quizzes and exams, in French and English. Start whenever"
+" you like."
+
+#: .\templates\catalog\catalogue.html:18
+#, python-format
+msgid "%(n)s module"
+msgid_plural "%(n)s modules"
+msgstr[0] "%(n)s module"
+msgstr[1] "%(n)s modules"
+
+#: .\templates\catalog\catalogue.html:20
+msgid "Certificat par partie"
+msgstr "Certificate per part"
+
+#: .\templates\catalog\catalogue.html:25
+msgid "Programme"
+msgstr "Syllabus"
+
+#: .\templates\catalog\catalogue.html:30
+msgid "Aucune formation ouverte pour le moment"
+msgstr "No open course for now"
+
+#: .\templates\catalog\catalogue.html:31
+msgid ""
+"Votre centre vous a donné un code de promotion ? Connectez-vous puis "
+"saisissez-le."
+msgstr "Did your centre give you a cohort code? Sign in, then enter it."
+
+#: .\templates\catalog\catalogue.html:36
+msgid "Vous avez un code de promotion ?"
+msgstr "Have a cohort code?"
+
+#: .\templates\catalog\catalogue.html:36 .\templates\catalog\join.html:2
+#: .\templates\catalog\join.html:5
+msgid "Rejoindre ma promotion"
+msgstr "Join my cohort"
+
+#: .\templates\catalog\formation_detail.html:19
+msgid ""
+"Examen chronométré en fin de partie ; certificat vérifiable si vous le "
+"réussissez."
+msgstr ""
+"Timed exam at the end of the part; a verifiable certificate if you pass it."
+
+#: .\templates\catalog\formation_detail.html:23
+msgid "Inscription"
+msgstr "Enrolment"
+
+#: .\templates\catalog\formation_detail.html:25
+msgid "Durée"
+msgstr "Duration"
+
+#: .\templates\catalog\formation_detail.html:26
+msgid "Modules"
+msgstr "Modules"
+
+#: .\templates\catalog\formation_detail.html:27
+msgid "Langues"
+msgstr "Languages"
+
+#: .\templates\catalog\formation_detail.html:31
+msgid "J'ai déjà un compte"
+msgstr "I already have an account"
+
+#: .\templates\catalog\formation_detail.html:33
+msgid ""
+"Inscription gratuite. Les quiz sont illimités ; l'examen accepte trois "
+"tentatives."
+msgstr ""
+"Free enrolment. Quizzes are unlimited; the exam allows three attempts."
+
+#: .\templates\catalog\join.html:6
+msgid ""
+"Saisissez le code à 8 caractères donné par votre formateur. Majuscules et "
+"espaces n'ont pas d'importance."
+msgstr ""
+"Enter the 8-character code given by your trainer. Case and spaces do not "
+"matter."
+
+#: .\templates\catalog\join.html:13
+msgid "Rejoindre"
+msgstr "Join"
+
+#: .\templates\certificates\mine.html:2 .\templates\certificates\mine.html:5
+msgid "Certificats et badges"
+msgstr "Certificates and badges"
+
+#: .\templates\certificates\mine.html:6
+msgid ""
+"Chaque partie réussie à l'examen donne un certificat vérifiable en ligne."
+msgstr ""
+"Every part whose exam you pass earns a certificate that can be verified "
+"online."
+
+#: .\templates\certificates\mine.html:11
+msgid "Votre nom sur le certificat"
+msgstr "Your name on the certificate"
+
+#: .\templates\certificates\mine.html:12
+msgid ""
+"Renseignez votre prénom et votre nom tels qu'ils doivent figurer sur vos "
+"certificats. Ils ne changeront plus une fois le certificat délivré."
+msgstr ""
+"Enter your first and last name as they should appear on your certificates. "
+"They will not change once a certificate is issued."
+
+#: .\templates\certificates\mine.html:17
+msgid "Enregistrer mon nom"
+msgstr "Save my name"
+
+#: .\templates\certificates\mine.html:28
+#, python-format
+msgid "délivré le %(d)s"
+msgstr "issued on %(d)s"
+
+#: .\templates\certificates\mine.html:33
+msgid "Vérification"
+msgstr "Verification"
+
+#: .\templates\certificates\mine.html:38
+msgid "Pas encore de certificat"
+msgstr "No certificate yet"
+
+#: .\templates\certificates\mine.html:39
+#, python-format
+msgid ""
+"Terminez les modules d'une partie, puis réussissez son examen avec au moins "
+"70 %% pour obtenir votre certificat."
+msgstr ""
+"Complete the modules of a part, then pass its exam with at least 70 %% to "
+"earn your certificate."
+
+#: .\templates\certificates\mine.html:46
+msgid "Badges"
+msgstr "Badges"
+
+#: .\templates\certificates\mine.html:57
+msgid ""
+"Terminez un module (sections lues et quiz envoyé) pour gagner votre premier "
+"badge."
+msgstr ""
+"Complete a module (sections read and quiz submitted) to earn your first "
+"badge."
+
+#: .\templates\certificates\verify.html:2
+msgid "Vérification de certificat"
+msgstr "Certificate verification"
+
+#: .\templates\certificates\verify.html:5
+msgid "Certificat valide"
+msgstr "Valid certificate"
+
+#: .\templates\certificates\verify.html:6
+msgid "Ce certificat a bien été délivré par Electro Acad Ventisax."
+msgstr "This certificate was issued by Electro Acad Ventisax."
+
+#: .\templates\certificates\verify.html:8
+msgid "Titulaire"
+msgstr "Holder"
+
+#: .\templates\certificates\verify.html:10
+msgid "Partie"
+msgstr "Part"
+
+#: .\templates\certificates\verify.html:11
+msgid "Délivré le"
+msgstr "Issued on"
+
+#: .\templates\certificates\verify.html:12
+msgid "Statut"
+msgstr "Status"
+
+#: .\templates\certificates\verify.html:12
+msgid "valide"
+msgstr "valid"
+
+#: .\templates\certificates\verify.html:14
+#, python-format
+msgid "Numéro %(n)s"
+msgstr "Number %(n)s"
 
 #: .\templates\courses\_outline.html:3
 msgid "Sommaire"
@@ -660,7 +1348,7 @@ msgid "Sommaire de la partie"
 msgstr "Part contents"
 
 #: .\templates\courses\_outline.html:10
-#: .\templates\progress\trainer_table.html:26
+#: .\templates\progress\trainer_table.html:31
 msgid "terminé"
 msgstr "completed"
 
@@ -683,7 +1371,7 @@ msgid "Compétence visée"
 msgstr "Target skill"
 
 #: .\templates\courses\module_detail.html:20
-#: .\templates\courses\section_detail.html:22
+#: .\templates\courses\section_detail.html:33
 msgid "Sections"
 msgstr "Sections"
 
@@ -712,49 +1400,272 @@ msgid "Contenu disponible en français uniquement"
 msgstr "Content available in French only"
 
 #: .\templates\courses\section_detail.html:16
+msgid "Calculateur : loi d’Ohm"
+msgstr "Calculator: Ohm’s law"
+
+#: .\templates\courses\section_detail.html:16
+msgid "Remplissez deux des trois grandeurs : la troisième est calculée."
+msgstr "Fill in two of the three quantities: the third one is calculated."
+
+#: .\templates\courses\section_detail.html:17
+msgid "Tension U"
+msgstr "Voltage U"
+
+#: .\templates\courses\section_detail.html:17
+msgid "Intensité I"
+msgstr "Current I"
+
+#: .\templates\courses\section_detail.html:17
+msgid "Résistance R"
+msgstr "Resistance R"
+
+#: .\templates\courses\section_detail.html:18
+msgid "Calculateur : diviseur de tension"
+msgstr "Calculator: voltage divider"
+
+#: .\templates\courses\section_detail.html:18
+msgid "Tension d’entrée Ve"
+msgstr "Input voltage Vin"
+
+#: .\templates\courses\section_detail.html:19
+msgid "Remplissez toutes les valeurs."
+msgstr "Fill in every value."
+
+#: .\templates\courses\section_detail.html:20
+msgid "Calculateur : code couleur des résistances"
+msgstr "Calculator: resistor colour code"
+
+#: .\templates\courses\section_detail.html:21
+msgid "1re bague"
+msgstr "1st band"
+
+#: .\templates\courses\section_detail.html:21
+msgid "2e bague"
+msgstr "2nd band"
+
+#: .\templates\courses\section_detail.html:21
+msgid "Multiplicateur"
+msgstr "Multiplier"
+
+#: .\templates\courses\section_detail.html:22
+msgid "noir,marron,rouge,orange,jaune,vert,bleu,violet,gris,blanc"
+msgstr "black,brown,red,orange,yellow,green,blue,violet,grey,white"
+
+#: .\templates\courses\section_detail.html:23
+msgid "Calculateur : polarisation du transistor"
+msgstr "Calculator: transistor biasing"
+
+#: .\templates\courses\section_detail.html:23
+msgid "Transistor au silicium : VBE ≈ 0,7 V."
+msgstr "Silicon transistor: VBE ≈ 0.7 V."
+
+#: .\templates\courses\section_detail.html:27
 msgid "Annexes à télécharger"
 msgstr "Downloadable appendices"
 
-#: .\templates\courses\section_detail.html:23
+#: .\templates\courses\section_detail.html:34
 msgid "Précédent"
 msgstr "Previous"
 
-#: .\templates\courses\section_detail.html:25
+#: .\templates\courses\section_detail.html:36
 msgid "Suivant"
 msgstr "Next"
 
-#: .\templates\courses\section_detail.html:27
+#: .\templates\courses\section_detail.html:38
 msgid "Fin du module"
 msgstr "End of module"
 
+#: .\templates\progress\_trainer_nav.html:2
+msgid "Espace formateur"
+msgstr "Trainer area"
+
+#: .\templates\progress\_trainer_nav.html:4
+msgid "Questions"
+msgstr "Questions"
+
+#: .\templates\progress\_trainer_nav.html:6
+#: .\templates\progress\deadlines.html:2 .\templates\progress\deadlines.html:6
+msgid "Dates limites"
+msgstr "Deadlines"
+
+#: .\templates\progress\announcements.html:8
+msgid "Nouvelle annonce"
+msgstr "New announcement"
+
+#: .\templates\progress\announcements.html:9
+msgid ""
+"Elle s'affiche sur le tableau de bord des apprenants de la promotion "
+"choisie."
+msgstr "It appears on the dashboard of the learners in the chosen cohort."
+
+#: .\templates\progress\announcements.html:14
+msgid "Publier"
+msgstr "Publish"
+
+#: .\templates\progress\announcements.html:18
+msgid "Publiées"
+msgstr "Published"
+
+#: .\templates\progress\announcements.html:27
+msgid "Aucune annonce pour le moment."
+msgstr "No announcement yet."
+
+#: .\templates\progress\attempt_review.html:2
+msgid "Détail de la tentative"
+msgstr "Attempt details"
+
+#: .\templates\progress\attempt_review.html:11
+#, python-format
+msgid "tentative %(n)s"
+msgstr "attempt %(n)s"
+
+#: .\templates\progress\attempt_review.html:12
+msgid "envoyée automatiquement"
+msgstr "submitted automatically"
+
+#: .\templates\progress\attempt_review.html:15
+#: .\templates\progress\question_stats.html:11
+msgid "Réponses"
+msgstr "Answers"
+
+#: .\templates\progress\attempt_review.html:17
+#: .\templates\progress\question_stats.html:11
+msgid "Question"
+msgstr "Question"
+
+#: .\templates\progress\attempt_review.html:17
+msgid "Réponse donnée"
+msgstr "Answer given"
+
+#: .\templates\progress\attempt_review.html:17
+msgid "Temps"
+msgstr "Time"
+
+#: .\templates\progress\attempt_review.html:23
+msgid "Juste"
+msgstr "Right"
+
+#: .\templates\progress\attempt_review.html:23
+msgid "Faux"
+msgstr "Wrong"
+
+#: .\templates\progress\attempt_review.html:24
+#, python-format
+msgid "%(s)s s"
+msgstr "%(s)s s"
+
+#: .\templates\progress\deadlines.html:7
+msgid ""
+"Indicatives : rien n'est bloqué, mais un apprenant qui n'a pas fini à temps "
+"est marqué en retard."
+msgstr ""
+"Indicative only: nothing is blocked, but a learner who has not finished in "
+"time is flagged as late."
+
+#: .\templates\progress\deadlines.html:11
+msgid "Fixer une date limite"
+msgstr "Set a deadline"
+
+#: .\templates\progress\deadlines.html:29
+msgid ""
+"Une seule date par quiz ou examen et par promotion : la saisir à nouveau la "
+"déplace."
+msgstr "One date per quiz or exam and per cohort: entering it again moves it."
+
+#: .\templates\progress\deadlines.html:36
+msgid "Échéances"
+msgstr "Upcoming and past deadlines"
+
+#: .\templates\progress\deadlines.html:44
+msgid "Aucune date limite."
+msgstr "No deadline."
+
+#: .\templates\progress\question_stats.html:2
+#: .\templates\progress\question_stats.html:6
+#: .\templates\progress\question_stats.html:9
+msgid "Réussite par question"
+msgstr "Success rate by question"
+
+#: .\templates\progress\question_stats.html:7
+msgid ""
+"Calculée sur les tentatives envoyées de vos apprenants. Un taux très bas "
+"signale souvent une question ambiguë."
+msgstr ""
+"Based on your learners' submitted attempts. A very low rate often points to "
+"an ambiguous question."
+
+#: .\templates\progress\question_stats.html:11
+msgid "Module"
+msgstr "Module"
+
+#: .\templates\progress\question_stats.html:11
+msgid "Type"
+msgstr "Type"
+
+#: .\templates\progress\question_stats.html:11
+msgid "Réussite"
+msgstr "Success"
+
+#: .\templates\progress\question_stats.html:22
+msgid "Aucune question publiée pour vos formations."
+msgstr "No published question for your courses."
+
 #: .\templates\progress\trainer_table.html:2
-#: .\templates\progress\trainer_table.html:5
+#: .\templates\progress\trainer_table.html:6
 msgid "Suivi des apprenants"
 msgstr "Learner progress"
 
-#: .\templates\progress\trainer_table.html:6
+#: .\templates\progress\trainer_table.html:7
 msgid "Exporter en CSV"
 msgstr "Export as CSV"
 
-#: .\templates\progress\trainer_table.html:18
+#: .\templates\progress\trainer_table.html:19
 #, python-format
 msgid "Examen %(p)s"
 msgstr "Exam %(p)s"
 
-#: .\templates\progress\trainer_table.html:26
+#: .\templates\progress\trainer_table.html:20
+msgid "Tentatives"
+msgstr "Attempts"
+
+#: .\templates\progress\trainer_table.html:28
+#, python-format
+msgid "En retard (%(n)s)"
+msgid_plural "En retard (%(n)s)"
+msgstr[0] "Late (%(n)s)"
+msgstr[1] "Late (%(n)s)"
+
+#: .\templates\progress\trainer_table.html:31
 msgid "non terminé"
 msgstr "not completed"
 
-#: .\templates\progress\trainer_table.html:32
+#: .\templates\progress\trainer_table.html:38
+#, python-format
+msgid "%(n)s envoyée"
+msgid_plural "%(n)s envoyées"
+msgstr[0] "%(n)s submitted"
+msgstr[1] "%(n)s submitted"
+
+#: .\templates\progress\trainer_table.html:45
 msgid "Aucun apprenant dans ces promotions."
 msgstr "No learner in these cohorts."
 
-#: .\templates\progress\trainer_table.html:40
+#: .\templates\progress\trainer_table.html:53
 msgid "Aucune promotion"
 msgstr "No cohort"
 
-#: .\templates\progress\trainer_table.html:40
+#: .\templates\progress\trainer_table.html:53
 msgid ""
 "Aucune promotion ne vous est rattachée. Demandez à l'administrateur de vous "
 "ajouter."
 msgstr "No cohort is assigned to you. Ask the administrator to add you."
+
+#~ msgid ""
+#~ "Votre compte n'est rattaché à aucune promotion. Le centre vous inscrira "
+#~ "avant le début des cours."
+#~ msgstr ""
+#~ "Your account is not linked to a cohort yet. The centre will enrol you before"
+#~ " classes start."
+
+#~ msgid "Mot de passe oublié : demandez-le à votre formateur."
+#~ msgstr "Forgot your password? Ask your trainer."

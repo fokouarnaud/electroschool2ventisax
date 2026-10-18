@@ -24,7 +24,8 @@ def dashboard(request):
         return redirect("trainer_table")
     parts = []
     formations = accessible_formations(request.user)
-    for partie in Partie.objects.filter(formation__in=formations).order_by("formation__order", "formation", "order"):
+    parties = Partie.objects.filter(formation__in=formations).select_related("formation")
+    for partie in parties.order_by("formation__order", "formation", "order"):
         parts.append({
             "partie": partie,
             "progress": progress_pct(request.user, partie),

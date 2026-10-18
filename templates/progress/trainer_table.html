@@ -1,16 +1,13 @@
 {% extends "base.html" %}{% load i18n %}
 {% block title %}{% translate "Suivi des apprenants" %}{% endblock %}
 {% block content %}
-<div class="page-head">
+{% include "progress/_trainer_nav.html" %}
+<div class="page-head page-head-row">
   <h1>{% translate "Suivi des apprenants" %}</h1>
-  <div class="cta-row">
-    <a class="btn btn-ghost" href="{% url 'trainer_questions' %}">{% translate "Réussite par question" %}</a>
-    <a class="btn btn-ghost" href="{% url 'trainer_announcements' %}">{% translate "Annonces" %}</a>
-    <a class="btn btn-ghost" href="{% url 'trainer_deadlines' %}">{% translate "Dates limites" %}</a>
-    <a class="btn btn-ghost" href="{% url 'trainer_export' %}">{% include "icons/download.svg" %}{% translate "Exporter en CSV" %}</a></div>
+  <a class="btn btn-ghost" href="{% url 'trainer_export' %}">{% include "icons/download.svg" %}{% translate "Exporter en CSV" %}</a>
 </div>
 {% for table in tables %}
-  <section aria-labelledby="f-{{ table.formation.public_id }}" style="margin-bottom:2rem">
+  <section aria-labelledby="f-{{ table.formation.public_id }}" class="table-section">
     <h2 id="f-{{ table.formation.public_id }}">{{ table.formation.title }}</h2>
     <div class="table-scroll" tabindex="0" role="region" aria-labelledby="f-{{ table.formation.public_id }}">
       <table class="grid-table">
@@ -20,17 +17,29 @@
             <th scope="col">{% translate "Promotion" %}</th>
             {% for module in table.modules %}<th scope="col" title="{{ module.title }}">M{{ forloop.counter }}</th>{% endfor %}
             {% for partie in table.parties %}<th scope="col">{% blocktranslate with p=partie.title %}Examen {{ p }}{% endblocktranslate %}</th>{% endfor %}
+            <th scope="col">{% translate "Tentatives" %}</th>
           </tr>
         </thead>
         <tbody>
           {% for row in table.rows %}
             <tr>
-              <th scope="row">{{ row.learner.get_full_name|default:row.learner.username }}{% if row.late %} <span class="badge badge-warn">{% translate "En retard" %}</span>{% endif %}</th>
+              <th scope="row">
+                <span class="learner-name">{{ row.learner.get_full_name|default:row.learner.username }}</span>
+                {% if row.late %}<span class="badge badge-warn">{% include "icons/calendar-due.svg" %}{% blocktranslate count n=row.late|length %}En retard ({{ n }}){% plural %}En retard ({{ n }}){% endblocktranslate %}</span>{% endif %}
+              </th>
               <td>{{ row.promotion.name }}</td>
               {% for done in row.modules %}<td class="{% if done %}cell-done{% endif %}">{% if done %}{% include "icons/check.svg" %}<span class="visually-hidden">{% translate "terminé" %}</span>{% else %}<span class="muted" aria-label="{% translate 'non terminé' %}">-</span>{% endif %}</td>{% endfor %}
               {% for result in row.exams %}
                 <td class="num">{% if result.best is not None %}<strong>{{ result.best|floatformat:0 }} %</strong>{% else %}<span class="muted">-</span>{% endif %} <span class="muted">({{ result.attempts }}{% if result.max_attempts %}/{{ result.max_attempts }}{% endif %})</span></td>
               {% endfor %}
+              <td>
+                {% if row.submitted %}
+                  <details class="attempts-pop">
+                    <summary>{% blocktranslate count n=row.submitted|length %}{{ n }} envoyée{% plural %}{{ n }} envoyées{% endblocktranslate %}</summary>
+                    <ul>{% for attempt in row.submitted %}<li><a href="{% url 'trainer_attempt' attempt.public_id %}">{% if attempt.assessment.is_exam %}{% translate "Examen" %}{% else %}{{ attempt.assessment.module.title }}{% endif %} · {{ attempt.score_pct|floatformat:0 }} %</a></li>{% endfor %}</ul>
+                  </details>
+                {% else %}<span class="muted">-</span>{% endif %}
+              </td>
             </tr>
           {% empty %}
             <tr><td colspan="99" class="muted">{% translate "Aucun apprenant dans ces promotions." %}</td></tr>
@@ -38,7 +47,7 @@
         </tbody>
       </table>
     </div>
-    <p class="muted" style="font-size:.85rem;margin-top:.5rem">{% for module in table.modules %}M{{ forloop.counter }} : {{ module.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p class="muted small legend">{% for module in table.modules %}M{{ forloop.counter }} : {{ module.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
   </section>
 {% empty %}
   <section class="panel empty"><h2>{% translate "Aucune promotion" %}</h2><p class="muted">{% translate "Aucune promotion ne vous est rattachée. Demandez à l'administrateur de vous ajouter." %}</p></section>

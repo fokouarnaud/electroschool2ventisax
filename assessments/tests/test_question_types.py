@@ -190,7 +190,7 @@ def test_feedback_gives_the_expected_numeric_value(learner, module, numeric_q):
 
     [item] = attempt.feedback()
 
-    assert (item["score"], item["answer_text"], item["expected_value"]) == (0, "1 kΩ", "4700 Ω")
+    assert (item["score"], item["answer_text"], item["expected_value"]) == (0, "1 kΩ", "4,7 kΩ")
 
 
 # --- Temps passé (US-20, US-28) ---------------------------------------------------------------------------------------
@@ -214,3 +214,41 @@ def test_reported_time_is_clamped_to_a_plausible_range(learner, module, numeric_
     save_answer(attempt, numeric_q.public_id, [], text="1k", time_spent_s=999999)
 
     assert attempt.attempt_questions.get().time_spent_s == 3600
+
+
+# --- Correction lisible (US-15 à US-17) -------------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize("value, unit, lang, shown", [
+    ("0.002553", "A", "fr", "2,553 mA"),
+    ("0.002553", "A", "en", "2.553 mA"),
+    ("4700", "Ω", "fr", "4,7 kΩ"),
+    ("12", "V", "fr", "12 V"),
+    ("0.0000001", "F", "fr", "100 nF"),
+    ("1500000", "Hz", "en", "1.5 MHz"),
+    ("-0.6", "V", "fr", "-600 mV"),
+    ("0", "V", "fr", "0 V"),
+])
+@pytest.mark.django_db
+def test_expected_value_is_shown_with_an_si_prefix(module, value, unit, lang, shown):
+    from django.utils import translation
+
+    q = reviewed(module, "numeric", numeric_value=Decimal(value), unit=unit)
+    with translation.override(lang):
+        assert q.expected_value_display() == shown
+
+
+@pytest.mark.django_db
+def test_matching_feedback_lists_the_learners_pairs_with_their_verdict(learner, module, matching_q):
+    r, c, l, d = (str(p.public_id) for p in matching_q.pairs.all())
+    attempt = quiz_attempt(learner, module)
+    save_answer(attempt, matching_q.public_id, [], pairs={r: r, c: l})
+
+    [item] = attempt.feedback()
+
+    assert [(row["left"], row["given"], row["expected"], row["ok"]) for row in item["pair_rows"]] == [
+        ("R", "Résistance", "Résistance", True),
+        ("C", "Bobine", "Condensateur", False),
+        ("L", "", "Bobine", False),
+        ("D", "", "Diode", False),
+    ]

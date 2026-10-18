@@ -109,3 +109,15 @@ def test_question_statistics_are_refused_to_learners(client, enrolled):
     client.force_login(enrolled)
 
     assert client.get("/fr/formateur/questions/").status_code == 403
+
+
+@pytest.mark.django_db
+def test_trainer_table_links_each_submitted_attempt_of_a_learner(client, trainer, enrolled, module, question_factory):
+    question_factory(module)
+    done = submit_attempt(quiz(enrolled, module, right=True))
+    quiz(enrolled, module, right=True)  # en cours : pas de lien
+    client.force_login(trainer)
+
+    [row] = client.get("/fr/formateur/").context["rows"]
+
+    assert [a.public_id for a in row["submitted"]] == [done.public_id]

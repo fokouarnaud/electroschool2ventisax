@@ -321,3 +321,221 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 
 /* Champ piège de l'inscription (US-03) : hors écran pour les humains, rempli par les robots. */
 .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ============================================================================================================
+   Electro Acad Ventisax : écrans ajoutés (catalogue, compte, certificats, formateur, questions interactives).
+   Même système : accent teal unique, boutons en pilule, panneaux 20px, champs et choix 14px.
+   ============================================================================================================ */
+
+/* En-tête : marque, page courante, bouton compact */
+.brand-accent { color: var(--teal-ink); }
+.topnav a[aria-current="page"] { background: var(--mist); color: var(--heading); font-weight: 600; }
+.btn-sm { min-height: 40px; padding: .45rem 1rem; font-size: .88rem; }
+.topnav .btn-sm { background: var(--btn-bg); color: var(--btn-fg); margin-left: .25rem; } /* .topnav a retire le fond : on le rétablit */
+.topnav .btn-sm:hover { background: var(--btn-bg-hover); }
+@media (max-width: 520px) {
+  .brand > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .topnav .btn-sm { padding: .45rem .8rem; }
+}
+
+/* Texte et messages */
+.lead { font-size: 1.05rem; max-width: 62ch; margin: 0; }
+.small { font-size: .85rem; }
+.mono { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: .8rem; word-break: break-all; }
+.messages { display: grid; gap: .5rem; margin-bottom: 1.25rem; }
+.notice-success { border-color: transparent; background: var(--teal-wash); color: var(--teal-ink); }
+.page-head-row { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; justify-content: space-between; }
+.page-head-row h1 { margin: 0; }
+
+/* Formulaires : champs, listes, zones de texte, erreurs */
+.field select, .field textarea {
+  min-height: 48px; padding: .65rem .9rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--field-line); background: var(--surface); color: var(--ink); font: inherit; width: 100%;
+}
+.field textarea { min-height: 7.5rem; height: 9rem; resize: vertical; } /* Django propose 10 lignes : trop haut sur téléphone */
+.field input { width: 100%; }
+.field select:focus, .field textarea:focus { outline: 3px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+.field .help ul { margin: .25rem 0 0; padding-left: 1.1rem; }
+.field .error { font-size: .85rem; font-weight: 600; color: var(--error-ink); }
+.field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--error-ink); }
+.req { color: var(--muted); font-weight: 400; }
+.field-row { display: grid; gap: 1.1rem; }
+@media (min-width: 560px) { .field-row { grid-template-columns: 1fr 1fr; } }
+.form-foot { margin: 1.25rem 0 0; }
+.code-input { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 1.35rem !important; letter-spacing: .3em; text-transform: uppercase; text-align: center; }
+
+/* Panneau seul, centré (confirmation, mot de passe, code de promotion, vérification) */
+.panel.narrow { max-width: 30rem; margin: 2rem auto 0; display: grid; gap: .75rem; justify-items: start; }
+.panel.narrow h1 { font-size: 1.5rem; margin: 0; }
+.panel.narrow p { margin: 0; }
+.panel.narrow .form { width: 100%; margin-top: .5rem; }
+.panel-icon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 14px; background: var(--mist); color: var(--heading); }
+.panel-icon .icon { width: 1.5rem; height: 1.5rem; }
+.panel-icon-ok { background: var(--teal-wash); color: var(--teal-ink); }
+
+/* Catalogue */
+.catalogue { display: grid; gap: 1rem; }
+.course-card {
+  display: grid; gap: 1rem 1.5rem; grid-template-columns: auto 1fr; align-items: start;
+  padding: 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+@media (min-width: 860px) { .course-card { grid-template-columns: auto 1fr auto; align-items: center; padding: 1.5rem 1.75rem; } }
+.course-card-mark { display: grid; place-items: center; width: 3.25rem; height: 3.25rem; border-radius: 16px; background: var(--teal-wash); color: var(--teal-ink); }
+.course-card-mark .icon { width: 1.6rem; height: 1.6rem; }
+.course-card-body h2 { font-size: 1.3rem; margin-bottom: .35rem; }
+.course-card-body h2 a { color: inherit; text-decoration: none; }
+.course-card-body h2 a:hover { text-decoration: underline; }
+.course-card-body p { margin-bottom: .75rem; max-width: 62ch; }
+.course-card-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .6rem; }
+@media (min-width: 860px) { .course-card-actions { grid-column: auto; flex-direction: column; align-items: stretch; } }
+.meta-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font-size: .88rem; color: var(--muted); }
+.meta-list li { display: inline-flex; align-items: center; gap: .35rem; }
+.meta-list .icon { width: 1rem; height: 1rem; color: var(--teal-ink); }
+.code-hint { display: flex; align-items: center; gap: .5rem; margin-top: 1.5rem; color: var(--muted); }
+.code-hint .icon { color: var(--teal-ink); }
+
+/* Fiche d'une formation */
+.detail { display: grid; gap: 1.25rem; }
+@media (min-width: 960px) { .detail { grid-template-columns: minmax(0, 1fr) 320px; gap: 2rem; align-items: start; } }
+.detail-main { display: grid; gap: 1rem; }
+.detail-main .page-head { margin-bottom: .25rem; }
+.programme .modules { margin-top: .75rem; }
+.module-row { display: flex; align-items: center; gap: .75rem; min-height: 52px; padding: .5rem .75rem; border-radius: var(--radius-sm); }
+.module-row .badge { margin-left: auto; }
+.module-row .num { display: grid; place-items: center; width: 2rem; height: 2rem; flex-shrink: 0; border-radius: 999px; border: 1.5px solid var(--line); font-size: .85rem; font-weight: 600; color: var(--muted); }
+.programme-exam { display: flex; align-items: center; gap: .5rem; margin: 1rem 0 0; font-size: .9rem; }
+.programme-exam .icon { color: var(--teal-ink); }
+.detail-aside { display: grid; gap: 1.25rem; }
+@media (min-width: 960px) { .detail-aside { position: sticky; top: 88px; } }
+.key-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: 0; }
+.key-facts div { display: grid; gap: .1rem; }
+.key-facts dt { font-size: .78rem; color: var(--muted); }
+.key-facts dd { margin: 0; font-size: 1.2rem; font-weight: 600; color: var(--heading); font-variant-numeric: tabular-nums; }
+.cta-stack { display: grid; gap: .6rem; }
+.cta-stack .inline-form { display: grid; }
+.detail-aside p { margin: 0; }
+
+/* Annonces sur le tableau de bord */
+.announce { display: grid; gap: .75rem; margin-bottom: 1.25rem; }
+.announce-item { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem 1.15rem; border-radius: var(--radius); background: var(--teal-wash); border: 1px solid transparent; }
+.announce-item h3 { margin: 0 0 .2rem; }
+.announce-item p { margin: 0 0 .35rem; }
+.announce-item > div > :last-child { margin-bottom: 0; }
+.announce-icon { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; flex-shrink: 0; border-radius: 12px; background: var(--surface); color: var(--teal-ink); }
+
+/* Certificats et badges */
+.certs { display: grid; gap: 1rem; margin-bottom: 1.25rem; }
+.name-form { margin-bottom: 1.25rem; display: grid; gap: .9rem; }
+.name-form p { margin: 0; }
+.name-form .btn { justify-self: start; }
+.cert {
+  display: grid; grid-template-columns: auto 1fr auto; gap: .75rem 1.25rem; align-items: center;
+  padding: 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.cert-seal { display: grid; place-items: center; width: 3.25rem; height: 3.25rem; border-radius: 999px; background: var(--btn-bg); color: var(--btn-fg); }
+.cert-seal .icon { width: 1.6rem; height: 1.6rem; }
+.cert-body h3 { font-size: 1.1rem; margin: 0 0 .15rem; }
+.cert-body p { margin: 0; font-size: .9rem; }
+.cert-score { margin: 0; font-size: 2rem; font-weight: 700; color: var(--heading); line-height: 1; font-variant-numeric: tabular-nums; }
+.cert-score small { font-size: .5em; color: var(--muted); font-weight: 500; }
+.cert-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .6rem; }
+@media (min-width: 860px) { .cert { grid-template-columns: auto 1fr auto auto; padding: 1.25rem 1.75rem; } .cert-actions { grid-column: auto; } }
+.badge-grid { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.earned { display: flex; gap: .75rem; align-items: center; padding: .75rem .9rem; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--paper); }
+.earned strong { display: block; font-size: .92rem; line-height: 1.3; color: var(--heading); }
+.earned small { color: var(--muted); font-size: .78rem; }
+.earned-icon { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; flex-shrink: 0; border-radius: 999px; background: var(--teal-wash); color: var(--teal-ink); }
+.earned-major .earned-icon { background: var(--btn-bg); color: var(--btn-fg); }
+.verify-list { display: grid; gap: .6rem; margin: .5rem 0; width: 100%; }
+.verify-list div { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding-bottom: .6rem; border-bottom: 1px solid var(--line); }
+.verify-list div:last-child { border-bottom: 0; padding-bottom: 0; }
+.verify-list dt { color: var(--muted); font-size: .9rem; }
+.verify-list dd { margin: 0; font-weight: 600; color: var(--heading); }
+
+/* Espace formateur */
+.subnav { display: flex; gap: .35rem; margin: 0 0 1.25rem; overflow-x: auto; padding-bottom: .25rem; scrollbar-width: thin; }
+.subnav a {
+  display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: .45rem 1rem; white-space: nowrap;
+  border-radius: 999px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: .9rem; background: var(--surface);
+}
+.subnav a:hover { background: var(--mist); }
+.subnav a[aria-current="page"] { background: var(--btn-bg); border-color: transparent; color: var(--btn-fg); font-weight: 600; }
+.subnav .icon { width: 1.05rem; height: 1.05rem; }
+.table-section { margin-bottom: 2rem; }
+.legend { margin-top: .5rem; }
+.learner-name { display: block; }
+.grid-table th .badge { margin-top: .25rem; }
+.grid-table.wrap-cells th, .grid-table.wrap-cells td { white-space: normal; vertical-align: top; }
+.grid-table.wrap-cells tbody th { position: static; min-width: 16rem; font-weight: 500; }
+.review-table { margin-top: 1rem; }
+.badge-wrong { background: var(--error-bg); color: var(--error-ink); }
+.rate { font-weight: 600; }
+.rate-low { color: var(--error-ink); }
+.attempts-pop summary { cursor: pointer; color: var(--teal-ink); font-weight: 600; min-height: 32px; display: flex; align-items: center; }
+.attempts-pop ul { list-style: none; margin: .35rem 0 0; padding: 0; display: grid; gap: .2rem; }
+.attempts-pop a { white-space: nowrap; }
+.split { display: grid; gap: 1.25rem; }
+@media (min-width: 960px) { .split { grid-template-columns: 400px minmax(0, 1fr); gap: 2rem; align-items: start; } }
+.split .form { margin-top: 1rem; }
+.split .form .btn { justify-self: start; }
+.split h2 { margin-bottom: .75rem; }
+.feed { display: grid; gap: .75rem; }
+.feed-item { padding: 1rem 1.15rem; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--line); }
+.feed-item h3 { margin: 0; }
+.feed-item p { margin: .35rem 0 0; }
+.deadline-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+.deadline-list li { display: flex; gap: .9rem; align-items: center; padding: .75rem .9rem; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--line); }
+.deadline-list small { display: block; }
+.date-chip { display: grid; place-items: center; width: 3.25rem; padding: .3rem 0; flex-shrink: 0; border-radius: 12px; background: var(--mist); font-size: .72rem; text-transform: uppercase; color: var(--muted); line-height: 1.2; }
+.date-chip strong { font-size: 1.25rem; color: var(--heading); }
+
+/* Questions interactives : numérique, appariement, zone cliquable */
+.unit-input { display: flex; align-items: stretch; max-width: 22rem; }
+.unit-input input { border-top-right-radius: 0; border-bottom-right-radius: 0; font-variant-numeric: tabular-nums; }
+.unit-input .unit {
+  display: grid; place-items: center; min-width: 3.25rem; padding: 0 .9rem; font-weight: 600; color: var(--heading);
+  border: 1px solid var(--field-line); border-left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--mist);
+}
+.unit-input:has(input:only-child) input { border-radius: var(--radius-sm); }
+.matching { display: grid; gap: .5rem; max-width: 40rem; }
+.match-row {
+  display: grid; grid-template-columns: minmax(6rem, 1fr) auto minmax(9rem, 1.4fr); gap: .75rem; align-items: center;
+  padding: .55rem .6rem .55rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--paper);
+  transition: border-color .15s, background-color .15s;
+}
+.match-row label { font-weight: 600; color: var(--heading); }
+.match-row select { min-height: 44px; padding: .5rem .75rem; border-radius: 12px; border: 1px solid var(--field-line); background: var(--surface); color: var(--ink); font: inherit; width: 100%; }
+.match-row select:focus { outline: 3px solid var(--focus); outline-offset: 1px; }
+.match-row.is-over { border-color: var(--teal-ink); background: var(--teal-wash); }
+.match-link { color: var(--muted); }
+.match-pool { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .25rem; }
+.match-chip { padding: .35rem .8rem; border-radius: 999px; border: 1px dashed var(--field-line); background: var(--surface); font-size: .88rem; cursor: grab; user-select: none; }
+.match-chip:active { cursor: grabbing; }
+@media (hover: none) { .match-pool { display: none; } } /* au toucher, les listes déroulantes suffisent */
+@media (max-width: 479px) {
+  .match-row { grid-template-columns: 1fr; gap: .35rem; padding: .7rem .8rem; }
+  .match-link { display: none; }
+}
+.hotspot { position: relative; margin: 0 0 .75rem; max-width: 28rem; padding: 0; overflow: hidden; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface); color: var(--heading); }
+.hotspot svg { width: 100%; height: auto; } /* les zones sont placées en % de cette boîte : aucune marge intérieure */
+.hotspot .zone {
+  position: absolute; margin: 0; padding: 0; border: 2px dashed transparent; border-radius: 10px; background: transparent; cursor: pointer;
+  transition: border-color .15s, background-color .15s;
+}
+.hotspot.is-live .zone { border-color: color-mix(in srgb, var(--field-line) 70%, transparent); } /* visible sans survol (toucher) */
+.hotspot.is-live .zone:hover { border-color: var(--teal-ink); background: color-mix(in srgb, var(--teal) 14%, transparent); }
+.hotspot .zone.is-selected { border-color: var(--teal-ink); border-style: solid; background: color-mix(in srgb, var(--teal) 22%, transparent); }
+.choices-inline { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+.course-formation { margin: 0 0 .15rem; font-weight: 600; color: var(--teal-ink); }
+.brand img { flex-shrink: 0; }
+/* Visiteur sur petit écran : la connexion et le catalogue suffisent, « Créer un compte » est dans les pages. */
+@media (max-width: 420px) { .topnav .btn-sm { display: none; } }
+
+/* Calculateurs du cours (US-13) : non notés, dans le texte de la section */
+.calc { margin: 1.5rem 0; padding: 1.15rem 1.25rem; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.calc:not(.is-live) { display: none; } /* sans JavaScript, rien à afficher */
+.calc-title { margin: 0 0 .25rem; font-weight: 600; color: var(--heading); display: flex; align-items: center; gap: .5rem; }
+.calc-hint { margin: 0 0 .75rem; font-size: .88rem; color: var(--muted); }
+.calc-grid { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+.calc .unit-input { max-width: none; }
+.calc-out { display: block; margin-top: .9rem; padding: .7rem .9rem; border-radius: var(--radius-sm); background: var(--teal-wash); color: var(--teal-ink); font-weight: 600; font-variant-numeric: tabular-nums; }

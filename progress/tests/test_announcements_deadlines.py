@@ -176,3 +176,19 @@ def test_trainer_table_flags_late_learners(client, trainer, enrolled, promotion,
     [row] = client.get("/fr/formateur/").context["rows"]
 
     assert len(row["late"]) == 1
+
+
+@pytest.mark.django_db
+def test_single_promotion_is_preselected_in_trainer_forms(client, trainer, promotion):
+    client.force_login(trainer)
+
+    for url in ("/fr/formateur/annonces/", "/fr/formateur/echeances/"):
+        assert client.get(url).context["form"]["promotion"].value() == promotion.public_id
+
+
+@pytest.mark.django_db
+def test_several_promotions_are_not_preselected(client, trainer, promotion, other_promotion):
+    other_promotion.trainers.add(trainer)
+    client.force_login(trainer)
+
+    assert client.get("/fr/formateur/annonces/").context["form"]["promotion"].value() is None

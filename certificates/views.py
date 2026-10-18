@@ -34,7 +34,7 @@ def my_certificates(request):
         return redirect("my_certificates")
     return render(request, "certificates/mine.html", {
         "form": form,
-        "certificates": Certificate.objects.filter(user=request.user).select_related("partie"),
+        "certificates": Certificate.objects.filter(user=request.user).select_related("partie__formation"),
         "badges": list(Badge.objects.filter(user=request.user).select_related("module", "partie")),
     })
 

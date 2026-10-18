@@ -32,6 +32,12 @@ def _require_staff_role(user):
         raise PermissionDenied
 
 
+def _formation_assessments(formation):
+    return Assessment.objects.filter(module__partie__formation=formation) | Assessment.objects.filter(
+        partie__formation=formation
+    )
+
+
 def _tables(user):
     """Une table par formation : colonnes = modules et examens de parties, lignes = apprenants visibles."""
     promotions = Promotion.objects.visible_to(user).select_related("formation")
@@ -59,6 +65,9 @@ def _tables(user):
                 "learner": learner,
                 "promotion": enrollment.promotion,
                 "late": late_deadlines(learner, enrollment.promotion),
+                "submitted": list(Attempt.objects.filter(
+                    user=learner, submitted_at__isnull=False, assessment__in=_formation_assessments(formation),
+                ).select_related("assessment__module", "assessment__partie").order_by("-submitted_at")),
                 "modules": [module_completed(learner, m) for m in modules],
                 "exams": exam_results,
             })
@@ -167,7 +176,11 @@ def question_stats(request):
 
 class PromotionChoiceField(forms.ModelChoiceField):
     def __init__(self, user, **kwargs):
-        super().__init__(Promotion.objects.visible_to(user), to_field_name="public_id", **kwargs)
+        promotions = Promotion.objects.visible_to(user)
+        only = list(promotions[:2])
+        if len(only) == 1:
+            kwargs.setdefault("initial", only[0].public_id)  # une seule promotion : déjà choisie
+        super().__init__(promotions, to_field_name="public_id", **kwargs)
 
 
 class AnnouncementForm(forms.Form):

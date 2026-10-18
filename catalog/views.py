@@ -11,9 +11,16 @@ from courses.models import Formation, Module
 from .services import InvalidJoinCode, enroll_open, join_with_code
 
 
-def _row(formation):
-    hours = Module.objects.filter(partie__formation=formation).aggregate(total=Sum("duration_hours"))["total"]
-    return {"formation": formation, "parties": list(formation.parties.all()), "hours": hours or 0}
+def _row(formation, user):
+    modules = Module.objects.filter(partie__formation=formation)
+    hours = modules.aggregate(total=Sum("duration_hours"))["total"]
+    return {
+        "formation": formation,
+        "parties": list(formation.parties.prefetch_related("modules")),
+        "hours": hours or 0,
+        "module_count": modules.count(),
+        "enrolled": user.is_authenticated and formation.enrollments.filter(user=user).exists(),
+    }
 
 
 def _require_learner(user):
@@ -23,13 +30,13 @@ def _require_learner(user):
 
 def catalogue(request):
     """Catalogue public (US-01) : seules les formations ouvertes sont listées."""
-    rows = [_row(f) for f in Formation.objects.filter(is_open=True)]
+    rows = [_row(f, request.user) for f in Formation.objects.filter(is_open=True)]
     return render(request, "catalog/catalogue.html", {"rows": rows})
 
 
 def formation_detail(request, public_id):
     formation = get_object_or_404(Formation, public_id=public_id, is_open=True)
-    return render(request, "catalog/formation_detail.html", {"row": _row(formation)})
+    return render(request, "catalog/formation_detail.html", {"row": _row(formation, request.user)})
 
 
 @require_POST

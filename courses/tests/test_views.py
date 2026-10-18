@@ -100,3 +100,15 @@ def test_translated_section_is_not_flagged_in_english(client, enrolled, sections
     client.force_login(enrolled)
     response = client.get(f"/en/sections/{sections[0].public_id}/")
     assert response.context["fallback_fr"] is False
+
+
+@pytest.mark.django_db
+def test_calculator_script_loads_only_on_sections_that_use_one(client, enrolled, module):
+    from courses.models import Section
+
+    with_calc = Section.objects.create(module=module, title_fr="Loi d'Ohm", order=1, body_md_fr="[[calc:ohm]]")
+    plain = Section.objects.create(module=module, title_fr="Texte", order=2, body_md_fr="Du texte.")
+    client.force_login(enrolled)
+
+    assert "calculators.js" in client.get(f"/fr/sections/{with_calc.public_id}/").content.decode()
+    assert "calculators.js" not in client.get(f"/fr/sections/{plain.public_id}/").content.decode()

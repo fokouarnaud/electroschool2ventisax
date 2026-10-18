@@ -13,7 +13,7 @@
   </section>
   <section class="panel" aria-labelledby="titre-connexion">
     <h2 id="titre-connexion">{% translate "Connexion" %}</h2>
-    <p class="muted">{% translate "Utilisez l'identifiant remis par le centre." %}</p>
+    <p class="muted">{% translate "Utilisez votre identifiant, ou celui remis par le centre." %}</p>
     {% if form.non_field_errors %}
       <div class="notice notice-error" role="alert">{% include "icons/alert-triangle.svg" %}<div>{% if form.locked_out %}{{ form.non_field_errors.0 }}{% else %}{% translate "Identifiant ou mot de passe incorrect." %}{% endif %}</div></div>
     {% endif %}

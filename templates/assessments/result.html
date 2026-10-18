@@ -43,10 +43,16 @@
           {% if item.score == 1 %}<span class="badge badge-done">{% include "icons/check.svg" %}{% translate "Correct" %}</span>{% elif item.score > 0 %}<span class="badge badge-warn">{% translate "Partiel" %}</span>{% else %}<span class="badge">{% translate "Incorrect" %}</span>{% endif %}
         </div>
         {% if item.question.qtype == "numeric" %}
-          <p>{% translate "Votre réponse" %} : <strong>{{ item.answer_text|default:"—" }}</strong> · {% translate "Valeur attendue" %} : <strong>{{ item.expected_value }}</strong>{% if item.question.tolerance_pct %} (± {{ item.question.tolerance_pct|floatformat:"-2" }} %){% endif %}</p>
+          <p>{% translate "Votre réponse :" %} <strong>{{ item.answer_text|default:"-" }}</strong> · {% translate "Valeur attendue :" %} <strong>{{ item.expected_value }}</strong>{% if item.question.tolerance_pct %} (± {{ item.question.tolerance_pct|floatformat:"-2" }} %){% endif %}</p>
         {% elif item.question.qtype == "matching" %}
           <ul>
-            {% for pair in item.question.pairs.all %}<li class="is-correct">{% include "icons/check.svg" %}<span>{{ pair.left }} → {{ pair.right }}</span></li>{% endfor %}
+            {% for row in item.pair_rows %}
+              <li class="{% if row.ok %}is-correct{% else %}is-wrong{% endif %}">
+                {% if row.ok %}{% include "icons/check.svg" %}{% else %}{% include "icons/alert-triangle.svg" %}{% endif %}
+                <span>{{ row.left }} → {{ row.expected }}</span>
+                {% if not row.ok %}<span class="your-answer">{% if row.given %}{% blocktranslate with g=row.given %}Vous : {{ g }}{% endblocktranslate %}{% else %}{% translate "Sans réponse" %}{% endif %}</span>{% endif %}
+              </li>
+            {% endfor %}
           </ul>
         {% else %}
         <ul>

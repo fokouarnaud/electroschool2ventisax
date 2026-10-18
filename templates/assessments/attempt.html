@@ -27,17 +27,21 @@
           {% if row.question.qtype == "numeric" %}
             <p class="hint">{% translate "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés (ex. 4,7 k)." %}</p>
             <div class="field numeric">
-              <label for="a-{{ row.question.public_id }}">{% translate "Votre réponse" %}{% if row.question.unit %} ({{ row.question.unit }}){% endif %}</label>
-              <input type="text" inputmode="decimal" autocomplete="off" name="answer_text" id="a-{{ row.question.public_id }}" value="{{ row.answer_text }}" maxlength="50">
+              <label for="a-{{ row.question.public_id }}">{% translate "Votre réponse" %}</label>
+              <div class="unit-input">
+                <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" name="answer_text" id="a-{{ row.question.public_id }}" value="{{ row.answer_text }}" maxlength="50">
+                {% if row.question.unit %}<span class="unit" aria-label="{% translate 'unité' %}">{{ row.question.unit }}</span>{% endif %}
+              </div>
             </div>
           {% elif row.question.qtype == "matching" %}
             <p class="hint">{% translate "Associez chaque élément à sa correspondance." %}</p>
-            <div class="matching">
+            <div class="matching" data-matching>
               {% for left in row.lefts %}
-                <div class="field match-row">
+                <div class="match-row">
                   <label for="p-{{ left.pair.public_id }}">{{ left.pair.left }}</label>
+                  <span class="match-link" aria-hidden="true">{% include "icons/arrows-exchange.svg" %}</span>
                   <select name="pair_{{ left.pair.public_id }}" id="p-{{ left.pair.public_id }}">
-                    <option value="">—</option>
+                    <option value="">{% translate "Choisir" %}</option>
                     {% for right in row.rights %}<option value="{{ right.public_id }}"{% if left.chosen == right.public_id|stringformat:"s" %} selected{% endif %}>{{ right.right }}</option>{% endfor %}
                   </select>
                 </div>
@@ -45,8 +49,8 @@
             </div>
           {% elif row.question.qtype == "hotspot" %}
             <p class="hint">{% translate "Cliquez la bonne zone du schéma, ou choisissez-la dans la liste." %}</p>
-            <div class="hotspot" data-hotspot>{{ row.question.hotspot_svg|inert_svg }}</div>
-            <div class="choices">
+            <figure class="hotspot" data-hotspot>{{ row.question.hotspot_svg|inert_svg }}</figure>
+            <div class="choices choices-inline">
               {% for choice in row.choices %}
                 <label class="choice" data-zone="{{ choice.shape.x }},{{ choice.shape.y }},{{ choice.shape.w }},{{ choice.shape.h }}">
                   <input type="radio" name="choices" value="{{ choice.public_id }}"{% if choice.public_id in row.selected %} checked{% endif %}>
@@ -83,4 +87,5 @@
 {% block scripts %}
 <script src="{% static 'vendor/htmx.min.js' %}" defer></script>
 <script src="{% static 'acad/js/attempt.js' %}" defer></script>
+<script src="{% static 'acad/js/interactions.js' %}" defer></script>
 {% endblock %}

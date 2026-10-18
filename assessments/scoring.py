@@ -39,6 +39,19 @@ def parse_quantity(text):
     return value, UNIT_ALIASES.get(unit, unit)
 
 
+DISPLAY_PREFIXES = {-12: "p", -9: "n", -6: "µ", -3: "m", 0: "", 3: "k", 6: "M", 9: "G"}
+
+
+def format_quantity(value, unit):
+    """Decimal("0.002553"), "A" -> « 2,553 mA » (préfixe d'ingénieur, séparateur décimal de la langue active)."""
+    from django.utils.formats import get_format
+
+    exponent = 0 if value == 0 else max(-12, min(9, (value.adjusted() // 3) * 3))
+    scaled = (value.scaleb(-exponent)).normalize()
+    number = format(scaled, "f").replace(".", get_format("DECIMAL_SEPARATOR"))
+    return f"{number} {DISPLAY_PREFIXES[exponent]}{unit}".strip()
+
+
 def score_numeric(expected, unit, tolerance_pct, answer):
     """Juste si |saisie − attendu| ≤ |attendu| × tolérance / 100 ; une unité saisie doit être l'unité attendue."""
     parsed = parse_quantity(answer)

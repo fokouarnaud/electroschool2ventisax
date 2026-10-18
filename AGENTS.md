@@ -89,6 +89,18 @@ Les réponses Q1 à Q16 du grill d'Acad Ventisax (`school2ventisax/AGENTS.md`) r
 - Parcours séquentiel bloquant entre sections.
 - Captcha tiers ou tout service externe autre que Gmail SMTP.
 
+## Guide de style de l'interface (2026-10-18)
+Skill design-taste-frontend, lecture : interface produit d'une plateforme de formation, apprenants sur Android d'entrée de gamme et formateurs sur ordinateur, langage sobre et fiable. Réglages : VARIANCE 4, MOTION 3, DENSITY 5. Les règles « landing page » du skill (hero, mur de logos, bento) ne s'appliquent pas.
+- **Système conservé d'Acad Ventisax** (mode « redesign, préserver ») : jetons navy/teal dans `static/acad/css/app.css`, **un seul accent (teal)**, boutons en pilule, panneaux 20px, champs et choix 14px, mode sombre par `prefers-color-scheme`. CSS écrit à la main, aucun framework, aucune police externe.
+- **Marque** : « Electro Acad Ventisax » (mot « Ventisax » en teal) ; sous 520px, le logo seul ; sous 420px, le bouton « Créer un compte » de l'en-tête disparaît (présent dans les pages).
+- **Icônes** : Tabler Icons 3.31.0 (MIT) uniquement, format du projet (`templates/icons/*.svg`, trait 1,75, `aria-hidden`) ; aucune icône dessinée à la main.
+- **Formulaires** : `templates/includes/field.html` (libellé au-dessus, aide puis erreur en dessous, astérisque pour les champs requis) ; pages d'un seul panneau : `templates/accounts/_single_panel.html`.
+- **Formateur** : sous-navigation commune `templates/progress/_trainer_nav.html` (Apprenants, Questions, Annonces, Dates limites).
+- **Questions interactives** (`static/acad/js/interactions.js`, amélioration progressive) : zones cliquables posées sur le schéma en % du viewBox, toujours visibles (contour pointillé) ; appariement par listes déroulantes, étiquettes déplaçables en plus à la souris (masquées au toucher).
+- **Calculateurs** (`static/acad/js/calculators.js`) : chargés seulement sur les sections qui en contiennent ; libellés traduits passés par un élément caché à attributs `data-` (aucun script en ligne).
+- **Typographie** : aucun tiret cadratin ni demi-cadratin visible ; deux-points intégrés aux chaînes traduites (« Votre réponse : » / « Your answer: »).
+- **Validation visuelle** : script Playwright `.playwright-mcp/shots.js` (dossier ignoré par git) sur 1280px et 360px, trois rôles, contrôles automatiques : erreurs console et CSP, débordement horizontal (`clientWidth`), boutons sur deux lignes, poids transféré. Dernier passage : 0 erreur, 0 débordement, page la plus lourde 66 Ko (tentative avec HTMX, non compressé).
+
 ## PRD
 
 ### Personas
@@ -214,6 +226,10 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
 13. **US-11** : un non-inscrit qui ouvre un module ou une section d'une formation ouverte est renvoyé vers sa fiche du catalogue ; formation fermée : 404.
 14. **Vérification publique** : `/<langue>/verify/<numéro>/` (préfixe de langue de `i18n_patterns`).
 15. **Garde-fous du contenu** (`courses/tests/test_content_files.py`) pointés vers `content/electro/` et ignorés, avec justification écrite, tant que le manifeste n'existe pas (étape Contenu).
+
+16. **Calculateurs du cours (US-13)** : un paragraphe Markdown réduit à `[[calc:ohm]]`, `[[calc:divider]]`, `[[calc:resistor]]` ou `[[calc:bias]]` devient, **après** le nettoyage bleach, un emplacement inerte `<div class="calc" data-calc="…">` ; tout autre nom reste du texte et le balisage HTML ne peut pas forger cet emplacement.
+17. **Correction lisible** : valeur attendue d'une question numérique affichée avec préfixe SI et séparateur de la langue (`assessments.scoring.format_quantity` : « 2,553 mA » / « 2.553 mA ») ; correction d'un appariement ligne par ligne (`AttemptQuestion.pair_rows` : réponse donnée, attendue, juste ou fausse).
+18. **Catalogue** : chaque formation indique si l'utilisateur y est déjà inscrit (bouton « Continuer » au lieu de « S'inscrire ») ; le tableau formateur liste les tentatives envoyées de chaque apprenant (lien vers le détail, US-28) ; une promotion unique est présélectionnée dans les formulaires formateur.
 
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.

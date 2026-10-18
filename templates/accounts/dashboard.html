@@ -5,14 +5,20 @@
   <h1>{% if user.first_name %}{% blocktranslate with name=user.first_name %}Bonjour, {{ name }}{% endblocktranslate %}{% else %}{% translate "Mes cours" %}{% endif %}</h1>
 </div>
 {% if announcements %}
-  <section class="panel" aria-labelledby="annonces">
-    <h2 id="annonces">{% translate "Annonces" %}</h2>
-    {% for a in announcements %}<article><h3>{{ a.title }}</h3><p class="muted">{{ a.promotion.name }} · {{ a.published_at|date:"DATE_FORMAT" }}</p><p>{{ a.body|linebreaksbr }}</p></article>{% endfor %}
+  <section class="announce" aria-labelledby="annonces">
+    <h2 id="annonces" class="visually-hidden">{% translate "Annonces" %}</h2>
+    {% for a in announcements %}
+      <article class="announce-item">
+        <span class="announce-icon" aria-hidden="true">{% include "icons/speakerphone.svg" %}</span>
+        <div><h3>{{ a.title }}</h3><p>{{ a.body|linebreaksbr }}</p><p class="muted small">{{ a.promotion.name }} · {{ a.published_at|date:"DATE_FORMAT" }}</p></div>
+      </article>
+    {% endfor %}
   </section>
 {% endif %}
 {% for row in parts %}
   <div class="course">
     <section class="panel" aria-labelledby="partie-{{ row.partie.public_id }}">
+      <p class="muted small course-formation">{{ row.partie.formation.title }}</p>
       <h2 id="partie-{{ row.partie.public_id }}"{{ row.partie|lang_attr:"title" }}>{{ row.partie.title }}</h2>
       <div class="course-meter">
         <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ row.progress }}" aria-label="{% translate 'Progression' %}"><span style="width: {{ row.progress }}%"></span></div>

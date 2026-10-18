@@ -93,11 +93,12 @@ class Question(models.Model):
             raise ValidationError(errors)
 
     def expected_value_display(self):
-        """« 4700 Ω » : valeur attendue d'une question numérique, pour la correction."""
+        """« 4,7 kΩ » : valeur attendue d'une question numérique, avec préfixe SI et séparateur de la langue."""
         if self.qtype != self.Type.NUMERIC or self.numeric_value is None:
             return ""
-        value = format(self.numeric_value.normalize(), "f")
-        return f"{value} {self.unit}".strip()
+        from .scoring import format_quantity
+
+        return format_quantity(self.numeric_value, self.unit)
 
     def publish(self):
         self.validate_for_publication()
@@ -252,6 +253,7 @@ class Attempt(models.Model):
                 "selected_choice_ids": selected,
                 "answer_text": aq.answer_text,
                 "answer_pairs": aq.answer_json,
+                "pair_rows": aq.pair_rows(),
                 "expected_value": question.expected_value_display(),
                 "explanation": question.explanation,
                 "score": aq.score(correct, selected),
@@ -287,6 +289,17 @@ class AttemptQuestion(models.Model):
         pairs = {p.pk: p for p in self.question.pairs.all()}
         ordered = [pairs.pop(pk) for pk in self.choice_order if pk in pairs]
         return ordered + list(pairs.values())
+
+    def pair_rows(self):
+        """Appariement corrigé : pour chaque élément de gauche, la correspondance donnée et l'attendue."""
+        pairs = {str(p.public_id): p for p in self.question.pairs.all()}
+        rows = []
+        for key, pair in pairs.items():
+            given = pairs.get(self.answer_json.get(key, ""))
+            rows.append({
+                "left": pair.left, "given": given.right if given else "", "expected": pair.right, "ok": given is pair,
+            })
+        return rows
 
     def score(self, correct_choice_ids, selected_choice_ids):
         from .scoring import score_answer, score_matching, score_numeric
