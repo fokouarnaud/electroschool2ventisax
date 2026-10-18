@@ -15,7 +15,7 @@
           <tr>
             <th scope="col">{% translate "Apprenant" %}</th>
             <th scope="col">{% translate "Promotion" %}</th>
-            {% for module in table.modules %}<th scope="col" title="{{ module.title }}">M{{ forloop.counter }}</th>{% endfor %}
+            {% for module in table.modules %}<th scope="col" class="mod" title="{{ module.title }}">M{{ forloop.counter }}</th>{% endfor %}
             {% for partie in table.parties %}<th scope="col" title="{{ partie.title }}">{% blocktranslate with n=forloop.counter %}Examen P{{ n }}{% endblocktranslate %}</th>{% endfor %}
             <th scope="col">{% translate "Tentatives" %}</th>
           </tr>
@@ -28,7 +28,7 @@
                 {% if row.late %}<span class="badge badge-warn">{% include "icons/calendar-due.svg" %}{% blocktranslate count n=row.late|length %}En retard ({{ n }}){% plural %}En retard ({{ n }}){% endblocktranslate %}</span>{% endif %}
               </th>
               <td>{{ row.promotion.name }}</td>
-              {% for done in row.modules %}<td class="{% if done %}cell-done{% endif %}">{% if done %}{% include "icons/check.svg" %}<span class="visually-hidden">{% translate "terminé" %}</span>{% else %}<span class="muted" aria-label="{% translate 'non terminé' %}">-</span>{% endif %}</td>{% endfor %}
+              {% for done in row.modules %}<td class="mod{% if done %} cell-done{% endif %}">{% if done %}{% include "icons/check.svg" %}<span class="visually-hidden">{% translate "terminé" %}</span>{% else %}<span class="muted" aria-label="{% translate 'non terminé' %}">-</span>{% endif %}</td>{% endfor %}
               {% for result in row.exams %}
                 <td class="num">{% if result.best is not None %}<strong>{{ result.best|floatformat:0 }} %</strong>{% else %}<span class="muted">-</span>{% endif %} <span class="muted">({{ result.attempts }}{% if result.max_attempts %}/{{ result.max_attempts }}{% endif %})</span></td>
               {% endfor %}

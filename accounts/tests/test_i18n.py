@@ -21,8 +21,8 @@ def test_learner_dashboard_interface_is_translated(client, enrolled, partie, mod
     client.force_login(enrolled)
     html = client.get("/en/").content.decode()
     assert "My courses" in html or "Hello" in html
-    assert "Part exam" in html
-    assert "Examen de la partie" not in html
+    assert "Part 1 exam" in html
+    assert "Examen de la Partie" not in html
 
 
 @pytest.mark.django_db
