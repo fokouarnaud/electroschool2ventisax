@@ -2,7 +2,7 @@
 
 Usage : python tools/schemas.py
 Écrit les schémas des sections dans static/content/electro/m<N>/ et ceux des questions sur schéma dans
-content/electro/p1/m<N>/schemas/. Les zones des questions sur schéma sont affichées pour questions.json.
+content/electro/p<P>/m<N>/schemas/ (p1 pour les modules 1 à 4, p2 pour les modules 5 à 7). Les zones des questions sur schéma sont affichées pour questions.json.
 Tous les dessins sont originaux ; aucun n'est repris du livre de référence.
 """
 import math
@@ -46,6 +46,16 @@ EN = {
     "VGS(off) = −3 V : bloqué": "VGS(off) = −3 V: off", "VGS = 0 : conduit": "VGS = 0: on",
     "5 mA ; 10 V": "5 mA; 10 V", "50 mA ; 250 mW": "50 mA; 250 mW", "50 µA ; 7,5 mA": "50 µA; 7.5 mA",
     "τ = R × C = 1 s ; 63 %": "τ = R × C = 1 s; 63 %",
+    # Partie 2
+    "Ueff ≈ 7,07 V": "Urms ≈ 7.07 V", "Ucc = 20 V": "Upp = 20 V", "12 V eff": "12 V rms", "10 V eff": "10 V rms",
+    "I = 10 mA eff": "I = 10 mA rms", "continu": "DC", "alternatif": "AC", "en phase : déphasage 0°": "in phase: 0° shift",
+    "50 Hz : 3,18 kΩ": "50 Hz: 3.18 kΩ", "50 Hz : 31,4 Ω": "50 Hz: 31.4 Ω", "500 Hz : 314 Ω": "500 Hz: 314 Ω",
+    "Voie 1 : 2 V/div": "Channel 1: 2 V/div", "Base de temps : 1 ms/div": "Timebase: 1 ms/div",
+    "Ucc = 4 div × 2 V = 8 V": "Upp = 4 div × 2 V = 8 V", "GBF": "Generator", "voie 1": "channel 1", "voie 2": "channel 2",
+    "masse commune": "common ground", "b = a : 45°": "b = a: 45°", "Vs / Ve": "Vout / Vin", "ve": "vin", "vs": "vout",
+    "fc : Xc = R": "fc: Xc = R", "f0 ≈ 5 kHz : XL = XC ≈ 316 Ω": "f0 ≈ 5 kHz: XL = XC ≈ 316 Ω", "BP ≈ 796 Hz": "BW ≈ 796 Hz",
+    "amplificateur": "amplifier", "station reçue": "received station", "C chargé : énergie électrique": "C charged: electric energy",
+    "C déchargé": "C discharged", "I maximal : énergie magnétique": "I maximum: magnetic energy", "enveloppe": "envelope",
 }
 
 
@@ -203,6 +213,26 @@ class Drawing:
         mid = self._two(a, b, body, 30)
         self._label(mid, a, b, label, value, side)
         return mid
+
+    def inductor(self, a, b, label=None, value=None, side=1):
+        """Bobine (symbole CEI : quatre demi-cercles)."""
+        body = '<path d="M0 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>'
+        mid = self._two(a, b, body, 40)
+        self._label(mid, a, b, label, value, side)
+        return mid
+
+    def variable_capacitor(self, a, b, label=None, value=None, side=1):
+        body = ('<line x1="0" y1="0" x2="12" y2="0"/><line x1="12" y1="-13" x2="12" y2="13"/><line x1="20" y1="-13" x2="20" y2="13"/>'
+                '<line x1="20" y1="0" x2="32" y2="0"/><line x1="2" y1="16" x2="30" y2="-16"/><polyline points="22,-16 30,-16 30,-8"/>')
+        mid = self._two(a, b, body, 32)
+        self._label(mid, a, b, label, value, side)
+        return mid
+
+    def antenna(self, p):
+        x, y = p
+        self.wire((x, y), (x, y - 40))
+        self.wire((x - 14, y - 58), (x, y - 40), (x + 14, y - 58))
+        self.wire((x - 14, y - 58), (x + 14, y - 58))
 
     def meter(self, a, b, letter):
         """Ampèremètre (A) ou voltmètre (V) entre a et b ; la lettre ne tourne pas."""
@@ -894,6 +924,484 @@ def m4_jfet_blocage():
     return d
 
 
+# --- Partie 2 : outils de tracé ---------------------------------------------------------------------------------------
+
+def sine(amp, t_end, period, phase_deg=0.0, steps=160):
+    """Points (t, amp × sin(2π t / période + phase)) de 0 à t_end."""
+    return [(t_end * k / steps, amp * math.sin(2 * math.pi * (t_end * k / steps) / period + math.radians(phase_deg)))
+            for k in range(steps + 1)]
+
+
+def log_curve(fn, lo, hi, steps=160):
+    """Courbe en fonction de log10(f), de 10^lo à 10^hi."""
+    return [(lo + (hi - lo) * k / steps, fn(10 ** (lo + (hi - lo) * k / steps))) for k in range(steps + 1)]
+
+
+DECADES = [(1, "10"), (2, "100"), (3, "1 k"), (4, "10 k"), (5, "100 k")]
+FC = 1 / (2 * math.pi * 1e3 * 100e-9)          # RC 1 kΩ, 100 nF : ≈ 1 591,5 Hz
+F0 = 1 / (2 * math.pi * math.sqrt(10e-3 * 100e-9))  # LC 10 mH, 100 nF : ≈ 5 033 Hz
+
+
+def lowpass(f):
+    return 1 / math.sqrt(1 + (f / FC) ** 2)
+
+
+def highpass(f):
+    return (f / FC) / math.sqrt(1 + (f / FC) ** 2)
+
+
+def rlc_current(f, r, u=1.0):
+    """Courant (mA) dans un RLC série 10 mH, 100 nF sous u volts."""
+    x = 2 * math.pi * f * 10e-3 - 1 / (2 * math.pi * f * 100e-9)
+    return 1000 * u / math.sqrt(r ** 2 + x ** 2)
+
+
+def series_loop(d, source, top, right):
+    """Boucle série : source verticale à gauche (x = 60), composants en haut puis à droite."""
+    d.wire((60, 65), (60, 40), (top[0], 40))
+    d.wire((right, 190), (60, 190), (60, 165))
+
+
+# --- Module 5 : le courant alternatif ---------------------------------------------------------------------------------
+
+def m5_sinusoide():
+    d = Drawing(480, 270, "Tension sinusoïdale de 50 Hz : amplitude Umax = 10 V et période T = 20 ms")
+    px, py = d.graph(60, 30, 360, 190, (0, 44), (-12, 12), [(sine(10, 44, 20), ACCENT, "u(t)", (31, 10.5))], "t (ms)", "u (V)",
+                     marks=[((5, 10), "Umax = 10 V")], xticks=[(10, "10"), (20, "20"), (40, "40")], yticks=[(10, "10"), (-10, "−10")])
+    d.arrow((px(0.5), py(-11.2)), (px(20), py(-11.2)), "T = 20 ms", offset=(0, -8))
+    return d
+
+
+def m5_frequences():
+    d = Drawing(480, 270, "Deux sinusoïdes : 50 Hz (T = 20 ms) et 100 Hz (T = 10 ms)")
+    d.graph(60, 30, 360, 190, (0, 40), (-12, 12),
+            [(sine(10, 40, 20), SOFT, "50 Hz", (21, 11)), (sine(6, 40, 10), ACCENT, "100 Hz", (31.5, 7.5))],
+            "t (ms)", "u (V)", xticks=[(10, "10"), (20, "20"), (30, "30"), (40, "40")])
+    return d
+
+
+def m5_valeurs():
+    d = Drawing(480, 270, "Valeurs d'une sinusoïde : Umax = 10 V, Ucc = 20 V, Ueff ≈ 7,07 V")
+    px, py = d.graph(60, 30, 360, 190, (0, 30), (-12, 12),
+                     [(sine(10, 26, 20), ACCENT, "u(t)", (6.5, -7)), ([(0, 7.07), (26, 7.07)], SOFT, "Ueff ≈ 7,07 V", (10.5, 8.4))],
+                     "t (ms)", "u (V)", marks=[((5, 10), "Umax = 10 V")], yticks=[(10, "10"), (-10, "−10")])
+    d.arrow((px(27.5), py(-10)), (px(27.5), py(10)), "Ucc = 20 V", offset=(-46, 26))
+    d.arrow((px(27.5), py(10)), (px(27.5), py(-10)), color=ACCENT)
+    return d
+
+
+def m5_efficace():
+    d = Drawing(540, 240, "Même éclat de la lampe sous 12 V continus et sous 12 V efficaces")
+    for dx, kind in ((0, "dc"), (270, "ac")):
+        if kind == "dc":
+            d.battery((50 + dx, 160), (50 + dx, 60), "E", "12 V")
+        else:
+            d.ac_source((50 + dx, 160), (50 + dx, 60), "~", "12 V eff")
+        d.wire((50 + dx, 60), (50 + dx, 35), (190 + dx, 35), (190 + dx, 70))
+        d.lamp((190 + dx, 70), (190 + dx, 135), "L", lit=True)
+        d.wire((190 + dx, 135), (190 + dx, 185), (50 + dx, 185), (50 + dx, 160))
+    d.text(120, 220, "continu", weight="600", color=SOFT)
+    d.text(390, 220, "alternatif", weight="600", color=SOFT)
+    return d
+
+
+def m5_r_circuit():
+    d = Drawing(440, 230, "Résistance en alternatif : I = U / R avec les valeurs efficaces")
+    d.ac_source((60, 165), (60, 65), "~", "10 V eff", side=1)
+    series_loop(d, None, (150, 40), 330)
+    d.meter((150, 40), (210, 40), "A")
+    d.wire((210, 40), (330, 40), (330, 75))
+    d.resistor((330, 75), (330, 155), "R", "1 kΩ")
+    d.wire((330, 155), (330, 190))
+    d.arrow((235, 52), (300, 52), "I = 10 mA eff", offset=(0, 22))
+    return d
+
+
+def m5_r_phase():
+    d = Drawing(480, 260, "Dans une résistance, u et i passent par zéro et par leurs maximums en même temps")
+    d.graph(60, 30, 360, 180, (0, 40), (-12, 12), [(sine(10, 40, 20), SOFT, "u", (5.8, 11)), (sine(6, 40, 20), ACCENT, "i", (4, 4))],
+            "t (ms)", "u, i", xticks=[(10, "10"), (20, "20"), (30, "30"), (40, "40")])
+    d.text(240, 245, "en phase : déphasage 0°", color=ACCENT, weight="600")
+    return d
+
+
+def m5_c_circuit():
+    d = Drawing(440, 230, "Condensateur alimenté en alternatif : un courant circule")
+    d.ac_source((60, 165), (60, 65), "~", "10 V eff", side=1)
+    series_loop(d, None, (150, 40), 330)
+    d.meter((150, 40), (210, 40), "A")
+    d.wire((210, 40), (330, 40), (330, 85))
+    d.capacitor((330, 85), (330, 145), "C", "1 µF")
+    d.wire((330, 145), (330, 190))
+    d.arrow((235, 52), (300, 52), "I", offset=(0, 22))
+    return d
+
+
+def m5_xc_courbe():
+    d = Drawing(480, 270, "Réactance d'un condensateur de 1 µF : Xc baisse quand la fréquence monte")
+    pts = [(f, 1 / (2 * math.pi * f * 1e-6) / 1000) for f in range(25, 1001, 5)]
+    d.graph(60, 30, 360, 190, (0, 1000), (0, 7), [(pts, ACCENT, "Xc = 1 / (2π × f × C)", (300, 2.2))], "f (Hz)", "Xc (kΩ)",
+            marks=[((50, 3.18), "50 Hz : 3,18 kΩ")],
+            xticks=[(500, "500"), (1000, "1000")], yticks=[(3.18, "3,18")])
+    return d
+
+
+def m5_c_phase():
+    d = Drawing(480, 260, "Dans un condensateur, i est en avance d'un quart de période (90°) sur u")
+    px, py = d.graph(60, 30, 360, 180, (0, 40), (-12, 12), [(sine(10, 40, 20), SOFT, "u", (6, 11)), (sine(6, 40, 20, 90), ACCENT, "i", (1, 7.5))],
+                     "t (ms)", "u, i", xticks=[(10, "10"), (20, "20"), (30, "30"), (40, "40")])
+    d.arrow((px(20), py(-11.5)), (px(25), py(-11.5)), "T/4", offset=(0, -6))
+    return d
+
+
+def m5_l_circuit():
+    d = Drawing(440, 230, "Bobine alimentée en alternatif : sa réactance XL limite le courant")
+    d.ac_source((60, 165), (60, 65), "~", "10 V eff", side=1)
+    series_loop(d, None, (150, 40), 330)
+    d.meter((150, 40), (210, 40), "A")
+    d.wire((210, 40), (330, 40), (330, 75))
+    d.inductor((330, 75), (330, 155), "L", "100 mH")
+    d.wire((330, 155), (330, 190))
+    d.arrow((235, 52), (300, 52), "I", offset=(0, 22))
+    return d
+
+
+def m5_xl_courbe():
+    d = Drawing(480, 270, "Réactance d'une bobine de 100 mH : XL monte avec la fréquence")
+    pts = [(f, 2 * math.pi * f * 0.1) for f in range(0, 1001, 10)]
+    d.graph(60, 30, 360, 190, (0, 1000), (0, 700), [(pts, ACCENT, "XL = 2π × f × L", (120, 420))], "f (Hz)", "XL (Ω)",
+            marks=[((50, 31.4), "50 Hz : 31,4 Ω"), ((500, 314), "500 Hz : 314 Ω")],
+            xticks=[(500, "500"), (1000, "1000")], yticks=[(314, "314"), (628, "628")])
+    return d
+
+
+def m5_l_phase():
+    d = Drawing(480, 260, "Dans une bobine, i est en retard d'un quart de période (90°) sur u")
+    px, py = d.graph(60, 30, 360, 180, (0, 40), (-12, 12), [(sine(10, 40, 20), SOFT, "u", (6, 11)), (sine(6, 40, 20, -90), ACCENT, "i", (11, 7.5))],
+                     "t (ms)", "u, i", xticks=[(10, "10"), (20, "20"), (30, "30"), (40, "40")])
+    d.arrow((px(5), py(-11.5)), (px(10), py(-11.5)), "T/4", offset=(0, -6))
+    return d
+
+
+def m5_ecran():
+    d = Drawing(500, 300, "Écran d'oscilloscope : 4 divisions crête à crête et 5 divisions par période")
+    x0, y0, div = 40, 30, 30
+    d.add(f'<rect x="{x0}" y="{y0}" width="{10 * div}" height="{8 * div}" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    for i in range(1, 10):
+        d.add(f'<line x1="{x0 + i * div}" y1="{y0}" x2="{x0 + i * div}" y2="{y0 + 8 * div}" stroke="{SOFT}" stroke-width="0.6" stroke-dasharray="2 3"/>')
+    for j in range(1, 8):
+        d.add(f'<line x1="{x0}" y1="{y0 + j * div}" x2="{x0 + 10 * div}" y2="{y0 + j * div}" stroke="{SOFT}" stroke-width="0.6" stroke-dasharray="2 3"/>')
+    pts = [(x0 + 10 * div * k / 200, y0 + 4 * div - 2 * div * math.sin(2 * math.pi * (10 * k / 200) / 5)) for k in range(201)]
+    d.wire(*pts, color=ACCENT, width=2.5)
+    d.text(355, 70, "Voie 1 : 2 V/div", anchor="start", weight="600")
+    d.text(355, 95, "Base de temps : 1 ms/div", anchor="start", size=12)
+    d.text(355, 150, "Ucc = 4 div × 2 V = 8 V", anchor="start", size=12, color=ACCENT, weight="600")
+    d.text(355, 175, "T = 5 div × 1 ms = 5 ms", anchor="start", size=12, color=ACCENT, weight="600")
+    d.text(355, 200, "f = 1 / T = 200 Hz", anchor="start", size=12, color=ACCENT, weight="600")
+    d.w = 540
+    return d
+
+
+def m5_banc():
+    d = Drawing(540, 220, "Banc de mesure : GBF, circuit étudié et oscilloscope à deux voies")
+    for x, label in ((20, "GBF"), (210, "Circuit"), (400, "Oscilloscope")):
+        d.add(f'<rect x="{x}" y="70" width="120" height="64" rx="8" fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+        d.text(x + 60, 107, label, weight="600")
+    d.wire((140, 90), (210, 90)); d.dot((170, 90))
+    d.wire((170, 90), (170, 40), (440, 40), (440, 70))
+    d.text(452, 60, "voie 1", anchor="start", size=12, color=ACCENT, weight="600")
+    d.wire((330, 90), (400, 90))
+    d.text(365, 82, "voie 2", size=12, color=ACCENT, weight="600")
+    d.wire((80, 134), (80, 170), (460, 170), (460, 134)); d.wire((270, 134), (270, 170)); d.dot((270, 170))
+    d.text(270, 195, "masse commune", size=12, color=SOFT)
+    return d
+
+
+# --- Module 6 : les filtres RC et RL ----------------------------------------------------------------------------------
+
+def right_triangle(d, a_len, b_len, scale, labels, angle_label="θ"):
+    """Triangle rectangle : côté a horizontal, côté b vertical, angle θ en bas à gauche."""
+    ax, ay = 60, 200
+    bx, cy = ax + a_len * scale, ay - b_len * scale
+    d.add(f'<polygon points="{fmt(ax)},{fmt(ay)} {fmt(bx)},{fmt(ay)} {fmt(bx)},{fmt(cy)}" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<polyline points="{fmt(bx - 12)},{fmt(ay)} {fmt(bx - 12)},{fmt(ay - 12)} {fmt(bx)},{fmt(ay - 12)}" fill="none" stroke="{INK}"/>')
+    d.text((ax + bx) / 2, ay + 22, labels[0], weight="600")
+    d.text(bx + 10, (ay + cy) / 2, labels[1], anchor="start", weight="600")
+    d.text((ax + bx) / 2 - 12, (ay + cy) / 2 - 8, labels[2], anchor="end", weight="600", color=ACCENT)
+    d.text(ax + 42, ay - 8, angle_label, color=ACCENT, weight="700")
+    return bx
+
+
+def m6_triangle():
+    d = Drawing(500, 240, "Triangle rectangle de côtés 3, 4 et 5 : Pythagore et tangente")
+    bx = right_triangle(d, 4, 3, 45, ("a = 4", "b = 3", "c = 5"))
+    for i, line in enumerate(("c = √(a² + b²) = √25 = 5", "tan θ = b / a = 0,75", "θ = arctan 0,75 ≈ 36,9°")):
+        d.text(bx + 60, 90 + 28 * i, line, anchor="start", size=12, color=INK if i < 2 else ACCENT, weight="600")
+    return d
+
+
+def m6_arctan():
+    d = Drawing(480, 260, "Angle θ = arctan(b / a) selon le rapport b / a")
+    pts = [(k / 20, math.degrees(math.atan(k / 20))) for k in range(0, 101)]
+    d.graph(60, 30, 360, 180, (0, 5), (0, 95), [(pts, ACCENT, "θ (°)", (3.6, 72)), ([(0, 90), (5, 90)], SOFT, "90°", (4.4, 93))],
+            "b / a", "θ (°)", marks=[((1, 45), "b = a : 45°"), ((0.577, 30), "30°")], xticks=[(1, "1"), (2, "2"), (3, "3"), (4, "4"), (5, "5")],
+            yticks=[(45, "45"), (90, "90")])
+    return d
+
+
+def rc_or_rl(d, first, second, out_label):
+    """Source Ve à gauche, premier composant en haut, second vers la masse, sortie Vs à droite."""
+    d.ac_source((60, 165), (60, 65), "Ve", "")
+    d.wire((60, 65), (60, 40), (110, 40))
+    first((110, 40), (230, 40))
+    d.wire((230, 40), (400, 40)); d.dot((300, 40))
+    d.wire((300, 40), (300, 80))
+    second((300, 80), (300, 150))
+    d.wire((300, 150), (300, 190)); d.dot((300, 190))
+    d.wire((400, 190), (60, 190), (60, 165))
+    for y in (40, 190):
+        d.add(f'<circle cx="400" cy="{y}" r="4" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.arrow((420, 180), (420, 50), out_label, offset=(18, 0))
+
+
+def m6_rc_serie():
+    d = Drawing(460, 230, "Circuit RC série sous 10 V : R = Xc = 1 kΩ")
+    d.ac_source((60, 165), (60, 65), "~", "10 V", side=1)
+    d.wire((60, 65), (60, 40), (110, 40))
+    d.resistor((110, 40), (230, 40), "R", "1 kΩ")
+    d.wire((230, 40), (330, 40), (330, 85))
+    d.capacitor((330, 85), (330, 145), "C", "Xc = 1 kΩ")
+    d.wire((330, 145), (330, 190), (60, 190), (60, 165))
+    d.text(170, 90, "Ur ≈ 7,07 V", color=ACCENT, weight="600")
+    d.text(250, 120, "Uc ≈ 7,07 V", color=ACCENT, weight="600", anchor="end")
+    d.text(230, 215, "I = 10 V / 1,41 kΩ ≈ 7,07 mA", size=12, color=SOFT)
+    return d
+
+
+def m6_triangle_z():
+    d = Drawing(500, 240, "Triangle des impédances : R et Xc à angle droit, Z sur l'hypoténuse")
+    bx = right_triangle(d, 1, 1, 150, ("R = 1 kΩ", "Xc = 1 kΩ", "Z ≈ 1,41 kΩ"), "φ")
+    d.text(bx + 100, 100, "Z = √(R² + Xc²)", anchor="start", size=12, weight="600")
+    d.text(bx + 100, 128, "φ = arctan(Xc / R) = 45°", anchor="start", size=12, weight="600", color=ACCENT)
+    d.w = 560
+    return d
+
+
+def m6_passe_bas():
+    d = Drawing(480, 230, "Filtre passe-bas RC : la sortie est prise aux bornes du condensateur")
+    rc_or_rl(d, lambda a, b: d.resistor(a, b, "R", "1 kΩ"), lambda a, b: d.capacitor(a, b, "C", "100 nF", side=-1), "Vs")
+    return d
+
+
+def m6_passe_bas_courbe():
+    d = Drawing(480, 260, "Passe-bas RC 1 kΩ, 100 nF : les basses fréquences passent, les hautes sont atténuées")
+    d.graph(60, 30, 360, 180, (1, 5), (0, 1.1), [(log_curve(lowpass, 1, 5), ACCENT, "Vs / Ve", (3.6, 0.45))], "f (Hz)", "Vs / Ve",
+            marks=[((math.log10(FC), 0.707), "fc ≈ 1,6 kHz")], xticks=DECADES, yticks=[(1, "1"), (0.707, "0,707")])
+    return d
+
+
+def m6_passe_haut():
+    d = Drawing(480, 230, "Filtre passe-haut RC : la sortie est prise aux bornes de la résistance")
+    rc_or_rl(d, lambda a, b: d.capacitor(a, b, "C", "100 nF"), lambda a, b: d.resistor(a, b, "R", "1 kΩ", side=-1), "Vs")
+    return d
+
+
+def m6_passe_haut_courbe():
+    d = Drawing(480, 260, "Passe-haut RC 1 kΩ, 100 nF : les basses fréquences sont atténuées, les hautes passent")
+    d.graph(60, 30, 360, 180, (1, 5), (0, 1.1), [(log_curve(highpass, 1, 5), ACCENT, "Vs / Ve", (1.2, 0.3))], "f (Hz)", "Vs / Ve",
+            marks=[((math.log10(FC), 0.707), "fc ≈ 1,6 kHz")], xticks=DECADES, yticks=[(1, "1"), (0.707, "0,707")])
+    return d
+
+
+def m6_coupure():
+    d = Drawing(480, 260, "À la fréquence de coupure, la réactance Xc est égale à R")
+    xc = log_curve(lambda f: min(5.0, 1 / (2 * math.pi * f * 100e-9) / 1000), 2.5, 4.5)
+    d.graph(60, 30, 360, 180, (2.5, 4.5), (0, 5), [(xc, ACCENT, "Xc", (2.85, 4)), ([(2.5, 1), (4.5, 1)], SOFT, "R = 1 kΩ", (4.0, 1.25))],
+            "f (Hz)", "(kΩ)", marks=[((math.log10(FC), 1), "fc : Xc = R")], xticks=[(3, "1 k"), (4, "10 k")], yticks=[(1, "1")])
+    return d
+
+
+def m6_attenuation():
+    d = Drawing(500, 260, "Passe-bas : environ 99 % à fc / 10, 70,7 % à fc, 10 % à 10 × fc")
+    lf = math.log10(FC)
+    d.graph(60, 30, 380, 180, (1.5, 5), (0, 1.1), [(log_curve(lowpass, 1.5, 5), ACCENT, "")], "f (Hz)", "Vs / Ve",
+            marks=[((lf - 1, 0.995), "99 %"), ((lf, 0.707), "70,7 %"), ((lf + 1, 0.0995), "10 %")],
+            xticks=[(2, "100"), (3, "1 k"), (4, "10 k"), (5, "100 k")], yticks=[(1, "1"), (0.707, "0,707")])
+    return d
+
+
+def m6_dephasage():
+    d = Drawing(480, 260, "Mesure du déphasage : φ = 360° × Δt / T = 360° × 0,125 / 1 = 45°")
+    px, py = d.graph(60, 30, 360, 180, (0, 2), (-12, 12),
+                     [(sine(10, 2, 1), SOFT, "ve", (0.05, 10.5)), (sine(7.07, 2, 1, -45), ACCENT, "vs", (0.55, 8))],
+                     "t (ms)", "v (V)", xticks=[(0.5, "0,5"), (1, "1"), (1.5, "1,5"), (2, "2")])
+    d.add(f'<line x1="{fmt(px(1.25))}" y1="{fmt(py(10))}" x2="{fmt(px(1.25))}" y2="{fmt(py(-11))}" stroke="{SOFT}" stroke-dasharray="4 3"/>')
+    d.add(f'<line x1="{fmt(px(1.375))}" y1="{fmt(py(7.07))}" x2="{fmt(px(1.375))}" y2="{fmt(py(-11))}" stroke="{ACCENT}" stroke-dasharray="4 3"/>')
+    d.text(px(1.31), py(-11.6) + 14, "Δt", color=ACCENT, weight="700")
+    return d
+
+
+def m6_triangle_phi():
+    d = Drawing(520, 240, "Déphasage d'un RC série : R = 1 kΩ et Xc = 577 Ω donnent φ = 30°")
+    bx = right_triangle(d, 1, 0.577, 200, ("R = 1 kΩ", "Xc = 577 Ω", "Z ≈ 1,15 kΩ"), "φ")
+    d.text(bx + 110, 120, "tan φ = Xc / R = 0,577", anchor="start", size=12, weight="600")
+    d.text(bx + 110, 148, "φ = arctan 0,577 ≈ 30°", anchor="start", size=12, weight="600", color=ACCENT)
+    d.w = 600
+    return d
+
+
+def m6_rl_passe_bas():
+    d = Drawing(480, 230, "Filtre passe-bas RL : bobine en série, sortie aux bornes de la résistance")
+    rc_or_rl(d, lambda a, b: d.inductor(a, b, "L", "10 mH"), lambda a, b: d.resistor(a, b, "R", "100 Ω", side=-1), "Vs")
+    return d
+
+
+def m6_rl_courbe():
+    d = Drawing(480, 260, "Passe-bas RL 100 Ω, 10 mH : fc = R / (2π × L) ≈ 1,6 kHz")
+    d.graph(60, 30, 360, 180, (1, 5), (0, 1.1), [(log_curve(lowpass, 1, 5), ACCENT, "Vs / Ve", (3.6, 0.45))], "f (Hz)", "Vs / Ve",
+            marks=[((math.log10(FC), 0.707), "fc ≈ 1,6 kHz")], xticks=DECADES, yticks=[(1, "1"), (0.707, "0,707")])
+    return d
+
+
+# --- Module 7 : la résonance ------------------------------------------------------------------------------------------
+
+def m7_rlc_serie():
+    d = Drawing(500, 230, "Circuit RLC série : 50 Ω, 10 mH et 100 nF")
+    d.ac_source((60, 165), (60, 65), "~", "1 V", side=1)
+    d.wire((60, 65), (60, 40), (100, 40))
+    d.resistor((100, 40), (190, 40), "R", "50 Ω")
+    d.inductor((190, 40), (300, 40), "L", "10 mH")
+    d.wire((300, 40), (400, 40), (400, 85))
+    d.capacitor((400, 85), (400, 145), "C", "100 nF")
+    d.wire((400, 145), (400, 190), (60, 190), (60, 165))
+    return d
+
+
+def m7_xl_xc():
+    d = Drawing(480, 260, "XL monte et XC descend avec la fréquence : elles sont égales à f0")
+    xl = log_curve(lambda f: 2 * math.pi * f * 10e-3, 3, 4)
+    xc = log_curve(lambda f: min(1600, 1 / (2 * math.pi * f * 100e-9)), 3, 4)
+    px, py = d.graph(60, 30, 360, 180, (3, 4), (0, 1700), [(xl, ACCENT, "XL", (3.85, 560)), (xc, SOFT, "XC", (3.06, 1350))], "f (Hz)", "(Ω)",
+                     marks=[((math.log10(F0), 316), "f0")], xticks=[(3, "1 k"), (math.log10(5000), "5 k"), (4, "10 k")])
+    d.text(px(3.45), py(1100), "f0 ≈ 5 kHz : XL = XC ≈ 316 Ω", anchor="start", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m7_courbe_i():
+    d = Drawing(480, 260, "Courant dans le RLC série sous 1 V : maximum Imax = U / R = 20 mA à f0")
+    d.graph(60, 30, 360, 180, (3, 4.4), (0, 22), [(log_curve(lambda f: rlc_current(f, 50), 3, 4.4, 240), ACCENT, "")],
+            "f (Hz)", "I (mA)", marks=[((math.log10(F0), 20), "f0 ≈ 5 kHz")], xticks=[(3, "1 k"), (4, "10 k")], yticks=[(20, "20")])
+    return d
+
+
+def m7_courbe_r():
+    d = Drawing(480, 260, "Plus la résistance est grande, plus le pic de résonance est bas et large")
+    d.graph(60, 30, 360, 180, (3, 4.4), (0, 22),
+            [(log_curve(lambda f: rlc_current(f, 50), 3, 4.4, 240), ACCENT, "R = 50 Ω", (3.78, 18)),
+             (log_curve(lambda f: rlc_current(f, 200), 3, 4.4, 240), SOFT, "R = 200 Ω", (3.95, 6))],
+            "f (Hz)", "I (mA)", xticks=[(3, "1 k"), (4, "10 k")], yticks=[(5, "5"), (20, "20")])
+    return d
+
+
+def m7_bande():
+    d = Drawing(500, 260, "Bande passante : de f1 à f2, le courant reste au-dessus de 0,707 × Imax")
+    q = 2 * math.pi * F0 * 10e-3 / 50
+    f1 = F0 * (math.sqrt(1 + 1 / (4 * q * q)) - 1 / (2 * q))
+    f2 = F0 * (math.sqrt(1 + 1 / (4 * q * q)) + 1 / (2 * q))
+    pts = [(f, rlc_current(f, 50) / 20) for f in range(3000, 7001, 20)]
+    px, py = d.graph(60, 30, 380, 180, (3000, 7000), (0, 1.1), [(pts, ACCENT, ""), ([(3000, 0.707), (7000, 0.707)], SOFT, "")],
+                     "f (Hz)", "I / Imax", marks=[((f1, 0.707), "f1"), ((f2, 0.707), "f2")],
+                     xticks=[(4000, "4 k"), (5000, "5 k"), (6000, "6 k")], yticks=[(1, "1"), (0.707, "0,707")])
+    d.arrow((px(f1), py(0.3)), (px(f2), py(0.3)), color=ACCENT)
+    d.arrow((px(f2), py(0.3)), (px(f1), py(0.3)), color=ACCENT)
+    d.text((px(f1) + px(f2)) / 2, py(0.3) + 20, "BP ≈ 796 Hz", color=ACCENT, weight="600")
+    return d
+
+
+def m7_q():
+    d = Drawing(480, 260, "Facteur de qualité Q = f0 / BP : plus Q est élevé, plus le circuit est sélectif")
+    d.graph(60, 30, 360, 180, (3, 4.4), (0, 1.1),
+            [(log_curve(lambda f: rlc_current(f, 50) / 20, 3, 4.4, 240), ACCENT, "Q ≈ 6,3", (3.76, 0.95)),
+             (log_curve(lambda f: rlc_current(f, 200) / 5, 3, 4.4, 240), SOFT, "Q ≈ 1,6", (4.02, 0.62))],
+            "f (Hz)", "I / Imax", xticks=[(3, "1 k"), (4, "10 k")], yticks=[(1, "1"), (0.707, "0,707")])
+    return d
+
+
+def m7_lc_parallele():
+    d = Drawing(480, 240, "Circuit LC parallèle (bouchon) alimenté à travers une résistance")
+    d.ac_source((60, 170), (60, 70), "~", "")
+    d.wire((60, 70), (60, 40), (100, 40))
+    d.resistor((100, 40), (200, 40), "R", "10 kΩ")
+    d.wire((200, 40), (380, 40)); d.dot((280, 40))
+    d.wire((280, 40), (280, 80)); d.inductor((280, 80), (280, 160), "L", "10 mH", side=-1); d.wire((280, 160), (280, 200))
+    d.wire((380, 40), (380, 95)); d.capacitor((380, 95), (380, 150), "C", "100 nF"); d.wire((380, 150), (380, 200))
+    d.wire((380, 200), (60, 200), (60, 170)); d.dot((280, 200))
+    return d
+
+
+def m7_z_parallele():
+    d = Drawing(480, 260, "Impédance du bouchon (10 mH avec 10 Ω de pertes, 100 nF) : maximale à f0")
+
+    def z(f):
+        w = 2 * math.pi * f
+        zl, zc = complex(10, w * 10e-3), complex(0, -1 / (w * 100e-9))
+        return abs(zl * zc / (zl + zc)) / 1000
+
+    d.graph(60, 30, 360, 180, (3, 4.4), (0, 11), [(log_curve(z, 3, 4.4, 300), ACCENT, "")], "f (Hz)", "Z (kΩ)",
+            marks=[((math.log10(F0), 10), "f0 ≈ 5 kHz")], xticks=[(3, "1 k"), (4, "10 k")], yticks=[(10, "10")])
+    return d
+
+
+def m7_accord():
+    d = Drawing(500, 240, "Circuit d'accord d'un récepteur : le condensateur variable choisit la station")
+    d.antenna((80, 100))
+    d.wire((80, 100), (80, 130), (200, 130)); d.dot((200, 130))
+    d.wire((200, 130), (200, 145)); d.inductor((200, 145), (200, 205), "L", "100 µH", side=-1)
+    d.wire((200, 130), (300, 130), (300, 150)); d.variable_capacitor((300, 150), (300, 200), "C", "≈ 253 pF")
+    d.wire((200, 205), (200, 220), (300, 220), (300, 200)); d.ground((250, 220))
+    d.wire((300, 130), (390, 130))
+    d.add(f'<polygon points="390,105 390,155 440,130" fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
+    d.text(415, 95, "amplificateur", size=12, color=SOFT)
+    d.h = 260
+    return d
+
+
+def m7_stations():
+    d = Drawing(480, 260, "Accordé sur 1 MHz, le circuit laisse passer cette station et atténue ses voisines")
+    q = 40
+
+    def g(f):
+        return 1 / math.sqrt(1 + (q * (f / 1.0 - 1.0 / f)) ** 2)
+
+    px, py = d.graph(60, 30, 360, 180, (0.85, 1.15), (0, 1.1), [([(0.85 + k * 0.3 / 200, g(0.85 + k * 0.3 / 200)) for k in range(201)], ACCENT, "")],
+                     "f (MHz)", "", xticks=[(0.9, "0,9"), (1.0, "1"), (1.1, "1,1")])
+    for f in (0.9, 1.0, 1.1):
+        d.add(f'<rect x="{fmt(px(f) - 5)}" y="{fmt(py(0.9))}" width="10" height="{fmt(py(0) - py(0.9))}" fill="{SOFT}" opacity="0.35"/>')
+    d.text(px(1.0) + 40, py(0.5), "station reçue", anchor="start", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m7_echange():
+    d = Drawing(520, 230, "Dans un circuit LC, l'énergie passe du condensateur à la bobine et revient")
+    for dx, cap, coil in ((0, "C chargé : énergie électrique", "I = 0"), (260, "C déchargé", "I maximal : énergie magnétique")):
+        d.wire((70 + dx, 50), (170 + dx, 50))
+        d.wire((70 + dx, 50), (70 + dx, 85)); d.capacitor((70 + dx, 85), (70 + dx, 135), "C", side=-1); d.wire((70 + dx, 135), (70 + dx, 170))
+        d.wire((170 + dx, 50), (170 + dx, 80)); d.inductor((170 + dx, 80), (170 + dx, 140), "L"); d.wire((170 + dx, 140), (170 + dx, 170))
+        d.wire((70 + dx, 170), (170 + dx, 170))
+        d.text(120 + dx, 195, cap, size=11, color=ACCENT, weight="600")
+        d.text(120 + dx, 213, coil, size=11, color=SOFT)
+    d.arrow((225, 110), (285, 110), color=ACCENT)
+    return d
+
+
+def m7_amortie():
+    d = Drawing(480, 260, "Oscillation amortie : sans apport d'énergie, les pertes éteignent l'oscillation")
+    pts = [(t / 40, 10 * math.exp(-t / 40 / 2.5) * math.cos(2 * math.pi * t / 40)) for t in range(0, 401)]
+    env = [(t / 40, 10 * math.exp(-t / 40 / 2.5)) for t in range(0, 401, 4)]
+    d.graph(60, 30, 360, 180, (0, 10), (-11, 11), [(pts, ACCENT, ""), (env, SOFT, "enveloppe", (5.2, 7))], "t", "u (V)")
+    return d
+
+
 # --- Schémas des questions sur zone cliquable -------------------------------------------------------------------------
 
 def q_m1_circuit():
@@ -938,6 +1446,32 @@ def q_m4_switch():
     return d
 
 
+def q_m5_sinus():
+    d = Drawing(440, 240, "Sinusoïde à repérer")
+    px, py = d.graph(50, 30, 340, 170, (0, 25), (-12, 12), [(sine(10, 25, 20), ACCENT, "")], "t", "u")
+    d.zone("crete", px(5) - 25, py(10) - 22, 50, 36)
+    d.zone("zero", px(10) - 25, py(0) - 18, 50, 36)
+    d.zone("creux", px(15) - 25, py(-10) - 14, 50, 36)
+    return d
+
+
+def q_m6_passe_haut():
+    d = Drawing(460, 230, "Filtre RC à identifier")
+    rc_or_rl(d, lambda a, b: d.capacitor(a, b), lambda a, b: d.resistor(a, b), "")
+    d.zone("source", 30, 85, 60, 60); d.zone("condensateur", 145, 18, 50, 44); d.zone("resistance", 280, 92, 40, 46)
+    return d
+
+
+def q_m7_courbe():
+    d = Drawing(460, 250, "Courbe de réponse à lire")
+    px, py = d.graph(50, 30, 360, 180, (3, 4.4), (0, 22), [(log_curve(lambda f: rlc_current(f, 50), 3, 4.4, 240), ACCENT, "")], "f", "I")
+    lf = math.log10(F0)
+    d.zone("pic", px(lf) - 25, py(20) - 18, 50, 40)
+    d.zone("basses", px(3.15) - 25, py(rlc_current(10 ** 3.15, 50)) - 25, 50, 40)
+    d.zone("hautes", px(4.25) - 25, py(rlc_current(10 ** 4.25, 50)) - 25, 50, 40)
+    return d
+
+
 SECTION_DIAGRAMS = {
     1: [m1_circuit_simple, m1_mesures, m1_ohm_circuit, m1_ohm_graph, m1_serie, m1_parallele, m1_puissance,
         m1_puissance_graph, m1_diviseur, m1_diviseur_charge, m1_diviseur_courant, m1_trois_branches, m1_rc_circuit, m1_rc_courbe],
@@ -947,8 +1481,14 @@ SECTION_DIAGRAMS = {
         m3_modele_diodes, m3_test_be, m3_jfet, m3_jfet_courbe],
     4: [m4_interrupteur, m4_bloque_sature, m4_calcul_rb, m4_saturation_courbe, m4_relais, m4_led_transistor, m4_ldr,
         m4_ldr_courbe, m4_darlington, m4_cascade, m4_jfet_interrupteur, m4_jfet_blocage],
+    5: [m5_sinusoide, m5_frequences, m5_valeurs, m5_efficace, m5_r_circuit, m5_r_phase, m5_c_circuit, m5_xc_courbe, m5_c_phase,
+        m5_l_circuit, m5_xl_courbe, m5_l_phase, m5_ecran, m5_banc],
+    6: [m6_triangle, m6_arctan, m6_rc_serie, m6_triangle_z, m6_passe_bas, m6_passe_bas_courbe, m6_passe_haut, m6_passe_haut_courbe,
+        m6_coupure, m6_attenuation, m6_dephasage, m6_triangle_phi, m6_rl_passe_bas, m6_rl_courbe],
+    7: [m7_rlc_serie, m7_xl_xc, m7_courbe_i, m7_courbe_r, m7_bande, m7_q, m7_lc_parallele, m7_z_parallele, m7_accord, m7_stations,
+        m7_echange, m7_amortie],
 }
-QUESTION_DIAGRAMS = {1: q_m1_circuit, 2: q_m2_circuit, 3: q_m3_npn, 4: q_m4_switch}
+QUESTION_DIAGRAMS = {1: q_m1_circuit, 2: q_m2_circuit, 3: q_m3_npn, 4: q_m4_switch, 5: q_m5_sinus, 6: q_m6_passe_haut, 7: q_m7_courbe}
 
 
 def file_name(func):
@@ -965,7 +1505,7 @@ def main():
                 (out / file_name(func)).write_text(func().svg(), encoding="utf-8")
     LANG = "fr"
     for module, func in QUESTION_DIAGRAMS.items():
-        out = ROOT / "content" / "electro" / "p1" / f"m{module}" / "schemas"
+        out = ROOT / "content" / "electro" / ("p1" if module <= 4 else "p2") / f"m{module}" / "schemas"
         out.mkdir(parents=True, exist_ok=True)
         drawing = func()
         (out / file_name(func)).write_text(drawing.svg(), encoding="utf-8")

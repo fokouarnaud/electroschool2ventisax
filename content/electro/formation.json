@@ -3,8 +3,8 @@
   "open": true,
   "title": {"fr": "Électronique", "en": "Electronics"},
   "description": {
-    "fr": "Du courant continu au transistor en commutation : comprendre, calculer et monter ses premiers circuits.",
-    "en": "From direct current to the transistor switch: understand, calculate and build your first circuits."
+    "fr": "Du courant continu au filtrage et à la résonance : comprendre, calculer et monter ses circuits.",
+    "en": "From direct current to filters and resonance: understand, calculate and build your circuits."
   },
   "parties": [
     {
@@ -103,6 +103,87 @@
             {"order": 5, "file": "05-deux-transistors", "kind": "content", "title": {"fr": "Montages à deux transistors", "en": "Two-transistor circuits"}},
             {"order": 6, "file": "06-jfet-commutation", "kind": "content", "title": {"fr": "Commuter avec un JFET", "en": "Switching with a JFET"}},
             {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : lampe automatique de nuit", "en": "Mini-project: automatic night lamp"}}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "p2",
+      "order": 2,
+      "title": {"fr": "Courant alternatif et filtres", "en": "Alternating current and filters"},
+      "description": {
+        "fr": "À suivre après la Partie 1 : la loi d'Ohm, les condensateurs et la mesure au multimètre y sont supposés acquis.",
+        "en": "Best taken after Part 1: Ohm's law, capacitors and multimeter measurements are assumed known."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p2/m5",
+          "title": {"fr": "Le courant alternatif", "en": "Alternating current"},
+          "duration_hours": 8,
+          "competence": {
+            "fr": "Décrire une tension sinusoïdale, calculer ses valeurs et les réactances d'un condensateur et d'une bobine, et la mesurer.",
+            "en": "Describe a sine-wave voltage, calculate its values and the reactances of a capacitor and an inductor, and measure it."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis mini-projet de mesure d'une sinusoïde en atelier.",
+            "en": "Module quiz, then a sine-wave measurement mini-project in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-sinusoide", "kind": "content", "title": {"fr": "La tension sinusoïdale", "en": "The sine-wave voltage"}},
+            {"order": 2, "file": "02-valeurs", "kind": "content", "title": {"fr": "Valeurs crête, crête à crête et efficace", "en": "Peak, peak-to-peak and RMS values"}},
+            {"order": 3, "file": "03-resistance", "kind": "content", "title": {"fr": "La résistance en alternatif", "en": "The resistor in AC"}},
+            {"order": 4, "file": "04-condensateur", "kind": "content", "title": {"fr": "Le condensateur et sa réactance", "en": "The capacitor and its reactance"}},
+            {"order": 5, "file": "05-bobine", "kind": "content", "title": {"fr": "La bobine et sa réactance", "en": "The inductor and its reactance"}},
+            {"order": 6, "file": "06-oscilloscope", "kind": "content", "title": {"fr": "Le générateur et l'oscilloscope", "en": "The signal generator and the oscilloscope"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : mesurer une sinusoïde et une réactance", "en": "Mini-project: measure a sine wave and a reactance"}}
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p2/m6",
+          "title": {"fr": "Les filtres RC et RL", "en": "RC and RL filters"},
+          "duration_hours": 10,
+          "competence": {
+            "fr": "Calculer l'impédance, la fréquence de coupure et le déphasage d'un filtre RC ou RL, et relever sa réponse.",
+            "en": "Calculate the impedance, cut-off frequency and phase shift of an RC or RL filter, and record its response."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis relevé de la réponse d'un filtre en atelier.",
+            "en": "Module quiz, then recording a filter's response in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-trigonometrie", "kind": "content", "title": {"fr": "Rappel : Pythagore et tangente", "en": "Refresher: Pythagoras and tangent"}},
+            {"order": 2, "file": "02-impedance", "kind": "content", "title": {"fr": "L'impédance d'un circuit RC série", "en": "The impedance of a series RC circuit"}},
+            {"order": 3, "file": "03-passe-bas", "kind": "content", "title": {"fr": "Le filtre passe-bas RC", "en": "The RC low-pass filter"}},
+            {"order": 4, "file": "04-passe-haut", "kind": "content", "title": {"fr": "Le filtre passe-haut RC", "en": "The RC high-pass filter"}},
+            {"order": 5, "file": "05-coupure", "kind": "content", "title": {"fr": "La fréquence de coupure", "en": "The cut-off frequency"}},
+            {"order": 6, "file": "06-dephasage", "kind": "content", "title": {"fr": "Le déphasage", "en": "Phase shift"}},
+            {"order": 7, "file": "07-filtres-rl", "kind": "content", "title": {"fr": "Les filtres RL", "en": "RL filters"}},
+            {"order": 8, "file": "08-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : relever la réponse d'un filtre RC", "en": "Mini-project: record an RC filter's response"}}
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p2/m7",
+          "title": {"fr": "La résonance", "en": "Resonance"},
+          "duration_hours": 8,
+          "competence": {
+            "fr": "Calculer la fréquence de résonance, la bande passante et le facteur Q d'un circuit LC, et choisir L ou C pour s'accorder.",
+            "en": "Calculate the resonant frequency, bandwidth and Q factor of an LC circuit, and choose L or C to tune it."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, examen de la partie, puis mini-projet de résonance en atelier.",
+            "en": "Module quiz, part exam, then a resonance mini-project in the workshop."
+          },
+          "sections": [
+            {"order": 1, "file": "01-lc-serie", "kind": "content", "title": {"fr": "La résonance du circuit RLC série", "en": "Resonance of the series RLC circuit"}},
+            {"order": 2, "file": "02-courbe-reponse", "kind": "content", "title": {"fr": "La courbe de réponse", "en": "The response curve"}},
+            {"order": 3, "file": "03-bande-passante", "kind": "content", "title": {"fr": "Bande passante et facteur Q", "en": "Bandwidth and Q factor"}},
+            {"order": 4, "file": "04-lc-parallele", "kind": "content", "title": {"fr": "Le circuit LC parallèle", "en": "The parallel LC circuit"}},
+            {"order": 5, "file": "05-accord", "kind": "content", "title": {"fr": "S'accorder sur une station", "en": "Tuning in to a station"}},
+            {"order": 6, "file": "06-oscillateurs", "kind": "content", "title": {"fr": "Vers les oscillateurs", "en": "Towards oscillators"}},
+            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : trouver la résonance", "en": "Mini-project: find the resonance"}}
           ]
         }
       ]

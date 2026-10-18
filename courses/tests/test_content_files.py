@@ -155,7 +155,7 @@ IMAGE = __import__("re").compile(r"!\[([^\]]*)\]\((/static/[^)\s]+)\)")
 
 
 def test_part_one_has_the_four_modules_of_chapters_one_to_four():
-    [partie] = manifest()["parties"]
+    partie = next(p for p in manifest()["parties"] if p["slug"] == "p1")
     assert [m["dir"] for m in partie["modules"]] == ["p1/m1", "p1/m2", "p1/m3", "p1/m4"]
     assert manifest()["open"] is True
 
@@ -240,3 +240,56 @@ def test_english_pages_show_english_diagrams():
                         svg = ElementTree.fromstring((STATIC / src.removeprefix("/static/")).read_bytes())
                         texts = " ".join(t.text or "" for t in svg.iter() if t.tag.endswith("text"))
                         assert not __import__("re").search(r"\d,\d", texts), f"{src} : virgule décimale"
+
+
+# --- Partie 2 « Courant alternatif et filtres » (AGENTS.md, E25 à E29) -------------------------------------------------
+
+
+def part(slug):
+    return next(p for p in manifest()["parties"] if p["slug"] == slug)
+
+
+def test_part_two_has_the_three_modules_of_chapters_five_to_seven():
+    p2 = part("p2")
+    assert [m["dir"] for m in p2["modules"]] == ["p2/m5", "p2/m6", "p2/m7"]
+    assert_bilingual(p2, "description", "p2")
+    assert "Partie 1" in p2["description"]["fr"] and "Part 1" in p2["description"]["en"]
+
+
+PRACTICAL_HEADINGS = {
+    "fr": ("## Variante oscilloscope", "## Variante multimètre seul", "## Sécurité"),
+    "en": ("## Oscilloscope variant", "## Multimeter-only variant", "## Safety"),
+}
+
+
+def test_part_two_mini_projects_offer_both_measurement_variants_and_a_safety_rule():
+    """US-43 : oscilloscope et GBF, ou multimètre seul avec transformateur 230 V vers 9 ou 12 V AC ; sécurité en tête."""
+    for module in part("p2")["modules"]:
+        [practical] = [s for s in module["sections"] if s["kind"] == "practical"]
+        for lang, headings in PRACTICAL_HEADINGS.items():
+            text = (CONTENT / module["dir"] / f"{practical['file']}.{lang}.md").read_text(encoding="utf-8")
+            positions = [text.find(h) for h in headings]
+            assert -1 not in positions, f"{module['dir']}.{lang} : titres attendus {headings}"
+            assert positions[2] < positions[0], f"{module['dir']}.{lang} : la sécurité vient avant les variantes"
+            assert "230 V" in text, f"{module['dir']}.{lang} : transformateur 230 V non mentionné"
+
+
+def test_part_two_sections_use_the_three_new_calculators():
+    """US-42 : réactance (M5), fréquence de coupure (M6), résonance (M7), en français et en anglais."""
+    for module, kind in zip(part("p2")["modules"], ("reactance", "cutoff", "resonance")):
+        for lang in LANGS:
+            texts = [(CONTENT / module["dir"] / f"{s['file']}.{lang}.md").read_text(encoding="utf-8") for s in module["sections"]]
+            assert any(f"[[calc:{kind}]]" in t for t in texts), f"{module['dir']}.{lang} : [[calc:{kind}]] absent"
+
+
+def test_part_two_asks_for_phase_shifts_in_degrees():
+    """US-41 : au moins deux déphasages notés en degrés dans le module des filtres."""
+    _, questions = next((m, qs) for m, qs in questions_by_module() if m["dir"] == "p2/m6")
+    assert sum(q["type"] == "numeric" and q["numeric"]["unit"] == "°" for q in questions) >= 2
+
+
+def test_part_two_questions_are_reviewed_in_both_languages():
+    """E29 : relecture de la Partie 2 validée d'emblée ; ses questions sont publiées au déploiement."""
+    for module, questions in questions_by_module():
+        if module["dir"].startswith("p2/"):
+            assert questions and all(q["reviewed"] == {"fr": True, "en": True} for q in questions), module["dir"]
