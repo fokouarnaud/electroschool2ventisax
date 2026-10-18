@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 17:53+0100\n"
+"POT-Creation-Date: 2026-10-18 22:48+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -422,8 +422,8 @@ msgstr "French"
 msgid "English"
 msgstr "English"
 
-#: .\courses\models.py:11 .\courses\models.py:30 .\courses\models.py:46
-#: .\courses\models.py:74 .\courses\models.py:90 .\progress\models.py:19
+#: .\courses\models.py:11 .\courses\models.py:30 .\courses\models.py:48
+#: .\courses\models.py:77 .\courses\models.py:93 .\progress\models.py:19
 msgid "titre"
 msgstr "title"
 
@@ -439,27 +439,27 @@ msgstr "open in the catalogue"
 msgid "Visible dans le catalogue public et ouverte à l’inscription libre."
 msgstr "Listed in the public catalogue and open to self-enrolment."
 
-#: .\courses\models.py:48
+#: .\courses\models.py:50
 msgid "durée (heures)"
 msgstr "duration (hours)"
 
-#: .\courses\models.py:49
+#: .\courses\models.py:51
 msgid "compétence visée"
 msgstr "target skill"
 
-#: .\courses\models.py:50
+#: .\courses\models.py:52
 msgid "modalités d'évaluation"
 msgstr "assessment method"
 
-#: .\courses\models.py:69
+#: .\courses\models.py:72
 msgid "Contenu"
 msgstr "Content"
 
-#: .\courses\models.py:70
+#: .\courses\models.py:73
 msgid "Activités pratiques"
 msgstr "Practical activities"
 
-#: .\courses\models.py:77
+#: .\courses\models.py:80
 msgid "contenu (Markdown)"
 msgstr "content (Markdown)"
 
@@ -563,8 +563,9 @@ msgid "%(h)s h"
 msgstr "%(h)s h"
 
 #: .\templates\accounts\dashboard.html:42
-msgid "Examen de la partie"
-msgstr "Part exam"
+#, python-format
+msgid "Examen de la Partie %(n)s"
+msgstr "Part %(n)s exam"
 
 #: .\templates\accounts\dashboard.html:44
 msgid "Tous les modules sont terminés. L'examen est ouvert."
@@ -1347,6 +1348,174 @@ msgstr "valid"
 msgid "Numéro %(n)s"
 msgstr "Number %(n)s"
 
+#: .\templates\courses\_calc_labels.html:3
+msgid "Calculateur : loi d’Ohm"
+msgstr "Calculator: Ohm’s law"
+
+#: .\templates\courses\_calc_labels.html:3
+msgid "Remplissez deux des trois grandeurs : la troisième est calculée."
+msgstr "Fill in two of the three quantities: the third one is calculated."
+
+#: .\templates\courses\_calc_labels.html:4
+msgid "Tension U"
+msgstr "Voltage U"
+
+#: .\templates\courses\_calc_labels.html:4
+msgid "Intensité I"
+msgstr "Current I"
+
+#: .\templates\courses\_calc_labels.html:4
+msgid "Résistance R"
+msgstr "Resistance R"
+
+#: .\templates\courses\_calc_labels.html:5
+msgid "Calculateur : diviseur de tension"
+msgstr "Calculator: voltage divider"
+
+#: .\templates\courses\_calc_labels.html:5
+msgid "Tension d’entrée Ve"
+msgstr "Input voltage Vin"
+
+#: .\templates\courses\_calc_labels.html:6
+msgid "Remplissez toutes les valeurs."
+msgstr "Fill in every value."
+
+#: .\templates\courses\_calc_labels.html:7
+msgid "Calculateur : code couleur des résistances"
+msgstr "Calculator: resistor colour code"
+
+#: .\templates\courses\_calc_labels.html:8
+msgid "1re bague"
+msgstr "1st band"
+
+#: .\templates\courses\_calc_labels.html:8
+msgid "2e bague"
+msgstr "2nd band"
+
+#: .\templates\courses\_calc_labels.html:8
+msgid "Multiplicateur"
+msgstr "Multiplier"
+
+#: .\templates\courses\_calc_labels.html:9
+msgid "noir,marron,rouge,orange,jaune,vert,bleu,violet,gris,blanc"
+msgstr "black,brown,red,orange,yellow,green,blue,violet,grey,white"
+
+#: .\templates\courses\_calc_labels.html:10
+msgid "Calculateur : polarisation du transistor"
+msgstr "Calculator: transistor biasing"
+
+#: .\templates\courses\_calc_labels.html:10
+msgid "Transistor au silicium : VBE ≈ 0,7 V."
+msgstr "Silicon transistor: VBE ≈ 0.7 V."
+
+#: .\templates\courses\_calc_labels.html:11
+msgid "Fréquence f"
+msgstr "Frequency f"
+
+#: .\templates\courses\_calc_labels.html:11
+msgid "Capacité C"
+msgstr "Capacitance C"
+
+#: .\templates\courses\_calc_labels.html:11
+msgid "Inductance L"
+msgstr "Inductance L"
+
+#: .\templates\courses\_calc_labels.html:12
+msgid "Calculateur : réactance"
+msgstr "Calculator: reactance"
+
+#: .\templates\courses\_calc_labels.html:12
+msgid "Saisissez la fréquence, puis C, L ou les deux."
+msgstr "Enter the frequency, then C, L or both."
+
+#: .\templates\courses\_calc_labels.html:13
+msgid "Calculateur : fréquence de coupure"
+msgstr "Calculator: cut-off frequency"
+
+#: .\templates\courses\_calc_labels.html:13
+msgid "Saisissez R, puis C (filtre RC) ou L (filtre RL)."
+msgstr "Enter R, then C (RC filter) or L (RL filter)."
+
+#: .\templates\courses\_calc_labels.html:14
+msgid "Calculateur : fréquence de résonance"
+msgstr "Calculator: resonant frequency"
+
+#: .\templates\courses\_calc_labels.html:15
+msgid "Calculateur : gain d’un amplificateur"
+msgstr "Calculator: amplifier gain"
+
+#: .\templates\courses\_calc_labels.html:15
+msgid "Montage"
+msgstr "Circuit"
+
+#: .\templates\courses\_calc_labels.html:16
+msgid "Émetteur commun,AOP inverseur,AOP non inverseur"
+msgstr "Common emitter,Inverting op-amp,Non-inverting op-amp"
+
+#: .\templates\courses\_calc_labels.html:17
+msgid "RC ou Rf"
+msgstr "RC or Rf"
+
+#: .\templates\courses\_calc_labels.html:17
+msgid "RE ou Rin"
+msgstr "RE or Rin"
+
+#: .\templates\courses\_calc_labels.html:18
+msgid "sortie inversée"
+msgstr "inverted output"
+
+#: .\templates\courses\_calc_labels.html:18
+msgid "sortie non inversée"
+msgstr "non-inverted output"
+
+#: .\templates\courses\_calc_labels.html:19
+msgid "Calculateur : transformateur"
+msgstr "Calculator: transformer"
+
+#: .\templates\courses\_calc_labels.html:19
+msgid "Saisissez Np, Ns et Up ; ajoutez Is pour obtenir Ip."
+msgstr "Enter Np, Ns and Up; add Is to get Ip."
+
+#: .\templates\courses\_calc_labels.html:20
+msgid "Spires du primaire Np"
+msgstr "Primary turns Np"
+
+#: .\templates\courses\_calc_labels.html:20
+msgid "Spires du secondaire Ns"
+msgstr "Secondary turns Ns"
+
+#: .\templates\courses\_calc_labels.html:21
+msgid "Tension du primaire Up"
+msgstr "Primary voltage Up"
+
+#: .\templates\courses\_calc_labels.html:21
+msgid "Courant du secondaire Is"
+msgstr "Secondary current Is"
+
+#: .\templates\courses\_calc_labels.html:22
+msgid "Calculateur : ondulation et condensateur de lissage"
+msgstr "Calculator: ripple and smoothing capacitor"
+
+#: .\templates\courses\_calc_labels.html:22
+msgid "Saisissez I, puis C ou l’ondulation ΔU voulue."
+msgstr "Enter I, then C or the ripple ΔU you want."
+
+#: .\templates\courses\_calc_labels.html:23
+msgid "Redressement"
+msgstr "Rectification"
+
+#: .\templates\courses\_calc_labels.html:23
+msgid "Double alternance (100 Hz),Simple alternance (50 Hz)"
+msgstr "Full-wave (100 Hz),Half-wave (50 Hz)"
+
+#: .\templates\courses\_calc_labels.html:24
+msgid "Courant de la charge I"
+msgstr "Load current I"
+
+#: .\templates\courses\_calc_labels.html:24
+msgid "Ondulation ΔU"
+msgstr "Ripple ΔU"
+
 #: .\templates\courses\_outline.html:3
 msgid "Sommaire"
 msgstr "Contents"
@@ -1379,7 +1548,7 @@ msgid "Compétence visée"
 msgstr "Target skill"
 
 #: .\templates\courses\module_detail.html:20
-#: .\templates\courses\section_detail.html:37
+#: .\templates\courses\section_detail.html:25
 msgid "Sections"
 msgstr "Sections"
 
@@ -1407,113 +1576,26 @@ msgstr "Practical activity"
 msgid "Contenu disponible en français uniquement"
 msgstr "Content available in French only"
 
-#: .\templates\courses\section_detail.html:16
-msgid "Calculateur : loi d’Ohm"
-msgstr "Calculator: Ohm’s law"
-
-#: .\templates\courses\section_detail.html:16
-msgid "Remplissez deux des trois grandeurs : la troisième est calculée."
-msgstr "Fill in two of the three quantities: the third one is calculated."
-
-#: .\templates\courses\section_detail.html:17
-msgid "Tension U"
-msgstr "Voltage U"
-
-#: .\templates\courses\section_detail.html:17
-msgid "Intensité I"
-msgstr "Current I"
-
-#: .\templates\courses\section_detail.html:17
-msgid "Résistance R"
-msgstr "Resistance R"
-
-#: .\templates\courses\section_detail.html:18
-msgid "Calculateur : diviseur de tension"
-msgstr "Calculator: voltage divider"
-
-#: .\templates\courses\section_detail.html:18
-msgid "Tension d’entrée Ve"
-msgstr "Input voltage Vin"
-
 #: .\templates\courses\section_detail.html:19
-msgid "Remplissez toutes les valeurs."
-msgstr "Fill in every value."
-
-#: .\templates\courses\section_detail.html:20
-msgid "Calculateur : code couleur des résistances"
-msgstr "Calculator: resistor colour code"
-
-#: .\templates\courses\section_detail.html:21
-msgid "1re bague"
-msgstr "1st band"
-
-#: .\templates\courses\section_detail.html:21
-msgid "2e bague"
-msgstr "2nd band"
-
-#: .\templates\courses\section_detail.html:21
-msgid "Multiplicateur"
-msgstr "Multiplier"
-
-#: .\templates\courses\section_detail.html:22
-msgid "noir,marron,rouge,orange,jaune,vert,bleu,violet,gris,blanc"
-msgstr "black,brown,red,orange,yellow,green,blue,violet,grey,white"
-
-#: .\templates\courses\section_detail.html:23
-msgid "Calculateur : polarisation du transistor"
-msgstr "Calculator: transistor biasing"
-
-#: .\templates\courses\section_detail.html:23
-msgid "Transistor au silicium : VBE ≈ 0,7 V."
-msgstr "Silicon transistor: VBE ≈ 0.7 V."
-
-#: .\templates\courses\section_detail.html:24
-msgid "Fréquence f"
-msgstr "Frequency f"
-
-#: .\templates\courses\section_detail.html:24
-msgid "Capacité C"
-msgstr "Capacitance C"
-
-#: .\templates\courses\section_detail.html:24
-msgid "Inductance L"
-msgstr "Inductance L"
-
-#: .\templates\courses\section_detail.html:25
-msgid "Calculateur : réactance"
-msgstr "Calculator: reactance"
-
-#: .\templates\courses\section_detail.html:25
-msgid "Saisissez la fréquence, puis C, L ou les deux."
-msgstr "Enter the frequency, then C, L or both."
-
-#: .\templates\courses\section_detail.html:26
-msgid "Calculateur : fréquence de coupure"
-msgstr "Calculator: cut-off frequency"
-
-#: .\templates\courses\section_detail.html:26
-msgid "Saisissez R, puis C (filtre RC) ou L (filtre RL)."
-msgstr "Enter R, then C (RC filter) or L (RL filter)."
-
-#: .\templates\courses\section_detail.html:27
-msgid "Calculateur : fréquence de résonance"
-msgstr "Calculator: resonant frequency"
-
-#: .\templates\courses\section_detail.html:31
 msgid "Annexes à télécharger"
 msgstr "Downloadable appendices"
 
-#: .\templates\courses\section_detail.html:38
+#: .\templates\courses\section_detail.html:26
 msgid "Précédent"
 msgstr "Previous"
 
-#: .\templates\courses\section_detail.html:40
+#: .\templates\courses\section_detail.html:28
 msgid "Suivant"
 msgstr "Next"
 
-#: .\templates\courses\section_detail.html:42
+#: .\templates\courses\section_detail.html:30
 msgid "Fin du module"
 msgstr "End of module"
+
+#: .\templates\includes\partie_heading.html:2
+#, python-format
+msgid "Partie %(n)s :"
+msgstr "Part %(n)s:"
 
 #: .\templates\progress\_trainer_nav.html:2
 msgid "Espace formateur"

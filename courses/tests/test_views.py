@@ -112,3 +112,20 @@ def test_calculator_script_loads_only_on_sections_that_use_one(client, enrolled,
 
     assert "calculators.js" in client.get(f"/fr/sections/{with_calc.public_id}/").content.decode()
     assert "calculators.js" not in client.get(f"/fr/sections/{plain.public_id}/").content.decode()
+
+
+@pytest.mark.django_db
+def test_part_three_calculators_receive_translated_labels(client, enrolled, module):
+    """US-50 : gain, transformateur et ondulation, libellés passés par #calc-labels (aucun script en ligne)."""
+    from courses.models import Section
+
+    section = Section.objects.create(module=module, title_fr="Gain", order=1, body_md_fr="[[calc:gain]]", body_md_en="[[calc:gain]]")
+    client.force_login(enrolled)
+
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'data-gain-title="Calculateur : gain d’un amplificateur"' in fr
+    assert 'data-gain-title="Calculator: amplifier gain"' in en
+    assert 'data-transformer-title="Calculator: transformer"' in en
+    assert 'data-ripple-title="Calculator: ripple and smoothing capacitor"' in en

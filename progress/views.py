@@ -250,7 +250,7 @@ def deadlines(request):
         return redirect("trainer_deadlines")
     promotions = Promotion.objects.visible_to(request.user)
     targets = [
-        {"promotion": p, "modules": Module.objects.filter(partie__formation=p.formation),
+        {"promotion": p, "modules": Module.objects.filter(partie__formation=p.formation).order_by("partie__order", "order"),
          "parties": Partie.objects.filter(formation=p.formation)}
         for p in promotions.select_related("formation")
     ]

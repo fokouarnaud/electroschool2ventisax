@@ -269,3 +269,20 @@ def test_matching_feedback_lists_the_learners_pairs_with_their_verdict(learner, 
         ("L", "", "Bobine", False),
         ("D", "", "Diode", False),
     ]
+
+
+@pytest.mark.parametrize("value, lang, shown", [
+    ("0.05", "fr", "0,05"),      # rapport de transformation : jamais « 50 m »
+    ("0.05", "en", "0.05"),
+    ("-10", "fr", "-10"),
+    ("1500", "fr", "1500"),      # jamais « 1,5 k »
+    ("200", "en", "200"),
+])
+@pytest.mark.django_db
+def test_expected_ratio_is_shown_without_si_prefix(module, value, lang, shown):
+    """US-49 : un gain ou un rapport attendu (sans unité) s'affiche tel quel, sans préfixe SI."""
+    from django.utils import translation
+
+    q = reviewed(module, "numeric", numeric_value=Decimal(value), unit="")
+    with translation.override(lang):
+        assert q.expected_value_display() == shown

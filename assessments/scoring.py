@@ -27,7 +27,8 @@ def score_answer(qtype, correct_ids, selected_ids):
 
 def parse_quantity(text):
     """« 4,7 kΩ » -> (Decimal("4700"), "Ω") ; None si la saisie n'est pas une grandeur."""
-    match = QUANTITY.match(unicodedata.normalize("NFKC", text or "").strip())
+    # Le signe moins typographique U+2212 des énoncés (gain signé, US-49) vaut le trait d'union.
+    match = QUANTITY.match(unicodedata.normalize("NFKC", text or "").strip().replace("−", "-"))
     if not match:
         return None
     number, prefix, unit = match.groups()
@@ -50,7 +51,8 @@ def format_quantity(value, unit):
     from django.utils.formats import get_format
 
     # Les degrés (déphasage, US-41) ne prennent ni préfixe SI ni espace : « 63,4° ».
-    exponent = 0 if value == 0 or unit == DEGREE else max(-12, min(9, (value.adjusted() // 3) * 3))
+    # Un gain ou un rapport sans unité (US-49) non plus : « 0,05 », jamais « 50 m ».
+    exponent = 0 if value == 0 or unit in (DEGREE, "") else max(-12, min(9, (value.adjusted() // 3) * 3))
     scaled = (value.scaleb(-exponent)).normalize()
     number = format(scaled, "f").replace(".", get_format("DECIMAL_SEPARATOR"))
     if unit == DEGREE:

@@ -34,7 +34,9 @@ class Partie(models.Model):
 
     class Meta:
         ordering = ["order", "pk"]
-        constraints = [models.UniqueConstraint(fields=["formation", "slug"], name="unique_partie_slug")]
+        # E45 : le rang d'une partie est unique dans sa formation (ordre du sommaire, colonnes « Examen P1, P2, P3 »).
+        constraints = [models.UniqueConstraint(fields=["formation", "slug"], name="unique_partie_slug"),
+                       models.UniqueConstraint(fields=["formation", "order"], name="unique_partie_order")]
 
     def __str__(self):
         return self.title
@@ -51,6 +53,7 @@ class Module(models.Model):
 
     class Meta:
         ordering = ["order", "pk"]
+        constraints = [models.UniqueConstraint(fields=["partie", "order"], name="unique_module_order")]  # E45
 
     def __str__(self):
         return self.title

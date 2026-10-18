@@ -38,6 +38,12 @@ def test_part_two_calculators_are_accepted():
         assert f'<div class="calc" data-calc="{kind}"></div>' in render_markdown(f"[[calc:{kind}]]")
 
 
+def test_part_three_calculators_are_accepted():
+    """US-50 : gain, transformateur et ondulation (Partie 3)."""
+    for kind in ("gain", "transformer", "ripple"):
+        assert f'<div class="calc" data-calc="{kind}"></div>' in render_markdown(f"[[calc:{kind}]]")
+
+
 def test_unknown_calculator_stays_plain_text():
     html = render_markdown("[[calc:rm-rf]]")
 

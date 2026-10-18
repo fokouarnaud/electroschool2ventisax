@@ -1,5 +1,6 @@
 // Calculateurs du cours (US-13), non notés. Le serveur place des emplacements inertes
-// <div class="calc" data-calc="ohm|divider|resistor|bias|reactance|cutoff|resonance"> ; les libellés traduits viennent de #calc-labels.
+// <div class="calc" data-calc="ohm|divider|resistor|bias|reactance|cutoff|resonance|gain|transformer|ripple"> ;
+// les libellés traduits viennent de #calc-labels.
 (function () {
   "use strict";
   var slots = document.querySelectorAll(".calc[data-calc]");
@@ -44,6 +45,16 @@
     wrap.appendChild(row);
     box.appendChild(wrap);
     return input;
+  }
+  function choice(box, label, options) {
+    var id = "calc-" + (++uid);
+    var wrap = el("div", { "class": "field field-wide" }); // toute la largeur : « Double alternance (100 Hz) » reste lisible
+    wrap.appendChild(el("label", { "for": id }, label));
+    var select = el("select", { id: id });
+    options.forEach(function (text, n) { select.appendChild(el("option", { value: String(n) }, text)); });
+    wrap.appendChild(select);
+    box.appendChild(wrap);
+    return select;
   }
   function frame(slot, title, hint) {
     slot.setAttribute("role", "group");
@@ -150,6 +161,49 @@
         f.out.textContent = (H > 0 && C > 0) ? "f0 = 1 / (2π × √(L × C)) = " + show(1 / (2 * Math.PI * Math.sqrt(H * C)), "Hz") : L.fillAll;
       }
       slot.addEventListener("input", run);
+      run();
+    },
+    gain: function (slot) {
+      var f = frame(slot, L.gainTitle, null);
+      var mode = choice(f.grid, L.gainMode, (L.gainModes || "").split(","));
+      var top = field(f.grid, L.gainTop, "Ω", "3,9k"), bottom = field(f.grid, L.gainBottom, "Ω", "100");
+      function run() {
+        var a = parse(top.value), b = parse(bottom.value);
+        if (!(a > 0 && b > 0)) { f.out.textContent = L.fillAll; return; }
+        var d = L.decimal || ",", n = function (v) { return String(Number(v.toPrecision(3))).replace(".", d); };
+        if (mode.value === "0") f.out.textContent = "Av ≈ −RC / RE = −" + n(a / b) + " (" + L.inverted + ")";
+        else if (mode.value === "1") f.out.textContent = "Av = −Rf / Rin = −" + n(a / b) + " (" + L.inverted + ")";
+        else f.out.textContent = "Av = 1 + Rf / Rin = " + n(1 + a / b) + " (" + L.notInverted + ")";
+      }
+      slot.addEventListener("input", run);
+      slot.addEventListener("change", run);
+      run();
+    },
+    transformer: function (slot) {
+      var f = frame(slot, L.transformerTitle, null);
+      var np = field(f.grid, L.turnsP, "", "1150"), ns = field(f.grid, L.turnsS, "", "60");
+      var up = field(f.grid, L.up, "V", "230"), is = field(f.grid, L.is, "A", "1");
+      function run() {
+        var P = parse(np.value), S = parse(ns.value), U = parse(up.value), I = parse(is.value), parts = [];
+        if (P > 0 && S > 0 && U > 0) parts.push("Us = Up × Ns / Np = " + show(U * S / P, "V"));
+        if (P > 0 && S > 0 && I > 0) parts.push("Ip = Is × Ns / Np = " + show(I * S / P, "A"));
+        f.out.textContent = parts.length ? parts.join(" ; ") : L.transformerHint;
+      }
+      slot.addEventListener("input", run);
+      run();
+    },
+    ripple: function (slot) {
+      var f = frame(slot, L.rippleTitle, null);
+      var rect = choice(f.grid, L.rectifier, (L.rectifiers || "").split(","));
+      var i = field(f.grid, L.loadCurrent, "A", "0,5"), c = field(f.grid, L.capacitance, "F", "2200µ"), du = field(f.grid, L.ripple, "V", "1");
+      function run() {
+        var I = parse(i.value), C = parse(c.value), D = parse(du.value), hz = rect.value === "0" ? 100 : 50;
+        if (I > 0 && C > 0) f.out.textContent = "ΔU ≈ I / (f × C) = " + show(I / (hz * C), "V") + " (f = " + hz + " Hz)";
+        else if (I > 0 && D > 0) f.out.textContent = "C ≈ I / (f × ΔU) = " + show(I / (hz * D), "F") + " (f = " + hz + " Hz)";
+        else f.out.textContent = L.rippleHint;
+      }
+      slot.addEventListener("input", run);
+      slot.addEventListener("change", run);
       run();
     }
   };

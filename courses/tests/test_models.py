@@ -37,3 +37,30 @@ def test_practical_sections_are_separated_from_content_sections(module):
     Section.objects.create(module=module, title_fr="Cours", order=1, body_md_fr="...")
     Section.objects.create(module=module, title_fr="TAF", order=2, body_md_fr="...", kind=Section.Kind.PRACTICAL)
     assert [s.title_fr for s in module.sections.practical()] == ["TAF"]
+
+
+# --- E45 : rang unique, pour que trois parties (et leurs modules) restent dans un ordre sans ambiguïté -----------------
+
+
+@pytest.mark.django_db
+def test_two_parts_of_a_formation_cannot_share_a_rank(module):
+    from django.db import IntegrityError, transaction
+
+    formation = module.partie.formation
+    Partie.objects.create(formation=formation, title_fr="Courant alternatif et filtres", order=2, slug="p2")
+    with pytest.raises(IntegrityError), transaction.atomic():
+        Partie.objects.create(formation=formation, title_fr="Amplification, oscillateurs et alimentations", order=2, slug="p3")
+
+
+@pytest.mark.django_db
+def test_the_same_rank_is_allowed_in_another_formation(module):
+    other = Formation.objects.create(title_fr="Froid", slug="froid")
+    assert Partie.objects.create(formation=other, title_fr="Bases", order=module.partie.order, slug="p1").pk
+
+
+@pytest.mark.django_db
+def test_two_modules_of_a_part_cannot_share_a_rank(module):
+    from django.db import IntegrityError, transaction
+
+    with pytest.raises(IntegrityError), transaction.atomic():
+        Module.objects.create(partie=module.partie, title_fr="Les oscillateurs", order=module.order, duration_hours=8)

@@ -107,3 +107,32 @@ def test_parse_quantity_refuses_si_prefixes_on_degrees(text):
 ])
 def test_score_numeric_in_degrees(answer, score):
     assert score_numeric(Decimal("45"), "°", Decimal("2"), answer) == Fraction(score)
+
+
+# --- US-49 : gains et rapports sans unité (Partie 3, E41) -------------------------------------------------------------
+
+
+@pytest.mark.parametrize("answer, score", [
+    ("10", 1),
+    ("10,1", 1),       # écart 1 %
+    ("-10", 0),        # « en valeur absolue » : le signe opposé est faux
+    ("10 V", 0),       # une unité saisie rend la réponse fausse
+    ("dix", 0),
+])
+def test_score_numeric_for_a_gain_in_absolute_value(answer, score):
+    assert score_numeric(Decimal("10"), "", Decimal("2"), answer) == Fraction(score)
+
+
+@pytest.mark.parametrize("answer, score", [
+    ("-10", 1),
+    ("−10", 1),   # signe moins typographique, celui des énoncés
+    ("- 10", 0),
+    ("10", 0),         # « avec son signe » : la valeur absolue seule est fausse
+])
+def test_score_numeric_for_a_signed_gain(answer, score):
+    assert score_numeric(Decimal("-10"), "", Decimal("2"), answer) == Fraction(score)
+
+
+def test_parse_quantity_reads_the_typographic_minus_sign():
+    assert parse_quantity("−4,7") == (Decimal("-4.7"), "")
+    assert parse_quantity("−0,6 V") == (Decimal("-0.6"), "V")
