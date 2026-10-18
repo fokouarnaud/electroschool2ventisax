@@ -10,7 +10,7 @@ class FormationTranslation(TranslationOptions):
 
 @register(Partie)
 class PartieTranslation(TranslationOptions):
-    fields = ("title",)
+    fields = ("title", "description")
 
 
 @register(Module)

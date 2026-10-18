@@ -118,3 +118,25 @@ def test_missing_english_file_leaves_english_body_empty(content_dir):
     (content_dir / "p1" / "m1" / "01-introduction.en.md").unlink()
     run_import(content_dir)
     assert Section.objects.get().body_md_en in ("", None)
+
+
+@pytest.mark.django_db
+def test_import_reads_the_bilingual_description_of_a_partie(content_dir):
+    """US-40 : la description d'une partie (ex. « à suivre après la Partie 1 ») vient du manifeste, en FR et en EN."""
+    manifest_path = content_dir / "formation.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["parties"][0]["description"] = {"fr": "À suivre après la Partie 1.", "en": "Best taken after Part 1."}
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    run_import(content_dir)
+    run_import(content_dir)
+
+    partie = Formation.objects.get(slug="froid").parties.get()
+    assert (partie.description_fr, partie.description_en) == ("À suivre après la Partie 1.", "Best taken after Part 1.")
+
+
+@pytest.mark.django_db
+def test_a_partie_without_description_imports_with_an_empty_one(content_dir):
+    run_import(content_dir)
+    partie = Formation.objects.get(slug="froid").parties.get()
+    assert (partie.description_fr, partie.description_en) == ("", "")

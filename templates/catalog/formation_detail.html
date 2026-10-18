@@ -11,6 +11,7 @@
     {% for partie in row.parties %}
       <section class="panel programme" aria-labelledby="partie-{{ partie.public_id }}">
         <h2 id="partie-{{ partie.public_id }}"{{ partie|lang_attr:"title" }}>{{ partie.title }}</h2>
+        {% if partie.description %}<p class="muted partie-desc"{{ partie|lang_attr:"description" }}>{{ partie.description }}</p>{% endif %}
         <ol class="modules">
           {% for module in partie.modules.all %}
             <li><span class="module-row"><span class="num">{{ forloop.counter }}</span><span{{ module|lang_attr:"title" }}>{{ module.title }}</span><span class="badge">{% blocktranslate with h=module.duration_hours %}{{ h }} h{% endblocktranslate %}</span></span></li>

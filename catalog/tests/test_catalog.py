@@ -67,3 +67,13 @@ def test_detail_page_counts_modules_for_the_visitor(client, open_formation):
 
     assert row["module_count"] == 2
     assert row["enrolled"] is False
+
+
+@pytest.mark.parametrize("lang, text", [("fr", "À suivre après la Partie 1."), ("en", "Best taken after Part 1.")])
+def test_formation_page_shows_the_description_of_each_part(client, open_formation, lang, text):
+    """US-40 : la fiche publique affiche la description d'une partie (ordre conseillé, sans blocage)."""
+    Partie.objects.create(
+        formation=open_formation, title_fr="Courant alternatif", order=2, slug="p2",
+        description_fr="À suivre après la Partie 1.", description_en="Best taken after Part 1.",
+    )
+    assert text in client.get(f"/{lang}/catalogue/{open_formation.public_id}/").content.decode()

@@ -20,6 +20,7 @@
     <section class="panel" aria-labelledby="partie-{{ row.partie.public_id }}">
       <p class="muted small course-formation">{{ row.partie.formation.title }}</p>
       <h2 id="partie-{{ row.partie.public_id }}"{{ row.partie|lang_attr:"title" }}>{{ row.partie.title }}</h2>
+      {% if row.partie.description %}<p class="muted small partie-desc"{{ row.partie|lang_attr:"description" }}>{{ row.partie.description }}</p>{% endif %}
       <div class="course-meter">
         <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ row.progress }}" aria-label="{% translate 'Progression' %}"><span style="width: {{ row.progress }}%"></span></div>
         <strong>{{ row.progress }} %</strong>

@@ -117,3 +117,48 @@ def test_svg_path_cannot_escape_the_module_folder(content_dir):
 
     with pytest.raises(ValueError):
         run_import(content_dir)
+
+
+@pytest.fixture
+def part_two_dir(tmp_path):
+    """Manifeste à deux parties ; la Partie 2 contient une question de déphasage en degrés (dossier p2/m5)."""
+    angle = {"id": "e-p2-m5-phase", "type": "numeric", "usage": "quiz", "prompt": BILINGUAL, "reviewed": REVIEWED,
+             "numeric": {"value": "45", "unit": "°"}}
+    draft = {**angle, "id": "e-p2-m5-draft", "reviewed": {"fr": True, "en": False}}
+    for folder in ("p1/m1", "p2/m5"):
+        (tmp_path / folder).mkdir(parents=True)
+    (tmp_path / "p2" / "m5" / "questions.json").write_text(json.dumps([angle, draft], ensure_ascii=False), encoding="utf-8")
+    manifest = {
+        "slug": "electro", "open": True, "title": {"fr": "Électronique", "en": "Electronics"},
+        "parties": [
+            {"slug": "p1", "order": 1, "title": {"fr": "DC", "en": "DC"},
+             "modules": [{"order": 1, "dir": "p1/m1", "title": {"fr": "M1", "en": "M1"}, "sections": []}]},
+            {"slug": "p2", "order": 2, "title": {"fr": "AC", "en": "AC"},
+             "modules": [{"order": 1, "dir": "p2/m5", "title": {"fr": "M5", "en": "M5"}, "sections": []}]},
+        ],
+    }
+    (tmp_path / "formation.json").write_text(json.dumps(manifest), encoding="utf-8")
+    return tmp_path
+
+
+@pytest.mark.django_db
+def test_part_two_import_is_idempotent_and_publishes_only_reviewed_questions(part_two_dir, learner):
+    """US-45, US-46 et US-41 : import répété, publication des seules questions relues, réponse en degrés notée."""
+    from assessments.models import Assessment
+    from assessments.services import save_answer, start_attempt, submit_attempt
+    from courses.models import Module
+
+    run_import(part_two_dir)
+    call_command("publish_reviewed", stdout=__import__("io").StringIO())
+    run_import(part_two_dir)
+
+    m5 = Module.objects.get(partie__slug="p2", order=1)
+    assert Module.objects.filter(partie__slug="p2").count() == 1
+    phase = Question.objects.get(external_id="e-p2-m5-phase")
+    assert (phase.module, phase.unit, phase.numeric_value) == (m5, "°", Decimal("45"))
+    assert phase.status == Question.Status.PUBLISHED  # inchangé : reste publiée après le second import
+    assert Question.objects.get(external_id="e-p2-m5-draft").status == Question.Status.DRAFT
+
+    attempt = start_attempt(learner, Assessment.quiz_for(m5))
+    save_answer(attempt, phase.public_id, [], text="45,5 °")
+    assert submit_attempt(attempt).score_pct == 100

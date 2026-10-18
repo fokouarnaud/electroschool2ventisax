@@ -28,6 +28,7 @@ class Partie(models.Model):
     public_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)  # identifiant des URL et formulaires
     formation = models.ForeignKey(Formation, on_delete=models.CASCADE, related_name="parties")
     title = models.CharField(_("titre"), max_length=200)
+    description = models.TextField(_("description"), blank=True)
     slug = models.SlugField()
     order = models.PositiveIntegerField(default=0)
 

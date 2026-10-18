@@ -101,7 +101,11 @@ def import_formation(manifest_path):
     for partie_data in data.get("parties", []):
         partie, _ = Partie.objects.update_or_create(
             formation=formation, slug=partie_data["slug"],
-            defaults={"order": partie_data.get("order", 0), **_translated(partie_data, "title")},
+            defaults={
+                "order": partie_data.get("order", 0),
+                **_translated(partie_data, "title"),
+                **_translated(partie_data, "description"),
+            },
         )
         for module_data in partie_data.get("modules", []):
             module, _ = Module.objects.update_or_create(

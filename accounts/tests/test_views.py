@@ -54,3 +54,12 @@ def test_english_prefix_serves_the_dashboard_in_english(client, enrolled, partie
     client.force_login(enrolled)
     response = client.get("/en/")
     assert "Safety qualification" in response.content.decode()
+
+
+@pytest.mark.django_db
+def test_dashboard_shows_the_description_of_a_part(client, enrolled, partie):
+    """US-40 : l'apprenant voit sur son tableau de bord l'ordre conseillé entre parties."""
+    partie.description_fr = "À suivre après la Partie 1."
+    partie.save()
+    client.force_login(enrolled)
+    assert "À suivre après la Partie 1." in client.get("/fr/").content.decode()

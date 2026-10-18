@@ -17,6 +17,15 @@ def fast_password_hashing(settings):
     settings.PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
 
 
+@pytest.fixture(autouse=True)
+def default_language_after_each_test(settings):
+    """Une requête en /en/ active l'anglais dans le fil d'exécution : on rend le français au test suivant."""
+    from django.utils import translation
+
+    yield
+    translation.activate(settings.LANGUAGE_CODE)
+
+
 @pytest.fixture
 def partie(db):
     formation = Formation.objects.create(title_fr="Électronique", slug="electro")
