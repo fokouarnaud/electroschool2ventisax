@@ -3,7 +3,7 @@
 > Les instructions du projet sont dans **AGENTS.md**, qui est la source de vérité. En cas de divergence, AGENTS.md prime.
 > Ce fichier en reprend le contenu pour Claude Code.
 
-Plateforme de formation et d'évaluation en ligne inspirée des principes d'interface de Cisco NetAcad, forkée d'Acad Ventisax (dépôt `school2ventisax`). Première formation : électronique, Partie 1.
+Plateforme de formation et d'évaluation en ligne inspirée des principes d'interface de Cisco NetAcad, forkée d'Acad Ventisax (dépôt `school2ventisax`). Première formation : électronique, Parties 1 et 2.
 Hébergement visé : PythonAnywhere gratuit, compte `electroacadventisax` (https://electroacadventisax.pythonanywhere.com/fr/).
 
 ## Commandes utiles
@@ -50,47 +50,62 @@ Les réponses Q1 à Q16 du grill d'Acad Ventisax (`school2ventisax/AGENTS.md`) r
 | E21 | Expéditeur des e-mails ? | Boîte Gmail désignée par l'utilisateur ; adresse et mot de passe d'application dans `.env` uniquement |
 | E23 | fpdf2 tire Pillow et fonttools (~40 Mo) : que faire ? (2026-10-18) | Mini-générateur PDF en Python pur dans `certificates/pdf.py` (Helvetica standard, WinAnsi) ; fpdf2 retiré des dépendances |
 | E24 | Relecture des questions de la Partie 1 ? (2026-10-18) | Validée par le responsable du projet : les 108 questions sont marquées relues (FR et EN) et publiées par `publish_reviewed`, lancé à chaque déploiement |
+| E25 | Suite du contenu ? (2026-10-18) | Partie 2 « Courant alternatif et filtres » = chapitres 5 à 7, 3 modules (M5 courant alternatif, M6 filtres RC et RL, M7 résonance) dans la même formation `electro` ; Partie 3 (chapitres 8 à 11) hors périmètre jusqu'à décision |
+| E26 | Volume et niveau de la Partie 2 ? (2026-10-18) | Volume E12 inchangé ; aucun nombre complexe (Pythagore, tan/arctan, −3 dB ≈ 70,7 %) ; angles en degrés notés en numérique (unité « ° ») |
+| E27 | Calculateurs et schémas de la Partie 2 ? (2026-10-18) | Trois calculateurs : réactance, fréquence de coupure, résonance ; `tools/schemas.py` étendu aux courbes (sinusoïdes, réponse en fréquence) |
+| E28 | Matériel des mini-projets de la Partie 2 ? (2026-10-18) | Oscilloscope et générateur basse fréquence, plus une variante « multimètre seul » avec transformateur 230 V → 9 ou 12 V AC |
+| E29 | Ordre entre parties et mise en ligne ? (2026-10-18) | Aucun verrou entre parties (conseil dans la description) ; relecture validée d'emblée : commit sur `develop`, questions publiées, fusion dans `main`, déploiement |
 | E22 | Dépôt et disque ? | GitHub `fokouarnaud/electroschool2ventisax` ; `develop` → `main` (suivi par le serveur) ; < 150 Mo de disque ; 1 sauvegarde SQLite quotidienne |
 
 ## GOALS
 
 ### 1. Objectifs fonctionnels prioritaires
 1. **Lecteur de cours** : Formation → Partie → Module → Section, sommaire repliable, sections vues cochées, barre de progression par module et par partie.
-2. **Contenu Partie 1 « Électronique DC et semi-conducteurs »** : 4 modules originaux (révision DC, diode, transistor, transistor en commutation), rédigés en FR et traduits en EN, avec schémas SVG et 1 mini-projet pratique par module.
-3. **Quiz de module** : entraînement illimité, correction et explication après envoi ; types QCM une/plusieurs réponses, vrai/faux, **numérique avec unité et tolérance**, **appariement / glisser-déposer**, **zone cliquable sur schéma**.
-4. **Calculateurs interactifs** dans les sections (loi d'Ohm, diviseur de tension, code couleur des résistances, polarisation), non notés.
-5. **Examen de partie** : banque séparée, 70 % pour réussir, 3 tentatives, 60 min chronométrées côté serveur, mélange, sauvegarde au clic, reprise après coupure, envoi automatique, meilleure note retenue.
-6. **Catalogue et inscription** : catalogue public ; inscription libre aux formations ouvertes ou par code de promotion ; e-mail vérifié ; mot de passe oublié par e-mail ; un apprenant peut suivre plusieurs formations.
-7. **Certificat et badges** : certificat PDF par partie réussie, numéro unique vérifiable sur `/verify/<uuid>/` ; badges par module terminé et par partie réussie.
-8. **Espace formateur** (front, mobile) : tableau apprenants × modules de ses promotions, carnet de notes détaillé par tentative et par question, taux de réussite par question, export CSV, annonces et dates limites indicatives.
-9. **Back-office Django Unfold** : comptes, promotions, codes de promotion, contenu, relecture et publication des questions (refusée si FR ou EN non relu), réglage des examens.
-10. **Interface** : bilingue `/fr/` et `/en/`, patterns NetAcad, charte Ventisax déclinée « électronique », mobile d'abord.
+2. **Contenu Partie 1 « Courant continu et semi-conducteurs »** (en ligne) : 4 modules originaux (révision DC, diode, transistor, transistor en commutation), FR et EN, schémas SVG, 1 mini-projet par module.
+3. **Contenu Partie 2 « Courant alternatif et filtres »** (chapitres 5 à 7 du livre, servant uniquement de plan) : 3 modules originaux dans la même formation `electro`, à la suite de la Partie 1 :
+   - **M5 Le courant alternatif** : sinusoïde, valeurs crête, crête à crête et efficace, résistance en alternatif, condensateur et réactance Xc, bobine et réactance XL, générateur et oscilloscope, mini-projet ;
+   - **M6 Les filtres RC et RL** : rappel de trigonométrie, RC série et impédance, passe-bas, passe-haut, fréquence de coupure et −3 dB, déphasage, filtres RL, mini-projet ;
+   - **M7 La résonance** : LC série, LC parallèle, courbe de réponse, bande passante et facteur Q, ouverture vers les oscillateurs, mini-projet.
+   Volume identique à la Partie 1 (E12) ; relecture validée par le responsable du projet, questions publiées au déploiement.
+4. **Quiz de module** : entraînement illimité, correction et explication après envoi ; types QCM une/plusieurs réponses, vrai/faux, **numérique avec unité et tolérance** (angles en degrés « ° » compris), **appariement / glisser-déposer**, **zone cliquable sur schéma**.
+5. **Calculateurs interactifs** dans les sections, non notés : loi d'Ohm, diviseur de tension, code couleur des résistances, polarisation (Partie 1) ; réactance Xc/XL, fréquence de coupure RC/RL, fréquence de résonance LC (Partie 2).
+6. **Examen de partie** (un par partie) : banque séparée, 70 % pour réussir, 3 tentatives, 60 min chronométrées côté serveur, mélange, sauvegarde au clic, reprise après coupure, envoi automatique, meilleure note retenue.
+7. **Catalogue et inscription** : catalogue public ; inscription libre aux formations ouvertes ou par code de promotion ; e-mail vérifié ; mot de passe oublié par e-mail ; un apprenant peut suivre plusieurs formations.
+8. **Certificat et badges** : certificat PDF par partie réussie (Partie 1 et Partie 2), numéro unique vérifiable sur `/verify/<uuid>/` ; badges par module terminé et par partie réussie.
+9. **Espace formateur** (front, mobile) : tableau apprenants × modules de ses promotions, carnet de notes détaillé par tentative et par question, taux de réussite par question, export CSV, annonces et dates limites indicatives.
+10. **Back-office Django Unfold** : comptes, promotions, codes de promotion, contenu, relecture et publication des questions (refusée si FR ou EN non relu), réglage des examens.
+11. **Interface** : bilingue `/fr/` et `/en/`, patterns NetAcad, charte Ventisax déclinée « électronique », mobile d'abord.
 
 ### 2. Contraintes techniques
 - **Python** le plus récent proposé par PythonAnywhere ; **Django 5.2 LTS** ; **SQLite** (un seul fichier, sauvegarde quotidienne, 1 copie gardée).
 - Code **forké de school2ventisax** : gabarits serveur + **HTMX vendoré**, **JS vanilla**, CSS écrit à la main ; aucun CDN, aucun Node, aucune SPA.
 - **Dépendances de production** limitées à : `django`, `django-modeltranslation`, `markdown`, `bleach`, `django-unfold` (fpdf2 retiré, E23). Toute autre dépendance demande un accord explicite. Développement : `pytest`, `pytest-django`.
-- **TDD obligatoire** (skill test-driven-development) : test rouge avant chaque règle métier ; suite pytest verte, tests d'intrusion compris ; parcours Playwright MCP rejoués avant chaque déploiement.
+- **TDD obligatoire** (skill test-driven-development) : test rouge avant chaque règle métier (dont l'unité « ° » et les nouveaux calculateurs) ; suite pytest verte, tests d'intrusion compris ; parcours Playwright MCP rejoués avant chaque déploiement.
 - **PythonAnywhere gratuit** (compte `electroacadventisax`) : quota de 512 Mo, **cible < 150 Mo** (code + venv + base + médias) ; une seule web app ; pas de tâche planifiée ; internet sortant sur liste blanche ; e-mail sortant par **Gmail SMTP** seulement.
-- **Poids** : < 200 Ko par page à la première visite ; schémas en SVG, images éventuelles en WebP ; pas de Pillow.
+- **Poids** : < 200 Ko par page à la première visite ; CSS + JS du projet < 60 Ko (nouveaux calculateurs compris) ; schémas en SVG, images éventuelles en WebP ; pas de Pillow.
 - **i18n** : `i18n_patterns` (`/fr/` par défaut, `/en/`), gettext pour l'interface, modeltranslation pour le contenu, repli sur le FR.
-- **Contenu versionné** : `content/electro/` (manifeste JSON + Markdown fr/en + `questions.json`), importé par `import_content` (idempotent).
+- **Contenu versionné** : `content/electro/` (manifeste JSON, Markdown fr/en, `questions.json` par module ; Partie 2 dans `p2/m5` à `p2/m7`, numérotation continue), importé par `import_content` (idempotent).
+- **Niveau mathématique de la Partie 2** : aucun nombre complexe ; impédance par Pythagore (Z = √(R² + X²)), déphasage par tan/arctan, décibels limités à « −3 dB ≈ 70,7 % ».
+- **Schémas générés** par `tools/schemas.py` (symboles CEI, version anglaise automatique), étendu aux courbes (sinusoïdes, déphasage, réponse en fréquence sur axe logarithmique, résonance) ; jamais retouchés à la main.
+- **Mini-projets de la Partie 2** : consignes à l'oscilloscope et au générateur basse fréquence, avec une variante « multimètre seul » (transformateur 230 V → 9 ou 12 V AC).
+- **Parties non bloquantes** : la Partie 2 est accessible sans avoir réussi la Partie 1 ; sa description conseille de la suivre après.
 - **Sécurité** : DEBUG=False et HTTPS en production, CSRF, CSP sans script en ligne, Markdown nettoyé par bleach, identifiants publics UUID, verrouillage anti force brute, limitation des inscriptions, secrets dans `.env`.
-- **Déploiement par Claude** : jeton d'API PythonAnywhere créé via Playwright MCP, puis `deploy.sh` (pull, install, migrate, compilemessages, collectstatic, check --deploy, reload) ; branche `main` suivie par le serveur, développement sur `develop`.
+- **Livraison** : commits sur `develop`, questions relues rendues publiques, fusion dans `main` (suivie par le serveur), puis `deploy.sh` (pull, install, migrate, import, publication des questions relues, compilemessages, collectstatic, check --deploy, reload).
 - **Droits** : contenu 100 % original ; le PDF de référence n'est jamais committé ni cité textuellement.
 
-### 3. Périmètre strictement hors scope (v1)
-- Reproduction du texte, des figures ou des projets du livre *Complete Electronics Self-Teaching Guide* ; tout texte, question, logo ou asset de NetAcad/Cisco.
-- Parties 2 et suivantes (chapitres 5 et au-delà du livre : AC, filtres, résonance, amplificateurs, oscillateurs, transformateur…).
+### 3. Périmètre strictement hors scope
+- Reproduction du texte, des figures, des exercices ou des projets du livre *Complete Electronics Self-Teaching Guide* ; tout texte, question, logo ou asset de NetAcad/Cisco.
+- **Partie 3 et suivantes** (chapitres 8 et au-delà du livre : amplificateurs à transistor, AOP, oscillateurs, transformateur, alimentations, test final), jusqu'à nouvelle décision.
+- Nombres complexes et calcul de décibels au-delà de −3 dB dans la Partie 2.
 - Simulateur de circuits (type Packet Tracer / SPICE) et laboratoires virtuels.
 - Valeurs numériques aléatoires par tentative (questions paramétrées) ; réponse libre rédigée ; correction manuelle.
 - Évaluation pratique notée, saisie des mesures dans l'app, dépôt de fichiers par les apprenants.
-- Dates limites bloquantes ; annonces ou notifications par e-mail ; messagerie, forum, chat.
+- Verrou entre parties ; parcours séquentiel bloquant entre sections ; dates limites bloquantes.
+- Annonces ou notifications par e-mail ; messagerie, forum, chat.
 - Suivi en direct des examens en cours.
 - SSO, connexion Google/Cisco, base partagée avec Acad Ventisax ou ventisax.
 - Paiement, cours payants, Open Badges / badges exportables.
 - Mode hors ligne / PWA, application mobile native.
-- Parcours séquentiel bloquant entre sections.
 - Captcha tiers ou tout service externe autre que Gmail SMTP.
 
 ## Guide de style de l'interface (2026-10-18)
@@ -112,6 +127,8 @@ Script `.playwright-mcp/audit.js` : 12 écrans, 360 et 1280 px, thèmes clair et
 - **Connexion** : « Mot de passe oublié ? » et « Créer un compte » deviennent deux cibles de 44 px sous le bouton, au lieu de deux petits liens accolés.
 - **Cibles tactiles** : titre de formation du catalogue (44 px) et liens de tentatives du suivi (36 px). Exceptions assumées : le lien du pied de page (dans une phrase) et les zones des questions sur schéma, doublées par des boutons radio de 44 px.
 - **Budget CSS + JS < 60 Ko** : précisé comme portant sur les fichiers du projet (48 Ko non compressés) ; HTMX vendoré (51 Ko, 16 Ko compressé), imposé par Q13 et déjà présent dans Acad Ventisax, n'y est pas compté.
+
+- **Partie 2 (2026-10-18)** : script `.playwright-mcp/audit_p2.js` (11 écrans : fiche du catalogue, tableau de bord, module, sections à calculateur, section anglaise, mini-projet, examen, quiz et résultat de M6), 360 et 1280 px, thèmes clair et sombre : aucun défaut de contraste, aucun débordement, aucune erreur console, pages de 43 à 126 Ko à la première visite (quiz de M6 : 126 Ko). Ajustements : `.course + .course` sépare les parties sur le tableau de bord ; `.partie-desc` porte la description d'une partie ; dans les tableaux du cours, en-têtes et première colonne ne se coupent plus (le tableau défile dans son cadre) ; les calculateurs n'affichent pas deux fois la consigne ; l'aide d'une question en degrés parle d'angle et non de préfixes SI ; le tableau formateur abrège les examens en « Examen P1 / P2 » avec une légende, comme les modules ; les sources des schémas de circuit portent leur valeur à l'intérieur de la boucle. L'audit des 12 écrans de la Partie 1 reste sans régression.
 
 ## PRD
 
@@ -176,6 +193,16 @@ Chaque story porte une étiquette : **[B]** règle métier backend (modèles, se
 - US-38 [B] : En tant qu'admin, je règle un examen (seuil, tentatives, durée, questions par module) ; les valeurs NetAcad sont proposées par défaut.
 - US-39 [B] : En tant qu'admin, une sauvegarde quotidienne de la base est faite automatiquement, et seule la plus récente est gardée.
 
+**Partie 2 « Courant alternatif et filtres »**
+- US-40 [B][F] : En tant qu'apprenant inscrit à la formation Électronique, je vois la Partie 2 (modules M5 Le courant alternatif, M6 Les filtres RC et RL, M7 La résonance) dans le sommaire et je la suis sans avoir réussi l'examen de la Partie 1 ; sa description me conseille de la suivre après la Partie 1.
+- US-41 [B] : En tant qu'apprenant, je réponds à une question numérique en degrés (« 45° », « 45 ° », « -63,4° », virgule ou point) ; elle est juste dans la tolérance ; une autre unité saisie la rend fausse ; aucun préfixe SI n'est appliqué aux degrés dans la correction affichée (« 63,4° »).
+- US-42 [F] : En tant qu'apprenant, j'utilise dans les sections de la Partie 2 trois calculateurs non notés : réactance (Xc ou XL selon f), fréquence de coupure (RC ou RL), fréquence de résonance (LC) ; utilisables au clavier, en FR et en EN.
+- US-43 [B][F] : En tant qu'apprenant, je consulte le mini-projet de chaque module de la Partie 2 avec deux variantes de mesure : oscilloscope et générateur basse fréquence, ou multimètre seul avec un transformateur 230 V → 9 ou 12 V AC (consigne de sécurité en tête).
+- US-44 [B] : En tant qu'apprenant ayant terminé M5, M6 et M7, je passe l'examen de la Partie 2 (mêmes règles que la Partie 1) ; s'il est réussi, j'obtiens un badge de partie et un second certificat, distinct de celui de la Partie 1, vérifiable sur `/verify/<numéro>/`.
+- US-45 [B] : En tant qu'admin, j'importe la Partie 2 avec `import_content` (idempotent, deux passages = même état) ; les garde-fous du contenu vérifient p1 et p2 (fichiers FR et EN, volumes E12, schémas référencés existants).
+- US-46 [B] : En tant que responsable, les 81 questions de la Partie 2, relues en FR et en EN, sont publiées par `publish_reviewed` au déploiement ; une question incohérente est signalée et reste en brouillon.
+- US-47 [B][F] : En tant que formateur, mon tableau, mon carnet de notes, le taux de réussite par question et l'export CSV couvrent aussi M5 à M7 et l'examen de la Partie 2, sans changement de code.
+
 ### Modélisation logique des données
 `*` = champ traduit (fr/en) par modeltranslation, avec repli sur le fr. 🆕 = entité nouvelle, ✏️ = entité modifiée par rapport à school2ventisax.
 Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certificate et Promotion portent un `public_id` (UUID v4, unique, non modifiable) : c'est le seul identifiant exposé (URL, formulaires, ancres). Les clés entières restent internes.
@@ -186,7 +213,7 @@ Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certif
 | 🆕 **Enrollment** | enrolled_at, source ∈ {catalog, code, import, admin} | FK User (apprenant), FK Formation, FK Promotion (null = groupe ouvert) ; unique (user, formation) ; la promotion, si présente, appartient à la même formation |
 | ✏️ **Promotion** | name, start_date, join_code (unique, 8 caractères sans ambiguïté), join_code_active | FK Formation ; M2M trainers (role = trainer) |
 | ✏️ **Formation** | title*, slug, description*, order, is_open | 1-N Partie ; `is_open` = visible au catalogue et ouverte à l'inscription libre |
-| **Partie** | title*, order, slug | FK Formation ; 1-1 Assessment (examen) |
+| ✏️ **Partie** | title*, description*, order, slug | FK Formation ; 1-1 Assessment (examen) |
 | **Module** | title*, order, duration_hours, competence*, evaluation_note* | FK Partie ; 1-1 Assessment (quiz) |
 | **Section** | title*, order, kind ∈ {content, practical}, body_md* | FK Module ; HTML rendu et nettoyé par bleach |
 | **Annexe** | title*, file | FK Section (practical) |
@@ -213,6 +240,17 @@ Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certif
 - « En retard » = date limite dépassée et (quiz non envoyé, ou examen non réussi).
 - Taux de réussite d'une question = moyenne des scores sur les tentatives envoyées des apprenants visibles.
 
+**Partie 2 : aucune entité nouvelle**
+| Entité | Évolution |
+|---|---|
+| Partie | nouveau champ traduit `description` (migration `courses/0004`, lu par l'import, affiché au catalogue et au tableau de bord) ; 2e ligne de la formation `electro` : `slug` = `p2`, `order` = 2, titre « Courant alternatif et filtres », description « à suivre après la Partie 1 » ; 1-1 Assessment `part_exam` (70 %, 3 tentatives, 60 min) |
+| Module | 3 lignes, `order` 1 à 3 dans `p2`, dossiers `p2/m5`, `p2/m6`, `p2/m7` (numérotation continue des dossiers et des schémas, pour ne pas heurter `m1` à `m4`) ; chacune avec son Assessment `module_quiz` |
+| Section | 20 à 22 lignes (6 à 8 par module, dont un mini-projet `practical`) |
+| Question | 81 lignes (`external_id` `e-p2-m<N>-qNN`) ; `unit` accepte désormais `°` en plus de V, A, Ω, W, Hz, F, H ; aucun nouveau `qtype` |
+| Badge, Certificate | inchangés : unique (user, partie) permet déjà un certificat et un badge par partie |
+- Règle ajoutée : une saisie en degrés est lue sans préfixe SI (« 45° » vaut 45) ; `format_quantity(v, "°")` n'ajoute jamais de préfixe.
+- Règle ajoutée : la progression d'une partie ne dépend que de ses propres modules ; aucun lien d'accès entre parties.
+
 ### Exigences non fonctionnelles
 - **Performance** : TTFB < 500 ms sur PythonAnywhere pour les pages de cours ; ≤ 10 requêtes SQL par page de cours ; ≤ 20 pour le carnet de notes d'une promotion de 30 apprenants.
 - **Poids** : < 200 Ko transférés à la première visite d'une page de cours ; CSS + JS < 60 Ko au total (calculateurs et interactions compris).
@@ -220,6 +258,7 @@ Formation, Partie, Module, Section, Question, Choice, MatchPair, Attempt, Certif
 - **Accessibilité** : contraste AA, interactions (appariement, zone cliquable) utilisables au clavier, `lang` correct par page.
 - **Fiabilité** : aucune réponse d'examen perdue lors d'un rechargement ou d'une coupure.
 - **Confidentialité** : un apprenant ne voit que ses données ; un formateur, que ses promotions ; aucune IP stockée en clair.
+- **Partie 2** : poids et performance identiques à la Partie 1 (< 200 Ko, ≤ 10 requêtes SQL par page de cours) ; CSS + JS du projet < 60 Ko avec les trois nouveaux calculateurs.
 
 ### Écarts d'implémentation validés (backend TDD, 2026-10-18)
 Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-dessus.
@@ -256,6 +295,8 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
     - **Plan gratuit** : le site est désactivé le **18 novembre 2026** si personne ne clique « Run until 1 month from today » dans l'onglet Web ; à refaire chaque mois.
     - **Écart à E17** : aucun jeton d'API n'a été créé ; le déploiement s'est fait par la console et l'onglet Web, pour qu'aucun jeton n'apparaisse en clair dans les échanges.
 
+23. **Partie 2 rédigée (2026-10-18)** : `content/electro/p2/` contient M5 Le courant alternatif (7 sections), M6 Les filtres RC et RL (8) et M7 La résonance (7), en FR et en EN, et 81 questions (par module : 15 de quiz et 12 d'examen, relues d'emblée selon E29). Les déphasages se saisissent et s'affichent en degrés (« 45° », jamais de préfixe SI, `assessments/scoring.py`). `Partie.description` (traduite, migration `courses/0004`) est lue par l'import et affichée au catalogue et au tableau de bord. Trois calculateurs sont ajoutés : `[[calc:reactance]]`, `[[calc:cutoff]]` et `[[calc:resonance]]`. `tools/schemas.py` produit les 40 schémas de M5 à M7 (bobine CEI, condensateur variable, écran d'oscilloscope, courbes sur axe logarithmique) et les 3 schémas des questions sur schéma, dans `content/electro/p2/m<N>/schemas/`. Garde-fous ajoutés (`courses/tests/test_content_files.py`) : trois modules p2, deux variantes de mesure et la sécurité en tête de chaque mini-projet (US-43), calculateurs présents, au moins deux déphasages en degrés, relecture validée. Chaque valeur numérique a été recalculée par sa formule (écart < 0,1 %).
+
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.
 
@@ -283,3 +324,11 @@ Une story n'est terminée que si **tous** les critères applicables sont vrais. 
 **Livraison**
 14. Commit conventionnel sur `develop` ; AGENTS.md et CLAUDE.md à jour si une décision a changé ; CLAUDE.md identique à AGENTS.md (hors en-tête).
 15. Après déploiement : `deploy.sh` sans erreur, disque < 150 Mo mesuré, parcours de fumée (connexion, section, quiz, examen, certificat, `/verify/`) rejoué en production.
+
+**Contenu Partie 2**
+16. Par module : 6 à 8 sections dont 1 mini-projet, 15 questions de quiz (≥ 4 numériques, ≥ 1 appariement, ≥ 1 sur schéma) et 12 d'examen, vérifié par `courses/tests/test_content_files.py`.
+17. Chaque valeur numérique attendue est recalculée à la main et consignée (valeur, unité, tolérance) avant d'entrer dans `questions.json` ; aucun énoncé sans exemple de saisie avec préfixe.
+18. Aucun nombre complexe ni calcul de logarithme demandé ; déphasages en degrés.
+19. Tous les schémas proviennent de `tools/schemas.py` (FR et EN), aucun SVG retouché à la main ; 2 ou 3 schémas par section.
+20. Chaque mini-projet porte les deux variantes (oscilloscope, multimètre seul) et une consigne de sécurité pour le transformateur.
+21. Après déploiement : les 81 questions de la Partie 2 sont publiées, l'examen de la Partie 2 se lance pour un compte de test ayant terminé M5 à M7, et son certificat se vérifie sur `/verify/`.
