@@ -44,7 +44,7 @@ class Question(models.Model):
         validators=[FileExtensionValidator(["webp", "png", "jpg", "jpeg", "svg"]), validate_inert_svg],
     )
     # Numérique (E13) : valeur attendue en unité de base (ex. 4700 pour 4,7 kΩ), unité et tolérance relative.
-    numeric_value = models.DecimalField(_("valeur attendue"), max_digits=24, decimal_places=12, null=True, blank=True)
+    numeric_value = models.DecimalField(_("valeur attendue"), max_digits=27, decimal_places=15, null=True, blank=True)
     unit = models.CharField(_("unité"), max_length=10, blank=True)
     tolerance_pct = models.DecimalField(_("tolérance (%)"), max_digits=5, decimal_places=2, default=2)
     # Zone cliquable : schéma SVG affiché en ligne ; chaque choix porte sa zone (Choice.shape).

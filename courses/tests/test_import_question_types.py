@@ -209,3 +209,24 @@ def test_part_three_import_is_idempotent_and_publishes_only_reviewed_questions(p
     save_answer(attempt, gain.public_id, [], text="−10")
     assert attempt.attempt_questions.count() == 2  # gain et schéma publiés ; le brouillon n'est pas tiré
     assert submit_attempt(attempt).score_pct == 50
+
+
+@pytest.mark.django_db
+def test_a_tiny_expected_value_survives_import_exactly_and_stays_published(tmp_path):
+    """Une capacité de 260,33 pF (2,6033 × 10⁻¹⁰ F) ne doit être ni arrondie ni renvoyée en brouillon à chaque import."""
+    tiny = {"id": "e-p3-m10-tiny", "type": "numeric", "usage": "quiz", "prompt": BILINGUAL, "reviewed": REVIEWED,
+            "numeric": {"value": "0.00000000026033", "unit": "F"}}
+    (tmp_path / "p1" / "m1").mkdir(parents=True)
+    (tmp_path / "p1" / "m1" / "questions.json").write_text(json.dumps([tiny]), encoding="utf-8")
+    manifest = {"slug": "electro", "open": True, "title": {"fr": "Électronique", "en": "Electronics"},
+                "parties": [{"slug": "p1", "order": 1, "title": {"fr": "DC", "en": "DC"},
+                             "modules": [{"order": 1, "dir": "p1/m1", "title": {"fr": "M1", "en": "M1"}, "sections": []}]}]}
+    (tmp_path / "formation.json").write_text(json.dumps(manifest), encoding="utf-8")
+
+    run_import(tmp_path)
+    call_command("publish_reviewed", stdout=__import__("io").StringIO())
+    run_import(tmp_path)
+
+    question = Question.objects.get(external_id="e-p3-m10-tiny")
+    assert question.numeric_value == Decimal("0.00000000026033")
+    assert question.status == Question.Status.PUBLISHED
