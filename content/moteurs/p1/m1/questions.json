@@ -1,0 +1,1069 @@
+[
+ {
+  "id": "m-p1-m1-q01",
+  "section": "01-effets-courant",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une personne touche une phase à 230 V ; la résistance de son corps vaut 1 000 Ω. Quel courant la traverse ? (exemple : 25 mA)",
+   "en": "A person touches a 230 V phase; their body resistance is 1,000 Ω. What current flows through them? (example: 25 mA)"
+  },
+  "explanation": {
+   "fr": "I = U / R = 230 / 1 000 = 0,23 A, soit 230 mA : bien au-delà du seuil de fibrillation.",
+   "en": "I = U / R = 230 / 1,000 = 0.23 A, that is 230 mA: far above the fibrillation threshold."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.23",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m1-q02",
+  "section": "01-effets-courant",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sous 48 V, un corps présente 1 600 Ω. Quel courant le traverse ? (exemple : 12 mA)",
+   "en": "At 48 V, a body has a resistance of 1,600 Ω. What current flows through it? (example: 12 mA)"
+  },
+  "explanation": {
+   "fr": "I = 48 / 1 600 = 0,03 A, soit 30 mA : le seuil où la respiration peut s'arrêter.",
+   "en": "I = 48 / 1,600 = 0.03 A, that is 30 mA: the threshold at which breathing can stop."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.03",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m1-q03",
+  "section": "01-effets-courant",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À partir de quel courant, à 50 Hz, la respiration peut-elle s'arrêter ?",
+   "en": "From what current, at 50 Hz, can breathing stop?"
+  },
+  "explanation": {
+   "fr": "Vers 30 mA ; c'est la sensibilité retenue pour les DDR qui protègent les personnes.",
+   "en": "Around 30 mA; this is the sensitivity chosen for RCDs that protect people."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "0,5 mA",
+     "en": "0.5 mA"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "30 mA",
+     "en": "30 mA"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "1 A",
+     "en": "1 A"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q04",
+  "section": "01-effets-courant",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : c'est la tension qui blesse, quel que soit le courant qui traverse le corps.",
+   "en": "True or false: it is the voltage that injures, whatever the current through the body."
+  },
+  "explanation": {
+   "fr": "Faux : c'est le courant traversant le corps, sa durée et son chemin qui comptent ; la tension fixe ce courant.",
+   "en": "False: what matters is the current through the body, its duration and its path; the voltage sets that current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q05",
+  "section": "02-arc-epi",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi un arc électrique peut-il brûler une personne qui ne touche aucun conducteur ?",
+   "en": "Why can an arc flash burn a person who touches no conductor?"
+  },
+  "explanation": {
+   "fr": "L'arc libère en un instant chaleur, lumière, pression et métal fondu : il brûle à distance.",
+   "en": "The arc instantly releases heat, light, pressure and molten metal: it burns at a distance."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il libère chaleur, lumière et métal fondu à distance",
+     "en": "It releases heat, light and molten metal at a distance"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il crée un champ magnétique dangereux",
+     "en": "It creates a dangerous magnetic field"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il fait circuler le courant par le sol",
+     "en": "It drives current through the ground"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q06",
+  "section": "02-arc-epi",
+  "type": "multiple",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quels équipements protègent d'un arc électrique ?",
+   "en": "Which equipment protects against an arc flash?"
+  },
+  "explanation": {
+   "fr": "Écran facial anti-arc, vêtement ininflammable et gants isolants ; un vêtement synthétique fond et aggrave la brûlure.",
+   "en": "Arc-rated face shield, flame-resistant clothing and insulating gloves; synthetic clothing melts and worsens the burn."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Écran facial anti-arc",
+     "en": "Arc-rated face shield"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Vêtement ininflammable",
+     "en": "Flame-resistant clothing"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Gants isolants",
+     "en": "Insulating gloves"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Vêtement synthétique",
+     "en": "Synthetic clothing"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q07",
+  "section": "02-arc-epi",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : les EPI sont la première protection à mettre en place.",
+   "en": "True or false: PPE is the first protection to put in place."
+  },
+  "explanation": {
+   "fr": "Faux : on cherche d'abord à travailler hors tension, puis à protéger collectivement ; les EPI viennent en dernier.",
+   "en": "False: first aim to work de-energised, then protect collectively; PPE comes last."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q08",
+  "section": "03-protection-personnes",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un DDR mesure I1 = 16 A sur la phase et I2 = 15,97 A sur le neutre. Quel est le courant de fuite ? (exemple : 12 mA)",
+   "en": "An RCD measures I1 = 16 A on the line and I2 = 15.97 A on the neutral. What is the leakage current? (example: 12 mA)"
+  },
+  "explanation": {
+   "fr": "Id = I1 − I2 = 16 − 15,97 = 0,03 A, soit 30 mA : un DDR 30 mA déclenche.",
+   "en": "Id = I1 − I2 = 16 − 15.97 = 0.03 A, that is 30 mA: a 30 mA RCD trips."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.03",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m1-q09",
+  "section": "03-protection-personnes",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'est-ce qu'un contact indirect ?",
+   "en": "What is an indirect contact?"
+  },
+  "explanation": {
+   "fr": "Toucher une masse (carcasse) mise accidentellement sous tension par un défaut d'isolement.",
+   "en": "Touching an exposed part (frame) made live by accident through an insulation fault."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Toucher une carcasse mise sous tension par un défaut",
+     "en": "Touching a frame made live by a fault"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Toucher volontairement une phase",
+     "en": "Touching a phase on purpose"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Recevoir un arc électrique",
+     "en": "Being hit by an arc flash"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q10",
+  "section": "04-liaisons-terre",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "En schéma TN, que devient un défaut d'isolement ?",
+   "en": "In a TN system, what does an insulation fault become?"
+  },
+  "explanation": {
+   "fr": "Les masses étant reliées au neutre, le défaut est un court-circuit phase-neutre : le disjoncteur coupe.",
+   "en": "As the exposed parts are connected to the neutral, the fault is a line-to-neutral short circuit: the breaker trips."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un court-circuit, coupé par le disjoncteur",
+     "en": "A short circuit, cleared by the breaker"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un défaut signalé sans coupure",
+     "en": "A fault signalled without tripping"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un courant trop faible pour être détecté",
+     "en": "A current too small to be detected"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q11",
+  "section": "04-liaisons-terre",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : en schéma IT, l'alimentation est coupée dès le premier défaut.",
+   "en": "True or false: in an IT system, the supply is cut at the first fault."
+  },
+  "explanation": {
+   "fr": "Faux : le premier défaut est seulement signalé par le contrôleur d'isolement ; c'est le second qui doit couper.",
+   "en": "False: the first fault is only signalled by the insulation monitor; the second one must trip."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q12",
+  "section": "05-consignation",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Remettez les étapes de la consignation dans l'ordre : associez chacune à son rang.",
+   "en": "Put the lockout steps in order: match each one with its rank."
+  },
+  "explanation": {
+   "fr": "Séparer, condamner, identifier, vérifier l'absence de tension, puis mettre à la terre et en court-circuit.",
+   "en": "Isolate, lock, identify, verify the absence of voltage, then earth and short-circuit."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Séparer",
+     "en": "Isolate"
+    },
+    "right": {
+     "fr": "1re",
+     "en": "1st"
+    }
+   },
+   {
+    "left": {
+     "fr": "Condamner",
+     "en": "Lock"
+    },
+    "right": {
+     "fr": "2e",
+     "en": "2nd"
+    }
+   },
+   {
+    "left": {
+     "fr": "Identifier",
+     "en": "Identify"
+    },
+    "right": {
+     "fr": "3e",
+     "en": "3rd"
+    }
+   },
+   {
+    "left": {
+     "fr": "Vérifier l'absence de tension",
+     "en": "Verify the absence of voltage"
+    },
+    "right": {
+     "fr": "4e",
+     "en": "4th"
+    }
+   },
+   {
+    "left": {
+     "fr": "Mettre à la terre et en court-circuit",
+     "en": "Earth and short-circuit"
+    },
+    "right": {
+     "fr": "5e",
+     "en": "5th"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q13",
+  "section": "05-consignation",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Avant de travailler sur ce moteur, sur quel appareil posez-vous votre cadenas ? Cliquez dessus.",
+   "en": "Before working on this motor, which device do you fit your padlock on? Click it."
+  },
+  "explanation": {
+   "fr": "Le sectionneur, en haut : il sépare le circuit du réseau. Le contacteur commande et le relais thermique protège ; aucun des deux ne sépare.",
+   "en": "The isolator, at the top: it isolates the circuit from the supply. The contactor controls and the overload relay protects; neither isolates."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Appareil du haut",
+     "en": "Top device"
+    },
+    "correct": true,
+    "shape": {
+     "x": 130,
+     "y": 40,
+     "w": 90,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Appareil du milieu",
+     "en": "Middle device"
+    },
+    "correct": false,
+    "shape": {
+     "x": 130,
+     "y": 100,
+     "w": 90,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Appareil du bas",
+     "en": "Bottom device"
+    },
+    "correct": false,
+    "shape": {
+     "x": 130,
+     "y": 160,
+     "w": 90,
+     "h": 44
+    }
+   }
+  ],
+  "svg": "schemas/m1-sectionneur.svg"
+ },
+ {
+  "id": "m-p1-m1-q14",
+  "section": "06-normes-habilitation",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Jusqu'à quelle tension alternative parle-t-on de très basse tension (TBT) ?",
+   "en": "Up to what AC voltage do we speak of extra-low voltage (ELV)?"
+  },
+  "explanation": {
+   "fr": "La TBT va jusqu'à 50 V en alternatif (120 V en continu).",
+   "en": "ELV goes up to 50 V AC (120 V DC)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "24 V",
+     "en": "24 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "50 V",
+     "en": "50 V"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "230 V",
+     "en": "230 V"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-q15",
+  "section": "06-normes-habilitation",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qui délivre l'habilitation électrique d'un salarié ?",
+   "en": "Who issues an employee's electrical authorisation?"
+  },
+  "explanation": {
+   "fr": "L'employeur, par écrit, pour un type de travail précis, après une formation.",
+   "en": "The employer, in writing, for a specific type of work, after training."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "L'employeur",
+     "en": "The employer"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le fabricant du moteur",
+     "en": "The motor manufacturer"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le distributeur d'électricité",
+     "en": "The electricity supplier"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x01",
+  "section": "01-effets-courant",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Sous 230 V, un corps présente 2 300 Ω. Quel courant le traverse ? (exemple : 25 mA)",
+   "en": "At 230 V, a body has a resistance of 2,300 Ω. What current flows through it? (example: 25 mA)"
+  },
+  "explanation": {
+   "fr": "I = 230 / 2 300 = 0,1 A, soit 100 mA : au-delà du seuil de fibrillation.",
+   "en": "I = 230 / 2,300 = 0.1 A, that is 100 mA: above the fibrillation threshold."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.1",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m1-x02",
+  "section": "01-effets-courant",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel chemin du courant est le plus dangereux ?",
+   "en": "Which current path is the most dangerous?"
+  },
+  "explanation": {
+   "fr": "Celui qui traverse le thorax, donc le cœur : main à main ou main aux pieds.",
+   "en": "The one crossing the chest, hence the heart: hand to hand or hand to feet."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "D'une main à l'autre, à travers le thorax",
+     "en": "From one hand to the other, across the chest"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "D'un doigt à l'autre de la même main",
+     "en": "From one finger to another of the same hand"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le long d'un seul avant-bras",
+     "en": "Along a single forearm"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x03",
+  "section": "02-arc-epi",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "De quoi dépend la frontière d'arc ?",
+   "en": "What does the arc flash boundary depend on?"
+  },
+  "explanation": {
+   "fr": "Du courant de court-circuit disponible et du temps de coupure de la protection.",
+   "en": "On the available short-circuit current and on the protection's tripping time."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Du courant de court-circuit et du temps de coupure",
+     "en": "On the short-circuit current and the tripping time"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "De la couleur des conducteurs",
+     "en": "On the colour of the conductors"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "De la puissance du moteur seulement",
+     "en": "On the motor power only"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x04",
+  "section": "02-arc-epi",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : un vêtement synthétique protège bien d'un arc électrique.",
+   "en": "True or false: synthetic clothing protects well against an arc flash."
+  },
+  "explanation": {
+   "fr": "Faux : il fond et colle à la peau ; on porte un vêtement ininflammable.",
+   "en": "False: it melts and sticks to the skin; flame-resistant clothing is worn."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x05",
+  "section": "03-protection-personnes",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "De quelle couleur est le conducteur de protection PE ?",
+   "en": "What colour is the PE protective conductor?"
+  },
+  "explanation": {
+   "fr": "Vert et jaune, réservé à la protection.",
+   "en": "Green and yellow, reserved for protection."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vert et jaune",
+     "en": "Green and yellow"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Bleu",
+     "en": "Blue"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Marron",
+     "en": "Brown"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x06",
+  "section": "03-protection-personnes",
+  "type": "multiple",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Dans quels cas un DDR 30 mA déclenche-t-il ?",
+   "en": "In which cases does a 30 mA RCD trip?"
+  },
+  "explanation": {
+   "fr": "Il voit seulement le courant qui s'échappe vers la terre ; une surcharge ou un court-circuit phase-neutre ne créent aucun écart.",
+   "en": "It only sees current escaping to earth; an overload or a line-to-neutral short circuit creates no difference."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "40 mA s'échappent par le PE d'un moteur en défaut",
+     "en": "40 mA escape through the PE of a faulty motor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une personne touche une phase, 50 mA passent par ses pieds",
+     "en": "A person touches a phase, 50 mA flow through their feet"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une surcharge de 25 A sans fuite",
+     "en": "A 25 A overload with no leakage"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un court-circuit franc entre phase et neutre",
+     "en": "A bolted short circuit between line and neutral"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x07",
+  "section": "04-liaisons-terre",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que signifient les lettres du schéma TT ?",
+   "en": "What do the letters of the TT system mean?"
+  },
+  "explanation": {
+   "fr": "Premier T : neutre relié à la terre ; second T : masses reliées à une terre.",
+   "en": "First T: neutral earthed; second T: exposed parts connected to an earth."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Neutre à la terre, masses à une terre",
+     "en": "Neutral earthed, exposed parts to an earth"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Neutre isolé, masses au neutre",
+     "en": "Neutral isolated, exposed parts to the neutral"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Deux transformateurs en série",
+     "en": "Two transformers in series"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x08",
+  "section": "04-liaisons-terre",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi choisit-on un schéma IT pour un bloc opératoire ?",
+   "en": "Why is an IT system chosen for an operating theatre?"
+  },
+  "explanation": {
+   "fr": "Le premier défaut ne coupe pas l'alimentation : la continuité de service est assurée.",
+   "en": "The first fault does not cut the supply: continuity of service is ensured."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le premier défaut ne coupe pas l'alimentation",
+     "en": "The first fault does not cut the supply"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il ne demande aucune surveillance",
+     "en": "It needs no monitoring"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il est le moins cher",
+     "en": "It is the cheapest"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x09",
+  "section": "05-consignation",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle est la première étape d'une consignation ?",
+   "en": "What is the first step of a lockout?"
+  },
+  "explanation": {
+   "fr": "Séparer l'équipement de ses sources d'énergie.",
+   "en": "Isolate the equipment from its energy sources."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Séparer",
+     "en": "Isolate"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Vérifier l'absence de tension",
+     "en": "Verify the absence of voltage"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Mettre à la terre",
+     "en": "Earth"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x10",
+  "section": "05-consignation",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : appuyer sur le bouton d'arrêt d'une machine suffit à la séparer du réseau.",
+   "en": "True or false: pressing a machine's stop button is enough to isolate it from the supply."
+  },
+  "explanation": {
+   "fr": "Faux : le bouton d'arrêt commande ; seul un appareil de sectionnement sépare.",
+   "en": "False: the stop button controls; only an isolating device isolates."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x11",
+  "section": "05-consignation",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi teste-t-on le VAT sur une source connue après la mesure ?",
+   "en": "Why is the tester tried on a known source after the measurement?"
+  },
+  "explanation": {
+   "fr": "Pour prouver qu'il fonctionnait encore : sinon, l'absence de tension mesurée ne prouve rien.",
+   "en": "To prove it was still working: otherwise, the measured absence of voltage proves nothing."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pour prouver qu'il fonctionnait encore",
+     "en": "To prove it was still working"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Pour décharger les condensateurs",
+     "en": "To discharge the capacitors"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Pour le recharger",
+     "en": "To recharge it"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m1-x12",
+  "section": "06-normes-habilitation",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle norme CEI traite des installations électriques basse tension ?",
+   "en": "Which IEC standard deals with low-voltage electrical installations?"
+  },
+  "explanation": {
+   "fr": "L'IEC 60364 ; l'IEC 60617 traite des symboles, l'IEC 60947 de l'appareillage.",
+   "en": "IEC 60364; IEC 60617 covers symbols, IEC 60947 switchgear."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "IEC 60364",
+     "en": "IEC 60364"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "IEC 60617",
+     "en": "IEC 60617"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "IEC 60947",
+     "en": "IEC 60947"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

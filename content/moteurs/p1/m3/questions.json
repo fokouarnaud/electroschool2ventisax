@@ -1,0 +1,940 @@
+[
+ {
+  "id": "m-p1-m3-q01",
+  "section": "01-reseau",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel courant faut-il pour transporter 50 kW en triphasé 400 V, avec cos φ = 1 ? (exemple : 2,5 A)",
+   "en": "What current is needed to carry 50 kW in three-phase 400 V, with cos φ = 1? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = P / (√3 × U) = 50 000 / (1,732 × 400) ≈ 72,2 A.",
+   "en": "I = P / (√3 × U) = 50,000 / (1.732 × 400) ≈ 72.2 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "72.1688",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-q02",
+  "section": "01-reseau",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi transporte-t-on l'énergie à très haute tension ?",
+   "en": "Why is energy carried at extra-high voltage?"
+  },
+  "explanation": {
+   "fr": "À puissance égale, le courant diminue et les pertes 3 × R × I² chutent comme le carré du courant.",
+   "en": "For the same power, the current falls and the losses 3 × R × I² drop with the square of the current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pour réduire le courant, donc les pertes en ligne",
+     "en": "To reduce the current, hence the line losses"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Pour que les moteurs tournent plus vite",
+     "en": "So that motors turn faster"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Pour supprimer le neutre",
+     "en": "To remove the neutral"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q03",
+  "section": "01-reseau",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Si l'on transporte la même puissance avec une tension 10 fois plus élevée, par combien les pertes en ligne sont-elles divisées ? (exemple : 4)",
+   "en": "If the same power is carried at a voltage 10 times higher, by how much are the line losses divided? (example: 4)"
+  },
+  "explanation": {
+   "fr": "Le courant est divisé par 10, les pertes (en I²) par 10² = 100.",
+   "en": "The current is divided by 10, the losses (in I²) by 10² = 100."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "100",
+   "unit": "",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-q04",
+  "section": "02-postes-tableaux",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'appelle-t-on la sélectivité des protections ?",
+   "en": "What is discrimination (selectivity) between protection devices?"
+  },
+  "explanation": {
+   "fr": "Seul le disjoncteur le plus proche du défaut déclenche ; le reste de l'installation reste alimenté.",
+   "en": "Only the breaker closest to the fault trips; the rest of the installation stays supplied."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Seul le disjoncteur le plus proche du défaut déclenche",
+     "en": "Only the breaker closest to the fault trips"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Tous les disjoncteurs déclenchent ensemble",
+     "en": "All breakers trip together"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le choix des couleurs de câbles",
+     "en": "The choice of cable colours"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q05",
+  "section": "02-postes-tableaux",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : remplacer un tiroir d'un centre de commande des moteurs oblige à arrêter tous les moteurs.",
+   "en": "True or false: replacing a drawer of a motor control centre requires stopping all the motors."
+  },
+  "explanation": {
+   "fr": "Faux : un tiroir se retire et se remplace sans arrêter les autres départs.",
+   "en": "False: a drawer is pulled out and replaced without stopping the other feeders."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q06",
+  "section": "03-puissances",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une installation absorbe 80 kW avec cos φ = 0,8. Quelle est sa puissance apparente ? (exemple : 2,5 kVA)",
+   "en": "An installation draws 80 kW with cos φ = 0.8. What is its apparent power? (example: 2.5 kVA)"
+  },
+  "explanation": {
+   "fr": "S = P / cos φ = 80 / 0,8 = 100 kVA.",
+   "en": "S = P / cos φ = 80 / 0.8 = 100 kVA."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "100000",
+   "unit": "VA",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-q07",
+  "section": "03-puissances",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pour 50 kW, quelle puissance réactive Qc faut-il installer pour passer de cos φ 0,75 à 0,95 ? (exemple : 2,5 kvar)",
+   "en": "For 50 kW, what reactive power Qc must be installed to go from cos φ 0.75 to 0.95? (example: 2.5 kvar)"
+  },
+  "explanation": {
+   "fr": "Qc = P × (tan φ1 − tan φ2) = 50 × (0,882 − 0,329) ≈ 27,7 kvar.",
+   "en": "Qc = P × (tan φ1 − tan φ2) = 50 × (0.882 − 0.329) ≈ 27.7 kvar."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "27661.6",
+   "unit": "var",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-q08",
+  "section": "03-puissances",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À quoi servent les condensateurs de compensation ?",
+   "en": "What are power factor correction capacitors for?"
+  },
+  "explanation": {
+   "fr": "Ils fournissent une partie de la puissance réactive : le courant appelé au réseau diminue, cos φ remonte.",
+   "en": "They supply part of the reactive power: the current drawn from the supply falls, cos φ rises."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Fournir de la puissance réactive et relever cos φ",
+     "en": "Supply reactive power and raise cos φ"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Augmenter la puissance active",
+     "en": "Increase the active power"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Protéger contre les courts-circuits",
+     "en": "Protect against short circuits"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q09",
+  "section": "04-transformateur",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel est le courant assigné au secondaire d'un transformateur de 400 kVA, 410 V ? (exemple : 2,5 A)",
+   "en": "What is the rated secondary current of a 400 kVA, 410 V transformer? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = S / (√3 × U) = 400 000 / (1,732 × 410) ≈ 563 A.",
+   "en": "I = S / (√3 × U) = 400,000 / (1.732 × 410) ≈ 563 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "563.269",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-q10",
+  "section": "04-transformateur",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi la puissance d'un transformateur s'exprime-t-elle en kVA ?",
+   "en": "Why is a transformer's power given in kVA?"
+  },
+  "explanation": {
+   "fr": "Il chauffe selon le courant qu'il débite, quel que soit le cos φ de la charge : c'est une puissance apparente.",
+   "en": "It heats according to the current it delivers, whatever the load's cos φ: it is an apparent power."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il chauffe selon le courant, quel que soit cos φ",
+     "en": "It heats according to the current, whatever cos φ"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Parce qu'il ne consomme aucune puissance",
+     "en": "Because it consumes no power"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Par simple habitude",
+     "en": "Out of mere habit"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q11",
+  "section": "05-couplages",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque élément de « Dyn11 » à sa signification.",
+   "en": "Match each part of \"Dyn11\" with its meaning."
+  },
+  "explanation": {
+   "fr": "D : primaire en triangle ; y : secondaire en étoile ; n : neutre sorti ; 11 : décalage de 330°.",
+   "en": "D: delta primary; y: star secondary; n: neutral brought out; 11: 330° shift."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "D",
+     "en": "D"
+    },
+    "right": {
+     "fr": "Primaire en triangle",
+     "en": "Delta primary"
+    }
+   },
+   {
+    "left": {
+     "fr": "y",
+     "en": "y"
+    },
+    "right": {
+     "fr": "Secondaire en étoile",
+     "en": "Star secondary"
+    }
+   },
+   {
+    "left": {
+     "fr": "n",
+     "en": "n"
+    },
+    "right": {
+     "fr": "Neutre sorti",
+     "en": "Neutral brought out"
+    }
+   },
+   {
+    "left": {
+     "fr": "11",
+     "en": "11"
+    },
+    "right": {
+     "fr": "Décalage de 330°",
+     "en": "330° shift"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q12",
+  "section": "05-couplages",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "La tension simple d'un réseau vaut 230 V. Que vaut la tension composée ?",
+   "en": "A supply's phase voltage is 230 V. What is the line voltage?"
+  },
+  "explanation": {
+   "fr": "U = √3 × V = 1,732 × 230 ≈ 400 V.",
+   "en": "U = √3 × V = 1.732 × 230 ≈ 400 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "400 V",
+     "en": "400 V"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "690 V",
+     "en": "690 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "133 V",
+     "en": "133 V"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-q13",
+  "section": "06-mesure-commande",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Cliquez sur l'appareil qui permet de mesurer le courant de la ligne avec un ampèremètre 5 A.",
+   "en": "Click the device that lets a 5 A ammeter measure the line current."
+  },
+  "explanation": {
+   "fr": "Le transformateur de courant, le tore traversé par le conducteur : son secondaire alimente l'ampèremètre.",
+   "en": "The current transformer, the toroid the conductor passes through: its secondary feeds the ammeter."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le tore",
+     "en": "The toroid"
+    },
+    "correct": true,
+    "shape": {
+     "x": 130,
+     "y": 56,
+     "w": 60,
+     "h": 108
+    }
+   },
+   {
+    "text": {
+     "fr": "Le cadran",
+     "en": "The dial"
+    },
+    "correct": false,
+    "shape": {
+     "x": 266,
+     "y": 156,
+     "w": 48,
+     "h": 48
+    }
+   },
+   {
+    "text": {
+     "fr": "La charge",
+     "en": "The load"
+    },
+    "correct": false,
+    "shape": {
+     "x": 380,
+     "y": 130,
+     "w": 40,
+     "h": 60
+    }
+   }
+  ],
+  "svg": "schemas/m3-tc.svg"
+ },
+ {
+  "id": "m-p1-m3-q14",
+  "section": "06-mesure-commande",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un TC 300/5 A alimente un ampèremètre qui lit 4 A. Quel courant circule dans le conducteur ? (exemple : 2,5 A)",
+   "en": "A 300/5 A CT feeds an ammeter reading 4 A. What current flows in the conductor? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = 4 × 300 / 5 = 240 A.",
+   "en": "I = 4 × 300 / 5 = 240 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "240",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-q15",
+  "section": "06-mesure-commande",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : on peut débrancher l'ampèremètre d'un TC en service sans précaution.",
+   "en": "True or false: the ammeter of a CT in service can be disconnected without precaution."
+  },
+  "explanation": {
+   "fr": "Faux : un secondaire de TC ouvert en service développe une tension dangereuse ; on le court-circuite d'abord.",
+   "en": "False: an open CT secondary in service develops a dangerous voltage; it is short-circuited first."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x01",
+  "section": "01-reseau",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle tension de distribution HTA rencontre-t-on souvent ?",
+   "en": "Which HV-A distribution voltage is often found?"
+  },
+  "explanation": {
+   "fr": "20 kV ; le transport se fait en 225 ou 400 kV, l'utilisation en 400 V.",
+   "en": "20 kV; transmission is at 225 or 400 kV, use at 400 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "20 kV",
+     "en": "20 kV"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "400 V",
+     "en": "400 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "400 kV",
+     "en": "400 kV"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x02",
+  "section": "01-reseau",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel courant faut-il pour transporter 200 kW en triphasé 400 V, avec cos φ = 1 ? (exemple : 2,5 A)",
+   "en": "What current is needed to carry 200 kW in three-phase 400 V, with cos φ = 1? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = 200 000 / (1,732 × 400) ≈ 289 A.",
+   "en": "I = 200,000 / (1.732 × 400) ≈ 289 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "288.675",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-x03",
+  "section": "02-postes-tableaux",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que désigne le TGBT ?",
+   "en": "What is the main LV board (TGBT)?"
+  },
+  "explanation": {
+   "fr": "Le tableau général basse tension, qui répartit l'énergie du transformateur entre les départs.",
+   "en": "The main low-voltage board, which shares the transformer's energy among the feeders."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le tableau général basse tension",
+     "en": "The main low-voltage board"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un type de moteur",
+     "en": "A type of motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un transformateur de mesure",
+     "en": "An instrument transformer"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x04",
+  "section": "03-puissances",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "P = 120 kW et Q = 90 kvar. Quelle est la puissance apparente ? (exemple : 2,5 kVA)",
+   "en": "P = 120 kW and Q = 90 kvar. What is the apparent power? (example: 2.5 kVA)"
+  },
+  "explanation": {
+   "fr": "S = √(120² + 90²) = 150 kVA.",
+   "en": "S = √(120² + 90²) = 150 kVA."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "150000",
+   "unit": "VA",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-x05",
+  "section": "03-puissances",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "P = 60 kW et S = 75 kVA. Quel est le facteur de puissance cos φ ? (exemple : 0,5)",
+   "en": "P = 60 kW and S = 75 kVA. What is the power factor cos φ? (example: 0.5)"
+  },
+  "explanation": {
+   "fr": "cos φ = P / S = 60 / 75 = 0,8.",
+   "en": "cos φ = P / S = 60 / 75 = 0.8."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.8",
+   "unit": "",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-x06",
+  "section": "03-puissances",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "À quoi sert la puissance réactive absorbée par un moteur ?",
+   "en": "What is the reactive power drawn by a motor used for?"
+  },
+  "explanation": {
+   "fr": "À créer son champ magnétique ; elle va et vient sans être consommée.",
+   "en": "To create its magnetic field; it flows back and forth without being consumed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "À magnétiser le moteur",
+     "en": "To magnetise the motor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À produire le couple utile",
+     "en": "To produce the output torque"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "À chauffer les enroulements",
+     "en": "To heat the windings"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x07",
+  "section": "04-transformateur",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un transformateur a un courant assigné de 1 000 A au secondaire et ucc = 6 %. Quel est le courant de court-circuit ? (exemple : 2,5 kA)",
+   "en": "A transformer has a rated secondary current of 1,000 A and ucc = 6 %. What is the short-circuit current? (example: 2.5 kA)"
+  },
+  "explanation": {
+   "fr": "Icc ≈ In / ucc = 1 000 / 0,06 ≈ 16,7 kA.",
+   "en": "Isc ≈ In / ucc = 1,000 / 0.06 ≈ 16.7 kA."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "16666.7",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m3-x08",
+  "section": "04-transformateur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quand le rendement d'un transformateur est-il maximal ?",
+   "en": "When is a transformer's efficiency highest?"
+  },
+  "explanation": {
+   "fr": "Quand les pertes cuivre, qui croissent avec la charge, égalent les pertes fer, constantes.",
+   "en": "When the copper losses, which grow with load, equal the constant iron losses."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Quand pertes cuivre et pertes fer sont égales",
+     "en": "When copper and iron losses are equal"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À vide",
+     "en": "At no load"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "En surcharge",
+     "en": "When overloaded"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x09",
+  "section": "05-couplages",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelles tensions offre le secondaire d'un transformateur Dyn11 de distribution ?",
+   "en": "Which voltages does the secondary of a Dyn11 distribution transformer offer?"
+  },
+  "explanation": {
+   "fr": "Étoile avec neutre : 400 V entre phases et 230 V entre phase et neutre.",
+   "en": "Star with neutral: 400 V line-to-line and 230 V line-to-neutral."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "400 V et 230 V",
+     "en": "400 V and 230 V"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "400 V seulement",
+     "en": "400 V only"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "20 kV et 400 V",
+     "en": "20 kV and 400 V"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x10",
+  "section": "05-couplages",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : deux transformateurs d'indices horaires différents peuvent être mis en parallèle.",
+   "en": "True or false: two transformers with different clock numbers can be paralleled."
+  },
+  "explanation": {
+   "fr": "Faux : leurs tensions seraient décalées et un courant de circulation énorme apparaîtrait.",
+   "en": "False: their voltages would be shifted and a huge circulating current would appear."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x11",
+  "section": "06-mesure-commande",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Qu'apporte un transformateur de commande 400 V / 24 V ?",
+   "en": "What does a 400 V / 24 V control transformer bring?"
+  },
+  "explanation": {
+   "fr": "L'isolement du réseau et une très basse tension pour la commande.",
+   "en": "Isolation from the supply and an extra-low voltage for the control."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Isolement et très basse tension",
+     "en": "Isolation and extra-low voltage"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Plus de puissance au moteur",
+     "en": "More power to the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une compensation de cos φ",
+     "en": "Power factor correction"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m3-x12",
+  "section": "06-mesure-commande",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un TC 100/5 A alimente un ampèremètre qui lit 2,5 A. Quel courant circule dans le conducteur ? (exemple : 2,5 A)",
+   "en": "A 100/5 A CT feeds an ammeter reading 2.5 A. What current flows in the conductor? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = 2,5 × 100 / 5 = 50 A.",
+   "en": "I = 2.5 × 100 / 5 = 50 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "50",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ }
+]

@@ -1,0 +1,1056 @@
+[
+ {
+  "id": "m-p1-m2-q01",
+  "section": "01-symboles-cei",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'est-ce qu'un contact à fermeture ?",
+   "en": "What is a make contact?"
+  },
+  "explanation": {
+   "fr": "Il est ouvert au repos et se ferme quand l'appareil est actionné (on dit aussi normalement ouvert).",
+   "en": "It is open at rest and closes when the device is operated (also called normally open)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Ouvert au repos, fermé quand l'appareil est actionné",
+     "en": "Open at rest, closed when the device is operated"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Fermé au repos, ouvert quand l'appareil est actionné",
+     "en": "Closed at rest, open when the device is operated"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Toujours fermé",
+     "en": "Always closed"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q02",
+  "section": "01-symboles-cei",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : sur un schéma, les contacts sont dessinés appareils actionnés.",
+   "en": "True or false: on a diagram, contacts are drawn with the devices operated."
+  },
+  "explanation": {
+   "fr": "Faux : ils sont toujours dessinés au repos, bobines non alimentées et boutons relâchés.",
+   "en": "False: they are always drawn at rest, coils de-energised and buttons released."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q03",
+  "section": "01-symboles-cei",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une croix sur le contact fixe d'un pôle de puissance désigne :",
+   "en": "A cross on the fixed contact of a power pole indicates:"
+  },
+  "explanation": {
+   "fr": "Un disjoncteur ; un trait désigne un sectionneur, un demi-cercle un contacteur.",
+   "en": "A circuit breaker; a bar indicates an isolator, a half-circle a contactor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un disjoncteur",
+     "en": "A circuit breaker"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un sectionneur",
+     "en": "An isolator"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un contacteur",
+     "en": "A contactor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q04",
+  "section": "02-reperage",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque repère à ce qu'il désigne.",
+   "en": "Match each marking with what it designates."
+  },
+  "explanation": {
+   "fr": "13-14 : contact à fermeture ; 21-22 : contact à ouverture ; A1-A2 : bobine ; 95-96 : contact du relais thermique.",
+   "en": "13-14: make contact; 21-22: break contact; A1-A2: coil; 95-96: overload relay contact."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "13-14",
+     "en": "13-14"
+    },
+    "right": {
+     "fr": "Contact à fermeture",
+     "en": "Make contact"
+    }
+   },
+   {
+    "left": {
+     "fr": "21-22",
+     "en": "21-22"
+    },
+    "right": {
+     "fr": "Contact à ouverture",
+     "en": "Break contact"
+    }
+   },
+   {
+    "left": {
+     "fr": "A1-A2",
+     "en": "A1-A2"
+    },
+    "right": {
+     "fr": "Bobine",
+     "en": "Coil"
+    }
+   },
+   {
+    "left": {
+     "fr": "95-96",
+     "en": "95-96"
+    },
+    "right": {
+     "fr": "Contact du relais thermique",
+     "en": "Overload relay contact"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q05",
+  "section": "02-reperage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle lettre désigne un contacteur sur un schéma ?",
+   "en": "Which letter designates a contactor on a diagram?"
+  },
+  "explanation": {
+   "fr": "KM ; Q désigne le sectionnement et la protection de puissance, F les protections, S les boutons.",
+   "en": "KM; Q designates power isolation and protection, F protection devices, S buttons."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "KM",
+     "en": "KM"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "S",
+     "en": "S"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "H",
+     "en": "H"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q06",
+  "section": "03-puissance-commande",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À quoi sert le contact 13-14 du contacteur placé en parallèle sur le bouton marche ?",
+   "en": "What is the contactor's 13-14 contact in parallel with the start button for?"
+  },
+  "explanation": {
+   "fr": "C'est l'auto-maintien : il garde la bobine alimentée quand on relâche le bouton marche.",
+   "en": "It is the hold-in: it keeps the coil energised when the start button is released."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Garder la bobine alimentée après avoir relâché marche",
+     "en": "Keep the coil energised after releasing start"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Protéger le moteur des surcharges",
+     "en": "Protect the motor against overloads"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Inverser le sens de rotation",
+     "en": "Reverse the direction of rotation"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q07",
+  "section": "03-puissance-commande",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : le bouton d'arrêt S1 est un contact à fermeture.",
+   "en": "True or false: the stop button S1 is a make contact."
+  },
+  "explanation": {
+   "fr": "Faux : il est à ouverture, en série dans le chemin de la bobine ; l'actionner coupe ce chemin.",
+   "en": "False: it is a break contact, in series in the coil's path; pressing it cuts the path."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q08",
+  "section": "04-cablage-unifilaire",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur un schéma unifilaire, un trait barré de trois petits traits représente :",
+   "en": "On a single-line diagram, a line crossed by three small strokes represents:"
+  },
+  "explanation": {
+   "fr": "Trois conducteurs, ici les trois phases.",
+   "en": "Three conductors, here the three phases."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Trois conducteurs",
+     "en": "Three conductors"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Trois moteurs",
+     "en": "Three motors"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une tension de 3 V",
+     "en": "A voltage of 3 V"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q09",
+  "section": "05-raccordement",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur est couplé en étoile sur un réseau 400 V entre phases. Quelle tension reçoit chaque enroulement ? (exemple : 12 V)",
+   "en": "A motor is star-connected on a 400 V line-to-line supply. What voltage does each winding get? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "En étoile, chaque enroulement reçoit U / √3 = 400 / 1,732 ≈ 231 V.",
+   "en": "In star, each winding gets U / √3 = 400 / 1.732 ≈ 231 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "230.94",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m2-q10",
+  "section": "05-raccordement",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Cliquez sur la plaque à bornes couplée en triangle.",
+   "en": "Click the terminal plate connected in delta."
+  },
+  "explanation": {
+   "fr": "Le triangle se reconnaît à ses trois barrettes verticales ; la barrette horizontale du bas fait l'étoile ; celle du haut est une erreur de câblage.",
+   "en": "Delta is recognised by its three vertical links; the bottom horizontal link makes the star; the top one is a wiring mistake."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Plaque du milieu",
+     "en": "Middle plate"
+    },
+    "correct": true,
+    "shape": {
+     "x": 240,
+     "y": 40,
+     "w": 140,
+     "h": 130
+    }
+   },
+   {
+    "text": {
+     "fr": "Plaque de gauche",
+     "en": "Left plate"
+    },
+    "correct": false,
+    "shape": {
+     "x": 40,
+     "y": 40,
+     "w": 140,
+     "h": 130
+    }
+   },
+   {
+    "text": {
+     "fr": "Plaque de droite",
+     "en": "Right plate"
+    },
+    "correct": false,
+    "shape": {
+     "x": 440,
+     "y": 40,
+     "w": 140,
+     "h": 130
+    }
+   }
+  ],
+  "svg": "schemas/m2-plaques.svg"
+ },
+ {
+  "id": "m-p1-m2-q11",
+  "section": "05-raccordement",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment inverse-t-on le sens de rotation d'un moteur triphasé ?",
+   "en": "How is the direction of a three-phase motor reversed?"
+  },
+  "explanation": {
+   "fr": "En permutant deux phases à l'arrivée ; le couplage ne change pas.",
+   "en": "By swapping two phases at the input; the connection does not change."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "En permutant deux phases",
+     "en": "By swapping two phases"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "En passant d'étoile en triangle",
+     "en": "By changing from star to delta"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "En inversant A1 et A2",
+     "en": "By swapping A1 and A2"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q12",
+  "section": "06-plaque",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Plaque : 4 kW, 400 V, cos φ 0,85, rendement 86 %. Quel courant absorbe le moteur ? (exemple : 2,5 A)",
+   "en": "Plate: 4 kW, 400 V, cos φ 0.85, efficiency 86 %. What current does the motor draw? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = P / (√3 × U × cos φ × η) = 4 000 / (1,732 × 400 × 0,85 × 0,86) ≈ 7,9 A.",
+   "en": "I = P / (√3 × U × cos φ × η) = 4,000 / (1.732 × 400 × 0.85 × 0.86) ≈ 7.9 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "7.89809",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m2-q13",
+  "section": "06-plaque",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur de vitesse de synchronisme 1 500 tr/min tourne à 1 440 tr/min en charge. Quel est son glissement ? (exemple : 2,5 %)",
+   "en": "A motor with a synchronous speed of 1,500 rpm turns at 1,440 rpm on load. What is its slip? (example: 2.5 %)"
+  },
+  "explanation": {
+   "fr": "g = (1 500 − 1 440) / 1 500 = 0,04, soit 4 %.",
+   "en": "s = (1,500 − 1,440) / 1,500 = 0.04, that is 4 %."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "4",
+   "unit": "%",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m2-q14",
+  "section": "06-plaque",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "La puissance indiquée sur la plaque d'un moteur est :",
+   "en": "The power on a motor's nameplate is:"
+  },
+  "explanation": {
+   "fr": "La puissance utile, mécanique, disponible sur l'arbre.",
+   "en": "The output power, mechanical, available on the shaft."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "La puissance mécanique utile sur l'arbre",
+     "en": "The mechanical output power on the shaft"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La puissance électrique absorbée",
+     "en": "The electrical input power"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La puissance réactive",
+     "en": "The reactive power"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-q15",
+  "section": "07-demarreurs",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi un démarreur à contacteur ne redémarre-t-il pas seul après une coupure de courant ?",
+   "en": "Why does a contactor starter not restart by itself after a power cut?"
+  },
+  "explanation": {
+   "fr": "La bobine n'est plus alimentée, le contacteur retombe et l'auto-maintien est perdu : il faut appuyer de nouveau sur marche.",
+   "en": "The coil loses its supply, the contactor drops out and the hold-in is lost: start must be pressed again."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le contacteur retombe et perd son auto-maintien",
+     "en": "The contactor drops out and loses its hold-in"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le relais thermique reste déclenché",
+     "en": "The overload relay stays tripped"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le sectionneur s'ouvre",
+     "en": "The isolator opens"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x01",
+  "section": "01-symboles-cei",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un demi-cercle sur le contact fixe d'un pôle de puissance désigne :",
+   "en": "A half-circle on the fixed contact of a power pole indicates:"
+  },
+  "explanation": {
+   "fr": "Un contacteur.",
+   "en": "A contactor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un contacteur",
+     "en": "A contactor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un disjoncteur",
+     "en": "A circuit breaker"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un fusible",
+     "en": "A fuse"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x02",
+  "section": "02-reperage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que désigne le repère 33-34 ?",
+   "en": "What does the marking 33-34 designate?"
+  },
+  "explanation": {
+   "fr": "Premier chiffre 3 : troisième contact de l'appareil ; second chiffre 3-4 : à fermeture.",
+   "en": "First digit 3: third contact of the device; second digits 3-4: make contact."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le troisième contact, à fermeture",
+     "en": "The third contact, make"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le troisième contact, à ouverture",
+     "en": "The third contact, break"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une bobine",
+     "en": "A coil"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x03",
+  "section": "02-reperage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Sur la plaque à bornes, quelle borne se trouve sous U1 ?",
+   "en": "On the terminal plate, which terminal is below U1?"
+  },
+  "explanation": {
+   "fr": "W2 : les sorties sont décalées d'un cran pour permettre le couplage triangle avec des barrettes droites.",
+   "en": "W2: the outputs are offset by one place so that delta can be made with straight links."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "W2",
+     "en": "W2"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "U2",
+     "en": "U2"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "V2",
+     "en": "V2"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x04",
+  "section": "03-puissance-commande",
+  "type": "multiple",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quels éléments figurent sur le schéma de puissance d'un démarrage direct ?",
+   "en": "Which items appear on the power circuit of a direct-on-line starter?"
+  },
+  "explanation": {
+   "fr": "Sectionneur, pôles du contacteur, relais thermique et moteur ; boutons et bobine appartiennent à la commande.",
+   "en": "Isolator, contactor poles, overload relay and motor; buttons and coil belong to the control circuit."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le sectionneur Q1",
+     "en": "Isolator Q1"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Les pôles du contacteur KM1",
+     "en": "The poles of contactor KM1"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le relais thermique F1",
+     "en": "Overload relay F1"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le bouton marche S2",
+     "en": "Start button S2"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La bobine KM1",
+     "en": "Coil KM1"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x05",
+  "section": "03-puissance-commande",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "En cas de surcharge, comment le moteur s'arrête-t-il ?",
+   "en": "On overload, how does the motor stop?"
+  },
+  "explanation": {
+   "fr": "Le contact 95-96 du relais thermique s'ouvre dans la commande, la bobine KM1 retombe et ses pôles coupent le moteur.",
+   "en": "Contact 95-96 of the overload relay opens in the control circuit, coil KM1 drops out and its poles cut the motor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le contact 95-96 coupe la bobine du contacteur",
+     "en": "Contact 95-96 cuts the contactor coil"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le sectionneur s'ouvre tout seul",
+     "en": "The isolator opens by itself"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le moteur se met en étoile",
+     "en": "The motor switches to star"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x06",
+  "section": "04-cablage-unifilaire",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel schéma utilise-t-on pour comprendre et dépanner un équipement ?",
+   "en": "Which diagram is used to understand and troubleshoot equipment?"
+  },
+  "explanation": {
+   "fr": "Le schéma développé ; le câblage sert à câbler, le synoptique à expliquer.",
+   "en": "The circuit diagram; the wiring diagram is for wiring, the block diagram for explaining."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le schéma développé",
+     "en": "The circuit diagram"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le schéma de câblage",
+     "en": "The wiring diagram"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le synoptique",
+     "en": "The block diagram"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x07",
+  "section": "05-raccordement",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur 400 V Δ / 690 V Y est couplé en étoile sur un réseau 690 V. Quelle tension reçoit chaque enroulement ? (exemple : 12 V)",
+   "en": "A 400 V Δ / 690 V Y motor is star-connected on a 690 V supply. What voltage does each winding get? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "U / √3 = 690 / 1,732 ≈ 398 V, soit la tension d'un enroulement, 400 V.",
+   "en": "U / √3 = 690 / 1.732 ≈ 398 V, the winding voltage, 400 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "398.372",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m2-x08",
+  "section": "05-raccordement",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur 400 V Δ / 690 V Y est raccordé sur un réseau 400 V. Quel couplage ?",
+   "en": "A 400 V Δ / 690 V Y motor is connected to a 400 V supply. Which connection?"
+  },
+  "explanation": {
+   "fr": "Chaque enroulement supporte 400 V : sur 400 V, on le met directement entre phases, en triangle.",
+   "en": "Each winding takes 400 V: on 400 V, it goes directly between phases, in delta."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Triangle",
+     "en": "Delta"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Étoile",
+     "en": "Star"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucun, le moteur ne convient pas",
+     "en": "None, the motor is unsuitable"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x09",
+  "section": "06-plaque",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Plaque : 7,5 kW, 400 V, cos φ 0,84, rendement 88 %. Quel courant absorbe le moteur ? (exemple : 2,5 A)",
+   "en": "Plate: 7.5 kW, 400 V, cos φ 0.84, efficiency 88 %. What current does the motor draw? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = 7 500 / (1,732 × 400 × 0,84 × 0,88) ≈ 14,6 A.",
+   "en": "I = 7,500 / (1.732 × 400 × 0.84 × 0.88) ≈ 14.6 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "14.6446",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p1-m2-x10",
+  "section": "06-plaque",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que garantit l'indice IP55 ?",
+   "en": "What does the IP55 rating guarantee?"
+  },
+  "explanation": {
+   "fr": "Une protection contre les poussières (5) et contre les jets d'eau (5).",
+   "en": "Protection against dust (5) and water jets (5)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une protection contre les poussières et les jets d'eau",
+     "en": "Protection against dust and water jets"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une puissance de 55 kW",
+     "en": "A power of 55 kW"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une température maximale de 55 °C",
+     "en": "A maximum temperature of 55 °C"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x11",
+  "section": "07-demarreurs",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : un disjoncteur-moteur protège à la fois contre les courts-circuits et contre les surcharges.",
+   "en": "True or false: a motor circuit breaker protects against both short circuits and overloads."
+  },
+  "explanation": {
+   "fr": "Vrai : il réunit un déclencheur magnétique et un déclencheur thermique réglable.",
+   "en": "True: it combines a magnetic trip and an adjustable thermal trip."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p1-m2-x12",
+  "section": "07-demarreurs",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Contre quoi le relais thermique protège-t-il le moteur ?",
+   "en": "What does the overload relay protect the motor against?"
+  },
+  "explanation": {
+   "fr": "Contre les surcharges prolongées, qui échauffent les enroulements ; les courts-circuits relèvent du disjoncteur ou des fusibles.",
+   "en": "Against prolonged overloads, which heat the windings; short circuits are for the breaker or fuses."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Les surcharges prolongées",
+     "en": "Prolonged overloads"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Les courts-circuits francs",
+     "en": "Bolted short circuits"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Les contacts directs",
+     "en": "Direct contacts"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

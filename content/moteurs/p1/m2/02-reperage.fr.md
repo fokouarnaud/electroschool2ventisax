@@ -1,0 +1,24 @@
+Chaque borne d'un appareil porte un **repère** gravé, et le schéma reprend ces repères. C'est grâce à eux qu'on câble et qu'on dépanne sans erreur.
+
+## Les repères des contacts
+
+![Repères CEI : pôles de puissance 1-2, 3-4, 5-6 ; contact à fermeture 13-14 ; contact à ouverture 21-22 ; bobine A1-A2 ; relais thermique 95-96 et 97-98](/static/content/moteurs/m2/contacts.svg)
+
+- **Pôles de puissance** : chiffres simples, 1-2, 3-4, 5-6 (entrée impaire, sortie paire).
+- **Contacts auxiliaires** : deux chiffres. Le premier est un **numéro d'ordre** (1er, 2e contact de l'appareil), le second dit la **fonction** : 3-4 pour un contact **à fermeture**, 1-2 pour un contact **à ouverture**. D'où 13-14 (premier contact, à fermeture), 21-22 (deuxième contact, à ouverture), 33-34, 43-44…
+- **Bobine** : A1 et A2.
+- **Relais thermique** : 95-96 (contact à ouverture qui coupe la commande) et 97-98 (contact à fermeture qui allume un voyant de défaut).
+
+Les appareils eux-mêmes portent une lettre : **Q** pour les appareils de sectionnement et de protection de puissance, **KM** pour les contacteurs, **F** pour les protections (relais thermique, fusibles), **S** pour les boutons, **H** pour les voyants, **M** pour les moteurs.
+
+## La plaque à bornes du moteur
+
+![Plaque à bornes : entrées U1 V1 W1 en haut, sorties W2 U2 V2 en bas, décalées d'un cran](/static/content/moteurs/m2/bornes.svg)
+
+Un moteur triphasé a trois enroulements : U1-U2, V1-V2, W1-W2. Sur la plaque, les sorties sont **décalées** (W2 sous U1, U2 sous V1, V2 sous W1) : ce décalage permet de réaliser les couplages étoile et triangle avec de simples barrettes droites (section 5).
+
+## À retenir
+
+- 13-14 à fermeture, 21-22 à ouverture, A1-A2 bobine, 95-96 relais thermique.
+- Q, KM, F, S, H, M : la lettre dit la fonction de l'appareil.
+- Plaque à bornes : U1 V1 W1 en haut, W2 U2 V2 en bas.
