@@ -1,0 +1,1001 @@
+[
+ {
+  "id": "m-p2-m6-q01",
+  "section": "01-champ-tournant",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle est la vitesse de synchronisme d'un moteur à 6 pôles sur le réseau 50 Hz ? (exemple : 1450 tr/min)",
+   "en": "What is the synchronous speed of a 6-pole motor on the 50 Hz supply? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "6 pôles, donc p = 3 : ns = 60 × 50 / 3 = 1 000 tr/min.",
+   "en": "6 poles, so p = 3: ns = 60 × 50 / 3 = 1,000 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "1000",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-q02",
+  "section": "01-champ-tournant",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : permuter deux phases inverse le sens de rotation d'un moteur triphasé.",
+   "en": "True or false: swapping two phases reverses a three-phase motor's direction."
+  },
+  "explanation": {
+   "fr": "Vrai : le champ tourne dans l'autre sens.",
+   "en": "True: the field rotates the other way."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q03",
+  "section": "02-asynchrone",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur de vitesse de synchronisme 3 000 tr/min tourne à 2 910 tr/min. Quel est son glissement ? (exemple : 2,5 %)",
+   "en": "A motor with a synchronous speed of 3,000 rpm turns at 2,910 rpm. What is its slip? (example: 2.5 %)"
+  },
+  "explanation": {
+   "fr": "g = (3 000 − 2 910) / 3 000 = 0,03, soit 3 %.",
+   "en": "s = (3,000 − 2,910) / 3,000 = 0.03, that is 3 %."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "3",
+   "unit": "%",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-q04",
+  "section": "02-asynchrone",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi le rotor d'un moteur asynchrone tourne-t-il moins vite que le champ ?",
+   "en": "Why does an induction motor's rotor turn slower than the field?"
+  },
+  "explanation": {
+   "fr": "S'il tournait à la vitesse du champ, ses barres ne seraient plus balayées : plus de courant induit, plus de couple.",
+   "en": "If it turned at the field's speed, its bars would no longer be swept: no induced current, no torque."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Sans écart, plus de courant induit donc plus de couple",
+     "en": "Without a difference, no induced current so no torque"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À cause du frottement des balais",
+     "en": "Because of brush friction"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Parce que le réseau est en 50 Hz",
+     "en": "Because the supply is 50 Hz"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q05",
+  "section": "02-asynchrone",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur ce moteur éclaté, cliquez sur le rotor.",
+   "en": "On this exploded motor, click the rotor."
+  },
+  "explanation": {
+   "fr": "Le rotor est la pièce du milieu, la cage sur son arbre ; à gauche le stator, à droite le flasque et le ventilateur.",
+   "en": "The rotor is the middle part, the cage on its shaft; on the left the stator, on the right the end shield and the fan."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pièce du milieu",
+     "en": "Middle part"
+    },
+    "correct": true,
+    "shape": {
+     "x": 240,
+     "y": 70,
+     "w": 150,
+     "h": 90
+    }
+   },
+   {
+    "text": {
+     "fr": "Pièce de gauche",
+     "en": "Left part"
+    },
+    "correct": false,
+    "shape": {
+     "x": 30,
+     "y": 50,
+     "w": 170,
+     "h": 130
+    }
+   },
+   {
+    "text": {
+     "fr": "Pièce de droite",
+     "en": "Right part"
+    },
+    "correct": false,
+    "shape": {
+     "x": 440,
+     "y": 70,
+     "w": 100,
+     "h": 90
+    }
+   }
+  ],
+  "svg": "schemas/m6-rotor.svg"
+ },
+ {
+  "id": "m-p2-m6-q06",
+  "section": "02-asynchrone",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Combien de fois son courant nominal un moteur asynchrone absorbe-t-il en démarrage direct ?",
+   "en": "How many times its rated current does an induction motor draw when started direct-on-line?"
+  },
+  "explanation": {
+   "fr": "Environ 5 à 8 fois.",
+   "en": "About 5 to 8 times."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "5 à 8 fois",
+     "en": "5 to 8 times"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "1 fois",
+     "en": "Once"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "50 fois",
+     "en": "50 times"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q07",
+  "section": "03-rotor-bobine-synchrone",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À quoi servent les résistances d'un moteur à rotor bobiné ?",
+   "en": "What are a wound-rotor motor's resistors for?"
+  },
+  "explanation": {
+   "fr": "Au démarrage, elles limitent le courant et augmentent le couple ; on les retire ensuite par étapes.",
+   "en": "At start-up, they limit the current and raise the torque; they are then removed in steps."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Limiter le courant et augmenter le couple au démarrage",
+     "en": "Limit current and raise torque at start-up"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Chauffer le moteur",
+     "en": "Heat the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Changer le nombre de pôles",
+     "en": "Change the number of poles"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q08",
+  "section": "03-rotor-bobine-synchrone",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À quelle vitesse tourne un moteur synchrone à 4 pôles sur le réseau 50 Hz ?",
+   "en": "At what speed does a 4-pole synchronous motor turn on the 50 Hz supply?"
+  },
+  "explanation": {
+   "fr": "Exactement à la vitesse de synchronisme, 1 500 tr/min, sans glissement.",
+   "en": "Exactly at synchronous speed, 1,500 rpm, with no slip."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "1 500 tr/min exactement",
+     "en": "Exactly 1,500 rpm"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un peu moins de 1 500 tr/min",
+     "en": "A little under 1,500 rpm"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "3 000 tr/min",
+     "en": "3,000 rpm"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q09",
+  "section": "04-monophases",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi un moteur monophasé à cage ne démarre-t-il pas seul ?",
+   "en": "Why does a single-phase cage motor not start by itself?"
+  },
+  "explanation": {
+   "fr": "Une seule phase crée un champ qui pulse sans tourner ; il faut un enroulement auxiliaire ou une bague de déphasage.",
+   "en": "A single phase creates a field that pulsates without rotating; an auxiliary winding or a shading ring is needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une seule phase ne crée pas de champ tournant",
+     "en": "A single phase creates no rotating field"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La tension est trop faible",
+     "en": "The voltage is too low"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il n'a pas de rotor",
+     "en": "It has no rotor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q10",
+  "section": "04-monophases",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : le moteur universel fonctionne en courant alternatif.",
+   "en": "True or false: the universal motor runs on AC."
+  },
+  "explanation": {
+   "fr": "Vrai : moteur série à collecteur, courant et champ s'inversent ensemble.",
+   "en": "True: a series commutator motor, current and field reverse together."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q11",
+  "section": "05-choix",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel est le couple utile d'un moteur de 4 kW qui tourne à 1 460 tr/min ? (exemple : 2,5 N·m)",
+   "en": "What is the output torque of a 4 kW motor turning at 1,460 rpm? (example: 2.5 N·m)"
+  },
+  "explanation": {
+   "fr": "C = P / ω = 4 000 / (2π × 1 460 / 60) ≈ 26,2 N·m.",
+   "en": "T = P / ω = 4,000 / (2π × 1,460 / 60) ≈ 26.2 N·m."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "26.1625",
+   "unit": "N·m",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-q12",
+  "section": "05-choix",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque marquage à sa signification.",
+   "en": "Match each marking with its meaning."
+  },
+  "explanation": {
+   "fr": "Classe B : 130 °C ; classe F : 155 °C ; classe H : 180 °C ; IP55 : protégé contre les poussières et les jets d'eau.",
+   "en": "Class B: 130 °C; class F: 155 °C; class H: 180 °C; IP55: protected against dust and water jets."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Classe B",
+     "en": "Class B"
+    },
+    "right": {
+     "fr": "130 °C au plus",
+     "en": "130 °C at most"
+    }
+   },
+   {
+    "left": {
+     "fr": "Classe F",
+     "en": "Class F"
+    },
+    "right": {
+     "fr": "155 °C au plus",
+     "en": "155 °C at most"
+    }
+   },
+   {
+    "left": {
+     "fr": "Classe H",
+     "en": "Class H"
+    },
+    "right": {
+     "fr": "180 °C au plus",
+     "en": "180 °C at most"
+    }
+   },
+   {
+    "left": {
+     "fr": "IP55",
+     "en": "IP55"
+    },
+    "right": {
+     "fr": "Poussières et jets d'eau",
+     "en": "Dust and water jets"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q13",
+  "section": "06-installation",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel conducteur doit toujours être raccordé dans la boîte à bornes ?",
+   "en": "Which conductor must always be connected in the terminal box?"
+  },
+  "explanation": {
+   "fr": "Le conducteur de protection PE, sur la borne de terre.",
+   "en": "The protective conductor PE, on the earth terminal."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le conducteur PE",
+     "en": "The PE conductor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le neutre",
+     "en": "The neutral"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucun en particulier",
+     "en": "None in particular"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q14",
+  "section": "07-maintenance",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "L'ohmmètre indique une résistance infinie entre V1 et V2. Que signifie-t-elle ?",
+   "en": "The ohmmeter shows an infinite resistance between V1 and V2. What does it mean?"
+  },
+  "explanation": {
+   "fr": "L'enroulement V est coupé.",
+   "en": "Winding V is open."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "L'enroulement V est coupé",
+     "en": "Winding V is open"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "L'enroulement V est en parfait état",
+     "en": "Winding V is in perfect condition"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Des spires sont en court-circuit",
+     "en": "Turns are shorted"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-q15",
+  "section": "02-asynchrone",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur de vitesse de synchronisme 1 500 tr/min a un glissement de 5 %. À quelle vitesse tourne-t-il ? (exemple : 1450 tr/min)",
+   "en": "A motor with a synchronous speed of 1,500 rpm has a slip of 5 %. At what speed does it turn? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "n = ns × (1 − g) = 1 500 × 0,95 = 1 425 tr/min.",
+   "en": "n = ns × (1 − s) = 1,500 × 0.95 = 1,425 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "1425",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-x01",
+  "section": "01-champ-tournant",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle est la vitesse de synchronisme d'un moteur à 2 pôles sur le réseau 50 Hz ? (exemple : 1450 tr/min)",
+   "en": "What is the synchronous speed of a 2-pole motor on the 50 Hz supply? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "p = 1 : ns = 60 × 50 / 1 = 3 000 tr/min.",
+   "en": "p = 1: ns = 60 × 50 / 1 = 3,000 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "3000",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-x02",
+  "section": "01-champ-tournant",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Qu'est-ce qui crée le champ tournant d'un moteur triphasé ?",
+   "en": "What creates a three-phase motor's rotating field?"
+  },
+  "explanation": {
+   "fr": "Trois enroulements décalés de 120° alimentés par trois courants décalés de 120°.",
+   "en": "Three windings offset by 120° fed with three currents offset by 120°."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Trois enroulements à 120° alimentés en triphasé",
+     "en": "Three windings at 120° fed with three-phase current"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le collecteur",
+     "en": "The commutator"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Des aimants qui tournent",
+     "en": "Rotating magnets"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x03",
+  "section": "02-asynchrone",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur à 6 pôles tourne à 960 tr/min sur le réseau 50 Hz. Quel est son glissement ? (exemple : 2,5 %)",
+   "en": "A 6-pole motor turns at 960 rpm on the 50 Hz supply. What is its slip? (example: 2.5 %)"
+  },
+  "explanation": {
+   "fr": "ns = 1 000 tr/min ; g = (1 000 − 960) / 1 000 = 4 %.",
+   "en": "ns = 1,000 rpm; s = (1,000 − 960) / 1,000 = 4 %."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "4",
+   "unit": "%",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-x04",
+  "section": "02-asynchrone",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "De quoi est fait un rotor à cage d'écureuil ?",
+   "en": "What is a squirrel-cage rotor made of?"
+  },
+  "explanation": {
+   "fr": "De barres conductrices reliées à chaque bout par un anneau de court-circuit.",
+   "en": "Conducting bars joined at each end by a short-circuiting ring."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "De barres reliées par deux anneaux",
+     "en": "Bars joined by two rings"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "D'aimants permanents",
+     "en": "Permanent magnets"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "D'un collecteur à lames",
+     "en": "A segmented commutator"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x05",
+  "section": "03-rotor-bobine-synchrone",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi remplace-t-on souvent aujourd'hui le moteur à rotor bobiné par un moteur à cage et un variateur ?",
+   "en": "Why is the wound-rotor motor often replaced today by a cage motor and a drive?"
+  },
+  "explanation": {
+   "fr": "Bagues et balais demandent de l'entretien ; le variateur offre lui aussi un démarrage doux à fort couple.",
+   "en": "Slip rings and brushes need maintenance; the drive also offers a soft, high-torque start."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Bagues et balais demandent de l'entretien",
+     "en": "Slip rings and brushes need maintenance"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il ne peut pas démarrer",
+     "en": "It cannot start"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il est interdit par la norme",
+     "en": "It is banned by the standard"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x06",
+  "section": "04-monophases",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur monophasé à condensateur grogne mais ne démarre pas. Que soupçonner d'abord ?",
+   "en": "A single-phase capacitor motor hums but does not start. What should be suspected first?"
+  },
+  "explanation": {
+   "fr": "Le condensateur (ou l'enroulement auxiliaire) : sans lui, pas de champ tournant au démarrage.",
+   "en": "The capacitor (or the auxiliary winding): without it, no rotating field at start-up."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le condensateur",
+     "en": "The capacitor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le presse-étoupe",
+     "en": "The cable gland"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La plaque signalétique",
+     "en": "The nameplate"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x07",
+  "section": "05-choix",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel est le couple utile d'un moteur de 11 kW qui tourne à 2 950 tr/min ? (exemple : 2,5 N·m)",
+   "en": "What is the output torque of an 11 kW motor turning at 2,950 rpm? (example: 2.5 N·m)"
+  },
+  "explanation": {
+   "fr": "C = 11 000 / (2π × 2 950 / 60) ≈ 35,6 N·m.",
+   "en": "T = 11,000 / (2π × 2,950 / 60) ≈ 35.6 N·m."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "35.6075",
+   "unit": "N·m",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m6-x08",
+  "section": "05-choix",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que désigne la classe IE3 ?",
+   "en": "What does class IE3 designate?"
+  },
+  "explanation": {
+   "fr": "Un rendement premium selon l'IEC 60034-30-1.",
+   "en": "Premium efficiency under IEC 60034-30-1."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un rendement premium",
+     "en": "Premium efficiency"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une classe d'isolation",
+     "en": "An insulation class"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un indice de protection",
+     "en": "A protection rating"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x09",
+  "section": "05-choix",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : une isolation qui travaille 10 °C au-dessus de sa limite voit sa durée de vie divisée par deux environ.",
+   "en": "True or false: insulation working 10 °C above its limit has its life roughly halved."
+  },
+  "explanation": {
+   "fr": "Vrai : c'est une règle pratique pour les isolants.",
+   "en": "True: this is a rule of thumb for insulation."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x10",
+  "section": "06-installation",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que provoque un défaut d'alignement de l'accouplement ?",
+   "en": "What does coupling misalignment cause?"
+  },
+  "explanation": {
+   "fr": "Des vibrations et l'usure des roulements et de l'accouplement.",
+   "en": "Vibration and wear of the bearings and coupling."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vibrations et usure des roulements",
+     "en": "Vibration and bearing wear"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une baisse de la tension réseau",
+     "en": "A drop in supply voltage"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une inversion du sens",
+     "en": "A reversal of direction"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x11",
+  "section": "07-maintenance",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que fait un moteur triphasé qui ne reçoit que deux phases ?",
+   "en": "What does a three-phase motor do when it gets only two phases?"
+  },
+  "explanation": {
+   "fr": "À l'arrêt, il ne démarre pas et grogne ; en marche, il chauffe très vite : la protection doit couper.",
+   "en": "At standstill, it does not start and hums; when running, it heats very quickly: the protection must trip."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il grogne et chauffe : la protection doit couper",
+     "en": "It hums and heats: the protection must trip"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il tourne normalement",
+     "en": "It runs normally"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il tourne deux fois plus vite",
+     "en": "It runs twice as fast"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m6-x12",
+  "section": "07-maintenance",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : dans cette formation, l'apprenant mesure l'isolement des enroulements au mégohmmètre.",
+   "en": "True or false: in this course, the learner measures winding insulation with an insulation tester."
+  },
+  "explanation": {
+   "fr": "Faux : cette mesure à tension élevée est réservée à un technicien habilité ; on se limite ici à l'ohmmètre.",
+   "en": "False: this high-voltage measurement is reserved for an authorised technician; here only the ohmmeter is used."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ }
+]

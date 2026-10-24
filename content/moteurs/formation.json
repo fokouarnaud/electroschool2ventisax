@@ -2,7 +2,10 @@
   "slug": "moteurs",
   "open": true,
   "icon": "engine",
-  "title": {"fr": "Moteurs électriques et commande", "en": "Electric motors and control"},
+  "title": {
+    "fr": "Moteurs électriques et commande",
+    "en": "Electric motors and control"
+  },
   "description": {
     "fr": "De la sécurité électrique aux variateurs et aux automates : lire les schémas, choisir et protéger un moteur, câbler sa commande. Conseillé après les Parties 1 et 2 de la formation Électronique.",
     "en": "From electrical safety to drives and PLCs: read diagrams, choose and protect a motor, wire its control. Recommended after Parts 1 and 2 of the Electronics course."
@@ -11,7 +14,10 @@
     {
       "slug": "p1",
       "order": 1,
-      "title": {"fr": "Sécurité, schémas et distribution", "en": "Safety, diagrams and distribution"},
+      "title": {
+        "fr": "Sécurité, schémas et distribution",
+        "en": "Safety, diagrams and distribution"
+      },
       "description": {
         "fr": "Les bases de tout travail sur un moteur : se protéger, lire un schéma et une plaque signalétique, comprendre d'où vient l'énergie.",
         "en": "The basics of any work on a motor: protect yourself, read a diagram and a nameplate, understand where the energy comes from."
@@ -20,7 +26,10 @@
         {
           "order": 1,
           "dir": "p1/m1",
-          "title": {"fr": "La sécurité électrique", "en": "Electrical safety"},
+          "title": {
+            "fr": "La sécurité électrique",
+            "en": "Electrical safety"
+          },
           "duration_hours": 8,
           "competence": {
             "fr": "Évaluer le danger d'un courant, choisir ses protections et consigner un équipement avant d'y travailler.",
@@ -31,19 +40,78 @@
             "en": "Module quiz, then locking out a 24 V bench in front of the trainer."
           },
           "sections": [
-            {"order": 1, "file": "01-effets-courant", "kind": "content", "title": {"fr": "Les effets du courant sur le corps humain", "en": "Effects of current on the human body"}},
-            {"order": 2, "file": "02-arc-epi", "kind": "content", "title": {"fr": "L'arc électrique et les équipements de protection", "en": "Arc flash and protective equipment"}},
-            {"order": 3, "file": "03-protection-personnes", "kind": "content", "title": {"fr": "Protéger les personnes : terre et DDR 30 mA", "en": "Protecting people: earth and 30 mA RCD"}},
-            {"order": 4, "file": "04-liaisons-terre", "kind": "content", "title": {"fr": "Les schémas de liaison à la terre TT, TN, IT", "en": "Earthing systems TT, TN, IT"}},
-            {"order": 5, "file": "05-consignation", "kind": "content", "title": {"fr": "Consigner et vérifier l'absence de tension", "en": "Lock out and check for absence of voltage"}},
-            {"order": 6, "file": "06-normes-habilitation", "kind": "content", "title": {"fr": "Normes, organismes et habilitation", "en": "Standards, bodies and authorisation"}},
-            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : consigner un banc 24 V", "en": "Mini-project: lock out a 24 V bench"}}
+            {
+              "order": 1,
+              "file": "01-effets-courant",
+              "kind": "content",
+              "title": {
+                "fr": "Les effets du courant sur le corps humain",
+                "en": "Effects of current on the human body"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-arc-epi",
+              "kind": "content",
+              "title": {
+                "fr": "L'arc électrique et les équipements de protection",
+                "en": "Arc flash and protective equipment"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-protection-personnes",
+              "kind": "content",
+              "title": {
+                "fr": "Protéger les personnes : terre et DDR 30 mA",
+                "en": "Protecting people: earth and 30 mA RCD"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-liaisons-terre",
+              "kind": "content",
+              "title": {
+                "fr": "Les schémas de liaison à la terre TT, TN, IT",
+                "en": "Earthing systems TT, TN, IT"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-consignation",
+              "kind": "content",
+              "title": {
+                "fr": "Consigner et vérifier l'absence de tension",
+                "en": "Lock out and check for absence of voltage"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-normes-habilitation",
+              "kind": "content",
+              "title": {
+                "fr": "Normes, organismes et habilitation",
+                "en": "Standards, bodies and authorisation"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : consigner un banc 24 V",
+                "en": "Mini-project: lock out a 24 V bench"
+              }
+            }
           ]
         },
         {
           "order": 2,
           "dir": "p1/m2",
-          "title": {"fr": "Lire les schémas et les plaques signalétiques", "en": "Reading diagrams and nameplates"},
+          "title": {
+            "fr": "Lire les schémas et les plaques signalétiques",
+            "en": "Reading diagrams and nameplates"
+          },
           "duration_hours": 8,
           "competence": {
             "fr": "Lire un schéma de puissance et de commande CEI, repérer bornes et contacts, et exploiter la plaque d'un moteur.",
@@ -54,20 +122,87 @@
             "en": "Module quiz, then wiring a 24 V lamp circuit from a diagram."
           },
           "sections": [
-            {"order": 1, "file": "01-symboles-cei", "kind": "content", "title": {"fr": "Les symboles CEI de l'appareillage", "en": "IEC symbols for switchgear"}},
-            {"order": 2, "file": "02-reperage", "kind": "content", "title": {"fr": "Repérer les bornes et les contacts", "en": "Marking terminals and contacts"}},
-            {"order": 3, "file": "03-puissance-commande", "kind": "content", "title": {"fr": "Schéma de puissance et schéma de commande", "en": "Power circuit and control circuit"}},
-            {"order": 4, "file": "04-cablage-unifilaire", "kind": "content", "title": {"fr": "Schémas de câblage, unifilaire et synoptique", "en": "Wiring, single-line and block diagrams"}},
-            {"order": 5, "file": "05-raccordement", "kind": "content", "title": {"fr": "Raccorder un moteur : étoile ou triangle", "en": "Connecting a motor: star or delta"}},
-            {"order": 6, "file": "06-plaque", "kind": "content", "title": {"fr": "La plaque signalétique", "en": "The nameplate"}},
-            {"order": 7, "file": "07-demarreurs", "kind": "content", "title": {"fr": "Démarreurs manuels et télécommandés", "en": "Manual and remote-controlled starters"}},
-            {"order": 8, "file": "08-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : câbler d'après un schéma", "en": "Mini-project: wire from a diagram"}}
+            {
+              "order": 1,
+              "file": "01-symboles-cei",
+              "kind": "content",
+              "title": {
+                "fr": "Les symboles CEI de l'appareillage",
+                "en": "IEC symbols for switchgear"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-reperage",
+              "kind": "content",
+              "title": {
+                "fr": "Repérer les bornes et les contacts",
+                "en": "Marking terminals and contacts"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-puissance-commande",
+              "kind": "content",
+              "title": {
+                "fr": "Schéma de puissance et schéma de commande",
+                "en": "Power circuit and control circuit"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-cablage-unifilaire",
+              "kind": "content",
+              "title": {
+                "fr": "Schémas de câblage, unifilaire et synoptique",
+                "en": "Wiring, single-line and block diagrams"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-raccordement",
+              "kind": "content",
+              "title": {
+                "fr": "Raccorder un moteur : étoile ou triangle",
+                "en": "Connecting a motor: star or delta"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-plaque",
+              "kind": "content",
+              "title": {
+                "fr": "La plaque signalétique",
+                "en": "The nameplate"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-demarreurs",
+              "kind": "content",
+              "title": {
+                "fr": "Démarreurs manuels et télécommandés",
+                "en": "Manual and remote-controlled starters"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : câbler d'après un schéma",
+                "en": "Mini-project: wire from a diagram"
+              }
+            }
           ]
         },
         {
           "order": 3,
           "dir": "p1/m3",
-          "title": {"fr": "Transformateurs et distribution", "en": "Transformers and distribution"},
+          "title": {
+            "fr": "Transformateurs et distribution",
+            "en": "Transformers and distribution"
+          },
           "duration_hours": 10,
           "competence": {
             "fr": "Suivre l'énergie du réseau au moteur, dimensionner un transformateur et calculer une compensation d'énergie réactive.",
@@ -78,13 +213,338 @@
             "en": "Module quiz, then measurements on the secondary of a moulded 12 V transformer."
           },
           "sections": [
-            {"order": 1, "file": "01-reseau", "kind": "content", "title": {"fr": "Du réseau au moteur", "en": "From the grid to the motor"}},
-            {"order": 2, "file": "02-postes-tableaux", "kind": "content", "title": {"fr": "Postes, tableaux et centres de commande", "en": "Substations, switchboards and control centres"}},
-            {"order": 3, "file": "03-puissances", "kind": "content", "title": {"fr": "Puissances, pertes et compensation", "en": "Power, losses and correction"}},
-            {"order": 4, "file": "04-transformateur", "kind": "content", "title": {"fr": "Le transformateur industriel", "en": "The industrial transformer"}},
-            {"order": 5, "file": "05-couplages", "kind": "content", "title": {"fr": "Les couplages triphasés", "en": "Three-phase connections"}},
-            {"order": 6, "file": "06-mesure-commande", "kind": "content", "title": {"fr": "Transformateurs de mesure et de commande", "en": "Instrument and control transformers"}},
-            {"order": 7, "file": "07-mini-projet", "kind": "practical", "title": {"fr": "Mini-projet : mesurer au secondaire", "en": "Mini-project: measure on the secondary"}}
+            {
+              "order": 1,
+              "file": "01-reseau",
+              "kind": "content",
+              "title": {
+                "fr": "Du réseau au moteur",
+                "en": "From the grid to the motor"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-postes-tableaux",
+              "kind": "content",
+              "title": {
+                "fr": "Postes, tableaux et centres de commande",
+                "en": "Substations, switchboards and control centres"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-puissances",
+              "kind": "content",
+              "title": {
+                "fr": "Puissances, pertes et compensation",
+                "en": "Power, losses and correction"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-transformateur",
+              "kind": "content",
+              "title": {
+                "fr": "Le transformateur industriel",
+                "en": "The industrial transformer"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-couplages",
+              "kind": "content",
+              "title": {
+                "fr": "Les couplages triphasés",
+                "en": "Three-phase connections"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-mesure-commande",
+              "kind": "content",
+              "title": {
+                "fr": "Transformateurs de mesure et de commande",
+                "en": "Instrument and control transformers"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : mesurer au secondaire",
+                "en": "Mini-project: measure on the secondary"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "p2",
+      "order": 2,
+      "title": {
+        "fr": "Les moteurs électriques",
+        "en": "Electric motors"
+      },
+      "description": {
+        "fr": "À suivre après la Partie 1 : les capteurs qui commandent un moteur, puis les moteurs à courant continu et à courant alternatif, de leur principe à leur maintenance.",
+        "en": "Best taken after Part 1: the sensors that control a motor, then DC and AC motors, from their principle to their maintenance."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p2/m4",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Appareils de commande et capteurs",
+            "en": "Control devices and sensors"
+          },
+          "competence": {
+            "fr": "Choisir et raccorder un appareil de commande, un capteur ou un actionneur, et lire son état.",
+            "en": "Choose and connect a control device, a sensor or an actuator, and read its state."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis raccordement d'un capteur inductif PNP 24 V.",
+            "en": "Module quiz, then connecting a 24 V PNP inductive sensor."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-boutons-voyants",
+              "kind": "content",
+              "title": {
+                "fr": "Boutons, voyants et sélecteurs",
+                "en": "Buttons, indicators and selectors"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-fins-de-course",
+              "kind": "content",
+              "title": {
+                "fr": "Fins de course, thermostats, pressostats et flotteurs",
+                "en": "Limit switches, thermostats, pressure switches and floats"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-capteurs-proximite",
+              "kind": "content",
+              "title": {
+                "fr": "Capteurs inductifs et capacitifs",
+                "en": "Inductive and capacitive sensors"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-photo-hall-ultrasons",
+              "kind": "content",
+              "title": {
+                "fr": "Capteurs photoélectriques, à effet Hall et à ultrasons",
+                "en": "Photoelectric, Hall-effect and ultrasonic sensors"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-temperature-vitesse-position",
+              "kind": "content",
+              "title": {
+                "fr": "Température, vitesse et position",
+                "en": "Temperature, speed and position"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-actionneurs",
+              "kind": "content",
+              "title": {
+                "fr": "Électrovannes, moteurs pas à pas et servomoteurs",
+                "en": "Solenoid valves, stepper motors and servomotors"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : raccorder un capteur PNP",
+                "en": "Mini-project: connect a PNP sensor"
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p2/m5",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Les moteurs à courant continu",
+            "en": "DC motors"
+          },
+          "competence": {
+            "fr": "Expliquer le fonctionnement d'un moteur à courant continu, calculer sa force contre-électromotrice et régler sa vitesse.",
+            "en": "Explain how a DC motor works, calculate its back-EMF and set its speed."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis mesures sur un moteur 12 V à courant continu.",
+            "en": "Module quiz, then measurements on a 12 V DC motor."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-principe",
+              "kind": "content",
+              "title": {
+                "fr": "Magnétisme et principe du moteur",
+                "en": "Magnetism and the motor principle"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-constitution",
+              "kind": "content",
+              "title": {
+                "fr": "Inducteur, induit, collecteur et balais",
+                "en": "Field, armature, commutator and brushes"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-aimant-permanent",
+              "kind": "content",
+              "title": {
+                "fr": "Le moteur à aimants permanents",
+                "en": "The permanent-magnet motor"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-excitations",
+              "kind": "content",
+              "title": {
+                "fr": "Moteurs série, shunt et composé",
+                "en": "Series, shunt and compound motors"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-fcem-vitesse",
+              "kind": "content",
+              "title": {
+                "fr": "Force contre-électromotrice et vitesse",
+                "en": "Back-EMF and speed"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-sens-variation",
+              "kind": "content",
+              "title": {
+                "fr": "Sens de rotation et variation de vitesse",
+                "en": "Direction of rotation and speed control"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : mesures sur un moteur 12 V",
+                "en": "Mini-project: measurements on a 12 V motor"
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p2/m6",
+          "duration_hours": 10,
+          "title": {
+            "fr": "Les moteurs à courant alternatif",
+            "en": "AC motors"
+          },
+          "competence": {
+            "fr": "Expliquer le moteur asynchrone, calculer vitesse, glissement et couple, choisir, installer et entretenir un moteur.",
+            "en": "Explain the induction motor, calculate speed, slip and torque, choose, install and maintain a motor."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis relevés sur un moteur asynchrone débranché.",
+            "en": "Module quiz, then readings on a disconnected induction motor."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-champ-tournant",
+              "kind": "content",
+              "title": {
+                "fr": "Champ tournant et vitesse de synchronisme",
+                "en": "Rotating field and synchronous speed"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-asynchrone",
+              "kind": "content",
+              "title": {
+                "fr": "Le moteur asynchrone à cage",
+                "en": "The squirrel-cage induction motor"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-rotor-bobine-synchrone",
+              "kind": "content",
+              "title": {
+                "fr": "Rotor bobiné et moteur synchrone",
+                "en": "Wound rotor and synchronous motor"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-monophases",
+              "kind": "content",
+              "title": {
+                "fr": "Les moteurs monophasés",
+                "en": "Single-phase motors"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-choix",
+              "kind": "content",
+              "title": {
+                "fr": "Plaque et choix d'un moteur",
+                "en": "Nameplate and choosing a motor"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-installation",
+              "kind": "content",
+              "title": {
+                "fr": "Installer un moteur",
+                "en": "Installing a motor"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-maintenance",
+              "kind": "content",
+              "title": {
+                "fr": "Maintenance et dépannage",
+                "en": "Maintenance and troubleshooting"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : relevés sur un moteur débranché",
+                "en": "Mini-project: readings on a disconnected motor"
+              }
+            }
           ]
         }
       ]

@@ -1,0 +1,991 @@
+[
+ {
+  "id": "m-p2-m5-q01",
+  "section": "01-principe",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'est-ce qui produit la force dans un moteur électrique ?",
+   "en": "What produces the force in an electric motor?"
+  },
+  "explanation": {
+   "fr": "Un courant qui traverse un conducteur placé dans un champ magnétique : F = B × I × L.",
+   "en": "A current through a conductor placed in a magnetic field: F = B × I × L."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un courant dans un champ magnétique",
+     "en": "A current in a magnetic field"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La chaleur des enroulements",
+     "en": "The heat of the windings"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La tension seule, sans courant",
+     "en": "Voltage alone, without current"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q02",
+  "section": "01-principe",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : inverser le sens du courant dans le conducteur inverse le sens de la force.",
+   "en": "True or false: reversing the current in the conductor reverses the force."
+  },
+  "explanation": {
+   "fr": "Vrai : F change de sens avec I (et avec B).",
+   "en": "True: F reverses with I (and with B)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q03",
+  "section": "02-constitution",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel est le rôle du collecteur ?",
+   "en": "What is the commutator's role?"
+  },
+  "explanation": {
+   "fr": "Inverser le courant dans chaque bobine de l'induit au moment où elle passe d'un pôle à l'autre, pour garder un couple de même sens.",
+   "en": "Reverse the current in each armature coil as it passes from one pole to the other, to keep the torque in the same direction."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Inverser le courant dans les bobines au bon moment",
+     "en": "Reverse the current in the coils at the right moment"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Refroidir le moteur",
+     "en": "Cool the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Créer le champ magnétique",
+     "en": "Create the magnetic field"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q04",
+  "section": "02-constitution",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur cette coupe d'un moteur à courant continu, cliquez sur le collecteur.",
+   "en": "On this cross-section of a DC motor, click the commutator."
+  },
+  "explanation": {
+   "fr": "Le collecteur est le petit cylindre au centre, sur l'arbre ; les pôles de l'inducteur sont sur les côtés, la carcasse tout autour.",
+   "en": "The commutator is the small cylinder in the centre, on the shaft; the field poles are on the sides, the frame all around."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Cylindre du centre",
+     "en": "Centre cylinder"
+    },
+    "correct": true,
+    "shape": {
+     "x": 218,
+     "y": 108,
+     "w": 44,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Pièce de gauche",
+     "en": "Left part"
+    },
+    "correct": false,
+    "shape": {
+     "x": 140,
+     "y": 86,
+     "w": 42,
+     "h": 88
+    }
+   },
+   {
+    "text": {
+     "fr": "Haut de l'enveloppe",
+     "en": "Top of the casing"
+    },
+    "correct": false,
+    "shape": {
+     "x": 200,
+     "y": 22,
+     "w": 80,
+     "h": 40
+    }
+   }
+  ],
+  "svg": "schemas/m5-collecteur.svg"
+ },
+ {
+  "id": "m-p2-m5-q05",
+  "section": "02-constitution",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque pièce du moteur à son rôle.",
+   "en": "Match each motor part with its role."
+  },
+  "explanation": {
+   "fr": "L'inducteur crée le champ, l'induit tourne, le collecteur inverse le courant, les balais l'amènent.",
+   "en": "The field creates the magnetic field, the armature turns, the commutator reverses the current, the brushes bring it in."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Inducteur",
+     "en": "Field"
+    },
+    "right": {
+     "fr": "Crée le champ magnétique",
+     "en": "Creates the magnetic field"
+    }
+   },
+   {
+    "left": {
+     "fr": "Induit",
+     "en": "Armature"
+    },
+    "right": {
+     "fr": "Porte les enroulements qui tournent",
+     "en": "Carries the rotating windings"
+    }
+   },
+   {
+    "left": {
+     "fr": "Collecteur",
+     "en": "Commutator"
+    },
+    "right": {
+     "fr": "Inverse le courant dans les bobines",
+     "en": "Reverses the current in the coils"
+    }
+   },
+   {
+    "left": {
+     "fr": "Balais",
+     "en": "Brushes"
+    },
+    "right": {
+     "fr": "Amènent le courant au collecteur",
+     "en": "Bring the current to the commutator"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q06",
+  "section": "03-aimant-permanent",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Combien de bornes a un moteur à aimants permanents ?",
+   "en": "How many terminals does a permanent-magnet motor have?"
+  },
+  "explanation": {
+   "fr": "Deux, celles de l'induit ; les aimants n'ont pas besoin d'alimentation.",
+   "en": "Two, those of the armature; the magnets need no supply."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Deux",
+     "en": "Two"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Quatre",
+     "en": "Four"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Trois",
+     "en": "Three"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q07",
+  "section": "03-aimant-permanent",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur à aimants tourne à 3 000 tr/min à vide sous 12 V. Vers quelle vitesse tourne-t-il à vide sous 9 V ? (exemple : 1450 tr/min)",
+   "en": "A permanent-magnet motor turns at 3,000 rpm no-load at 12 V. Around what speed does it turn no-load at 9 V? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "La vitesse est à peu près proportionnelle à la tension : 3 000 × 9 / 12 = 2 250 tr/min.",
+   "en": "Speed is roughly proportional to voltage: 3,000 × 9 / 12 = 2,250 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "2250",
+   "unit": "tr/min",
+   "tolerance_pct": 5
+  }
+ },
+ {
+  "id": "m-p2-m5-q08",
+  "section": "04-excitations",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que fait un moteur série qu'on fait tourner à vide ?",
+   "en": "What does a series motor do when run no-load?"
+  },
+  "explanation": {
+   "fr": "Il s'emballe : son courant, donc son champ, devient très faible et sa vitesse monte dangereusement.",
+   "en": "It runs away: its current, hence its field, becomes very small and its speed rises dangerously."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il s'emballe",
+     "en": "It runs away"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il s'arrête",
+     "en": "It stops"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il tourne à vitesse constante",
+     "en": "It runs at constant speed"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q09",
+  "section": "05-fcem-vitesse",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur alimenté sous 24 V a une résistance d'induit de 2 Ω et absorbe 3 A. Que vaut sa force contre-électromotrice ? (exemple : 12 V)",
+   "en": "A motor supplied at 24 V has an armature resistance of 2 Ω and draws 3 A. What is its back-EMF? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "E = U − R × I = 24 − 2 × 3 = 18 V.",
+   "en": "E = U − R × I = 24 − 2 × 3 = 18 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "18",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-q10",
+  "section": "05-fcem-vitesse",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Le même moteur (24 V, R = 2 Ω) démarre. Quel courant absorbe-t-il au premier instant ? (exemple : 2,5 A)",
+   "en": "The same motor (24 V, R = 2 Ω) starts. What current does it draw at the first instant? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "À l'arrêt E = 0 : I = U / R = 24 / 2 = 12 A.",
+   "en": "At standstill E = 0: I = U / R = 24 / 2 = 12 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "12",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-q11",
+  "section": "05-fcem-vitesse",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "La fcém d'un moteur vaut 10,5 V et il absorbe 2 A. Quelle puissance est convertie en puissance mécanique ? (exemple : 2,5 W)",
+   "en": "A motor's back-EMF is 10.5 V and it draws 2 A. What power is converted into mechanical power? (example: 2.5 W)"
+  },
+  "explanation": {
+   "fr": "P = E × I = 10,5 × 2 = 21 W.",
+   "en": "P = E × I = 10.5 × 2 = 21 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "21",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-q12",
+  "section": "05-fcem-vitesse",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : au démarrage, la force contre-électromotrice est à son maximum.",
+   "en": "True or false: at start-up, the back-EMF is at its maximum."
+  },
+  "explanation": {
+   "fr": "Faux : à l'arrêt elle est nulle, d'où un fort courant de démarrage.",
+   "en": "False: at standstill it is zero, hence a high starting current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q13",
+  "section": "06-sens-variation",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un variateur MLI alimenté en 24 V fonctionne avec un rapport cyclique de 60 %. Quelle tension moyenne reçoit le moteur ? (exemple : 12 V)",
+   "en": "A PWM drive supplied at 24 V runs at a 60 % duty cycle. What average voltage does the motor get? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "0,6 × 24 = 14,4 V.",
+   "en": "0.6 × 24 = 14.4 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "14.4",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-q14",
+  "section": "06-sens-variation",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment inverser le sens d'un moteur à inducteur bobiné ?",
+   "en": "How is a wound-field motor reversed?"
+  },
+  "explanation": {
+   "fr": "En inversant soit l'induit, soit l'inducteur ; inverser les deux ne change rien.",
+   "en": "By reversing either the armature or the field; reversing both changes nothing."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Inverser l'induit ou l'inducteur, pas les deux",
+     "en": "Reverse the armature or the field, not both"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Inverser l'induit et l'inducteur",
+     "en": "Reverse the armature and the field"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Augmenter la tension",
+     "en": "Raise the voltage"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-q15",
+  "section": "06-sens-variation",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi préfère-t-on la MLI à une résistance pour régler la vitesse ?",
+   "en": "Why is PWM preferred to a resistor to set the speed?"
+  },
+  "explanation": {
+   "fr": "Le transistor est soit bloqué soit saturé : il dissipe peu, alors qu'une résistance gaspille l'énergie en chaleur.",
+   "en": "The transistor is either off or saturated: it dissipates little, whereas a resistor wastes energy as heat."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Elle gaspille beaucoup moins d'énergie",
+     "en": "It wastes much less energy"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Elle supprime le collecteur",
+     "en": "It removes the commutator"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Elle augmente la tension",
+     "en": "It raises the voltage"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x01",
+  "section": "01-principe",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi le courant doit-il s'inverser dans une spire à chaque demi-tour ?",
+   "en": "Why must the current reverse in a loop every half-turn?"
+  },
+  "explanation": {
+   "fr": "Sinon les côtés, ayant changé de place, subiraient des forces qui freinent la spire.",
+   "en": "Otherwise the sides, having swapped places, would be subject to forces that brake the loop."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pour que le couple garde le même sens",
+     "en": "So that the torque keeps the same direction"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Pour réduire la tension",
+     "en": "To reduce the voltage"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Pour refroidir la spire",
+     "en": "To cool the loop"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x02",
+  "section": "02-constitution",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Où se trouve l'induit d'un moteur à courant continu ?",
+   "en": "Where is the armature of a DC motor?"
+  },
+  "explanation": {
+   "fr": "Au rotor : c'est la partie qui tourne.",
+   "en": "On the rotor: it is the rotating part."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Au rotor",
+     "en": "On the rotor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À la carcasse",
+     "en": "On the frame"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Dans les balais",
+     "en": "In the brushes"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x03",
+  "section": "02-constitution",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle pièce s'use le plus vite sur un moteur à courant continu ?",
+   "en": "Which part wears fastest on a DC motor?"
+  },
+  "explanation": {
+   "fr": "Les balais en carbone, qui frottent sur le collecteur.",
+   "en": "The carbon brushes, which rub on the commutator."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Les balais",
+     "en": "The brushes"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Les aimants",
+     "en": "The magnets"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La carcasse",
+     "en": "The frame"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x04",
+  "section": "03-aimant-permanent",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Comment varie la vitesse à vide d'un moteur à aimants permanents avec sa tension ?",
+   "en": "How does a permanent-magnet motor's no-load speed vary with its voltage?"
+  },
+  "explanation": {
+   "fr": "À peu près proportionnellement.",
+   "en": "Roughly in proportion."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "À peu près proportionnellement",
+     "en": "Roughly in proportion"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Comme le carré de la tension",
+     "en": "As the square of the voltage"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Elle ne varie pas",
+     "en": "It does not vary"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x05",
+  "section": "03-aimant-permanent",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que se passe-t-il quand on bloque l'arbre d'un moteur alimenté ?",
+   "en": "What happens when the shaft of a powered motor is stalled?"
+  },
+  "explanation": {
+   "fr": "E = 0 : il absorbe son courant maximal U / R et chauffe vite.",
+   "en": "E = 0: it draws its maximum current U / R and heats quickly."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il absorbe un fort courant et chauffe",
+     "en": "It draws a high current and heats"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il ne consomme plus rien",
+     "en": "It draws nothing"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il tourne en sens inverse",
+     "en": "It turns backwards"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x06",
+  "section": "04-excitations",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel moteur garde une vitesse presque constante quelle que soit la charge ?",
+   "en": "Which motor keeps an almost constant speed whatever the load?"
+  },
+  "explanation": {
+   "fr": "Le moteur shunt.",
+   "en": "The shunt motor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le moteur shunt",
+     "en": "The shunt motor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le moteur série",
+     "en": "The series motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucun",
+     "en": "None"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x07",
+  "section": "04-excitations",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que réunit un moteur composé ?",
+   "en": "What does a compound motor combine?"
+  },
+  "explanation": {
+   "fr": "Un inducteur série et un inducteur shunt.",
+   "en": "A series field and a shunt field."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un inducteur série et un inducteur shunt",
+     "en": "A series field and a shunt field"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Deux induits",
+     "en": "Two armatures"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un aimant et un collecteur seulement",
+     "en": "A magnet and a commutator only"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x08",
+  "section": "05-fcem-vitesse",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur 48 V a une résistance d'induit de 0,8 Ω et absorbe 5 A. Que vaut sa fcém ? (exemple : 12 V)",
+   "en": "A 48 V motor has an armature resistance of 0.8 Ω and draws 5 A. What is its back-EMF? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "E = 48 − 0,8 × 5 = 44 V.",
+   "en": "E = 48 − 0.8 × 5 = 44 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "44",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-x09",
+  "section": "05-fcem-vitesse",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Le même moteur (48 V, 0,8 Ω) démarre sans limitation. Quel courant au premier instant ? (exemple : 2,5 A)",
+   "en": "The same motor (48 V, 0.8 Ω) starts with no limitation. What current at the first instant? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = U / R = 48 / 0,8 = 60 A.",
+   "en": "I = U / R = 48 / 0.8 = 60 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "60",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-x10",
+  "section": "06-sens-variation",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Sous 24 V, quel rapport cyclique donne une tension moyenne de 6 V ? (exemple : 50 %)",
+   "en": "At 24 V, what duty cycle gives an average voltage of 6 V? (example: 50 %)"
+  },
+  "explanation": {
+   "fr": "6 / 24 = 0,25, soit 25 %.",
+   "en": "6 / 24 = 0.25, that is 25 %."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "25",
+   "unit": "%",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m5-x11",
+  "section": "06-sens-variation",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : inverser à la fois l'induit et l'inducteur d'un moteur bobiné inverse son sens.",
+   "en": "True or false: reversing both the armature and the field of a wound motor reverses its direction."
+  },
+  "explanation": {
+   "fr": "Faux : les deux inversions s'annulent ; le moteur garde son sens.",
+   "en": "False: the two reversals cancel out; the motor keeps its direction."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m5-x12",
+  "section": "06-sens-variation",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel montage électronique permet d'inverser le sens d'un petit moteur à courant continu ?",
+   "en": "Which electronic circuit can reverse a small DC motor?"
+  },
+  "explanation": {
+   "fr": "Un pont en H de quatre transistors.",
+   "en": "An H-bridge of four transistors."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un pont en H",
+     "en": "An H-bridge"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un pont de diodes",
+     "en": "A diode bridge"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un transformateur",
+     "en": "A transformer"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

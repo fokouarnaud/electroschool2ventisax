@@ -5,6 +5,8 @@ Usage : python -m tools.schemas moteurs
 content/moteurs/p<P>/m<N>/schemas/ (p1 pour les modules 1 à 3, p2 pour 4 à 6, p3 pour 7 à 9, p4 pour 10 à 12).
 Réseau 230/400 V, 50 Hz ; schémas développés verticaux, puissance et commande séparées (M2).
 """
+import math
+
 from .common import ACCENT, INK, PAPER, ROOT, SOFT, Drawing, block, fmt, terminal, transformer
 
 SLUG = "moteurs"
@@ -80,7 +82,45 @@ EN = {
     "tiroir 1 : Q, KM, F → M1": "drawer 1: Q, KM, F → M1", "tiroir 2 : Q, KM, F → M2": "drawer 2: Q, KM, F → M2",
     "tiroir 3 : Q, KM, F → M3": "drawer 3: Q, KM, F → M3", "tiroir 4 : Q, KM, F → M4": "drawer 4: Q, KM, F → M4",
     "pertes à vide 1 kW": "no-load losses 1 kW", "pertes en charge 6,5 kW": "load losses 6.5 kW",
-    "I = P / (√3 × U) : 144 A en 400 V, 2,9 A en 20 kV": "I = P / (√3 × U): 144 A at 400 V, 2.9 A at 20 kV", "charge": "load", "on ne touche jamais au côté 230 V": "never touch the 230 V side",
+    "I = P / (√3 × U) : 144 A en 400 V, 2,9 A en 20 kV": "I = P / (√3 × U): 144 A at 400 V, 2.9 A at 20 kV",
+    # M4 à M6
+    "boutons": "buttons", "voyants": "indicators", "arrêt d'urgence": "emergency stop", "marche (de préférence)": "start (preferred)",
+    "intervention anormale": "abnormal intervention", "danger, défaut": "danger, fault", "anormal, attention": "abnormal, caution",
+    "normal, en marche": "normal, running", "action obligatoire": "mandatory action", "IEC 60204-1 : équipement électrique des machines": "IEC 60204-1: electrical equipment of machines",
+    "manuel": "manual", "position": "position", "X : contact fermé": "X: contact closed", "déplacement": "travel", "fin de course": "limit switch",
+    "contacts du fin de course": "limit switch contacts", "temps": "time", "pression (bar)": "pressure (bar)", "arrêt à 6 bar": "stop at 6 bar",
+    "marche à 4 bar": "start at 4 bar", "hystérésis : 2 bar": "hysteresis: 2 bar", "capteur M18": "M18 sensor", "cible en acier": "steel target",
+    "3 fils : brun, bleu, noir": "3 wires: brown, blue, black", "brun": "brown", "noir": "black", "bleu": "blue", "sortie : fil noir": "output: black wire",
+    "barrage": "through-beam", "reflex": "retro-reflective", "proximité": "diffuse", "réflecteur": "reflector", "objet": "object",
+    "capteur": "sensor", "aller": "out", "retour": "back", "température (°C)": "temperature (°C)", "résistance (Ω)": "resistance (Ω)",
+    "138,5 Ω à 100 °C": "138.5 Ω at 100 °C", "disque à fentes": "slotted disc", "impulsions": "pulses", "fluide": "fluid",
+    "bobine 24 V": "24 V coil", "noyau": "plunger", "360° / 200 pas = 1,8° par pas": "360° / 200 steps = 1.8° per step",
+    "commande par impulsions": "pulse control", "position connue sans capteur": "position known without a sensor",
+    "alimentation 24 V": "24 V supply", "brun +24 V, bleu 0 V, noir vers la LED": "brown +24 V, blue 0 V, black to the LED",
+    "B : champ (N vers S)": "B: field (N to S)", "I : courant (vers vous)": "I: current (towards you)", "couple → rotation": "torque → rotation",
+    "carcasse": "frame", "inducteur (pôles)": "field (poles)", "induit": "armature", "collecteur et balais": "commutator and brushes",
+    "lames du collecteur": "commutator segments", "balais en carbone": "carbon brushes", "les balais s'usent : on les contrôle": "brushes wear: check them",
+    "induit : 2 bornes": "armature: 2 terminals", "inducteur : aimants": "field: magnets", "petits moteurs : 6 à 48 V": "small motors: 6 to 48 V",
+    "couple (N·m)": "torque (N·m)", "vitesse (tr/min)": "speed (rpm)", "inducteur série (gros fil)": "series field (thick wire)",
+    "inducteur shunt": "shunt field", "(fil fin)": "(thin wire)", "fort couple au démarrage": "high starting torque",
+    "vitesse presque constante": "almost constant speed", "temps (s)": "time (s)", "courant (× In)": "current (× In)", "I / In": "I / In",
+    "sens horaire": "clockwise", "sens antihoraire": "anticlockwise", "tension (V)": "voltage (V)",
+    "rapport cyclique 30 % → tension moyenne 3,6 V": "duty cycle 30 % → average voltage 3.6 V", "alimentation 12 V": "12 V supply",
+    "tout le banc reste en 12 V": "the whole bench stays at 12 V", "champ tournant": "rotating field", "à 50 Hz : 3 000 tr/min": "at 50 Hz: 3,000 rpm",
+    "pour une paire de pôles": "for one pole pair", "p = 1 (2 pôles)": "p = 1 (2 poles)", "p = 2 (4 pôles)": "p = 2 (4 poles)",
+    "p = 3 (6 pôles)": "p = 3 (6 poles)", "p = 4 (8 pôles)": "p = 4 (8 poles)", "3 000 tr/min": "3,000 rpm", "1 500 tr/min": "1,500 rpm",
+    "1 000 tr/min": "1,000 rpm", "750 tr/min": "750 rpm", "anneau": "end ring", "barres": "bars", "couple moteur": "motor torque",
+    "couple (× Cn)": "torque (× Tn)", "nominal": "rated", "maximal": "maximum", "au démarrage ≈ 0,9 × Cn": "at start ≈ 0.9 × Tn",
+    "bagues": "slip rings", "résistances de démarrage": "starting resistors", "synchrone": "synchronous", "asynchrone": "induction",
+    "charge (× nominale)": "load (× rated)", "principal": "main", "auxiliaire": "auxiliary", "bague de déphasage": "shading ring",
+    "petits ventilateurs, pompes": "small fans, pumps", "rendement faible": "low efficiency", "classe B": "class B", "classe H": "class H",
+    "température maximale des enroulements": "maximum winding temperature", "charge": "load", "S1 : continu": "S1: continuous",
+    "S3 : intermittent (40 %)": "S3: intermittent (40 %)", "aligné": "aligned", "décalage parallèle": "parallel offset", "défaut angulaire": "angular misalignment",
+    "un défaut d'alignement use les roulements": "misalignment wears the bearings", "presse-étoupe": "cable gland", "boîte à bornes": "terminal box",
+    "≈ 2,7 Ω": "≈ 2.7 Ω", "trois valeurs égales à quelques % près": "three values equal within a few %",
+    "moteur ne démarre pas": "motor does not start", "tension aux bornes ?": "voltage at the terminals?", "protection déclenchée ?": "protection tripped?",
+    "enroulements : résistances égales ?": "windings: equal resistances?", "isolement et roulements": "insulation and bearings",
+    "mesures toujours": "always measure", "moteur consigné": "with the motor locked out", "moteur débranché": "motor disconnected", "charge": "load", "on ne touche jamais au côté 230 V": "never touch the 230 V side",
 }
 
 
@@ -748,12 +788,531 @@ def m3_banc():
     return d
 
 
+# --- Module 4 : appareils de commande et capteurs ---------------------------------------------------------------------
+
+STATE = {"rouge": "#c0392b", "jaune": "#e0b100", "vert": "#2e8b57", "bleu": "#2f6db5", "blanc": "#fcfefe", "noir": "#13212c", "gris": "#8a979f"}
+
+
+def m4_couleurs():
+    d = Drawing(600, 250, "Couleurs des boutons et des voyants selon l'IEC 60204-1 : rouge pour l'arrêt d'urgence, blanc ou noir pour marche et arrêt")
+    d.text(150, 28, "boutons", weight="700"); d.text(450, 28, "voyants", weight="700")
+    rows_b = (("rouge", "arrêt d'urgence"), ("blanc", "marche (de préférence)"), ("noir", "arrêt"), ("jaune", "intervention anormale"))
+    rows_v = (("rouge", "danger, défaut"), ("jaune", "anormal, attention"), ("vert", "normal, en marche"), ("bleu", "action obligatoire"))
+    for k, (color, label) in enumerate(rows_b):
+        y = 60 + 44 * k
+        d.add(f'<circle cx="60" cy="{y}" r="15" fill="{STATE[color]}" stroke="{INK}" stroke-width="2"/>')
+        d.text(88, y + 5, label, anchor="start", size=12)
+    for k, (color, label) in enumerate(rows_v):
+        y = 60 + 44 * k
+        d.add(f'<circle cx="360" cy="{y}" r="15" fill="{STATE[color]}" stroke="{INK}" stroke-width="2" opacity="0.9"/>')
+        d.text(388, y + 5, label, anchor="start", size=12)
+    d.text(300, 238, "IEC 60204-1 : équipement électrique des machines", size=11, color=SOFT)
+    return d
+
+
+def m4_selecteur():
+    d = Drawing(520, 230, "Sélecteur à trois positions manuel, 0, auto : le tableau dit quel contact est fermé dans chaque position")
+    d.add(f'<circle cx="110" cy="110" r="46" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.wire((110, 110), (80, 76), width=5)
+    for label, (x, y) in (("manuel", (52, 56)), ("0", (110, 52)), ("auto", (168, 56))):
+        d.text(x, y, label, size=12, weight="600")
+    d.text(300, 50, "position", anchor="start", weight="600")
+    for k, label in enumerate(("manuel", "0", "auto")):
+        d.text(380 + 50 * k, 50, label, size=11)
+    for r, (contact_name, states) in enumerate((("13-14", ("X", "", "")), ("23-24", ("", "", "X")))):
+        y = 90 + 40 * r
+        d.text(300, y, contact_name, anchor="start", weight="600", color=ACCENT)
+        for k, s in enumerate(states):
+            d.add(f'<rect x="{360 + 50 * k}" y="{y - 18}" width="40" height="28" fill="{PAPER}" stroke="{SOFT}"/>')
+            d.text(380 + 50 * k, y + 2, s, weight="700", color=ACCENT)
+    d.text(260, 210, "X : contact fermé", size=11, color=SOFT)
+    return d
+
+
+def m4_fin_course():
+    d = Drawing(520, 230, "Fin de course à galet : la came de la pièce mobile appuie sur le galet et fait basculer ses contacts")
+    d.add(f'<rect x="40" y="40" width="200" height="30" rx="4" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<path d="M150 70 l20 24 h30 l20 -24 z" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.arrow((60, 24), (140, 24), "déplacement", offset=(0, -6))
+    d.add(f'<circle cx="185" cy="110" r="12" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.wire((185, 122), (185, 140), width=3)
+    d.add(f'<rect x="150" y="140" width="70" height="60" rx="6" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(185, 220, "fin de course", size=12, weight="600")
+    contact(d, 330, 70, "no", marks=("13", "14"), tag="S3"); contact(d, 430, 70, "nc", marks=("21", "22"))
+    d.text(380, 160, "contacts du fin de course", size=11, color=SOFT)
+    return d
+
+
+def m4_pressostat():
+    d = Drawing(620, 270, "Pressostat d'un compresseur : il démarre le moteur sous 4 bar et l'arrête à 6 bar ; l'écart est l'hystérésis")
+    pts = [(0, 6), (10, 4)]
+    t, p, rising = 10, 4.0, True
+    while t < 60:
+        t += 2 if rising else 10
+        p = 6 if rising else 4
+        pts.append((t, p)); rising = not rising
+    d.graph(70, 30, 380, 180, (0, 62), (0, 7), [(pts, ACCENT, "")], "temps", "pression (bar)",
+            yticks=((4, "4"), (6, "6")))
+    d.text(470, 64, "arrêt à 6 bar", anchor="start", size=12, weight="600")
+    d.text(470, 116, "marche à 4 bar", anchor="start", size=12, weight="600")
+    d.text(260, 262, "hystérésis : 2 bar", size=12, color=SOFT)
+    return d
+
+
+def m4_inductif():
+    d = Drawing(520, 220, "Capteur inductif : il détecte une cible métallique sans contact, en deçà de sa portée nominale sn")
+    d.add(f'<rect x="40" y="80" width="150" height="50" rx="6" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<rect x="190" y="84" width="16" height="42" fill="{ACCENT}"/>')
+    d.text(115, 110, "capteur M18", size=12, weight="600")
+    for k in range(3):
+        d.add(f'<path d="M{212 + 16 * k} 84 q14 21 0 42" fill="none" stroke="{SOFT}" stroke-width="2"/>')
+    d.add(f'<rect x="300" y="70" width="24" height="70" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.text(312, 160, "cible en acier", size=12)
+    d.arrow((206, 50), (298, 50), "sn = 8 mm", color=INK, offset=(0, -8)); d.arrow((298, 50), (206, 50), color=INK)
+    d.wire((40, 105), (20, 105)); d.text(28, 200, "3 fils : brun, bleu, noir", anchor="start", size=11, color=SOFT)
+    return d
+
+
+def m4_pnp_npn():
+    d = Drawing(600, 260, "Capteur 3 fils : en PNP, la sortie (noir) fournit le +24 V à la charge reliée au 0 V ; en NPN, la charge est reliée au +24 V")
+    for x0, kind in ((30, "PNP"), (320, "NPN")):
+        block(d, x0, 90, 90, 70, kind, size=14)
+        d.wire((x0 + 90, 105), (x0 + 200, 105)); d.text(x0 + 150, 98, "brun", size=11)
+        d.wire((x0 + 90, 125), (x0 + 160, 125), color=ACCENT, width=3); d.text(x0 + 130, 140, "noir", size=11, color=ACCENT)
+        d.wire((x0 + 90, 145), (x0 + 200, 145)); d.text(x0 + 150, 160, "bleu", size=11)
+        d.text(x0 + 220, 109, "+24 V", anchor="start", size=12, weight="600"); d.text(x0 + 220, 149, "0 V", anchor="start", size=12, weight="600")
+        if kind == "PNP":
+            d.wire((x0 + 160, 125), (x0 + 160, 180)); d.resistor((x0 + 160, 180), (x0 + 160, 230), "charge"); d.wire((x0 + 160, 230), (x0 + 200, 230), (x0 + 200, 145))
+        else:
+            d.wire((x0 + 160, 125), (x0 + 160, 180)); d.resistor((x0 + 160, 180), (x0 + 160, 230), "charge"); d.wire((x0 + 160, 230), (x0 + 240, 230), (x0 + 240, 60), (x0 + 200, 60), (x0 + 200, 105))
+    d.text(300, 30, "sortie : fil noir", weight="600", color=ACCENT)
+    return d
+
+
+def m4_photo():
+    d = Drawing(600, 260, "Trois montages de cellule photoélectrique : barrage, reflex sur réflecteur, proximité sur l'objet lui-même")
+    for k, (name, y) in enumerate((("barrage", 50), ("reflex", 130), ("proximité", 210))):
+        d.text(30, y + 4, name, anchor="start", weight="600")
+        block(d, 140, y - 18, 70, 36, "E" if k == 0 else "E/R", size=12)
+        if k == 0:
+            d.arrow((210, y), (470, y), color=ACCENT); block(d, 470, y - 18, 70, 36, "R", size=12)
+        elif k == 1:
+            d.arrow((210, y - 6), (470, y - 6), color=ACCENT); d.arrow((470, y + 6), (210, y + 6), color=ACCENT)
+            d.add(f'<rect x="470" y="{y - 20}" width="14" height="40" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>'); d.text(500, y + 4, "réflecteur", anchor="start", size=11)
+        else:
+            d.arrow((210, y - 6), (380, y - 6), color=ACCENT); d.arrow((380, y + 6), (210, y + 6), color=ACCENT)
+            d.add(f'<rect x="380" y="{y - 22}" width="40" height="44" rx="4" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>'); d.text(430, y + 4, "objet", anchor="start", size=11)
+    return d
+
+
+def m4_ultrasons():
+    d = Drawing(520, 220, "Capteur à ultrasons : il mesure le temps aller-retour de l'écho ; d = v × t / 2 avec v ≈ 340 m/s")
+    block(d, 40, 80, 90, 50, "capteur", size=12)
+    for k in range(3):
+        d.add(f'<path d="M{140 + 18 * k} 80 q16 25 0 50" fill="none" stroke="{ACCENT}" stroke-width="2"/>')
+    d.add(f'<rect x="400" y="50" width="20" height="110" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>'); d.text(410, 180, "objet", size=12)
+    d.arrow((140, 150), (398, 150), "aller", color=INK, offset=(0, 18)); d.arrow((398, 60), (140, 60), "retour", color=INK)
+    d.text(260, 210, "d = v × t / 2", weight="700")
+    return d
+
+
+def m4_pt100():
+    d = Drawing(520, 270, "Sonde Pt100 : sa résistance vaut 100 Ω à 0 °C et augmente d'environ 0,385 Ω par degré")
+    pts = [(t, 100 * (1 + 0.00385 * t)) for t in range(0, 201, 10)]
+    d.graph(70, 30, 380, 190, (0, 210), (90, 185), [(pts, ACCENT, "Pt100")], "température (°C)", "résistance (Ω)",
+            marks=(((100, 138.5), "138,5 Ω à 100 °C"),), xticks=((50, "50"), (100, "100"), (150, "150"), (200, "200")),
+            yticks=((100, "100"), (138.5, "138,5"), (177, "177")))
+    return d
+
+
+def m4_codeur():
+    d = Drawing(560, 230, "Codeur incrémental : un disque à fentes coupe un faisceau ; chaque fente donne une impulsion")
+    d.add(f'<circle cx="120" cy="115" r="80" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    for k in range(24):
+        a = 2 * math.pi * k / 24
+        x1, y1 = 120 + 62 * math.cos(a), 115 + 62 * math.sin(a); x2, y2 = 120 + 76 * math.cos(a), 115 + 76 * math.sin(a)
+        d.wire((x1, y1), (x2, y2), color=INK, width=3)
+    d.add(f'<circle cx="120" cy="115" r="8" fill="{INK}"/>')
+    d.text(120, 215, "disque à fentes", size=12)
+    pts, x = [], 0
+    for k in range(8):
+        pts += [(x, 0), (x, 1), (x + 1, 1), (x + 1, 0), (x + 2, 0)]; x += 2
+    d.graph(260, 60, 260, 90, (0, 16), (0, 1.5), [(pts, ACCENT, "")], "temps", "impulsions")
+    return d
+
+
+def m4_electrovanne():
+    d = Drawing(520, 230, "Électrovanne : la bobine alimentée attire le noyau, qui ouvre le passage du fluide")
+    d.add(f'<rect x="40" y="130" width="440" height="40" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.arrow((60, 150), (200, 150), "fluide", color=ACCENT, offset=(0, -26)); d.arrow((320, 150), (460, 150), color=ACCENT)
+    d.add(f'<rect x="230" y="40" width="60" height="70" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for k in range(5):
+        d.wire((230, 50 + 12 * k), (290, 56 + 12 * k), color=ACCENT, width=1.5)
+    d.add(f'<rect x="250" y="70" width="20" height="80" fill="{SOFT}" stroke="{INK}" stroke-width="2"/>')
+    d.text(310, 70, "bobine 24 V", anchor="start", size=12, weight="600"); d.text(310, 100, "noyau", anchor="start", size=12)
+    coil(d, 430, 20, tag="YV1")
+    return d
+
+
+def m4_pas_a_pas():
+    d = Drawing(520, 240, "Moteur pas à pas : 200 pas par tour, soit 1,8° par impulsion ; il avance d'un pas à chaque impulsion")
+    d.add(f'<circle cx="130" cy="120" r="80" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    for k in range(12):
+        a = 2 * math.pi * k / 12
+        d.wire((130 + 50 * math.cos(a), 120 + 50 * math.sin(a)), (130 + 70 * math.cos(a), 120 + 70 * math.sin(a)), width=4)
+    d.add(f'<circle cx="130" cy="120" r="30" fill="{PAPER}" stroke="{ACCENT}" stroke-width="3"/>')
+    d.text(320, 90, "360° / 200 pas = 1,8° par pas", anchor="start", weight="600")
+    d.text(320, 130, "commande par impulsions", anchor="start", size=12)
+    d.text(320, 160, "position connue sans capteur", anchor="start", size=12, color=SOFT)
+    return d
+
+
+def m4_banc():
+    d = Drawing(520, 230, "Banc du mini-projet : capteur inductif PNP alimenté en 24 V, sortie reliée à une LED et sa résistance")
+    block(d, 20, 40, 130, 50, "alimentation 24 V", size=11)
+    d.wire((150, 55), (420, 55)); d.wire((150, 75), (170, 75), (170, 200), (420, 200))
+    block(d, 220, 110, 80, 50, "PNP", size=13)
+    d.wire((240, 55), (240, 110)); d.wire((260, 160), (260, 200)); d.wire((300, 135), (380, 135), (380, 140), color=ACCENT, width=3)
+    d.diode((380, 140), (380, 175), kind="led"); d.wire((380, 175), (380, 180)); d.resistor((380, 180), (380, 200), "1 kΩ")
+    d.text(200, 225, "brun +24 V, bleu 0 V, noir vers la LED", size=11, color=SOFT)
+    return d
+
+
+# --- Module 5 : les moteurs à courant continu ------------------------------------------------------------------------
+
+
+def _poles(d, cx, cy, gap=70):
+    d.add(f'<rect x="{cx - gap - 50}" y="{cy - 50}" width="50" height="100" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<rect x="{cx + gap}" y="{cy - 50}" width="50" height="100" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>')
+    d.text(cx - gap - 25, cy + 6, "N", weight="700", size=18); d.text(cx + gap + 25, cy + 6, "S", weight="700", size=18)
+
+
+def m5_laplace():
+    d = Drawing(520, 240, "Force de Laplace : un conducteur parcouru par un courant dans un champ magnétique subit une force F = B × I × L")
+    _poles(d, 200, 120)
+    for y in (90, 120, 150):
+        d.arrow((130, y), (270, y), color=SOFT)
+    d.add(f'<circle cx="200" cy="120" r="12" fill="{PAPER}" stroke="{ACCENT}" stroke-width="3"/><circle cx="200" cy="120" r="3" fill="{ACCENT}"/>')
+    d.arrow((200, 106), (200, 40), "F", color=ACCENT, offset=(14, 0))
+    d.text(380, 100, "B : champ (N vers S)", anchor="start", size=12); d.text(380, 125, "I : courant (vers vous)", anchor="start", size=12)
+    d.text(380, 150, "F = B × I × L", anchor="start", weight="700")
+    return d
+
+
+def m5_spire():
+    d = Drawing(520, 240, "Une spire dans le champ : les deux côtés subissent des forces opposées et la spire tourne")
+    _poles(d, 200, 120)
+    d.add(f'<line x1="160" y1="150" x2="240" y2="90" stroke="{ACCENT}" stroke-width="4"/>')
+    d.add(f'<circle cx="160" cy="150" r="9" fill="{PAPER}" stroke="{INK}" stroke-width="2"/><circle cx="240" cy="90" r="9" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.arrow((160, 150), (160, 200), "F", color=ACCENT, offset=(14, 0)); d.arrow((240, 90), (240, 40), "F", color=ACCENT, offset=(14, 0))
+    d.add(f'<path d="M250 160 A70 70 0 0 1 150 160" fill="none" stroke="{INK}" stroke-width="2" stroke-dasharray="4 3"/>')
+    d.text(390, 120, "couple → rotation", anchor="start", weight="600")
+    return d
+
+
+def m5_coupe():
+    d = Drawing(520, 270, "Coupe d'un moteur à courant continu : inducteur (pôles), induit tournant, collecteur et balais")
+    d.add(f'<circle cx="200" cy="135" r="110" fill="#eef4f3" stroke="{INK}" stroke-width="3"/>')
+    d.add(f'<rect x="104" y="95" width="34" height="80" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/><rect x="262" y="95" width="34" height="80" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<circle cx="200" cy="135" r="56" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<circle cx="200" cy="135" r="20" fill="{PAPER}" stroke="{ACCENT}" stroke-width="4"/>')
+    d.text(370, 60, "carcasse", anchor="start", size=12); d.wire((365, 56), (300, 56), color=SOFT, width=1)
+    d.text(370, 110, "inducteur (pôles)", anchor="start", size=12); d.wire((365, 106), (296, 120), color=SOFT, width=1)
+    d.text(370, 160, "induit", anchor="start", size=12); d.wire((365, 156), (250, 156), color=SOFT, width=1)
+    d.text(370, 210, "collecteur et balais", anchor="start", size=12, color=ACCENT, weight="600"); d.wire((365, 206), (218, 145), color=ACCENT, width=1)
+    return d
+
+
+def m5_collecteur():
+    d = Drawing(520, 230, "Collecteur et balais : les balais fixes frottent sur les lames du collecteur et inversent le courant dans chaque spire au bon moment")
+    d.add(f'<circle cx="200" cy="115" r="70" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for k in range(8):
+        a = 2 * math.pi * k / 8
+        d.wire((200 + 30 * math.cos(a), 115 + 30 * math.sin(a)), (200 + 70 * math.cos(a), 115 + 70 * math.sin(a)), width=2)
+    d.add(f'<circle cx="200" cy="115" r="30" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<rect x="100" y="100" width="30" height="30" fill="{SOFT}" stroke="{INK}" stroke-width="2"/><rect x="270" y="100" width="30" height="30" fill="{SOFT}" stroke="{INK}" stroke-width="2"/>')
+    d.wire((100, 115), (60, 115)); d.wire((300, 115), (340, 115)); d.text(50, 120, "+", anchor="end", weight="700", color=ACCENT); d.text(350, 120, "−", anchor="start", weight="700")
+    d.text(400, 100, "lames du collecteur", anchor="start", size=12); d.text(400, 130, "balais en carbone", anchor="start", size=12)
+    d.text(200, 215, "les balais s'usent : on les contrôle", size=11, color=SOFT)
+    return d
+
+
+def m5_ap_symbole():
+    d = Drawing(480, 220, "Moteur à aimants permanents : pas d'enroulement inducteur, seulement deux bornes vers l'induit")
+    motor(d, 160, 110, r=40, phases="=")
+    d.wire((120, 110), (60, 110)); d.wire((200, 110), (260, 110)); terminal(d, (60, 110), "+", anchor="end"); terminal(d, (260, 110), "−")
+    d.text(340, 90, "induit : 2 bornes", anchor="start", size=12); d.text(340, 120, "inducteur : aimants", anchor="start", size=12)
+    d.text(240, 200, "petits moteurs : 6 à 48 V", size=11, color=SOFT)
+    return d
+
+
+def m5_caracteristique():
+    d = Drawing(520, 260, "Moteur à aimants permanents : sa vitesse baisse un peu, en ligne droite, quand le couple demandé augmente")
+    d.graph(70, 30, 380, 180, (0, 1.1), (0, 3200), [([(0, 3000), (1, 2400)], ACCENT, "12 V"), ([(0, 1500), (1, 900)], SOFT, "6 V")],
+            "couple (N·m)", "vitesse (tr/min)", xticks=((0.5, "0,5"), (1, "1")), yticks=((1500, "1500"), (3000, "3000")))
+    return d
+
+
+def _dc_field(d, kind):
+    d.text(40, 40, "+", weight="700", color=ACCENT); d.text(40, 200, "−", weight="700")
+    d.wire((50, 36), (240, 36)); d.wire((50, 196), (240, 196))
+    motor(d, 240, 116, r=26, phases="=")
+    if kind == "serie":
+        d.wire((240, 36), (240, 50)); d.inductor((240, 50), (240, 90)); d.wire((240, 142), (240, 196))
+        d.text(270, 74, "inducteur série (gros fil)", anchor="start", size=12, weight="600")
+    else:
+        d.wire((240, 36), (240, 90)); d.wire((240, 142), (240, 196))
+        d.dot((240, 36)); d.dot((240, 196)); d.wire((240, 36), (360, 36), (360, 96)); d.inductor((360, 96), (360, 136)); d.wire((360, 136), (360, 196), (240, 196))
+        d.text(376, 120, "inducteur shunt", anchor="start", size=12, weight="600"); d.text(376, 140, "(fil fin)", anchor="start", size=11, color=SOFT)
+
+
+def m5_serie():
+    d = Drawing(520, 230, "Moteur série : l'inducteur est en série avec l'induit ; fort couple au démarrage, vitesse très variable, jamais à vide")
+    _dc_field(d, "serie")
+    d.text(270, 222, "fort couple au démarrage", size=12, weight="600")
+    return d
+
+
+def m5_shunt():
+    d = Drawing(520, 230, "Moteur shunt : l'inducteur est en parallèle sur l'induit ; vitesse presque constante quelle que soit la charge")
+    _dc_field(d, "shunt")
+    d.text(270, 222, "vitesse presque constante", size=12, weight="600")
+    return d
+
+
+def m5_fcem():
+    d = Drawing(520, 240, "Modèle de l'induit : la tension appliquée U se partage entre la chute R × I et la force contre-électromotrice E")
+    d.battery((60, 190), (60, 60), "U", side=-1)
+    d.wire((60, 60), (60, 40), (200, 40)); d.resistor((200, 40), (300, 40), "R")
+    d.wire((300, 40), (380, 40), (380, 70))
+    d.add(f'<circle cx="380" cy="115" r="30" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>'); d.text(380, 121, "E", weight="700", color=ACCENT)
+    d.wire((380, 145), (380, 210), (60, 210), (60, 190))
+    d.arrow((140, 60), (180, 60), "I", offset=(0, 18))
+    d.text(260, 232, "U = E + R × I", weight="700")
+    return d
+
+
+def m5_demarrage():
+    d = Drawing(520, 260, "Courant de démarrage : à l'arrêt E = 0, le courant vaut U / R, plusieurs fois le courant nominal ; il baisse quand le moteur prend de la vitesse")
+    pts = [(t / 10, 1 + 9 * math.exp(-t / 6)) for t in range(0, 41)]
+    d.graph(70, 30, 380, 180, (0, 4.2), (0, 11), [(pts, ACCENT, "I / In", (1.4, 3.2))], "temps (s)", "courant (× In)",
+            xticks=((1, "1"), (2, "2"), (3, "3"), (4, "4")), yticks=((1, "1"), (5, "5"), (10, "10")))
+    return d
+
+
+def m5_inversion():
+    d = Drawing(520, 230, "Inverser le sens d'un moteur à aimants : inverser la polarité de l'induit, par exemple avec un inverseur à deux circuits")
+    for x0, label, sign in ((40, "sens horaire", ("+", "−")), (290, "sens antihoraire", ("−", "+"))):
+        motor(d, x0 + 100, 110, r=30, phases="=")
+        d.wire((x0 + 70, 110), (x0 + 20, 110)); d.wire((x0 + 130, 110), (x0 + 180, 110))
+        d.text(x0 + 12, 115, sign[0], anchor="end", weight="700", color=ACCENT); d.text(x0 + 188, 115, sign[1], anchor="start", weight="700")
+        d.add(f'<path d="M{x0 + 80} 70 A30 30 0 0 {1 if label == "sens horaire" else 0} {x0 + 120} 70" fill="none" stroke="{ACCENT}" stroke-width="2"/>')
+        d.text(x0 + 100, 180, label, size=12, weight="600")
+    return d
+
+
+def m5_mli():
+    d = Drawing(560, 260, "Variation de vitesse par MLI : le transistor hache la tension ; la tension moyenne vaut le rapport cyclique × 12 V")
+    pts, t = [], 0
+    for k in range(4):
+        pts += [(t, 0), (t, 12), (t + 3, 12), (t + 3, 0), (t + 10, 0)]; t += 10
+    d.graph(70, 30, 400, 170, (0, 41), (0, 14), [(pts, ACCENT, "")], "temps", "tension (V)", yticks=((12, "12"), (3.6, "3,6")))
+    d.add(f'<line x1="70" y1="{fmt(30 + 170 - 3.6 / 14 * 170)}" x2="470" y2="{fmt(30 + 170 - 3.6 / 14 * 170)}" stroke="{SOFT}" stroke-dasharray="5 4" stroke-width="2"/>')
+    d.text(300, 240, "rapport cyclique 30 % → tension moyenne 3,6 V", size=12, weight="600")
+    return d
+
+
+def m5_banc():
+    d = Drawing(520, 230, "Banc du mini-projet : alimentation 12 V, ampèremètre en série, voltmètre aux bornes du moteur 12 V")
+    block(d, 20, 70, 130, 60, "alimentation 12 V", size=12)
+    d.wire((150, 85), (220, 85)); d.meter((220, 85), (290, 85), "A"); d.wire((290, 85), (380, 85), (380, 95))
+    motor(d, 380, 120, r=24, phases="=")
+    d.wire((380, 144), (380, 170), (150, 170), (150, 115))
+    d.wire((330, 85), (330, 100)); d.meter((330, 100), (330, 150), "V"); d.wire((330, 150), (330, 170))
+    d.text(260, 210, "tout le banc reste en 12 V", size=12, color=ACCENT, weight="600")
+    return d
+
+
+# --- Module 6 : les moteurs à courant alternatif ---------------------------------------------------------------------
+
+
+def m6_champ():
+    d = Drawing(520, 260, "Trois bobines décalées de 120°, alimentées en triphasé, créent un champ magnétique qui tourne")
+    for k, name in enumerate(("U", "V", "W")):
+        a = -math.pi / 2 + 2 * math.pi * k / 3
+        x, y = 160 + 90 * math.cos(a), 130 + 90 * math.sin(a)
+        d.add(f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="22" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>')
+        d.text(x, y + 5, name, weight="700")
+    d.add(f'<path d="M160 70 A60 60 0 1 1 103 150" fill="none" stroke="{ACCENT}" stroke-width="3"/>')
+    d.arrow((112, 160), (100, 148), color=ACCENT)
+    d.text(340, 110, "champ tournant", anchor="start", weight="700", color=ACCENT)
+    d.text(340, 140, "à 50 Hz : 3 000 tr/min", anchor="start", size=12); d.text(340, 165, "pour une paire de pôles", anchor="start", size=12)
+    return d
+
+
+def m6_vitesses():
+    d = Drawing(520, 230, "Vitesse de synchronisme à 50 Hz selon le nombre de paires de pôles : 3 000, 1 500, 1 000 et 750 tr/min")
+    bars(d, 170, 20, 260, 160, [("p = 1 (2 pôles)", 3000, "3 000 tr/min"), ("p = 2 (4 pôles)", 1500, "1 500 tr/min"),
+                                ("p = 3 (6 pôles)", 1000, "1 000 tr/min"), ("p = 4 (8 pôles)", 750, "750 tr/min")], 3000, "ns = 60 × f / p")
+    return d
+
+
+def m6_cage():
+    d = Drawing(520, 220, "Rotor à cage d'écureuil : des barres d'aluminium reliées à chaque bout par un anneau de court-circuit")
+    d.add(f'<ellipse cx="120" cy="110" rx="26" ry="70" fill="none" stroke="{INK}" stroke-width="3"/><ellipse cx="380" cy="110" rx="26" ry="70" fill="none" stroke="{INK}" stroke-width="3"/>')
+    for k in range(7):
+        y = 50 + 20 * k
+        d.wire((120 + 26 * math.sqrt(max(0, 1 - ((y - 110) / 70) ** 2)), y), (380 - 26 * math.sqrt(max(0, 1 - ((y - 110) / 70) ** 2)), y), color=ACCENT, width=3)
+    d.wire((40, 110), (94, 110), width=5); d.wire((406, 110), (470, 110), width=5)
+    d.text(120, 205, "anneau", size=12); d.text(250, 205, "barres", size=12, color=ACCENT, weight="600"); d.text(380, 205, "anneau", size=12)
+    return d
+
+
+def m6_couple():
+    d = Drawing(560, 290, "Couple d'un moteur asynchrone selon sa vitesse : couple de démarrage, couple maximal, point de fonctionnement près du synchronisme")
+    pts = []
+    for n in range(0, 1500, 15):
+        g = (1500 - n) / 1500
+        c = 2 * 2.6 / (g / 0.18 + 0.18 / g) if g > 0 else 0
+        pts.append((n, c))
+    pts.append((1500, 0))
+    d.graph(70, 30, 420, 200, (0, 1560), (0, 3), [(pts, ACCENT, "couple moteur", (300, 1.4))], "vitesse (tr/min)", "couple (× Cn)",
+            marks=(((1440, 1.0), "nominal"), ((1230, 2.6), "maximal")), xticks=((750, "750"), (1500, "1500")), yticks=((1, "1"), (2, "2")))
+    d.text(80, 280, "au démarrage ≈ 0,9 × Cn", anchor="start", size=12, color=SOFT)
+    return d
+
+
+def m6_rotor_bobine():
+    d = Drawing(520, 230, "Moteur à rotor bobiné : des bagues et des balais relient le rotor à des résistances qu'on retire au démarrage")
+    motor(d, 140, 115, r=40)
+    for k in range(3):
+        y = 85 + 30 * k
+        d.add(f'<rect x="200" y="{y - 8}" width="20" height="16" fill="{SOFT}" stroke="{INK}" stroke-width="1.5"/>')
+        d.wire((180, y), (200, y)); d.wire((220, y), (300, y)); d.resistor((300, y), (380, y)); d.wire((380, y), (420, y))
+    d.wire((420, 85), (420, 145), width=3)
+    d.text(210, 190, "bagues", size=12); d.text(340, 190, "résistances de démarrage", size=12, weight="600")
+    return d
+
+
+def m6_synchrone():
+    d = Drawing(520, 250, "Moteur synchrone : sa vitesse reste égale à la vitesse de synchronisme quelle que soit la charge")
+    d.graph(70, 30, 380, 170, (0, 1.2), (1300, 1600), [([(0, 1500), (1.1, 1500)], ACCENT, "synchrone", (0.15, 1520)),
+                                                        ([(0, 1495), (1.1, 1420)], SOFT, "asynchrone", (0.55, 1405))],
+            "charge (× nominale)", "vitesse (tr/min)", yticks=((1500, "1500"), (1420, "1420")), xticks=((1, "1"),))
+    return d
+
+
+def m6_monophase():
+    d = Drawing(520, 240, "Moteur monophasé à condensateur : un enroulement auxiliaire en série avec un condensateur crée le décalage qui fait démarrer")
+    d.text(40, 40, "L", weight="700"); d.text(40, 210, "N", weight="700")
+    d.wire((50, 36), (360, 36)); d.wire((50, 206), (360, 206))
+    d.wire((160, 36), (160, 100)); d.inductor((160, 100), (160, 140)); d.wire((160, 140), (160, 206))
+    d.text(180, 125, "principal", anchor="start", size=12, weight="600")
+    d.wire((320, 36), (320, 60)); d.capacitor((320, 60), (320, 100), "C", "8 µF"); d.inductor((320, 110), (320, 150)); d.wire((320, 100), (320, 110)); d.wire((320, 150), (320, 206))
+    d.text(340, 140, "auxiliaire", anchor="start", size=12, weight="600")
+    d.dot((160, 36)); d.dot((160, 206))
+    return d
+
+
+def m6_bague():
+    d = Drawing(480, 230, "Moteur à bague de déphasage : une spire en cuivre sur une partie de chaque pôle retarde le flux et fait démarrer le rotor")
+    d.add(f'<rect x="120" y="40" width="110" height="60" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<rect x="196" y="40" width="24" height="60" fill="none" stroke="{ACCENT}" stroke-width="4"/>')
+    d.add(f'<circle cx="175" cy="160" r="45" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(250, 70, "bague de déphasage", anchor="start", size=12, weight="600", color=ACCENT)
+    d.text(250, 165, "petits ventilateurs, pompes", anchor="start", size=12)
+    d.text(250, 190, "rendement faible", anchor="start", size=12, color=SOFT)
+    return d
+
+
+def m6_classes():
+    d = Drawing(520, 220, "Classes d'isolation : température maximale des enroulements, 130 °C en B, 155 °C en F, 180 °C en H")
+    bars(d, 110, 20, 300, 140, [("classe B", 130, "130 °C"), ("classe F", 155, "155 °C"), ("classe H", 180, "180 °C")], 180, "température maximale des enroulements")
+    return d
+
+
+def m6_service():
+    d = Drawing(560, 250, "Types de service : S1 continu à charge constante, S3 intermittent, marche et repos alternés")
+    d.graph(70, 30, 200, 120, (0, 10), (0, 1.3), [([(0, 1), (10, 1)], ACCENT, "")], "temps", "charge")
+    d.text(170, 180, "S1 : continu", weight="600")
+    pts = []
+    for k in range(5):
+        pts += [(2 * k, 1), (2 * k + 0.8, 1), (2 * k + 0.8, 0), (2 * k + 2, 0)]
+    d.graph(320, 30, 200, 120, (0, 10), (0, 1.3), [(pts, ACCENT, "")], "temps", "charge")
+    d.text(420, 180, "S3 : intermittent (40 %)", weight="600")
+    return d
+
+
+def m6_alignement():
+    d = Drawing(560, 230, "Alignement de l'accouplement : les deux arbres doivent être dans le prolongement l'un de l'autre, sans décalage ni angle")
+    for x0, label, dy, ang in ((20, "aligné", 0, 0), (200, "décalage parallèle", 14, 0), (380, "défaut angulaire", 0, 8)):
+        block(d, x0, 70, 60, 50, "M", size=13)
+        d.wire((x0 + 60, 95), (x0 + 85, 95), width=6)
+        d.add(f'<g transform="rotate({ang} {x0 + 100} 95)"><rect x="{x0 + 85}" y="{78 + dy}" width="30" height="34" fill="{SOFT}"/>'
+              f'<line x1="{x0 + 115}" y1="{95 + dy}" x2="{x0 + 150}" y2="{95 + dy}" stroke="{INK}" stroke-width="6"/></g>')
+        d.text(x0 + 80, 170, label, size=12, weight="600", color=INK if label == "aligné" else ACCENT)
+    d.text(280, 215, "un défaut d'alignement use les roulements", size=11, color=SOFT)
+    return d
+
+
+def m6_raccordement():
+    d = Drawing(520, 240, "Boîte à bornes : câble par un presse-étoupe, barrettes selon le couplage, conducteur PE sur la borne de terre")
+    d.add(f'<rect x="120" y="40" width="280" height="160" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    for k in range(3):
+        terminal(d, (180 + 60 * k, 90)); terminal(d, (180 + 60 * k, 140))
+    d.wire((180, 140), (300, 140), color=ACCENT, width=6)
+    d.ground((360, 150)); d.text(360, 190, "PE", weight="700", color=ACCENT)
+    d.add(f'<rect x="80" y="100" width="40" height="40" rx="6" fill="{SOFT}" stroke="{INK}" stroke-width="2"/>')
+    d.text(70, 220, "presse-étoupe", size=12)
+    d.text(240, 30, "boîte à bornes", weight="600")
+    return d
+
+
+def m6_resistances():
+    d = Drawing(520, 230, "Contrôle d'un moteur débranché : barrettes retirées, les trois enroulements doivent présenter la même résistance")
+    for k, (top, bottom) in enumerate((("U1", "U2"), ("V1", "V2"), ("W1", "W2"))):
+        y = 50 + 60 * k
+        d.text(60, y + 5, top, weight="700"); d.wire((80, y), (120, y)); d.inductor((120, y), (200, y)); d.wire((200, y), (240, y)); d.text(260, y + 5, bottom, weight="700")
+        d.text(330, y + 5, "≈ 2,7 Ω", anchor="start", size=12, color=ACCENT, weight="600")
+    d.text(260, 220, "trois valeurs égales à quelques % près", size=12)
+    return d
+
+
+def m6_diagnostic():
+    d = Drawing(600, 260, "Dépannage d'un moteur qui ne démarre pas : vérifier l'alimentation, la protection, puis le moteur lui-même, toujours consigné pour les mesures")
+    labels = ("moteur ne démarre pas", "tension aux bornes ?", "protection déclenchée ?", "enroulements : résistances égales ?", "isolement et roulements")
+    for k, label in enumerate(labels):
+        y = 20 + 46 * k
+        block(d, 150, y, 300, 34, label, size=12)
+        if k < len(labels) - 1:
+            d.arrow((300, y + 34), (300, y + 46), color=INK)
+    d.text(470, 110, "mesures toujours", anchor="start", size=11, color=SOFT); d.text(470, 126, "moteur consigné", anchor="start", size=11, color=SOFT)
+    return d
+
+
+def m6_releve():
+    d = Drawing(520, 220, "Mini-projet : ohmmètre entre U1 et U2 d'un moteur débranché, barrettes retirées")
+    d.add(f'<rect x="100" y="40" width="240" height="140" rx="10" fill="none" stroke="{INK}" stroke-width="2"/>')
+    for k, (top, bottom) in enumerate((("U1", "W2"), ("V1", "U2"), ("W1", "V2"))):
+        x = 150 + 70 * k
+        terminal(d, (x, 80)); terminal(d, (x, 140)); d.text(x, 68, top, size=12, weight="700"); d.text(x, 166, bottom, size=12, weight="700")
+    d.wire((150, 80), (150, 20), (420, 20), (420, 95)); d.meter((420, 95), (420, 145), "Ω"); d.wire((420, 145), (420, 200), (220, 200), (220, 140), color=ACCENT)
+    d.text(100, 214, "moteur débranché", anchor="start", size=11, color=SOFT)
+    return d
+
+
 SECTION_DIAGRAMS = {
     1: [m1_seuils, m1_corps, m1_arc, m1_epi, m1_defaut, m1_ddr, m1_tt, m1_tn, m1_it, m1_etapes, m1_vat, m1_domaines, m1_normes, m1_banc],
     2: [m2_symboles_commande, m2_symboles_puissance, m2_contacts, m2_bornes, m2_puissance, m2_commande, m2_unifilaire,
         m2_synoptique, m2_etoile, m2_triangle, m2_plaque, m2_tensions, m2_manuel, m2_telecommande, m2_lampes],
     3: [m3_chaine, m3_pertes_ligne, m3_poste, m3_mcc, m3_triangle, m3_compensation, m3_plaque_transfo, m3_rendement,
         m3_dyn11, m3_tensions_triphase, m3_tc, m3_commande_24v, m3_banc],
+    4: [m4_couleurs, m4_selecteur, m4_fin_course, m4_pressostat, m4_inductif, m4_pnp_npn, m4_photo, m4_ultrasons, m4_pt100,
+        m4_codeur, m4_electrovanne, m4_pas_a_pas, m4_banc],
+    5: [m5_laplace, m5_spire, m5_coupe, m5_collecteur, m5_ap_symbole, m5_caracteristique, m5_serie, m5_shunt, m5_fcem,
+        m5_demarrage, m5_inversion, m5_mli, m5_banc],
+    6: [m6_champ, m6_vitesses, m6_cage, m6_couple, m6_rotor_bobine, m6_synchrone, m6_monophase, m6_bague, m6_classes,
+        m6_service, m6_alignement, m6_raccordement, m6_resistances, m6_diagnostic, m6_releve],
 }
 
 
@@ -808,7 +1367,39 @@ def q_m3_tc():
     return d
 
 
-QUESTION_DIAGRAMS = {1: q_m1_sectionneur, 2: q_m2_plaques, 3: q_m3_tc}
+def q_m4_pnp():
+    d = Drawing(520, 240, "Capteur 3 fils et sa charge, sans légendes")
+    block(d, 40, 80, 90, 70, "", size=12)
+    d.wire((130, 95), (300, 95), (300, 40), (460, 40)); d.wire((130, 115), (250, 115), (250, 170)); d.resistor((250, 170), (250, 215))
+    d.wire((250, 215), (460, 215)); d.wire((130, 135), (200, 135), (200, 215))
+    d.zone("brun", 150, 82, 90, 26); d.zone("noir", 150, 108, 80, 20); d.zone("bleu", 140, 128, 50, 26)
+    return d
+
+
+def q_m5_collecteur():
+    d = Drawing(480, 260, "Coupe d'un moteur à courant continu sans légendes")
+    d.add(f'<circle cx="240" cy="130" r="110" fill="#eef4f3" stroke="{INK}" stroke-width="3"/>')
+    d.add(f'<rect x="144" y="90" width="34" height="80" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/><rect x="302" y="90" width="34" height="80" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<circle cx="240" cy="130" r="56" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<circle cx="240" cy="130" r="20" fill="{PAPER}" stroke="{ACCENT}" stroke-width="4"/>')
+    d.zone("collecteur", 218, 108, 44, 44); d.zone("inducteur", 140, 86, 42, 88); d.zone("carcasse", 200, 22, 80, 40)
+    return d
+
+
+def q_m6_rotor():
+    d = Drawing(560, 230, "Moteur asynchrone éclaté sans légendes : trois pièces côte à côte")
+    d.add(f'<rect x="30" y="50" width="170" height="130" rx="14" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/><circle cx="115" cy="115" r="46" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for k in range(5):
+        y = 85 + 15 * k
+        d.wire((270, y), (370, y), color=ACCENT, width=3)
+    d.add(f'<rect x="262" y="75" width="10" height="80" fill="{INK}"/><rect x="368" y="75" width="10" height="80" fill="{INK}"/>')
+    d.wire((230, 115), (262, 115), width=6); d.wire((378, 115), (420, 115), width=6)
+    d.add(f'<path d="M450 70 l30 20 l0 50 l-30 20 z" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/><circle cx="505" cy="115" r="30" fill="none" stroke="{INK}" stroke-width="2"/>')
+    d.zone("stator", 30, 50, 170, 130); d.zone("rotor", 240, 70, 150, 90); d.zone("flasque", 440, 70, 100, 90)
+    return d
+
+
+QUESTION_DIAGRAMS = {1: q_m1_sectionneur, 2: q_m2_plaques, 3: q_m3_tc, 4: q_m4_pnp, 5: q_m5_collecteur, 6: q_m6_rotor}
 
 PARTS = {"p1": range(1, 4), "p2": range(4, 7), "p3": range(7, 10), "p4": range(10, 13)}
 

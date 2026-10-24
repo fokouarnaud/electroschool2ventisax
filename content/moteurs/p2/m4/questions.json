@@ -1,0 +1,998 @@
+[
+ {
+  "id": "m-p2-m4-q01",
+  "section": "01-boutons-voyants",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle couleur est réservée au bouton d'arrêt d'urgence ?",
+   "en": "Which colour is reserved for the emergency stop button?"
+  },
+  "explanation": {
+   "fr": "Le rouge, sur fond jaune ; il n'est utilisé pour aucun autre bouton.",
+   "en": "Red, on a yellow background; it is used for no other button."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Rouge",
+     "en": "Red"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Noir",
+     "en": "Black"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Vert",
+     "en": "Green"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q02",
+  "section": "01-boutons-voyants",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : un bouton d'arrêt se câble avec un contact à fermeture.",
+   "en": "True or false: a stop button is wired with a make contact."
+  },
+  "explanation": {
+   "fr": "Faux : avec un contact à ouverture, pour qu'un fil coupé arrête la machine.",
+   "en": "False: with a break contact, so that a broken wire stops the machine."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q03",
+  "section": "01-boutons-voyants",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque couleur de voyant à sa signification.",
+   "en": "Match each indicator colour with its meaning."
+  },
+  "explanation": {
+   "fr": "Rouge : danger ou défaut ; jaune : anormal ; vert : normal ; bleu : action obligatoire.",
+   "en": "Red: danger or fault; yellow: abnormal; green: normal; blue: mandatory action."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Rouge",
+     "en": "Red"
+    },
+    "right": {
+     "fr": "Danger ou défaut",
+     "en": "Danger or fault"
+    }
+   },
+   {
+    "left": {
+     "fr": "Jaune",
+     "en": "Yellow"
+    },
+    "right": {
+     "fr": "Situation anormale",
+     "en": "Abnormal situation"
+    }
+   },
+   {
+    "left": {
+     "fr": "Vert",
+     "en": "Green"
+    },
+    "right": {
+     "fr": "Fonctionnement normal",
+     "en": "Normal operation"
+    }
+   },
+   {
+    "left": {
+     "fr": "Bleu",
+     "en": "Blue"
+    },
+    "right": {
+     "fr": "Action obligatoire",
+     "en": "Mandatory action"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q04",
+  "section": "02-fins-de-course",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À quoi sert l'hystérésis d'un pressostat ?",
+   "en": "What is a pressure switch's hysteresis for?"
+  },
+  "explanation": {
+   "fr": "Elle évite que le moteur démarre et s'arrête sans cesse autour d'un seul seuil.",
+   "en": "It stops the motor starting and stopping endlessly around a single threshold."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Éviter les démarrages répétés autour du seuil",
+     "en": "Avoid repeated starts around the threshold"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Augmenter la pression maximale",
+     "en": "Increase the maximum pressure"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Protéger contre les courts-circuits",
+     "en": "Protect against short circuits"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q05",
+  "section": "02-fins-de-course",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un pressostat arrête le compresseur à 7 bar ; son écart vaut 1,5 bar. À quelle pression, en bar, le compresseur redémarre-t-il ? (exemple : 2,5)",
+   "en": "A pressure switch stops the compressor at 7 bar; its differential is 1.5 bar. At what pressure, in bar, does the compressor restart? (example: 2.5)"
+  },
+  "explanation": {
+   "fr": "7 − 1,5 = 5,5 bar.",
+   "en": "7 − 1.5 = 5.5 bar."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "5.5",
+   "unit": "",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-q06",
+  "section": "03-capteurs-proximite",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'est-ce qu'un capteur inductif peut détecter ?",
+   "en": "What can an inductive sensor detect?"
+  },
+  "explanation": {
+   "fr": "Seulement les métaux, qui perturbent son champ magnétique.",
+   "en": "Only metals, which disturb its magnetic field."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Les métaux",
+     "en": "Metals"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le bois et le plastique",
+     "en": "Wood and plastic"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La lumière",
+     "en": "Light"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q07",
+  "section": "03-capteurs-proximite",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un capteur inductif a une portée nominale de 10 mm. À quelle distance détecte-t-il de l'aluminium (facteur 0,4) ? (exemple : 2,5 mm)",
+   "en": "An inductive sensor has a rated range of 10 mm. At what distance does it detect aluminium (factor 0.4)? (example: 2.5 mm)"
+  },
+  "explanation": {
+   "fr": "10 × 0,4 = 4 mm.",
+   "en": "10 × 0.4 = 4 mm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.004",
+   "unit": "m",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-q08",
+  "section": "03-capteurs-proximite",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Ce capteur 3 fils commande la charge dessinée en bas. Cliquez sur le fil qui porte son signal de sortie.",
+   "en": "This three-wire sensor drives the load drawn below. Click the wire that carries its output signal."
+  },
+  "explanation": {
+   "fr": "Le fil du milieu, le noir, va du capteur à la charge ; les deux autres l'alimentent (+24 V en haut, 0 V en bas).",
+   "en": "The middle wire, the black one, goes from the sensor to the load; the other two supply it (+24 V at the top, 0 V at the bottom)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Fil du milieu",
+     "en": "Middle wire"
+    },
+    "correct": true,
+    "shape": {
+     "x": 150,
+     "y": 108,
+     "w": 80,
+     "h": 20
+    }
+   },
+   {
+    "text": {
+     "fr": "Fil du haut",
+     "en": "Top wire"
+    },
+    "correct": false,
+    "shape": {
+     "x": 150,
+     "y": 82,
+     "w": 90,
+     "h": 26
+    }
+   },
+   {
+    "text": {
+     "fr": "Fil du bas",
+     "en": "Bottom wire"
+    },
+    "correct": false,
+    "shape": {
+     "x": 140,
+     "y": 128,
+     "w": 50,
+     "h": 26
+    }
+   }
+  ],
+  "svg": "schemas/m4-pnp.svg"
+ },
+ {
+  "id": "m-p2-m4-q09",
+  "section": "03-capteurs-proximite",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que fait la sortie d'un capteur PNP quand l'objet est détecté ?",
+   "en": "What does a PNP sensor's output do when the object is detected?"
+  },
+  "explanation": {
+   "fr": "Elle fournit le +24 V à la charge, branchée entre la sortie et le 0 V.",
+   "en": "It sources +24 V to the load, connected between the output and 0 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Elle fournit le +24 V à la charge",
+     "en": "It sources +24 V to the load"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Elle ramène la charge au 0 V",
+     "en": "It sinks the load to 0 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Elle coupe le fil brun",
+     "en": "It cuts the brown wire"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q10",
+  "section": "04-photo-hall-ultrasons",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel montage de cellule photoélectrique a la plus grande portée ?",
+   "en": "Which photoelectric arrangement has the longest range?"
+  },
+  "explanation": {
+   "fr": "Le barrage, émetteur et récepteur face à face.",
+   "en": "Through-beam, transmitter and receiver facing each other."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Barrage",
+     "en": "Through-beam"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Reflex",
+     "en": "Retro-reflective"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Proximité",
+     "en": "Diffuse"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q11",
+  "section": "04-photo-hall-ultrasons",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "L'écho d'un capteur à ultrasons revient après 8 ms (v = 340 m/s). À quelle distance est l'objet ? (exemple : 0,5 m)",
+   "en": "An ultrasonic sensor's echo returns after 8 ms (v = 340 m/s). How far away is the object? (example: 0.5 m)"
+  },
+  "explanation": {
+   "fr": "d = v × t / 2 = 340 × 0,008 / 2 = 1,36 m.",
+   "en": "d = v × t / 2 = 340 × 0.008 / 2 = 1.36 m."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "1.36",
+   "unit": "m",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-q12",
+  "section": "04-photo-hall-ultrasons",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : un capteur à effet Hall détecte un aimant.",
+   "en": "True or false: a Hall-effect sensor detects a magnet."
+  },
+  "explanation": {
+   "fr": "Vrai : il réagit à un champ magnétique.",
+   "en": "True: it reacts to a magnetic field."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-q13",
+  "section": "05-temperature-vitesse-position",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle est la résistance d'une sonde Pt100 à 100 °C ? (exemple : 47 Ω)",
+   "en": "What is the resistance of a Pt100 probe at 100 °C? (example: 47 Ω)"
+  },
+  "explanation": {
+   "fr": "R = 100 × (1 + 0,00385 × 100) = 138,5 Ω.",
+   "en": "R = 100 × (1 + 0.00385 × 100) = 138.5 Ω."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "138.5",
+   "unit": "Ω",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-q14",
+  "section": "05-temperature-vitesse-position",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un codeur de 1 000 impulsions par tour délivre 5 000 impulsions par seconde. Quelle est la vitesse de l'arbre ? (exemple : 1450 tr/min)",
+   "en": "A 1,000-pulse encoder delivers 5,000 pulses per second. What is the shaft speed? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "5 000 / 1 000 = 5 tr/s, soit 300 tr/min.",
+   "en": "5,000 / 1,000 = 5 rev/s, that is 300 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "300",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-q15",
+  "section": "06-actionneurs",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur pas à pas de 1,8° par pas reçoit 100 impulsions. De quel angle tourne-t-il ? (exemple : 45°)",
+   "en": "A 1.8° stepper motor receives 100 pulses. Through what angle does it turn? (example: 45°)"
+  },
+  "explanation": {
+   "fr": "100 × 1,8 = 180°.",
+   "en": "100 × 1.8 = 180°."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "180",
+   "unit": "°",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-x01",
+  "section": "01-boutons-voyants",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle couleur est préférée pour un bouton de marche ?",
+   "en": "Which colour is preferred for a start button?"
+  },
+  "explanation": {
+   "fr": "Le blanc (le gris, le noir et le vert restent admis).",
+   "en": "White (grey, black and green are still allowed)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Blanc",
+     "en": "White"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Rouge",
+     "en": "Red"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Jaune",
+     "en": "Yellow"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x02",
+  "section": "01-boutons-voyants",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Qu'est-ce qui distingue un sélecteur d'un bouton-poussoir ?",
+   "en": "What sets a selector switch apart from a push button?"
+  },
+  "explanation": {
+   "fr": "Le sélecteur garde sa position ; le bouton-poussoir revient au repos dès qu'on le relâche.",
+   "en": "The selector keeps its position; the push button returns to rest as soon as it is released."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il garde sa position",
+     "en": "It keeps its position"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il est toujours rouge",
+     "en": "It is always red"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il n'a pas de contact",
+     "en": "It has no contact"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x03",
+  "section": "02-fins-de-course",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi un fin de course de sécurité est-il à manœuvre positive d'ouverture ?",
+   "en": "Why does a safety limit switch have positive opening?"
+  },
+  "explanation": {
+   "fr": "La came ouvre le contact par force, même si un ressort casse ou si les contacts sont collés.",
+   "en": "The cam forces the contact open, even if a spring breaks or the contacts weld."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pour ouvrir le contact par force, même en cas de panne",
+     "en": "To force the contact open, even on failure"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Pour qu'il dure plus longtemps",
+     "en": "So that it lasts longer"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Pour détecter les plastiques",
+     "en": "To detect plastics"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x04",
+  "section": "02-fins-de-course",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que détecte un flotteur ?",
+   "en": "What does a float switch detect?"
+  },
+  "explanation": {
+   "fr": "Un niveau de liquide.",
+   "en": "A liquid level."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un niveau de liquide",
+     "en": "A liquid level"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une température",
+     "en": "A temperature"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une vitesse",
+     "en": "A speed"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x05",
+  "section": "03-capteurs-proximite",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel capteur choisir pour détecter des bouteilles en plastique ?",
+   "en": "Which sensor should be chosen to detect plastic bottles?"
+  },
+  "explanation": {
+   "fr": "Un capteur capacitif (ou une cellule photoélectrique) ; un inductif ne voit que les métaux.",
+   "en": "A capacitive sensor (or a photoelectric one); an inductive sensor only sees metals."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un capteur capacitif",
+     "en": "A capacitive sensor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un capteur inductif",
+     "en": "An inductive sensor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un capteur à effet Hall",
+     "en": "A Hall-effect sensor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x06",
+  "section": "03-capteurs-proximite",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Sur un capteur 3 fils, à quoi se raccorde le fil bleu ?",
+   "en": "On a three-wire sensor, what does the blue wire connect to?"
+  },
+  "explanation": {
+   "fr": "Au 0 V ; le brun au +24 V, le noir est la sortie.",
+   "en": "To 0 V; brown to +24 V, black is the output."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Au 0 V",
+     "en": "To 0 V"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Au +24 V",
+     "en": "To +24 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "À la charge",
+     "en": "To the load"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x07",
+  "section": "03-capteurs-proximite",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un capteur inductif de portée nominale 8 mm doit détecter de l'inox (facteur 0,7). Quelle distance maximale ? (exemple : 2,5 mm)",
+   "en": "An inductive sensor with an 8 mm rated range must detect stainless steel (factor 0.7). What maximum distance? (example: 2.5 mm)"
+  },
+  "explanation": {
+   "fr": "8 × 0,7 = 5,6 mm.",
+   "en": "8 × 0.7 = 5.6 mm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.0056",
+   "unit": "m",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-x08",
+  "section": "04-photo-hall-ultrasons",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "De quoi a besoin une cellule reflex ?",
+   "en": "What does a retro-reflective sensor need?"
+  },
+  "explanation": {
+   "fr": "D'un réflecteur en face de son boîtier émetteur-récepteur.",
+   "en": "A reflector facing its transmitter-receiver housing."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "D'un réflecteur",
+     "en": "A reflector"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "D'un aimant",
+     "en": "A magnet"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "D'une cible métallique",
+     "en": "A metal target"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x09",
+  "section": "04-photo-hall-ultrasons",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un objet est à 1,7 m d'un capteur à ultrasons (v = 340 m/s). Après combien de temps l'écho revient-il ? (exemple : 2,5 ms)",
+   "en": "An object is 1.7 m from an ultrasonic sensor (v = 340 m/s). After how long does the echo return? (example: 2.5 ms)"
+  },
+  "explanation": {
+   "fr": "t = 2 × d / v = 2 × 1,7 / 340 = 0,01 s, soit 10 ms.",
+   "en": "t = 2 × d / v = 2 × 1.7 / 340 = 0.01 s, that is 10 ms."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.01",
+   "unit": "s",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p2-m4-x10",
+  "section": "05-temperature-vitesse-position",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel est l'avantage d'un codeur absolu sur un codeur incrémental ?",
+   "en": "What is the advantage of an absolute encoder over an incremental one?"
+  },
+  "explanation": {
+   "fr": "Il donne directement la position, même après une coupure de courant.",
+   "en": "It gives the position directly, even after a power cut."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il connaît la position même après une coupure",
+     "en": "It knows the position even after a power cut"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il ne demande aucune alimentation",
+     "en": "It needs no supply"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il mesure la température",
+     "en": "It measures temperature"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x11",
+  "section": "06-actionneurs",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel repère porte la bobine d'une électrovanne sur un schéma ?",
+   "en": "Which marking does a solenoid valve coil carry on a diagram?"
+  },
+  "explanation": {
+   "fr": "YV.",
+   "en": "YV."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "YV",
+     "en": "YV"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "KM",
+     "en": "KM"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "SQ",
+     "en": "SQ"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p2-m4-x12",
+  "section": "06-actionneurs",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Qu'est-ce qui caractérise un servomoteur ?",
+   "en": "What characterises a servomotor?"
+  },
+  "explanation": {
+   "fr": "Une boucle fermée : un codeur mesure la position et le variateur corrige l'écart.",
+   "en": "A closed loop: an encoder measures the position and the drive corrects the error."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une boucle fermée avec un codeur",
+     "en": "A closed loop with an encoder"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "200 pas par tour sans capteur",
+     "en": "200 steps per revolution without a sensor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un rotor à cage",
+     "en": "A squirrel-cage rotor"
+    },
+    "correct": false
+   }
+  ]
+ }
+]
