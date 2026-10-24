@@ -69,3 +69,10 @@ def test_scanning_a_content_folder_reports_each_faulty_file(tmp_path):
         "questions.json : réseau américain 60 Hz",
         "questions.json : adresse Rockwell I:1/0",
     ]
+
+
+def test_the_direct_current_limit_of_extra_low_voltage_is_not_a_us_mains_value():
+    """120 V en continu est la limite de la TBT (M1) ; seul « 120 V » seul, tension secteur américaine, est refusé."""
+    assert us_mains_values("TBT : jusqu'à 50 V en alternatif, 120 V en continu.") == []
+    assert us_mains_values("ELV: up to 50 V AC, 120 V DC.") == []
+    assert us_mains_values("Prise américaine 120 V.") == ["120 V"]

@@ -5,8 +5,9 @@ PRACTICAL_HEADINGS = {
     "fr": ("## Variante oscilloscope", "## Variante multimètre seul", "## Sécurité"),
     "en": ("## Oscilloscope variant", "## Multimeter-only variant", "## Safety"),
 }
-# Réseaux et tensions américains écartés par M2 (la formation `moteurs` travaille en 230/400 V, 50 Hz).
-US_MAINS = re.compile(r"(?<![\d,.])(60 Hz|460 V|120 V)\b")
+# Réseaux et tensions américains écartés par M2 (la formation `moteurs` travaille en 230/400 V, 50 Hz) ;
+# « 120 V en continu », limite de la TBT, reste permis.
+US_MAINS = re.compile(r"(?<![\d,.])(60 Hz|460 V|120 V(?! (?:en )?continu| DC))\b")
 # Adressage Rockwell du livre (I:1/0) écarté par M7 au profit de l'IEC 61131-3 (%IX0.0).
 ROCKWELL = re.compile(r"\b[IO]:\d+/\d+\b")
 # Un lien Markdown vers un module ou une section : réservé à sa propre formation (M11).
