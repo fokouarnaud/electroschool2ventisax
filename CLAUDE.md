@@ -487,6 +487,7 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
     - **Livraison (US-63)** : `import_content` accepte plusieurs manifestes, `deploy.sh` lui passe `content/*/formation.json` ; `publish_reviewed` rend compte formation par formation.
     - **Garde-fous (US-64)** : `courses/tests/test_content_files.py` paramétré par formation ; règles de `moteurs` dans `courses/tests/content_rules.py`, testées sur des témoins (`test_content_rules.py`).
     - **Audit sans régression** : `audit.js`, `audit_p2.js` et `audit_p3.js` rejoués (360 et 1280 px, thèmes clair et sombre) : aucun défaut de contraste, aucun débordement, aucune erreur console, pages de 43 à 129 Ko comme avant ; seules restent les exceptions déjà admises (lien du pied de page, zones des questions sur schéma). Ajustement : l'icône de la formation du tableau de bord passait au-dessus de son nom ; `.course-formation` la met sur la même ligne (16 px).
+    - **Comportements déjà en place (US-71 à US-81)** : leurs tests sont passés au premier lancement ; chacun a été vu rouge par mutation (la règle protégée cassée un instant, puis le fichier restauré) : 13 mutations, 13 rouges pour la bonne raison. US-80 ne vire au rouge que si les deux protections sautent ensemble (filtre de `publish_reviewed` et contrôle de `Question.publish()`) : chacune suffit à garder la question en brouillon.
 
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.
