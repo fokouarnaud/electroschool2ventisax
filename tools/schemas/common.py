@@ -283,6 +283,43 @@ class Drawing:
         )
 
 
+# --- Aides de dessin partagées par les formations -------------------------------------------------------------------
+
+
+def block(d, x, y, w, h, label, size=12):
+    d.add(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" rx="8" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(x + w / 2, y + h / 2 + 4, label, size=size, weight="600")
+
+
+def transformer(d, cx, top, n_p=1, n_s=1, dots=None, core=True):
+    """Transformateur vertical : enroulements de n segments (4 spires dessinées chacun) ; renvoie p1, p2, s1, s2."""
+    xp, xs = cx - 20, cx + 20
+    p_bottom, s_bottom = top + 40 * n_p, top + 40 * n_s
+    for k in range(n_p):
+        d.inductor((xp, top + 40 * k), (xp, top + 40 * (k + 1)))
+    for k in range(n_s):
+        d.inductor((xs, top + 40 * (k + 1)), (xs, top + 40 * k))
+    if core:
+        bottom = max(p_bottom, s_bottom)
+        d.wire((cx - 4, top - 4), (cx - 4, bottom + 4)); d.wire((cx + 4, top - 4), (cx + 4, bottom + 4))
+    if dots:
+        d.add(f'<circle cx="{fmt(xp - 12)}" cy="{fmt(top + 6)}" r="3.5" fill="{ACCENT}"/>')
+        sy = top + 6 if dots == "same" else s_bottom - 6
+        d.add(f'<circle cx="{fmt(xs + 12)}" cy="{fmt(sy)}" r="3.5" fill="{ACCENT}"/>')
+    return (xp, top), (xp, p_bottom), (xs, top), (xs, s_bottom)
+
+
+def terminal(d, p, label=None, anchor="start"):
+    d.add(f'<circle cx="{fmt(p[0])}" cy="{fmt(p[1])}" r="4" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    if label:
+        d.text(p[0] + (10 if anchor == "start" else -10), p[1] + 5, label, anchor=anchor, weight="600", color=ACCENT)
+
+
+def rail(d, x1, x2, y, label):
+    d.wire((x1, y), (x2, y))
+    d.text(x1 - 8, y + 5, label, anchor="end", weight="600")
+
+
 def file_name(func):
     return func.__name__.split("_", 1)[1].replace("_", "-") + ".svg"
 

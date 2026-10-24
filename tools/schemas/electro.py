@@ -6,7 +6,7 @@ content/electro/p<P>/m<N>/schemas/ (p1 pour les modules 1 à 4, p2 pour 5 à 7, 
 """
 import math
 
-from .common import ACCENT, INK, PAPER, ROOT, SOFT, Drawing, fmt
+from .common import ACCENT, INK, PAPER, ROOT, SOFT, Drawing, block, fmt, rail, terminal, transformer
 
 SLUG = "electro"
 
@@ -1190,11 +1190,6 @@ def wave(d, x0, y0, w, amp, periods, color=ACCENT, phase_deg=0.0, steps=120, rec
     d.wire(*pts, color=color, width=2)
 
 
-def block(d, x, y, w, h, label, size=12):
-    d.add(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" rx="8" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
-    d.text(x + w / 2, y + h / 2 + 4, label, size=size, weight="600")
-
-
 def amp_block(d, cx, cy, label="A", size=44):
     """Amplificateur vu comme un bloc triangulaire ; renvoie l'entrée et la sortie."""
     half = size / 2
@@ -1215,24 +1210,6 @@ def opamp(d, cx, cy, flip=False):
     d.add(f'<text x="{fmt(cx - 27)}" y="{fmt(minus[1] + 5)}" font-size="16" font-weight="700" fill="{INK}">−</text>')
     d.add(f'<text x="{fmt(cx - 28)}" y="{fmt(plus[1] + 5)}" font-size="16" font-weight="700" fill="{INK}">+</text>')
     return minus, plus, (cx + 55, cy)
-
-
-def transformer(d, cx, top, n_p=1, n_s=1, dots=None, core=True):
-    """Transformateur vertical : enroulements de n segments (4 spires dessinées chacun) ; renvoie p1, p2, s1, s2."""
-    xp, xs = cx - 20, cx + 20
-    p_bottom, s_bottom = top + 40 * n_p, top + 40 * n_s
-    for k in range(n_p):
-        d.inductor((xp, top + 40 * k), (xp, top + 40 * (k + 1)))
-    for k in range(n_s):
-        d.inductor((xs, top + 40 * (k + 1)), (xs, top + 40 * k))
-    if core:
-        bottom = max(p_bottom, s_bottom)
-        d.wire((cx - 4, top - 4), (cx - 4, bottom + 4)); d.wire((cx + 4, top - 4), (cx + 4, bottom + 4))
-    if dots:
-        d.add(f'<circle cx="{fmt(xp - 12)}" cy="{fmt(top + 6)}" r="3.5" fill="{ACCENT}"/>')
-        sy = top + 6 if dots == "same" else s_bottom - 6
-        d.add(f'<circle cx="{fmt(xs + 12)}" cy="{fmt(sy)}" r="3.5" fill="{ACCENT}"/>')
-    return (xp, top), (xp, p_bottom), (xs, top), (xs, s_bottom)
 
 
 def crystal(d, a, b, label=None, value=None, side=1):
@@ -1267,17 +1244,6 @@ def speaker(d, x, y):
     d.add(f'<polygon points="{fmt(x + 14)},{fmt(y - 12)} {fmt(x + 34)},{fmt(y - 28)} {fmt(x + 34)},{fmt(y + 28)} {fmt(x + 14)},{fmt(y + 12)}" '
           f'fill="#fcfefe" stroke="{INK}" stroke-width="2"/>')
     return (x, y - 6), (x, y + 6)
-
-
-def terminal(d, p, label=None, anchor="start"):
-    d.add(f'<circle cx="{fmt(p[0])}" cy="{fmt(p[1])}" r="4" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
-    if label:
-        d.text(p[0] + (10 if anchor == "start" else -10), p[1] + 5, label, anchor=anchor, weight="600", color=ACCENT)
-
-
-def rail(d, x1, x2, y, label):
-    d.wire((x1, y), (x2, y))
-    d.text(x1 - 8, y + 5, label, anchor="end", weight="600")
 
 
 def smoothed(t_ms, umax, i, c, f_ripple=100):
