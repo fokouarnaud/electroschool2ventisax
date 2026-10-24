@@ -497,9 +497,9 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 
 /* Questions interactives : numérique, appariement, zone cliquable */
 .unit-input { display: flex; align-items: stretch; max-width: 22rem; }
-.unit-input input { border-top-right-radius: 0; border-bottom-right-radius: 0; font-variant-numeric: tabular-nums; }
+.unit-input input { min-width: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; font-variant-numeric: tabular-nums; }
 .unit-input .unit {
-  display: grid; place-items: center; min-width: 3.25rem; padding: 0 .9rem; font-weight: 600; color: var(--heading);
+  display: grid; place-items: center; flex-shrink: 0; min-width: 3.25rem; padding: 0 .9rem; font-weight: 600; color: var(--heading); white-space: nowrap;
   border: 1px solid var(--field-line); border-left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--mist);
 }
 .unit-input:has(input:only-child) input { border-radius: var(--radius-sm); }
