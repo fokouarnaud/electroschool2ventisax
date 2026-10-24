@@ -11,7 +11,7 @@
   window.acadMotorCalculators = {
     // I = P / (√3 × U × cos φ × η) en triphasé, P / (U × cos φ × η) en monophasé.
     motor_current: function (slot, h) {
-      var L = h.L, f = h.frame(slot, L.motorCurrentTitle, L.motorCurrentHint);
+      var L = h.L, f = h.frame(slot, L.motorCurrentTitle, null);
       var mode = h.choice(f.grid, L.supply, (L.supplies || "").split(","));
       var p = h.field(f.grid, L.power, "W", "4k"), u = h.field(f.grid, L.voltage, "V", "400");
       var cos = h.field(f.grid, L.powerFactor, "", "0,85"), eta = h.field(f.grid, L.efficiency, "", "0,88");
@@ -28,7 +28,7 @@
     },
     // ns = 60 × f / p ; g = (ns − n) / ns.
     speed: function (slot, h) {
-      var L = h.L, f = h.frame(slot, L.speedTitle, L.speedHint);
+      var L = h.L, f = h.frame(slot, L.speedTitle, null);
       var hz = h.field(f.grid, L.frequency, "Hz", "50"), pairs = h.field(f.grid, L.polePairs, "", "2");
       var n = h.field(f.grid, L.realSpeed, L.rpm, "1450");
       function run() {
@@ -55,7 +55,7 @@
     },
     // En étoile, chaque enroulement reçoit U / √3 ; courant et couple de démarrage sont divisés par 3.
     stardelta: function (slot, h) {
-      var L = h.L, f = h.frame(slot, L.starDeltaTitle, L.starDeltaHint);
+      var L = h.L, f = h.frame(slot, L.starDeltaTitle, null);
       var u = h.field(f.grid, L.lineVoltage, "V", "400"), i = h.field(f.grid, L.directCurrent, "A", "60");
       var c = h.field(f.grid, L.directTorque, "N·m", "50");
       function run() {
