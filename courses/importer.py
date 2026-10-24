@@ -44,7 +44,10 @@ def _import_questions(module, path, stats):
     if not path.exists():
         return
     for data in json.loads(path.read_text(encoding="utf-8")):
-        question = Question.objects.filter(external_id=data["id"]).first()
+        question = Question.objects.filter(external_id=data["id"]).select_related("module__partie").first()
+        if question and question.module.partie.formation_id != module.partie.formation_id:
+            # US-62 : un identifiant pris par une autre formation ne déplace jamais sa question.
+            raise ValueError(f"Identifiant de question déjà utilisé par une autre formation : {data['id']}")
         before = _question_signature(question) if question else None
         question = question or Question(external_id=data["id"])
         question.module = module
@@ -94,9 +97,13 @@ def import_formation(manifest_path):
     root = manifest_path.parent
     data = json.loads(manifest_path.read_text(encoding="utf-8"))
     stats = {"sections": 0, "questions": 0}
+    icon = data.get("icon", Formation.Icon.CPU)
+    if icon not in Formation.Icon.values:
+        raise ValueError(f"Icône de formation inconnue : {icon}")  # US-59 : liste fermée
     formation, _ = Formation.objects.update_or_create(
         slug=data["slug"],
-        defaults={"is_open": bool(data.get("open")), **_translated(data, "title"), **_translated(data, "description")},
+        defaults={"is_open": bool(data.get("open")), "icon": icon,
+                  **_translated(data, "title"), **_translated(data, "description")},
     )
     for partie_data in data.get("parties", []):
         partie, _ = Partie.objects.update_or_create(

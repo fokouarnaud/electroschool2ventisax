@@ -207,6 +207,12 @@
       run();
     }
   };
+  // Calculateurs d'une autre formation (calculators-moteurs.js, chargé avant) : mêmes outils, aucun code copié.
+  var extra = window.acadMotorCalculators || {};
+  var tools = { L: L, parse: parse, show: show, field: field, choice: choice, frame: frame };
+  Object.keys(extra).forEach(function (kind) {
+    builders[kind] = function (slot) { extra[kind](slot, tools); };
+  });
   slots.forEach(function (slot) {
     var build = builders[slot.dataset.calc];
     if (build) { slot.classList.add("is-live"); build(slot); }

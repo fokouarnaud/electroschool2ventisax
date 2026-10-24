@@ -46,3 +46,25 @@ def test_publishing_twice_changes_nothing(module):
     call_command("publish_reviewed", stdout=StringIO())
 
     assert Question.objects.published().count() == 1
+
+
+@pytest.mark.django_db
+def test_publication_is_reported_formation_by_formation(module):
+    """US-63 (formation `moteurs`) : le compte rendu du déploiement distingue les formations."""
+    from courses.models import Formation, Module, Partie
+
+    moteurs = Formation.objects.create(title_fr="Moteurs électriques et commande", slug="moteurs", order=2)
+    partie = Partie.objects.create(formation=moteurs, title_fr="Sécurité", order=1, slug="p1")
+    motor_module = Module.objects.create(partie=partie, title_fr="La sécurité électrique", order=1, duration_hours=8)
+    draft(module), draft(motor_module), draft(motor_module)
+    broken = draft(motor_module, correct=0)
+    broken.external_id = "m-p1-m1-q03"
+    broken.save()
+    out = StringIO()
+
+    call_command("publish_reviewed", stdout=out)
+
+    lines = out.getvalue().splitlines()
+    assert "electro : 1 question(s) publiée(s)." in lines
+    assert "moteurs : 2 question(s) publiée(s)." in lines
+    assert any(line.startswith("Refusée m-p1-m1-q03 (moteurs) : ") for line in lines)

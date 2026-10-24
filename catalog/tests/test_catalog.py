@@ -77,3 +77,25 @@ def test_formation_page_shows_the_description_of_each_part(client, open_formatio
         description_fr="À suivre après la Partie 1.", description_en="Best taken after Part 1.",
     )
     assert text in client.get(f"/{lang}/catalogue/{open_formation.public_id}/").content.decode()
+
+
+# --- US-58 (formation `moteurs`) : chaque carte du catalogue porte l'icône de sa formation ---------------------------
+
+ENGINE_PATH = 'd="M12 5v3"'  # tracé propre à templates/icons/engine.svg
+CPU_PATH = 'd="M9 9h6v6h-6z"'  # tracé propre à templates/icons/cpu.svg
+
+
+def test_each_catalogue_card_shows_the_icon_of_its_formation(client, open_formation):
+    Formation.objects.create(title_fr="Moteurs électriques et commande", slug="moteurs", is_open=True, order=2, icon="engine")
+
+    html = client.get("/fr/catalogue/").content.decode()
+
+    cards = html.split('class="course-card"')[1:]
+    assert [CPU_PATH in card for card in cards] == [True, False]
+    assert [ENGINE_PATH in card for card in cards] == [False, True]
+
+
+def test_header_tagline_names_electronics_and_electrical_engineering(client, db):
+    """US-70 (M13) : deux formations, le slogan couvre l'électronique et l'électrotechnique."""
+    assert "Électronique et électrotechnique, formation et évaluation" in client.get("/fr/catalogue/").content.decode()
+    assert "Electronics and electrical engineering, training and assessment" in client.get("/en/catalogue/").content.decode()

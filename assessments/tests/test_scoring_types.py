@@ -136,3 +136,57 @@ def test_score_numeric_for_a_signed_gain(answer, score):
 def test_parse_quantity_reads_the_typographic_minus_sign():
     assert parse_quantity("−4,7") == (Decimal("-4.7"), "")
     assert parse_quantity("−0,6 V") == (Decimal("-0.6"), "V")
+
+
+# --- US-66 (formation `moteurs`, M15) : unités de l'électrotechnique -------------------------------------------------
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("1450 tr/min", (Decimal("1450"), "tr/min")),
+    ("1450 tr.min-1", (Decimal("1450"), "tr/min")),
+    ("1450 rpm", (Decimal("1450"), "tr/min")),
+    ("1450tr/min", (Decimal("1450"), "tr/min")),
+    ("25 N·m", (Decimal("25"), "N·m")),
+    ("25 N.m", (Decimal("25"), "N·m")),
+    ("25 Nm", (Decimal("25"), "N·m")),
+    ("2,5 kN·m", (Decimal("2500"), "N·m")),
+    ("2,5 kNm", (Decimal("2500"), "N·m")),
+    ("11 kVA", (Decimal("11000"), "VA")),
+    ("4 kvar", (Decimal("4000"), "var")),
+    ("4 var", (Decimal("4"), "var")),
+    ("500 ms", (Decimal("0.5"), "s")),
+    ("2 s", (Decimal("2"), "s")),
+    ("8 mm", (Decimal("0.008"), "m")),
+    ("8 m", (Decimal("8"), "m")),          # un mètre, pas « 8 milli »
+    ("4 %", (Decimal("4"), "%")),
+    ("4%", (Decimal("4"), "%")),
+    ("2,5 %", (Decimal("2.5"), "%")),
+    ("155 °C", (Decimal("155"), "°C")),
+    ("155°C", (Decimal("155"), "°C")),
+])
+def test_parse_quantity_reads_electrical_engineering_units(text, expected):
+    assert parse_quantity(text) == expected
+
+
+@pytest.mark.parametrize("text", ["1,45 ktr/min", "1 krpm", "4 k%", "4 m%", "1 k°C", "155 m°C", "4 %%", "25 N m"])
+def test_parse_quantity_refuses_si_prefixes_on_speed_percent_and_celsius(text):
+    assert parse_quantity(text) is None
+
+
+@pytest.mark.parametrize("unit, answer, score", [
+    ("tr/min", "1450 rpm", 1),
+    ("tr/min", "1440 tr/min", 1),     # écart 0,7 %
+    ("tr/min", "1450 Hz", 0),         # autre unité
+    ("tr/min", "1450", 1),            # unité facultative
+    ("N·m", "25 Nm", 1),
+    ("N·m", "25 N", 0),
+    ("%", "4 %", 1),
+    ("%", "0,04", 0),                 # glissement attendu en %, pas en rapport
+    ("°C", "155 °C", 1),
+    ("°C", "155°", 0),                # un angle n'est pas une température
+    ("s", "5000 ms", 1),
+    ("m", "0,008 m", 0),              # 8 mm attendus : 0,008 m est très loin de 8
+])
+def test_score_numeric_in_electrical_engineering_units(unit, answer, score):
+    expected = {"tr/min": "1450", "N·m": "25", "%": "4", "°C": "155", "s": "5", "m": "8"}[unit]
+    assert score_numeric(Decimal(expected), unit, Decimal("2"), answer) == Fraction(score)

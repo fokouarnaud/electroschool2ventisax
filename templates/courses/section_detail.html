@@ -33,4 +33,4 @@
   </article>
 </div>
 {% endblock %}
-{% block scripts %}{% if 'data-calc' in body_html %}<script src="{% static 'acad/js/calculators.js' %}" defer></script>{% endif %}{% endblock %}
+{% block scripts %}{% if motor_calculators %}<script src="{% static 'acad/js/calculators-moteurs.js' %}" defer></script>{% endif %}{% if 'data-calc' in body_html %}<script src="{% static 'acad/js/calculators.js' %}" defer></script>{% endif %}{% endblock %}

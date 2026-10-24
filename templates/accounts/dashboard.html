@@ -18,7 +18,7 @@
 {% for row in parts %}
   <div class="course">
     <section class="panel" aria-labelledby="partie-{{ row.partie.public_id }}">
-      {% ifchanged row.partie.formation_id %}<p class="muted small course-formation">{{ row.partie.formation.title }}</p>{% endifchanged %}
+      {% ifchanged row.partie.formation_id %}<p class="muted small course-formation">{% include "icons/"|add:row.partie.formation.icon|add:".svg" %}{{ row.partie.formation.title }}</p>{% endifchanged %}
       {% include "includes/partie_heading.html" with partie=row.partie %}
       {% if row.partie.description %}<p class="muted small partie-desc"{{ row.partie|lang_attr:"description" }}>{{ row.partie.description }}</p>{% endif %}
       <div class="course-meter">

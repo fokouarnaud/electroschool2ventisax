@@ -286,3 +286,30 @@ def test_expected_ratio_is_shown_without_si_prefix(module, value, lang, shown):
     q = reviewed(module, "numeric", numeric_value=Decimal(value), unit="")
     with translation.override(lang):
         assert q.expected_value_display() == shown
+
+
+@pytest.mark.parametrize("value, unit, lang, shown", [
+    ("1450", "tr/min", "fr", "1450 tr/min"),
+    ("1450", "tr/min", "en", "1450 rpm"),
+    ("1500", "tr/min", "fr", "1500 tr/min"),   # jamais « 1,5 ktr/min »
+    ("4", "%", "fr", "4 %"),
+    ("4", "%", "en", "4%"),
+    ("2.5", "%", "fr", "2,5 %"),
+    ("0.5", "%", "fr", "0,5 %"),               # jamais « 500 m% »
+    ("155", "°C", "fr", "155 °C"),
+    ("1500", "°C", "en", "1500 °C"),           # jamais « 1,5 k°C »
+    ("2500", "N·m", "fr", "2,5 kN·m"),
+    ("25", "N·m", "en", "25 N·m"),
+    ("11000", "VA", "fr", "11 kVA"),
+    ("4000", "var", "fr", "4 kvar"),
+    ("0.5", "s", "fr", "500 ms"),
+    ("0.008", "m", "fr", "8 mm"),
+])
+@pytest.mark.django_db
+def test_expected_value_in_electrical_engineering_units(module, value, unit, lang, shown):
+    """US-67 : tr/min, % et °C sans préfixe SI ; « tr/min » devient « rpm » en anglais ; N·m, VA, var, s et m préfixés."""
+    from django.utils import translation
+
+    q = reviewed(module, "numeric", numeric_value=Decimal(value), unit=unit)
+    with translation.override(lang):
+        assert q.expected_value_display() == shown

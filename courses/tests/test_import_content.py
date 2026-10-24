@@ -140,3 +140,89 @@ def test_a_partie_without_description_imports_with_an_empty_one(content_dir):
     run_import(content_dir)
     partie = Formation.objects.get(slug="froid").parties.get()
     assert (partie.description_fr, partie.description_en) == ("", "")
+
+
+# --- US-59 et US-62 (formation `moteurs`) : icône, plusieurs formations importées sans se toucher --------------------
+
+
+def write_manifest(content_dir, **changes):
+    manifest_path = content_dir / "formation.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest.update(changes)
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+
+@pytest.fixture
+def second_dir(tmp_path_factory):
+    """Une seconde formation (`moteurs`) dans son propre dossier, avec sa propre question."""
+    root = tmp_path_factory.mktemp("moteurs")
+    module_dir = root / "p1" / "m1"
+    module_dir.mkdir(parents=True)
+    (module_dir / "01-effets.fr.md").write_text("Le corps humain conduit.", encoding="utf-8")
+    (module_dir / "01-effets.en.md").write_text("The human body conducts.", encoding="utf-8")
+    question = {**QUESTION, "id": "m-p1-m1-q01"}
+    (module_dir / "questions.json").write_text(json.dumps([question]), encoding="utf-8")
+    manifest = {
+        "slug": "moteurs",
+        "icon": "engine",
+        "title": {"fr": "Moteurs électriques et commande", "en": "Electric motors and control"},
+        "parties": [{
+            "slug": "p1", "order": 1,
+            "title": {"fr": "Sécurité, schémas et distribution", "en": "Safety, diagrams and distribution"},
+            "modules": [{
+                "order": 1, "dir": "p1/m1", "duration_hours": 8,
+                "title": {"fr": "La sécurité électrique", "en": "Electrical safety"},
+                "sections": [{"order": 1, "file": "01-effets", "title": {"fr": "Effets du courant", "en": "Effects of current"}}],
+            }],
+        }],
+    }
+    (root / "formation.json").write_text(json.dumps(manifest), encoding="utf-8")
+    return root
+
+
+@pytest.mark.django_db
+def test_import_reads_the_icon_of_the_formation(second_dir):
+    run_import(second_dir)
+    assert Formation.objects.get(slug="moteurs").icon == "engine"
+
+
+@pytest.mark.django_db
+def test_import_refuses_an_unknown_icon_and_writes_nothing(content_dir):
+    write_manifest(content_dir, icon="rocket")
+    with pytest.raises(Exception) as error:
+        run_import(content_dir)
+    assert "rocket" in str(error.value)
+    assert not Formation.objects.exists()
+
+
+@pytest.mark.django_db
+def test_importing_a_second_formation_leaves_the_first_one_untouched(content_dir, second_dir):
+    run_import(content_dir)
+    run_import(second_dir)
+    run_import(second_dir)
+
+    assert Section.objects.filter(module__partie__formation__slug="froid").count() == 1
+    assert Question.objects.get(external_id="p1-m1-q01").module.partie.formation.slug == "froid"
+    assert Question.objects.get(external_id="m-p1-m1-q01").module.partie.formation.slug == "moteurs"
+
+
+@pytest.mark.django_db
+def test_a_question_id_already_used_by_another_formation_is_refused(content_dir, second_dir):
+    run_import(content_dir)
+    clash = [{**QUESTION, "id": "p1-m1-q01"}]
+    (second_dir / "p1" / "m1" / "questions.json").write_text(json.dumps(clash), encoding="utf-8")
+
+    with pytest.raises(Exception) as error:
+        run_import(second_dir)
+
+    assert "p1-m1-q01" in str(error.value)
+    assert Question.objects.get(external_id="p1-m1-q01").module.partie.formation.slug == "froid"
+    assert not Formation.objects.filter(slug="moteurs").exists()
+
+
+@pytest.mark.django_db
+def test_import_content_takes_every_manifest_given(content_dir, second_dir):
+    """US-63 : deploy.sh passe tous les content/*/formation.json en une commande."""
+    call_command("import_content", str(content_dir / "formation.json"), str(second_dir / "formation.json"), verbosity=0)
+
+    assert list(Formation.objects.values_list("slug", flat=True).order_by("slug")) == ["froid", "moteurs"]

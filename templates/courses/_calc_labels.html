@@ -1,4 +1,4 @@
-{% load i18n %}{% get_current_language as lang %}{# Libellés traduits des calculateurs (US-13, US-42, US-50), lus par calculators.js : aucun script en ligne. #}
+{% load i18n %}{% get_current_language as lang %}{# Libellés traduits des calculateurs (US-13, US-42, US-50, US-69), lus par calculators.js et calculators-moteurs.js : aucun script en ligne. #}
 <div id="calc-labels" hidden data-decimal="{% if lang == 'fr' %},{% else %}.{% endif %}"
      data-ohm-title="{% translate 'Calculateur : loi d’Ohm' %}" data-ohm-hint="{% translate 'Remplissez deux des trois grandeurs : la troisième est calculée.' %}"
      data-voltage="{% translate 'Tension U' %}" data-current="{% translate 'Intensité I' %}" data-resistance="{% translate 'Résistance R' %}"
@@ -21,4 +21,14 @@
      data-up="{% translate 'Tension du primaire Up' %}" data-is="{% translate 'Courant du secondaire Is' %}"
      data-ripple-title="{% translate 'Calculateur : ondulation et condensateur de lissage' %}" data-ripple-hint="{% translate 'Saisissez I, puis C ou l’ondulation ΔU voulue.' %}"
      data-rectifier="{% translate 'Redressement' %}" data-rectifiers="{% translate 'Double alternance (100 Hz),Simple alternance (50 Hz)' %}"
-     data-load-current="{% translate 'Courant de la charge I' %}" data-ripple="{% translate 'Ondulation ΔU' %}"></div>
+     data-load-current="{% translate 'Courant de la charge I' %}" data-ripple="{% translate 'Ondulation ΔU' %}"
+     data-rpm="{% translate 'tr/min' context 'unité de vitesse de rotation' %}" data-percent="{% if lang == 'fr' %} %{% else %}%{% endif %}"
+     data-motor-current-title="{% translate 'Calculateur : courant absorbé par un moteur' %}" data-motor-current-hint="{% translate 'Saisissez P, U, cos φ et η (cos φ et η entre 0 et 1).' %}"
+     data-supply="{% translate 'Alimentation' %}" data-supplies="{% translate 'Triphasée,Monophasée' %}"
+     data-power="{% translate 'Puissance utile P' %}" data-power-factor="{% translate 'Facteur de puissance cos φ' %}" data-efficiency="{% translate 'Rendement η' %}"
+     data-speed-title="{% translate 'Calculateur : vitesse de synchronisme et glissement' %}" data-speed-hint="{% translate 'Saisissez f et le nombre de paires de pôles p ; ajoutez la vitesse réelle pour le glissement.' %}"
+     data-pole-pairs="{% translate 'Paires de pôles p' %}" data-real-speed="{% translate 'Vitesse du rotor n' %}"
+     data-torque-title="{% translate 'Calculateur : couple utile' %}"
+     data-star-delta-title="{% translate 'Calculateur : démarrage étoile-triangle' %}" data-star-delta-hint="{% translate 'Saisissez la tension du réseau, puis le courant ou le couple en démarrage direct.' %}"
+     data-line-voltage="{% translate 'Tension entre phases U' %}" data-direct-current="{% translate 'Courant en démarrage direct' %}" data-direct-torque="{% translate 'Couple en démarrage direct' %}"
+     data-winding-star="{% translate 'Tension d’un enroulement en étoile' %}" data-current-star="{% translate 'courant en étoile' %}" data-torque-star="{% translate 'couple en étoile' %}"></div>

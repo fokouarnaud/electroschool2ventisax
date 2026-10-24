@@ -74,3 +74,9 @@ def test_other_images_are_not_wrapped():
 
 def test_external_svg_is_never_linked():
     assert "figure-zoom" not in render_markdown("![x](https://evil.example/x.svg)")
+
+
+def test_moteurs_calculators_are_accepted():
+    """US-68 (formation `moteurs`, M8) : courant d'un moteur, vitesse, couple, étoile-triangle."""
+    for kind in ("motor_current", "speed", "torque", "stardelta"):
+        assert f'<div class="calc" data-calc="{kind}"></div>' in render_markdown(f"[[calc:{kind}]]")

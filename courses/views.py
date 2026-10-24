@@ -8,7 +8,7 @@ from progress.services import module_has_quiz, mark_section_viewed, outline
 
 from .access import accessible_formations
 from .models import Formation, Module, Section
-from .rendering import render_markdown
+from .rendering import MOTOR_CALCULATORS, render_markdown
 
 
 def _catalogue_or_404(formation_filter):
@@ -46,9 +46,11 @@ def section_detail(request, public_id):
     siblings = list(section.module.sections.all())
     index = siblings.index(section)
     lang = get_language()
+    body_html = render_markdown(section.body_md)
     return render(request, "courses/section_detail.html", {
         "section": section,
-        "body_html": render_markdown(section.body_md),
+        "body_html": body_html,
+        "motor_calculators": any(f'data-calc="{kind}"' in body_html for kind in MOTOR_CALCULATORS),
         "previous": siblings[index - 1] if index > 0 else None,
         "next": siblings[index + 1] if index + 1 < len(siblings) else None,
         "fallback_fr": lang != "fr" and not getattr(section, f"body_md_{lang}", ""),

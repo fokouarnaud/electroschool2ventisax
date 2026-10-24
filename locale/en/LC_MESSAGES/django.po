@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 22:48+0100\n"
+"POT-Creation-Date: 2026-10-24 08:50+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -321,6 +321,17 @@ msgstr "questions per module"
 msgid "mélanger questions et choix"
 msgstr "shuffle questions and choices"
 
+#: .\assessments\scoring.py:88 .\templates\courses\_calc_labels.html:25
+msgctxt "unité de vitesse de rotation"
+msgid "tr/min"
+msgstr "rpm"
+
+#: .\assessments\scoring.py:91
+#, python-format
+msgctxt "pourcentage"
+msgid "%(number)s %%"
+msgstr "%(number)s%%"
+
 #: .\catalog\admin.py:11
 msgid "groupe"
 msgstr "group"
@@ -422,44 +433,56 @@ msgstr "French"
 msgid "English"
 msgstr "English"
 
-#: .\courses\models.py:11 .\courses\models.py:30 .\courses\models.py:48
-#: .\courses\models.py:77 .\courses\models.py:93 .\progress\models.py:19
+#: .\courses\models.py:12
+msgid "Électronique (puce)"
+msgstr "Electronics (chip)"
+
+#: .\courses\models.py:13
+msgid "Moteur"
+msgstr "Motor"
+
+#: .\courses\models.py:16 .\courses\models.py:36 .\courses\models.py:54
+#: .\courses\models.py:83 .\courses\models.py:99 .\progress\models.py:19
 msgid "titre"
 msgstr "title"
 
-#: .\courses\models.py:13 .\courses\models.py:31
+#: .\courses\models.py:18 .\courses\models.py:37
 msgid "description"
 msgstr "description"
 
-#: .\courses\models.py:16
+#: .\courses\models.py:21
 msgid "ouverte au catalogue"
 msgstr "open in the catalogue"
 
-#: .\courses\models.py:17
+#: .\courses\models.py:22
 msgid "Visible dans le catalogue public et ouverte à l’inscription libre."
 msgstr "Listed in the public catalogue and open to self-enrolment."
 
-#: .\courses\models.py:50
+#: .\courses\models.py:24
+msgid "icône"
+msgstr "icon"
+
+#: .\courses\models.py:56
 msgid "durée (heures)"
 msgstr "duration (hours)"
 
-#: .\courses\models.py:51
+#: .\courses\models.py:57
 msgid "compétence visée"
 msgstr "target skill"
 
-#: .\courses\models.py:52
+#: .\courses\models.py:58
 msgid "modalités d'évaluation"
 msgstr "assessment method"
 
-#: .\courses\models.py:72
+#: .\courses\models.py:78
 msgid "Contenu"
 msgstr "Content"
 
-#: .\courses\models.py:73
+#: .\courses\models.py:79
 msgid "Activités pratiques"
 msgstr "Practical activities"
 
-#: .\courses\models.py:80
+#: .\courses\models.py:86
 msgid "contenu (Markdown)"
 msgstr "content (Markdown)"
 
@@ -475,55 +498,55 @@ msgstr "published on"
 msgid "date limite"
 msgstr "deadline"
 
-#: .\progress\views.py:94 .\progress\views.py:192 .\progress\views.py:217
+#: .\progress\views.py:95 .\progress\views.py:199 .\progress\views.py:224
 #: .\templates\progress\trainer_table.html:17
 msgid "Promotion"
 msgstr "Cohort"
 
-#: .\progress\views.py:94 .\templates\accounts\login.html:23
+#: .\progress\views.py:95 .\templates\accounts\login.html:23
 #: .\templates\admin\accounts\promotion\import.html:9
 msgid "Identifiant"
 msgstr "Username"
 
-#: .\progress\views.py:94
+#: .\progress\views.py:95
 msgid "Nom"
 msgstr "Name"
 
-#: .\progress\views.py:96
+#: .\progress\views.py:97
 #, python-format
 msgid "Examen %(partie)s (%%)"
 msgstr "Exam %(partie)s (%%)"
 
-#: .\progress\views.py:96
+#: .\progress\views.py:97
 #, python-format
 msgid "Tentatives %(partie)s"
 msgstr "Attempts %(partie)s"
 
-#: .\progress\views.py:101
+#: .\progress\views.py:102
 msgid "oui"
 msgstr "yes"
 
-#: .\progress\views.py:101
+#: .\progress\views.py:102
 msgid "non"
 msgstr "no"
 
-#: .\progress\views.py:187
+#: .\progress\views.py:194
 msgid "Titre"
 msgstr "Title"
 
-#: .\progress\views.py:188
+#: .\progress\views.py:195
 msgid "Message"
 msgstr "Message"
 
-#: .\progress\views.py:212 .\templates\progress\deadlines.html:15
+#: .\progress\views.py:219 .\templates\progress\deadlines.html:15
 msgid "Quiz ou examen"
 msgstr "Quiz or exam"
 
-#: .\progress\views.py:213 .\templates\progress\deadlines.html:27
+#: .\progress\views.py:220 .\templates\progress\deadlines.html:27
 msgid "Date limite"
 msgstr "Deadline"
 
-#: .\progress\views.py:236
+#: .\progress\views.py:243
 msgid "Choisissez un quiz ou un examen de la formation de cette promotion."
 msgstr "Choose a quiz or an exam from this cohort's course."
 
@@ -1123,8 +1146,8 @@ msgid "Aller au contenu"
 msgstr "Skip to content"
 
 #: .\templates\base.html:18
-msgid "Électronique, formation et évaluation"
-msgstr "Electronics, training and assessment"
+msgid "Électronique et électrotechnique, formation et évaluation"
+msgstr "Electronics and electrical engineering, training and assessment"
 
 #: .\templates\base.html:20
 msgid "Navigation principale"
@@ -1515,6 +1538,91 @@ msgstr "Load current I"
 #: .\templates\courses\_calc_labels.html:24
 msgid "Ondulation ΔU"
 msgstr "Ripple ΔU"
+
+#: .\templates\courses\_calc_labels.html:26
+msgid "Calculateur : courant absorbé par un moteur"
+msgstr "Calculator: current drawn by a motor"
+
+#: .\templates\courses\_calc_labels.html:26
+msgid "Saisissez P, U, cos φ et η (cos φ et η entre 0 et 1)."
+msgstr "Enter P, U, cos φ and η (cos φ and η between 0 and 1)."
+
+#: .\templates\courses\_calc_labels.html:27
+msgid "Alimentation"
+msgstr "Supply"
+
+#: .\templates\courses\_calc_labels.html:27
+msgid "Triphasée,Monophasée"
+msgstr "Three-phase,Single-phase"
+
+#: .\templates\courses\_calc_labels.html:28
+msgid "Puissance utile P"
+msgstr "Output power P"
+
+#: .\templates\courses\_calc_labels.html:28
+msgid "Facteur de puissance cos φ"
+msgstr "Power factor cos φ"
+
+#: .\templates\courses\_calc_labels.html:28
+msgid "Rendement η"
+msgstr "Efficiency η"
+
+#: .\templates\courses\_calc_labels.html:29
+msgid "Calculateur : vitesse de synchronisme et glissement"
+msgstr "Calculator: synchronous speed and slip"
+
+#: .\templates\courses\_calc_labels.html:29
+msgid ""
+"Saisissez f et le nombre de paires de pôles p ; ajoutez la vitesse réelle "
+"pour le glissement."
+msgstr ""
+"Enter f and the number of pole pairs p; add the actual speed to get the slip."
+
+#: .\templates\courses\_calc_labels.html:30
+msgid "Paires de pôles p"
+msgstr "Pole pairs p"
+
+#: .\templates\courses\_calc_labels.html:30
+msgid "Vitesse du rotor n"
+msgstr "Rotor speed n"
+
+#: .\templates\courses\_calc_labels.html:31
+msgid "Calculateur : couple utile"
+msgstr "Calculator: output torque"
+
+#: .\templates\courses\_calc_labels.html:32
+msgid "Calculateur : démarrage étoile-triangle"
+msgstr "Calculator: star-delta starting"
+
+#: .\templates\courses\_calc_labels.html:32
+msgid ""
+"Saisissez la tension du réseau, puis le courant ou le couple en démarrage "
+"direct."
+msgstr "Enter the supply voltage, then the direct-on-line current or torque."
+
+#: .\templates\courses\_calc_labels.html:33
+msgid "Tension entre phases U"
+msgstr "Line-to-line voltage U"
+
+#: .\templates\courses\_calc_labels.html:33
+msgid "Courant en démarrage direct"
+msgstr "Direct-on-line current"
+
+#: .\templates\courses\_calc_labels.html:33
+msgid "Couple en démarrage direct"
+msgstr "Direct-on-line torque"
+
+#: .\templates\courses\_calc_labels.html:34
+msgid "Tension d’un enroulement en étoile"
+msgstr "Winding voltage in star"
+
+#: .\templates\courses\_calc_labels.html:34
+msgid "courant en étoile"
+msgstr "current in star"
+
+#: .\templates\courses\_calc_labels.html:34
+msgid "couple en étoile"
+msgstr "torque in star"
 
 #: .\templates\courses\_outline.html:3
 msgid "Sommaire"

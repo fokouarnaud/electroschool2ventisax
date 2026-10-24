@@ -3,6 +3,7 @@ from decimal import ROUND_HALF_UP, Decimal
 
 from django import forms
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.core.exceptions import PermissionDenied
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -130,9 +131,15 @@ def _answer_display(aq):
 def attempt_review(request, public_id):
     """Détail d'une tentative envoyée d'un apprenant visible (US-28) ; une tentative en cours reste cachée."""
     _require_staff_role(request.user)
+    attempts = Attempt.objects.select_related("user", "assessment")
+    if not request.user.is_platform_admin:
+        # US-61 : un apprenant inscrit à deux formations n'ouvre pas au formateur de l'une ses tentatives de l'autre.
+        formations = Promotion.objects.visible_to(request.user).values("formation")
+        attempts = attempts.filter(
+            Q(assessment__module__partie__formation__in=formations) | Q(assessment__partie__formation__in=formations)
+        )
     attempt = get_object_or_404(
-        Attempt.objects.select_related("user", "assessment"),
-        public_id=public_id, submitted_at__isnull=False, user__in=_visible_learners(request.user),
+        attempts, public_id=public_id, submitted_at__isnull=False, user__in=_visible_learners(request.user),
     )
     rows = []
     for aq in attempt.attempt_questions.select_related("question").prefetch_related(

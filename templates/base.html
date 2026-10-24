@@ -15,7 +15,7 @@
     <div class="wrap">
       <a class="brand" href="{% if user.is_authenticated %}{{ dashboard_url }}{% else %}{{ catalogue_url }}{% endif %}">
         <img src="{% static 'acad/img/ventisax-mark.svg' %}" alt="" width="34" height="34">
-        <span>Electro Acad <span class="brand-accent">Ventisax</span><small>{% translate "Électronique, formation et évaluation" %}</small></span>
+        <span>Electro Acad <span class="brand-accent">Ventisax</span><small>{% translate "Électronique et électrotechnique, formation et évaluation" %}</small></span>
       </a>
       <nav class="topnav" aria-label="{% translate 'Navigation principale' %}">
         {% if user.is_authenticated %}

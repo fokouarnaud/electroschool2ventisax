@@ -8,7 +8,8 @@ PY="$VENV/bin/python"
 git pull --ff-only
 "$VENV/bin/pip" install --quiet -r requirements.txt
 "$PY" manage.py migrate --noinput
-"$PY" manage.py import_content content/electro/formation.json
+# Toutes les formations du dépôt (content/<slug>/formation.json), par ordre alphabétique (US-63).
+"$PY" manage.py import_content content/*/formation.json
 # Publie les questions relues en FR et en EN (drapeaux « reviewed » du contenu versionné) ; les autres restent en brouillon.
 "$PY" manage.py publish_reviewed
 "$PY" manage.py collectstatic --noinput --verbosity 0

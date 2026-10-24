@@ -64,3 +64,34 @@ def test_two_modules_of_a_part_cannot_share_a_rank(module):
 
     with pytest.raises(IntegrityError), transaction.atomic():
         Module.objects.create(partie=module.partie, title_fr="Les oscillateurs", order=module.order, duration_hours=8)
+
+
+# --- US-59 (formation `moteurs`, M13) : icône Tabler d'une formation, liste fermée ---------------------------------
+
+
+@pytest.mark.django_db
+def test_a_formation_with_a_known_icon_is_valid():
+    formation = Formation(title_fr="Moteurs électriques et commande", slug="moteurs", icon="engine")
+    formation.full_clean()
+
+
+@pytest.mark.django_db
+def test_an_icon_outside_the_closed_list_is_refused():
+    from django.core.exceptions import ValidationError
+
+    formation = Formation(title_fr="Moteurs électriques et commande", slug="moteurs", icon="rocket")
+    with pytest.raises(ValidationError) as error:
+        formation.full_clean()
+    assert "icon" in error.value.message_dict
+
+
+@pytest.mark.django_db
+def test_a_formation_without_an_explicit_icon_shows_the_electronics_chip():
+    assert Formation.objects.create(title_fr="Électronique", slug="electro").icon == "cpu"
+
+
+def test_every_formation_icon_exists_in_the_project_icon_set():
+    from django.conf import settings
+
+    for name, _label in Formation.Icon.choices:
+        assert (settings.BASE_DIR / "templates" / "icons" / f"{name}.svg").exists(), name

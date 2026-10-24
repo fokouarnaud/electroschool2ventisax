@@ -129,3 +129,17 @@ def test_part_three_calculators_receive_translated_labels(client, enrolled, modu
     assert 'data-gain-title="Calculator: amplifier gain"' in en
     assert 'data-transformer-title="Calculator: transformer"' in en
     assert 'data-ripple-title="Calculator: ripple and smoothing capacitor"' in en
+
+
+@pytest.mark.django_db
+def test_moteurs_calculator_script_loads_before_the_common_engine_only_where_needed(client, enrolled, module):
+    """US-68 : calculators-moteurs.js accompagne un calculateur de `moteurs`, jamais un calculateur d'`electro`."""
+    from courses.models import Section
+
+    speed = Section.objects.create(module=module, title_fr="Glissement", order=1, body_md_fr="[[calc:speed]]")
+    ohm = Section.objects.create(module=module, title_fr="Loi d'Ohm", order=2, body_md_fr="[[calc:ohm]]")
+    client.force_login(enrolled)
+
+    html = client.get(f"/fr/sections/{speed.public_id}/").content.decode()
+    assert 0 < html.index("calculators-moteurs.js") < html.index("acad/js/calculators.js")
+    assert "calculators-moteurs.js" not in client.get(f"/fr/sections/{ohm.public_id}/").content.decode()

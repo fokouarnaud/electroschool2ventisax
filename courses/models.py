@@ -7,6 +7,11 @@ from config.uploads import RandomFilename
 
 
 class Formation(models.Model):
+    class Icon(models.TextChoices):
+        # Icônes Tabler du projet (templates/icons/<nom>.svg), M13 : une par formation, liste fermée.
+        CPU = "cpu", _("Électronique (puce)")
+        ENGINE = "engine", _("Moteur")
+
     public_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)  # identifiant des URL et formulaires
     title = models.CharField(_("titre"), max_length=200)
     slug = models.SlugField(unique=True)
@@ -16,6 +21,7 @@ class Formation(models.Model):
         _("ouverte au catalogue"), default=False,
         help_text=_("Visible dans le catalogue public et ouverte à l’inscription libre."),
     )
+    icon = models.CharField(_("icône"), max_length=20, choices=Icon.choices, default=Icon.CPU)
 
     class Meta:
         ordering = ["order", "pk"]

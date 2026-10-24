@@ -8,7 +8,7 @@
 <div class="catalogue">
   {% for row in rows %}
     <article class="course-card" aria-labelledby="formation-{{ row.formation.public_id }}">
-      <div class="course-card-mark" aria-hidden="true">{% include "icons/bolt.svg" %}</div>
+      <div class="course-card-mark" aria-hidden="true">{% include "icons/"|add:row.formation.icon|add:".svg" %}</div>
       <div class="course-card-body">
         <h2 id="formation-{{ row.formation.public_id }}"{{ row.formation|lang_attr:"title" }}>
           <a href="{% url 'formation_detail' row.formation.public_id %}">{{ row.formation.title }}</a>
