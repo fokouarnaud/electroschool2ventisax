@@ -485,6 +485,7 @@ Décisions prises pendant l'implémentation TDD ; elles priment sur le texte ci-
     - **Schémas (US-65)** : `python -m tools.schemas electro|moteurs` ; le garde-fou couvre 287 SVG d'`electro` (276 de sections et 11 de questions) ; l'écriture force les fins de ligne LF (sous Windows, l'ancien script écrivait CRLF, normalisé ensuite par git).
     - **Livraison (US-63)** : `import_content` accepte plusieurs manifestes, `deploy.sh` lui passe `content/*/formation.json` ; `publish_reviewed` rend compte formation par formation.
     - **Garde-fous (US-64)** : `courses/tests/test_content_files.py` paramétré par formation ; règles de `moteurs` dans `courses/tests/content_rules.py`, testées sur des témoins (`test_content_rules.py`).
+    - **Audit sans régression** : `audit.js`, `audit_p2.js` et `audit_p3.js` rejoués (360 et 1280 px, thèmes clair et sombre) : aucun défaut de contraste, aucun débordement, aucune erreur console, pages de 43 à 129 Ko comme avant ; seules restent les exceptions déjà admises (lien du pied de page, zones des questions sur schéma). Ajustement : l'icône de la formation du tableau de bord passait au-dessus de son nom ; `.course-formation` la met sur la même ligne (16 px).
 
 ## Definition of Done (critères stricts)
 Une story n'est terminée que si **tous** les critères applicables sont vrais. Un seul critère manquant = story non terminée.
