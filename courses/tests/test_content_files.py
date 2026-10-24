@@ -10,12 +10,9 @@ from django.core.management import call_command
 from assessments.models import Question
 from courses.models import Module, Section
 from courses.tests.content_rules import (
-    PRACTICAL_HEADINGS,
-    links_to_other_formation_sections,
     numeric_shortfalls,
     practical_problems,
-    rockwell_addresses,
-    us_mains_values,
+    scan_folder,
 )
 
 LANGS = ("fr", "en")
@@ -466,11 +463,6 @@ MOTEURS_SECTIONS = {"p1/m1": 7, "p1/m2": 8, "p1/m3": 7, "p2/m4": 7, "p2/m5": 7, 
                     "p3/m7": 7, "p3/m8": 7, "p3/m9": 8, "p4/m10": 7, "p4/m11": 7, "p4/m12": 8}
 
 
-def moteurs_texts():
-    folder = content_dir("moteurs")
-    return [(p, p.read_text(encoding="utf-8")) for p in list(folder.rglob("*.md")) + list(folder.rglob("*.json"))]
-
-
 @MOTEURS[0]
 def test_moteurs_modules_follow_the_plan_of_m3_m17_and_m18():
     """M3, M17, M18 : modules rangés dans leur partie, nombre de sections de chaque module livré."""
@@ -496,15 +488,7 @@ def test_moteurs_has_one_hotspot_question_per_module():
 
 
 @MOTEURS[0]
-def test_moteurs_content_uses_iec_mains_and_iec_plc_addresses_only():
-    """M2 et M7 : ni 60 Hz, 460 V ou 120 V, ni adresse d'automate Rockwell (I:1/0)."""
-    problems = [f"{p.name} : {us_mains_values(t) + rockwell_addresses(t)}" for p, t in moteurs_texts()
-                if us_mains_values(t) or rockwell_addresses(t)]
-    assert problems == []
-
-
-@MOTEURS[0]
-def test_moteurs_never_links_into_the_sections_of_another_formation():
-    """M11 et US-78 : un rappel renvoie à la fiche du catalogue d'`electro`, jamais à une de ses sections."""
-    links = [f"{p.name} : {links_to_other_formation_sections(t)}" for p, t in moteurs_texts() if links_to_other_formation_sections(t)]
-    assert links == []
+def test_moteurs_content_uses_iec_mains_and_plc_addresses_and_links_only_to_its_own_sections():
+    """M2, M7, M11 et US-78 : ni 60 Hz, 460 V ou 120 V, ni adresse Rockwell (I:1/0), ni lien vers une section d'`electro`
+    (un rappel renvoie à la fiche du catalogue)."""
+    assert scan_folder(content_dir("moteurs")) == []

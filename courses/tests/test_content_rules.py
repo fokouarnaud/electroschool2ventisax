@@ -53,3 +53,19 @@ def test_numeric_minimum_is_checked_module_by_module():
         "p1/m3": [{"usage": "quiz", "type": "numeric"}] * 3 + [{"usage": "exam", "type": "numeric"}],
     }
     assert numeric_shortfalls(questions, {"p1/m1": 2, "p1/m3": 4}) == ["p1/m3 : 3 numériques au quiz, 4 attendues"]
+
+
+def test_scanning_a_content_folder_reports_each_faulty_file(tmp_path):
+    """US-78 : le garde-fou parcourt tout le dossier d'une formation, Markdown et JSON, et nomme chaque fichier fautif."""
+    from courses.tests.content_rules import scan_folder
+
+    (tmp_path / "p1" / "m1").mkdir(parents=True)
+    (tmp_path / "p1" / "m1" / "01-effets.fr.md").write_text("Rappel : [la diode](/fr/sections/abc/).", encoding="utf-8")
+    (tmp_path / "p1" / "m1" / "02-ok.fr.md").write_text("Voir [la fiche](/fr/catalogue/), réseau 400 V 50 Hz.", encoding="utf-8")
+    (tmp_path / "p1" / "m1" / "questions.json").write_text('[{"prompt": {"fr": "Entrée I:1/0 à 60 Hz"}}]', encoding="utf-8")
+
+    assert scan_folder(tmp_path) == [
+        "01-effets.fr.md : lien vers une section d'une autre formation /fr/sections/abc/",
+        "questions.json : réseau américain 60 Hz",
+        "questions.json : adresse Rockwell I:1/0",
+    ]

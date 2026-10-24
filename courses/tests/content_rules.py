@@ -44,3 +44,14 @@ def numeric_shortfalls(questions_by_dir, minimums):
         if count < minimum:
             shortfalls.append(f"{folder} : {count} numériques au quiz, {minimum} attendues")
     return shortfalls
+
+
+def scan_folder(folder):
+    """Problèmes de tous les Markdown et JSON d'une formation (M2, M7, M11), fichier par fichier, dans l'ordre des noms."""
+    problems = []
+    for path in sorted(list(folder.rglob("*.md")) + list(folder.rglob("*.json")), key=lambda p: p.name):
+        text = path.read_text(encoding="utf-8")
+        problems += [f"{path.name} : lien vers une section d'une autre formation {link}" for link in links_to_other_formation_sections(text)]
+        problems += [f"{path.name} : réseau américain {value}" for value in us_mains_values(text)]
+        problems += [f"{path.name} : adresse Rockwell {address}" for address in rockwell_addresses(text)]
+    return problems
