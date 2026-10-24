@@ -532,7 +532,8 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 .hotspot.is-live .zone:hover { border-color: var(--teal-ink); background: color-mix(in srgb, var(--teal) 14%, transparent); }
 .hotspot .zone.is-selected { border-color: var(--teal-ink); border-style: solid; background: color-mix(in srgb, var(--teal) 22%, transparent); }
 .choices-inline { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
-.course-formation { margin: 0 0 .15rem; font-weight: 600; color: var(--teal-ink); }
+.course-formation { display: flex; align-items: center; gap: .35rem; margin: 0 0 .15rem; font-weight: 600; color: var(--teal-ink); }
+.course-formation .icon { width: 1rem; height: 1rem; }
 .brand img { flex-shrink: 0; }
 /* Visiteur sur petit écran : la connexion et le catalogue suffisent, « Créer un compte » est dans les pages. */
 @media (max-width: 420px) { .topnav .btn-sm { display: none; } }
