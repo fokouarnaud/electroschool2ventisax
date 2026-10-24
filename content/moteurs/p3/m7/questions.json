@@ -1,0 +1,998 @@
+[
+ {
+  "id": "m-p3-m7-q01",
+  "section": "01-contacteur",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi dit-on qu'un contacteur est monostable ?",
+   "en": "Why is a contactor said to be monostable?"
+  },
+  "explanation": {
+   "fr": "Il ne reste fermé que tant que sa bobine est alimentée ; sans courant, le ressort le rouvre.",
+   "en": "It only stays closed while its coil is energised; without current, the spring opens it again."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il ne reste fermé que tant que sa bobine est alimentée",
+     "en": "It only stays closed while its coil is energised"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il garde sa position sans courant",
+     "en": "It keeps its position without current"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il n'a qu'un seul contact",
+     "en": "It has only one contact"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q02",
+  "section": "01-contacteur",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une bobine de contacteur a une tension assignée de 24 V. Quelle tension minimale garantit sa fermeture (85 %) ? (exemple : 12 V)",
+   "en": "A contactor coil is rated 24 V. What minimum voltage guarantees it closes (85 %)? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "0,85 × 24 = 20,4 V.",
+   "en": "0.85 × 24 = 20.4 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "20.4",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-q03",
+  "section": "01-contacteur",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque élément du contacteur KM1 à son usage.",
+   "en": "Match each part of contactor KM1 with its use."
+  },
+  "explanation": {
+   "fr": "Bobine A1-A2 : commande ; pôles 1-2 : puissance ; 13-14 : auto-maintien ; 21-22 : verrouillage.",
+   "en": "Coil A1-A2: control; poles 1-2: power; 13-14: hold-in; 21-22: interlock."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Bobine A1-A2",
+     "en": "Coil A1-A2"
+    },
+    "right": {
+     "fr": "Circuit de commande",
+     "en": "Control circuit"
+    }
+   },
+   {
+    "left": {
+     "fr": "Pôle 1-2",
+     "en": "Pole 1-2"
+    },
+    "right": {
+     "fr": "Circuit de puissance",
+     "en": "Power circuit"
+    }
+   },
+   {
+    "left": {
+     "fr": "Contact 13-14",
+     "en": "Contact 13-14"
+    },
+    "right": {
+     "fr": "Auto-maintien",
+     "en": "Hold-in"
+    }
+   },
+   {
+    "left": {
+     "fr": "Contact 21-22",
+     "en": "Contact 21-22"
+    },
+    "right": {
+     "fr": "Verrouillage",
+     "en": "Interlock"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q04",
+  "section": "02-categories",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle catégorie d'emploi correspond à un moteur souvent inversé ou commandé par à-coups ?",
+   "en": "Which utilisation category fits a motor often reversed or inched?"
+  },
+  "explanation": {
+   "fr": "AC-4 : le contacteur coupe le courant de démarrage.",
+   "en": "AC-4: the contactor breaks the starting current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "AC-4",
+     "en": "AC-4"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "AC-3",
+     "en": "AC-3"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "AC-1",
+     "en": "AC-1"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q05",
+  "section": "02-categories",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : en AC-3, le contacteur coupe un moteur lancé, qui n'absorbe que son courant nominal.",
+   "en": "True or false: in AC-3, the contactor switches off a running motor, which draws only its rated current."
+  },
+  "explanation": {
+   "fr": "Vrai : c'est pourquoi la coupure en AC-3 est facile.",
+   "en": "True: that is why breaking in AC-3 is easy."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q06",
+  "section": "03-arc-antiparasitage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi couper un courant continu est-il plus difficile qu'un courant alternatif ?",
+   "en": "Why is breaking DC harder than breaking AC?"
+  },
+  "explanation": {
+   "fr": "En alternatif, l'arc s'éteint au passage du courant par zéro ; en continu, ce passage n'existe pas.",
+   "en": "On AC, the arc goes out when the current passes through zero; on DC, there is no such zero."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il n'y a pas de passage par zéro",
+     "en": "There is no zero crossing"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La tension est plus faible",
+     "en": "The voltage is lower"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Les contacts sont plus petits",
+     "en": "The contacts are smaller"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q07",
+  "section": "03-arc-antiparasitage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel module antiparasite une bobine alimentée en courant continu ?",
+   "en": "Which module suppresses a DC coil?"
+  },
+  "explanation": {
+   "fr": "Une diode en inverse, en parallèle sur la bobine.",
+   "en": "A reverse diode, in parallel across the coil."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une diode en parallèle",
+     "en": "A diode in parallel"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un fusible en série",
+     "en": "A fuse in series"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un condensateur en série",
+     "en": "A capacitor in series"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q08",
+  "section": "04-choix",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Plaque : 5,5 kW, 400 V, cos φ 0,84, rendement 87 %. Quel courant le contacteur doit-il supporter en AC-3 ? (exemple : 2,5 A)",
+   "en": "Plate: 5.5 kW, 400 V, cos φ 0.84, efficiency 87 %. What current must the contactor carry in AC-3? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = 5 500 / (1,732 × 400 × 0,84 × 0,87) ≈ 10,9 A.",
+   "en": "I = 5,500 / (1.732 × 400 × 0.84 × 0.87) ≈ 10.9 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "10.8628",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-q09",
+  "section": "04-choix",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle tension de bobine choisir ?",
+   "en": "Which coil voltage should be chosen?"
+  },
+  "explanation": {
+   "fr": "Celle du circuit de commande, par exemple 24 V CC.",
+   "en": "That of the control circuit, for example 24 V DC."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Celle du circuit de commande",
+     "en": "That of the control circuit"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Celle du moteur",
+     "en": "That of the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La plus élevée possible",
+     "en": "The highest possible"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q10",
+  "section": "05-statique",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un contacteur statique triphasé conduit 16 A par phase (1,5 W par ampère et par phase). Quelle puissance dissipe-t-il ? (exemple : 2,5 W)",
+   "en": "A three-phase solid-state contactor carries 16 A per phase (1.5 W per ampere per phase). What power does it dissipate? (example: 2.5 W)"
+  },
+  "explanation": {
+   "fr": "P ≈ 1,5 × 16 × 3 = 72 W.",
+   "en": "P ≈ 1.5 × 16 × 3 = 72 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "72",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-q11",
+  "section": "05-statique",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : un contacteur statique assure le sectionnement pour une consignation.",
+   "en": "True or false: a solid-state contactor provides isolation for a lockout."
+  },
+  "explanation": {
+   "fr": "Faux : ses semi-conducteurs ne séparent pas et peuvent claquer en court-circuit ; il faut un sectionneur en amont.",
+   "en": "False: its semiconductors do not isolate and can fail short-circuit; an isolator is needed upstream."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q12",
+  "section": "06-protection-moteur",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur ce schéma de puissance, cliquez sur l'appareil qui protège le moteur contre les surcharges.",
+   "en": "On this power circuit, click the device that protects the motor against overloads."
+  },
+  "explanation": {
+   "fr": "Le relais thermique, en bas, juste avant le moteur ; le disjoncteur protège contre les courts-circuits, le contacteur commande.",
+   "en": "The overload relay, at the bottom, just before the motor; the circuit breaker protects against short circuits, the contactor controls."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Appareil du bas",
+     "en": "Bottom device"
+    },
+    "correct": true,
+    "shape": {
+     "x": 130,
+     "y": 160,
+     "w": 90,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Appareil du haut",
+     "en": "Top device"
+    },
+    "correct": false,
+    "shape": {
+     "x": 130,
+     "y": 40,
+     "w": 90,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Appareil du milieu",
+     "en": "Middle device"
+    },
+    "correct": false,
+    "shape": {
+     "x": 130,
+     "y": 100,
+     "w": 90,
+     "h": 44
+    }
+   }
+  ],
+  "svg": "schemas/m7-thermique.svg"
+ },
+ {
+  "id": "m-p3-m7-q13",
+  "section": "06-protection-moteur",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle classe de relais thermique choisir pour un ventilateur à grande inertie, long à démarrer ?",
+   "en": "Which overload relay class suits a high-inertia fan with a long start?"
+  },
+  "explanation": {
+   "fr": "La classe 20, qui tolère un démarrage plus long sans déclencher.",
+   "en": "Class 20, which tolerates a longer start without tripping."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Classe 20",
+     "en": "Class 20"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Classe 10",
+     "en": "Class 10"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucune",
+     "en": "None"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-q14",
+  "section": "06-protection-moteur",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Plaque : 230 V Δ / 400 V Y, 12,5 A / 7,2 A ; réseau 400 V. Sur quel courant réglez-vous le relais thermique ? (exemple : 2,5 A)",
+   "en": "Plate: 230 V Δ / 400 V Y, 12.5 A / 7.2 A; 400 V supply. What current do you set the overload relay to? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "Sur 400 V, le moteur est en étoile et absorbe 7,2 A : c'est le réglage.",
+   "en": "On 400 V, the motor is in star and draws 7.2 A: that is the setting."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "7.2",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-q15",
+  "section": "06-protection-moteur",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un relais classe 10 est réglé sur 5 A. À partir de quel courant doit-il déclencher en moins de 10 s (7,2 fois le réglage) ? (exemple : 2,5 A)",
+   "en": "A class 10 relay is set to 5 A. From what current must it trip within 10 s (7.2 times the setting)? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "7,2 × 5 = 36 A.",
+   "en": "7.2 × 5 = 36 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "36",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-x01",
+  "section": "01-contacteur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel est le rôle du ressort de rappel d'un contacteur ?",
+   "en": "What is the role of a contactor's return spring?"
+  },
+  "explanation": {
+   "fr": "Rouvrir les contacts quand la bobine n'est plus alimentée.",
+   "en": "Open the contacts again when the coil is de-energised."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Rouvrir les contacts sans courant",
+     "en": "Open the contacts without current"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Fermer les contacts",
+     "en": "Close the contacts"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Refroidir la bobine",
+     "en": "Cool the coil"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x02",
+  "section": "01-contacteur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que fait un contacteur lors d'une coupure de courant du circuit de commande ?",
+   "en": "What does a contactor do when the control circuit loses power?"
+  },
+  "explanation": {
+   "fr": "Il retombe : le moteur s'arrête et ne redémarre pas seul.",
+   "en": "It drops out: the motor stops and does not restart by itself."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il retombe et le moteur s'arrête",
+     "en": "It drops out and the motor stops"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il reste fermé",
+     "en": "It stays closed"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il inverse le moteur",
+     "en": "It reverses the motor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x03",
+  "section": "02-categories",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle catégorie correspond à un radiateur électrique ?",
+   "en": "Which category fits an electric heater?"
+  },
+  "explanation": {
+   "fr": "AC-1 : charge peu inductive.",
+   "en": "AC-1: slightly inductive load."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "AC-1",
+     "en": "AC-1"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "AC-3",
+     "en": "AC-3"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "AC-4",
+     "en": "AC-4"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x04",
+  "section": "02-categories",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur a un courant nominal de 10 A. Environ quel courant le contacteur coupe-t-il en AC-4 (6 In) ? (exemple : 2,5 A)",
+   "en": "A motor has a rated current of 10 A. About what current does the contactor break in AC-4 (6 In)? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "≈ 6 × 10 = 60 A.",
+   "en": "≈ 6 × 10 = 60 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "60",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-x05",
+  "section": "03-arc-antiparasitage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "À quoi sert la chambre de coupure ?",
+   "en": "What is the arc chute for?"
+  },
+  "explanation": {
+   "fr": "À fractionner et refroidir l'arc pour l'éteindre.",
+   "en": "To split and cool the arc so that it goes out."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Fractionner et refroidir l'arc",
+     "en": "Split and cool the arc"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Mesurer le courant",
+     "en": "Measure the current"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Alimenter la bobine",
+     "en": "Supply the coil"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x06",
+  "section": "03-arc-antiparasitage",
+  "type": "multiple",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quels modules antiparasitent une bobine alimentée en alternatif ?",
+   "en": "Which modules suppress an AC coil?"
+  },
+  "explanation": {
+   "fr": "Un circuit RC ou une varistance ; la diode ne convient qu'en continu.",
+   "en": "An RC circuit or a varistor; the diode only suits DC."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un circuit RC",
+     "en": "An RC circuit"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une varistance",
+     "en": "A varistor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une diode",
+     "en": "A diode"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un fusible",
+     "en": "A fuse"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x07",
+  "section": "04-choix",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi n'utilise-t-on pas le courant Ith (AC-1) pour choisir le contacteur d'un moteur ?",
+   "en": "Why is Ith (AC-1) not used to choose a motor contactor?"
+  },
+  "explanation": {
+   "fr": "Il concerne une charge résistive ; pour un moteur, on lit le courant en AC-3.",
+   "en": "It applies to a resistive load; for a motor, read the AC-3 current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il concerne une charge résistive",
+     "en": "It applies to a resistive load"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il est toujours trop faible",
+     "en": "It is always too low"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il concerne la bobine",
+     "en": "It concerns the coil"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x08",
+  "section": "04-choix",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Plaque : 11 kW, 400 V, cos φ 0,86, rendement 90 %. Quel courant en AC-3 ? (exemple : 2,5 A)",
+   "en": "Plate: 11 kW, 400 V, cos φ 0.86, efficiency 90 %. What AC-3 current? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "I = 11 000 / (1,732 × 400 × 0,86 × 0,9) ≈ 20,5 A.",
+   "en": "I = 11,000 / (1.732 × 400 × 0.86 × 0.9) ≈ 20.5 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "20.5131",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-x09",
+  "section": "04-choix",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "À quoi sert la taille NEMA d'un contacteur dans cette formation ?",
+   "en": "What is a contactor's NEMA size used for in this course?"
+  },
+  "explanation": {
+   "fr": "Seulement à lire une documentation américaine ; on choisit par le courant AC-3 de la CEI.",
+   "en": "Only to read an American document; the IEC AC-3 current is used to choose."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "À lire une documentation américaine",
+     "en": "To read an American document"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À choisir le contacteur",
+     "en": "To choose the contactor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "À régler le relais thermique",
+     "en": "To set the overload relay"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x10",
+  "section": "05-statique",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un contacteur statique monophasé conduit 25 A (1,5 W par ampère). Quelle puissance dissipe-t-il ? (exemple : 2,5 W)",
+   "en": "A single-phase solid-state contactor carries 25 A (1.5 W per ampere). What power does it dissipate? (example: 2.5 W)"
+  },
+  "explanation": {
+   "fr": "P ≈ 1,5 × 25 = 37,5 W.",
+   "en": "P ≈ 1.5 × 25 = 37.5 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "37.5",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m7-x11",
+  "section": "06-protection-moteur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel type de fusible protège un départ moteur contre les courts-circuits ?",
+   "en": "Which fuse type protects a motor circuit against short circuits?"
+  },
+  "explanation": {
+   "fr": "Le type aM, qui laisse passer le courant de démarrage.",
+   "en": "Type aM, which lets the starting current through."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "aM",
+     "en": "aM"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un fusible très rapide de faible calibre",
+     "en": "A very fast, low-rated fuse"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucun fusible",
+     "en": "No fuse"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m7-x12",
+  "section": "06-protection-moteur",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : on règle le relais thermique 20 % au-dessus du courant de plaque, par sécurité.",
+   "en": "True or false: the overload relay is set 20 % above the nameplate current, to be safe."
+  },
+  "explanation": {
+   "fr": "Faux : on le règle sur le courant de plaque, sans marge ; une marge laisserait le moteur chauffer.",
+   "en": "False: it is set to the nameplate current, with no margin; a margin would let the motor overheat."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ }
+]

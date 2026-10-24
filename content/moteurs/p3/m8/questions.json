@@ -1,0 +1,1042 @@
+[
+ {
+  "id": "m-p3-m8-q01",
+  "section": "01-relais",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel repère porte un relais sur un schéma ?",
+   "en": "Which tag does a relay carry on a diagram?"
+  },
+  "explanation": {
+   "fr": "KA ; KM est réservé aux contacteurs, KT aux relais temporisés.",
+   "en": "KA; KM is reserved for contactors, KT for timer relays."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "KA",
+     "en": "KA"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "KM",
+     "en": "KM"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "QF",
+     "en": "QF"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q02",
+  "section": "01-relais",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une bobine de relais 24 V consomme 0,6 W. Quel courant absorbe-t-elle ? (exemple : 12 mA)",
+   "en": "A 24 V relay coil consumes 0.6 W. What current does it draw? (example: 12 mA)"
+  },
+  "explanation": {
+   "fr": "I = P / U = 0,6 / 24 = 0,025 A, soit 25 mA.",
+   "en": "I = P / U = 0.6 / 24 = 0.025 A, that is 25 mA."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.025",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m8-q03",
+  "section": "01-relais",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur un contact inverseur 11-12-14, que désigne la borne 14 ?",
+   "en": "On a changeover contact 11-12-14, what is terminal 14?"
+  },
+  "explanation": {
+   "fr": "Le contact travail, relié au commun 11 quand la bobine est alimentée.",
+   "en": "The make contact, connected to common 11 when the coil is energised."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le contact travail",
+     "en": "The make contact"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le contact repos",
+     "en": "The break contact"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le commun",
+     "en": "The common"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q04",
+  "section": "02-relais-statique",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'est-ce qui isole la commande de la charge dans un relais statique ?",
+   "en": "What isolates the control from the load in a solid-state relay?"
+  },
+  "explanation": {
+   "fr": "Un optocoupleur : la commande allume une diode, la lumière commande le côté charge.",
+   "en": "An optocoupler: the control lights an LED, the light drives the load side."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un optocoupleur",
+     "en": "An optocoupler"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une bobine",
+     "en": "A coil"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un transformateur de courant",
+     "en": "A current transformer"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q05",
+  "section": "02-relais-statique",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À 50 Hz, de combien au plus un relais statique à zéro de tension retarde-t-il la commutation ? (exemple : 2,5 ms)",
+   "en": "At 50 Hz, by how much at most does a zero-voltage solid-state relay delay switching? (example: 2.5 ms)"
+  },
+  "explanation": {
+   "fr": "La tension passe par zéro toutes les demi-périodes : 1 / (2 × 50) = 10 ms.",
+   "en": "The voltage crosses zero every half-period: 1 / (2 × 50) = 10 ms."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.01",
+   "unit": "s",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m8-q06",
+  "section": "03-temporisations",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que fait le contact d'une temporisation au travail ?",
+   "en": "What does an on-delay timer's contact do?"
+  },
+  "explanation": {
+   "fr": "Il se ferme t secondes après l'alimentation de la bobine et s'ouvre dès sa coupure.",
+   "en": "It closes t seconds after the coil is energised and opens as soon as it is switched off."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il se ferme avec un retard après l'alimentation",
+     "en": "It closes with a delay after energising"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il s'ouvre avec un retard après la coupure",
+     "en": "It opens with a delay after switching off"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il clignote",
+     "en": "It flashes"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q07",
+  "section": "03-temporisations",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle temporisation garde un ventilateur en marche quelques minutes après l'arrêt d'un moteur ?",
+   "en": "Which timer keeps a fan running for a few minutes after a motor stops?"
+  },
+  "explanation": {
+   "fr": "La temporisation au repos : le contact ne s'ouvre qu'après le délai.",
+   "en": "The off-delay timer: the contact only opens after the delay."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Au repos",
+     "en": "Off-delay"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Au travail",
+     "en": "On-delay"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Impulsion",
+     "en": "Pulse"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q08",
+  "section": "03-temporisations",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : avec une temporisation au travail de 5 s, si la bobine n'est alimentée que 3 s, le contact ne se ferme jamais.",
+   "en": "True or false: with a 5 s on-delay, if the coil is energised for only 3 s, the contact never closes."
+  },
+  "explanation": {
+   "fr": "Vrai : le délai n'est pas écoulé quand la bobine est coupée.",
+   "en": "True: the delay has not elapsed when the coil is switched off."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q09",
+  "section": "04-multifonctions",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un voyant clignote avec 2 s allumé et 2 s éteint. Combien de clignotements fait-il par minute ? (exemple : 4)",
+   "en": "An indicator flashes 2 s on and 2 s off. How many flashes does it make per minute? (example: 4)"
+  },
+  "explanation": {
+   "fr": "Période de 4 s : 60 / 4 = 15 clignotements par minute.",
+   "en": "A 4 s period: 60 / 4 = 15 flashes per minute."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "15",
+   "unit": "",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m8-q10",
+  "section": "04-multifonctions",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que fait la fonction impulsion d'un relais multifonction ?",
+   "en": "What does a multifunction relay's pulse function do?"
+  },
+  "explanation": {
+   "fr": "Le contact se ferme dès la commande et s'ouvre au bout du délai, même si la commande dure.",
+   "en": "The contact closes as soon as the control comes on and opens after the delay, even if the control lasts."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une fermeture de durée fixe dès la commande",
+     "en": "A fixed-length closing from the control signal"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un retard à l'ouverture",
+     "en": "A delay on opening"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une mémoire sans courant",
+     "en": "A memory without current"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q11",
+  "section": "05-bistables",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que fait un télérupteur à chaque impulsion sur sa bobine ?",
+   "en": "What does an impulse relay do on each pulse on its coil?"
+  },
+  "explanation": {
+   "fr": "Il change l'état de son contact, qui reste ensuite dans sa position.",
+   "en": "It changes the state of its contact, which then stays in its position."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il change l'état de son contact",
+     "en": "It changes its contact's state"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il ferme pendant la durée de l'impulsion",
+     "en": "It closes for the length of the pulse"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il se réarme",
+     "en": "It resets"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q12",
+  "section": "05-bistables",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : un relais bistable convient bien pour démarrer un moteur.",
+   "en": "True or false: a latching relay is well suited to starting a motor."
+  },
+  "explanation": {
+   "fr": "Faux : il garde son état après une coupure de courant ; le moteur pourrait redémarrer seul au retour de la tension.",
+   "en": "False: it keeps its state after a power cut; the motor could restart by itself when the voltage returns."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q13",
+  "section": "06-logique",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Cliquez sur l'association de contacts qui réalise la fonction OU.",
+   "en": "Click the contact arrangement that performs the OR function."
+  },
+  "explanation": {
+   "fr": "Deux contacts en parallèle font un OU ; en série, un ET ; un contact à ouverture seul, un NON.",
+   "en": "Two contacts in parallel make an OR; in series, an AND; a single break contact, a NOT."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Contacts du milieu",
+     "en": "Middle contacts"
+    },
+    "correct": true,
+    "shape": {
+     "x": 236,
+     "y": 36,
+     "w": 88,
+     "h": 78
+    }
+   },
+   {
+    "text": {
+     "fr": "Contacts de gauche",
+     "en": "Left contacts"
+    },
+    "correct": false,
+    "shape": {
+     "x": 70,
+     "y": 36,
+     "w": 60,
+     "h": 96
+    }
+   },
+   {
+    "text": {
+     "fr": "Contact de droite",
+     "en": "Right contact"
+    },
+    "correct": false,
+    "shape": {
+     "x": 440,
+     "y": 36,
+     "w": 44,
+     "h": 52
+    }
+   }
+  ],
+  "svg": "schemas/m8-ou.svg"
+ },
+ {
+  "id": "m-p3-m8-q14",
+  "section": "06-logique",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque montage de contacts à sa fonction logique.",
+   "en": "Match each contact arrangement with its logic function."
+  },
+  "explanation": {
+   "fr": "Série : ET ; parallèle : OU ; contact à ouverture : NON ; contacts à ouverture en série : NON-OU.",
+   "en": "Series: AND; parallel: OR; break contact: NOT; break contacts in series: NOR."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Deux contacts à fermeture en série",
+     "en": "Two make contacts in series"
+    },
+    "right": {
+     "fr": "ET",
+     "en": "AND"
+    }
+   },
+   {
+    "left": {
+     "fr": "Deux contacts à fermeture en parallèle",
+     "en": "Two make contacts in parallel"
+    },
+    "right": {
+     "fr": "OU",
+     "en": "OR"
+    }
+   },
+   {
+    "left": {
+     "fr": "Un contact à ouverture",
+     "en": "One break contact"
+    },
+    "right": {
+     "fr": "NON",
+     "en": "NOT"
+    }
+   },
+   {
+    "left": {
+     "fr": "Deux contacts à ouverture en série",
+     "en": "Two break contacts in series"
+    },
+    "right": {
+     "fr": "NON-OU",
+     "en": "NOR"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-q15",
+  "section": "06-logique",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Fonction ET : A est actionné, B ne l'est pas. Que fait la lampe ?",
+   "en": "AND function: A is operated, B is not. What does the lamp do?"
+  },
+  "explanation": {
+   "fr": "Elle reste éteinte : il faut A et B.",
+   "en": "It stays off: both A and B are needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Éteinte",
+     "en": "Off"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Allumée",
+     "en": "On"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Clignotante",
+     "en": "Flashing"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x01",
+  "section": "01-relais",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi place-t-on un relais entre une sortie d'automate et une charge ?",
+   "en": "Why is a relay placed between a PLC output and a load?"
+  },
+  "explanation": {
+   "fr": "Pour isoler les deux circuits et commuter un courant plus fort que celui de la sortie.",
+   "en": "To isolate the two circuits and switch a higher current than the output can."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Isoler et commuter plus de courant",
+     "en": "To isolate and switch more current"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Ralentir l'automate",
+     "en": "To slow the PLC down"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Mesurer la tension",
+     "en": "To measure the voltage"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x02",
+  "section": "01-relais",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Peut-on commuter directement un moteur de 7,5 kW avec un relais ?",
+   "en": "Can a 7.5 kW motor be switched directly by a relay?"
+  },
+  "explanation": {
+   "fr": "Non : ses contacts sont prévus pour quelques ampères ; il faut un contacteur.",
+   "en": "No: its contacts are rated for a few amps; a contactor is needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Non, il faut un contacteur",
+     "en": "No, a contactor is needed"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Oui, toujours",
+     "en": "Yes, always"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Oui, avec une diode",
+     "en": "Yes, with a diode"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x03",
+  "section": "02-relais-statique",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi une petite lampe peut-elle rester faiblement allumée derrière un relais statique bloqué ?",
+   "en": "Why can a small lamp stay dimly lit behind an off solid-state relay?"
+  },
+  "explanation": {
+   "fr": "Le relais statique laisse passer un petit courant de fuite à l'état bloqué.",
+   "en": "The solid-state relay lets a small leakage current through when off."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "À cause du courant de fuite",
+     "en": "Because of the leakage current"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Parce que la bobine reste alimentée",
+     "en": "Because the coil stays energised"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "À cause du dissipateur",
+     "en": "Because of the heatsink"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x04",
+  "section": "02-relais-statique",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un relais statique présente une chute de 1,2 V et conduit 8 A. Quelle puissance dissipe-t-il ? (exemple : 2,5 W)",
+   "en": "A solid-state relay has a 1.2 V drop and carries 8 A. What power does it dissipate? (example: 2.5 W)"
+  },
+  "explanation": {
+   "fr": "P = 1,2 × 8 = 9,6 W.",
+   "en": "P = 1.2 × 8 = 9.6 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "9.6",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m8-x05",
+  "section": "03-temporisations",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle temporisation fait passer un démarreur d'étoile en triangle ?",
+   "en": "Which timer switches a starter from star to delta?"
+  },
+  "explanation": {
+   "fr": "Une temporisation au travail : le passage a lieu un délai après le démarrage.",
+   "en": "An on-delay timer: the change happens a delay after starting."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Au travail",
+     "en": "On-delay"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Au repos",
+     "en": "Off-delay"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Clignotant",
+     "en": "Flasher"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x06",
+  "section": "03-temporisations",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Une temporisation au repos est réglée sur 30 s. La commande est coupée à t = 12 s. À quel instant le contact s'ouvre-t-il ? (exemple : 2,5 s)",
+   "en": "An off-delay timer is set to 30 s. The control is switched off at t = 12 s. At what time does the contact open? (example: 2.5 s)"
+  },
+  "explanation": {
+   "fr": "12 + 30 = 42 s.",
+   "en": "12 + 30 = 42 s."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "42",
+   "unit": "s",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m8-x07",
+  "section": "04-multifonctions",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que faut-il faire avant de choisir une position sur un relais multifonction ?",
+   "en": "What must be done before choosing a position on a multifunction relay?"
+  },
+  "explanation": {
+   "fr": "Lire sa notice et son chronogramme : les repères varient selon le fabricant.",
+   "en": "Read its instructions and timing chart: the markings vary by manufacturer."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Lire la notice et son chronogramme",
+     "en": "Read the instructions and timing chart"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le régler au maximum",
+     "en": "Set it to maximum"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le brancher sur 230 V",
+     "en": "Connect it to 230 V"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x08",
+  "section": "05-bistables",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Sur un relais bistable à deux bobines, laquelle le fait déclencher ?",
+   "en": "On a two-coil latching relay, which coil resets it?"
+  },
+  "explanation": {
+   "fr": "La bobine R (reset).",
+   "en": "Coil R (reset)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "R",
+     "en": "R"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "S",
+     "en": "S"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "A1",
+     "en": "A1"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x09",
+  "section": "05-bistables",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : les boutons qui commandent un télérupteur se câblent en parallèle.",
+   "en": "True or false: the buttons controlling an impulse relay are wired in parallel."
+  },
+  "explanation": {
+   "fr": "Vrai : n'importe lequel envoie l'impulsion.",
+   "en": "True: any of them sends the pulse."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x10",
+  "section": "06-logique",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Plusieurs boutons d'arrêt à ouverture câblés en série réalisent quelle fonction ?",
+   "en": "Several break stop buttons wired in series perform which function?"
+  },
+  "explanation": {
+   "fr": "NON-OU : le moindre appui coupe le circuit.",
+   "en": "NOR: any press opens the circuit."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "NON-OU",
+     "en": "NOR"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "ET",
+     "en": "AND"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "OU",
+     "en": "OR"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x11",
+  "section": "06-logique",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle fonction réalise une commande bimanuelle de presse ?",
+   "en": "Which function does a two-hand press control perform?"
+  },
+  "explanation": {
+   "fr": "ET : les deux boutons doivent être actionnés en même temps.",
+   "en": "AND: both buttons must be pressed at the same time."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "ET",
+     "en": "AND"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "OU",
+     "en": "OR"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "NON",
+     "en": "NOT"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m8-x12",
+  "section": "06-logique",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Fonction NON-ET, A et B actionnés tous les deux : que vaut la sortie ?",
+   "en": "NAND function, A and B both operated: what is the output?"
+  },
+  "explanation": {
+   "fr": "0 : c'est le seul cas où la sortie d'un NON-ET est à 0.",
+   "en": "0: it is the only case where a NAND output is 0."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "0",
+     "en": "0"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "1",
+     "en": "1"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Indéterminée",
+     "en": "Undetermined"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

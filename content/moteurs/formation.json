@@ -548,6 +548,275 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "p3",
+      "order": 3,
+      "title": {
+        "fr": "Contacteurs, relais et circuits de commande",
+        "en": "Contactors, relays and control circuits"
+      },
+      "description": {
+        "fr": "À suivre après les Parties 1 et 2 : choisir et protéger un contacteur, maîtriser relais et temporisations, puis câbler les circuits de commande des moteurs.",
+        "en": "Best taken after Parts 1 and 2: choose and protect a contactor, master relays and timers, then wire motor control circuits."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p3/m7",
+          "duration_hours": 10,
+          "title": {
+            "fr": "Contacteurs et démarreurs",
+            "en": "Contactors and starters"
+          },
+          "competence": {
+            "fr": "Choisir un contacteur selon la charge, le protéger, antiparasiter sa bobine et régler la protection du moteur.",
+            "en": "Choose a contactor for its load, protect it, suppress its coil and set the motor protection."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis marche-arrêt avec auto-maintien d'un contacteur 24 V.",
+            "en": "Module quiz, then start/stop with hold-in on a 24 V contactor."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-contacteur",
+              "kind": "content",
+              "title": {
+                "fr": "Le contacteur",
+                "en": "The contactor"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-categories",
+              "kind": "content",
+              "title": {
+                "fr": "Les catégories d'emploi",
+                "en": "Utilisation categories"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-arc-antiparasitage",
+              "kind": "content",
+              "title": {
+                "fr": "Coupure de l'arc et antiparasitage",
+                "en": "Breaking the arc and coil suppression"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-choix",
+              "kind": "content",
+              "title": {
+                "fr": "Choisir un contacteur",
+                "en": "Choosing a contactor"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-statique",
+              "kind": "content",
+              "title": {
+                "fr": "Le contacteur statique",
+                "en": "The solid-state contactor"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-protection-moteur",
+              "kind": "content",
+              "title": {
+                "fr": "Protéger le moteur",
+                "en": "Protecting the motor"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : marche-arrêt avec auto-maintien",
+                "en": "Mini-project: start/stop with hold-in"
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p3/m8",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Relais, temporisations et logique câblée",
+            "en": "Relays, timers and wired logic"
+          },
+          "competence": {
+            "fr": "Choisir un relais ou une temporisation, régler son fonctionnement et réaliser une fonction logique par contacts.",
+            "en": "Choose a relay or a timer, set how it works and build a logic function with contacts."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis temporisations et logique ET, OU sur relais 24 V.",
+            "en": "Module quiz, then timers and AND, OR logic on 24 V relays."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-relais",
+              "kind": "content",
+              "title": {
+                "fr": "Le relais électromécanique",
+                "en": "The electromechanical relay"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-relais-statique",
+              "kind": "content",
+              "title": {
+                "fr": "Le relais statique",
+                "en": "The solid-state relay"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-temporisations",
+              "kind": "content",
+              "title": {
+                "fr": "Temporisations travail et repos",
+                "en": "On-delay and off-delay timers"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-multifonctions",
+              "kind": "content",
+              "title": {
+                "fr": "Les relais multifonctions",
+                "en": "Multifunction relays"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-bistables",
+              "kind": "content",
+              "title": {
+                "fr": "Relais bistables et télérupteurs",
+                "en": "Latching relays and impulse relays"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-logique",
+              "kind": "content",
+              "title": {
+                "fr": "La logique câblée",
+                "en": "Wired logic"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : temporisations et logique",
+                "en": "Mini-project: timers and logic"
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p3/m9",
+          "duration_hours": 10,
+          "title": {
+            "fr": "Circuits de commande des moteurs",
+            "en": "Motor control circuits"
+          },
+          "competence": {
+            "fr": "Lire, câbler et dépanner les circuits de démarrage, d'inversion, de freinage et de sécurité d'un moteur.",
+            "en": "Read, wire and troubleshoot a motor's starting, reversing, braking and safety circuits."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis inversion verrouillée et étoile-triangle figuré en 24 V.",
+            "en": "Module quiz, then interlocked reversing and a 24 V star-delta model."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-depart-moteur",
+              "kind": "content",
+              "title": {
+                "fr": "Protéger le départ moteur",
+                "en": "Protecting the motor circuit"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-demarrage-direct",
+              "kind": "content",
+              "title": {
+                "fr": "Le démarrage direct",
+                "en": "Direct-on-line starting"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-tension-reduite",
+              "kind": "content",
+              "title": {
+                "fr": "Démarrages à tension réduite",
+                "en": "Reduced-voltage starting"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-inversion",
+              "kind": "content",
+              "title": {
+                "fr": "Inversion et marche par à-coups",
+                "en": "Reversing and inching"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-freinage",
+              "kind": "content",
+              "title": {
+                "fr": "Le freinage",
+                "en": "Braking"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-vitesses",
+              "kind": "content",
+              "title": {
+                "fr": "Moteurs à plusieurs vitesses",
+                "en": "Multi-speed motors"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-arret-urgence",
+              "kind": "content",
+              "title": {
+                "fr": "Arrêt d'urgence et manuel-0-auto",
+                "en": "Emergency stop and manual-off-auto"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : inversion et étoile-triangle",
+                "en": "Mini-project: reversing and star-delta"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,1065 @@
+[
+ {
+  "id": "m-p3-m9-q01",
+  "section": "01-depart-moteur",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque fonction d'un départ moteur à l'appareil qui l'assure.",
+   "en": "Match each motor circuit function with the device that provides it."
+  },
+  "explanation": {
+   "fr": "Sectionner : sectionneur ; courts-circuits : fusibles aM ; commander : contacteur ; surcharges : relais thermique.",
+   "en": "Isolate: isolator; short circuits: aM fuses; control: contactor; overloads: overload relay."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Sectionner",
+     "en": "Isolate"
+    },
+    "right": {
+     "fr": "Sectionneur",
+     "en": "Isolator"
+    }
+   },
+   {
+    "left": {
+     "fr": "Protéger des courts-circuits",
+     "en": "Protect against short circuits"
+    },
+    "right": {
+     "fr": "Fusibles aM",
+     "en": "aM fuses"
+    }
+   },
+   {
+    "left": {
+     "fr": "Commander",
+     "en": "Control"
+    },
+    "right": {
+     "fr": "Contacteur",
+     "en": "Contactor"
+    }
+   },
+   {
+    "left": {
+     "fr": "Protéger des surcharges",
+     "en": "Protect against overloads"
+    },
+    "right": {
+     "fr": "Relais thermique",
+     "en": "Overload relay"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q02",
+  "section": "01-depart-moteur",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur une grande longueur de câble, quel critère décide souvent de la section ?",
+   "en": "Over a long cable run, which criterion often decides the cross-section?"
+  },
+  "explanation": {
+   "fr": "La chute de tension.",
+   "en": "The voltage drop."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "La chute de tension",
+     "en": "The voltage drop"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La couleur du câble",
+     "en": "The cable colour"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La puissance de la bobine",
+     "en": "The coil power"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q03",
+  "section": "02-demarrage-direct",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment câble-t-on les boutons d'arrêt de plusieurs postes de commande ?",
+   "en": "How are the stop buttons of several control stations wired?"
+  },
+  "explanation": {
+   "fr": "En série : n'importe lequel coupe la bobine.",
+   "en": "In series: any of them de-energises the coil."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "En série",
+     "en": "In series"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "En parallèle",
+     "en": "In parallel"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un seul suffit",
+     "en": "Only one is enough"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q04",
+  "section": "02-demarrage-direct",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur de courant nominal 12 A démarre en direct (7 In). Quel courant appelle-t-il au démarrage ? (exemple : 2,5 A)",
+   "en": "A motor with a rated current of 12 A starts direct-on-line (7 In). What current does it draw at start-up? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "7 × 12 = 84 A.",
+   "en": "7 × 12 = 84 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "84",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m9-q05",
+  "section": "03-tension-reduite",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "En démarrage étoile sur un réseau 400 V, quelle tension reçoit chaque enroulement ? (exemple : 12 V)",
+   "en": "When starting in star on a 400 V supply, what voltage does each winding get? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "400 / √3 ≈ 231 V.",
+   "en": "400 / √3 ≈ 231 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "230.94",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m9-q06",
+  "section": "03-tension-reduite",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "En démarrage direct, un moteur appelle 60 A. Quel courant appelle-t-il en démarrage étoile-triangle ? (exemple : 2,5 A)",
+   "en": "Direct-on-line, a motor draws 60 A. What current does it draw with star-delta starting? (example: 2.5 A)"
+  },
+  "explanation": {
+   "fr": "Le courant de démarrage est divisé par 3 : 60 / 3 = 20 A.",
+   "en": "The starting current is divided by 3: 60 / 3 = 20 A."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "20",
+   "unit": "A",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m9-q07",
+  "section": "03-tension-reduite",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Remettez dans l'ordre la séquence d'un démarrage étoile-triangle : associez chaque étape à son rang.",
+   "en": "Put the sequence of a star-delta start in order: match each step with its rank."
+  },
+  "explanation": {
+   "fr": "KM1 et KM2 se ferment, le moteur démarre en étoile, la temporisation ouvre KM2, puis KM3 se ferme en triangle.",
+   "en": "KM1 and KM2 close, the motor starts in star, the timer opens KM2, then KM3 closes in delta."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "KM1 et KM2 se ferment",
+     "en": "KM1 and KM2 close"
+    },
+    "right": {
+     "fr": "1re",
+     "en": "1st"
+    }
+   },
+   {
+    "left": {
+     "fr": "Le moteur démarre en étoile",
+     "en": "The motor starts in star"
+    },
+    "right": {
+     "fr": "2e",
+     "en": "2nd"
+    }
+   },
+   {
+    "left": {
+     "fr": "KT1 ouvre KM2",
+     "en": "KT1 opens KM2"
+    },
+    "right": {
+     "fr": "3e",
+     "en": "3rd"
+    }
+   },
+   {
+    "left": {
+     "fr": "KM3 se ferme : marche en triangle",
+     "en": "KM3 closes: running in delta"
+    },
+    "right": {
+     "fr": "4e",
+     "en": "4th"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q08",
+  "section": "03-tension-reduite",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel moteur peut démarrer en étoile-triangle sur un réseau 400 V ?",
+   "en": "Which motor can start star-delta on a 400 V supply?"
+  },
+  "explanation": {
+   "fr": "Un moteur prévu pour fonctionner en triangle sur 400 V (400 V Δ / 690 V Y), avec six bornes accessibles.",
+   "en": "A motor designed to run in delta on 400 V (400 V Δ / 690 V Y), with six accessible terminals."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un moteur 400 V Δ / 690 V Y",
+     "en": "A 400 V Δ / 690 V Y motor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un moteur 230 V Δ / 400 V Y",
+     "en": "A 230 V Δ / 400 V Y motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Tout moteur triphasé",
+     "en": "Any three-phase motor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q09",
+  "section": "04-inversion",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment réalise-t-on le verrouillage électrique d'une inversion ?",
+   "en": "How is the electrical interlock of a reversing circuit made?"
+  },
+  "explanation": {
+   "fr": "Un contact à ouverture de KM2 en série avec la bobine de KM1, et réciproquement.",
+   "en": "A break contact of KM2 in series with the coil of KM1, and vice versa."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un contact à ouverture de l'autre contacteur en série avec chaque bobine",
+     "en": "A break contact of the other contactor in series with each coil"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Deux boutons d'arrêt en parallèle",
+     "en": "Two stop buttons in parallel"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un fusible entre les contacteurs",
+     "en": "A fuse between the contactors"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q10",
+  "section": "04-inversion",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : le verrouillage électrique suffit, le verrouillage mécanique est inutile.",
+   "en": "True or false: the electrical interlock is enough, the mechanical interlock is unnecessary."
+  },
+  "explanation": {
+   "fr": "Faux : on met toujours les deux ; le mécanique protège même si un contact se soude.",
+   "en": "False: always fit both; the mechanical one protects even if a contact welds."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q11",
+  "section": "05-freinage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que fait un frein électromécanique à manque de courant lors d'une coupure ?",
+   "en": "What does a spring-applied brake do on a power cut?"
+  },
+  "explanation": {
+   "fr": "Il serre : les ressorts freinent et maintiennent la charge.",
+   "en": "It applies: the springs brake and hold the load."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il serre et maintient la charge",
+     "en": "It applies and holds the load"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il se desserre",
+     "en": "It releases"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il ne change rien",
+     "en": "It changes nothing"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q12",
+  "section": "06-vitesses",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur Dahlander a 8 pôles en petite vitesse. Quelle est sa vitesse de synchronisme en petite vitesse à 50 Hz ? (exemple : 1450 tr/min)",
+   "en": "A Dahlander motor has 8 poles at low speed. What is its synchronous speed at low speed at 50 Hz? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "p = 4 : ns = 60 × 50 / 4 = 750 tr/min.",
+   "en": "p = 4: ns = 60 × 50 / 4 = 750 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "750",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m9-q13",
+  "section": "02-demarrage-direct",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur ce circuit de commande, cliquez sur le contact d'auto-maintien.",
+   "en": "On this control circuit, click the hold-in contact."
+  },
+  "explanation": {
+   "fr": "Le contact à fermeture placé en parallèle sur le bouton marche : c'est le 13-14 du contacteur.",
+   "en": "The make contact placed in parallel with the start button: the contactor's 13-14."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Contact de droite",
+     "en": "Right-hand contact"
+    },
+    "correct": true,
+    "shape": {
+     "x": 212,
+     "y": 154,
+     "w": 44,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Premier bouton",
+     "en": "First button"
+    },
+    "correct": false,
+    "shape": {
+     "x": 116,
+     "y": 84,
+     "w": 50,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Second bouton",
+     "en": "Second button"
+    },
+    "correct": false,
+    "shape": {
+     "x": 116,
+     "y": 140,
+     "w": 50,
+     "h": 44
+    }
+   },
+   {
+    "text": {
+     "fr": "Rectangle du bas",
+     "en": "Bottom rectangle"
+    },
+    "correct": false,
+    "shape": {
+     "x": 128,
+     "y": 240,
+     "w": 50,
+     "h": 26
+    }
+   }
+  ],
+  "svg": "schemas/m9-maintien.svg"
+ },
+ {
+  "id": "m-p3-m9-q14",
+  "section": "07-arret-urgence",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que se passe-t-il quand on réarme un arrêt d'urgence ?",
+   "en": "What happens when an emergency stop is reset?"
+  },
+  "explanation": {
+   "fr": "Rien ne redémarre : il faut un nouvel ordre de marche.",
+   "en": "Nothing restarts: a new start order is needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Rien ne redémarre",
+     "en": "Nothing restarts"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La machine redémarre",
+     "en": "The machine restarts"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le moteur s'inverse",
+     "en": "The motor reverses"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-q15",
+  "section": "07-arret-urgence",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Dans une commande manuel-0-auto, que se passe-t-il en position 0 ?",
+   "en": "In a manual-off-auto control, what happens in position 0?"
+  },
+  "explanation": {
+   "fr": "Aucun ordre ne passe : c'est la position de repos et d'intervention.",
+   "en": "No order passes: it is the rest and intervention position."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Aucun ordre ne passe",
+     "en": "No order passes"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le pressostat commande",
+     "en": "The pressure switch controls"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le moteur tourne en continu",
+     "en": "The motor runs continuously"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x01",
+  "section": "01-depart-moteur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que réunit un disjoncteur-moteur ?",
+   "en": "What does a motor circuit breaker combine?"
+  },
+  "explanation": {
+   "fr": "Le sectionnement, la protection contre les courts-circuits et contre les surcharges.",
+   "en": "Isolation, short-circuit protection and overload protection."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Sectionnement et les deux protections",
+     "en": "Isolation and both protections"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Seulement la commande",
+     "en": "Control only"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le freinage",
+     "en": "Braking"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x02",
+  "section": "01-depart-moteur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "De quoi dépend le courant admissible d'un câble ?",
+   "en": "What does a cable's current-carrying capacity depend on?"
+  },
+  "explanation": {
+   "fr": "De sa section, de son isolant, du mode de pose et de la température ambiante, entre autres.",
+   "en": "On its cross-section, insulation, installation method and ambient temperature, among others."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Section, isolant, mode de pose, température",
+     "en": "Cross-section, insulation, installation method, temperature"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Seulement de sa couleur",
+     "en": "Only its colour"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "De la puissance du contacteur",
+     "en": "The contactor's power"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x03",
+  "section": "02-demarrage-direct",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "À quels moteurs convient le démarrage direct ?",
+   "en": "Which motors suit direct-on-line starting?"
+  },
+  "explanation": {
+   "fr": "Aux moteurs de petite et moyenne puissance, sur un réseau qui supporte l'appel de courant.",
+   "en": "Small and medium motors, on a supply that can take the inrush."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Petites et moyennes puissances",
+     "en": "Small and medium powers"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Seulement les très gros moteurs",
+     "en": "Only very large motors"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucun",
+     "en": "None"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x04",
+  "section": "03-tension-reduite",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "En démarrage direct, un moteur fournit un couple de démarrage de 90 N·m. Quel couple fournit-il en étoile ? (exemple : 2,5 N·m)",
+   "en": "Direct-on-line, a motor delivers a starting torque of 90 N·m. What torque does it deliver in star? (example: 2.5 N·m)"
+  },
+  "explanation": {
+   "fr": "Le couple est divisé par 3 : 90 / 3 = 30 N·m.",
+   "en": "The torque is divided by 3: 90 / 3 = 30 N·m."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "30",
+   "unit": "N·m",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m9-x05",
+  "section": "03-tension-reduite",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Comment un démarreur progressif fait-il monter la tension ?",
+   "en": "How does a soft starter raise the voltage?"
+  },
+  "explanation": {
+   "fr": "Par des thyristors qui suivent une rampe réglable.",
+   "en": "With thyristors following an adjustable ramp."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Par des thyristors, selon une rampe",
+     "en": "With thyristors, along a ramp"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Par un couplage étoile",
+     "en": "With a star connection"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Par un frein",
+     "en": "With a brake"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x06",
+  "section": "04-inversion",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi ajoute-t-on un verrouillage mécanique entre deux contacteurs d'inversion ?",
+   "en": "Why add a mechanical interlock between two reversing contactors?"
+  },
+  "explanation": {
+   "fr": "Pour empêcher physiquement leur fermeture simultanée, même si un contact se soude ou si le câblage est faux.",
+   "en": "To physically prevent them closing together, even if a contact welds or the wiring is wrong."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pour empêcher physiquement la fermeture simultanée",
+     "en": "To physically prevent simultaneous closing"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Pour accélérer le moteur",
+     "en": "To speed up the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Pour remplacer l'arrêt d'urgence",
+     "en": "To replace the emergency stop"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x07",
+  "section": "04-inversion",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Qu'est-ce qui caractérise la marche par à-coups ?",
+   "en": "What characterises inching?"
+  },
+  "explanation": {
+   "fr": "Le moteur ne tourne que tant qu'on appuie : pas d'auto-maintien.",
+   "en": "The motor only turns while the button is held: no hold-in."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pas d'auto-maintien",
+     "en": "No hold-in"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un démarrage en étoile",
+     "en": "A star start"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un frein serré",
+     "en": "An applied brake"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x08",
+  "section": "05-freinage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que faut-il absolument prévoir avec un freinage par contre-courant ?",
+   "en": "What is essential with plugging?"
+  },
+  "explanation": {
+   "fr": "Une coupure à vitesse nulle, sinon le moteur repart dans l'autre sens.",
+   "en": "A cut-off at zero speed, otherwise the motor starts the other way."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une coupure à vitesse nulle",
+     "en": "A zero-speed cut-off"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un couplage triangle",
+     "en": "A delta connection"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un relais bistable",
+     "en": "A latching relay"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x09",
+  "section": "05-freinage",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : le freinage par injection de courant continu maintient une charge suspendue à l'arrêt.",
+   "en": "True or false: DC injection braking holds a suspended load at standstill."
+  },
+  "explanation": {
+   "fr": "Faux : il freine, mais ne maintient pas ; il faut un frein électromécanique.",
+   "en": "False: it brakes but does not hold; an electromechanical brake is needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x10",
+  "section": "06-vitesses",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Le même moteur Dahlander a 4 pôles en grande vitesse. Quelle est sa vitesse de synchronisme en grande vitesse à 50 Hz ? (exemple : 1450 tr/min)",
+   "en": "The same Dahlander motor has 4 poles at high speed. What is its synchronous speed at high speed at 50 Hz? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "p = 2 : ns = 60 × 50 / 2 = 1 500 tr/min.",
+   "en": "p = 2: ns = 60 × 50 / 2 = 1,500 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "1500",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p3-m9-x11",
+  "section": "07-arret-urgence",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Comment câble-t-on plusieurs arrêts d'urgence d'une même machine ?",
+   "en": "How are several emergency stops of the same machine wired?"
+  },
+  "explanation": {
+   "fr": "En série : chacun coupe tout.",
+   "en": "In series: each one cuts everything."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "En série",
+     "en": "In series"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "En parallèle",
+     "en": "In parallel"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Chacun sur un autre moteur",
+     "en": "Each on another motor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p3-m9-x12",
+  "section": "07-arret-urgence",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Où se place l'arrêt d'urgence dans le circuit de commande ?",
+   "en": "Where is the emergency stop placed in the control circuit?"
+  },
+  "explanation": {
+   "fr": "En tête, avant tous les autres éléments.",
+   "en": "At the head, before all the other items."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "En tête du circuit",
+     "en": "At the head of the circuit"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Juste avant la bobine",
+     "en": "Just before the coil"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "En parallèle sur la marche",
+     "en": "In parallel with start"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

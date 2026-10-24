@@ -120,7 +120,53 @@ EN = {
     "≈ 2,7 Ω": "≈ 2.7 Ω", "trois valeurs égales à quelques % près": "three values equal within a few %",
     "moteur ne démarre pas": "motor does not start", "tension aux bornes ?": "voltage at the terminals?", "protection déclenchée ?": "protection tripped?",
     "enroulements : résistances égales ?": "windings: equal resistances?", "isolement et roulements": "insulation and bearings",
-    "mesures toujours": "always measure", "moteur consigné": "with the motor locked out", "moteur débranché": "motor disconnected", "charge": "load", "on ne touche jamais au côté 230 V": "never touch the 230 V side",
+    "mesures toujours": "always measure", "moteur consigné": "with the motor locked out", "moteur débranché": "motor disconnected",
+    # M7 à M9
+    "bobine": "coil", "armature mobile": "moving armature", "ressort de rappel": "return spring", "contacts principaux": "main contacts",
+    "circuit magnétique": "magnetic circuit", "auxiliaires": "auxiliaries", "un même appareil, trois rôles": "one device, three roles",
+    "charges peu inductives : chauffage, éclairage": "slightly inductive loads: heating, lighting",
+    "moteur à cage : démarrage, coupure moteur lancé": "cage motor: starting, switching off while running",
+    "moteur à cage : inversion, à-coups, freinage par contre-courant": "cage motor: reversing, inching, plugging",
+    "équivalents en courant continu": "DC equivalents", "AC-3 (moteur lancé)": "AC-3 (motor running)", "AC-4 (moteur au démarrage)": "AC-4 (motor starting)",
+    "courant à couper": "current to break", "même contacteur : moins de manœuvres en AC-4": "same contactor: fewer operations in AC-4",
+    "contacts qui s'ouvrent": "opening contacts", "chambre de coupure": "arc chute",
+    "l'arc fractionné refroidit et s'éteint au passage du courant par zéro": "the split arc cools and goes out when the current passes through zero",
+    "diode (CC)": "diode (DC)", "RC (CA)": "RC (AC)", "varistance": "varistor", "CONTACTEUR KM1": "CONTACTOR KM1",
+    "AC-3, 400 V": "AC-3, 400 V", "bobine": "coil", "24 V CC": "24 V DC", "1 F + 1 O": "1 NO + 1 NC", "durée de vie": "service life",
+    "1 million de manœuvres en AC-3": "1 million operations in AC-3", "NEMA (États-Unis)": "NEMA (United States)", "CEI : courant AC-3": "IEC: AC-3 current",
+    "taille 00": "size 00", "taille 0": "size 0", "taille 1": "size 1", "taille 2": "size 2",
+    "correspondance indicative ; le contacteur CEI se choisit par catégorie et courant": "indicative match; an IEC contactor is chosen by category and current",
+    "vers le moteur": "to the motor", "commande 24 V": "24 V control", "dissipateur": "heatsink", "10 A, 3 phases": "10 A, 3 phases",
+    "25 A, 3 phases": "25 A, 3 phases", "112,5 W": "112.5 W", "P ≈ 1,5 V × I × 3": "P ≈ 1.5 V × I × 3",
+    "aucune usure mécanique, mais de la chaleur": "no mechanical wear, but heat", "classe 10": "class 10", "classe 20": "class 20",
+    "courant / réglage": "current / setting", "temps (s)": "time (s)", "relais F1 : plage 4 à 6 A": "relay F1: range 4 to 6 A",
+    "plaque du moteur : 4,8 A": "motor plate: 4.8 A", "réglage : 4,8 A": "setting: 4.8 A", "pas de marge ajoutée": "no margin added",
+    "travail (NO)": "make (NO)", "repos (NC)": "break (NC)", "commun": "common", "11 commun, 12 repos, 14 travail": "11 common, 12 break, 14 make",
+    "optocoupleur": "optocoupler", "isolement : lumière, pas de fil": "isolation: light, no wire", "tension sur la charge": "voltage on the load",
+    "temps (ms)": "time (ms)", "ordre reçu": "order received", "commutation au zéro": "switching at zero", "contact": "contact", "commande": "control",
+    "coupure": "off", "+ t": "+ t", "travail": "on-delay", "repos": "off-delay", "impulsion": "pulse", "clignotant": "flasher",
+    "fonction et durée": "function and time", "impulsions": "pulses", "mise en marche / arrêt": "switch on / off", "état mémorisé": "state stored",
+    "consommation nulle entre deux impulsions": "no consumption between two pulses", "ET : A et B": "AND: A and B", "OU : A ou B": "OR: A or B",
+    "NON : pas A": "NOT: not A", "relais KA1": "relay KA1", "relais KA2": "relay KA2", "temporisé KT1": "timer KT1", "boutons S1, S2": "buttons S1, S2",
+    "voyants H1, H2": "indicators H1, H2", "tout le banc en 24 V": "the whole bench at 24 V", "sectionnement": "isolation",
+    "courts-circuits": "short circuits", "surcharges": "overloads", "≈ 16 A": "≈ 16 A", "valeurs indicatives, câble posé sous conduit": "indicative values, cable in conduit",
+    "arrêts en série": "stops in series", "marches en parallèle": "starts in parallel", "étoile": "star", "triangle": "delta",
+    "W2 U2 V2 vers KM2 et KM3": "W2 U2 V2 to KM2 and KM3", "direct": "direct-on-line", "étoile-triangle": "star-delta", "démarreur progressif": "soft starter",
+    "≈ 2,3 In": "≈ 2.3 In", "≈ 3 In (réglable)": "≈ 3 In (adjustable)", "courant de démarrage (× In)": "starting current (× In)",
+    "en étoile, le couple de démarrage aussi est divisé par 3": "in star, the starting torque is also divided by 3",
+    "L1 et L3 permutées": "L1 and L3 swapped", "verrouillage électrique + verrouillage mécanique": "electrical + mechanical interlock",
+    "(arrêt S1 et auto-maintiens non dessinés)": "(stop S1 and hold-ins not drawn)", "moteur coupé": "motor switched off", "injection de CC": "DC injection",
+    "champ fixe": "fixed field", "rotor freiné": "rotor braked", "pas de frein mécanique, aucune usure ; pas de maintien à l'arrêt": "no mechanical brake, no wear; no holding at standstill",
+    "moteur": "motor", "bobine du frein": "brake coil", "ressorts": "springs", "disque": "disc",
+    "sans courant, le frein serre : sécurité en cas de coupure": "without current, the brake applies: safe on a power cut",
+    "petite vitesse (8 pôles)": "low speed (8 poles)", "grande vitesse (4 pôles)": "high speed (4 poles)", "réseau sur 1U 1V 1W": "supply on 1U 1V 1W",
+    "réseau sur 2U 2V 2W": "supply on 2U 2V 2W", "2U 2V 2W libres": "2U 2V 2W open", "1U 1V 1W reliées": "1U 1V 1W joined",
+    "rapport de vitesse 1 à 2 : 750 et 1 500 tr/min à 50 Hz": "speed ratio 1 to 2: 750 and 1,500 rpm at 50 Hz",
+    "KM1 : PV": "KM1: LS", "KM2 + KM3 : GV": "KM2 + KM3: HS", "verrouillage": "interlock", "électrique et mécanique": "electrical and mechanical",
+    "reste de la commande": "rest of the control", "coup de poing, accrochage": "mushroom head, latching", "contact à ouverture": "break contact",
+    "réarmer ≠ redémarrer": "reset ≠ restart", "SA1 manuel": "SA1 manual", "SA1 auto": "SA1 auto", "pressostat": "pressure switch",
+    "KM1 ligne": "KM1 line", "KM2 étoile": "KM2 star", "KM3 triangle": "KM3 delta", "KT1 : temporisation étoile → triangle, 3 s": "KT1: star → delta delay, 3 s",
+    "I / In": "I / In", "courant (× In)": "current (× In)", "≈ In": "≈ In", "≈ 6 In": "≈ 6 In", "charge": "load", "on ne touche jamais au côté 230 V": "never touch the 230 V side",
 }
 
 
@@ -1300,6 +1346,491 @@ def m6_releve():
     d.text(100, 214, "moteur débranché", anchor="start", size=11, color=SOFT)
     return d
 
+# --- Module 7 : contacteurs et démarreurs ----------------------------------------------------------------------------
+
+
+def timing(d, x, y, w, rows, span=10, row_h=46, marks=()):
+    """Chronogramme : rows = [(libellé, [(début, fin), …] des états hauts)] sur 0 à span ; marks = [(t, texte)]."""
+    k = w / span
+    for r, (label, highs) in enumerate(rows):
+        base = y + r * row_h + 30
+        d.text(x - 10, base - 6, label, anchor="end", size=12, weight="600")
+        d.wire((x, base), (x + w, base), color=SOFT, width=1)
+        pts, t = [(x, base)], 0
+        for a, b in highs:
+            pts += [(x + a * k, base), (x + a * k, base - 22), (x + b * k, base - 22), (x + b * k, base)]
+        pts.append((x + w, base))
+        d.wire(*pts, color=ACCENT if r else INK, width=2.5)
+    for t, label in marks:
+        d.add(f'<line x1="{fmt(x + t * k)}" y1="{y}" x2="{fmt(x + t * k)}" y2="{y + len(rows) * row_h + 6}" stroke="{SOFT}" stroke-dasharray="4 3"/>')
+        d.text(x + t * k, y + len(rows) * row_h + 22, label, size=11, color=SOFT)
+
+
+def m7_constitution():
+    d = Drawing(520, 260, "Constitution d'un contacteur : la bobine alimentée attire l'armature mobile, qui ferme les contacts ; un ressort les rouvre")
+    d.add(f'<path d="M120 150 h120 v80 h-120 z M140 170 v40 h80 v-40 z" fill="#c9d8dd" fill-rule="evenodd" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<rect x="150" y="175" width="60" height="30" fill="{PAPER}" stroke="{ACCENT}" stroke-width="3"/>')
+    d.add(f'<rect x="120" y="110" width="120" height="28" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    d.wire((180, 110), (180, 60), width=4)
+    d.add(f'<rect x="140" y="50" width="80" height="12" fill="{ACCENT}"/>')
+    d.add(f'<rect x="120" y="30" width="20" height="10" fill="{INK}"/><rect x="220" y="30" width="20" height="10" fill="{INK}"/>')
+    d.add(f'<path d="M260 120 l10 -6 l-10 -6 l10 -6 l-10 -6" fill="none" stroke="{INK}" stroke-width="2"/>')
+    d.text(270, 190, "bobine", anchor="start", size=12, weight="600", color=ACCENT)
+    d.text(270, 128, "armature mobile", anchor="start", size=12); d.text(270, 100, "ressort de rappel", anchor="start", size=12)
+    d.text(270, 40, "contacts principaux", anchor="start", size=12, weight="600")
+    d.text(180, 250, "circuit magnétique", size=11, color=SOFT)
+    return d
+
+
+def m7_symbole():
+    d = Drawing(560, 230, "Symbole d'un contacteur KM1 : bobine A1-A2, trois pôles de puissance 1-2, 3-4, 5-6, contacts auxiliaires 13-14 et 21-22")
+    coil(d, 60, 70, tag="KM1")
+    three(d, 200, 70, contact, kind="main")
+    for k, (top, bottom) in enumerate((("1", "2"), ("3", "4"), ("5", "6"))):
+        d.text(200 + 22 * k, 64, top, size=11, color=SOFT); d.text(200 + 22 * k, 130, bottom, size=11, color=SOFT)
+    contact(d, 350, 70, "no", marks=("13", "14")); contact(d, 450, 70, "nc", marks=("21", "22"))
+    d.add(f'<line x1="76" y1="92" x2="440" y2="92" stroke="{INK}" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.6"/>')
+    d.text(60, 170, "commande", size=11, color=SOFT); d.text(222, 170, "puissance", size=11, color=SOFT); d.text(400, 170, "auxiliaires", size=11, color=SOFT)
+    d.text(280, 210, "un même appareil, trois rôles", size=12, weight="600")
+    return d
+
+
+def m7_categories():
+    d = Drawing(600, 250, "Catégories d'emploi en alternatif : AC-1 charges résistives, AC-3 moteurs à cage coupés en marche, AC-4 inversion et marche par à-coups")
+    rows = (("AC-1", "charges peu inductives : chauffage, éclairage"), ("AC-3", "moteur à cage : démarrage, coupure moteur lancé"),
+            ("AC-4", "moteur à cage : inversion, à-coups, freinage par contre-courant"), ("DC-1, DC-3", "équivalents en courant continu"))
+    for k, (name, what) in enumerate(rows):
+        y = 26 + 52 * k
+        block(d, 20, y, 110, 40, name, size=13)
+        d.text(150, y + 25, what, anchor="start", size=12)
+    return d
+
+
+def m7_coupure():
+    d = Drawing(560, 210, "Courant que le contacteur doit couper : environ In en AC-3, mais jusqu'à 6 In en AC-4, d'où une usure bien plus rapide")
+    bars(d, 180, 20, 300, 110, [("AC-3 (moteur lancé)", 1, "≈ In"), ("AC-4 (moteur au démarrage)", 6, "≈ 6 In")], 6, "courant à couper")
+    d.text(280, 190, "même contacteur : moins de manœuvres en AC-4", size=12, color=SOFT)
+    return d
+
+
+def m7_arc():
+    d = Drawing(520, 230, "Extinction de l'arc : il s'allonge entre les contacts qui s'ouvrent et se fractionne dans les plaques de la chambre de coupure")
+    d.add(f'<rect x="60" y="130" width="60" height="16" fill="{INK}"/><rect x="200" y="130" width="60" height="16" fill="{INK}"/>')
+    d.add(f'<rect x="100" y="100" width="120" height="12" fill="{ACCENT}"/>')
+    d.add(f'<path d="M120 130 q30 -50 80 0" fill="none" stroke="{ACCENT}" stroke-width="3"/>')
+    for k in range(6):
+        d.wire((300 + 22 * k, 40), (300 + 22 * k, 120), width=4)
+    d.add(f'<path d="M300 90 q66 -40 110 0" fill="none" stroke="{ACCENT}" stroke-width="3" stroke-dasharray="6 4"/>')
+    d.text(160, 175, "contacts qui s'ouvrent", size=12); d.text(355, 145, "chambre de coupure", size=12, weight="600")
+    d.text(260, 215, "l'arc fractionné refroidit et s'éteint au passage du courant par zéro", size=11, color=SOFT)
+    return d
+
+
+def m7_antiparasite():
+    d = Drawing(600, 240, "Antiparasitage d'une bobine : diode en courant continu, circuit RC ou varistance en alternatif, branchés en parallèle sur la bobine")
+    for k, (label, kind) in enumerate((("diode (CC)", "diode"), ("RC (CA)", "rc"), ("varistance", "varistor"))):
+        x = 90 + 190 * k
+        d.wire((x, 40), (x + 60, 40)); d.wire((x, 180), (x + 60, 180))
+        coil(d, x, 68)
+        d.wire((x, 40), (x, 68)); d.wire((x, 112), (x, 180))
+        if kind == "diode":
+            d.diode((x + 60, 150), (x + 60, 70))
+        elif kind == "rc":
+            d.resistor((x + 60, 50), (x + 60, 106)); d.capacitor((x + 60, 116), (x + 60, 170)); d.wire((x + 60, 106), (x + 60, 116))
+        else:
+            d.resistor((x + 60, 70), (x + 60, 150)); d.wire((x + 48, 128), (x + 72, 92), width=1.5)
+        d.wire((x + 60, 40), (x + 60, 50 if kind == "rc" else 70)); d.wire((x + 60, 170 if kind == "rc" else 150), (x + 60, 180))
+        d.text(x + 30, 214, label, size=12, weight="600")
+    return d
+
+
+def m7_choix():
+    d = Drawing(560, 240, "Données d'un contacteur : courant et puissance en AC-3 sous 400 V, courant thermique Ith en AC-1, tension de la bobine")
+    d.add(f'<rect x="40" y="20" width="480" height="200" rx="12" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(280, 50, "CONTACTEUR KM1", weight="700")
+    rows = (("AC-3, 400 V", "9 A, 4 kW"), ("AC-1", "Ith 25 A"), ("bobine", "24 V CC"), ("auxiliaires", "1 F + 1 O"), ("durée de vie", "1 million de manœuvres en AC-3"))
+    for k, (left, right) in enumerate(rows):
+        y = 84 + 30 * k
+        d.text(70, y, left, anchor="start", size=13, weight="600"); d.text(490, y, right, anchor="end", size=13)
+        d.wire((60, y + 10), (500, y + 10), color=SOFT, width=1)
+    return d
+
+
+def m7_nema():
+    d = Drawing(560, 230, "Encadré de comparaison : tailles NEMA américaines et calibres CEI ; dans cette formation, on choisit par le courant AC-3 de la CEI")
+    d.text(150, 30, "NEMA (États-Unis)", weight="700"); d.text(410, 30, "CEI : courant AC-3", weight="700", color=ACCENT)
+    for k, (nema, iec) in enumerate((("taille 00", "≈ 9 A"), ("taille 0", "≈ 18 A"), ("taille 1", "≈ 27 A"), ("taille 2", "≈ 45 A"))):
+        y = 70 + 36 * k
+        block(d, 90, y - 20, 120, 30, nema, size=12); block(d, 350, y - 20, 120, 30, iec, size=12)
+        d.arrow((210, y - 5), (350, y - 5), color=SOFT)
+    d.text(280, 222, "correspondance indicative ; le contacteur CEI se choisit par catégorie et courant", size=11, color=SOFT)
+    return d
+
+
+def m7_statique():
+    d = Drawing(520, 230, "Contacteur statique : deux thyristors tête-bêche par phase, commandés par un signal 24 V isolé, montés sur un dissipateur")
+    d.wire((40, 120), (160, 120)); d.wire((300, 120), (460, 120))
+    d.diode((180, 90), (280, 90)); d.diode((280, 150), (180, 150))
+    d.wire((160, 120), (160, 90), (180, 90)); d.wire((160, 120), (160, 150), (180, 150)); d.wire((280, 90), (300, 90), (300, 150), (280, 150))
+    d.text(40, 110, "L1", anchor="start", weight="600"); d.text(460, 110, "vers le moteur", anchor="end", size=12)
+    block(d, 170, 180, 120, 34, "commande 24 V", size=11)
+    for k in range(6):
+        d.wire((150 + 22 * k, 40), (150 + 22 * k, 62), color=SOFT, width=6)
+    d.text(330, 52, "dissipateur", anchor="start", size=12)
+    return d
+
+
+def m7_dissipation():
+    d = Drawing(520, 210, "Échauffement d'un contacteur statique : environ 1,5 W par ampère et par phase, à évacuer par le dissipateur")
+    bars(d, 170, 20, 280, 120, [("10 A, 3 phases", 45, "45 W"), ("25 A, 3 phases", 112.5, "112,5 W")], 120, "P ≈ 1,5 V × I × 3")
+    d.text(260, 195, "aucune usure mécanique, mais de la chaleur", size=12, color=SOFT)
+    return d
+
+
+def m7_declenchement():
+    d = Drawing(560, 290, "Courbes de déclenchement des relais thermiques : classe 10, en moins de 10 s à 7,2 fois le réglage ; classe 20, en moins de 20 s")
+    c10 = [(m, 10 * (7.2 ** 2 - 1) / (m * m - 1)) for m in [1.2 + 0.2 * k for k in range(40)]]
+    c20 = [(m, 20 * (7.2 ** 2 - 1) / (m * m - 1)) for m in [1.2 + 0.2 * k for k in range(40)]]
+    d.graph(70, 30, 420, 200, (1, 9.2), (0, 300), [([(m, min(t, 300)) for m, t in c10], ACCENT, "classe 10", (4.2, 40)),
+                                                  ([(m, min(t, 300)) for m, t in c20], SOFT, "classe 20", (5.2, 70))],
+            "courant / réglage", "temps (s)", xticks=((2, "2"), (4, "4"), (7.2, "7,2")), yticks=((10, "10"), (20, "20"), (100, "100"), (300, "300")))
+    return d
+
+
+def m7_reglage():
+    d = Drawing(520, 230, "Régler un relais thermique : on règle sa molette sur le courant nominal du moteur lu sur la plaque, ici 4,8 A dans la plage 4 à 6 A")
+    d.add(f'<rect x="60" y="40" width="200" height="150" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<circle cx="160" cy="110" r="44" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for k, v in enumerate(("4", "4,5", "5", "5,5", "6")):
+        a = math.radians(210 - 60 * k)
+        d.text(160 + 60 * math.cos(a), 115 - 60 * math.sin(a), v, size=11, color=SOFT)
+    a = math.radians(210 - 60 * 1.6)
+    d.wire((160, 110), (160 + 38 * math.cos(a), 110 - 38 * math.sin(a)), color=ACCENT, width=4)
+    d.text(160, 210, "relais F1 : plage 4 à 6 A", size=12, weight="600")
+    d.text(300, 90, "plaque du moteur : 4,8 A", anchor="start", size=12); d.text(300, 120, "réglage : 4,8 A", anchor="start", size=12, weight="700", color=ACCENT)
+    d.text(300, 150, "pas de marge ajoutée", anchor="start", size=11, color=SOFT)
+    return d
+
+
+def m7_banc():
+    d = Drawing(520, 280, "Banc du mini-projet : contacteur à bobine 24 V, boutons marche et arrêt, son contact de puissance commute un moteur 12 V")
+    d.text(60, 30, "+24 V", weight="600"); d.wire((90, 26), (180, 26), (180, 40))
+    button(d, 180, 40, "nc", tag="S1"); d.wire((180, 84), (180, 96)); button(d, 180, 96, "no", tag="S2")
+    d.dot((180, 96)); d.wire((180, 96), (110, 96), (110, 110)); contact(d, 110, 110, "no", marks=("13", "14")); d.wire((110, 154), (110, 160), (180, 160)); d.wire((180, 140), (180, 172)); d.dot((180, 160))
+    coil(d, 180, 172, tag="KM1"); d.wire((180, 216), (180, 240)); d.text(180, 258, "0 V", weight="600")
+    d.text(380, 30, "+12 V", weight="600"); d.wire((410, 26), (420, 26), (420, 70)); contact(d, 420, 70, "main", tag="KM1")
+    d.wire((420, 114), (420, 150)); motor(d, 420, 176, r=24, phases="="); d.wire((420, 200), (420, 240)); d.text(420, 258, "0 V", weight="600")
+    return d
+
+
+# --- Module 8 : relais, temporisations et logique câblée -------------------------------------------------------------
+
+
+def m8_relais():
+    d = Drawing(520, 230, "Relais électromécanique : une petite bobine commande un ou plusieurs contacts inverseurs, isolés de la bobine")
+    d.add(f'<rect x="60" y="110" width="100" height="70" rx="6" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for k in range(6):
+        d.wire((60, 120 + 10 * k), (160, 126 + 10 * k), color=ACCENT, width=1.5)
+    d.wire((180, 100), (300, 70), width=4); d.add(f'<circle cx="180" cy="100" r="5" fill="{INK}"/>')
+    d.add(f'<rect x="300" y="40" width="40" height="10" fill="{INK}"/><rect x="300" y="100" width="40" height="10" fill="{INK}"/>')
+    d.text(350, 50, "travail (NO)", anchor="start", size=12); d.text(350, 110, "repos (NC)", anchor="start", size=12); d.text(160, 90, "commun", anchor="end", size=12)
+    d.text(110, 205, "bobine 24 V", size=12, weight="600", color=ACCENT)
+    return d
+
+
+def m8_inverseur():
+    d = Drawing(480, 220, "Symbole d'un contact inverseur de relais KA1 : commun 11, repos 12, travail 14")
+    d.wire((200, 40), (200, 80)); d.wire((200, 80), (232, 128)); d.wire((240, 130), (240, 180)); d.wire((176, 116), (176, 180))
+    d.wire((176, 116), (196, 116))
+    d.text(190, 40, "11", anchor="end", size=12, color=SOFT); d.text(166, 190, "12", anchor="end", size=12, color=SOFT); d.text(252, 190, "14", anchor="start", size=12, color=SOFT)
+    coil(d, 360, 70, tag="KA1")
+    d.text(240, 210, "11 commun, 12 repos, 14 travail", size=12, weight="600")
+    return d
+
+
+def m8_ssr():
+    d = Drawing(560, 220, "Relais statique : un optocoupleur isole la commande ; un triac commute la charge, sans pièce mobile")
+    block(d, 30, 80, 110, 50, "commande 24 V", size=11)
+    block(d, 190, 80, 110, 50, "optocoupleur", size=11)
+    block(d, 350, 80, 90, 50, "triac", size=12)
+    d.arrow((140, 105), (190, 105), color=INK); d.arrow((300, 105), (350, 105), color=INK); d.arrow((440, 105), (520, 105), color=INK)
+    d.text(480, 95, "charge", size=12)
+    d.text(245, 165, "isolement : lumière, pas de fil", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m8_zero():
+    d = Drawing(540, 250, "Relais statique à zéro de tension : il attend le passage de la tension par zéro pour commuter, ce qui limite les parasites")
+    pts = [(t / 10, 10 * math.sin(2 * math.pi * t / 200)) for t in range(0, 501)]
+    on = [(t / 10, 10 * math.sin(2 * math.pi * t / 200) if t >= 200 else 0) for t in range(0, 501)]
+    d.graph(70, 30, 420, 180, (0, 50), (-11, 11), [(pts, SOFT, ""), (on, ACCENT, "tension sur la charge", (26, 12.5))], "temps (ms)", "",
+            marks=(((13, 7), "ordre reçu"), ((20, 9), "commutation au zéro")), xticks=((10, "10"), (20, "20"), (30, "30"), (40, "40")))
+    return d
+
+
+def m8_ton():
+    d = Drawing(560, 200, "Temporisation au travail : le contact se ferme t secondes après la mise sous tension de la bobine et s'ouvre dès sa coupure")
+    timing(d, 140, 20, 380, [("bobine", [(1, 8)]), ("contact", [(4, 8)])], marks=((1, "0"), (4, "t")))
+    return d
+
+
+def m8_tof():
+    d = Drawing(560, 200, "Temporisation au repos : le contact se ferme dès la mise sous tension et ne s'ouvre que t secondes après la coupure")
+    timing(d, 140, 20, 380, [("commande", [(1, 5)]), ("contact", [(1, 8)])], marks=((5, "coupure"), (8, "+ t")))
+    return d
+
+
+def m8_clignotant():
+    d = Drawing(560, 200, "Fonction clignotant d'un relais multifonction : tant que la commande est présente, le contact alterne travail et repos")
+    timing(d, 140, 20, 380, [("commande", [(1, 9)]), ("contact", [(1, 2.5), (4, 5.5), (7, 8.5)])])
+    return d
+
+
+def m8_fonctions():
+    d = Drawing(560, 230, "Relais multifonction : un sélecteur choisit la fonction, une molette règle la durée")
+    d.add(f'<rect x="60" y="30" width="160" height="170" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<circle cx="140" cy="80" r="26" fill="{PAPER}" stroke="{INK}" stroke-width="2"/><circle cx="140" cy="150" r="26" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.wire((140, 80), (156, 64), color=ACCENT, width=3); d.wire((140, 150), (124, 134), color=ACCENT, width=3)
+    for k, label in enumerate(("travail", "repos", "impulsion", "clignotant")):
+        d.text(280, 60 + 34 * k, label, anchor="start", size=12, weight="600")
+    d.text(140, 222, "fonction et durée", size=11, color=SOFT)
+    return d
+
+
+def m8_telerupteur():
+    d = Drawing(560, 200, "Télérupteur : chaque impulsion sur sa bobine fait changer l'état du contact, qui reste ensuite dans sa position")
+    timing(d, 140, 20, 380, [("impulsions", [(1, 1.6), (4, 4.6), (7, 7.6)]), ("contact", [(1, 4), (7, 10)])])
+    return d
+
+
+def m8_bistable():
+    d = Drawing(520, 220, "Relais bistable à deux bobines : une impulsion sur la bobine S enclenche, une impulsion sur la bobine R déclenche ; l'état est mémorisé sans courant")
+    coil(d, 100, 60, tag="S"); coil(d, 220, 60, tag="R")
+    contact(d, 380, 60, "no", tag="KA1")
+    d.text(160, 160, "mise en marche / arrêt", size=12); d.text(380, 160, "état mémorisé", size=12, weight="600", color=ACCENT)
+    d.text(260, 200, "consommation nulle entre deux impulsions", size=11, color=SOFT)
+    return d
+
+
+def _logic(d, x, kind, label):
+    d.wire((x, 30), (x, 50))
+    if kind == "et":
+        contact(d, x, 50, "no", tag="A"); contact(d, x, 94, "no", tag="B"); d.wire((x, 138), (x, 150))
+    elif kind == "ou":
+        d.wire((x - 30, 50), (x + 30, 50)); contact(d, x - 30, 50, "no", tag="A"); contact(d, x + 30, 50, "no", tag="B")
+        d.wire((x - 30, 94), (x - 30, 120), (x + 30, 120), (x + 30, 94)); d.dot((x, 50)); d.dot((x, 120)); d.wire((x, 120), (x, 150))
+    else:
+        contact(d, x, 50, "nc", tag="A"); d.wire((x, 94), (x, 150))
+    indicator(d, x, 150); d.wire((x, 194), (x, 210))
+    d.text(x, 240, label, weight="700", color=ACCENT)
+
+
+def m8_et():
+    d = Drawing(520, 260, "Fonction ET : deux contacts en série ; la lampe ne s'allume que si A et B sont actionnés")
+    _logic(d, 260, "et", "ET : A et B")
+    return d
+
+
+def m8_ou():
+    d = Drawing(520, 260, "Fonction OU : deux contacts en parallèle ; la lampe s'allume si A ou B est actionné")
+    _logic(d, 260, "ou", "OU : A ou B")
+    return d
+
+
+def m8_non():
+    d = Drawing(520, 260, "Fonction NON : un contact à ouverture ; la lampe est allumée tant que A n'est pas actionné")
+    _logic(d, 260, "non", "NON : pas A")
+    return d
+
+
+def m8_banc():
+    d = Drawing(560, 230, "Banc du mini-projet : deux relais 24 V et un relais temporisé, des boutons et des voyants 24 V")
+    block(d, 20, 40, 130, 50, "alimentation 24 V", size=11)
+    block(d, 190, 30, 100, 40, "relais KA1", size=11); block(d, 190, 90, 100, 40, "relais KA2", size=11); block(d, 190, 150, 100, 40, "temporisé KT1", size=11)
+    block(d, 340, 60, 90, 40, "boutons S1, S2", size=11); block(d, 340, 130, 90, 40, "voyants H1, H2", size=11)
+    d.arrow((150, 65), (190, 50), color=INK); d.arrow((150, 65), (190, 110), color=INK); d.arrow((150, 65), (190, 170), color=INK)
+    d.text(280, 220, "tout le banc en 24 V", size=12, color=ACCENT, weight="600")
+    return d
+
+
+# --- Module 9 : circuits de commande des moteurs ---------------------------------------------------------------------
+
+
+def m9_depart():
+    d = Drawing(560, 330, "Départ moteur : sectionnement, protection contre les courts-circuits, commande, protection contre les surcharges")
+    for k in range(3):
+        d.wire((150 + 30 * k, 20), (150 + 30 * k, 40))
+    three(d, 150, 40, contact, gap=30, kind="isolator", tag="Q1")
+    for k in range(3):
+        d.wire((150 + 30 * k, 84), (150 + 30 * k, 96)); fuse(d, 150 + 30 * k, 96)
+        d.wire((150 + 30 * k, 140), (150 + 30 * k, 150))
+    three(d, 150, 150, contact, gap=30, kind="main", tag="KM1")
+    for k in range(3):
+        d.wire((150 + 30 * k, 194), (150 + 30 * k, 204))
+    three(d, 150, 204, thermal, gap=30, link=False, tag="F1")
+    for k in range(3):
+        d.wire((150 + 30 * k, 248), (150 + 30 * k, 258), (180, 276))
+    motor(d, 180, 300, r=22)
+    for y, label in ((62, "sectionnement"), (118, "courts-circuits"), (172, "commande"), (226, "surcharges")):
+        d.text(330, y, label, anchor="start", size=12, weight="600", color=ACCENT)
+    return d
+
+
+def m9_section():
+    d = Drawing(540, 230, "Section des conducteurs en cuivre : ordre de grandeur du courant admissible ; la valeur exacte dépend du mode de pose et de la température")
+    bars(d, 120, 20, 300, 150, [("1,5 mm²", 16, "≈ 16 A"), ("2,5 mm²", 21, "≈ 21 A"), ("4 mm²", 28, "≈ 28 A"), ("6 mm²", 36, "≈ 36 A")], 40,
+         "valeurs indicatives, câble posé sous conduit")
+    return d
+
+
+def m9_postes():
+    d = Drawing(480, 400, "Commande depuis deux postes : les boutons d'arrêt sont en série, les boutons de marche en parallèle avec l'auto-maintien")
+    d.text(160, 24, "24 V", weight="600")
+    d.wire((160, 30), (160, 40)); button(d, 160, 40, "nc", tag="S1"); button(d, 160, 84, "nc", tag="S3")
+    d.wire((160, 128), (160, 140), (330, 140)); d.dot((160, 140)); d.dot((245, 140))
+    button(d, 160, 140, "no", tag="S2"); d.wire((245, 140), (245, 140)); button(d, 245, 140, "no", tag="S4"); contact(d, 330, 140, "no", marks=("13", "14"), tag="KM1")
+    d.wire((160, 184), (160, 200), (330, 200), (330, 184)); d.wire((245, 184), (245, 200)); d.dot((160, 200)); d.dot((245, 200))
+    d.wire((160, 200), (160, 230)); coil(d, 160, 230, tag="KM1"); d.wire((160, 274), (160, 300)); d.text(160, 318, "0 V", weight="600")
+    d.text(60, 85, "arrêts en série", anchor="middle", size=11, color=SOFT); d.text(245, 230, "marches en parallèle", size=11, color=SOFT)
+    return d
+
+
+def m9_courant_direct():
+    d = Drawing(520, 260, "Courant d'un démarrage direct : 6 à 8 fois le courant nominal pendant l'accélération, puis le courant de marche")
+    pts = [(t / 10, 1 + 6 * (1 - 1 / (1 + math.exp(-(t / 10 - 2) * 4)))) for t in range(0, 61)]
+    d.graph(70, 30, 380, 180, (0, 6.2), (0, 8), [(pts, ACCENT, "I / In")], "temps (s)", "courant (× In)",
+            xticks=((1, "1"), (2, "2"), (3, "3"), (4, "4"), (5, "5")), yticks=((1, "1"), (7, "7")))
+    return d
+
+
+def m9_etoile_triangle():
+    d = Drawing(560, 360, "Démarreur étoile-triangle : KM1 alimente le moteur, KM2 forme le point étoile au démarrage, puis KM3 couple en triangle")
+    for k in range(3):
+        d.wire((110 + 30 * k, 20), (110 + 30 * k, 40))
+    three(d, 110, 40, contact, gap=30, kind="main", tag="KM1")
+    for k in range(3):
+        d.wire((110 + 30 * k, 84), (110 + 30 * k, 96))
+    three(d, 110, 96, thermal, gap=30, link=False, tag="F1")
+    for k, name in enumerate(("U1", "V1", "W1")):
+        d.wire((110 + 30 * k, 140), (110 + 30 * k, 200)); d.text(110 + 30 * k, 216, name, size=11, color=SOFT)
+    d.add(f'<rect x="90" y="222" width="100" height="60" rx="8" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>'); d.text(140, 258, "M 3~", weight="700")
+    for k, name in enumerate(("W2", "U2", "V2")):
+        d.wire((110 + 30 * k, 282), (110 + 30 * k, 300)); d.text(110 + 30 * k, 316, name, size=11, color=SOFT)
+    three(d, 300, 200, contact, gap=30, kind="main", tag="KM2")
+    d.wire((300, 244), (360, 244), width=3); d.text(330, 266, "étoile", size=12, weight="600", color=ACCENT)
+    three(d, 440, 200, contact, gap=30, kind="main", tag="KM3")
+    d.text(470, 266, "triangle", size=12, weight="600", color=ACCENT)
+    d.wire((110, 300), (110, 340), (300, 340), (300, 200)); d.text(300, 352, "W2 U2 V2 vers KM2 et KM3", size=11, color=SOFT)
+    return d
+
+
+def m9_courants():
+    d = Drawing(560, 230, "Courant de démarrage selon le procédé : direct 7 In, étoile-triangle environ un tiers, démarreur progressif réglable vers 3 In")
+    bars(d, 200, 20, 260, 140, [("direct", 7, "≈ 7 In"), ("étoile-triangle", 7 / 3, "≈ 2,3 In"), ("démarreur progressif", 3, "≈ 3 In (réglable)")], 7,
+         "courant de démarrage (× In)")
+    d.text(280, 215, "en étoile, le couple de démarrage aussi est divisé par 3", size=12, color=SOFT)
+    return d
+
+
+def m9_inversion_puissance():
+    d = Drawing(520, 330, "Inversion du sens de marche : KM1 pour avant, KM2 pour arrière ; KM2 permute deux phases (L1 et L3)")
+    for k, name in enumerate(("L1", "L2", "L3")):
+        d.text(150 + 30 * k, 18, name, size=12, weight="600"); d.wire((150 + 30 * k, 24), (150 + 30 * k, 60))
+        d.dot((150 + 30 * k, 50)); d.wire((150 + 30 * k, 50), (300 + 30 * k, 50), (300 + 30 * k, 60))
+    three(d, 150, 60, contact, gap=30, kind="main", tag="KM1"); three(d, 300, 60, contact, gap=30, kind="main", tag="KM2")
+    for k in range(3):
+        d.wire((150 + 30 * k, 104), (150 + 30 * k, 180))
+    d.wire((300, 104), (300, 140), (210, 140), (210, 150)); d.wire((330, 104), (330, 160), (180, 160)); d.wire((360, 104), (360, 130), (150, 130))
+    for x in (150, 180, 210):
+        d.dot((x, 130 if x == 150 else (160 if x == 180 else 150)))
+    three(d, 150, 180, thermal, gap=30, link=False, tag="F1")
+    for k in range(3):
+        d.wire((150 + 30 * k, 224), (150 + 30 * k, 240), (180, 262))
+    motor(d, 180, 288, r=22)
+    d.text(390, 190, "L1 et L3 permutées", anchor="start", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m9_verrouillage():
+    d = Drawing(560, 330, "Verrouillage électrique : un contact à ouverture de KM2 dans la branche de KM1, et réciproquement ; les deux ne peuvent jamais être fermés ensemble")
+    d.text(280, 22, "24 V", weight="600"); d.wire((150, 30), (410, 30))
+    for x, start, own, other in ((150, "S2", "KM1", "KM2"), (410, "S3", "KM2", "KM1")):
+        button(d, x, 30, "no", tag=start); contact(d, x, 74, "nc", marks=("21", "22"), tag=other); coil(d, x, 118, tag=own)
+        d.wire((x, 162), (x, 190))
+    d.wire((150, 190), (410, 190)); d.text(280, 210, "0 V", weight="600")
+    d.text(280, 260, "verrouillage électrique + verrouillage mécanique", size=12, color=ACCENT, weight="600")
+    d.text(280, 290, "(arrêt S1 et auto-maintiens non dessinés)", size=11, color=SOFT)
+    return d
+
+
+def m9_injection():
+    d = Drawing(560, 220, "Freinage par injection de courant continu : moteur coupé du réseau, on injecte du continu dans deux phases ; le champ fixe freine le rotor")
+    chain(d, 20, 80, ("moteur coupé", "injection de CC", "champ fixe", "rotor freiné"), w=115, gap=20, size=12)
+    d.text(280, 180, "pas de frein mécanique, aucune usure ; pas de maintien à l'arrêt", size=12, color=SOFT)
+    return d
+
+
+def m9_frein():
+    d = Drawing(520, 230, "Frein électromécanique à manque de courant : des ressorts serrent le frein ; la bobine alimentée le desserre ; coupure de courant = freinage")
+    d.add(f'<rect x="60" y="80" width="120" height="70" rx="6" fill="#c9d8dd" stroke="{INK}" stroke-width="2"/>'); d.text(120, 120, "moteur", weight="600")
+    d.add(f'<rect x="200" y="70" width="20" height="90" fill="{INK}"/><rect x="240" y="70" width="60" height="90" fill="{PAPER}" stroke="{ACCENT}" stroke-width="3"/>')
+    d.add(f'<path d="M320 100 l10 -6 l-10 -6 l10 -6 l-10 -6" fill="none" stroke="{INK}" stroke-width="2"/>')
+    d.text(270, 190, "bobine du frein", size=12, color=ACCENT, weight="600"); d.text(340, 92, "ressorts", anchor="start", size=12); d.text(210, 60, "disque", size=12)
+    d.text(260, 220, "sans courant, le frein serre : sécurité en cas de coupure", size=11, color=SOFT)
+    return d
+
+
+def m9_dahlander():
+    d = Drawing(560, 230, "Moteur Dahlander : petite vitesse en triangle sur 1U 1V 1W, grande vitesse en double étoile sur 2U 2V 2W avec 1U 1V 1W reliées")
+    for x0, title, feed, short in ((40, "petite vitesse (8 pôles)", "1U 1V 1W", "2U 2V 2W libres"), (300, "grande vitesse (4 pôles)", "2U 2V 2W", "1U 1V 1W reliées")):
+        block(d, x0, 60, 220, 50, title, size=12)
+        d.text(x0 + 110, 140, "réseau sur " + feed, size=12, weight="600", color=ACCENT)
+        d.text(x0 + 110, 165, short, size=12)
+    d.text(280, 215, "rapport de vitesse 1 à 2 : 750 et 1 500 tr/min à 50 Hz", size=12, color=SOFT)
+    return d
+
+
+def m9_deux_vitesses():
+    d = Drawing(520, 210, "Moteur à deux vitesses : deux contacteurs verrouillés entre eux choisissent la vitesse, jamais les deux à la fois")
+    block(d, 40, 70, 110, 50, "KM1 : PV", size=12); block(d, 200, 70, 110, 50, "KM2 + KM3 : GV", size=12)
+    d.arrow((150, 95), (200, 95), color=SOFT); d.arrow((200, 105), (150, 105), color=SOFT)
+    d.text(380, 90, "verrouillage", anchor="start", size=12, weight="600", color=ACCENT); d.text(380, 115, "électrique et mécanique", anchor="start", size=12)
+    return d
+
+
+def m9_au():
+    d = Drawing(480, 300, "Arrêt d'urgence : bouton coup de poing à ouverture, à accrochage, en tête du circuit de commande ; son réarmement ne redémarre pas la machine")
+    d.text(160, 24, "24 V", weight="600"); d.wire((160, 30), (160, 40))
+    contact(d, 160, 40, "nc", tag="S0")
+    d.add(f'<path d="M100 61 a14 14 0 0 1 0 -1" fill="none"/><rect x="104" y="52" width="16" height="18" rx="8" fill="#c0392b" stroke="{INK}" stroke-width="2"/>')
+    d.add(f'<line x1="120" y1="61" x2="165" y2="61" stroke="{INK}" stroke-width="1.5" stroke-dasharray="3 3"/>')
+    d.wire((160, 84), (160, 100)); block(d, 80, 100, 160, 40, "reste de la commande", size=12); d.wire((160, 140), (160, 170))
+    d.text(240, 60, "coup de poing, accrochage", anchor="start", size=12, weight="600")
+    d.text(240, 90, "contact à ouverture", anchor="start", size=12)
+    d.text(240, 200, "réarmer ≠ redémarrer", anchor="start", size=12, color=ACCENT, weight="700")
+    return d
+
+
+def m9_manuel_auto():
+    d = Drawing(560, 300, "Commande manuel-0-auto d'une pompe : en manuel, le bouton marche commande ; en auto, le pressostat ; en 0, rien")
+    d.text(260, 24, "24 V", weight="600"); d.wire((150, 30), (370, 30))
+    contact(d, 150, 30, "no", marks=("13", "14"), tag="SA1 manuel"); button(d, 150, 74, "no", tag="S2")
+    contact(d, 370, 30, "no", marks=("23", "24"), tag="SA1 auto"); contact(d, 370, 74, "no", tag="pressostat")
+    d.wire((150, 118), (150, 140), (370, 140), (370, 118)); d.dot((260, 140)); d.wire((260, 140), (260, 160))
+    coil(d, 260, 160, tag="KM1"); d.wire((260, 204), (260, 230)); d.text(260, 248, "0 V", weight="600")
+    return d
+
+
+def m9_banc():
+    d = Drawing(560, 240, "Banc du mini-projet : trois relais 24 V figurent KM1, KM2 et KM3 ; trois lampes 12 V montrent la séquence étoile puis triangle")
+    for k, (name, lamp) in enumerate((("KM1 ligne", "H1"), ("KM2 étoile", "H2"), ("KM3 triangle", "H3"))):
+        x = 60 + 170 * k
+        block(d, x, 40, 130, 44, name, size=11)
+        d.wire((x + 65, 84), (x + 65, 110)); d.lamp((x + 65, 110), (x + 65, 150)); d.wire((x + 65, 150), (x + 65, 170))
+        d.text(x + 95, 136, lamp, anchor="start", size=12, weight="600")
+    d.text(280, 205, "KT1 : temporisation étoile → triangle, 3 s", size=12, weight="600", color=ACCENT)
+    return d
+
 
 SECTION_DIAGRAMS = {
     1: [m1_seuils, m1_corps, m1_arc, m1_epi, m1_defaut, m1_ddr, m1_tt, m1_tn, m1_it, m1_etapes, m1_vat, m1_domaines, m1_normes, m1_banc],
@@ -1313,6 +1844,12 @@ SECTION_DIAGRAMS = {
         m5_demarrage, m5_inversion, m5_mli, m5_banc],
     6: [m6_champ, m6_vitesses, m6_cage, m6_couple, m6_rotor_bobine, m6_synchrone, m6_monophase, m6_bague, m6_classes,
         m6_service, m6_alignement, m6_raccordement, m6_resistances, m6_diagnostic, m6_releve],
+    7: [m7_constitution, m7_symbole, m7_categories, m7_coupure, m7_arc, m7_antiparasite, m7_choix, m7_nema, m7_statique,
+        m7_dissipation, m7_declenchement, m7_reglage, m7_banc],
+    8: [m8_relais, m8_inverseur, m8_ssr, m8_zero, m8_ton, m8_tof, m8_clignotant, m8_fonctions, m8_telerupteur, m8_bistable,
+        m8_et, m8_ou, m8_non, m8_banc],
+    9: [m9_depart, m9_section, m9_postes, m9_courant_direct, m9_etoile_triangle, m9_courants, m9_inversion_puissance,
+        m9_verrouillage, m9_injection, m9_frein, m9_dahlander, m9_deux_vitesses, m9_au, m9_manuel_auto, m9_banc],
 }
 
 
@@ -1398,8 +1935,53 @@ def q_m6_rotor():
     d.zone("stator", 30, 50, 170, 130); d.zone("rotor", 240, 70, 150, 90); d.zone("flasque", 440, 70, 100, 90)
     return d
 
+def q_m7_thermique():
+    d = Drawing(420, 300, "Schéma de puissance d'un démarrage direct sans légendes")
+    for k in range(3):
+        d.wire((150 + 30 * k, 20), (150 + 30 * k, 40))
+    three(d, 150, 40, contact, gap=30, kind="breaker")
+    for k in range(3):
+        d.wire((150 + 30 * k, 84), (150 + 30 * k, 100))
+    three(d, 150, 100, contact, gap=30, kind="main")
+    for k in range(3):
+        d.wire((150 + 30 * k, 144), (150 + 30 * k, 160))
+    three(d, 150, 160, thermal, gap=30, link=False)
+    for k in range(3):
+        d.wire((150 + 30 * k, 204), (150 + 30 * k, 220), (180, 240))
+    motor(d, 180, 262, r=22)
+    d.zone("disjoncteur", 130, 40, 90, 44); d.zone("contacteur", 130, 100, 90, 44); d.zone("thermique", 130, 160, 90, 44)
+    return d
 
-QUESTION_DIAGRAMS = {1: q_m1_sectionneur, 2: q_m2_plaques, 3: q_m3_tc, 4: q_m4_pnp, 5: q_m5_collecteur, 6: q_m6_rotor}
+
+def q_m8_ou():
+    d = Drawing(560, 240, "Trois associations de contacts sans légendes")
+    for x, kind in ((100, "et"), (280, "ou"), (460, "non")):
+        d.wire((x, 20), (x, 40))
+        if kind == "et":
+            contact(d, x, 40, "no"); contact(d, x, 84, "no"); d.wire((x, 128), (x, 150))
+        elif kind == "ou":
+            d.wire((x - 30, 40), (x + 30, 40)); contact(d, x - 30, 40, "no"); contact(d, x + 30, 40, "no")
+            d.wire((x - 30, 84), (x - 30, 110), (x + 30, 110), (x + 30, 84)); d.dot((x, 40)); d.dot((x, 110)); d.wire((x, 110), (x, 150))
+        else:
+            contact(d, x, 40, "nc"); d.wire((x, 84), (x, 150))
+        indicator(d, x, 150)
+    d.zone("serie", 70, 36, 60, 96); d.zone("parallele", 236, 36, 88, 78); d.zone("ouverture", 440, 36, 44, 52)
+    return d
+
+
+def q_m9_maintien():
+    d = Drawing(420, 340, "Circuit de commande d'un démarrage direct sans légendes")
+    d.wire((150, 20), (150, 40)); contact(d, 150, 40, "nc"); button(d, 150, 84, "nc")
+    d.wire((150, 128), (150, 140), (230, 140), (230, 154)); d.dot((150, 140))
+    button(d, 150, 140, "no"); contact(d, 230, 154, "no")
+    d.wire((230, 198), (230, 214), (150, 214)); d.wire((150, 184), (150, 230)); d.dot((150, 214))
+    coil(d, 150, 230); d.wire((150, 274), (150, 300))
+    d.zone("arret", 116, 84, 50, 44); d.zone("marche", 116, 140, 50, 44); d.zone("maintien", 212, 154, 44, 44); d.zone("bobine", 128, 240, 50, 26)
+    return d
+
+
+QUESTION_DIAGRAMS = {1: q_m1_sectionneur, 2: q_m2_plaques, 3: q_m3_tc, 4: q_m4_pnp, 5: q_m5_collecteur, 6: q_m6_rotor,
+                     7: q_m7_thermique, 8: q_m8_ou, 9: q_m9_maintien}
 
 PARTS = {"p1": range(1, 4), "p2": range(4, 7), "p3": range(7, 10), "p4": range(10, 13)}
 
