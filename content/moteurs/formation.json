@@ -1,6 +1,6 @@
 {
   "slug": "moteurs",
-  "open": false,
+  "open": true,
   "icon": "engine",
   "title": {"fr": "Moteurs électriques et commande", "en": "Electric motors and control"},
   "description": {
