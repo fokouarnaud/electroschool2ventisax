@@ -1,0 +1,35 @@
+{% load i18n %}<figure class="fig" data-fig="rl_lowpass">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Le passe-bas RL, côté eau" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc hydraulique : un piston pousse l’eau à travers une roue à aubes lestée d’un volant, placée en série ; derrière elle, une vanne étranglée mène l’eau au bac ; un manomètre mesure la pression entre la roue et la vanne.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-rl_lowpass-freq">{% translate "Fréquence" %}</label>
+        <input id="fig-rl_lowpass-freq" type="range" min="0" max="400" step="1" value="120" data-fig-freq>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="low">fc / 10</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="fc">fc</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="high">10 × fc</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Lecture' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Lecture" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>f</dt><dd data-fig-out="f"></dd></div>
+        <div><dt>{% translate "XL (R = 100 Ω)" %}</dt><dd data-fig-out="xl"></dd></div>
+        <div><dt>{% translate "Vs / Ve" %}</dt><dd data-fig-out="ratio"></dd></div>
+        <div><dt>{% translate "Retard du courant, arctan(XL / R)" %}</dt><dd data-fig-out="lag"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et le retard le sont." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Piston :" %}</strong> {% translate "générateur, tension d’entrée Ve" %}</li>
+      <li><strong>{% translate "Roue à volant :" %}</strong> {% translate "bobine L = 10 mH, en série ; l’eau la fait tourner et son inertie s’oppose aux changements de débit, comme la bobine aux changements de courant" %}</li>
+      <li><strong>{% translate "Repère du volant :" %}</strong> {% translate "il suit l’eau qui passe ; l’amplitude de son va-et-vient suit l’intensité du courant" %}</li>
+      <li><strong>{% translate "Vanne étranglée :" %}</strong> {% translate "résistance R = 100 Ω, vers la masse" %}</li>
+      <li><strong>{% translate "Bac de retour :" %}</strong> {% translate "masse" %}</li>
+      <li><strong>{% translate "Manomètre :" %}</strong> {% translate "tension de sortie Vs, aux bornes de la vanne comme Vs aux bornes de R ; ses deux repères marquent 0,707, la coupure" %}</li>
+    </ul>
+  </figcaption>
+</figure>

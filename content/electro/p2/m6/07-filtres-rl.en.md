@@ -18,6 +18,14 @@ That is a **low-pass**. Taking the output **across the inductor** instead gives 
 | RL low-pass | L | R |
 | RL high-pass | R | L |
 
+## What happens in the circuit
+
+An inductor opposes changes of current: the voltage across it is L times the rate at which the current changes. At low frequencies the current changes slowly: the inductor needs almost no voltage and almost all the input voltage ends up across R (Vout ≈ Vin). At high frequencies the current would have to change very fast: the inductor takes almost all the voltage, the current stays small and Vout → 0.
+
+On the bench below, the flywheel turbine plays the inductor: set going by the water, it resists every change of direction. At fc / 10, XL = 10 Ω, ten times less than R: Vout ≈ 0.995 × Vin and the current lags by only 5.7°. At fc, XL = R = 100 Ω: Vout ≈ 0.707 × Vin and the lag is 45°. At 10 × fc, XL = 1 kΩ: Vout ≈ 0.0995 × Vin and the lag reaches 84.3°.
+
+[[fig:rl_lowpass]]
+
 ## Impedance, cut-off and phase shift
 
 The formulas follow the same pattern as for RC, with XL:

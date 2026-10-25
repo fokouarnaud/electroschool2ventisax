@@ -18,6 +18,14 @@ C'est un **passe-bas**. Si l'on prend la sortie **aux bornes de la bobine**, on 
 | Passe-bas RL | L | R |
 | Passe-haut RL | R | L |
 
+## Ce qui se passe dans le circuit
+
+Une bobine s'oppose aux changements de courant : la tension à ses bornes vaut L multiplié par la vitesse à laquelle le courant varie. Aux basses fréquences, le courant change lentement : la bobine ne demande presque aucune tension et presque toute la tension d'entrée se retrouve aux bornes de R (Vs ≈ Ve). Aux hautes fréquences, il faudrait faire varier le courant très vite : la bobine prend presque toute la tension, le courant reste faible et Vs → 0.
+
+Sur le banc ci-dessous, la roue à volant joue le rôle de la bobine : lancée par l'eau, elle résiste à chaque changement de sens. À fc / 10, XL = 10 Ω, dix fois moins que R : Vs ≈ 0,995 × Ve et le courant ne retarde que de 5,7°. À fc, XL = R = 100 Ω : Vs ≈ 0,707 × Ve et le retard vaut 45°. À 10 × fc, XL = 1 kΩ : Vs ≈ 0,0995 × Ve et le retard atteint 84,3°.
+
+[[fig:rl_lowpass]]
+
 ## Impédance, coupure et déphasage
 
 Les formules suivent le même modèle que pour le RC, avec XL :

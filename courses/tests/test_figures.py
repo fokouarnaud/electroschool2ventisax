@@ -33,8 +33,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rc_phase": Figure(
             drawing="figures/rc_phase.svg", card="figures/rc_phase.html", script="acad/js/figures/rc_phase.js",
         ),
+        "rl_lowpass": Figure(
+            drawing="figures/rl_lowpass.svg", card="figures/rl_lowpass.html", script="acad/js/figures/rl_lowpass.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass")
 
 
 @pytest.mark.django_db
@@ -372,3 +375,37 @@ def test_phase_story_links_the_current_lead_to_the_output_lag(lang):
     text = (LOWPASS / f"06-dephasage.{lang}.md").read_text(encoding="utf-8")
 
     assert "90° − φ" in text
+
+
+@pytest.mark.django_db
+def test_rl_card_maps_the_flywheel_to_the_inductor_in_both_languages(client, enrolled, module):
+    """Passe-bas RL : roue à volant en série (L = 10 mH), vanne vers le bac (R = 100 Ω vers la masse), manomètre = Vs sur R."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Les filtres RL", order=1, body_md_fr="[[fig:rl_lowpass]]", body_md_en="[[fig:rl_lowpass]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rl_lowpass"' in fr and 'id="fig-rl_lowpass-freq"' in fr
+    assert "Roue à volant :</strong>" in fr and "bobine L = 10 mH, en série" in fr and "résistance R = 100 Ω, vers la masse" in fr
+    assert "Flywheel turbine:</strong>" in en and "inductor L = 10 mH, in series" in en and "Roue à volant" not in en
+    assert "Vout / Vin" in en and "Current lag" in en
+    assert 'src="/static/acad/js/figures/rl_lowpass.js' in fr
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_rl_section_carries_the_figure_between_its_diagram_and_its_curve(lang):
+    """F10 : schéma RL, récit, figure, puis courbe de réponse."""
+    text = (LOWPASS / f"07-filtres-rl.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rl_lowpass]]\n" in text
+    assert text.index("rl-passe-bas.svg") < text.index(RECIT[lang]) < text.index("[[fig:rl_lowpass]]") < text.index("rl-courbe.svg")
+
+
+@pytest.mark.parametrize("lang, changes", [("fr", "changements de courant"), ("en", "changes of current")])
+def test_rl_story_says_the_inductor_opposes_changes_of_current(lang, changes):
+    """F1 : la bobine s'oppose aux variations du courant (v = L × di/dt), pas au courant lui-même."""
+    assert changes in (LOWPASS / f"07-filtres-rl.{lang}.md").read_text(encoding="utf-8")

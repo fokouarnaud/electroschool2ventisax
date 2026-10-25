@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 18:31+0100\n"
+"POT-Creation-Date: 2026-10-25 18:51+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1716,6 +1716,7 @@ msgstr "End of module"
 
 #: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
 #: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
+#: .\templates\figures\rl_lowpass.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
 
@@ -1737,18 +1738,21 @@ msgstr ""
 
 #: .\templates\figures\rc_cutoff.html:7 .\templates\figures\rc_highpass.html:7
 #: .\templates\figures\rc_lowpass.html:7 .\templates\figures\rc_phase.html:7
+#: .\templates\figures\rl_lowpass.html:7
 msgid "Fréquence"
 msgstr "Frequency"
 
 #: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
 msgid "Lecture"
 msgstr "Play"
 
 #: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
 msgid "Pause"
 msgstr "Pause"
 
@@ -1760,7 +1764,7 @@ msgstr "Xc (R = 1 kΩ)"
 msgid "VR / Ve"
 msgstr "VR / Vin"
 
-#: .\templates\figures\rc_cutoff.html:20
+#: .\templates\figures\rc_cutoff.html:20 .\templates\figures\rl_lowpass.html:19
 msgid "Vs / Ve"
 msgstr "Vout / Vin"
 
@@ -1774,18 +1778,21 @@ msgstr ""
 #: .\templates\figures\rc_cutoff.html:27
 #: .\templates\figures\rc_highpass.html:27
 #: .\templates\figures\rc_lowpass.html:27
+#: .\templates\figures\rl_lowpass.html:27
 msgid "Piston :"
 msgstr "Piston:"
 
 #: .\templates\figures\rc_cutoff.html:27
 #: .\templates\figures\rc_highpass.html:27
 #: .\templates\figures\rc_lowpass.html:27
+#: .\templates\figures\rl_lowpass.html:27
 msgid "générateur, tension d’entrée Ve"
 msgstr "generator, input voltage Vin"
 
 #: .\templates\figures\rc_cutoff.html:28
 #: .\templates\figures\rc_highpass.html:29
 #: .\templates\figures\rc_lowpass.html:28
+#: .\templates\figures\rl_lowpass.html:30
 msgid "Vanne étranglée :"
 msgstr "Throttled valve:"
 
@@ -1820,12 +1827,14 @@ msgstr ""
 #: .\templates\figures\rc_cutoff.html:31
 #: .\templates\figures\rc_highpass.html:30
 #: .\templates\figures\rc_lowpass.html:30
+#: .\templates\figures\rl_lowpass.html:31
 msgid "Bac de retour :"
 msgstr "Return tray:"
 
 #: .\templates\figures\rc_cutoff.html:31
 #: .\templates\figures\rc_highpass.html:30
 #: .\templates\figures\rc_lowpass.html:30
+#: .\templates\figures\rl_lowpass.html:31
 msgid "masse"
 msgstr "ground"
 
@@ -1903,16 +1912,16 @@ msgstr "resistor R = 1 kΩ, to ground"
 
 #: .\templates\figures\rc_highpass.html:31
 #: .\templates\figures\rc_lowpass.html:31
+#: .\templates\figures\rl_lowpass.html:32
 msgid "Manomètre :"
 msgstr "Pressure gauge:"
 
 #: .\templates\figures\rc_highpass.html:31
+#: .\templates\figures\rl_lowpass.html:32
 msgid ""
 "tension de sortie Vs, aux bornes de la vanne comme Vs aux bornes de R ; ses "
 "deux repères marquent 0,707, la coupure"
-msgstr ""
-"output voltage Vout, across the valve as Vout is across R; its two marks "
-"show 0.707, the cutoff"
+msgstr "output voltage Vout, across the valve as Vout is across R; its two marks show 0.707, the cut-off"
 
 #: .\templates\figures\rc_lowpass.html:3
 msgid "Le passe-bas, côté eau"
@@ -1929,6 +1938,7 @@ msgstr ""
 "a pressure gauge measures the pressure between the valve and the bellows."
 
 #: .\templates\figures\rc_lowpass.html:22
+#: .\templates\figures\rl_lowpass.html:22
 msgid ""
 "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et le "
 "retard le sont."
@@ -1952,7 +1962,11 @@ msgid ""
 "cours ; la plume de la voie 1 trace l’entrée Ve, celle de la voie 2 la "
 "sortie Vs ; le papier défile et une accolade marque le décalage Δt entre "
 "leurs crêtes."
-msgstr "Two-channel chart recorder: a generator feeds the course's RC low-pass filter; the channel 1 pen draws the input Vin, the channel 2 pen the output Vout; the paper moves on and a bracket marks the time gap Δt between their peaks."
+msgstr ""
+"Two-channel chart recorder: a generator feeds the course's RC low-pass "
+"filter; the channel 1 pen draws the input Vin, the channel 2 pen the output "
+"Vout; the paper moves on and a bracket marks the time gap Δt between their "
+"peaks."
 
 #: .\templates\figures\rc_phase.html:20
 msgid "Avance du courant, arctan(Xc / R)"
@@ -1966,7 +1980,8 @@ msgstr "Vout lag, 360° × Δt / T"
 msgid ""
 "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
 "décalages le sont."
-msgstr "Slow motion: the pace is not to scale, the amplitudes and the time gaps are."
+msgstr ""
+"Slow motion: the pace is not to scale, the amplitudes and the time gaps are."
 
 #: .\templates\figures\rc_phase.html:29
 msgid "Générateur :"
@@ -2008,7 +2023,9 @@ msgstr "Paper:"
 msgid ""
 "il avance avec le temps ; sa vitesse suit la fréquence, si bien qu’une "
 "période occupe toujours la même longueur"
-msgstr "it moves on with time; its speed follows the frequency, so one period always takes the same length"
+msgstr ""
+"it moves on with time; its speed follows the frequency, so one period always "
+"takes the same length"
 
 #: .\templates\figures\rc_phase.html:34
 msgid "Réglette :"
@@ -2025,6 +2042,49 @@ msgstr "Bracket:"
 #: .\templates\figures\rc_phase.html:35
 msgid "décalage Δt entre une crête de Ve et la crête suivante de Vs"
 msgstr "time gap Δt between a peak of Vin and the next peak of Vout"
+
+#: .\templates\figures\rl_lowpass.html:3
+msgid "Le passe-bas RL, côté eau"
+msgstr "The RL low-pass, in water"
+
+#: .\templates\figures\rl_lowpass.html:4
+msgid ""
+"Banc hydraulique : un piston pousse l’eau à travers une roue à aubes lestée "
+"d’un volant, placée en série ; derrière elle, une vanne étranglée mène l’eau "
+"au bac ; un manomètre mesure la pression entre la roue et la vanne."
+msgstr "Hydraulic bench: a piston pushes water through a paddle wheel weighted with a flywheel, placed in series; behind it, a throttled valve lets the water into the tray; a pressure gauge measures the pressure between the wheel and the valve."
+
+#: .\templates\figures\rl_lowpass.html:18
+msgid "XL (R = 100 Ω)"
+msgstr "XL (R = 100 Ω)"
+
+#: .\templates\figures\rl_lowpass.html:20
+msgid "Retard du courant, arctan(XL / R)"
+msgstr "Current lag, arctan(XL / R)"
+
+#: .\templates\figures\rl_lowpass.html:28
+msgid "Roue à volant :"
+msgstr "Flywheel turbine:"
+
+#: .\templates\figures\rl_lowpass.html:28
+msgid ""
+"bobine L = 10 mH, en série ; l’eau la fait tourner et son inertie s’oppose "
+"aux changements de débit, comme la bobine aux changements de courant"
+msgstr "inductor L = 10 mH, in series; the water turns it and its inertia resists changes of flow, as the inductor resists changes of current"
+
+#: .\templates\figures\rl_lowpass.html:29
+msgid "Repère du volant :"
+msgstr "Flywheel mark:"
+
+#: .\templates\figures\rl_lowpass.html:29
+msgid ""
+"il suit l’eau qui passe ; l’amplitude de son va-et-vient suit l’intensité du "
+"courant"
+msgstr "it follows the water going through; the swing of its back-and-forth follows the current"
+
+#: .\templates\figures\rl_lowpass.html:30
+msgid "résistance R = 100 Ω, vers la masse"
+msgstr "resistor R = 100 Ω, to ground"
 
 #: .\templates\includes\partie_heading.html:2
 #, python-format
