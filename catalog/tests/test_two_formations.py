@@ -134,3 +134,88 @@ def test_moteurs_trainer_csv_export_lists_no_electro_module(client, moteurs_trai
 
     assert "La sécurité électrique" in csv
     assert module.title not in csv
+
+
+# --- Tableau de bord à plusieurs formations : une formation par bloc, reprise, parties repliées ----------------------
+
+
+def sections(module, n):
+    from courses.models import Section
+
+    return [Section.objects.create(module=module, title_fr=f"Section {k}", order=k) for k in range(1, n + 1)]
+
+
+@pytest.fixture
+def two_parts(partie, module, moteurs_module):
+    """`electro` : Partie 1 (un module de 2 sections) et Partie 2 (un module de 2 sections) ; `moteurs` : un module de 2 sections."""
+    second_partie = Partie.objects.create(formation=partie.formation, title_fr="Courant alternatif", order=2, slug="p2")
+    second = Module.objects.create(partie=second_partie, title_fr="Le courant alternatif", order=1, duration_hours=8)
+    for m in (module, second, moteurs_module):
+        sections(m, 2)
+    return module, second
+
+
+def test_dashboard_groups_parts_by_formation_with_a_resume_link(client, both, two_parts):
+    first, _ = two_parts
+    client.force_login(both)
+
+    response = client.get("/fr/")
+
+    blocks = response.context["formations"]
+    assert [b["formation"].slug for b in blocks] == ["electro", "moteurs"]
+    assert [[row["partie"].slug for row in b["parts"]] for b in blocks] == [["p1", "p2"], ["p1"]]
+    assert blocks[0]["resume"] == first and blocks[0]["progress"] == 0
+    assert f'class="btn formation-resume" href="/fr/modules/{first.public_id}/"' in response.content.decode()
+
+
+def test_resume_moves_past_finished_modules_and_formation_progress_counts_their_steps(client, both, two_parts):
+    from progress.services import mark_section_viewed
+
+    first, second = two_parts
+    for section in first.sections.all():
+        mark_section_viewed(both, section)
+    client.force_login(both)
+
+    electro = client.get("/fr/").context["formations"][0]
+
+    assert electro["resume"] == second
+    assert electro["progress"] == 50  # 2 sections vues sur 4 dans la formation
+
+
+def test_finished_formation_has_no_resume_link(client, both, two_parts):
+    from progress.services import mark_section_viewed
+
+    for m in two_parts:
+        for section in m.sections.all():
+            mark_section_viewed(both, section)
+    client.force_login(both)
+
+    electro = client.get("/fr/").context["formations"][0]
+
+    assert (electro["resume"], electro["progress"]) == (None, 100)
+
+
+def test_only_the_part_holding_the_resume_module_is_unfolded(client, both, two_parts):
+    from progress.services import mark_section_viewed
+
+    first, second = two_parts
+    for section in first.sections.all():
+        mark_section_viewed(both, section)
+    client.force_login(both)
+
+    html = client.get("/fr/").content.decode()
+
+    electro = html.split('<section class="formation"')[1]
+    p1, p2 = electro.split('<details class="part')[1:3]
+    assert not p1.startswith(' panel" open') and p2.startswith(' panel" open')
+
+
+def test_jump_links_appear_only_for_a_learner_of_two_formations(client, both, learner, two_parts, moteurs):
+    client.force_login(both)
+    html = client.get("/fr/").content.decode()
+    assert f'href="#formation-{moteurs.public_id}"' in html
+
+    solo = User.objects.create_user(username="solo", password="x-Secret-123")
+    Enrollment.objects.create(user=solo, formation=moteurs)
+    client.force_login(solo)
+    assert 'class="formation-jump"' not in client.get("/fr/").content.decode()

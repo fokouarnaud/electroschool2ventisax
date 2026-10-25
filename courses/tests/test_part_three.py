@@ -177,7 +177,7 @@ def test_dashboard_names_each_part_exam_and_the_formation_once(client, enrolled,
     html = client.get("/fr/").content.decode()
 
     assert "Examen de la Partie 1" in html and "Examen de la Partie 3" in html
-    assert html.count('class="muted small course-formation"') == 1
+    assert html.count('course-formation"') == 1
 
 
 @pytest.mark.django_db

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 08:50+0100\n"
+"POT-Creation-Date: 2026-10-25 13:37+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -110,15 +110,15 @@ msgstr "Confirm your Electro Acad Ventisax registration"
 msgid "Trop de tentatives de connexion. Réessayez dans quelques minutes."
 msgstr "Too many sign-in attempts. Try again in a few minutes."
 
-#: .\accounts\views.py:47
+#: .\accounts\views.py:60
 msgid "Trop d'inscriptions depuis cette connexion. Réessayez dans une heure."
 msgstr "Too many sign-ups from this connection. Try again in an hour."
 
-#: .\accounts\views.py:66
+#: .\accounts\views.py:79
 msgid "Ce lien de confirmation est invalide ou a déjà servi."
 msgstr "This confirmation link is invalid or has already been used."
 
-#: .\accounts\views.py:70
+#: .\accounts\views.py:83
 msgid "Adresse confirmée. Vous pouvez vous connecter."
 msgstr "Address confirmed. You can now sign in."
 
@@ -569,51 +569,76 @@ msgstr "Hello, %(name)s"
 msgid "Annonces"
 msgstr "Announcements"
 
-#: .\templates\accounts\dashboard.html:25
+#: .\templates\accounts\dashboard.html:19
+msgid "Mes formations"
+msgstr "My courses"
+
+#: .\templates\accounts\dashboard.html:30
+#: .\templates\accounts\dashboard.html:51
 msgid "Progression"
 msgstr "Progress"
 
-#: .\templates\accounts\dashboard.html:32
 #: .\templates\accounts\dashboard.html:34
+#: .\templates\catalog\_enroll_action.html:3
+msgid "Continuer"
+msgstr "Continue"
+
+#: .\templates\accounts\dashboard.html:35
+msgid "Prochain module :"
+msgstr "Next module:"
+
+#: .\templates\accounts\dashboard.html:37
+msgid "Tous les modules sont terminés. Il reste les examens des parties."
+msgstr "All modules are completed. Only the part exams remain."
+
+#: .\templates\accounts\dashboard.html:45 .\templates\catalog\catalogue.html:18
+#, python-format
+msgid "%(n)s module"
+msgid_plural "%(n)s modules"
+msgstr[0] "%(n)s module"
+msgstr[1] "%(n)s modules"
+
+#: .\templates\accounts\dashboard.html:58
+#: .\templates\accounts\dashboard.html:60
 msgid "Terminé"
 msgstr "Completed"
 
-#: .\templates\accounts\dashboard.html:34 .\templates\catalog\catalogue.html:19
+#: .\templates\accounts\dashboard.html:60 .\templates\catalog\catalogue.html:19
 #: .\templates\catalog\formation_detail.html:17
 #: .\templates\catalog\formation_detail.html:26
 #, python-format
 msgid "%(h)s h"
 msgstr "%(h)s h"
 
-#: .\templates\accounts\dashboard.html:42
+#: .\templates\accounts\dashboard.html:68
 #, python-format
 msgid "Examen de la Partie %(n)s"
 msgstr "Part %(n)s exam"
 
-#: .\templates\accounts\dashboard.html:44
+#: .\templates\accounts\dashboard.html:69
 msgid "Tous les modules sont terminés. L'examen est ouvert."
 msgstr "All modules are completed. The exam is open."
 
-#: .\templates\accounts\dashboard.html:45
-msgid "Voir l'examen"
-msgstr "View the exam"
-
-#: .\templates\accounts\dashboard.html:47
+#: .\templates\accounts\dashboard.html:69
 msgid ""
 "Il s'ouvre quand tous les modules sont terminés : sections lues et quiz "
 "envoyé."
 msgstr ""
 "It opens once every module is completed: sections read and quiz submitted."
 
-#: .\templates\accounts\dashboard.html:48
+#: .\templates\accounts\dashboard.html:72
+msgid "Voir l'examen"
+msgstr "View the exam"
+
+#: .\templates\accounts\dashboard.html:74
 msgid "Ce qu'il reste à faire"
 msgstr "What is left to do"
 
-#: .\templates\accounts\dashboard.html:54
+#: .\templates\accounts\dashboard.html:82
 msgid "Aucune formation pour le moment"
 msgstr "No course yet"
 
-#: .\templates\accounts\dashboard.html:55
+#: .\templates\accounts\dashboard.html:83
 msgid ""
 "Vous n'êtes inscrit à aucune formation. Choisissez-en une dans le catalogue "
 "ou saisissez le code de votre promotion."
@@ -621,11 +646,11 @@ msgstr ""
 "You are not enrolled in any course yet. Pick one from the catalogue or enter "
 "your cohort code."
 
-#: .\templates\accounts\dashboard.html:56
+#: .\templates\accounts\dashboard.html:84
 msgid "Voir le catalogue"
 msgstr "Browse the catalogue"
 
-#: .\templates\accounts\dashboard.html:56
+#: .\templates\accounts\dashboard.html:84
 msgid "J'ai un code"
 msgstr "I have a code"
 
@@ -1173,10 +1198,6 @@ msgstr "Sign out"
 msgid "Ventisax, centre de formation à Yaoundé."
 msgstr "Ventisax, training centre in Yaoundé."
 
-#: .\templates\catalog\_enroll_action.html:3
-msgid "Continuer"
-msgstr "Continue"
-
 #: .\templates\catalog\_enroll_action.html:6
 #: .\templates\catalog\_enroll_action.html:9
 msgid "S'inscrire"
@@ -1193,13 +1214,6 @@ msgid ""
 msgstr ""
 "Online courses with quizzes and exams, in French and English. Start whenever "
 "you like."
-
-#: .\templates\catalog\catalogue.html:18
-#, python-format
-msgid "%(n)s module"
-msgid_plural "%(n)s modules"
-msgstr[0] "%(n)s module"
-msgstr[1] "%(n)s modules"
 
 #: .\templates\catalog\catalogue.html:20
 msgid "Certificat par partie"

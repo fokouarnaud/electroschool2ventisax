@@ -201,6 +201,53 @@ main { flex: 1; padding: 1.5rem 0 3rem; }
 .modules .num { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .85rem; font-weight: 600; color: var(--muted); }
 .modules .done .num { background: var(--teal-wash); border-color: transparent; color: var(--teal-ink); }
 .exam-card { display: grid; gap: .75rem; }
+/* Tableau de bord : une formation par bloc, reprise, parties repliables (2026-10-25) */
+.formation-jump { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.5rem; }
+.formation-jump a {
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .4rem 1rem;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600;
+}
+.formation-jump a:hover { background: var(--mist); }
+.formation-jump .icon { width: 1.15rem; height: 1.15rem; color: var(--teal-ink); }
+.formation-jump strong { color: var(--teal-ink); font-variant-numeric: tabular-nums; }
+.formation { display: grid; gap: .75rem; scroll-margin-top: 1rem; }
+.formation + .formation { margin-top: 2.5rem; }
+.formation-head { display: grid; gap: .85rem; }
+.formation-head h2.course-formation { gap: .6rem; margin: 0; font-size: 1.35rem; color: var(--heading); }
+.formation-head h2.course-formation .icon { width: 1.5rem; height: 1.5rem; color: var(--teal-ink); }
+.formation-head .formation-resume { justify-self: start; }
+.formation-next { margin: 0; }
+@media (min-width: 768px) {
+  .formation-head { grid-template-columns: 1fr auto; align-items: center; column-gap: 2rem; }
+  .formation-head h2, .formation-head .course-meter { grid-column: 1; }
+  .formation-head .formation-resume { grid-column: 2; grid-row: 1 / span 2; }
+  .formation-next { grid-column: 1 / -1; }
+}
+.part summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; cursor: pointer; list-style: none; }
+.part summary::-webkit-details-marker { display: none; }
+.part summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: var(--radius-sm); }
+.part[open] summary { margin-bottom: .75rem; }
+.part-summary { display: grid; gap: .2rem; }
+.part-summary h3 { margin: 0; font-size: 1.08rem; }
+.part-summary { flex: 1; min-width: 0; }
+.part-meter { max-width: 26rem; margin-top: .35rem; }
+.part-meter strong { font-size: .9rem; }
+.formation-jump strong, .course-meter strong { white-space: nowrap; }
+@media (max-width: 479px) {
+  .formation-jump a { flex: 1 1 100%; justify-content: space-between; }
+  .formation-jump a span { flex: 1; }
+}
+.part-chevron { display: grid; place-items: center; flex: none; width: 2.25rem; height: 2.25rem; border-radius: 999px; background: var(--paper); color: var(--muted); }
+.part-chevron .icon { width: 1.1rem; height: 1.1rem; transition: transform .2s cubic-bezier(.16, 1, .3, 1); }
+.part[open] .part-chevron .icon { transform: rotate(90deg); }
+@media (prefers-reduced-motion: reduce) { .part-chevron .icon { transition: none; } }
+.part-exam { display: grid; grid-template-columns: auto 1fr; gap: .75rem 1rem; align-items: center; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.part-exam h4 { margin: 0; font-size: 1rem; }
+.part-exam p { margin: .15rem 0 0; }
+.part-exam .exam-icon { width: 2.5rem; height: 2.5rem; }
+.part-exam .exam-icon .icon { width: 1.25rem; height: 1.25rem; }
+.part-exam .btn { grid-column: 1 / -1; }
+@media (min-width: 640px) { .part-exam { grid-template-columns: auto 1fr auto; } .part-exam .btn { grid-column: auto; } }
 @media (max-width: 479px) {
   .panel { padding: 1rem; }
   .modules a { grid-template-columns: 2rem 1fr; padding: .75rem; }

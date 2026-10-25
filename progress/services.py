@@ -47,8 +47,13 @@ def exam_unlocked(user, partie):
 
 
 def progress_pct(user, partie):
+    return steps_pct(user, partie.modules.all())
+
+
+def steps_pct(user, modules):
+    """Part des étapes faites (sections vues, quiz envoyés) sur un ensemble de modules : une partie ou toute une formation."""
     done = total = 0
-    for module in partie.modules.all():
+    for module in modules:
         d, t = _module_steps(user, module)
         done, total = done + d, total + t
     return done * 100 // total if total else 0
