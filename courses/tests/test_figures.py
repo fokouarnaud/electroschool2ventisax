@@ -36,8 +36,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rl_lowpass": Figure(
             drawing="figures/rl_lowpass.svg", card="figures/rl_lowpass.html", script="acad/js/figures/rl_lowpass.js",
         ),
+        "lc_resonance": Figure(
+            drawing="figures/lc_resonance.svg", card="figures/lc_resonance.html", script="acad/js/figures/lc_resonance.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance")
 
 
 @pytest.mark.django_db
@@ -409,3 +412,42 @@ def test_rl_section_carries_the_figure_between_its_diagram_and_its_curve(lang):
 def test_rl_story_says_the_inductor_opposes_changes_of_current(lang, changes):
     """F1 : la bobine s'oppose aux variations du courant (v = L × di/dt), pas au courant lui-même."""
     assert changes in (LOWPASS / f"07-filtres-rl.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_resonance_card_maps_the_series_bench_to_the_rlc_circuit_in_both_languages(client, enrolled, module):
+    """Résonance RLC série : vanne (R), roue à volant (L), cloche (C) en série ; le débitmètre lit le courant."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Le circuit RLC série", order=1, body_md_fr="[[fig:lc_resonance]]", body_md_en="[[fig:lc_resonance]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="lc_resonance"' in fr and 'id="fig-lc_resonance-freq"' in fr
+    assert "Débitmètre :</strong>" in fr and "résistance R = 50 Ω" in fr and "bobine L = 10 mH" in fr and "condensateur C = 100 nF" in fr
+    assert "Flow meter:</strong>" in en and "Débitmètre" not in en
+    assert 'data-fig-preset="low">f0 / 2<' in fr and 'data-fig-preset="f0">f0<' in fr and 'data-fig-preset="high">2 × f0<' in fr
+    assert 'src="/static/acad/js/figures/lc_resonance.js' in fr and "figures/calculators.js" not in fr
+
+
+M7 = ROOT / "content" / "electro" / "p2" / "m7"
+RESONANCE = {"fr": ("## Ce qui se passe à la résonance", "## À retenir"), "en": ("## What happens at resonance", "## Key points")}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_resonance_section_carries_the_figure_after_what_happens_at_resonance(lang):
+    """F10 : schéma RLC, courbes XL et XC, puis récit du banc et figure dans « Ce qui se passe à la résonance »."""
+    text = (M7 / f"01-lc-serie.{lang}.md").read_text(encoding="utf-8")
+    heading, keep = RESONANCE[lang]
+
+    assert "\n[[fig:lc_resonance]]\n" in text
+    assert text.index("rlc-serie.svg") < text.index("xl-xc.svg") < text.index(heading) < text.index("[[fig:lc_resonance]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang, cancel", [("fr", "s'annulent à chaque instant"), ("en", "cancel at every instant")])
+def test_resonance_story_explains_why_vc_can_exceed_the_source(lang, cancel):
+    """F1 : Vc et VL dépassent Ve parce qu'elles sont opposées à chaque instant ; la source ne fournit que VR."""
+    assert cancel in (M7 / f"01-lc-serie.{lang}.md").read_text(encoding="utf-8")

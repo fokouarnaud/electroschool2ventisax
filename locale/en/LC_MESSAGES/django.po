@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 18:51+0100\n"
+"POT-Creation-Date: 2026-10-25 19:23+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1714,11 +1714,131 @@ msgstr "Next"
 msgid "Fin du module"
 msgstr "End of module"
 
-#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
-#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
-#: .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\lc_resonance.html:3 .\templates\figures\rc_cutoff.html:3
+#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
+#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
+
+#: .\templates\figures\lc_resonance.html:3
+msgid "La résonance, côté eau"
+msgstr "Resonance, in water"
+
+#: .\templates\figures\lc_resonance.html:4
+msgid ""
+"Banc hydraulique : un piston pousse l’eau à travers trois pièces en série, "
+"une vanne étranglée coiffée d’un débitmètre, une roue à aubes lestée d’un "
+"volant, puis une cloche à membrane, avant le bac."
+msgstr "Hydraulic bench: a piston pushes water through three parts in series, a throttled valve topped by a flow meter, a paddle wheel weighted with a flywheel, then a membrane bell, before the tray."
+
+#: .\templates\figures\lc_resonance.html:7 .\templates\figures\rc_cutoff.html:7
+#: .\templates\figures\rc_highpass.html:7 .\templates\figures\rc_lowpass.html:7
+#: .\templates\figures\rc_phase.html:7 .\templates\figures\rl_lowpass.html:7
+msgid "Fréquence"
+msgstr "Frequency"
+
+#: .\templates\figures\lc_resonance.html:14
+#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
+msgid "Lecture"
+msgstr "Play"
+
+#: .\templates\figures\lc_resonance.html:14
+#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
+msgid "Pause"
+msgstr "Pause"
+
+#: .\templates\figures\lc_resonance.html:20
+msgid "I (sous 1 V)"
+msgstr "I (at 1 V)"
+
+#: .\templates\figures\lc_resonance.html:21
+msgid "Vc (sous 1 V)"
+msgstr "Vc (at 1 V)"
+
+#: .\templates\figures\lc_resonance.html:23
+#: .\templates\figures\rc_cutoff.html:22
+msgid ""
+"Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
+"phases le sont."
+msgstr ""
+"Slow motion: the pace is not to scale, the amplitudes and the phases are."
+
+#: .\templates\figures\lc_resonance.html:28
+#: .\templates\figures\rc_cutoff.html:27
+#: .\templates\figures\rc_highpass.html:27
+#: .\templates\figures\rc_lowpass.html:27
+#: .\templates\figures\rl_lowpass.html:27
+msgid "Piston :"
+msgstr "Piston:"
+
+#: .\templates\figures\lc_resonance.html:28
+msgid "générateur, tension d’entrée de 1 V"
+msgstr "generator, input voltage of 1 V"
+
+#: .\templates\figures\lc_resonance.html:29
+#: .\templates\figures\rc_cutoff.html:28
+#: .\templates\figures\rc_highpass.html:29
+#: .\templates\figures\rc_lowpass.html:28
+#: .\templates\figures\rl_lowpass.html:30
+msgid "Vanne étranglée :"
+msgstr "Throttled valve:"
+
+#: .\templates\figures\lc_resonance.html:29
+msgid "résistance R = 50 Ω, en série"
+msgstr "resistor R = 50 Ω, in series"
+
+#: .\templates\figures\lc_resonance.html:30
+msgid "Débitmètre :"
+msgstr "Flow meter:"
+
+#: .\templates\figures\lc_resonance.html:30
+msgid ""
+"courant i, le même dans les trois pièces ; l’aiguille va au bout de "
+"l’échelle pour Imax = 20 mA, à f0"
+msgstr "current i, the same in all three parts; the needle reaches full scale for Imax = 20 mA, at f0"
+
+#: .\templates\figures\lc_resonance.html:31
+#: .\templates\figures\rl_lowpass.html:28
+msgid "Roue à volant :"
+msgstr "Flywheel turbine:"
+
+#: .\templates\figures\lc_resonance.html:31
+msgid ""
+"bobine L = 10 mH, en série ; son inertie s’oppose aux changements de débit"
+msgstr "inductor L = 10 mH, in series; its inertia resists changes of flow"
+
+#: .\templates\figures\lc_resonance.html:32
+#: .\templates\figures\rc_highpass.html:28
+msgid "Cloche à membrane :"
+msgstr "Membrane bell:"
+
+#: .\templates\figures\lc_resonance.html:32
+msgid ""
+"condensateur C = 100 nF, en série ; aucune eau ne traverse la membrane, qui "
+"se tend et se détend"
+msgstr "capacitor C = 100 nF, in series; no water crosses the membrane, which stretches and relaxes"
+
+#: .\templates\figures\lc_resonance.html:33
+#: .\templates\figures\rc_cutoff.html:31
+#: .\templates\figures\rc_highpass.html:30
+#: .\templates\figures\rc_lowpass.html:30
+#: .\templates\figures\rl_lowpass.html:31
+msgid "Bac de retour :"
+msgstr "Return tray:"
+
+#: .\templates\figures\lc_resonance.html:33
+#: .\templates\figures\rc_cutoff.html:31
+#: .\templates\figures\rc_highpass.html:30
+#: .\templates\figures\rc_lowpass.html:30
+#: .\templates\figures\rl_lowpass.html:31
+msgid "masse"
+msgstr "ground"
 
 #: .\templates\figures\rc_cutoff.html:3
 msgid "La coupure, côté eau"
@@ -1736,26 +1856,6 @@ msgstr ""
 "pressure lost in the valve, another the pressure across the bellows; a peak "
 "needle marks the amplitude on each dial."
 
-#: .\templates\figures\rc_cutoff.html:7 .\templates\figures\rc_highpass.html:7
-#: .\templates\figures\rc_lowpass.html:7 .\templates\figures\rc_phase.html:7
-#: .\templates\figures\rl_lowpass.html:7
-msgid "Fréquence"
-msgstr "Frequency"
-
-#: .\templates\figures\rc_cutoff.html:14
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
-#: .\templates\figures\rl_lowpass.html:14
-msgid "Lecture"
-msgstr "Play"
-
-#: .\templates\figures\rc_cutoff.html:14
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
-#: .\templates\figures\rl_lowpass.html:14
-msgid "Pause"
-msgstr "Pause"
-
 #: .\templates\figures\rc_cutoff.html:18 .\templates\figures\rc_phase.html:19
 msgid "Xc (R = 1 kΩ)"
 msgstr "Xc (R = 1 kΩ)"
@@ -1768,33 +1868,12 @@ msgstr "VR / Vin"
 msgid "Vs / Ve"
 msgstr "Vout / Vin"
 
-#: .\templates\figures\rc_cutoff.html:22
-msgid ""
-"Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
-"phases le sont."
-msgstr ""
-"Slow motion: the pace is not to scale, the amplitudes and the phases are."
-
-#: .\templates\figures\rc_cutoff.html:27
-#: .\templates\figures\rc_highpass.html:27
-#: .\templates\figures\rc_lowpass.html:27
-#: .\templates\figures\rl_lowpass.html:27
-msgid "Piston :"
-msgstr "Piston:"
-
 #: .\templates\figures\rc_cutoff.html:27
 #: .\templates\figures\rc_highpass.html:27
 #: .\templates\figures\rc_lowpass.html:27
 #: .\templates\figures\rl_lowpass.html:27
 msgid "générateur, tension d’entrée Ve"
 msgstr "generator, input voltage Vin"
-
-#: .\templates\figures\rc_cutoff.html:28
-#: .\templates\figures\rc_highpass.html:29
-#: .\templates\figures\rc_lowpass.html:28
-#: .\templates\figures\rl_lowpass.html:30
-msgid "Vanne étranglée :"
-msgstr "Throttled valve:"
 
 #: .\templates\figures\rc_cutoff.html:28 .\templates\figures\rc_lowpass.html:28
 msgid "résistance R = 1 kΩ, en série"
@@ -1823,20 +1902,6 @@ msgid ""
 msgstr ""
 "capacitor C = 100 nF, to ground; standing in the tray, it swells under the "
 "pressure of the node"
-
-#: .\templates\figures\rc_cutoff.html:31
-#: .\templates\figures\rc_highpass.html:30
-#: .\templates\figures\rc_lowpass.html:30
-#: .\templates\figures\rl_lowpass.html:31
-msgid "Bac de retour :"
-msgstr "Return tray:"
-
-#: .\templates\figures\rc_cutoff.html:31
-#: .\templates\figures\rc_highpass.html:30
-#: .\templates\figures\rc_lowpass.html:30
-#: .\templates\figures\rl_lowpass.html:31
-msgid "masse"
-msgstr "ground"
 
 #: .\templates\figures\rc_cutoff.html:32
 msgid "Manomètre du nœud :"
@@ -1895,10 +1960,6 @@ msgstr ""
 "Slow motion: the pace is not to scale, the amplitudes and the lead are."
 
 #: .\templates\figures\rc_highpass.html:28
-msgid "Cloche à membrane :"
-msgstr "Membrane bell:"
-
-#: .\templates\figures\rc_highpass.html:28
 msgid ""
 "condensateur C = 100 nF, en série ; aucune eau ne traverse la membrane, sa "
 "tige suit la tension Vc du condensateur"
@@ -1921,7 +1982,9 @@ msgstr "Pressure gauge:"
 msgid ""
 "tension de sortie Vs, aux bornes de la vanne comme Vs aux bornes de R ; ses "
 "deux repères marquent 0,707, la coupure"
-msgstr "output voltage Vout, across the valve as Vout is across R; its two marks show 0.707, the cut-off"
+msgstr ""
+"output voltage Vout, across the valve as Vout is across R; its two marks "
+"show 0.707, the cut-off"
 
 #: .\templates\figures\rc_lowpass.html:3
 msgid "Le passe-bas, côté eau"
@@ -2052,7 +2115,11 @@ msgid ""
 "Banc hydraulique : un piston pousse l’eau à travers une roue à aubes lestée "
 "d’un volant, placée en série ; derrière elle, une vanne étranglée mène l’eau "
 "au bac ; un manomètre mesure la pression entre la roue et la vanne."
-msgstr "Hydraulic bench: a piston pushes water through a paddle wheel weighted with a flywheel, placed in series; behind it, a throttled valve lets the water into the tray; a pressure gauge measures the pressure between the wheel and the valve."
+msgstr ""
+"Hydraulic bench: a piston pushes water through a paddle wheel weighted with "
+"a flywheel, placed in series; behind it, a throttled valve lets the water "
+"into the tray; a pressure gauge measures the pressure between the wheel and "
+"the valve."
 
 #: .\templates\figures\rl_lowpass.html:18
 msgid "XL (R = 100 Ω)"
@@ -2063,14 +2130,12 @@ msgid "Retard du courant, arctan(XL / R)"
 msgstr "Current lag, arctan(XL / R)"
 
 #: .\templates\figures\rl_lowpass.html:28
-msgid "Roue à volant :"
-msgstr "Flywheel turbine:"
-
-#: .\templates\figures\rl_lowpass.html:28
 msgid ""
 "bobine L = 10 mH, en série ; l’eau la fait tourner et son inertie s’oppose "
 "aux changements de débit, comme la bobine aux changements de courant"
-msgstr "inductor L = 10 mH, in series; the water turns it and its inertia resists changes of flow, as the inductor resists changes of current"
+msgstr ""
+"inductor L = 10 mH, in series; the water turns it and its inertia resists "
+"changes of flow, as the inductor resists changes of current"
 
 #: .\templates\figures\rl_lowpass.html:29
 msgid "Repère du volant :"
@@ -2080,7 +2145,9 @@ msgstr "Flywheel mark:"
 msgid ""
 "il suit l’eau qui passe ; l’amplitude de son va-et-vient suit l’intensité du "
 "courant"
-msgstr "it follows the water going through; the swing of its back-and-forth follows the current"
+msgstr ""
+"it follows the water going through; the swing of its back-and-forth follows "
+"the current"
 
 #: .\templates\figures\rl_lowpass.html:30
 msgid "résistance R = 100 Ω, vers la masse"

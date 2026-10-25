@@ -29,6 +29,12 @@ Example: L = 10 mH and C = 100 nF. L × C = 0.01 × 0.0000001 = 10⁻⁹; √(10
 - The voltages across L and across C can be far larger than the source's (here 316 × 0.02 ≈ 6.3 V for a 1 V input), because they cancel each other out.
 - Below f0, XC dominates: the circuit is **capacitive**. Above, XL dominates: it is **inductive**.
 
+On the bench below, the three parts are in series: the same flow goes through the valve, the wheel and the bell, and the flow meter measures it. At f0 / 2, the bell dominates (XC = 632 Ω, XL = 158 Ω): the current is only 2.10 mA and it leads Vin. At 2 × f0, the flywheel dominates (XL = 632 Ω): 2.10 mA again, this time lagging. At f0, the inertia of the flywheel and the springiness of the membrane balance out: the needle reaches full scale, I = 20 mA.
+
+Vc and VL are then 6.32 V each for a 1 V input, but they are opposite: they cancel at every instant, and the source only supplies the voltage lost in R (50 Ω × 20 mA = 1 V).
+
+[[fig:lc_resonance]]
+
 ## Key points
 
 - f0 = 1 / (2π × √(L × C)): at f0, XL = XC.

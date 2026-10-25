@@ -29,6 +29,12 @@ Exemple : L = 10 mH et C = 100 nF. L × C = 0,01 × 0,000 000 1 = 10⁻⁹ ; √
 - La tension aux bornes de L et celle aux bornes de C peuvent dépasser largement celle de la source (ici 316 × 0,02 ≈ 6,3 V pour 1 V d'entrée), car elles s'annulent entre elles.
 - En dessous de f0, XC domine : le circuit est **capacitif**. Au-dessus, XL domine : il est **inductif**.
 
+Sur le banc ci-dessous, les trois pièces sont en série : le même débit traverse la vanne, la roue et la cloche, et le débitmètre le mesure. À f0 / 2, la cloche domine (XC = 632 Ω, XL = 158 Ω) : le courant ne vaut que 2,10 mA et il est en avance sur Ve. À 2 × f0, c'est le volant qui domine (XL = 632 Ω) : de nouveau 2,10 mA, cette fois en retard. À f0, l'inertie du volant et l'élasticité de la membrane se compensent : l'aiguille va au bout de l'échelle, I = 20 mA.
+
+Vc et VL valent alors 6,32 V chacune pour 1 V d'entrée, mais elles sont opposées : elles s'annulent à chaque instant, et la source ne fournit que la tension perdue dans R (50 Ω × 20 mA = 1 V).
+
+[[fig:lc_resonance]]
+
 ## À retenir
 
 - f0 = 1 / (2π × √(L × C)) : à f0, XL = XC.
