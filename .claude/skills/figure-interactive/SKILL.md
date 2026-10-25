@@ -8,8 +8,8 @@ description: Ajoute une figure interactive explicative (banc isométrique du ski
 Une figure explique **une** notion d'**une** section par un objet réel qu'on manipule (skill `anatomy` : « l'objet est l'explication »).
 Le pilote fait référence : `tools/figures/rc_lowpass/` (modèle, build, test), `templates/figures/rc_lowpass.html` (carte),
 `courses/figures.py` (registre), `courses/tests/test_figures.py` (tests), section `content/electro/p2/m6/03-passe-bas.*.md`.
-Figures déjà livrées (M6 d'`electro`, dans l'ordre des sections) : `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06), `rl_lowpass` (07).
-« La section suivante » = la section qui suit la dernière figure livrée, en sautant les mini-projets (sections `practical`, sans figure) ; prochaine : M7 d'`electro`, `01-lc-serie` (piste « Résonance LC »).
+Figures déjà livrées (`electro`, dans l'ordre des sections) : M6 `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06), `rl_lowpass` (07) ; M7 `lc_resonance` (01).
+« La section suivante » = la section qui suit la dernière figure livrée, en sautant les mini-projets (sections `practical`, sans figure) ; prochaine : M7 d'`electro`, `02-courbe-reponse`.
 Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. Lis d'abord le skill `anatomy` (SKILL.md et `references/craft.md`) si tu ne l'as pas en tête.
 
 ## Règles qui ne se négocient pas
@@ -34,7 +34,8 @@ Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. L
    - **Fréquence de coupure** (livrée, `rc_cutoff`) : le banc du passe-bas, manomètre différentiel sur la vanne (VR) et manomètre du nœud (Vs), une aiguille de crête teal par cadran ; à fc, les deux crêtes se posent sur 0,707.
    - **Déphasage** (livrée, `rc_phase`) : traceur à deux voies (papier qui défile, deux plumes, réglette fixe), générateur et boîtier du filtre reliés par câbles ; vitesse du papier proportionnelle à f pour qu'une période fasse toujours 8 graduations (45° chacune) ; accolade Δt entre les crêtes. Objet léger : 40 Ko au lieu de 79.
    - **Filtres RL** (livrée, `rl_lowpass`) : build dérivé du passe-haut RC, cloche remplacée par un carter de roue à aubes et un volant d'inertie teal en série ; repère du volant en quadrature avec le courant, amplitude ∝ I ; arrondir les grandeurs à 6 chiffres significatifs avant de les formater (« 100 Ω », pas « 100,0 Ω »).
-   - **Résonance LC** : volant d'inertie (L) et ressort (C) entraînés par un excentrique ; l'amplitude culmine à f0 = 1/(2π√(LC)).
+   - **Résonance RLC série** (livrée, `lc_resonance`) : build dérivé du passe-bas RL, vanne coiffée d'un débitmètre (aiguille teal ∝ i / Imax), roue à volant (L) et cloche fixe (C) en série vers le bac ; repères f0 / 2, f0, 2 × f0. Une section qui contient un calculateur (`[[calc:…]]`) charge `calculators.js` : garder le script de la figure sous 4,5 Ko.
+   - **Courbe de réponse, bande passante** (M7, 02 et 03) : le même banc RLC avec une aiguille de crête sur le débitmètre et les repères 0,707 ; f1 et f2 de part et d'autre de f0, B = f2 − f1, Q = f0 / B.
    - **Champ tournant** (`moteurs`) : trois bobines à 120° et une aiguille aimantée ; vitesse de synchronisme 60·f/p.
    - **Glissement** : disque synchrone stroboscopique et rotor qui décroche ; g = (ns − n)/ns en %.
    - **Auto-maintien** : contacteur 24 V, boutons marche-arrêt, contact 13-14 qui garde la bobine alimentée.
