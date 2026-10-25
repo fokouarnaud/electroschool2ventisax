@@ -42,8 +42,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rlc_response": Figure(
             drawing="figures/rlc_response.svg", card="figures/rlc_response.html", script="acad/js/figures/rlc_response.js",
         ),
+        "rlc_bandwidth": Figure(
+            drawing="figures/rlc_bandwidth.svg", card="figures/rlc_bandwidth.html", script="acad/js/figures/rlc_bandwidth.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth")
 
 
 @pytest.mark.django_db
@@ -488,3 +491,38 @@ def test_response_section_carries_the_figure_after_both_curves(lang, keep):
 def test_response_story_says_the_leftover_reactance_limits_the_current_away_from_f0(lang):
     """F1 : loin de f0, |XL − XC| limite le courant pour les deux circuits ; à f0, il ne reste que R."""
     assert "|XL − XC|" in (M7 / f"02-courbe-reponse.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_bandwidth_card_maps_the_brackets_to_bw_and_q_in_both_languages(client, enrolled, module):
+    """Bande passante : I / Imax, ligne 0,707, accolades f1 à f2 (Q = 6,3 teal, Q = 1,6 grise), repères f1, f0, f2."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Bande passante et facteur Q", order=1, body_md_fr="[[fig:rlc_bandwidth]]", body_md_en="[[fig:rlc_bandwidth]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rlc_bandwidth"' in fr and 'id="fig-rlc_bandwidth-freq"' in fr
+    assert 'min="2000" max="8000" step="10"' in fr
+    assert 'data-fig-preset="f1">f1<' in fr and 'data-fig-preset="f2">f2<' in fr
+    assert "Accolades :</strong>" in fr and "BP = 796 Hz" in fr and "Q = 6,3" in fr
+    assert "Brackets:</strong>" in en and "BW = 796 Hz" in en and "Q = 6.3" in en and "Accolades" not in en
+    assert 'src="/static/acad/js/figures/rlc_bandwidth.js' in fr
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## À retenir"), ("en", "## Key points")])
+def test_bandwidth_section_carries_the_figure_after_both_curves(lang, keep):
+    """F10 : courbes de la bande et du facteur Q gardées, puis récit et figure avant « À retenir »."""
+    text = (M7 / f"03-bande-passante.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rlc_bandwidth]]\n" in text
+    assert text.index("bande.svg") < text.index("q.svg") < text.index(RECIT[lang]) < text.index("[[fig:rlc_bandwidth]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_bandwidth_story_places_f1_and_f2_where_the_leftover_reactance_equals_r(lang):
+    """F1 : à f1 et f2, |XL − XC| = R, donc Z = R × √2 et I = 0,707 × Imax."""
+    assert "±50 Ω" in (M7 / f"03-bande-passante.{lang}.md").read_text(encoding="utf-8")

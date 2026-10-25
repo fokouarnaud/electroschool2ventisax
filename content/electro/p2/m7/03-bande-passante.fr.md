@@ -29,6 +29,14 @@ Exemple du circuit de ce module : L = 10 mH, C = 100 nF, R = 50 Ω. À f0 ≈ 5 
 
 À la résonance, la tension aux bornes de L ou de C vaut **Q fois** la tension de la source : avec Q = 20 et 1 V en entrée, 20 V apparaissent aux bornes du condensateur. Choisissez des composants qui le supportent.
 
+## Ce qui se passe dans le circuit
+
+Ramenées à leur maximum, les deux courbes culminent ensemble à 1, à f0 : seule leur largeur diffère. Avec R = 50 Ω, le courant tombe à 0,707 × Imax dès que XL − XC atteint ±50 Ω, car Z vaut alors R × √2 : c'est à f1 ≈ 4,65 kHz et f2 ≈ 5,45 kHz, d'où BP ≈ 796 Hz et Q = 5 033 / 796 ≈ 6,3. Avec R = 200 Ω, il faut que XL − XC atteigne ±200 Ω, ce qui n'arrive qu'à 3,69 kHz et 6,87 kHz : BP ≈ 3,18 kHz et Q ≈ 1,6.
+
+Placez le portique sur f1 : la plume teal touche la ligne 0,707, tandis que la plume grise est encore à 0,970. Le circuit de Q élevé a déjà perdu près d'un tiers de son courant quand l'autre répond presque pleinement : c'est ce qui le rend sélectif.
+
+[[fig:rlc_bandwidth]]
+
 ## À retenir
 
 - BP = f2 − f1, mesurée à 0,707 × Imax.

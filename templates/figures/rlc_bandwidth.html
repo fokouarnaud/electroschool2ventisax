@@ -1,0 +1,32 @@
+{% load i18n %}<figure class="fig" data-fig="rlc_bandwidth">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "La bande passante, sur la table traçante" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Table traçante : les courbes de deux circuits RLC série, ramenées à leur maximum, culminent ensemble à f0 ; une ligne pointillée marque 0,707 ; sur cette ligne, une accolade teal étroite et une accolade grise large marquent leurs bandes passantes.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-rlc_bandwidth-freq">{% translate "Fréquence" %}</label>
+        <input id="fig-rlc_bandwidth-freq" type="range" min="2000" max="8000" step="10" value="4650" data-fig-freq>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="f1">f1</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="f0">f0</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="f2">f2</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Balayer' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Balayer" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>f</dt><dd data-fig-out="f"></dd></div>
+        <div><dt>{% translate "I / Imax, Q = 6,3" %}</dt><dd data-fig-out="r1"></dd></div>
+        <div><dt>{% translate "I / Imax, Q = 1,6" %}</dt><dd data-fig-out="r2"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Balayer fait parcourir au portique les fréquences de 2 kHz à 8 kHz ; à chaque position, le courant lu est celui du régime établi." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Pupitre :" %}</strong> {% translate "générateur de 1 V et les deux circuits RLC série du module (L = 10 mH, C = 100 nF), R = 50 Ω en teal, R = 200 Ω en gris" %}</li>
+      <li><strong>{% translate "Table traçante :" %}</strong> {% translate "la fréquence en largeur, de 2 à 8 kHz (une ligne par kilohertz) ; en profondeur, le courant rapporté à son maximum, I / Imax, de 0 à 1 ; les pointillés marquent f0 et le seuil 0,707" %}</li>
+      <li><strong>{% translate "Accolades :" %}</strong> {% translate "de f1 à f2 sur la ligne 0,707 ; teal : BP = 796 Hz et Q = 6,3 ; grise : BP = 3,18 kHz et Q = 1,6" %}</li>
+      <li><strong>{% translate "Portique :" %}</strong> {% translate "il se place à la fréquence choisie ; chaque plume se pose sur le courant de son circuit" %}</li>
+    </ul>
+  </figcaption>
+</figure>

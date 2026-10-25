@@ -29,6 +29,14 @@ Example with this module's circuit: L = 10 mH, C = 100 nF, R = 50 Ω. At f0 ≈ 
 
 At resonance, the voltage across L or C is **Q times** the source voltage: with Q = 20 and 1 V at the input, 20 V appear across the capacitor. Choose components that can withstand it.
 
+## What happens in the circuit
+
+Scaled to their maximum, the two curves both peak at 1, at f0: only their width differs. With R = 50 Ω, the current falls to 0.707 × Imax as soon as XL − XC reaches ±50 Ω, because Z is then R × √2: that happens at f1 ≈ 4.65 kHz and f2 ≈ 5.45 kHz, hence BW ≈ 796 Hz and Q = 5,033 / 796 ≈ 6.3. With R = 200 Ω, XL − XC has to reach ±200 Ω, which only happens at 3.69 kHz and 6.87 kHz: BW ≈ 3.18 kHz and Q ≈ 1.6.
+
+Put the gantry on f1: the teal pen touches the 0.707 line, while the grey pen is still at 0.970. The high-Q circuit has already lost nearly a third of its current while the other one still responds almost fully: that is what makes it selective.
+
+[[fig:rlc_bandwidth]]
+
 ## Key points
 
 - BW = f2 − f1, measured at 0.707 × Imax.
