@@ -45,8 +45,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rlc_bandwidth": Figure(
             drawing="figures/rlc_bandwidth.svg", card="figures/rlc_bandwidth.html", script="acad/js/figures/rlc_bandwidth.js",
         ),
+        "lc_tank": Figure(
+            drawing="figures/lc_tank.svg", card="figures/lc_tank.html", script="acad/js/figures/lc_tank.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank")
 
 
 @pytest.mark.django_db
@@ -526,3 +529,37 @@ def test_bandwidth_section_carries_the_figure_after_both_curves(lang, keep):
 def test_bandwidth_story_places_f1_and_f2_where_the_leftover_reactance_equals_r(lang):
     """F1 : à f1 et f2, |XL − XC| = R, donc Z = R × √2 et I = 0,707 × Imax."""
     assert "±50 Ω" in (M7 / f"03-bande-passante.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_tank_card_maps_the_parallel_branches_to_l_and_c_in_both_languages(client, enrolled, module):
+    """Circuit bouchon : vanne Rs = 10 kΩ en série, roue à volant (L) et cloche (C) en parallèle, échelle de courant commune."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Le circuit LC parallèle", order=1, body_md_fr="[[fig:lc_tank]]", body_md_en="[[fig:lc_tank]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="lc_tank"' in fr and 'id="fig-lc_tank-freq"' in fr
+    assert "Manomètre du nœud :</strong>" in fr and "en parallèle" in fr and "Rs = 10 kΩ" in fr
+    assert "Node gauge:</strong>" in en and "in parallel" in en and "Manomètre" not in en
+    assert "Vt / Vin" in en and "IL / IC" in fr
+    assert 'src="/static/acad/js/figures/lc_tank.js' in fr
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## À quoi sert un bouchon ?"), ("en", "## What is a tank circuit for?")])
+def test_tank_section_carries_the_figure_after_the_impedance_curve(lang, keep):
+    """F10 : schéma du bouchon et courbe d'impédance gardés, puis récit et figure avant « À quoi sert un bouchon ? »."""
+    text = (M7 / f"04-lc-parallele.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:lc_tank]]\n" in text
+    assert text.index("lc-parallele.svg") < text.index("z-parallele.svg") < text.index(RECIT[lang]) < text.index("[[fig:lc_tank]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang, ratio", [("fr", "trente fois moins"), ("en", "thirty times less")])
+def test_tank_story_compares_the_circulating_current_with_the_line_current(lang, ratio):
+    """F1 : à f0, 1,58 mA vont et viennent entre L et C quand la ligne ne fournit que 50,0 µA."""
+    assert ratio in (M7 / f"04-lc-parallele.{lang}.md").read_text(encoding="utf-8")

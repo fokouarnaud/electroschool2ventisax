@@ -24,6 +24,14 @@ C'est l'inverse du circuit série, où l'impédance est minimale à f0.
 | Impédance | minimale (Z = R) | maximale |
 | Courant de la source | maximal | minimal |
 
+## Ce qui se passe dans le circuit
+
+Sur le banc ci-dessous, la vanne Rs = 10 kΩ alimente le bouchon ; le débitmètre de la ligne et le repère du volant partagent la même échelle. À f0 / 2, la bobine laisse passer presque tout : le bouchon ne vaut que 211 Ω, la tension à ses bornes tombe à 0,021 × Ve et le courant de ligne, 99,8 µA, est presque celui de Rs seule. À 2 × f0, c'est la cloche qui court-circuite le bouchon, avec le même résultat.
+
+À f0, l'eau poussée dans la bobine revient par la cloche, puis repart : 1,58 mA vont et viennent entre L et C, tandis que la ligne ne fournit que 50,0 µA, trente fois moins, juste de quoi compenser les 10 Ω de pertes de la bobine. Le bouchon vaut alors 10 kΩ, autant que Rs : la moitié de la tension d'entrée apparaît à ses bornes (Vt ≈ 0,500 × Ve).
+
+[[fig:lc_tank]]
+
 ## À quoi sert un bouchon ?
 
 Alimenté à travers une résistance, un bouchon présente à ses bornes une tension **maximale à f0** et faible ailleurs. Il **sélectionne** donc une fréquence : c'est le cœur des circuits d'accord des récepteurs radio, et des oscillateurs de la Partie 3.

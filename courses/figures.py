@@ -25,6 +25,7 @@ REGISTRY = {
     "lc_resonance": Figure(drawing="figures/lc_resonance.svg", card="figures/lc_resonance.html", script="acad/js/figures/lc_resonance.js"),
     "rlc_response": Figure(drawing="figures/rlc_response.svg", card="figures/rlc_response.html", script="acad/js/figures/rlc_response.js"),
     "rlc_bandwidth": Figure(drawing="figures/rlc_bandwidth.svg", card="figures/rlc_bandwidth.html", script="acad/js/figures/rlc_bandwidth.js"),
+    "lc_tank": Figure(drawing="figures/lc_tank.svg", card="figures/lc_tank.html", script="acad/js/figures/lc_tank.js"),
 }
 FIGURES = tuple(REGISTRY)
 SLOT = re.compile(r'<div class="fig" data-fig="(%s)"></div>' % "|".join(FIGURES))

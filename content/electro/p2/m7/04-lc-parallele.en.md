@@ -24,6 +24,14 @@ This is the opposite of the series circuit, whose impedance is at its minimum at
 | Impedance | minimum (Z = R) | maximum |
 | Source current | maximum | minimum |
 
+## What happens in the circuit
+
+On the bench below, the Rs = 10 kΩ valve feeds the tank; the line flow meter and the flywheel mark share the same scale. At f0 / 2, the inductor lets almost everything through: the tank is only 211 Ω, the voltage across it falls to 0.021 × Vin and the line current, 99.8 µA, is almost that of Rs alone. At 2 × f0, the bell shorts the tank instead, with the same result.
+
+At f0, the water pushed into the inductor comes back through the bell, then sets off again: 1.58 mA swing back and forth between L and C, while the line only supplies 50.0 µA, thirty times less, just enough to make up for the inductor's 10 Ω of losses. The tank is then 10 kΩ, as much as Rs: half the input voltage appears across it (Vt ≈ 0.500 × Vin).
+
+[[fig:lc_tank]]
+
 ## What is a tank circuit for?
 
 Fed through a resistor, a tank circuit has a voltage across it that is **largest at f0** and small elsewhere. So it **selects** one frequency: it is the heart of radio receivers' tuning circuits, and of Part 3's oscillators.

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 20:07+0100\n"
+"POT-Creation-Date: 2026-10-25 20:37+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1714,9 +1714,10 @@ msgstr "Next"
 msgid "Fin du module"
 msgstr "End of module"
 
-#: .\templates\figures\lc_resonance.html:3 .\templates\figures\rc_cutoff.html:3
-#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
-#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\lc_resonance.html:3 .\templates\figures\lc_tank.html:3
+#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
+#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
+#: .\templates\figures\rl_lowpass.html:3
 #: .\templates\figures\rlc_bandwidth.html:3
 #: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
@@ -1736,15 +1737,16 @@ msgstr ""
 "throttled valve topped by a flow meter, a paddle wheel weighted with a "
 "flywheel, then a membrane bell, before the tray."
 
-#: .\templates\figures\lc_resonance.html:7 .\templates\figures\rc_cutoff.html:7
-#: .\templates\figures\rc_highpass.html:7 .\templates\figures\rc_lowpass.html:7
-#: .\templates\figures\rc_phase.html:7 .\templates\figures\rl_lowpass.html:7
+#: .\templates\figures\lc_resonance.html:7 .\templates\figures\lc_tank.html:7
+#: .\templates\figures\rc_cutoff.html:7 .\templates\figures\rc_highpass.html:7
+#: .\templates\figures\rc_lowpass.html:7 .\templates\figures\rc_phase.html:7
+#: .\templates\figures\rl_lowpass.html:7
 #: .\templates\figures\rlc_bandwidth.html:7
 #: .\templates\figures\rlc_response.html:7
 msgid "Fréquence"
 msgstr "Frequency"
 
-#: .\templates\figures\lc_resonance.html:14
+#: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
 #: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
@@ -1752,7 +1754,7 @@ msgstr "Frequency"
 msgid "Lecture"
 msgstr "Play"
 
-#: .\templates\figures\lc_resonance.html:14
+#: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
 #: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
@@ -1770,7 +1772,7 @@ msgstr "I (at 1 V)"
 msgid "Vc (sous 1 V)"
 msgstr "Vc (at 1 V)"
 
-#: .\templates\figures\lc_resonance.html:23
+#: .\templates\figures\lc_resonance.html:23 .\templates\figures\lc_tank.html:23
 #: .\templates\figures\rc_cutoff.html:22
 msgid ""
 "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
@@ -1778,7 +1780,7 @@ msgid ""
 msgstr ""
 "Slow motion: the pace is not to scale, the amplitudes and the phases are."
 
-#: .\templates\figures\lc_resonance.html:28
+#: .\templates\figures\lc_resonance.html:28 .\templates\figures\lc_tank.html:28
 #: .\templates\figures\rc_cutoff.html:27
 #: .\templates\figures\rc_highpass.html:27
 #: .\templates\figures\rc_lowpass.html:27
@@ -1786,11 +1788,11 @@ msgstr ""
 msgid "Piston :"
 msgstr "Piston:"
 
-#: .\templates\figures\lc_resonance.html:28
+#: .\templates\figures\lc_resonance.html:28 .\templates\figures\lc_tank.html:28
 msgid "générateur, tension d’entrée de 1 V"
 msgstr "generator, input voltage of 1 V"
 
-#: .\templates\figures\lc_resonance.html:29
+#: .\templates\figures\lc_resonance.html:29 .\templates\figures\lc_tank.html:29
 #: .\templates\figures\rc_cutoff.html:28
 #: .\templates\figures\rc_highpass.html:29
 #: .\templates\figures\rc_lowpass.html:28
@@ -1814,7 +1816,7 @@ msgstr ""
 "current i, the same in all three parts; the needle reaches full scale for "
 "Imax = 20 mA, at f0"
 
-#: .\templates\figures\lc_resonance.html:31
+#: .\templates\figures\lc_resonance.html:31 .\templates\figures\lc_tank.html:31
 #: .\templates\figures\rl_lowpass.html:28
 msgid "Roue à volant :"
 msgstr "Flywheel turbine:"
@@ -1824,7 +1826,7 @@ msgid ""
 "bobine L = 10 mH, en série ; son inertie s’oppose aux changements de débit"
 msgstr "inductor L = 10 mH, in series; its inertia resists changes of flow"
 
-#: .\templates\figures\lc_resonance.html:32
+#: .\templates\figures\lc_resonance.html:32 .\templates\figures\lc_tank.html:32
 #: .\templates\figures\rc_highpass.html:28
 msgid "Cloche à membrane :"
 msgstr "Membrane bell:"
@@ -1837,7 +1839,7 @@ msgstr ""
 "capacitor C = 100 nF, in series; no water crosses the membrane, which "
 "stretches and relaxes"
 
-#: .\templates\figures\lc_resonance.html:33
+#: .\templates\figures\lc_resonance.html:33 .\templates\figures\lc_tank.html:33
 #: .\templates\figures\rc_cutoff.html:31
 #: .\templates\figures\rc_highpass.html:30
 #: .\templates\figures\rc_lowpass.html:30
@@ -1852,6 +1854,58 @@ msgstr "Return tray:"
 #: .\templates\figures\rl_lowpass.html:31
 msgid "masse"
 msgstr "ground"
+
+#: .\templates\figures\lc_tank.html:3
+msgid "Le circuit bouchon, côté eau"
+msgstr "The tank circuit, in water"
+
+#: .\templates\figures\lc_tank.html:4
+msgid ""
+"Banc hydraulique : un piston pousse l’eau à travers une vanne étranglée "
+"coiffée d’un débitmètre jusqu’à un nœud coiffé d’un manomètre ; du nœud "
+"partent en parallèle, vers le bac, une roue à volant à l’arrière et une "
+"cloche à membrane à l’avant."
+msgstr "Hydraulic bench: a piston pushes water through a throttled valve topped by a flow meter up to a node topped by a pressure gauge; from the node, a flywheel turbine at the back and a membrane bell at the front run in parallel to the tray."
+
+#: .\templates\figures\lc_tank.html:18
+msgid "Z du bouchon"
+msgstr "Tank Z"
+
+#: .\templates\figures\lc_tank.html:19
+msgid "I de ligne"
+msgstr "Line I"
+
+#: .\templates\figures\lc_tank.html:21
+msgid "Vt / Ve"
+msgstr "Vt / Vin"
+
+#: .\templates\figures\lc_tank.html:29
+msgid ""
+"résistance Rs = 10 kΩ, en série ; son débitmètre (aiguille teal) lit le "
+"courant de ligne"
+msgstr "resistor Rs = 10 kΩ, in series; its flow meter (teal needle) reads the line current"
+
+#: .\templates\figures\lc_tank.html:30 .\templates\figures\rc_cutoff.html:32
+msgid "Manomètre du nœud :"
+msgstr "Node gauge:"
+
+#: .\templates\figures\lc_tank.html:30
+msgid "tension Vt aux bornes du bouchon, ±1 V en bout d’échelle"
+msgstr "voltage Vt across the tank, ±1 V at full scale"
+
+#: .\templates\figures\lc_tank.html:31
+msgid ""
+"bobine L = 10 mH (10 Ω de pertes), en parallèle avec la cloche ; son repère "
+"suit le courant de la bobine, à la même échelle que le débitmètre (±2 mA)"
+msgstr "inductor L = 10 mH (10 Ω of losses), in parallel with the bell; its mark follows the inductor current, on the same scale as the flow meter (±2 mA)"
+
+#: .\templates\figures\lc_tank.html:32
+msgid "condensateur C = 100 nF, en parallèle avec la roue"
+msgstr "capacitor C = 100 nF, in parallel with the wheel"
+
+#: .\templates\figures\lc_tank.html:33
+msgid "masse, où se rejoignent les deux branches"
+msgstr "ground, where the two branches meet"
 
 #: .\templates\figures\rc_cutoff.html:3
 msgid "La coupure, côté eau"
@@ -1915,10 +1969,6 @@ msgid ""
 msgstr ""
 "capacitor C = 100 nF, to ground; standing in the tray, it swells under the "
 "pressure of the node"
-
-#: .\templates\figures\rc_cutoff.html:32
-msgid "Manomètre du nœud :"
-msgstr "Node gauge:"
 
 #: .\templates\figures\rc_cutoff.html:32
 msgid "tension de sortie Vs, aux bornes du condensateur"
@@ -2176,7 +2226,10 @@ msgid ""
 "maximum, culminent ensemble à f0 ; une ligne pointillée marque 0,707 ; sur "
 "cette ligne, une accolade teal étroite et une accolade grise large marquent "
 "leurs bandes passantes."
-msgstr "Plotter: the curves of two series RLC circuits, scaled to their maximum, both peak at f0; a dashed line marks 0.707; on that line, a narrow teal bracket and a wide grey bracket mark their bandwidths."
+msgstr ""
+"Plotter: the curves of two series RLC circuits, scaled to their maximum, "
+"both peak at f0; a dashed line marks 0.707; on that line, a narrow teal "
+"bracket and a wide grey bracket mark their bandwidths."
 
 #: .\templates\figures\rlc_bandwidth.html:14
 #: .\templates\figures\rlc_response.html:14
@@ -2195,7 +2248,9 @@ msgstr "I / Imax, Q = 1.6"
 msgid ""
 "Balayer fait parcourir au portique les fréquences de 2 kHz à 8 kHz ; à "
 "chaque position, le courant lu est celui du régime établi."
-msgstr "Sweep moves the gantry through the frequencies from 2 kHz to 8 kHz; at each position, the current shown is the steady-state current."
+msgstr ""
+"Sweep moves the gantry through the frequencies from 2 kHz to 8 kHz; at each "
+"position, the current shown is the steady-state current."
 
 #: .\templates\figures\rlc_bandwidth.html:26
 #: .\templates\figures\rlc_response.html:26
@@ -2206,7 +2261,9 @@ msgstr "Desk:"
 msgid ""
 "générateur de 1 V et les deux circuits RLC série du module (L = 10 mH, C = "
 "100 nF), R = 50 Ω en teal, R = 200 Ω en gris"
-msgstr "1 V generator and the module's two series RLC circuits (L = 10 mH, C = 100 nF), R = 50 Ω in teal, R = 200 Ω in grey"
+msgstr ""
+"1 V generator and the module's two series RLC circuits (L = 10 mH, C = 100 "
+"nF), R = 50 Ω in teal, R = 200 Ω in grey"
 
 #: .\templates\figures\rlc_bandwidth.html:27
 #: .\templates\figures\rlc_response.html:29
@@ -2218,7 +2275,10 @@ msgid ""
 "la fréquence en largeur, de 2 à 8 kHz (une ligne par kilohertz) ; en "
 "profondeur, le courant rapporté à son maximum, I / Imax, de 0 à 1 ; les "
 "pointillés marquent f0 et le seuil 0,707"
-msgstr "frequency across, from 2 to 8 kHz (one line per kilohertz); in depth, the current scaled to its maximum, I / Imax, from 0 to 1; the dashed lines mark f0 and the 0.707 threshold"
+msgstr ""
+"frequency across, from 2 to 8 kHz (one line per kilohertz); in depth, the "
+"current scaled to its maximum, I / Imax, from 0 to 1; the dashed lines mark "
+"f0 and the 0.707 threshold"
 
 #: .\templates\figures\rlc_bandwidth.html:28
 msgid "Accolades :"
@@ -2228,7 +2288,9 @@ msgstr "Brackets:"
 msgid ""
 "de f1 à f2 sur la ligne 0,707 ; teal : BP = 796 Hz et Q = 6,3 ; grise : BP = "
 "3,18 kHz et Q = 1,6"
-msgstr "from f1 to f2 on the 0.707 line; teal: BW = 796 Hz and Q = 6.3; grey: BW = 3.18 kHz and Q = 1.6"
+msgstr ""
+"from f1 to f2 on the 0.707 line; teal: BW = 796 Hz and Q = 6.3; grey: BW = "
+"3.18 kHz and Q = 1.6"
 
 #: .\templates\figures\rlc_bandwidth.html:29
 #: .\templates\figures\rlc_response.html:30
