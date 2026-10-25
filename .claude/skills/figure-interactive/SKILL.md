@@ -8,6 +8,8 @@ description: Ajoute une figure interactive explicative (banc isométrique du ski
 Une figure explique **une** notion d'**une** section par un objet réel qu'on manipule (skill `anatomy` : « l'objet est l'explication »).
 Le pilote fait référence : `tools/figures/rc_lowpass/` (modèle, build, test), `templates/figures/rc_lowpass.html` (carte),
 `courses/figures.py` (registre), `courses/tests/test_figures.py` (tests), section `content/electro/p2/m6/03-passe-bas.*.md`.
+Figures déjà livrées (M6 d'`electro`, dans l'ordre des sections) : `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06).
+« La section suivante » = la section qui suit la dernière figure livrée ; prochaine : `07-filtres-rl`.
 Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. Lis d'abord le skill `anatomy` (SKILL.md et `references/craft.md`) si tu ne l'as pas en tête.
 
 ## Règles qui ne se négocient pas
@@ -29,19 +31,22 @@ Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. L
 2. Écris, **à la main**, le tableau des littéraux : 3 à 5 points (basse, coupure ou point remarquable, haute) avec leurs valeurs à 3 chiffres. Recalcule-les deux fois (écart < 0,1 %). Une erreur s'est déjà glissée ainsi (0,0995 au lieu de 0,0990).
 3. Invente l'objet et écris en une phrase ce qui bouge et ce que ce mouvement signifie, puis la table de correspondance objet → grandeur (elle devient la légende). Pistes :
    - **Passe-haut RC** : même banc hydraulique, mais le soufflet **en série** dans la ligne et la vanne vers le bac ; le manomètre lit la pression aux bornes de la vanne (Vs aux bornes de R).
-   - **Fréquence de coupure** : le banc du passe-bas avec deux aiguilles de crête (entrée et sortie) et le repère 0,707 ; la commande cherche le point où Xc = R.
-   - **Déphasage** : deux cadrans côte à côte (piston et manomètre) ou un traceur à deux plumes sur un rouleau ; le retard −arctan(f/fc) se lit entre les deux tracés.
+   - **Fréquence de coupure** (livrée, `rc_cutoff`) : le banc du passe-bas, manomètre différentiel sur la vanne (VR) et manomètre du nœud (Vs), une aiguille de crête teal par cadran ; à fc, les deux crêtes se posent sur 0,707.
+   - **Déphasage** (livrée, `rc_phase`) : traceur à deux voies (papier qui défile, deux plumes, réglette fixe), générateur et boîtier du filtre reliés par câbles ; vitesse du papier proportionnelle à f pour qu'une période fasse toujours 8 graduations (45° chacune) ; accolade Δt entre les crêtes. Objet léger : 40 Ko au lieu de 79.
+   - **Filtres RL** : le même banc avec une roue à aubes lestée d'un volant d'inertie (L : elle résiste aux changements de débit), placée là où la section met la bobine (en série pour le passe-bas RL, vers la masse pour le passe-haut RL) ; fc = R/(2πL), valeurs de la section.
    - **Résonance LC** : volant d'inertie (L) et ressort (C) entraînés par un excentrique ; l'amplitude culmine à f0 = 1/(2π√(LC)).
    - **Champ tournant** (`moteurs`) : trois bobines à 120° et une aiguille aimantée ; vitesse de synchronisme 60·f/p.
    - **Glissement** : disque synchrone stroboscopique et rotor qui décroche ; g = (ns − n)/ns en %.
    - **Auto-maintien** : contacteur 24 V, boutons marche-arrêt, contact 13-14 qui garde la bobine alimentée.
-4. Si la notion, l'objet ou la section n'ont pas été tranchés avec l'utilisateur, demande-le avant d'écrire du code (F2 et F15 prévoient un grill pour la liste des figures).
+4. Si la notion, l'objet ou la section n'ont pas été tranchés avec l'utilisateur, demande-le avant d'écrire du code (F2 et F15 prévoient un grill pour la liste des figures). Quand l'utilisateur désigne lui-même « la section suivante », il tranche la section : prends la piste ci-dessus pour l'objet, dis-le dans le rapport et consigne l'exception au grill dans AGENTS.md (GOALS point 25, hors scope, écart d'implémentation).
+5. Repères : ceux du texte de la section (fc / 10, fc, 10 × fc, ou l'exemple chiffré qu'elle donne, comme « Xc = 577 Ω »), pas des fréquences arbitraires.
 
 ### 1. Modèle (rouge puis vert)
 - `tools/figures/<nom>/model.test.mjs` : un test par grandeur, avec les littéraux du tableau et une tolérance explicite (copie la forme de `rc_lowpass/model.test.mjs`).
 - Lance `node --test "tools/figures/**/*.test.mjs"` : il doit échouer, module introuvable. Passe un **motif**, pas un dossier : `node --test tools/figures/` échoue sous Node 24 pour une autre raison.
 - Écris `tools/figures/<nom>/model.mjs` : constantes et fonctions pures, `export` en tête de ligne, commentaires sur leur propre ligne (le build retire `export ` et les lignes `//` pour l'intégrer au script).
 - Relance jusqu'au vert, puis lance `pytest` : `test_physical_models_of_the_figures_pass_their_hand_checked_literals` exécute tous les `model.test.mjs`.
+- Toute grandeur que le dessin anime (une phase, une seconde tension) sort du modèle et a son test, même si elle n'est pas affichée ; ajoute un test de cohérence (loi des mailles VR + Vs = Ve, avance + retard = 90°).
 
 ### 2. Registre (rouge puis vert)
 - Dans `courses/tests/test_figures.py`, ajoute d'abord l'entrée attendue dans `test_registry_describes_each_figure_by_its_drawing_card_and_script` (et dans `FIGURES == (...)`). Lance `pytest` : rouge.
@@ -61,6 +66,12 @@ Pièges déjà rencontrés :
 - Une dalle sans `d` (ou sans `w`) produit des tracés `NaN` : le navigateur les refuse, et le test `..._has_only_finite_coordinates` les attrape.
 - Le poids monte vite : vise des cylindres à 12 à 24 segments (36 pour un cadran), des molettes à 28 stries, des biseaux seulement sur les grosses pièces. Mesure avec le compte par classe de tracé (voir l'historique du pilote) avant de supprimer des pièces.
 - `sed` sur des nombres de segments s'enchaîne (48 → 28 → 18 dans la même commande) : modifie une valeur à la fois.
+- Pour dériver un build d'un autre ou faire plusieurs remplacements, écris un script Python dans le scratchpad (Write), chaque remplacement vérifié présent une seule fois : un long heredoc Python passé à Bash casse le shell (« unexpected EOF while looking for matching »).
+- `Path.write_text` sous Windows écrit du CRLF : passe toujours `newline="\n"` (Python, Markdown, `.po`).
+- Sans JavaScript, la figure doit rester parlante : calcule dans le build l'état du repère de départ (tracés, aiguilles de crête) au lieu de laisser `d=""`.
+- Affiche les rapports à 3 chiffres significatifs (`maximumSignificantDigits: 3`) : « 0,0995 », pas « 0,100 » qui contredirait le récit ; un retard s'affiche en positif sous l'étiquette « Retard », jamais « Retard : −45° ».
+
+Contrôle `lines.mjs` du skill anatomy : il veut une page HTML, pas un SVG. Dans le scratchpad, écris une page qui contient `figures.css` (avec `--surface`, `--teal-ink` et `--teal` définis) et le SVG dans `<div class="fig"><div class="fig-stage">`, puis `node ~/.claude/skills/anatomy/scripts/lines.mjs <page.html>`. Corrections habituelles : graduations posées sur une ligne de base ou un cercle, rainure arrêtée par deux points, lignes imprimées tirées jusqu'aux bords, symboles faits de contours fermés reliés aux bords du capot. Objectif : `0 of N ends float`.
 
 Lance `node tools/figures/<nom>/build.mjs`, puis `pytest`.
 
@@ -69,6 +80,8 @@ Lance `node tools/figures/<nom>/build.mjs`, puis `pytest`.
 - Écris d'abord, dans `test_figures.py`, le test de traduction de la carte (une chaîne anglaise attendue, avec le deux-points dans la chaîne : « Throttled valve: »), puis lance `pytest` : rouge.
 - Typographie : deux-points intégrés aux chaînes traduites (« Piston : » / « Piston: »), aucun tiret long, virgule décimale en FR. En anglais, Vin et Vout (pas Ve et Vs).
 - `python manage.py makemessages -l en --ignore=.venv --ignore=node_modules --ignore=staticfiles --ignore=tools`, remplis les `msgstr` (retire les `#, fuzzy` devinés par gettext), puis `python manage.py compilemessages -l en`. Aucune chaîne vide. Lance `pytest`.
+- Pour remplir : un script du scratchpad avec un dictionnaire `msgid → msgstr` qui réécrit chaque bloc (garde les lignes `#:`, retire `#,` et `#|`) et échoue si un `msgid` attendu manque. Contrôle ensuite : `grep -c '#, fuzzy'` à 0 et aucun `msgstr ""` isolé.
+- Les étiquettes du relevé qui nomment une tension passent aussi par gettext (« Vs / Ve » → « Vout / Vin »).
 
 ### 5. Contenu
 - Écris d'abord le test de placement, sur le modèle de `test_lowpass_section_carries_the_figure_under_its_corrected_story` (emplacement en FR et en EN, ordre schéma → récit → figure → courbe) et, si un récit fautif circulait, le test de ses formulations interdites. Lance `pytest` : rouge.
@@ -76,15 +89,18 @@ Lance `node tools/figures/<nom>/build.mjs`, puis `pytest`.
 - `python manage.py import_content content/*/formation.json`, puis `pytest`.
 
 ### 6. Vérifier dans le navigateur
-- `python manage.py runserver 127.0.0.1:8765`, compte de démonstration (voir `.playwright-mcp/audit_p2.js`), page de la section en `/fr/` et `/en/`, à 1280 px et à 360 px, en thème clair puis sombre (`page.emulateMedia({ colorScheme: "dark" })`).
+- `python manage.py runserver 127.0.0.1:8765 --noreload` en arrière-plan, compte de démonstration `awa` (mot de passe dans `.playwright-mcp/audit_p2.js`), page de la section en `/fr/` et `/en/`, à 1280 px et à 360 px, en thème clair puis sombre (`page.emulateMedia({ colorScheme: "dark" })`). Identifiant public de la section : `manage.py shell -c "from courses.models import Section; print(Section.objects.get(module__partie__formation__slug='electro', title_fr='<titre>').public_id)"`.
+- Travaille dans un contexte de navigateur séparé (`page.context().browser().newContext(...)`) pour ne pas perdre une session PythonAnywhere ouverte dans la page principale ; `reducedMotion: "reduce"` et `javaScriptEnabled: false` se passent à `newContext`.
+- Pour zoomer, retire l'en-tête collant et élargis la scène (`.fig-stage` à 1800 px) avant la capture.
 - Contrôle : zéro erreur console ou CSP, aucun débordement (`scrollWidth > clientWidth`), relevé conforme aux littéraux à chaque repère, Lecture et Pause, curseur au clavier, figure figée sous `reduced-motion` et sans JavaScript.
 - Lis les captures et zoome : chaque pièce repose sur une autre, chaque trait finit sur quelque chose, aucune surface nue (règles anatomy).
-- Mesure CSS + JS de la page (< 60 Ko) et le poids de la page (< 200 Ko).
+- Mesure CSS + JS de la page (< 60 Ko) et le poids de la page (< 200 Ko). Une section qui contient aussi un calculateur charge `calculators.js` (11,5 Ko) : avec un script de figure de 4,6 Ko, la page frôle 60 Ko (`05-coupure` : 59,6 Kio) ; signale-le.
+- Arrête le serveur à la fin (PowerShell : `Get-NetTCPConnection -LocalPort 8765 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -Confirm:$false }`).
 
 ### 7. Clore
 - `pytest` complet, `node --test "tools/figures/**/*.test.mjs"`, `python manage.py makemigrations --check --dry-run` : tout vert, sans aucun test ignoré non justifié.
 - AGENTS.md : user story de la figure, ligne du registre et littéraux du modèle dans la modélisation, écart d'implémentation s'il y en a ; puis CLAUDE.md = son en-tête (4 lignes) + AGENTS.md à partir de la ligne 4, vérifié par `diff <(tail -n +7 AGENTS.md) <(tail -n +8 CLAUDE.md)`.
-- Commits sur `develop` seulement si l'utilisateur le demande, découpés comme E44 : `feat(courses)` (registre, tests), `feat(content)` (build, fichiers générés, carte, section, traductions), `style(ui)` après l'audit, `docs`.
+- Commits sur `develop` seulement si l'utilisateur le demande. En pratique une figure part en un `feat(courses)` (modèle, build, fichiers générés, registre, tests, carte, section, traductions : un commit plus fin aurait des tests rouges sans les fichiers générés), puis un `docs`. Déploiement : skill `deploy`.
 
 ## Rapport final
 Dis ce qui a été vérifié et comment (nombre de tests, littéraux, captures), ce qui ne l'a pas été (audit de contraste, thème sombre, `--audit` du kit), et les compromis faits pour tenir le budget.

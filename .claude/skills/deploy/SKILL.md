@@ -12,7 +12,7 @@ Règles du projet : AGENTS.md (source de vérité), critères 14, 15, 45 et 55 d
 - **Aucun secret** : aucun identifiant PythonAnywhere n'est stocké ni saisi par Claude. L'utilisateur se connecte lui-même dans la fenêtre Playwright ; aucun jeton d'API (écart à E17, AGENTS.md écart 22).
 - **Rien ne part en rouge** : pytest, `node --test` et `makemigrations --check` verts avant tout commit.
 - **`develop` puis `main`** : on commite sur `develop`, `main` avance seulement en avance rapide (`--ff-only`). Jamais de `--force`.
-- **Comptes de test temporaires** : créés dans `manage.py shell`, sans mot de passe utilisable, puis supprimés avec leurs données, et `history -c` dans la console.
+- **Comptes de test temporaires** : créés dans `manage.py shell`, avec un mot de passe jetable généré pour l'occasion (jamais un mot de passe réel), puis supprimés avec leurs données, `history -c` dans la console et fichier local du mot de passe effacé.
 - **Production intacte** : aucune donnée d'apprenant lue, modifiée ou affichée pendant la fumée.
 
 ## Étapes
