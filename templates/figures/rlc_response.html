@@ -1,0 +1,33 @@
+{% load i18n %}<figure class="fig" data-fig="rlc_response">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "La courbe de réponse, sur la table traçante" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Table traçante : un pupitre alimente deux circuits RLC série qui ne diffèrent que par R ; sur le papier, la fréquence va de gauche à droite et le courant monte vers le fond ; un portique porte deux plumes qui suivent les deux courbes en cloche.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-rlc_response-freq">{% translate "Fréquence" %}</label>
+        <input id="fig-rlc_response-freq" type="range" min="500" max="10500" step="50" value="2500" data-fig-freq>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="low">f0 / 2</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="f0">f0</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="high">2 × f0</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Balayer' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Balayer" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>f</dt><dd data-fig-out="f"></dd></div>
+        <div><dt>{% translate "I avec R = 50 Ω" %}</dt><dd data-fig-out="i1"></dd></div>
+        <div><dt>{% translate "I avec R = 200 Ω" %}</dt><dd data-fig-out="i2"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Balayer fait parcourir au portique les fréquences de 500 Hz à 10,5 kHz ; à chaque position, le courant lu est celui du régime établi." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Pupitre :" %}</strong> {% translate "générateur de 1 V, dont le bouton règle la fréquence, et deux circuits RLC série gravés (L = 10 mH, C = 100 nF), branchés tous deux sur sa sortie" %}</li>
+      <li><strong>{% translate "Circuit teal :" %}</strong> {% translate "R = 50 Ω (résistance courte) ; plume et courbe teal" %}</li>
+      <li><strong>{% translate "Circuit gris :" %}</strong> {% translate "R = 200 Ω (résistance longue) ; plume et courbe grises" %}</li>
+      <li><strong>{% translate "Table traçante :" %}</strong> {% translate "la fréquence en largeur, de 0 à 11 kHz (une ligne par kilohertz), le courant en profondeur, de 0 à 20 mA (une ligne par 5 mA) ; le trait pointillé marque f0" %}</li>
+      <li><strong>{% translate "Portique :" %}</strong> {% translate "il se place à la fréquence choisie ; chaque plume se pose sur le courant de son circuit" %}</li>
+    </ul>
+  </figcaption>
+</figure>

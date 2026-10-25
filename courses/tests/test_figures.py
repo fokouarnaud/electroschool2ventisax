@@ -39,8 +39,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "lc_resonance": Figure(
             drawing="figures/lc_resonance.svg", card="figures/lc_resonance.html", script="acad/js/figures/lc_resonance.js",
         ),
+        "rlc_response": Figure(
+            drawing="figures/rlc_response.svg", card="figures/rlc_response.html", script="acad/js/figures/rlc_response.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response")
 
 
 @pytest.mark.django_db
@@ -451,3 +454,37 @@ def test_resonance_section_carries_the_figure_after_what_happens_at_resonance(la
 def test_resonance_story_explains_why_vc_can_exceed_the_source(lang, cancel):
     """F1 : Vc et VL dépassent Ve parce qu'elles sont opposées à chaque instant ; la source ne fournit que VR."""
     assert cancel in (M7 / f"01-lc-serie.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_response_card_maps_the_plotter_to_both_circuits_in_both_languages(client, enrolled, module):
+    """Courbe de réponse : table traçante, deux RLC série (R = 50 Ω teal, R = 200 Ω gris), balayage par Lecture."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="La courbe de réponse", order=1, body_md_fr="[[fig:rlc_response]]", body_md_en="[[fig:rlc_response]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rlc_response"' in fr and 'id="fig-rlc_response-freq"' in fr
+    assert 'min="500" max="10500" step="50"' in fr
+    assert "Table traçante :</strong>" in fr and "R = 50 Ω" in fr and "R = 200 Ω" in fr
+    assert "Plotter:</strong>" in en and "Table traçante" not in en and 'data-play="Sweep"' in en
+    assert 'src="/static/acad/js/figures/rlc_response.js' in fr
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## À retenir"), ("en", "## Key points")])
+def test_response_section_carries_the_figure_after_both_curves(lang, keep):
+    """F10 : les deux courbes existantes gardées, puis récit et figure avant « À retenir »."""
+    text = (M7 / f"02-courbe-reponse.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rlc_response]]\n" in text
+    assert text.index("courbe-i.svg") < text.index("courbe-r.svg") < text.index(RECIT[lang]) < text.index("[[fig:rlc_response]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_response_story_says_the_leftover_reactance_limits_the_current_away_from_f0(lang):
+    """F1 : loin de f0, |XL − XC| limite le courant pour les deux circuits ; à f0, il ne reste que R."""
+    assert "|XL − XC|" in (M7 / f"02-courbe-reponse.{lang}.md").read_text(encoding="utf-8")

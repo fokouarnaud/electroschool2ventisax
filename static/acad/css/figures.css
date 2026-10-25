@@ -51,6 +51,7 @@
 .iso-line[data-tone="mid"] { stroke: var(--fig-mid); }
 .iso-line[data-tone="faint"] { stroke: var(--fig-faint); }
 .iso-line[data-tone="lit"] { stroke: var(--fig-lit); }
+.iso-line[data-dashed] { stroke-dasharray: 2 2; }
 .iso-dots circle { fill: var(--fig-dot); stroke: none; opacity: .32; }
 .iso-dots[data-tone="hi"] circle { opacity: .85; }
 .iso-dots[data-tone="mid"] circle { opacity: .45; }

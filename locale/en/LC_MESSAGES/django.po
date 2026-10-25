@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 19:23+0100\n"
+"POT-Creation-Date: 2026-10-25 19:45+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1717,6 +1717,7 @@ msgstr "End of module"
 #: .\templates\figures\lc_resonance.html:3 .\templates\figures\rc_cutoff.html:3
 #: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
 #: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
 
@@ -1729,11 +1730,15 @@ msgid ""
 "Banc hydraulique : un piston pousse l’eau à travers trois pièces en série, "
 "une vanne étranglée coiffée d’un débitmètre, une roue à aubes lestée d’un "
 "volant, puis une cloche à membrane, avant le bac."
-msgstr "Hydraulic bench: a piston pushes water through three parts in series, a throttled valve topped by a flow meter, a paddle wheel weighted with a flywheel, then a membrane bell, before the tray."
+msgstr ""
+"Hydraulic bench: a piston pushes water through three parts in series, a "
+"throttled valve topped by a flow meter, a paddle wheel weighted with a "
+"flywheel, then a membrane bell, before the tray."
 
 #: .\templates\figures\lc_resonance.html:7 .\templates\figures\rc_cutoff.html:7
 #: .\templates\figures\rc_highpass.html:7 .\templates\figures\rc_lowpass.html:7
 #: .\templates\figures\rc_phase.html:7 .\templates\figures\rl_lowpass.html:7
+#: .\templates\figures\rlc_response.html:7
 msgid "Fréquence"
 msgstr "Frequency"
 
@@ -1750,6 +1755,7 @@ msgstr "Play"
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
 #: .\templates\figures\rl_lowpass.html:14
+#: .\templates\figures\rlc_response.html:14
 msgid "Pause"
 msgstr "Pause"
 
@@ -1801,7 +1807,9 @@ msgstr "Flow meter:"
 msgid ""
 "courant i, le même dans les trois pièces ; l’aiguille va au bout de "
 "l’échelle pour Imax = 20 mA, à f0"
-msgstr "current i, the same in all three parts; the needle reaches full scale for Imax = 20 mA, at f0"
+msgstr ""
+"current i, the same in all three parts; the needle reaches full scale for "
+"Imax = 20 mA, at f0"
 
 #: .\templates\figures\lc_resonance.html:31
 #: .\templates\figures\rl_lowpass.html:28
@@ -1822,7 +1830,9 @@ msgstr "Membrane bell:"
 msgid ""
 "condensateur C = 100 nF, en série ; aucune eau ne traverse la membrane, qui "
 "se tend et se détend"
-msgstr "capacitor C = 100 nF, in series; no water crosses the membrane, which stretches and relaxes"
+msgstr ""
+"capacitor C = 100 nF, in series; no water crosses the membrane, which "
+"stretches and relaxes"
 
 #: .\templates\figures\lc_resonance.html:33
 #: .\templates\figures\rc_cutoff.html:31
@@ -2152,6 +2162,83 @@ msgstr ""
 #: .\templates\figures\rl_lowpass.html:30
 msgid "résistance R = 100 Ω, vers la masse"
 msgstr "resistor R = 100 Ω, to ground"
+
+#: .\templates\figures\rlc_response.html:3
+msgid "La courbe de réponse, sur la table traçante"
+msgstr "The response curve, on the plotter"
+
+#: .\templates\figures\rlc_response.html:4
+msgid ""
+"Table traçante : un pupitre alimente deux circuits RLC série qui ne "
+"diffèrent que par R ; sur le papier, la fréquence va de gauche à droite et "
+"le courant monte vers le fond ; un portique porte deux plumes qui suivent "
+"les deux courbes en cloche."
+msgstr "Plotter: a desk feeds two series RLC circuits that differ only in R; on the paper, frequency runs from left to right and current rises towards the back; a gantry carries two pens that follow the two bell-shaped curves."
+
+#: .\templates\figures\rlc_response.html:14
+msgid "Balayer"
+msgstr "Sweep"
+
+#: .\templates\figures\rlc_response.html:18
+msgid "I avec R = 50 Ω"
+msgstr "I with R = 50 Ω"
+
+#: .\templates\figures\rlc_response.html:19
+msgid "I avec R = 200 Ω"
+msgstr "I with R = 200 Ω"
+
+#: .\templates\figures\rlc_response.html:21
+msgid ""
+"Balayer fait parcourir au portique les fréquences de 500 Hz à 10,5 kHz ; à "
+"chaque position, le courant lu est celui du régime établi."
+msgstr "Sweep moves the gantry through the frequencies from 500 Hz to 10.5 kHz; at each position, the current shown is the steady-state current."
+
+#: .\templates\figures\rlc_response.html:26
+msgid "Pupitre :"
+msgstr "Desk:"
+
+#: .\templates\figures\rlc_response.html:26
+msgid ""
+"générateur de 1 V, dont le bouton règle la fréquence, et deux circuits RLC "
+"série gravés (L = 10 mH, C = 100 nF), branchés tous deux sur sa sortie"
+msgstr "1 V generator, whose knob sets the frequency, and two engraved series RLC circuits (L = 10 mH, C = 100 nF), both connected to its output"
+
+#: .\templates\figures\rlc_response.html:27
+msgid "Circuit teal :"
+msgstr "Teal circuit:"
+
+#: .\templates\figures\rlc_response.html:27
+msgid "R = 50 Ω (résistance courte) ; plume et courbe teal"
+msgstr "R = 50 Ω (short resistor); teal pen and curve"
+
+#: .\templates\figures\rlc_response.html:28
+msgid "Circuit gris :"
+msgstr "Grey circuit:"
+
+#: .\templates\figures\rlc_response.html:28
+msgid "R = 200 Ω (résistance longue) ; plume et courbe grises"
+msgstr "R = 200 Ω (long resistor); grey pen and curve"
+
+#: .\templates\figures\rlc_response.html:29
+msgid "Table traçante :"
+msgstr "Plotter:"
+
+#: .\templates\figures\rlc_response.html:29
+msgid ""
+"la fréquence en largeur, de 0 à 11 kHz (une ligne par kilohertz), le courant "
+"en profondeur, de 0 à 20 mA (une ligne par 5 mA) ; le trait pointillé marque "
+"f0"
+msgstr "frequency across, from 0 to 11 kHz (one line per kilohertz), current in depth, from 0 to 20 mA (one line per 5 mA); the dashed line marks f0"
+
+#: .\templates\figures\rlc_response.html:30
+msgid "Portique :"
+msgstr "Gantry:"
+
+#: .\templates\figures\rlc_response.html:30
+msgid ""
+"il se place à la fréquence choisie ; chaque plume se pose sur le courant de "
+"son circuit"
+msgstr "it moves to the chosen frequency; each pen rests on its circuit's current"
 
 #: .\templates\includes\partie_heading.html:2
 #, python-format
