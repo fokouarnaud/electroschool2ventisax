@@ -99,6 +99,9 @@ def score_numeric(expected, unit, tolerance_pct, answer):
         return Fraction(0)
     value, given_unit = parsed
     unit = unicodedata.normalize("NFKC", unit)
+    # « 2 m » lu comme 2 mètres ne vaut le mètre que si la question l'attend ; sinon c'est 2 milli, unité omise (« 2 m » pour 2 mA).
+    if given_unit == METRE and unit != METRE:
+        value, given_unit = value * SI_PREFIXES["m"], ""
     if given_unit and given_unit != UNIT_ALIASES.get(unit, unit):
         return Fraction(0)
     return Fraction(1) if abs(value - expected) <= abs(expected) * tolerance_pct / 100 else Fraction(0)

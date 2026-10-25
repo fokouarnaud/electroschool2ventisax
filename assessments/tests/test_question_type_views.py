@@ -98,6 +98,9 @@ def test_attempt_page_renders_each_question_type(client, enrolled, module, numer
     html = client.get(f"/fr/tentatives/{attempt.public_id}/").content.decode()
 
     assert 'name="answer_text"' in html
+    # Sur téléphone, le clavier des lettres doit rester accessible pour taper « mA », « kΩ » (inputmode="decimal" n'ouvre que le pavé numérique).
+    assert 'inputmode="decimal"' not in html and 'inputmode="text"' in html
+    assert 'autocapitalize="off"' in html and 'autocorrect="off"' in html
     assert html.count('name="pair_') == 2
     assert "<svg" in html and 'data-zone="' in html
 

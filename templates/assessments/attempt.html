@@ -33,7 +33,7 @@
             <div class="field numeric">
               <label for="a-{{ row.question.public_id }}">{% translate "Votre réponse" %}</label>
               <div class="unit-input">
-                <input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" name="answer_text" id="a-{{ row.question.public_id }}" value="{{ row.answer_text }}" maxlength="50">
+                <input type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" name="answer_text" id="a-{{ row.question.public_id }}" value="{{ row.answer_text }}" maxlength="50">
                 {% if row.question.unit %}<span class="unit" aria-label="{% translate 'unité' %}">{{ row.question.unit }}</span>{% endif %}
               </div>
             </div>

@@ -190,3 +190,19 @@ def test_parse_quantity_refuses_si_prefixes_on_speed_percent_and_celsius(text):
 def test_score_numeric_in_electrical_engineering_units(unit, answer, score):
     expected = {"tr/min": "1450", "N·m": "25", "%": "4", "°C": "155", "s": "5", "m": "8"}[unit]
     assert score_numeric(Decimal(expected), unit, Decimal("2"), answer) == Fraction(score)
+
+
+@pytest.mark.parametrize("expected, unit, answer, score", [
+    ("0.025", "A", "0.025 A", 1),     # 25 mA saisis en unité de base, point ou virgule
+    ("0.025", "A", "0,025 A", 1),
+    ("0.025", "A", "0.025", 1),
+    ("0.025", "A", "25 mA", 1),
+    ("0.002", "A", "2m", 1),          # unité omise : « m » est le préfixe milli, pas le mètre
+    ("0.002", "A", "2 m", 1),
+    ("0.025", "A", "25 m", 1),
+    ("2", "V", "2 m", 0),             # 2 mV ne valent pas 2 V
+    ("8", "m", "8 m", 1),             # une question en mètres lit toujours « m » comme le mètre
+    ("0.008", "m", "8 m", 0),
+])
+def test_a_lone_m_is_the_milli_prefix_unless_metres_are_expected(expected, unit, answer, score):
+    assert score_numeric(Decimal(expected), unit, Decimal("2"), answer) == Fraction(score)
