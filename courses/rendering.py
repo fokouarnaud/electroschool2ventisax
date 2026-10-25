@@ -4,6 +4,8 @@ import re
 import bleach
 import markdown
 
+from .figures import FIGURES
+
 ALLOWED_TAGS = {
     "p", "br", "strong", "em", "ul", "ol", "li", "h2", "h3", "h4", "blockquote", "code", "pre",
     "table", "thead", "tbody", "tr", "th", "td", "a", "img", "hr",
@@ -16,6 +18,8 @@ MOTOR_CALCULATORS = ("motor_current", "speed", "torque", "stardelta")
 CALCULATORS = ("ohm", "divider", "resistor", "bias", "reactance", "cutoff", "resonance", "gain", "transformer", "ripple",
                *MOTOR_CALCULATORS)
 CALC_MARKER = re.compile(r"<p>\[\[calc:(%s)\]\]</p>" % "|".join(CALCULATORS))
+# Figures interactives (US-88) : même principe ; l'emplacement est remplacé par la carte de la figure dans la vue.
+FIG_MARKER = re.compile(r"<p>\[\[fig:(%s)\]\]</p>" % "|".join(FIGURES))
 # Schémas du cours : ajustés à la largeur et liés à leur fichier pleine taille (agrandissement sur téléphone).
 # Seuls les SVG servis par le site (/static/content/) sont concernés, après nettoyage par bleach.
 DIAGRAM = re.compile(r'(<img alt="[^"]*" src="(/static/content/[\w/.-]+\.svg)">)')
@@ -25,4 +29,5 @@ def render_markdown(text):
     html = markdown.markdown(text or "", extensions=["tables"])
     clean = bleach.clean(html, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, protocols={"http", "https"}, strip=True)
     clean = DIAGRAM.sub(r'<a class="figure-zoom" href="\2">\1</a>', clean)
+    clean = FIG_MARKER.sub(r'<div class="fig" data-fig="\1"></div>', clean)
     return CALC_MARKER.sub(r'<div class="calc" data-calc="\1"></div>', clean)

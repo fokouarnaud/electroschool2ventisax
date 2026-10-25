@@ -6,6 +6,7 @@ from django.utils.translation import get_language
 from progress.models import SectionView
 from progress.services import module_has_quiz, mark_section_viewed, outline
 
+from . import figures
 from .access import accessible_formations
 from .models import Formation, Module, Section
 from .rendering import MOTOR_CALCULATORS, render_markdown
@@ -46,10 +47,12 @@ def section_detail(request, public_id):
     siblings = list(section.module.sections.all())
     index = siblings.index(section)
     lang = get_language()
-    body_html = render_markdown(section.body_md)
+    body_html, section_figures = figures.expand(render_markdown(section.body_md))
     return render(request, "courses/section_detail.html", {
         "section": section,
         "body_html": body_html,
+        "figures": section_figures,
+        "figure_scripts": [figures.REGISTRY[name].script for name in section_figures],
         "motor_calculators": any(f'data-calc="{kind}"' in body_html for kind in MOTOR_CALCULATORS),
         "previous": siblings[index - 1] if index > 0 else None,
         "next": siblings[index + 1] if index + 1 < len(siblings) else None,

@@ -1,5 +1,6 @@
 {% extends "base.html" %}{% load i18n static acad_i18n %}
 {% block title %}{{ section.title }}{% endblock %}
+{% block head %}{% if figures %}<link rel="stylesheet" href="{% static 'acad/css/figures.css' %}">{% endif %}{% endblock %}
 {% block content %}
 <div class="reader">
   {% include "courses/_outline.html" with partie=section.module.partie %}
@@ -33,4 +34,4 @@
   </article>
 </div>
 {% endblock %}
-{% block scripts %}{% if motor_calculators %}<script src="{% static 'acad/js/calculators-moteurs.js' %}" defer></script>{% endif %}{% if 'data-calc' in body_html %}<script src="{% static 'acad/js/calculators.js' %}" defer></script>{% endif %}{% endblock %}
+{% block scripts %}{% if motor_calculators %}<script src="{% static 'acad/js/calculators-moteurs.js' %}" defer></script>{% endif %}{% if 'data-calc' in body_html %}<script src="{% static 'acad/js/calculators.js' %}" defer></script>{% endif %}{% for script in figure_scripts %}<script src="{% static script %}" defer></script>{% endfor %}{% endblock %}

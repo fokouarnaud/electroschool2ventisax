@@ -1,0 +1,56 @@
+/* Figures interactives (grill F9) : tons du kit anatomy remappés sur les jetons du projet ; un seul accent, le teal. */
+.fig {
+  --fig-paper: var(--surface); --fig-top: #ffffff; --fig-face: #ffffff;
+  --fig-shade-0: #cfdbe1; --fig-shade-1: #dbe4e9; --fig-shade-2: #e5ecf0; --fig-shade-3: #eef3f5;
+  --fig-hi: #173f58; --fig-mid: #6f8796; --fig-lo: #a9bac4; --fig-faint: #cfdbe1;
+  --fig-lit: var(--teal-ink); --fig-lit-top: #c9efe9; --fig-lit-shade: #9fdfd5;
+  --fig-halo: #6f8796; --fig-halo-opacity: .3; --fig-dot: #173f58;
+  margin: 1.5rem 0;
+}
+@media (prefers-color-scheme: dark) {
+  .fig {
+    --fig-top: #18374c; --fig-face: #163246;
+    --fig-shade-0: #0b1f2c; --fig-shade-1: #0e2433; --fig-shade-2: #112a3b; --fig-shade-3: #143044;
+    --fig-hi: #dbe7ec; --fig-mid: #7f99a8; --fig-lo: #3f5d70; --fig-faint: #284558;
+    --fig-lit: var(--teal); --fig-lit-top: #1d5a5a; --fig-lit-shade: #164848;
+    --fig-halo: #02090e; --fig-halo-opacity: .85; --fig-dot: #dbe7ec;
+  }
+}
+.fig-plate { position: relative; padding: 2.25rem 1rem 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.fig-corners { position: absolute; inset: .9rem 1rem auto; display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .8rem; letter-spacing: .04em; }
+.fig-stage { max-width: 640px; margin: 0 auto; }
+.fig-controls { display: grid; gap: .75rem; margin-top: .75rem; }
+.fig-freq { display: grid; gap: .25rem; }
+.fig-freq input { width: 100%; min-height: 44px; accent-color: var(--teal-ink); }
+.fig-buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+.fig-buttons .btn { min-height: 44px; }
+.fig-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .5rem; margin: 0; }
+.fig-readout div { padding: .4rem .6rem; border-radius: var(--radius-sm); background: var(--mist); }
+.fig-readout dt { color: var(--muted); font-size: .8rem; }
+.fig-readout dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.fig-note { margin: 0; color: var(--muted); font-size: .85rem; }
+.fig-legend ul { margin: .75rem 0 0; padding-left: 1.2rem; color: var(--muted); font-size: .9rem; }
+
+.iso-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.iso-svg path, .iso-svg circle { vector-effect: non-scaling-stroke; }
+.iso-fill { fill: var(--fig-paper); stroke: none; }
+.iso-shade, .iso-top { stroke: none; }
+.iso-shade[data-shade="0"] { fill: var(--fig-shade-0); }
+.iso-shade[data-shade="1"] { fill: var(--fig-shade-1); }
+.iso-shade[data-shade="2"] { fill: var(--fig-shade-2); }
+.iso-shade[data-shade="3"] { fill: var(--fig-shade-3); }
+.iso-top { fill: var(--fig-top); }
+.iso-solid[data-lit] > .iso-fill { fill: var(--fig-face); }
+.iso-solid[data-lit] > .iso-top { fill: var(--fig-lit-top); }
+.iso-solid[data-lit] > .iso-shade { fill: var(--fig-lit-shade); }
+.iso-solid[data-lit] > .iso-edge { stroke: var(--fig-lit); }
+.iso-halo { fill: var(--fig-halo); stroke: none; filter: blur(9px); opacity: var(--fig-halo-opacity); transform: translateY(3px); }
+.iso-line { fill: none; stroke: var(--fig-lo); stroke-width: .6px; stroke-linecap: round; stroke-linejoin: round; }
+.iso-line[data-tone="hi"] { stroke: var(--fig-hi); }
+.iso-line[data-tone="mid"] { stroke: var(--fig-mid); }
+.iso-line[data-tone="faint"] { stroke: var(--fig-faint); }
+.iso-line[data-tone="lit"] { stroke: var(--fig-lit); }
+.iso-dots circle { fill: var(--fig-dot); stroke: none; opacity: .32; }
+.iso-dots[data-tone="hi"] circle { opacity: .85; }
+.iso-dots[data-tone="mid"] circle { opacity: .45; }
+.iso-dots[data-tone="lo"] circle { opacity: .22; }

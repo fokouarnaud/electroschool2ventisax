@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 13:37+0100\n"
+"POT-Creation-Date: 2026-10-25 14:37+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -574,7 +574,7 @@ msgid "Mes formations"
 msgstr "My courses"
 
 #: .\templates\accounts\dashboard.html:30
-#: .\templates\accounts\dashboard.html:51
+#: .\templates\accounts\dashboard.html:47
 msgid "Progression"
 msgstr "Progress"
 
@@ -1670,7 +1670,7 @@ msgid "Compétence visée"
 msgstr "Target skill"
 
 #: .\templates\courses\module_detail.html:20
-#: .\templates\courses\section_detail.html:25
+#: .\templates\courses\section_detail.html:26
 msgid "Sections"
 msgstr "Sections"
 
@@ -1690,29 +1690,113 @@ msgstr "Start reading"
 msgid "Faire le quiz"
 msgstr "Take the quiz"
 
-#: .\templates\courses\section_detail.html:10
+#: .\templates\courses\section_detail.html:11
 msgid "Activité pratique"
 msgstr "Practical activity"
 
-#: .\templates\courses\section_detail.html:11
+#: .\templates\courses\section_detail.html:12
 msgid "Contenu disponible en français uniquement"
 msgstr "Content available in French only"
 
-#: .\templates\courses\section_detail.html:19
+#: .\templates\courses\section_detail.html:20
 msgid "Annexes à télécharger"
 msgstr "Downloadable appendices"
 
-#: .\templates\courses\section_detail.html:26
+#: .\templates\courses\section_detail.html:27
 msgid "Précédent"
 msgstr "Previous"
 
-#: .\templates\courses\section_detail.html:28
+#: .\templates\courses\section_detail.html:29
 msgid "Suivant"
 msgstr "Next"
 
-#: .\templates\courses\section_detail.html:30
+#: .\templates\courses\section_detail.html:31
 msgid "Fin du module"
 msgstr "End of module"
+
+#: .\templates\figures\rc_lowpass.html:3
+msgid "Fig. 1"
+msgstr "Fig. 1"
+
+#: .\templates\figures\rc_lowpass.html:3
+msgid "Le passe-bas, côté eau"
+msgstr "The low-pass, in water"
+
+#: .\templates\figures\rc_lowpass.html:4
+msgid ""
+"Banc hydraulique : un piston pousse l’eau à travers une vanne étranglée vers "
+"un soufflet posé dans un bac ; un manomètre mesure la pression à la sortie."
+msgstr "Hydraulic bench: a piston pushes water through a throttled valve towards a bellows standing in a tray; a pressure gauge measures the pressure at the output."
+
+#: .\templates\figures\rc_lowpass.html:7
+msgid "Fréquence"
+msgstr "Frequency"
+
+#: .\templates\figures\rc_lowpass.html:11
+msgid "Basse"
+msgstr "Low"
+
+#: .\templates\figures\rc_lowpass.html:13
+msgid "Haute"
+msgstr "High"
+
+#: .\templates\figures\rc_lowpass.html:14
+msgid "Lecture"
+msgstr "Play"
+
+#: .\templates\figures\rc_lowpass.html:14
+msgid "Pause"
+msgstr "Pause"
+
+#: .\templates\figures\rc_lowpass.html:20
+msgid "Déphasage"
+msgstr "Phase shift"
+
+#: .\templates\figures\rc_lowpass.html:22
+msgid ""
+"Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et le "
+"retard le sont."
+msgstr "Slow motion: the pace is not to scale, the amplitudes and the lag are."
+
+#: .\templates\figures\rc_lowpass.html:27
+msgid "Piston :"
+msgstr "Piston:"
+
+#: .\templates\figures\rc_lowpass.html:27
+msgid "générateur, tension d’entrée Ve"
+msgstr "generator, input voltage Vin"
+
+#: .\templates\figures\rc_lowpass.html:28
+msgid "Vanne étranglée :"
+msgstr "Throttled valve:"
+
+#: .\templates\figures\rc_lowpass.html:28
+msgid "résistance R = 1 kΩ"
+msgstr "resistor R = 1 kΩ"
+
+#: .\templates\figures\rc_lowpass.html:29
+msgid "Soufflet :"
+msgstr "Bellows:"
+
+#: .\templates\figures\rc_lowpass.html:29
+msgid "condensateur C = 100 nF"
+msgstr "capacitor C = 100 nF"
+
+#: .\templates\figures\rc_lowpass.html:30
+msgid "Bac de retour :"
+msgstr "Return tray:"
+
+#: .\templates\figures\rc_lowpass.html:30
+msgid "masse"
+msgstr "ground"
+
+#: .\templates\figures\rc_lowpass.html:31
+msgid "Manomètre :"
+msgstr "Pressure gauge:"
+
+#: .\templates\figures\rc_lowpass.html:31
+msgid "tension de sortie Vs ; ses deux repères marquent 0,707, la coupure"
+msgstr "output voltage Vout; its two marks show 0.707, the cutoff"
 
 #: .\templates\includes\partie_heading.html:2
 #, python-format

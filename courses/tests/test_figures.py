@@ -1,0 +1,224 @@
+"""Figures interactives (grill F1 à F15) : emplacement `[[fig:<nom>]]`, carte et fichiers générés."""
+import shutil
+import subprocess
+from pathlib import Path
+
+import pytest
+
+from config.uploads import ACTIVE_SVG
+from courses.figures import FIGURES
+from courses.rendering import render_markdown
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def generated(name):
+    return ROOT / "templates" / "figures" / f"{name}.svg", ROOT / "static" / "acad" / "js" / "figures" / f"{name}.js"
+
+
+def test_registry_describes_each_figure_by_its_drawing_card_and_script():
+    """Modèle de données (PRD) : registre fermé `nom → dessin, carte, script` ; aucune entité en base."""
+    from courses.figures import REGISTRY, Figure
+
+    assert REGISTRY == {
+        "rc_lowpass": Figure(
+            drawing="figures/rc_lowpass.svg", card="figures/rc_lowpass.html", script="acad/js/figures/rc_lowpass.js",
+        ),
+    }
+    assert FIGURES == ("rc_lowpass",)
+
+
+@pytest.mark.django_db
+def test_section_view_receives_the_scripts_from_the_registry(client, enrolled, module):
+    """Modèle de données : la vue lit le script dans le registre, pas dans un nom de fichier reconstruit."""
+    from courses.models import Section
+
+    section = Section.objects.create(module=module, title_fr="Passe-bas", order=1, body_md_fr="[[fig:rc_lowpass]]")
+    client.force_login(enrolled)
+
+    assert client.get(f"/fr/sections/{section.public_id}/").context["figure_scripts"] == ["acad/js/figures/rc_lowpass.js"]
+
+
+@pytest.mark.parametrize("name", FIGURES)
+def test_each_figure_has_its_generated_files_within_budget(name):
+    """US-91 et F8 : dessin ≤ 80 Ko, script ≤ 8 Ko."""
+    svg, js = generated(name)
+
+    assert svg.is_file() and js.is_file()
+    assert svg.stat().st_size <= 80_000
+    assert js.stat().st_size <= 8_000
+
+
+@pytest.mark.parametrize("name", FIGURES)
+def test_each_figure_drawing_is_inert_and_carries_no_text(name):
+    """US-88 et F11 : aucun script ni gestionnaire d'événement ; aucun texte (un seul dessin pour les deux langues)."""
+    data = generated(name)[0].read_bytes()
+
+    assert data.lstrip().startswith(b"<svg")
+    assert not ACTIVE_SVG.search(data)
+    assert b"<text" not in data
+
+
+@pytest.mark.parametrize("name", FIGURES)
+def test_each_figure_drawing_has_only_finite_coordinates(name):
+    """US-91 : une pièce mal décrite (dimension manquante) sortait des tracés « NaN », refusés par le navigateur."""
+    assert b"NaN" not in generated(name)[0].read_bytes()
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="Node n'existe que sur le poste de développement (F6)")
+@pytest.mark.parametrize("name", FIGURES)
+def test_each_figure_rebuilds_byte_for_byte(name, tmp_path):
+    """US-91 : build.mjs est déterministe ; les fichiers committés sont bien sa sortie."""
+    subprocess.run(["node", str(ROOT / "tools" / "figures" / name / "build.mjs"), "--out", str(tmp_path)], check=True)
+
+    for path in generated(name):
+        assert (tmp_path / path.name).read_bytes() == path.read_bytes()
+
+
+def test_figure_marker_becomes_an_inert_slot():
+    """US-88 : un paragraphe réduit à `[[fig:rc_lowpass]]` devient un emplacement inerte, après bleach."""
+    html = render_markdown("Observez :\n\n[[fig:rc_lowpass]]")
+
+    assert '<div class="fig" data-fig="rc_lowpass"></div>' in html
+    assert "[[fig" not in html
+
+
+def test_unknown_figure_stays_plain_text():
+    html = render_markdown("[[fig:rm-rf]]")
+
+    assert "data-fig" not in html
+    assert "[[fig:rm-rf]]" in html
+
+
+def test_figure_marker_inside_a_sentence_is_not_expanded():
+    assert "data-fig" not in render_markdown("Le marqueur [[fig:rc_lowpass]] doit être seul sur sa ligne.")
+
+
+@pytest.fixture
+def figure_section(module):
+    from courses.models import Section
+
+    return Section.objects.create(
+        module=module, title_fr="Le filtre passe-bas", order=1,
+        body_md_fr="Avant.\n\n[[fig:rc_lowpass]]\n\nAprès.", body_md_en="Before.\n\n[[fig:rc_lowpass]]\n\nAfter.",
+    )
+
+
+@pytest.mark.django_db
+def test_section_replaces_the_slot_with_the_figure_card(client, enrolled, figure_section):
+    """US-88 et US-82 : la vue remplace l'emplacement par la carte, dessin intégré et légende de correspondance."""
+    client.force_login(enrolled)
+    html = client.get(f"/fr/sections/{figure_section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rc_lowpass"' in html
+    assert '<svg xmlns="http://www.w3.org/2000/svg" class="iso-svg"' in html
+    assert "Vanne étranglée" in html and "100 nF" in html
+    assert html.index("Avant.") < html.index("iso-svg") < html.index("Après.")
+
+
+@pytest.mark.django_db
+def test_figure_card_is_translated(client, enrolled, figure_section):
+    """US-86 : cadre, consigne et légende traduits ; un seul dessin pour les deux langues."""
+    client.force_login(enrolled)
+    en = client.get(f"/en/sections/{figure_section.public_id}/").content.decode()
+
+    assert "Throttled valve:</strong>" in en and "Vanne étranglée" not in en
+    assert 'data-play="Play"' in en and 'data-pause="Pause"' in en
+
+
+@pytest.mark.django_db
+def test_figure_controls_are_hidden_without_javascript(client, enrolled, figure_section):
+    """US-87 : sans JavaScript, aucune commande inopérante n'est affichée."""
+    client.force_login(enrolled)
+    html = client.get(f"/fr/sections/{figure_section.public_id}/").content.decode()
+
+    assert "data-fig-controls hidden" in html
+
+
+@pytest.mark.django_db
+def test_figure_script_loads_only_on_sections_with_a_figure(client, enrolled, module, figure_section):
+    """US-89 : script externe chargé seulement où une figure est présente ; aucun script en ligne."""
+    from courses.models import Section
+
+    plain = Section.objects.create(module=module, title_fr="Texte", order=2, body_md_fr="Du texte.")
+    client.force_login(enrolled)
+    html = client.get(f"/fr/sections/{figure_section.public_id}/").content.decode()
+
+    assert 'src="/static/acad/js/figures/rc_lowpass.js' in html
+    assert "figures.css" in html
+    assert "<script>" not in html
+    assert "figures/rc_lowpass.js" not in client.get(f"/fr/sections/{plain.public_id}/").content.decode()
+
+
+@pytest.mark.django_db
+def test_active_drawing_is_never_rendered(client, enrolled, figure_section, monkeypatch):
+    """US-88 : un dessin modifié et devenu actif n'est pas intégré (contrôle `inert_svg` à chaque affichage)."""
+    from courses import figures
+
+    monkeypatch.setattr(figures, "drawing", lambda name: '<svg onload="alert(1)"></svg>')
+    client.force_login(enrolled)
+    html = client.get(f"/fr/sections/{figure_section.public_id}/").content.decode()
+
+    assert "onload" not in html
+
+
+@pytest.mark.django_db
+def test_figure_is_only_reachable_through_an_enrolled_section(client, figure_section):
+    """US-92 : un anonyme est renvoyé vers la connexion, comme pour le reste du cours."""
+    response = client.get(f"/fr/sections/{figure_section.public_id}/")
+
+    assert response.status_code == 302 and "iso-svg" not in response.content.decode()
+
+
+def test_figure_script_never_calls_the_server():
+    """US-92 : la figure n'enregistre rien ; aucun appel réseau ni stockage local dans son script."""
+    script = generated("rc_lowpass")[1].read_text(encoding="utf-8")
+
+    for forbidden in ("fetch(", "XMLHttpRequest", "sendBeacon", "localStorage", "sessionStorage", "htmx"):
+        assert forbidden not in script
+
+
+LOWPASS = ROOT / "content" / "electro" / "p2" / "m6"
+RECIT = {"fr": "## Ce qui se passe dans le circuit", "en": "## What happens in the circuit"}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_lowpass_section_carries_the_figure_under_its_corrected_story(lang):
+    """US-90 et F10 : récit corrigé puis figure, entre le schéma CEI et la courbe de réponse."""
+    text = (LOWPASS / f"03-passe-bas.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rc_lowpass]]\n" in text
+    assert text.index("passe-bas.svg") < text.index(RECIT[lang]) < text.index("[[fig:rc_lowpass]]") < text.index("passe-bas-courbe.svg")
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_lowpass_story_never_says_a_full_capacitor_sends_current_to_the_output(lang):
+    """F1 : le récit du brief contenait cette erreur ; sans charge, aucun courant ne « monte vers la sortie »."""
+    text = (LOWPASS / f"03-passe-bas.{lang}.md").read_text(encoding="utf-8").lower()
+
+    for wrong in ("vers la sortie", "comme un mur", "towards the output", "like a wall"):
+        assert wrong not in text
+
+
+def test_every_figure_slot_in_the_content_is_a_known_figure():
+    """US-90 : un emplacement inconnu resterait du texte visible ; tout `[[fig:…]]` du contenu est dans la liste fermée."""
+    import re
+
+    names = {m for path in (ROOT / "content").rglob("*.md") for m in re.findall(r"\[\[fig:([^\]]*)\]\]", path.read_text(encoding="utf-8"))}
+
+    assert names <= set(FIGURES)
+
+
+def test_markup_cannot_forge_a_figure_slot():
+    html = render_markdown('<div class="fig" data-fig="rc_lowpass" onclick="alert(1)"></div>')
+
+    assert "data-fig" not in html and "onclick" not in html
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="Node n'existe que sur le poste de développement (F6)")
+def test_physical_models_of_the_figures_pass_their_hand_checked_literals():
+    """US-85 : `pytest` lance aussi les tests `node --test` des modèles (tools/figures/<nom>/model.test.mjs)."""
+    tests = sorted(str(p) for p in (ROOT / "tools" / "figures").glob("*/model.test.mjs"))
+    result = subprocess.run(["node", "--test", *tests], capture_output=True, text=True, encoding="utf-8")
+
+    assert tests and result.returncode == 0, result.stdout + result.stderr
