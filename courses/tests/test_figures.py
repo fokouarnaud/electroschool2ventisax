@@ -24,8 +24,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rc_lowpass": Figure(
             drawing="figures/rc_lowpass.svg", card="figures/rc_lowpass.html", script="acad/js/figures/rc_lowpass.js",
         ),
+        "rc_highpass": Figure(
+            drawing="figures/rc_highpass.svg", card="figures/rc_highpass.html", script="acad/js/figures/rc_highpass.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass",)
+    assert FIGURES == ("rc_lowpass", "rc_highpass")
 
 
 @pytest.mark.django_db
@@ -127,12 +130,52 @@ def test_figure_card_is_translated(client, enrolled, figure_section):
 
 
 @pytest.mark.django_db
+def test_lowpass_card_names_the_series_and_the_ground_branch(client, enrolled, figure_section):
+    """Mêmes pièces que le passe-haut, autrement disposées : vanne en série (R), soufflet vers la masse (C)."""
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{figure_section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{figure_section.public_id}/").content.decode()
+
+    assert "résistance R = 1 kΩ, en série" in fr and "condensateur C = 100 nF, vers la masse" in fr
+    assert "resistor R = 1 kΩ, in series" in en and "capacitor C = 100 nF, to ground" in en
+    assert 'id="fig-rc_lowpass-freq"' in fr
+
+
+@pytest.mark.django_db
+def test_highpass_card_maps_the_bench_to_the_circuit_in_both_languages(client, enrolled, module):
+    """Passe-haut : cloche à membrane en série (C), vanne vers le bac (R vers la masse), manomètre aux bornes de la vanne (Vs)."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Le filtre passe-haut", order=1,
+        body_md_fr="[[fig:rc_highpass]]", body_md_en="[[fig:rc_highpass]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rc_highpass"' in fr and 'id="fig-rc_highpass-freq"' in fr
+    assert "Cloche à membrane :</strong>" in fr and "condensateur C = 100 nF, en série" in fr
+    assert "Membrane bell:</strong>" in en and "capacitor C = 100 nF, in series" in en
+    assert "Throttled valve:</strong>" in en and "resistor R = 1 kΩ, to ground" in en
+    assert "Cloche à membrane" not in en
+    assert 'src="/static/acad/js/figures/rc_highpass.js' in fr and "figures/rc_lowpass.js" not in fr
+
+
+@pytest.mark.django_db
 def test_figure_controls_are_hidden_without_javascript(client, enrolled, figure_section):
     """US-87 : sans JavaScript, aucune commande inopérante n'est affichée."""
     client.force_login(enrolled)
     html = client.get(f"/fr/sections/{figure_section.public_id}/").content.decode()
 
     assert "data-fig-controls hidden" in html
+
+
+def test_hidden_controls_stay_hidden_despite_the_grid_layout():
+    """US-87 : `.fig-controls { display: grid }` l'emportait sur l'attribut `hidden` ; sans JavaScript, les commandes s'affichaient."""
+    css = (ROOT / "static" / "acad" / "css" / "figures.css").read_text(encoding="utf-8")
+
+    assert ".fig-controls[hidden] { display: none; }" in css
 
 
 @pytest.mark.django_db
@@ -170,9 +213,10 @@ def test_figure_is_only_reachable_through_an_enrolled_section(client, figure_sec
     assert response.status_code == 302 and "iso-svg" not in response.content.decode()
 
 
-def test_figure_script_never_calls_the_server():
+@pytest.mark.parametrize("name", FIGURES)
+def test_figure_script_never_calls_the_server(name):
     """US-92 : la figure n'enregistre rien ; aucun appel réseau ni stockage local dans son script."""
-    script = generated("rc_lowpass")[1].read_text(encoding="utf-8")
+    script = generated(name)[1].read_text(encoding="utf-8")
 
     for forbidden in ("fetch(", "XMLHttpRequest", "sendBeacon", "localStorage", "sessionStorage", "htmx"):
         assert forbidden not in script
@@ -222,3 +266,24 @@ def test_physical_models_of_the_figures_pass_their_hand_checked_literals():
     result = subprocess.run(["node", "--test", *tests], capture_output=True, text=True, encoding="utf-8")
 
     assert tests and result.returncode == 0, result.stdout + result.stderr
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_highpass_section_carries_the_figure_under_its_story(lang):
+    """F10 : récit puis figure, entre le schéma CEI et la courbe de réponse du passe-haut."""
+    text = (LOWPASS / f"04-passe-haut.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rc_highpass]]\n" in text
+    assert text.index("passe-haut.svg") < text.index(RECIT[lang]) < text.index("[[fig:rc_highpass]]") < text.index("passe-haut-courbe.svg")
+
+
+@pytest.mark.parametrize("lang, insulator, wall", [
+    ("fr", "aucun électron ne traverse", "comme un mur"),
+    ("en", "no electron crosses", "like a wall"),
+])
+def test_highpass_story_keeps_the_charges_on_each_side_of_the_insulator(lang, insulator, wall):
+    """F1 : le courant « passe » le condensateur sans qu'aucune charge ne traverse son isolant ; pas d'image du mur."""
+    text = (LOWPASS / f"04-passe-haut.{lang}.md").read_text(encoding="utf-8").lower()
+
+    assert insulator in text
+    assert wall not in text

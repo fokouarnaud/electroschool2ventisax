@@ -15,7 +15,8 @@ const OUT = outAt > 0 ? resolve(process.argv[outAt + 1]) : null;
 const WIDTH = 640;
 const HEIGHT = 360;
 
-// Plan du banc (unités monde, z vers le haut). La ligne principale court le long de x, à y = 0.
+// Plan du banc (unités monde, z vers le haut), même ossature que le passe-haut, pièces interverties :
+// piston (Ve) → vanne étranglée en série (R) → nœud et manomètre (Vs) → soufflet en dérivation, posé dans le bac (C vers la masse).
 const PLATE = { x: -164, y: -52, w: 316, d: 104, r: 8 };
 const PLATE_H = 10;
 const FOOT_H = 5;
@@ -34,19 +35,21 @@ const STROKE = 9; // course du piston pour Ve = ±1
 const VALVE = { x: -56, y: -9, w: 22, d: 18, r: 2 };
 const VALVE_H = 22;
 const WHEEL = [-45, 0];
-const TRAY = { x: 8, y: -32, w: 64, d: 64, r: 4 };
-const TRAY_H = 7;
-const WALL = 2.2;
-const BELLOWS = [40, 0];
-const BASE_H = 18;
-const PLEATS = 6;
-const PLEAT_H = 4;
-const LIFT = 9; // course du couvercle du soufflet pour Vs = ±1
-const GAUGE = [124, 0];
+const NODE = { x: 3, y: -9, w: 18, d: 18, r: 2 };
+const NODE_H = 32;
+const GAUGE = [12, 0];
 const GAUGE_Z = 44;
 const DIAL_R = 17;
 const DIAL_H = 6;
 const DIAL_TOP = GAUGE_Z + DIAL_H;
+const TRAY = { x: 80, y: -30, w: 64, d: 60, r: 4 };
+const TRAY_H = 7;
+const WALL = 2.2;
+const BELLOWS = [114, 0];
+const BASE_H = 18;
+const PLEATS = 6;
+const PLEAT_H = 4;
+const LIFT = 9; // course du couvercle du soufflet pour Vs = ±1
 const NEEDLE_SPAN = (120 * Math.PI) / 180; // Vs = ±1 → ±120°
 const KNOB_SPAN = (270 * Math.PI) / 180; // 10 Hz à 100 kHz sur 270°
 
@@ -54,8 +57,8 @@ const P = k.fitProjection(
   [
     ...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0),
     [PUMP[0], PUMP[1], PUMP_H + ROD_LEN + STROKE + 6],
-    [GAUGE[0] + DIAL_R, 0, DIAL_TOP],
     [BELLOWS[0], 0, BASE_H + PLEATS * PLEAT_H + LIFT + 4],
+    [GAUGE[0] + DIAL_R, 0, DIAL_TOP],
   ],
   WIDTH,
   HEIGHT,
@@ -67,6 +70,9 @@ const S = (paths, style) => k.solidSvg(paths, style);
 const L = (d, style) => k.lineSvg(d, style);
 const D = (points, style) => k.dotsSvg(points, style);
 const depth = (x, y, z = 0) => k.depthOf([x, y, z], P);
+
+const pipe = (plan, z = PIPE_Z, h = PIPE_H) => S(k.slabOf({ d: PIPE_H, r: 1.2, ...plan }, z, h, P, 2), { tone: "mid" });
+const collar = (x, z = PIPE_Z) => S(k.slabOf({ x: x - 1.5, y: -4.5, w: 3, d: 9, r: 0.8 }, z - 1.5, PIPE_H + 3, P, 2), { tone: "mid" });
 
 function plate() {
   const out = [`<path class="iso-halo" d="${k.haloOf(PLATE, -PLATE_H - FOOT_H, PLATE_H, P)}"/>`];
@@ -93,16 +99,12 @@ function plate() {
   return out.join("");
 }
 
-const pipe = (plan, z = PIPE_Z, h = PIPE_H) => S(k.slabOf({ d: PIPE_H, r: 1.2, ...plan }, z, h, P, 2), { tone: "mid" });
-const collar = (x, y, alongY = false) =>
-  S(k.slabOf(alongY ? { x: x - 4.5, y: y - 1.5, w: 9, d: 3, r: 0.8 } : { x: x - 1.5, y: y - 4.5, w: 3, d: 9, r: 0.8 }, PIPE_Z - 1.5, PIPE_H + 3, P, 2), { tone: "mid" });
-
 function returnLine() {
   // Retour au bac (la masse) : conduite basse à l'arrière, du bac à l'aspiration de la pompe.
   const out = [];
   out.push(pipe({ x: PUMP[0] - 3, y: -24, w: 6, d: 12 }, 1, 5));
   out.push(pipe({ x: PUMP[0] - 3, y: -24, w: TRAY.x - PUMP[0] + 3, d: 6 }, 1, 5));
-  out.push(D([at([-60, -21, 6]), at([-20, -21, 6])], { size: 0.4, tone: "lo" }));
+  out.push(D([at([-20, -21, 6]), at([60, -21, 6])], { size: 0.4, tone: "lo" }));
   return out.join("");
 }
 
@@ -110,10 +112,13 @@ function drive() {
   const out = [];
   out.push(S(k.slabOf(DRIVE, 0, DRIVE_H, P, 6, 0.8), { tone: "mid" }));
   out.push(L(k.planOutline(k.insetPlan(DRIVE, 3), DRIVE_H, P), { tone: "faint" }));
+  // Fentes d'aération, chacune arrêtée par deux points (aucun trait ne finit dans le vide).
   for (const z of [6, 10, 14]) out.push(L(k.segment([DRIVE.x + DRIVE.w, DRIVE.y + 5, z], [DRIVE.x + DRIVE.w, DRIVE.y + DRIVE.d - 5, z], P), { tone: "lo" }));
+  out.push(D([6, 10, 14].flatMap((z) => [at([DRIVE.x + DRIVE.w, DRIVE.y + 5, z]), at([DRIVE.x + DRIVE.w, DRIVE.y + DRIVE.d - 5, z])]), { size: 0.4, tone: "lo" }));
   out.push(D(k.corners(DRIVE, 3).map(([x, y]) => at([x, y, DRIVE_H])), { size: 0.45 }));
   const [x, y] = KNOB;
   const ticks = k.radialTicks(x, y, KNOB_R + 4.5, 12, 3, DRIVE_H, [1.4, 2.8], P, -KNOB_SPAN / 2, KNOB_SPAN);
+  out.push(L(k.ring(x, y, KNOB_R + 4.5, DRIVE_H, P, 28), { tone: "faint" }));
   out.push(L(ticks.minor, { tone: "lo" }), L(ticks.major, { tone: "mid" }));
   out.push(S(k.cylinder(x, y, KNOB_R, DRIVE_H, 5, P, 24), { tone: "hi", crease: "lo" }));
   out.push(L(k.knurl(x, y, KNOB_R, DRIVE_H, DRIVE_H + 5, 28, P), { tone: "lo" }));
@@ -140,8 +145,34 @@ function rod() {
   return (
     S(k.cylinder(x, y, ROD_R, PUMP_H + 3 - STROKE, ROD_LEN, P, 12), { tone: "hi", crease: "none" }) +
     S(k.cylinder(x, y, 6, PUMP_H + 3 - STROKE + ROD_LEN, 5, P, 16, 0.6), { tone: "hi", crease: "lo" }) +
-    L(k.knurl(x, y, 6, PUMP_H - STROKE + ROD_LEN + 4, PUMP_H - STROKE + ROD_LEN + 8, 28, P), { tone: "lo" })
+    L(k.knurl(x, y, 6, PUMP_H - STROKE + ROD_LEN + 4, PUMP_H - STROKE + ROD_LEN + 8, 20, P), { tone: "lo" })
   );
+}
+
+function node() {
+  // Nœud entre membrane et vanne : bloc à deux piquages, manomètre au-dessus.
+  const out = [];
+  out.push(S(k.slabOf(NODE, 0, NODE_H, P, 4, 0.6), { tone: "mid" }));
+  out.push(L(k.planOutline(k.insetPlan(NODE, 3), NODE_H, P), { tone: "faint" }));
+  out.push(D(k.corners(NODE, 2.6).map(([px, py]) => at([px, py, NODE_H])), { size: 0.45 }));
+  return out.join("");
+}
+
+function gauge() {
+  const out = [];
+  const [x, y] = GAUGE;
+  out.push(S(k.cylinder(x, y, 3.4, NODE_H, GAUGE_Z - NODE_H, P, 12), { tone: "mid", crease: "none" }));
+  out.push(S(k.cylinder(x, y, DIAL_R, GAUGE_Z, DIAL_H, P, 28, 0.8), { tone: "hi", crease: "lo" }));
+  out.push(L(k.ring(x, y, DIAL_R - 2, DIAL_TOP, P, 36), { tone: "lo" }));
+  const ticks = k.radialTicks(x, y, DIAL_R - 3, 24, 6, DIAL_TOP, [1.3, 2.8], P, -NEEDLE_SPAN, NEEDLE_SPAN * 2);
+  out.push(L(ticks.minor, { tone: "lo" }), L(ticks.major, { tone: "mid" }));
+  // Repères ±0,707 de la coupure (−3 dB), plus fins que les graduations.
+  out.push(L([-1, 1].map((s) => {
+    const a = s * 0.7071 * NEEDLE_SPAN;
+    return k.lineOnTop([x + Math.sin(a) * (DIAL_R - 7), y - Math.cos(a) * (DIAL_R - 7)], [x + Math.sin(a) * (DIAL_R - 5.6), y - Math.cos(a) * (DIAL_R - 5.6)], DIAL_TOP, P);
+  }).join(""), { tone: "hi" }));
+  out.push(L(k.ring(x, y, 1.6, DIAL_TOP, P, 16), { tone: "mid" }));
+  return out.join("");
 }
 
 function valve() {
@@ -152,8 +183,8 @@ function valve() {
   const [x, y] = WHEEL;
   out.push(S(k.cylinder(x, y, 2.2, VALVE_H, 10, P, 10), { tone: "mid", crease: "none" }));
   out.push(S(k.cylinder(x, y, 10, VALVE_H + 10, 2.6, P, 20, 0.4), { tone: "mid" }));
-  out.push(L(k.knurl(x, y, 10, VALVE_H + 10, VALVE_H + 12.6, 28, P), { tone: "lo" }));
-  out.push(L([0, 1, 2].map((i) => k.lineOnTop([x, y], [x + Math.sin((i * 2 * Math.PI) / 3) * 8, y - Math.cos((i * 2 * Math.PI) / 3) * 8], VALVE_H + 12.6, P)).join(""), { tone: "lo" }));
+  out.push(L(k.knurl(x, y, 10, VALVE_H + 10, VALVE_H + 12.6, 20, P), { tone: "lo" }));
+  out.push(L([0, 1, 2].map((i) => k.lineOnTop([x, y], [x + Math.sin((i * 2 * Math.PI) / 3) * 10, y - Math.cos((i * 2 * Math.PI) / 3) * 10], VALVE_H + 12.6, P)).join(""), { tone: "lo" }));
   out.push(D([at([x, y, VALVE_H + 12.6])], { size: 0.5, tone: "hi" }));
   return out.join("");
 }
@@ -178,16 +209,16 @@ function trayFront() {
 }
 
 function bellowsBase() {
+  // Socle du soufflet : piqué sur la conduite du nœud, posé dans le bac (son extérieur est à la pression de la masse).
   const [x, y] = BELLOWS;
   return (
     S(k.cylinder(x, y, 16, 0.8, 3, P, 24, 0.5), { tone: "mid" }) +
-    S(k.cylinder(x, y, 13, 3.8, BASE_H - 3.8, P, 24), { tone: "mid" }) +
-    L(k.sideArc(x, y, 13, 10, P, 20), { tone: "faint" })
+    S(k.cylinder(x, y, 13, 3.8, BASE_H - 3.8, P, 24), { tone: "mid" })
   );
 }
 
 function pleat(index) {
-  // Pli du soufflet (le réservoir à membrane) : chaque pli se soulève d'une part de la course.
+  // Pli du soufflet (le condensateur) : chaque pli se soulève d'une part de la course.
   const [x, y] = BELLOWS;
   const z = BASE_H + index * PLEAT_H;
   return S(k.cylinder(x, y, index % 2 ? 10.5 : 12, z, PLEAT_H, P, 14), { tone: "hi", crease: "none", lit: true });
@@ -203,46 +234,26 @@ function lid() {
   );
 }
 
-function gauge() {
-  const out = [];
-  const [x, y] = GAUGE;
-  const block = { x: x - 9, y: -9, w: 18, d: 18, r: 2 };
-  out.push(S(k.slabOf(block, 0, PIPE_Z + PIPE_H + 4, P, 4, 0.6), { tone: "mid" }));
-  out.push(D(k.corners(block, 2.6).map(([px, py]) => at([px, py, PIPE_Z + PIPE_H + 4])), { size: 0.45 }));
-  out.push(S(k.cylinder(x, y, 3.4, PIPE_Z + PIPE_H + 4, GAUGE_Z - PIPE_Z - PIPE_H - 4, P, 12), { tone: "mid", crease: "none" }));
-  out.push(S(k.cylinder(x, y, DIAL_R, GAUGE_Z, DIAL_H, P, 28, 0.8), { tone: "hi", crease: "lo" }));
-  out.push(L(k.ring(x, y, DIAL_R - 2, DIAL_TOP, P, 36), { tone: "lo" }));
-  const ticks = k.radialTicks(x, y, DIAL_R - 3, 24, 6, DIAL_TOP, [1.3, 2.8], P, -NEEDLE_SPAN, NEEDLE_SPAN * 2);
-  out.push(L(ticks.minor, { tone: "lo" }), L(ticks.major, { tone: "mid" }));
-  // Repères ±0,707 de la coupure (−3 dB), plus fins que les graduations.
-  out.push(L([-1, 1].map((s) => {
-    const a = s * 0.7071 * NEEDLE_SPAN;
-    return k.lineOnTop([x + Math.sin(a) * (DIAL_R - 7), y - Math.cos(a) * (DIAL_R - 7)], [x + Math.sin(a) * (DIAL_R - 5.6), y - Math.cos(a) * (DIAL_R - 5.6)], DIAL_TOP, P);
-  }).join(""), { tone: "hi" }));
-  out.push(L(k.ring(x, y, 1.6, DIAL_TOP, P, 16), { tone: "mid" }));
-  return out.join("");
-}
-
-// Pièces mobiles posées à leur repos (Ve = 0, Vs = 0) ; le script les déplace.
-const restLift = PLEATS; // index du couvercle dans la pile
+// Pièces mobiles posées à leur repos (Ve = Vs = 0) ; le script les déplace.
 const body = [
   plate(),
   returnLine(),
   drive(),
   `<path data-part="knob" class="iso-line" data-tone="hi" data-free="start" d="" style="stroke-width:1.1"/>`,
-  trayBack(),
   pump(),
   `<g data-part="rod">${rod()}</g>`,
   pipe({ x: PUMP[0] + PUMP_R - 1, y: -3, w: VALVE.x - PUMP[0] - PUMP_R + 1 }),
-  collar(PUMP[0] + PUMP_R + 3, 0),
+  collar(PUMP[0] + PUMP_R + 3),
   valve(),
-  pipe({ x: VALVE.x + VALVE.w, y: -3, w: BELLOWS[0] - 13 - VALVE.x - VALVE.w + 1 }),
-  collar(VALVE.x + VALVE.w + 3, 0),
+  pipe({ x: VALVE.x + VALVE.w, y: -3, w: NODE.x - VALVE.x - VALVE.w + 1 }),
+  collar(VALVE.x + VALVE.w + 3),
+  node(),
+  trayBack(),
+  pipe({ x: NODE.x + NODE.w - 1, y: -3, w: BELLOWS[0] - 13 - NODE.x - NODE.w + 2 }),
+  collar(TRAY.x + 1),
   bellowsBase(),
   ...Array.from({ length: PLEATS }, (_, i) => `<g data-part="pleat" data-step="${i + 1}">${pleat(i)}</g>`),
-  `<g data-part="pleat" data-step="${restLift}">${lid()}</g>`,
-  pipe({ x: BELLOWS[0] + 12, y: -3, w: GAUGE[0] - 9 - BELLOWS[0] - 12 + 1 }),
-  collar(TRAY.x + TRAY.w + 4, 0),
+  `<g data-part="pleat" data-step="${PLEATS}">${lid()}</g>`,
   trayFront(),
   gauge(),
   `<path data-part="needle" class="iso-line" data-tone="lit" data-free="start" d="" style="stroke-width:1.2"/>`,
@@ -273,7 +284,7 @@ document.querySelectorAll('.fig[data-fig="rc_lowpass"]').forEach((card) => {
   const pleats = [...qa('[data-part="pleat"]')], range = q("[data-fig-freq]"), play = q("[data-fig-play]"), out = {};
   qa("[data-fig-out]").forEach((el) => { out[el.dataset.figOut] = el; });
   const lang = document.documentElement.lang || "fr", still = matchMedia("(prefers-reduced-motion: reduce)");
-  const fmt = (v, d) => new Intl.NumberFormat(lang, { maximumFractionDigits: d, minimumFractionDigits: d }).format(v);
+  const fmt = (v, d, sign) => new Intl.NumberFormat(lang, { maximumFractionDigits: d, minimumFractionDigits: d, signDisplay: sign || "auto" }).format(v);
   const qty = (v, u) => v >= 1000 ? fmt(v / 1000, v >= 1e4 ? 1 : 2) + " k" + u : fmt(v, v >= 100 ? 0 : 1) + " " + u;
   let f = PRESETS.low, phase = Math.PI / 2, last = 0, frame = 0, running = false, visible = true;
   function pose() {

@@ -1,11 +1,11 @@
 {% load i18n %}<figure class="fig" data-fig="rc_lowpass">
   <div class="fig-plate">
     <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Le passe-bas, côté eau" %}</span></div>
-    <div class="fig-stage" role="img" aria-label="{% translate 'Banc hydraulique : un piston pousse l’eau à travers une vanne étranglée vers un soufflet posé dans un bac ; un manomètre mesure la pression à la sortie.' %}">{{ svg }}</div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc hydraulique : un piston pousse l’eau à travers une vanne étranglée placée en série ; derrière elle, un soufflet posé dans le bac est branché en dérivation ; un manomètre mesure la pression entre la vanne et le soufflet.' %}">{{ svg }}</div>
     <div class="fig-controls" data-fig-controls hidden>
       <div class="fig-freq">
-        <label for="fig-rc-freq">{% translate "Fréquence" %}</label>
-        <input id="fig-rc-freq" type="range" min="0" max="400" step="1" value="100" data-fig-freq>
+        <label for="fig-rc_lowpass-freq">{% translate "Fréquence" %}</label>
+        <input id="fig-rc_lowpass-freq" type="range" min="0" max="400" step="1" value="100" data-fig-freq>
       </div>
       <div class="fig-buttons">
         <button type="button" class="btn btn-ghost" data-fig-preset="low">{% translate "Basse" %}</button>
@@ -25,10 +25,10 @@
   <figcaption class="fig-legend">
     <ul>
       <li><strong>{% translate "Piston :" %}</strong> {% translate "générateur, tension d’entrée Ve" %}</li>
-      <li><strong>{% translate "Vanne étranglée :" %}</strong> {% translate "résistance R = 1 kΩ" %}</li>
-      <li><strong>{% translate "Soufflet :" %}</strong> {% translate "condensateur C = 100 nF" %}</li>
+      <li><strong>{% translate "Vanne étranglée :" %}</strong> {% translate "résistance R = 1 kΩ, en série" %}</li>
+      <li><strong>{% translate "Soufflet :" %}</strong> {% translate "condensateur C = 100 nF, vers la masse ; posé dans le bac, il se gonfle sous la pression du nœud" %}</li>
       <li><strong>{% translate "Bac de retour :" %}</strong> {% translate "masse" %}</li>
-      <li><strong>{% translate "Manomètre :" %}</strong> {% translate "tension de sortie Vs ; ses deux repères marquent 0,707, la coupure" %}</li>
+      <li><strong>{% translate "Manomètre :" %}</strong> {% translate "tension de sortie Vs, aux bornes du soufflet comme Vs aux bornes de C ; ses deux repères marquent 0,707, la coupure" %}</li>
     </ul>
   </figcaption>
 </figure>

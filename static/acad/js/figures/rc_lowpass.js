@@ -23,14 +23,14 @@ document.querySelectorAll('.fig[data-fig="rc_lowpass"]').forEach((card) => {
   const pleats = [...qa('[data-part="pleat"]')], range = q("[data-fig-freq]"), play = q("[data-fig-play]"), out = {};
   qa("[data-fig-out]").forEach((el) => { out[el.dataset.figOut] = el; });
   const lang = document.documentElement.lang || "fr", still = matchMedia("(prefers-reduced-motion: reduce)");
-  const fmt = (v, d) => new Intl.NumberFormat(lang, { maximumFractionDigits: d, minimumFractionDigits: d }).format(v);
+  const fmt = (v, d, sign) => new Intl.NumberFormat(lang, { maximumFractionDigits: d, minimumFractionDigits: d, signDisplay: sign || "auto" }).format(v);
   const qty = (v, u) => v >= 1000 ? fmt(v / 1000, v >= 1e4 ? 1 : 2) + " k" + u : fmt(v, v >= 100 ? 0 : 1) + " " + u;
   let f = PRESETS.low, phase = Math.PI / 2, last = 0, frame = 0, running = false, visible = true;
   function pose() {
     const ve = Math.sin(phase), vs = ratio(f) * Math.sin(phase + phaseDeg(f) * Math.PI / 180);
     rod.setAttribute("transform", up(STROKE * ve));
     pleats.forEach((g) => g.setAttribute("transform", up(LIFT * vs * g.dataset.step / PLEATS)));
-    needle.setAttribute("d", seg(124, 0, 50.2, vs * SPAN, 3.4, 13));
+    needle.setAttribute("d", seg(12, 0, 50.2, vs * SPAN, 3.4, 13));
     knob.setAttribute("d", seg(-139, 0, 27.2, -KSPAN / 2 + KSPAN * Math.log10(f / F_MIN) / 4, 0, 6.5));
   }
   function report() {
