@@ -19,6 +19,7 @@ class Figure(NamedTuple):
 REGISTRY = {
     "rc_lowpass": Figure(drawing="figures/rc_lowpass.svg", card="figures/rc_lowpass.html", script="acad/js/figures/rc_lowpass.js"),
     "rc_highpass": Figure(drawing="figures/rc_highpass.svg", card="figures/rc_highpass.html", script="acad/js/figures/rc_highpass.js"),
+    "rc_cutoff": Figure(drawing="figures/rc_cutoff.svg", card="figures/rc_cutoff.html", script="acad/js/figures/rc_cutoff.js"),
 }
 FIGURES = tuple(REGISTRY)
 SLOT = re.compile(r'<div class="fig" data-fig="(%s)"></div>' % "|".join(FIGURES))

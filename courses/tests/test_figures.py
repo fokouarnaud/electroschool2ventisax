@@ -27,8 +27,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rc_highpass": Figure(
             drawing="figures/rc_highpass.svg", card="figures/rc_highpass.html", script="acad/js/figures/rc_highpass.js",
         ),
+        "rc_cutoff": Figure(
+            drawing="figures/rc_cutoff.svg", card="figures/rc_cutoff.html", script="acad/js/figures/rc_cutoff.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff")
 
 
 @pytest.mark.django_db
@@ -287,3 +290,45 @@ def test_highpass_story_keeps_the_charges_on_each_side_of_the_insulator(lang, in
 
     assert insulator in text
     assert wall not in text
+
+
+@pytest.mark.django_db
+def test_cutoff_card_maps_both_gauges_to_the_circuit_in_both_languages(client, enrolled, module):
+    """Fréquence de coupure : manomètre de la vanne (VR) et manomètre du nœud (Vs), aiguilles de crête égales à fc."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="La fréquence de coupure", order=1,
+        body_md_fr="[[fig:rc_cutoff]]", body_md_en="[[fig:rc_cutoff]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rc_cutoff"' in fr and 'id="fig-rc_cutoff-freq"' in fr
+    assert "Manomètre de la vanne :</strong>" in fr and "Aiguilles de crête :</strong>" in fr
+    assert "Valve gauge:</strong>" in en and "Peak needles:</strong>" in en and "Manomètre" not in en
+    assert 'data-fig-preset="low">fc / 10<' in fr and 'data-fig-preset="high">10 × fc<' in fr
+    assert "VR / Vin" in en and "Vout / Vin" in en
+    assert 'src="/static/acad/js/figures/rc_cutoff.js' in fr and "figures/rc_lowpass.js" not in fr
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_cutoff_section_carries_the_figure_under_its_story(lang):
+    """F10 : récit puis figure, entre le schéma Xc = R et la courbe des repères par décade."""
+    text = (LOWPASS / f"05-coupure.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rc_cutoff]]\n" in text
+    assert text.index("coupure.svg") < text.index(RECIT[lang]) < text.index("[[fig:rc_cutoff]]") < text.index("attenuation.svg")
+
+
+@pytest.mark.parametrize("lang, pythagoras, half", [
+    ("fr", "vr² + vc² = ve²", "et non la moitié"),
+    ("en", "vr² + vc² = vin²", "not half"),
+])
+def test_cutoff_story_adds_the_two_amplitudes_by_pythagoras(lang, pythagoras, half):
+    """F1 : à fc, chaque tension vaut 0,707 × Ve et non la moitié, car VR et Vc ne culminent pas au même instant."""
+    text = (LOWPASS / f"05-coupure.{lang}.md").read_text(encoding="utf-8").lower()
+
+    assert pythagoras in text
+    assert half in text

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 15:38+0100\n"
+"POT-Creation-Date: 2026-10-25 18:04+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1714,9 +1714,131 @@ msgstr "Next"
 msgid "Fin du module"
 msgstr "End of module"
 
-#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
+#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
+#: .\templates\figures\rc_lowpass.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
+
+#: .\templates\figures\rc_cutoff.html:3
+msgid "La coupure, côté eau"
+msgstr "The cut-off, in water"
+
+#: .\templates\figures\rc_cutoff.html:4
+msgid ""
+"Banc du passe-bas : un piston pousse l’eau à travers une vanne étranglée en "
+"série vers un soufflet posé dans le bac ; un manomètre sur la vanne mesure "
+"la pression perdue dans la vanne, un autre la pression aux bornes du "
+"soufflet ; une aiguille de crête marque l’amplitude sur chaque cadran."
+msgstr "Low-pass bench: a piston pushes water through a throttled valve in series towards a bellows standing in the tray; a gauge on the valve measures the pressure lost in the valve, another the pressure across the bellows; a peak needle marks the amplitude on each dial."
+
+#: .\templates\figures\rc_cutoff.html:7 .\templates\figures\rc_highpass.html:7
+#: .\templates\figures\rc_lowpass.html:7
+msgid "Fréquence"
+msgstr "Frequency"
+
+#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14
+msgid "Lecture"
+msgstr "Play"
+
+#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14
+msgid "Pause"
+msgstr "Pause"
+
+#: .\templates\figures\rc_cutoff.html:18
+msgid "Xc (R = 1 kΩ)"
+msgstr "Xc (R = 1 kΩ)"
+
+#: .\templates\figures\rc_cutoff.html:19
+msgid "VR / Ve"
+msgstr "VR / Vin"
+
+#: .\templates\figures\rc_cutoff.html:20
+msgid "Vs / Ve"
+msgstr "Vout / Vin"
+
+#: .\templates\figures\rc_cutoff.html:22
+msgid ""
+"Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
+"phases le sont."
+msgstr "Slow motion: the pace is not to scale, the amplitudes and the phases are."
+
+#: .\templates\figures\rc_cutoff.html:27
+#: .\templates\figures\rc_highpass.html:27
+#: .\templates\figures\rc_lowpass.html:27
+msgid "Piston :"
+msgstr "Piston:"
+
+#: .\templates\figures\rc_cutoff.html:27
+#: .\templates\figures\rc_highpass.html:27
+#: .\templates\figures\rc_lowpass.html:27
+msgid "générateur, tension d’entrée Ve"
+msgstr "generator, input voltage Vin"
+
+#: .\templates\figures\rc_cutoff.html:28
+#: .\templates\figures\rc_highpass.html:29
+#: .\templates\figures\rc_lowpass.html:28
+msgid "Vanne étranglée :"
+msgstr "Throttled valve:"
+
+#: .\templates\figures\rc_cutoff.html:28 .\templates\figures\rc_lowpass.html:28
+msgid "résistance R = 1 kΩ, en série"
+msgstr "resistor R = 1 kΩ, in series"
+
+#: .\templates\figures\rc_cutoff.html:29
+msgid "Manomètre de la vanne :"
+msgstr "Valve gauge:"
+
+#: .\templates\figures\rc_cutoff.html:29
+msgid ""
+"tension VR aux bornes de la résistance (différence de pression entre l’amont "
+"et l’aval de la vanne)"
+msgstr "voltage VR across the resistor (pressure difference between the inlet and the outlet of the valve)"
+
+#: .\templates\figures\rc_cutoff.html:30 .\templates\figures\rc_lowpass.html:29
+msgid "Soufflet :"
+msgstr "Bellows:"
+
+#: .\templates\figures\rc_cutoff.html:30 .\templates\figures\rc_lowpass.html:29
+msgid ""
+"condensateur C = 100 nF, vers la masse ; posé dans le bac, il se gonfle sous "
+"la pression du nœud"
+msgstr ""
+"capacitor C = 100 nF, to ground; standing in the tray, it swells under the "
+"pressure of the node"
+
+#: .\templates\figures\rc_cutoff.html:31
+#: .\templates\figures\rc_highpass.html:30
+#: .\templates\figures\rc_lowpass.html:30
+msgid "Bac de retour :"
+msgstr "Return tray:"
+
+#: .\templates\figures\rc_cutoff.html:31
+#: .\templates\figures\rc_highpass.html:30
+#: .\templates\figures\rc_lowpass.html:30
+msgid "masse"
+msgstr "ground"
+
+#: .\templates\figures\rc_cutoff.html:32
+msgid "Manomètre du nœud :"
+msgstr "Node gauge:"
+
+#: .\templates\figures\rc_cutoff.html:32
+msgid "tension de sortie Vs, aux bornes du condensateur"
+msgstr "output voltage Vout, across the capacitor"
+
+#: .\templates\figures\rc_cutoff.html:33
+msgid "Aiguilles de crête :"
+msgstr "Peak needles:"
+
+#: .\templates\figures\rc_cutoff.html:33
+msgid ""
+"amplitude de chaque tension ; à fc, Xc = R et les deux crêtes se posent sur "
+"le repère 0,707"
+msgstr "amplitude of each voltage; at fc, Xc = R and both peaks settle on the 0.707 mark"
 
 #: .\templates\figures\rc_highpass.html:3
 msgid "Le passe-haut, côté eau"
@@ -1732,10 +1854,6 @@ msgstr ""
 "in series; behind it, a throttled valve leads the water to the tray; a "
 "pressure gauge measures the pressure between the bell and the valve."
 
-#: .\templates\figures\rc_highpass.html:7 .\templates\figures\rc_lowpass.html:7
-msgid "Fréquence"
-msgstr "Frequency"
-
 #: .\templates\figures\rc_highpass.html:11
 #: .\templates\figures\rc_lowpass.html:11
 msgid "Basse"
@@ -1745,16 +1863,6 @@ msgstr "Low"
 #: .\templates\figures\rc_lowpass.html:13
 msgid "Haute"
 msgstr "High"
-
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14
-msgid "Lecture"
-msgstr "Play"
-
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14
-msgid "Pause"
-msgstr "Pause"
 
 #: .\templates\figures\rc_highpass.html:20
 #: .\templates\figures\rc_lowpass.html:20
@@ -1767,16 +1875,6 @@ msgid ""
 "l’avance le sont."
 msgstr ""
 "Slow motion: the pace is not to scale, the amplitudes and the lead are."
-
-#: .\templates\figures\rc_highpass.html:27
-#: .\templates\figures\rc_lowpass.html:27
-msgid "Piston :"
-msgstr "Piston:"
-
-#: .\templates\figures\rc_highpass.html:27
-#: .\templates\figures\rc_lowpass.html:27
-msgid "générateur, tension d’entrée Ve"
-msgstr "generator, input voltage Vin"
 
 #: .\templates\figures\rc_highpass.html:28
 msgid "Cloche à membrane :"
@@ -1791,23 +1889,8 @@ msgstr ""
 "follows the capacitor voltage Vc"
 
 #: .\templates\figures\rc_highpass.html:29
-#: .\templates\figures\rc_lowpass.html:28
-msgid "Vanne étranglée :"
-msgstr "Throttled valve:"
-
-#: .\templates\figures\rc_highpass.html:29
 msgid "résistance R = 1 kΩ, vers la masse"
 msgstr "resistor R = 1 kΩ, to ground"
-
-#: .\templates\figures\rc_highpass.html:30
-#: .\templates\figures\rc_lowpass.html:30
-msgid "Bac de retour :"
-msgstr "Return tray:"
-
-#: .\templates\figures\rc_highpass.html:30
-#: .\templates\figures\rc_lowpass.html:30
-msgid "masse"
-msgstr "ground"
 
 #: .\templates\figures\rc_highpass.html:31
 #: .\templates\figures\rc_lowpass.html:31
@@ -1831,7 +1914,10 @@ msgid ""
 "Banc hydraulique : un piston pousse l’eau à travers une vanne étranglée "
 "placée en série ; derrière elle, un soufflet posé dans le bac est branché en "
 "dérivation ; un manomètre mesure la pression entre la vanne et le soufflet."
-msgstr "Hydraulic bench: a piston pushes water through a throttled valve placed in series; behind it, a bellows standing in the tray is connected as a branch; a pressure gauge measures the pressure between the valve and the bellows."
+msgstr ""
+"Hydraulic bench: a piston pushes water through a throttled valve placed in "
+"series; behind it, a bellows standing in the tray is connected as a branch; "
+"a pressure gauge measures the pressure between the valve and the bellows."
 
 #: .\templates\figures\rc_lowpass.html:22
 msgid ""
@@ -1839,25 +1925,13 @@ msgid ""
 "retard le sont."
 msgstr "Slow motion: the pace is not to scale, the amplitudes and the lag are."
 
-#: .\templates\figures\rc_lowpass.html:28
-msgid "résistance R = 1 kΩ, en série"
-msgstr "resistor R = 1 kΩ, in series"
-
-#: .\templates\figures\rc_lowpass.html:29
-msgid "Soufflet :"
-msgstr "Bellows:"
-
-#: .\templates\figures\rc_lowpass.html:29
-msgid ""
-"condensateur C = 100 nF, vers la masse ; posé dans le bac, il se gonfle sous "
-"la pression du nœud"
-msgstr "capacitor C = 100 nF, to ground; standing in the tray, it swells under the pressure of the node"
-
 #: .\templates\figures\rc_lowpass.html:31
 msgid ""
 "tension de sortie Vs, aux bornes du soufflet comme Vs aux bornes de C ; ses "
 "deux repères marquent 0,707, la coupure"
-msgstr "output voltage Vout, across the bellows as Vout is across C; its two marks show 0.707, the cutoff"
+msgstr ""
+"output voltage Vout, across the bellows as Vout is across C; its two marks "
+"show 0.707, the cutoff"
 
 #: .\templates\includes\partie_heading.html:2
 #, python-format

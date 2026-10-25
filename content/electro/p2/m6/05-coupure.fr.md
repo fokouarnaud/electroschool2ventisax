@@ -22,9 +22,19 @@ Pour choisir un composant, retournez la formule : **R = 1 / (2π × fc × C)** o
 
 Les électroniciens disent qu'à fc, le filtre atténue de **3 décibels (−3 dB)**. Retenez simplement : −3 dB ≈ 70,7 % de la tension d'entrée. Avec Ve = 5 V à la fréquence de coupure, Vs ≈ 3,54 V.
 
-![Passe-bas : la sortie vaut environ 99 % de l'entrée à fc / 10, 70,7 % à fc et 10 % à 10 × fc](/static/content/electro/m6/attenuation.svg)
+## Ce qui se passe dans le circuit
+
+Le même courant traverse R puis C. Chacun prend une part de la tension d'entrée à la mesure de son opposition au courant : R pour la résistance, Xc pour le condensateur. Mais ces deux tensions ne culminent pas au même instant : VR suit le courant, Vc a un quart de période de retard sur lui. Leurs amplitudes ne s'additionnent donc pas comme des nombres, elles se combinent comme les côtés d'un triangle rectangle : VR² + Vc² = Ve².
+
+À fc / 10, Xc = 10 kΩ, dix fois R : presque toute la tension se retrouve aux bornes du condensateur (Vs ≈ 0,995 × Ve) et la résistance n'en prend que 0,0995 × Ve. À 10 × fc, Xc = 100 Ω et c'est l'inverse. À fc exactement, Xc = R : les deux parts sont égales, et comme 0,707² + 0,707² = 1, chacune vaut 0,707 × Ve, et non la moitié.
+
+Sur le banc ci-dessous, le manomètre posé sur la vanne lit VR, celui du nœud lit Vs, et l'aiguille de crête de chaque cadran garde l'amplitude. Cherchez la fréquence où les deux crêtes se rejoignent sur le repère 0,707 : c'est fc.
+
+[[fig:rc_cutoff]]
 
 ## Des repères d'une décade à l'autre
+
+![Passe-bas : la sortie vaut environ 99 % de l'entrée à fc / 10, 70,7 % à fc et 10 % à 10 × fc](/static/content/electro/m6/attenuation.svg)
 
 Pour un passe-bas RC :
 

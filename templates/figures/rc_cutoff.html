@@ -1,0 +1,36 @@
+{% load i18n %}<figure class="fig" data-fig="rc_cutoff">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "La coupure, côté eau" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc du passe-bas : un piston pousse l’eau à travers une vanne étranglée en série vers un soufflet posé dans le bac ; un manomètre sur la vanne mesure la pression perdue dans la vanne, un autre la pression aux bornes du soufflet ; une aiguille de crête marque l’amplitude sur chaque cadran.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-rc_cutoff-freq">{% translate "Fréquence" %}</label>
+        <input id="fig-rc_cutoff-freq" type="range" min="0" max="400" step="1" value="120" data-fig-freq>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="low">fc / 10</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="fc">fc</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="high">10 × fc</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Lecture' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Lecture" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>f</dt><dd data-fig-out="f"></dd></div>
+        <div><dt>{% translate "Xc (R = 1 kΩ)" %}</dt><dd data-fig-out="xc"></dd></div>
+        <div><dt>{% translate "VR / Ve" %}</dt><dd data-fig-out="ratioR"></dd></div>
+        <div><dt>{% translate "Vs / Ve" %}</dt><dd data-fig-out="ratio"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les phases le sont." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Piston :" %}</strong> {% translate "générateur, tension d’entrée Ve" %}</li>
+      <li><strong>{% translate "Vanne étranglée :" %}</strong> {% translate "résistance R = 1 kΩ, en série" %}</li>
+      <li><strong>{% translate "Manomètre de la vanne :" %}</strong> {% translate "tension VR aux bornes de la résistance (différence de pression entre l’amont et l’aval de la vanne)" %}</li>
+      <li><strong>{% translate "Soufflet :" %}</strong> {% translate "condensateur C = 100 nF, vers la masse ; posé dans le bac, il se gonfle sous la pression du nœud" %}</li>
+      <li><strong>{% translate "Bac de retour :" %}</strong> {% translate "masse" %}</li>
+      <li><strong>{% translate "Manomètre du nœud :" %}</strong> {% translate "tension de sortie Vs, aux bornes du condensateur" %}</li>
+      <li><strong>{% translate "Aiguilles de crête :" %}</strong> {% translate "amplitude de chaque tension ; à fc, Xc = R et les deux crêtes se posent sur le repère 0,707" %}</li>
+    </ul>
+  </figcaption>
+</figure>
