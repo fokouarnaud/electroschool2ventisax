@@ -26,6 +26,16 @@ Exemples :
 
 Dans un RC série, le courant est **en avance** sur la tension d'entrée (le condensateur tire le courant en avant). La sortie d'un passe-bas, prise sur C, est en retard sur l'entrée ; celle d'un passe-haut, prise sur R, est en avance.
 
+## Ce qui se passe dans le circuit
+
+Le courant est le même dans R et dans C. Aux bornes de R, la tension suit le courant au même instant. Aux bornes de C, elle suit la charge accumulée : elle culmine un quart de période (90°) après le courant, au moment où celui-ci s'annule et cesse de charger le condensateur.
+
+Le courant est en avance de φ = arctan(Xc / R) sur Ve. La sortie d'un passe-bas, prise sur C, est donc en retard de 90° − φ sur l'entrée. À fc / 10, Xc = 10 kΩ : φ ≈ 84,3° et la sortie ne retarde que de 5,7°, presque en phase. À fc, Xc = R : φ = 45° et le retard vaut aussi 45°, soit Δt = T / 8. À 10 × fc, φ ≈ 5,7° et le retard approche 90° (84,3°).
+
+Sur le traceur ci-dessous, la voie 1 enregistre Ve et la voie 2 enregistre Vs. Mettez en pause et comptez les graduations sous l'accolade : chacune vaut 45°. Le relevé donne Δt / T, puis le retard 360° × Δt / T. Avec Xc = 577 Ω, le courant avance de 30° et la sortie retarde de 60°.
+
+[[fig:rc_phase]]
+
 ## À retenir
 
 - φ = 360° × Δt / T à l'oscilloscope.

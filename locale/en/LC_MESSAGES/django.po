@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 18:04+0100\n"
+"POT-Creation-Date: 2026-10-25 18:31+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1715,7 +1715,7 @@ msgid "Fin du module"
 msgstr "End of module"
 
 #: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
-#: .\templates\figures\rc_lowpass.html:3
+#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
 
@@ -1729,26 +1729,30 @@ msgid ""
 "série vers un soufflet posé dans le bac ; un manomètre sur la vanne mesure "
 "la pression perdue dans la vanne, un autre la pression aux bornes du "
 "soufflet ; une aiguille de crête marque l’amplitude sur chaque cadran."
-msgstr "Low-pass bench: a piston pushes water through a throttled valve in series towards a bellows standing in the tray; a gauge on the valve measures the pressure lost in the valve, another the pressure across the bellows; a peak needle marks the amplitude on each dial."
+msgstr ""
+"Low-pass bench: a piston pushes water through a throttled valve in series "
+"towards a bellows standing in the tray; a gauge on the valve measures the "
+"pressure lost in the valve, another the pressure across the bellows; a peak "
+"needle marks the amplitude on each dial."
 
 #: .\templates\figures\rc_cutoff.html:7 .\templates\figures\rc_highpass.html:7
-#: .\templates\figures\rc_lowpass.html:7
+#: .\templates\figures\rc_lowpass.html:7 .\templates\figures\rc_phase.html:7
 msgid "Fréquence"
 msgstr "Frequency"
 
 #: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
 msgid "Lecture"
 msgstr "Play"
 
 #: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
 msgid "Pause"
 msgstr "Pause"
 
-#: .\templates\figures\rc_cutoff.html:18
+#: .\templates\figures\rc_cutoff.html:18 .\templates\figures\rc_phase.html:19
 msgid "Xc (R = 1 kΩ)"
 msgstr "Xc (R = 1 kΩ)"
 
@@ -1764,7 +1768,8 @@ msgstr "Vout / Vin"
 msgid ""
 "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
 "phases le sont."
-msgstr "Slow motion: the pace is not to scale, the amplitudes and the phases are."
+msgstr ""
+"Slow motion: the pace is not to scale, the amplitudes and the phases are."
 
 #: .\templates\figures\rc_cutoff.html:27
 #: .\templates\figures\rc_highpass.html:27
@@ -1796,7 +1801,9 @@ msgstr "Valve gauge:"
 msgid ""
 "tension VR aux bornes de la résistance (différence de pression entre l’amont "
 "et l’aval de la vanne)"
-msgstr "voltage VR across the resistor (pressure difference between the inlet and the outlet of the valve)"
+msgstr ""
+"voltage VR across the resistor (pressure difference between the inlet and "
+"the outlet of the valve)"
 
 #: .\templates\figures\rc_cutoff.html:30 .\templates\figures\rc_lowpass.html:29
 msgid "Soufflet :"
@@ -1838,7 +1845,9 @@ msgstr "Peak needles:"
 msgid ""
 "amplitude de chaque tension ; à fc, Xc = R et les deux crêtes se posent sur "
 "le repère 0,707"
-msgstr "amplitude of each voltage; at fc, Xc = R and both peaks settle on the 0.707 mark"
+msgstr ""
+"amplitude of each voltage; at fc, Xc = R and both peaks settle on the 0.707 "
+"mark"
 
 #: .\templates\figures\rc_highpass.html:3
 msgid "Le passe-haut, côté eau"
@@ -1932,6 +1941,90 @@ msgid ""
 msgstr ""
 "output voltage Vout, across the bellows as Vout is across C; its two marks "
 "show 0.707, the cutoff"
+
+#: .\templates\figures\rc_phase.html:3
+msgid "Le déphasage, sur le papier"
+msgstr "The phase shift, on paper"
+
+#: .\templates\figures\rc_phase.html:4
+msgid ""
+"Traceur à deux voies : un générateur alimente le filtre passe-bas RC du "
+"cours ; la plume de la voie 1 trace l’entrée Ve, celle de la voie 2 la "
+"sortie Vs ; le papier défile et une accolade marque le décalage Δt entre "
+"leurs crêtes."
+msgstr "Two-channel chart recorder: a generator feeds the course's RC low-pass filter; the channel 1 pen draws the input Vin, the channel 2 pen the output Vout; the paper moves on and a bracket marks the time gap Δt between their peaks."
+
+#: .\templates\figures\rc_phase.html:20
+msgid "Avance du courant, arctan(Xc / R)"
+msgstr "Current lead, arctan(Xc / R)"
+
+#: .\templates\figures\rc_phase.html:22
+msgid "Retard de Vs, 360° × Δt / T"
+msgstr "Vout lag, 360° × Δt / T"
+
+#: .\templates\figures\rc_phase.html:24
+msgid ""
+"Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les "
+"décalages le sont."
+msgstr "Slow motion: the pace is not to scale, the amplitudes and the time gaps are."
+
+#: .\templates\figures\rc_phase.html:29
+msgid "Générateur :"
+msgstr "Generator:"
+
+#: .\templates\figures\rc_phase.html:29
+msgid "tension d’entrée Ve ; son bouton règle la fréquence"
+msgstr "input voltage Vin; its knob sets the frequency"
+
+#: .\templates\figures\rc_phase.html:30
+msgid "Boîtier du filtre :"
+msgstr "Filter box:"
+
+#: .\templates\figures\rc_phase.html:30
+msgid "passe-bas RC du cours, R = 1 kΩ en série puis C = 100 nF vers la masse"
+msgstr "the course's RC low-pass, R = 1 kΩ in series then C = 100 nF to ground"
+
+#: .\templates\figures\rc_phase.html:31
+msgid "Voie 1 (plume grise) :"
+msgstr "Channel 1 (grey pen):"
+
+#: .\templates\figures\rc_phase.html:31
+msgid "entrée Ve"
+msgstr "input Vin"
+
+#: .\templates\figures\rc_phase.html:32
+msgid "Voie 2 (plume teal) :"
+msgstr "Channel 2 (teal pen):"
+
+#: .\templates\figures\rc_phase.html:32
+msgid "sortie Vs, aux bornes du condensateur"
+msgstr "output Vout, across the capacitor"
+
+#: .\templates\figures\rc_phase.html:33
+msgid "Papier :"
+msgstr "Paper:"
+
+#: .\templates\figures\rc_phase.html:33
+msgid ""
+"il avance avec le temps ; sa vitesse suit la fréquence, si bien qu’une "
+"période occupe toujours la même longueur"
+msgstr "it moves on with time; its speed follows the frequency, so one period always takes the same length"
+
+#: .\templates\figures\rc_phase.html:34
+msgid "Réglette :"
+msgstr "Ruler:"
+
+#: .\templates\figures\rc_phase.html:34
+msgid "huit graduations par période, soit 45° par graduation"
+msgstr "eight marks per period, so 45° per mark"
+
+#: .\templates\figures\rc_phase.html:35
+msgid "Accolade :"
+msgstr "Bracket:"
+
+#: .\templates\figures\rc_phase.html:35
+msgid "décalage Δt entre une crête de Ve et la crête suivante de Vs"
+msgstr "time gap Δt between a peak of Vin and the next peak of Vout"
 
 #: .\templates\includes\partie_heading.html:2
 #, python-format

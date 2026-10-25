@@ -1,0 +1,38 @@
+{% load i18n %}<figure class="fig" data-fig="rc_phase">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Le déphasage, sur le papier" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Traceur à deux voies : un générateur alimente le filtre passe-bas RC du cours ; la plume de la voie 1 trace l’entrée Ve, celle de la voie 2 la sortie Vs ; le papier défile et une accolade marque le décalage Δt entre leurs crêtes.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-rc_phase-freq">{% translate "Fréquence" %}</label>
+        <input id="fig-rc_phase-freq" type="range" min="0" max="400" step="1" value="120" data-fig-freq>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="low">fc / 10</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="fc">fc</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="x577">Xc = 577 Ω</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="high">10 × fc</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Lecture' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Lecture" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>f</dt><dd data-fig-out="f"></dd></div>
+        <div><dt>{% translate "Xc (R = 1 kΩ)" %}</dt><dd data-fig-out="xc"></dd></div>
+        <div><dt>{% translate "Avance du courant, arctan(Xc / R)" %}</dt><dd data-fig-out="lead"></dd></div>
+        <div><dt>Δt / T</dt><dd data-fig-out="shift"></dd></div>
+        <div><dt>{% translate "Retard de Vs, 360° × Δt / T" %}</dt><dd data-fig-out="lag"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement ralenti : la cadence n’est pas à l’échelle, les amplitudes et les décalages le sont." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Générateur :" %}</strong> {% translate "tension d’entrée Ve ; son bouton règle la fréquence" %}</li>
+      <li><strong>{% translate "Boîtier du filtre :" %}</strong> {% translate "passe-bas RC du cours, R = 1 kΩ en série puis C = 100 nF vers la masse" %}</li>
+      <li><strong>{% translate "Voie 1 (plume grise) :" %}</strong> {% translate "entrée Ve" %}</li>
+      <li><strong>{% translate "Voie 2 (plume teal) :" %}</strong> {% translate "sortie Vs, aux bornes du condensateur" %}</li>
+      <li><strong>{% translate "Papier :" %}</strong> {% translate "il avance avec le temps ; sa vitesse suit la fréquence, si bien qu’une période occupe toujours la même longueur" %}</li>
+      <li><strong>{% translate "Réglette :" %}</strong> {% translate "huit graduations par période, soit 45° par graduation" %}</li>
+      <li><strong>{% translate "Accolade :" %}</strong> {% translate "décalage Δt entre une crête de Ve et la crête suivante de Vs" %}</li>
+    </ul>
+  </figcaption>
+</figure>

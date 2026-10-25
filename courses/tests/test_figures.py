@@ -30,8 +30,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "rc_cutoff": Figure(
             drawing="figures/rc_cutoff.svg", card="figures/rc_cutoff.html", script="acad/js/figures/rc_cutoff.js",
         ),
+        "rc_phase": Figure(
+            drawing="figures/rc_phase.svg", card="figures/rc_phase.html", script="acad/js/figures/rc_phase.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase")
 
 
 @pytest.mark.django_db
@@ -332,3 +335,40 @@ def test_cutoff_story_adds_the_two_amplitudes_by_pythagoras(lang, pythagoras, ha
 
     assert pythagoras in text
     assert half in text
+
+
+@pytest.mark.django_db
+def test_phase_card_maps_the_recorder_to_the_circuit_in_both_languages(client, enrolled, module):
+    """Déphasage : traceur à deux voies (Ve, Vs aux bornes de C), réglette à 45° par graduation, accolade Δt."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Le déphasage", order=1, body_md_fr="[[fig:rc_phase]]", body_md_en="[[fig:rc_phase]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="rc_phase"' in fr and 'id="fig-rc_phase-freq"' in fr
+    assert "Réglette :</strong>" in fr and "45° par graduation" in fr and "Accolade :</strong>" in fr
+    assert "Ruler:</strong>" in en and "45° per mark" in en and "Bracket:</strong>" in en and "Réglette" not in en
+    assert 'data-fig-preset="x577">Xc = 577 Ω<' in fr
+    assert "Δt / T" in en and "Vout lag" in en
+    assert 'src="/static/acad/js/figures/rc_phase.js' in fr and "figures/rc_cutoff.js" not in fr
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## À retenir"), ("en", "## Key points")])
+def test_phase_section_carries_the_figure_after_both_ways_to_get_the_angle(lang, keep):
+    """F10 : schémas existants gardés (oscilloscope, triangle), puis récit et figure avant « À retenir »."""
+    text = (LOWPASS / f"06-dephasage.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:rc_phase]]\n" in text
+    assert text.index("dephasage.svg") < text.index("triangle-phi.svg") < text.index(RECIT[lang]) < text.index("[[fig:rc_phase]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_phase_story_links_the_current_lead_to_the_output_lag(lang):
+    """F1 : φ = arctan(Xc / R) est l'avance du courant ; la sortie prise sur C retarde de 90° − φ."""
+    text = (LOWPASS / f"06-dephasage.{lang}.md").read_text(encoding="utf-8")
+
+    assert "90° − φ" in text

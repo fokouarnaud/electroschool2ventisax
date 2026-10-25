@@ -26,6 +26,16 @@ Examples:
 
 In a series RC, the current **leads** the input voltage (the capacitor pulls the current ahead). A low-pass output, taken across C, lags the input; a high-pass output, taken across R, leads it.
 
+## What happens in the circuit
+
+The same current flows through R and C. Across R, the voltage follows the current at the same instant. Across C, it follows the stored charge: it peaks a quarter of a period (90°) after the current, at the moment the current falls to zero and stops charging the capacitor.
+
+The current leads Vin by φ = arctan(Xc / R). The output of a low-pass, taken across C, therefore lags the input by 90° − φ. At fc / 10, Xc = 10 kΩ: φ ≈ 84.3° and the output lags by only 5.7°, almost in phase. At fc, Xc = R: φ = 45° and the lag is also 45°, that is Δt = T / 8. At 10 × fc, φ ≈ 5.7° and the lag approaches 90° (84.3°).
+
+On the chart recorder below, channel 1 records Vin and channel 2 records Vout. Pause it and count the marks under the bracket: each one is 45°. The readout gives Δt / T, then the lag 360° × Δt / T. With Xc = 577 Ω, the current leads by 30° and the output lags by 60°.
+
+[[fig:rc_phase]]
+
 ## Key points
 
 - φ = 360° × Δt / T on the oscilloscope.
