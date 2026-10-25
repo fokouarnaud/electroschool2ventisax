@@ -1,0 +1,1032 @@
+[
+ {
+  "id": "m-p4-m10-q01",
+  "section": "01-diode-redressement",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Combien de diodes compte un pont redresseur monophasé ?",
+   "en": "How many diodes does a single-phase bridge rectifier have?"
+  },
+  "explanation": {
+   "fr": "Quatre : deux conduisent à chaque alternance.",
+   "en": "Four: two conduct in each half-cycle."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "4",
+     "en": "4"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "2",
+     "en": "2"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "6",
+     "en": "6"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q02",
+  "section": "01-diode-redressement",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un pont triphasé à diodes est alimenté par un réseau 400 V. Quelle tension continue fournit-il environ (Udc ≈ 1,35 × U) ? (exemple : 12 V)",
+   "en": "A three-phase diode bridge is fed by a 400 V supply. About what DC voltage does it supply (Udc ≈ 1.35 × U)? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "1,35 × 400 = 540 V.",
+   "en": "1.35 × 400 = 540 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "540",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m10-q03",
+  "section": "02-transistors",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un MOSFET saturé présente 0,1 V à ses bornes et laisse passer 2 A. Quelle puissance dissipe-t-il ? (exemple : 1,5 W)",
+   "en": "A saturated MOSFET has 0.1 V across it and carries 2 A. What power does it dissipate? (example: 1.5 W)"
+  },
+  "explanation": {
+   "fr": "P = U × I = 0,1 × 2 = 0,2 W.",
+   "en": "P = U × I = 0.1 × 2 = 0.2 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "0.2",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m10-q04",
+  "section": "02-transistors",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "À quoi sert la diode de roue libre montée sur un moteur commandé par un transistor ?",
+   "en": "What is the freewheeling diode across a transistor-driven motor for?"
+  },
+  "explanation": {
+   "fr": "Elle écoule le courant du moteur à la coupure et évite la surtension qui détruirait le transistor.",
+   "en": "It carries the motor current at switch-off and avoids the voltage spike that would destroy the transistor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Écouler le courant à la coupure et éviter la surtension",
+     "en": "Carry the current at switch-off and avoid the spike"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Augmenter la vitesse du moteur",
+     "en": "Increase the motor speed"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Redresser la tension du réseau",
+     "en": "Rectify the supply voltage"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q05",
+  "section": "03-igbt",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque composant au domaine où on l'emploie le plus.",
+   "en": "Match each component with the field where it is most used."
+  },
+  "explanation": {
+   "fr": "MOSFET : basse tension et haute fréquence ; IGBT : variateurs ; thyristor : fortes puissances à 50 Hz ; triac : gradateurs.",
+   "en": "MOSFET: low voltage and high frequency; IGBT: drives; thyristor: high power at 50 Hz; triac: dimmers."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "MOSFET",
+     "en": "MOSFET"
+    },
+    "right": {
+     "fr": "Basse tension, très rapide",
+     "en": "Low voltage, very fast"
+    }
+   },
+   {
+    "left": {
+     "fr": "IGBT",
+     "en": "IGBT"
+    },
+    "right": {
+     "fr": "Onduleur d'un variateur",
+     "en": "Drive inverter"
+    }
+   },
+   {
+    "left": {
+     "fr": "Thyristor",
+     "en": "Thyristor"
+    },
+    "right": {
+     "fr": "Redresseur commandé à 50 Hz",
+     "en": "Controlled rectifier at 50 Hz"
+    }
+   },
+   {
+    "left": {
+     "fr": "Triac",
+     "en": "Triac"
+    },
+    "right": {
+     "fr": "Gradateur de lampe",
+     "en": "Lamp dimmer"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q06",
+  "section": "03-igbt",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment commande-t-on un IGBT ?",
+   "en": "How is an IGBT driven?"
+  },
+  "explanation": {
+   "fr": "Par une tension sur sa grille, comme un MOSFET.",
+   "en": "By a voltage on its gate, like a MOSFET."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Par une tension de grille",
+     "en": "By a gate voltage"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Par un courant de base",
+     "en": "By a base current"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Par la chaleur",
+     "en": "By heat"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q07",
+  "section": "03-igbt",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un IGBT conduisant 20 A présente une chute de 2 V. Quelle puissance perd-il ? (exemple : 15 W)",
+   "en": "An IGBT carrying 20 A has a 2 V drop. What power does it lose? (example: 15 W)"
+  },
+  "explanation": {
+   "fr": "P = 2 × 20 = 40 W.",
+   "en": "P = 2 × 20 = 40 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "40",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m10-q08",
+  "section": "04-thyristor",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : un thyristor s'éteint dès que l'impulsion de gâchette disparaît.",
+   "en": "True or false: a thyristor turns off as soon as the gate pulse disappears."
+  },
+  "explanation": {
+   "fr": "Faux : il reste conducteur jusqu'à ce que son courant s'annule.",
+   "en": "False: it stays on until its current falls to zero."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q09",
+  "section": "04-thyristor",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Dans un redresseur à thyristors, que se passe-t-il quand on augmente l'angle d'amorçage α ?",
+   "en": "In a thyristor rectifier, what happens when the firing angle α is increased?"
+  },
+  "explanation": {
+   "fr": "La tension moyenne diminue.",
+   "en": "The average voltage falls."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "La tension moyenne diminue",
+     "en": "The average voltage falls"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La tension moyenne augmente",
+     "en": "The average voltage rises"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La fréquence augmente",
+     "en": "The frequency rises"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q10",
+  "section": "05-triac-gradateur",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Qu'est-ce qui distingue un triac d'un thyristor ?",
+   "en": "What distinguishes a triac from a thyristor?"
+  },
+  "explanation": {
+   "fr": "Le triac conduit dans les deux sens.",
+   "en": "The triac conducts both ways."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il conduit dans les deux sens",
+     "en": "It conducts both ways"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il n'a pas de gâchette",
+     "en": "It has no gate"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il ne fonctionne qu'en continu",
+     "en": "It only works on DC"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q11",
+  "section": "05-triac-gradateur",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une lampe résistive de 40 W est commandée par un gradateur amorcé à 90°. Quelle puissance reçoit-elle environ ? (exemple : 15 W)",
+   "en": "A 40 W resistive lamp is controlled by a dimmer triggered at 90°. About what power does it get? (example: 15 W)"
+  },
+  "explanation": {
+   "fr": "À 90°, une charge résistive reçoit la moitié de la puissance : 20 W.",
+   "en": "At 90°, a resistive load gets half the power: 20 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "20",
+   "unit": "W",
+   "tolerance_pct": 5
+  }
+ },
+ {
+  "id": "m-p4-m10-q12",
+  "section": "05-triac-gradateur",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur ce gradateur, cliquez sur la gâchette du triac.",
+   "en": "On this dimmer, click the triac's gate."
+  },
+  "explanation": {
+   "fr": "La gâchette est la connexion latérale du triac, reliée au circuit de déclenchement.",
+   "en": "The gate is the triac's side connection, linked to the trigger circuit."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Connexion latérale du triac",
+     "en": "Triac side connection"
+    },
+    "correct": true,
+    "shape": {
+     "x": 222,
+     "y": 192,
+     "w": 64,
+     "h": 24
+    }
+   },
+   {
+    "text": {
+     "fr": "Corps du triac",
+     "en": "Triac body"
+    },
+    "correct": false,
+    "shape": {
+     "x": 172,
+     "y": 148,
+     "w": 56,
+     "h": 64
+    }
+   },
+   {
+    "text": {
+     "fr": "Lampe",
+     "en": "Lamp"
+    },
+    "correct": false,
+    "shape": {
+     "x": 180,
+     "y": 62,
+     "w": 40,
+     "h": 46
+    }
+   }
+  ],
+  "svg": "schemas/m10-gachette.svg"
+ },
+ {
+  "id": "m-p4-m10-q13",
+  "section": "06-circuits-commande",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un module MLI alimenté en 12 V fonctionne avec un rapport cyclique de 25 %. Quelle tension moyenne reçoit le moteur ? (exemple : 1,5 V)",
+   "en": "A PWM module fed with 12 V runs at a 25 % duty cycle. What average voltage does the motor get? (example: 1.5 V)"
+  },
+  "explanation": {
+   "fr": "Umoy = 0,25 × 12 = 3 V.",
+   "en": "Uavg = 0.25 × 12 = 3 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "3",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m10-q14",
+  "section": "06-circuits-commande",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel circuit produit simplement un signal MLI réglable par un potentiomètre ?",
+   "en": "Which circuit simply produces a PWM signal adjustable by a potentiometer?"
+  },
+  "explanation": {
+   "fr": "Un 555 monté en astable.",
+   "en": "A 555 wired as an astable."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un 555 en astable",
+     "en": "A 555 astable"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un pont de diodes",
+     "en": "A diode bridge"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un transformateur",
+     "en": "A transformer"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-q15",
+  "section": "06-circuits-commande",
+  "type": "multiple",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelles précautions protègent une carte de variateur des décharges électrostatiques ?",
+   "en": "Which precautions protect a drive board from electrostatic discharge?"
+  },
+  "explanation": {
+   "fr": "Bracelet relié à la terre, tapis antistatique, sachet blindé ; jamais toucher les broches.",
+   "en": "Earthed wrist strap, antistatic mat, shielded bag; never touch the pins."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Bracelet relié à la terre",
+     "en": "Earthed wrist strap"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Sachet blindé",
+     "en": "Shielded bag"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Toucher les broches pour vérifier",
+     "en": "Touch the pins to check"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Travailler sur une moquette",
+     "en": "Work on a carpet"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x01",
+  "section": "01-diode-redressement",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un pont triphasé à diodes est alimenté par un réseau 230 V entre phases. Quelle tension continue fournit-il environ ? (exemple : 12 V)",
+   "en": "A three-phase diode bridge is fed by a 230 V line-to-line supply. About what DC voltage does it supply? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "1,35 × 230 ≈ 310,5 V.",
+   "en": "1.35 × 230 ≈ 310.5 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "310.5",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m10-x02",
+  "section": "01-diode-redressement",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelles sont les deux valeurs à vérifier pour choisir une diode de puissance ?",
+   "en": "Which two values must be checked to choose a power diode?"
+  },
+  "explanation": {
+   "fr": "Le courant moyen et la tension inverse maximale.",
+   "en": "The average current and the maximum reverse voltage."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Courant moyen et tension inverse",
+     "en": "Average current and reverse voltage"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Couleur et longueur",
+     "en": "Colour and length"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Fréquence et couple",
+     "en": "Frequency and torque"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x03",
+  "section": "02-transistors",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi un transistor de puissance commuté dissipe-t-il peu ?",
+   "en": "Why does a switched power transistor dissipate little?"
+  },
+  "explanation": {
+   "fr": "Bloqué, son courant est nul ; saturé, sa tension est presque nulle : U × I reste faible.",
+   "en": "Off, its current is zero; saturated, its voltage is almost zero: U × I stays small."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "U ou I est presque nul dans chaque état",
+     "en": "U or I is almost zero in each state"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il est refroidi par le moteur",
+     "en": "It is cooled by the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il fonctionne en régime linéaire",
+     "en": "It works in linear mode"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x04",
+  "section": "02-transistors",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Comment commande-t-on un MOSFET ?",
+   "en": "How is a MOSFET driven?"
+  },
+  "explanation": {
+   "fr": "Par une tension grille-source.",
+   "en": "By a gate-source voltage."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Par une tension grille-source",
+     "en": "By a gate-source voltage"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Par un courant de base",
+     "en": "By a base current"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Par une impulsion de courant inverse",
+     "en": "By a reverse current pulse"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x05",
+  "section": "03-igbt",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle plage de tension couvrent les IGBT des variateurs ?",
+   "en": "What voltage range do drive IGBTs cover?"
+  },
+  "explanation": {
+   "fr": "De 600 à 1 700 V environ.",
+   "en": "About 600 to 1,700 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "600 à 1 700 V",
+     "en": "600 to 1,700 V"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "5 à 24 V",
+     "en": "5 to 24 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "10 à 50 kV",
+     "en": "10 to 50 kV"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x06",
+  "section": "03-igbt",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : les deux IGBT d'un même bras d'onduleur peuvent conduire en même temps.",
+   "en": "True or false: both IGBTs of the same inverter leg may conduct at the same time."
+  },
+  "explanation": {
+   "fr": "Faux : ils court-circuiteraient le bus continu ; le driver l'interdit.",
+   "en": "False: they would short the DC bus; the driver prevents it."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x07",
+  "section": "04-thyristor",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quand un thyristor alimenté en alternatif s'éteint-il ?",
+   "en": "When does a thyristor fed with AC turn off?"
+  },
+  "explanation": {
+   "fr": "Au passage par zéro du courant, à la fin de chaque alternance.",
+   "en": "At the current zero crossing, at the end of each half-cycle."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Au passage par zéro du courant",
+     "en": "At the current zero crossing"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Quand la gâchette passe à 0",
+     "en": "When the gate goes to 0"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Jamais",
+     "en": "Never"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x08",
+  "section": "04-thyristor",
+  "type": "matching",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Associez chaque borne du thyristor à son nom.",
+   "en": "Match each thyristor terminal with its name."
+  },
+  "explanation": {
+   "fr": "A : anode ; K : cathode ; G : gâchette.",
+   "en": "A: anode; K: cathode; G: gate."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "A",
+     "en": "A"
+    },
+    "right": {
+     "fr": "Anode",
+     "en": "Anode"
+    }
+   },
+   {
+    "left": {
+     "fr": "K",
+     "en": "K"
+    },
+    "right": {
+     "fr": "Cathode",
+     "en": "Cathode"
+    }
+   },
+   {
+    "left": {
+     "fr": "G",
+     "en": "G"
+    },
+    "right": {
+     "fr": "Gâchette",
+     "en": "Gate"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x09",
+  "section": "05-triac-gradateur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Peut-on régler la vitesse d'un moteur asynchrone triphasé avec un gradateur ?",
+   "en": "Can the speed of a three-phase induction motor be adjusted with a dimmer?"
+  },
+  "explanation": {
+   "fr": "Non : sa vitesse dépend de la fréquence ; il faut un variateur de fréquence.",
+   "en": "No: its speed depends on frequency; a frequency drive is needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Non, il faut un variateur de fréquence",
+     "en": "No, a frequency drive is needed"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Oui, sans limite",
+     "en": "Yes, without limit"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Oui, s'il est couplé en étoile",
+     "en": "Yes, if connected in star"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x10",
+  "section": "05-triac-gradateur",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que contient un relais statique ?",
+   "en": "What does a solid-state relay contain?"
+  },
+  "explanation": {
+   "fr": "Un triac ou deux thyristors, commutés au zéro de tension.",
+   "en": "A triac or two thyristors, switched at zero voltage."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un triac ou deux thyristors",
+     "en": "A triac or two thyristors"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Une bobine et des contacts",
+     "en": "A coil and contacts"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un moteur pas à pas",
+     "en": "A stepper motor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m10-x11",
+  "section": "06-circuits-commande",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un module MLI alimenté en 24 V doit fournir une tension moyenne de 18 V. Quel rapport cyclique faut-il ? (exemple : 40 %)",
+   "en": "A PWM module fed with 24 V must deliver an average voltage of 18 V. What duty cycle is needed? (example: 40 %)"
+  },
+  "explanation": {
+   "fr": "18 / 24 = 0,75, soit 75 %.",
+   "en": "18 / 24 = 0.75, so 75 %."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "75",
+   "unit": "%",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m10-x12",
+  "section": "06-circuits-commande",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel composant isole la commande basse tension du circuit de puissance ?",
+   "en": "Which component isolates the low-voltage control from the power circuit?"
+  },
+  "explanation": {
+   "fr": "Un optocoupleur ou un driver isolé.",
+   "en": "An optocoupler or an isolated driver."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un optocoupleur",
+     "en": "An optocoupler"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un condensateur de lissage",
+     "en": "A smoothing capacitor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une diode de roue libre",
+     "en": "A freewheeling diode"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

@@ -1,0 +1,1035 @@
+[
+ {
+  "id": "m-p4-m11-q01",
+  "section": "01-principe",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Remettez dans l'ordre le trajet de l'énergie dans un variateur de fréquence : associez chaque élément à son rang.",
+   "en": "Put in order the energy path through a frequency drive: match each item with its rank."
+  },
+  "explanation": {
+   "fr": "Réseau, redresseur, bus continu, onduleur, puis le moteur.",
+   "en": "Supply, rectifier, DC bus, inverter, then the motor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Réseau triphasé",
+     "en": "Three-phase supply"
+    },
+    "right": {
+     "fr": "1re",
+     "en": "1st"
+    }
+   },
+   {
+    "left": {
+     "fr": "Redresseur",
+     "en": "Rectifier"
+    },
+    "right": {
+     "fr": "2e",
+     "en": "2nd"
+    }
+   },
+   {
+    "left": {
+     "fr": "Bus continu",
+     "en": "DC bus"
+    },
+    "right": {
+     "fr": "3e",
+     "en": "3rd"
+    }
+   },
+   {
+    "left": {
+     "fr": "Onduleur",
+     "en": "Inverter"
+    },
+    "right": {
+     "fr": "4e",
+     "en": "4th"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q02",
+  "section": "01-principe",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un variateur est alimenté par un réseau 400 V. Quelle tension environ règne sur son bus continu (Udc ≈ 1,35 × U) ? (exemple : 12 V)",
+   "en": "A drive is fed by a 400 V supply. About what voltage is on its DC bus (Udc ≈ 1.35 × U)? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "1,35 × 400 = 540 V.",
+   "en": "1.35 × 400 = 540 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "540",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-q03",
+  "section": "01-principe",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur ce schéma fonctionnel d'un variateur de fréquence, cliquez sur le bus continu.",
+   "en": "On this block diagram of a frequency drive, click the DC bus."
+  },
+  "explanation": {
+   "fr": "Le bus continu est entre le redresseur (≈ → =) et l'onduleur (= → ≈).",
+   "en": "The DC bus lies between the rectifier (≈ → =) and the inverter (= → ≈)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Troisième bloc",
+     "en": "Third block"
+    },
+    "correct": true,
+    "shape": {
+     "x": 266,
+     "y": 60,
+     "w": 108,
+     "h": 50
+    }
+   },
+   {
+    "text": {
+     "fr": "Deuxième bloc",
+     "en": "Second block"
+    },
+    "correct": false,
+    "shape": {
+     "x": 138,
+     "y": 60,
+     "w": 108,
+     "h": 50
+    }
+   },
+   {
+    "text": {
+     "fr": "Quatrième bloc",
+     "en": "Fourth block"
+    },
+    "correct": false,
+    "shape": {
+     "x": 394,
+     "y": 60,
+     "w": 108,
+     "h": 50
+    }
+   }
+  ],
+  "svg": "schemas/m11-bus.svg"
+ },
+ {
+  "id": "m-p4-m11-q04",
+  "section": "01-principe",
+  "type": "truefalse",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Vrai ou faux : dès que le variateur est coupé, on peut toucher son bus continu.",
+   "en": "True or false: as soon as the drive is switched off, its DC bus can be touched."
+  },
+  "explanation": {
+   "fr": "Faux : les condensateurs restent chargés plusieurs minutes ; attendre et vérifier l'absence de tension.",
+   "en": "False: the capacitors stay charged for several minutes; wait and verify the absence of voltage."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q05",
+  "section": "02-loi-uf",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur 400 V 50 Hz est alimenté selon la loi U/f. Quelle tension le variateur fournit-il à 25 Hz ? (exemple : 12 V)",
+   "en": "A 400 V 50 Hz motor is fed using V/f control. What voltage does the drive supply at 25 Hz? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "U/f = 400 / 50 = 8 V/Hz ; 8 × 25 = 200 V.",
+   "en": "V/f = 400 / 50 = 8 V/Hz; 8 × 25 = 200 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "200",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-q06",
+  "section": "02-loi-uf",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur à 4 pôles (p = 2) est alimenté à 30 Hz par un variateur. Quelle est sa vitesse de synchronisme ? (exemple : 1450 tr/min)",
+   "en": "A 4-pole motor (p = 2) is fed at 30 Hz by a drive. What is its synchronous speed? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "ns = 60 × 30 / 2 = 900 tr/min.",
+   "en": "ns = 60 × 30 / 2 = 900 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "900",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-q07",
+  "section": "02-loi-uf",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi le variateur baisse-t-il la tension en même temps que la fréquence ?",
+   "en": "Why does the drive lower the voltage together with the frequency?"
+  },
+  "explanation": {
+   "fr": "Pour garder U/f, donc le flux et le couple, constants, sans saturer le moteur.",
+   "en": "To keep V/f, hence flux and torque, constant, without saturating the motor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Pour garder le flux constant",
+     "en": "To keep the flux constant"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Pour économiser les IGBT",
+     "en": "To save the IGBTs"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Pour inverser le sens",
+     "en": "To reverse the direction"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q08",
+  "section": "02-loi-uf",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel mode de commande choisir pour un levage qui démarre en charge ?",
+   "en": "Which control mode should be chosen for a hoist starting under load?"
+  },
+  "explanation": {
+   "fr": "Le contrôle vectoriel : couple élevé dès les basses vitesses.",
+   "en": "Vector control: high torque from low speeds."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le contrôle vectoriel",
+     "en": "Vector control"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La loi U/f simple",
+     "en": "Simple V/f control"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un gradateur",
+     "en": "A dimmer"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q09",
+  "section": "03-installation",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment raccorde-t-on le blindage du câble moteur ?",
+   "en": "How is the motor cable shield connected?"
+  },
+  "explanation": {
+   "fr": "À la masse, sur toute sa circonférence, aux deux extrémités.",
+   "en": "To ground, all around its circumference, at both ends."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "À 360° aux deux extrémités",
+     "en": "360° at both ends"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Par un fil à un seul bout",
+     "en": "With a wire at one end only"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il ne se raccorde pas",
+     "en": "It is not connected"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q10",
+  "section": "03-installation",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un variateur transmet 11 kW et perd 2,5 % de cette puissance. Quelle chaleur faut-il évacuer de l'armoire ? (exemple : 150 W)",
+   "en": "A drive transmits 11 kW and loses 2.5 % of this power. What heat must be removed from the enclosure? (example: 150 W)"
+  },
+  "explanation": {
+   "fr": "0,025 × 11 000 = 275 W.",
+   "en": "0.025 × 11,000 = 275 W."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "275",
+   "unit": "W",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-q11",
+  "section": "04-parametrage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Le variateur tombe en défaut de surtension du bus pendant la décélération. Que faire ?",
+   "en": "The drive trips on DC bus overvoltage during deceleration. What should be done?"
+  },
+  "explanation": {
+   "fr": "Allonger la rampe de décélération ou ajouter une résistance de freinage.",
+   "en": "Lengthen the deceleration ramp or add a braking resistor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Allonger la rampe ou ajouter une résistance de freinage",
+     "en": "Lengthen the ramp or add a braking resistor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Raccourcir la rampe",
+     "en": "Shorten the ramp"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Augmenter la fréquence maximale",
+     "en": "Raise the maximum frequency"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q12",
+  "section": "04-parametrage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quelle valeur de la plaque sert à régler la protection thermique du moteur dans le variateur ?",
+   "en": "Which nameplate value sets the motor thermal protection in the drive?"
+  },
+  "explanation": {
+   "fr": "Le courant nominal.",
+   "en": "The rated current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Le courant nominal",
+     "en": "The rated current"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La masse du moteur",
+     "en": "The motor mass"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "L'indice IP",
+     "en": "The IP rating"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q13",
+  "section": "05-moteurs-diagnostic",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi un moteur autoventilé ne peut-il pas fournir son couple nominal en permanence à très basse vitesse ?",
+   "en": "Why can't a self-ventilated motor deliver its rated torque continuously at very low speed?"
+  },
+  "explanation": {
+   "fr": "Son ventilateur, sur son propre arbre, le refroidit beaucoup moins.",
+   "en": "Its fan, on its own shaft, cools it much less."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il est moins bien refroidi",
+     "en": "It is less well cooled"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Son couple maximal disparaît",
+     "en": "Its maximum torque disappears"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le bus continu baisse",
+     "en": "The DC bus falls"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-q14",
+  "section": "05-moteurs-diagnostic",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un moteur alimenté à 50 Hz a une vitesse de synchronisme de 1 500 tr/min et tourne à 1 440 tr/min. Quel est son glissement ? (exemple : 3,5 %)",
+   "en": "A motor fed at 50 Hz has a synchronous speed of 1,500 rpm and runs at 1,440 rpm. What is its slip? (example: 3.5 %)"
+  },
+  "explanation": {
+   "fr": "g = (1 500 − 1 440) / 1 500 = 4 %.",
+   "en": "s = (1,500 − 1,440) / 1,500 = 4 %."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "4",
+   "unit": "%",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-q15",
+  "section": "06-variateurs-cc",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Dans un variateur à courant continu, qu'est-ce qui règle la tension d'induit ?",
+   "en": "In a DC drive, what sets the armature voltage?"
+  },
+  "explanation": {
+   "fr": "L'angle d'amorçage du pont de thyristors.",
+   "en": "The firing angle of the thyristor bridge."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "L'angle d'amorçage des thyristors",
+     "en": "The thyristor firing angle"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le nombre de pôles",
+     "en": "The number of poles"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La fréquence du réseau",
+     "en": "The supply frequency"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x01",
+  "section": "01-principe",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "De quoi est fait l'onduleur d'un variateur de fréquence ?",
+   "en": "What is a frequency drive's inverter made of?"
+  },
+  "explanation": {
+   "fr": "De six IGBT, commandés en MLI.",
+   "en": "Six IGBTs, PWM-controlled."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Six IGBT",
+     "en": "Six IGBTs"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Quatre diodes",
+     "en": "Four diodes"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un contacteur",
+     "en": "A contactor"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x02",
+  "section": "01-principe",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi le courant du moteur est-il presque sinusoïdal alors que l'onduleur envoie des impulsions ?",
+   "en": "Why is the motor current almost sinusoidal although the inverter sends pulses?"
+  },
+  "explanation": {
+   "fr": "Les enroulements, inductifs, lissent le courant.",
+   "en": "The inductive windings smooth the current."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Les enroulements inductifs lissent le courant",
+     "en": "The inductive windings smooth the current"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le réseau le filtre",
+     "en": "The supply filters it"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Les impulsions sont déjà sinusoïdales",
+     "en": "The pulses are already sinusoidal"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x03",
+  "section": "02-loi-uf",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur 230 V 50 Hz est alimenté selon la loi U/f. Quelle tension reçoit-il à 20 Hz ? (exemple : 12 V)",
+   "en": "A 230 V 50 Hz motor is fed using V/f control. What voltage does it get at 20 Hz? (example: 12 V)"
+  },
+  "explanation": {
+   "fr": "230 / 50 = 4,6 V/Hz ; 4,6 × 20 = 92 V.",
+   "en": "230 / 50 = 4.6 V/Hz; 4.6 × 20 = 92 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "92",
+   "unit": "V",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-x04",
+  "section": "02-loi-uf",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un moteur à 2 pôles (p = 1) est alimenté à 40 Hz. Quelle est sa vitesse de synchronisme ? (exemple : 1450 tr/min)",
+   "en": "A 2-pole motor (p = 1) is fed at 40 Hz. What is its synchronous speed? (example: 1450 rpm)"
+  },
+  "explanation": {
+   "fr": "ns = 60 × 40 / 1 = 2 400 tr/min.",
+   "en": "ns = 60 × 40 / 1 = 2,400 rpm."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "2400",
+   "unit": "tr/min",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m11-x05",
+  "section": "02-loi-uf",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que se passe-t-il au-dessus de 50 Hz pour un moteur 400 V alimenté par un variateur sur réseau 400 V ?",
+   "en": "What happens above 50 Hz for a 400 V motor fed by a drive on a 400 V supply?"
+  },
+  "explanation": {
+   "fr": "La tension plafonne : le flux et le couple diminuent (défluxage).",
+   "en": "The voltage levels off: flux and torque fall (field weakening)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Défluxage : le couple diminue",
+     "en": "Field weakening: torque falls"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le couple double",
+     "en": "Torque doubles"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le moteur s'arrête",
+     "en": "The motor stops"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x06",
+  "section": "03-installation",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi ne commande-t-on pas la marche par un contacteur placé entre le variateur et le moteur ?",
+   "en": "Why is running not controlled by a contactor between the drive and the motor?"
+  },
+  "explanation": {
+   "fr": "Ouvrir sous charge en sortie de variateur provoque des surtensions et des défauts ; on commande par les entrées du variateur.",
+   "en": "Opening under load at the drive output causes surges and trips; control through the drive's inputs."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il abîmerait l'onduleur ; on utilise les entrées du variateur",
+     "en": "It would damage the inverter; use the drive's inputs"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "C'est interdit pour les moteurs 400 V",
+     "en": "It is forbidden for 400 V motors"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Le contacteur serait trop lent",
+     "en": "The contactor would be too slow"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x07",
+  "section": "03-installation",
+  "type": "multiple",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelles règles améliorent la compatibilité électromagnétique d'un variateur ?",
+   "en": "Which rules improve a drive's electromagnetic compatibility?"
+  },
+  "explanation": {
+   "fr": "Câble blindé repris à 360°, puissance et commande séparées, liaisons de terre courtes.",
+   "en": "Shielded cable clamped 360°, power and control separated, short earth links."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Câble moteur blindé repris à 360°",
+     "en": "Shielded motor cable clamped 360°"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Puissance et commande séparées",
+     "en": "Power and control separated"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Câbles de commande dans le même conduit que le câble moteur",
+     "en": "Control cables in the same conduit as the motor cable"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x08",
+  "section": "04-parametrage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un défaut de surintensité apparaît à chaque démarrage. Quelle cause est la plus probable ?",
+   "en": "An overcurrent trip occurs at every start. What is the most likely cause?"
+  },
+  "explanation": {
+   "fr": "Une rampe d'accélération trop courte.",
+   "en": "An acceleration ramp that is too short."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Rampe d'accélération trop courte",
+     "en": "Acceleration ramp too short"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Rampe de décélération trop longue",
+     "en": "Deceleration ramp too long"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Fréquence minimale trop basse",
+     "en": "Minimum frequency too low"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x09",
+  "section": "04-parametrage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "À quoi sert le régulateur PID intégré d'un variateur de pompe ?",
+   "en": "What is the built-in PID controller of a pump drive for?"
+  },
+  "explanation": {
+   "fr": "À ajuster la vitesse pour tenir une pression ou un débit mesuré.",
+   "en": "To adjust the speed to hold a measured pressure or flow."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Tenir une pression mesurée",
+     "en": "Hold a measured pressure"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Inverser le sens",
+     "en": "Reverse the direction"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Décharger le bus",
+     "en": "Discharge the bus"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x10",
+  "section": "05-moteurs-diagnostic",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : on peut mesurer l'isolement d'un moteur en laissant le variateur raccordé.",
+   "en": "True or false: a motor's insulation can be tested with the drive still connected."
+  },
+  "explanation": {
+   "fr": "Faux : la tension d'essai détruirait l'onduleur ; on débranche le moteur du variateur.",
+   "en": "False: the test voltage would destroy the inverter; disconnect the motor from the drive."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": true
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x11",
+  "section": "06-variateurs-cc",
+  "type": "matching",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Associez chaque quadrant à son fonctionnement.",
+   "en": "Match each quadrant with its operation."
+  },
+  "explanation": {
+   "fr": "1 : moteur avant ; 2 : frein arrière ; 3 : moteur arrière ; 4 : frein avant.",
+   "en": "1: motor forward; 2: brake reverse; 3: motor reverse; 4: brake forward."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Quadrant 1",
+     "en": "Quadrant 1"
+    },
+    "right": {
+     "fr": "Moteur, sens avant",
+     "en": "Motoring, forward"
+    }
+   },
+   {
+    "left": {
+     "fr": "Quadrant 2",
+     "en": "Quadrant 2"
+    },
+    "right": {
+     "fr": "Frein, sens arrière",
+     "en": "Braking, reverse"
+    }
+   },
+   {
+    "left": {
+     "fr": "Quadrant 3",
+     "en": "Quadrant 3"
+    },
+    "right": {
+     "fr": "Moteur, sens arrière",
+     "en": "Motoring, reverse"
+    }
+   },
+   {
+    "left": {
+     "fr": "Quadrant 4",
+     "en": "Quadrant 4"
+    },
+    "right": {
+     "fr": "Frein, sens avant",
+     "en": "Braking, forward"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m11-x12",
+  "section": "06-variateurs-cc",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que fait un variateur régénératif de l'énergie de freinage ?",
+   "en": "What does a regenerative drive do with braking energy?"
+  },
+  "explanation": {
+   "fr": "Il la renvoie au réseau.",
+   "en": "It returns it to the supply."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Il la renvoie au réseau",
+     "en": "It returns it to the supply"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il la brûle dans le moteur",
+     "en": "It burns it in the motor"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il la stocke dans les balais",
+     "en": "It stores it in the brushes"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

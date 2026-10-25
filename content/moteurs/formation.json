@@ -817,6 +817,275 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "p4",
+      "order": 4,
+      "title": {
+        "fr": "Électronique de puissance, variateurs et automates",
+        "en": "Power electronics, drives and PLCs"
+      },
+      "description": {
+        "fr": "À suivre après les Parties 1 à 3 : les composants de l'électronique de puissance, les variateurs de vitesse, puis les automates programmables en ladder.",
+        "en": "Best taken after Parts 1 to 3: power electronic components, variable-speed drives, then programmable logic controllers in ladder."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p4/m10",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Électronique de puissance",
+            "en": "Power electronics"
+          },
+          "competence": {
+            "fr": "Reconnaître et tester les composants de puissance, et expliquer comment ils commutent l'énergie d'un moteur.",
+            "en": "Recognise and test power components, and explain how they switch a motor's energy."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis variateur MLI 12 V et gradateur à triac sur 12 V AC.",
+            "en": "Module quiz, then a 12 V PWM controller and a triac dimmer on 12 V AC."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-diode-redressement",
+              "kind": "content",
+              "title": {
+                "fr": "Rappel : la diode et le redressement",
+                "en": "Recap: the diode and rectification"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-transistors",
+              "kind": "content",
+              "title": {
+                "fr": "Rappel : les transistors en commutation",
+                "en": "Recap: transistors as switches"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-igbt",
+              "kind": "content",
+              "title": {
+                "fr": "L'IGBT",
+                "en": "The IGBT"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-thyristor",
+              "kind": "content",
+              "title": {
+                "fr": "Le thyristor",
+                "en": "The thyristor"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-triac-gradateur",
+              "kind": "content",
+              "title": {
+                "fr": "Le triac et le gradateur",
+                "en": "The triac and the dimmer"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-circuits-commande",
+              "kind": "content",
+              "title": {
+                "fr": "Circuits intégrés de commande et décharges électrostatiques",
+                "en": "Control ICs and electrostatic discharge"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : variateur MLI et gradateur",
+                "en": "Mini-project: PWM controller and dimmer"
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p4/m11",
+          "duration_hours": 10,
+          "title": {
+            "fr": "Variateurs de vitesse",
+            "en": "Variable-speed drives"
+          },
+          "competence": {
+            "fr": "Expliquer un variateur de fréquence, l'installer correctement et le paramétrer à partir de la plaque d'un moteur.",
+            "en": "Explain a frequency drive, install it correctly and set it up from a motor nameplate."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis paramétrage sur papier d'un variateur.",
+            "en": "Module quiz, then a paper set-up of a drive."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-principe",
+              "kind": "content",
+              "title": {
+                "fr": "Principe du variateur de fréquence",
+                "en": "How a frequency drive works"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-loi-uf",
+              "kind": "content",
+              "title": {
+                "fr": "Loi U/f et contrôle vectoriel",
+                "en": "V/f control and vector control"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-installation",
+              "kind": "content",
+              "title": {
+                "fr": "Installer un variateur",
+                "en": "Installing a drive"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-parametrage",
+              "kind": "content",
+              "title": {
+                "fr": "Paramétrer un variateur",
+                "en": "Setting up a drive"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-moteurs-diagnostic",
+              "kind": "content",
+              "title": {
+                "fr": "Moteurs pour variateur et diagnostic",
+                "en": "Motors for drives and diagnostics"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-variateurs-cc",
+              "kind": "content",
+              "title": {
+                "fr": "Les variateurs à courant continu",
+                "en": "DC drives"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : paramétrer un variateur",
+                "en": "Mini-project: set up a drive"
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p4/m12",
+          "duration_hours": 10,
+          "title": {
+            "fr": "Automates programmables",
+            "en": "Programmable logic controllers"
+          },
+          "competence": {
+            "fr": "Câbler les entrées et sorties d'un automate et écrire en ladder une commande de moteur avec temporisations et compteurs.",
+            "en": "Wire a PLC's inputs and outputs and write a motor control in ladder with timers and counters."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis programme d'auto-maintien, de temporisation et de comptage sur relais programmable 24 V.",
+            "en": "Module quiz, then a hold-in, timer and counter program on a 24 V programmable relay."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-structure-cycle",
+              "kind": "content",
+              "title": {
+                "fr": "Structure et cycle d'un automate",
+                "en": "PLC structure and scan cycle"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-entrees-sorties",
+              "kind": "content",
+              "title": {
+                "fr": "Entrées et sorties TOR en 24 V",
+                "en": "24 V digital inputs and outputs"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-adressage",
+              "kind": "content",
+              "title": {
+                "fr": "L'adressage IEC 61131-3",
+                "en": "IEC 61131-3 addressing"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-ladder",
+              "kind": "content",
+              "title": {
+                "fr": "Le langage ladder",
+                "en": "Ladder language"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-temporisations",
+              "kind": "content",
+              "title": {
+                "fr": "Les temporisations TON, TOF, TP",
+                "en": "Timers TON, TOF, TP"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-compteurs",
+              "kind": "content",
+              "title": {
+                "fr": "Les compteurs CTU, CTD",
+                "en": "Counters CTU, CTD"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-cablee-automate",
+              "kind": "content",
+              "title": {
+                "fr": "De la logique câblée à l'automate",
+                "en": "From wired logic to the PLC"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : programmer un relais programmable",
+                "en": "Mini-project: program a programmable relay"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

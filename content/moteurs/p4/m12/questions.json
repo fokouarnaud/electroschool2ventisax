@@ -1,0 +1,1086 @@
+[
+ {
+  "id": "m-p4-m12-q01",
+  "section": "01-structure-cycle",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Remettez dans l'ordre les étapes du cycle d'un automate : associez chaque étape à son rang.",
+   "en": "Put the steps of a PLC scan cycle in order: match each step with its rank."
+  },
+  "explanation": {
+   "fr": "Lire les entrées, exécuter le programme, écrire les sorties, puis recommencer.",
+   "en": "Read the inputs, run the program, write the outputs, then start again."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "Lire toutes les entrées",
+     "en": "Read all inputs"
+    },
+    "right": {
+     "fr": "1re",
+     "en": "1st"
+    }
+   },
+   {
+    "left": {
+     "fr": "Exécuter le programme",
+     "en": "Run the program"
+    },
+    "right": {
+     "fr": "2e",
+     "en": "2nd"
+    }
+   },
+   {
+    "left": {
+     "fr": "Écrire toutes les sorties",
+     "en": "Write all outputs"
+    },
+    "right": {
+     "fr": "3e",
+     "en": "3rd"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q02",
+  "section": "01-structure-cycle",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un automate a un temps de cycle de 4 ms. Combien de cycles exécute-t-il en une seconde ? (exemple : 50)",
+   "en": "A PLC has a 4 ms scan time. How many scans does it run in one second? (example: 50)"
+  },
+  "explanation": {
+   "fr": "1 / 0,004 = 250 cycles.",
+   "en": "1 / 0.004 = 250 scans."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "250",
+   "unit": "",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m12-q03",
+  "section": "01-structure-cycle",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Une sortie est écrite à 1 au début du programme puis à 0 plus loin dans le même cycle. Quel état prend-elle ?",
+   "en": "An output is written to 1 at the start of the program then to 0 further on in the same scan. What state does it take?"
+  },
+  "explanation": {
+   "fr": "La dernière valeur écrite : 0.",
+   "en": "The last value written: 0."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "0",
+     "en": "0"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "1",
+     "en": "1"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Elle clignote",
+     "en": "It flashes"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q04",
+  "section": "02-entrees-sorties",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un contact fermé relie le +24 V à une entrée TOR. Que lit l'automate ?",
+   "en": "A closed contact links +24 V to a digital input. What does the PLC read?"
+  },
+  "explanation": {
+   "fr": "1.",
+   "en": "1."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "1",
+     "en": "1"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "0",
+     "en": "0"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "24",
+     "en": "24"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q05",
+  "section": "02-entrees-sorties",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Comment l'automate commande-t-il un moteur triphasé de 5,5 kW ?",
+   "en": "How does the PLC control a 5.5 kW three-phase motor?"
+  },
+  "explanation": {
+   "fr": "Sa sortie alimente la bobine d'un contacteur, qui commute le moteur.",
+   "en": "Its output feeds a contactor coil, which switches the motor."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Par la bobine d'un contacteur",
+     "en": "Through a contactor coil"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Directement par une sortie à transistor",
+     "en": "Directly from a transistor output"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Par une entrée analogique",
+     "en": "Through an analogue input"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q06",
+  "section": "03-adressage",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Que désigne l'adresse %QX0.1 ?",
+   "en": "What does the address %QX0.1 designate?"
+  },
+  "explanation": {
+   "fr": "Le bit 1 de l'octet de sorties 0 : la deuxième sortie.",
+   "en": "Bit 1 of output byte 0: the second output."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "La deuxième sortie",
+     "en": "The second output"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "La deuxième entrée",
+     "en": "The second input"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un bit de mémoire",
+     "en": "A memory bit"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q07",
+  "section": "03-adressage",
+  "type": "matching",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Associez chaque adresse IEC 61131-3 à ce qu'elle désigne.",
+   "en": "Match each IEC 61131-3 address with what it designates."
+  },
+  "explanation": {
+   "fr": "%IX : entrée ; %QX : sortie ; %MX : mémoire interne.",
+   "en": "%IX: input; %QX: output; %MX: internal memory."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "pairs": [
+   {
+    "left": {
+     "fr": "%IX0.0",
+     "en": "%IX0.0"
+    },
+    "right": {
+     "fr": "Entrée",
+     "en": "Input"
+    }
+   },
+   {
+    "left": {
+     "fr": "%QX0.0",
+     "en": "%QX0.0"
+    },
+    "right": {
+     "fr": "Sortie",
+     "en": "Output"
+    }
+   },
+   {
+    "left": {
+     "fr": "%MX0.0",
+     "en": "%MX0.0"
+    },
+    "right": {
+     "fr": "Mémoire interne",
+     "en": "Internal memory"
+    }
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q08",
+  "section": "04-ladder",
+  "type": "hotspot",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Sur ce réseau ladder de marche-arrêt, cliquez sur le contact d'auto-maintien.",
+   "en": "On this start-stop ladder rung, click the hold-in contact."
+  },
+  "explanation": {
+   "fr": "Le contact placé en parallèle sous le contact de marche : il lit la sortie elle-même.",
+   "en": "The contact in parallel below the start contact: it reads the output itself."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Contact du bas",
+     "en": "Bottom contact"
+    },
+    "correct": true,
+    "shape": {
+     "x": 166,
+     "y": 120,
+     "w": 48,
+     "h": 40
+    }
+   },
+   {
+    "text": {
+     "fr": "Premier contact",
+     "en": "First contact"
+    },
+    "correct": false,
+    "shape": {
+     "x": 76,
+     "y": 60,
+     "w": 48,
+     "h": 40
+    }
+   },
+   {
+    "text": {
+     "fr": "Deuxième contact du haut",
+     "en": "Second top contact"
+    },
+    "correct": false,
+    "shape": {
+     "x": 166,
+     "y": 60,
+     "w": 48,
+     "h": 40
+    }
+   },
+   {
+    "text": {
+     "fr": "Bobine",
+     "en": "Coil"
+    },
+    "correct": false,
+    "shape": {
+     "x": 466,
+     "y": 60,
+     "w": 48,
+     "h": 40
+    }
+   }
+  ],
+  "svg": "schemas/m12-maintien.svg"
+ },
+ {
+  "id": "m-p4-m12-q09",
+  "section": "04-ladder",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Deux contacts en série dans un réseau ladder réalisent quelle fonction ?",
+   "en": "Two contacts in series in a ladder rung perform which function?"
+  },
+  "explanation": {
+   "fr": "ET : il faut les deux.",
+   "en": "AND: both are needed."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "ET",
+     "en": "AND"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "OU",
+     "en": "OR"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "NON",
+     "en": "NOT"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q10",
+  "section": "04-ladder",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Le bouton d'arrêt S1 est câblé à ouverture sur %IX0.0. Quel contact utilise-t-on dans le ladder ?",
+   "en": "Stop button S1 is wired as a break contact on %IX0.0. Which contact is used in the ladder?"
+  },
+  "explanation": {
+   "fr": "Un contact à fermeture : l'entrée vaut 1 au repos.",
+   "en": "A make contact: the input is 1 at rest."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Un contact à fermeture",
+     "en": "A make contact"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un contact à ouverture",
+     "en": "A break contact"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Une bobine SET",
+     "en": "A SET coil"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q11",
+  "section": "05-temporisations",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel bloc allume une sortie 5 s après la fermeture d'un contact ?",
+   "en": "Which block turns an output on 5 s after a contact closes?"
+  },
+  "explanation": {
+   "fr": "Le TON (retard à la montée).",
+   "en": "TON (on-delay)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "TON",
+     "en": "TON"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "TOF",
+     "en": "TOF"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "CTU",
+     "en": "CTU"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q12",
+  "section": "05-temporisations",
+  "type": "numeric",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un TON a PT = T#5s. Son entrée passe à 1 à t = 2 s et y reste. À quel instant la sortie Q passe-t-elle à 1 ? (exemple : 1,5 s)",
+   "en": "A TON has PT = T#5s. Its input goes to 1 at t = 2 s and stays there. At what time does output Q go to 1? (example: 1.5 s)"
+  },
+  "explanation": {
+   "fr": "2 + 5 = 7 s.",
+   "en": "2 + 5 = 7 s."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "7",
+   "unit": "s",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m12-q13",
+  "section": "05-temporisations",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Quel bloc garde un ventilateur en marche 3 min après l'arrêt du moteur ?",
+   "en": "Which block keeps a fan running 3 min after the motor stops?"
+  },
+  "explanation": {
+   "fr": "Le TOF (retard à la retombée).",
+   "en": "TOF (off-delay)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "TOF",
+     "en": "TOF"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "TON",
+     "en": "TON"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "TP",
+     "en": "TP"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q14",
+  "section": "06-compteurs",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Un capteur reste à 1 pendant qu'une pièce est arrêtée devant lui. Combien de fois le CTU compte-t-il ?",
+   "en": "A sensor stays at 1 while a part is stopped in front of it. How many times does the CTU count?"
+  },
+  "explanation": {
+   "fr": "Une seule fois : il compte les fronts montants.",
+   "en": "Only once: it counts rising edges."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une fois",
+     "en": "Once"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À chaque cycle",
+     "en": "Every scan"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Jamais",
+     "en": "Never"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-q15",
+  "section": "07-cablee-automate",
+  "type": "single",
+  "usage": "quiz",
+  "prompt": {
+   "fr": "Pourquoi l'arrêt d'urgence n'est-il pas confié au seul programme standard ?",
+   "en": "Why is the emergency stop not left to the standard program alone?"
+  },
+  "explanation": {
+   "fr": "Une panne de l'automate ou du programme ne doit pas empêcher l'arrêt : il est câblé ou passe par un relais de sécurité.",
+   "en": "A PLC or program fault must not prevent stopping: it is wired or goes through a safety relay."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une panne ne doit pas empêcher l'arrêt",
+     "en": "A fault must not prevent stopping"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Le ladder ne connaît pas les boutons",
+     "en": "Ladder does not know buttons"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il est trop rapide pour l'automate",
+     "en": "It is too fast for the PLC"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x01",
+  "section": "01-structure-cycle",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quel est le principal avantage d'un automate sur la logique câblée ?",
+   "en": "What is the main advantage of a PLC over wired logic?"
+  },
+  "explanation": {
+   "fr": "On modifie le fonctionnement en changeant le programme, sans recâbler.",
+   "en": "Operation is changed by editing the program, without rewiring."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Modifier sans recâbler",
+     "en": "Change without rewiring"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Il commande la puissance directement",
+     "en": "It switches power directly"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Il n'a pas besoin d'alimentation",
+     "en": "It needs no power supply"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x02",
+  "section": "01-structure-cycle",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Pourquoi une impulsion très brève sur une entrée peut-elle être manquée ?",
+   "en": "Why can a very short pulse on an input be missed?"
+  },
+  "explanation": {
+   "fr": "Elle peut se produire et disparaître entre deux lectures des entrées, plus courte qu'un cycle.",
+   "en": "It can occur and vanish between two input reads, shorter than one scan."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Elle est plus courte qu'un cycle",
+     "en": "It is shorter than one scan"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Elle est en 24 V",
+     "en": "It is at 24 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "L'entrée est PNP",
+     "en": "The input is PNP"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x03",
+  "section": "02-entrees-sorties",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Quelle sortie choisir pour commuter rapidement et sans usure une petite charge en 24 V continu ?",
+   "en": "Which output should be chosen to switch a small 24 V DC load quickly and without wear?"
+  },
+  "explanation": {
+   "fr": "Une sortie à transistor.",
+   "en": "A transistor output."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "À transistor",
+     "en": "Transistor"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "À relais",
+     "en": "Relay"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Analogique",
+     "en": "Analogue"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x04",
+  "section": "02-entrees-sorties",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Comment raccorde-t-on le fil de signal (noir) d'un capteur PNP 3 fils ?",
+   "en": "How is the signal (black) wire of a 3-wire PNP sensor connected?"
+  },
+  "explanation": {
+   "fr": "Sur l'entrée de l'automate ; brun au +24 V, bleu au 0 V.",
+   "en": "To the PLC input; brown to +24 V, blue to 0 V."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Sur l'entrée",
+     "en": "To the input"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Au +24 V",
+     "en": "To +24 V"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "À la terre",
+     "en": "To earth"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x05",
+  "section": "03-adressage",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Les entrées sont numérotées %IX0.0 à %IX0.7 puis %IX1.0. Quel est le rang de l'entrée %IX1.2 en comptant la première comme 1 ? (exemple : 4)",
+   "en": "Inputs are numbered %IX0.0 to %IX0.7 then %IX1.0. What is the position of input %IX1.2, counting the first as 1? (example: 4)"
+  },
+  "explanation": {
+   "fr": "Octet 1, bit 2 : 8 × 1 + 2 + 1 = 11.",
+   "en": "Byte 1, bit 2: 8 × 1 + 2 + 1 = 11."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "11",
+   "unit": "",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m12-x06",
+  "section": "03-adressage",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Comment s'écrit chez Siemens l'entrée %IX0.0 de l'IEC 61131-3 ?",
+   "en": "How is IEC 61131-3 input %IX0.0 written at Siemens?"
+  },
+  "explanation": {
+   "fr": "I0.0.",
+   "en": "I0.0."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "I0.0",
+     "en": "I0.0"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "%M0",
+     "en": "%M0"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Q0.0",
+     "en": "Q0.0"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x07",
+  "section": "04-ladder",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Les bobines SET et RESET d'une même sortie sont toutes deux actives dans le même cycle. Laquelle l'emporte ?",
+   "en": "The SET and RESET coils of the same output are both active in the same scan. Which wins?"
+  },
+  "explanation": {
+   "fr": "Celle qui est écrite en dernier dans le programme ; on place le RESET après pour que l'arrêt soit prioritaire.",
+   "en": "The one written last in the program; RESET is placed after so that stop has priority."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "La dernière dans le programme",
+     "en": "The last one in the program"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Toujours SET",
+     "en": "Always SET"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Aucune, la sortie clignote",
+     "en": "Neither, the output flashes"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x08",
+  "section": "04-ladder",
+  "type": "truefalse",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Vrai ou faux : deux contacts en parallèle dans un réseau ladder réalisent un OU.",
+   "en": "True or false: two contacts in parallel in a ladder rung perform an OR."
+  },
+  "explanation": {
+   "fr": "Vrai : l'un ou l'autre suffit à rendre le réseau passant.",
+   "en": "True: either one makes the rung pass."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Vrai",
+     "en": "True"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Faux",
+     "en": "False"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x09",
+  "section": "05-temporisations",
+  "type": "numeric",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un TOF a PT = T#3s. Son entrée retombe à 0 à t = 10 s. À quel instant la sortie Q retombe-t-elle ? (exemple : 1,5 s)",
+   "en": "A TOF has PT = T#3s. Its input drops to 0 at t = 10 s. At what time does output Q drop? (example: 1.5 s)"
+  },
+  "explanation": {
+   "fr": "10 + 3 = 13 s.",
+   "en": "10 + 3 = 13 s."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [],
+  "numeric": {
+   "value": "13",
+   "unit": "s",
+   "tolerance_pct": 2
+  }
+ },
+ {
+  "id": "m-p4-m12-x10",
+  "section": "05-temporisations",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Que produit un bloc TP sur un front montant de son entrée ?",
+   "en": "What does a TP block produce on a rising edge of its input?"
+  },
+  "explanation": {
+   "fr": "Une impulsion de durée PT, quelle que soit la durée d'appui.",
+   "en": "A pulse lasting PT, however long the input is held."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Une impulsion de durée PT",
+     "en": "A pulse lasting PT"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Un retard à la retombée",
+     "en": "An off-delay"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Un comptage",
+     "en": "A count"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x11",
+  "section": "06-compteurs",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un CTD est chargé à 20 par LD. Quand sa sortie Q passe-t-elle à 1 ?",
+   "en": "A CTD is loaded with 20 by LD. When does its output Q go to 1?"
+  },
+  "explanation": {
+   "fr": "Quand la valeur courante atteint 0, après 20 fronts sur CD.",
+   "en": "When the current value reaches 0, after 20 edges on CD."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "Après 20 fronts sur CD",
+     "en": "After 20 edges on CD"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Au premier front",
+     "en": "On the first edge"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "Après 40 fronts",
+     "en": "After 40 edges"
+    },
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "m-p4-m12-x12",
+  "section": "07-cablee-automate",
+  "type": "single",
+  "usage": "exam",
+  "prompt": {
+   "fr": "Un fil du bouton d'arrêt câblé à ouverture se coupe. Que se passe-t-il ?",
+   "en": "A wire of the stop button wired as a break contact breaks. What happens?"
+  },
+  "explanation": {
+   "fr": "L'entrée passe à 0 : la machine s'arrête (sécurité positive).",
+   "en": "The input goes to 0: the machine stops (fail-safe)."
+  },
+  "reviewed": {
+   "fr": true,
+   "en": true
+  },
+  "choices": [
+   {
+    "text": {
+     "fr": "La machine s'arrête",
+     "en": "The machine stops"
+    },
+    "correct": true
+   },
+   {
+    "text": {
+     "fr": "Rien, la machine continue",
+     "en": "Nothing, the machine keeps running"
+    },
+    "correct": false
+   },
+   {
+    "text": {
+     "fr": "La machine démarre",
+     "en": "The machine starts"
+    },
+    "correct": false
+   }
+  ]
+ }
+]

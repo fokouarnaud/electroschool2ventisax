@@ -18,7 +18,7 @@ EN = {
     "courant traversant le corps (mA)": "current through the body (mA)",
     "seuils indicatifs, 50 Hz, quelques secondes": "indicative thresholds, 50 Hz, a few seconds",
     "corps": "body", "main": "hand", "pieds": "feet", "sol": "ground", "phase": "phase",
-    "I = 230 V / 1 000 Ω = 230 mA": "I = 230 V / 1,000 Ω = 230 mA",
+    "I = 230 V / 1 000 Ω = 230 mA": "I = 230 V / 1000 Ω = 230 mA",
     "arc": "arc", "conducteurs sous tension": "live conductors", "frontière d'arc": "arc flash boundary",
     "projection de métal fondu, chaleur, lumière, bruit": "molten metal, heat, light, noise",
     "écran facial": "face shield", "casque": "helmet", "vêtement ininflammable": "flame-resistant clothing",
@@ -37,7 +37,7 @@ EN = {
     "sur une source connue": "on a known source", "sur l'équipement": "on the equipment", "de nouveau sur la source": "again on the source",
     "le VAT fonctionne": "the tester works", "absence de tension ?": "voltage absent?", "le VAT fonctionne encore": "the tester still works",
     "TBT": "ELV", "BT": "LV", "HTA": "HV-A", "HTB": "HV-B",
-    "≤ 50 V alternatif": "≤ 50 V AC", "≤ 1 000 V alternatif": "≤ 1,000 V AC", "≤ 50 kV": "≤ 50 kV", "> 50 kV": "> 50 kV",
+    "≤ 50 V alternatif": "≤ 50 V AC", "≤ 1 000 V alternatif": "≤ 1000 V AC", "≤ 50 kV": "≤ 50 kV", "> 50 kV": "> 50 kV",
     "domaines de tension": "voltage ranges", "ce module : banc 24 V": "this module: 24 V bench", "moteurs : 400 V": "motors: 400 V",
     "symboles des schémas": "diagram symbols", "effets du courant": "effects of current", "installations BT": "LV installations",
     "appareillage BT": "LV switchgear", "équipement des machines": "machine equipment", "CEI (IEC) : normes internationales": "IEC: international standards",
@@ -77,7 +77,7 @@ EN = {
     "conducteur primaire": "primary conductor", "TC 200/5 A": "CT 200/5 A", "ampèremètre 5 A": "5 A ammeter",
     "transformateur de commande": "control transformer", "circuit de commande 24 V": "24 V control circuit",
     "adaptateur moulé 230 V → 12 V AC": "moulded 230 V → 12 V AC adapter",
-    "1 440 tr/min": "1,440 rpm", "230/400 V : Δ sur 230 V, Y sur 400 V": "230/400 V: Δ on 230 V, Y on 400 V",
+    "1 440 tr/min": "1440 rpm", "230/400 V : Δ sur 230 V, Y sur 400 V": "230/400 V: Δ on 230 V, Y on 400 V",
     "400/690 V : Δ sur 400 V": "400/690 V: Δ on 400 V", "avant : Q = 75 kvar": "before: Q = 75 kvar", "après : Q = 33 kvar": "after: Q = 33 kvar",
     "tiroir 1 : Q, KM, F → M1": "drawer 1: Q, KM, F → M1", "tiroir 2 : Q, KM, F → M2": "drawer 2: Q, KM, F → M2",
     "tiroir 3 : Q, KM, F → M3": "drawer 3: Q, KM, F → M3", "tiroir 4 : Q, KM, F → M4": "drawer 4: Q, KM, F → M4",
@@ -106,10 +106,10 @@ EN = {
     "vitesse presque constante": "almost constant speed", "temps (s)": "time (s)", "courant (× In)": "current (× In)", "I / In": "I / In",
     "sens horaire": "clockwise", "sens antihoraire": "anticlockwise", "tension (V)": "voltage (V)",
     "rapport cyclique 30 % → tension moyenne 3,6 V": "duty cycle 30 % → average voltage 3.6 V", "alimentation 12 V": "12 V supply",
-    "tout le banc reste en 12 V": "the whole bench stays at 12 V", "champ tournant": "rotating field", "à 50 Hz : 3 000 tr/min": "at 50 Hz: 3,000 rpm",
+    "tout le banc reste en 12 V": "the whole bench stays at 12 V", "champ tournant": "rotating field", "à 50 Hz : 3 000 tr/min": "at 50 Hz: 3000 rpm",
     "pour une paire de pôles": "for one pole pair", "p = 1 (2 pôles)": "p = 1 (2 poles)", "p = 2 (4 pôles)": "p = 2 (4 poles)",
-    "p = 3 (6 pôles)": "p = 3 (6 poles)", "p = 4 (8 pôles)": "p = 4 (8 poles)", "3 000 tr/min": "3,000 rpm", "1 500 tr/min": "1,500 rpm",
-    "1 000 tr/min": "1,000 rpm", "750 tr/min": "750 rpm", "anneau": "end ring", "barres": "bars", "couple moteur": "motor torque",
+    "p = 3 (6 pôles)": "p = 3 (6 poles)", "p = 4 (8 pôles)": "p = 4 (8 poles)", "3 000 tr/min": "3000 rpm", "1 500 tr/min": "1500 rpm",
+    "1 000 tr/min": "1000 rpm", "750 tr/min": "750 rpm", "anneau": "end ring", "barres": "bars", "couple moteur": "motor torque",
     "couple (× Cn)": "torque (× Tn)", "nominal": "rated", "maximal": "maximum", "au démarrage ≈ 0,9 × Cn": "at start ≈ 0.9 × Tn",
     "bagues": "slip rings", "résistances de démarrage": "starting resistors", "synchrone": "synchronous", "asynchrone": "induction",
     "charge (× nominale)": "load (× rated)", "principal": "main", "auxiliaire": "auxiliary", "bague de déphasage": "shading ring",
@@ -161,12 +161,52 @@ EN = {
     "sans courant, le frein serre : sécurité en cas de coupure": "without current, the brake applies: safe on a power cut",
     "petite vitesse (8 pôles)": "low speed (8 poles)", "grande vitesse (4 pôles)": "high speed (4 poles)", "réseau sur 1U 1V 1W": "supply on 1U 1V 1W",
     "réseau sur 2U 2V 2W": "supply on 2U 2V 2W", "2U 2V 2W libres": "2U 2V 2W open", "1U 1V 1W reliées": "1U 1V 1W joined",
-    "rapport de vitesse 1 à 2 : 750 et 1 500 tr/min à 50 Hz": "speed ratio 1 to 2: 750 and 1,500 rpm at 50 Hz",
+    "rapport de vitesse 1 à 2 : 750 et 1 500 tr/min à 50 Hz": "speed ratio 1 to 2: 750 and 1500 rpm at 50 Hz",
     "KM1 : PV": "KM1: LS", "KM2 + KM3 : GV": "KM2 + KM3: HS", "verrouillage": "interlock", "électrique et mécanique": "electrical and mechanical",
     "reste de la commande": "rest of the control", "coup de poing, accrochage": "mushroom head, latching", "contact à ouverture": "break contact",
     "réarmer ≠ redémarrer": "reset ≠ restart", "SA1 manuel": "SA1 manual", "SA1 auto": "SA1 auto", "pressostat": "pressure switch",
     "KM1 ligne": "KM1 line", "KM2 étoile": "KM2 star", "KM3 triangle": "KM3 delta", "KT1 : temporisation étoile → triangle, 3 s": "KT1: star → delta delay, 3 s",
-    "I / In": "I / In", "courant (× In)": "current (× In)", "≈ In": "≈ In", "≈ 6 In": "≈ 6 In", "charge": "load", "on ne touche jamais au côté 230 V": "never touch the 230 V side",
+    "I / In": "I / In", "courant (× In)": "current (× In)", "≈ In": "≈ In", "≈ 6 In": "≈ 6 In",
+    # M10 à M12
+    "+ en haut de la charge": "+ at the top of the load", "tension redressée": "rectified voltage", "angle (°)": "angle (°)", "tension (V)": "voltage (V)",
+    "Udc ≈ 1,35 × U": "Udc ≈ 1.35 × U", "commande": "control", "diode de roue libre": "freewheeling diode", "bloqué": "off", "saturé": "saturated",
+    "U = 12 V": "U = 12 V", "U = 0,1 V": "U = 0.1 V", "I = 0 A": "I = 0 A", "I = 2 A": "I = 2 A", "P = U × I = 0 W": "P = U × I = 0 W", "P = U × I = 0,2 W": "P = U × I = 0.2 W",
+    "à 12 V et 2 A, la charge reçoit 24 W ; le transistor en perd 0,2": "at 12 V and 2 A, the load gets 24 W; the transistor loses 0.2",
+    "diode antiparallèle": "antiparallel diode", "jusqu'à quelques centaines de V": "up to a few hundred V", "très rapide": "very fast",
+    "600 à 1 700 V": "600 to 1700 V", "rapide : variateurs": "fast: drives", "jusqu'à plusieurs kV": "up to several kV", "lent : 50 Hz, ne s'éteint pas seul": "slow: 50 Hz, does not turn off by itself",
+    "thyristor": "thyristor", "A (anode)": "A (anode)", "K (cathode)": "K (cathode)", "G (gâchette)": "G (gate)", "1. impulsion sur G": "1. pulse on G",
+    "2. il conduit": "2. it conducts", "3. il s'éteint quand I = 0": "3. it turns off when I = 0", "tension sur la charge": "voltage on the load", "α = 60°": "α = 60°",
+    "conduit dans les deux sens": "conducts both ways", "tension sur la lampe": "voltage on the lamp", "amorçage à 90°": "triggered at 90°",
+    "pot.": "pot.", "sortie MLI → transistor": "PWM output → transistor", "bracelet relié à la terre": "earthed wrist strap", "tapis antistatique": "antistatic mat",
+    "sachet blindé": "shielded bag", "une décharge de quelques milliers de volts passe inaperçue": "a discharge of a few thousand volts goes unnoticed",
+    "mais suffit à détruire la grille d'un MOSFET ou d'un IGBT": "but is enough to destroy the gate of a MOSFET or an IGBT", "module MLI": "PWM module",
+    "transfo moulé 12 V AC": "moulded 12 V AC transformer", "gradateur à triac": "triac dimmer", "rien au-delà de 12 V côté apprenant": "nothing above 12 V on the learner's side",
+    "réseau 400 V 50 Hz": "400 V 50 Hz supply", "redresseur": "rectifier", "bus continu 540 V": "540 V DC bus", "onduleur MLI": "PWM inverter",
+    "fréquence et tension réglables en sortie": "adjustable output frequency and voltage", "moyenne (courant)": "average (current)", "tension": "voltage",
+    "fréquence (Hz)": "frequency (Hz)", "25 Hz : 200 V": "25 Hz: 200 V", "50 Hz : 400 V": "50 Hz: 400 V", "sectionneur et fusibles": "isolator and fuses",
+    "inductance de ligne": "line choke", "variateur": "drive", "câble blindé": "shielded cable", "terre commune, liaisons courtes": "common earth, short connections",
+    "câble moteur blindé": "shielded motor cable", "blindage repris à 360° aux deux bouts": "shield clamped 360° at both ends", "≥ 30 cm": "≥ 30 cm",
+    "puissance": "power", "fréquence": "frequency", "accélération 5 s": "acceleration 5 s", "décélération 3 s": "deceleration 3 s",
+    "tension nominale du moteur": "motor rated voltage", "courant nominal du moteur": "motor rated current", "fréquence nominale": "rated frequency",
+    "vitesse nominale": "rated speed", "temps d'accélération": "acceleration time", "temps de décélération": "deceleration time", "fréquence minimale": "minimum frequency",
+    "fréquence maximale": "maximum frequency", "autoventilé": "self-ventilated", "ventilation forcée": "forced ventilation", "couple permanent (× Cn)": "continuous torque (× Tn)",
+    "surintensité": "overcurrent", "rampe trop courte, court-circuit moteur": "ramp too short, motor short circuit", "surtension du bus": "DC bus overvoltage",
+    "décélération trop rapide : il faut une résistance de freinage": "deceleration too fast: a braking resistor is needed", "sous-tension": "undervoltage",
+    "réseau faible ou coupure": "weak supply or outage", "surchauffe": "overheating", "ventilation obstruée, ambiance trop chaude": "blocked ventilation, room too hot",
+    "réseau": "supply", "pont de thyristors": "thyristor bridge", "induit du moteur": "motor armature", "angle d'amorçage α → tension d'induit → vitesse": "firing angle α → armature voltage → speed",
+    "couple": "torque", "1 : moteur avant": "1: motor forward", "2 : frein arrière": "2: brake reverse", "3 : moteur arrière": "3: motor reverse", "4 : frein avant": "4: brake forward",
+    "tension du moteur": "motor voltage", "courant du moteur": "motor current", "vitesse": "speed", "rampe d'accélération": "acceleration ramp", "rampe de décélération": "deceleration ramp",
+    "unité centrale + mémoire": "CPU + memory", "entrées (capteurs, boutons)": "inputs (sensors, buttons)", "sorties (bobines, voyants)": "outputs (coils, indicators)",
+    "alimentation 24 V": "24 V supply", "communication": "communication", "1. lire les entrées": "1. read the inputs", "2. exécuter le programme": "2. run the program",
+    "3. écrire les sorties": "3. write the outputs", "un tour = le temps de cycle, quelques ms": "one turn = the scan time, a few ms", "S1 arrêt (O)": "S1 stop (NC)",
+    "S2 marche (F)": "S2 start (NO)", "B1 capteur PNP": "B1 PNP sensor", "automate": "PLC", "élément": "item", "entrée 0": "input 0", "sortie 0": "output 0", "mémoire 0": "memory 0",
+    "variable directe": "direct variable", "entrée": "input", "bit": "bit", "octet 0": "byte 0", "bit 1": "bit 1", "%IX0.1 : le deuxième bit de l'octet d'entrées 0": "%IX0.1: the second bit of input byte 0",
+    "auto-maintien en parallèle sur la marche": "hold-in in parallel with start", "TON : Q": "TON: Q", "TOF : Q": "TOF: Q", "TP : Q": "TP: Q", "IN à 0": "IN to 0",
+    "capteur": "sensor", "remise à 0": "reset", "capteur CU": "sensor CU", "logique câblée": "wired logic", "ladder": "ladder",
+    "S1 → %IX0.0, S2 → %IX0.1, KM1 → %QX0.0": "S1 → %IX0.0, S2 → %IX0.1, KM1 → %QX0.0", "câblage": "wiring", "programme": "program", "S1 arrêt": "S1 stop",
+    "%IX0.0 = 1 au repos": "%IX0.0 = 1 at rest", "contact à fermeture dans le ladder": "make contact in the ladder",
+    "fil coupé = entrée à 0 = arrêt : sécurité positive": "broken wire = input at 0 = stop: fail-safe", "relais programmable 24 V": "24 V programmable relay",
+    "alimentation 24 V par adaptateur mural": "24 V supply from a wall adapter", "≈ → =": "≈ → =", "= → ≈": "= → ≈", "charge": "load", "on ne touche jamais au côté 230 V": "never touch the 230 V side",
 }
 
 
@@ -1831,6 +1871,454 @@ def m9_banc():
     d.text(280, 205, "KT1 : temporisation étoile → triangle, 3 s", size=12, weight="600", color=ACCENT)
     return d
 
+# --- Module 10 : électronique de puissance ---------------------------------------------------------------------------
+
+
+def m10_pont():
+    d = Drawing(520, 250, "Pont de diodes monophasé : les quatre diodes redressent les deux alternances ; la charge reçoit un courant toujours de même sens")
+    top, right, bottom, left = (200, 50), (260, 110), (200, 170), (140, 110)
+    d.diode(left, top); d.diode(left, bottom); d.diode(top, right); d.diode(bottom, right)
+    d.ac_source((60, 160), (60, 60), "~")
+    d.wire((60, 60), (60, 30), (200, 30), top); d.wire((60, 160), (60, 200), (200, 200), bottom)
+    d.wire(right, (360, 110), (360, 120)); d.resistor((360, 120), (360, 180), "charge"); d.wire((360, 180), (360, 220), (120, 220), (120, 110), left)
+    d.text(400, 240, "+ en haut de la charge", size=11, color=SOFT)
+    return d
+
+
+def m10_triphase():
+    d = Drawing(560, 260, "Pont triphasé à six diodes : sur un réseau 400 V, la tension continue vaut environ 1,35 × 400 = 540 V, avec une faible ondulation")
+    pts = []
+    for k in range(0, 361, 3):
+        a = math.radians(k)
+        vals = [math.sin(a - 2 * math.pi * j / 3) for j in range(3)]
+        pts.append((k, (max(vals) - min(vals)) * 400 / math.sqrt(3) * math.sqrt(2) / math.sqrt(3) * math.sqrt(3) / 1.0))
+    d.graph(70, 30, 420, 180, (0, 360), (0, 650), [(pts, ACCENT, "tension redressée")], "angle (°)", "tension (V)",
+            yticks=((540, "540"), (565, "")), xticks=((120, "120"), (240, "240"), (360, "360")))
+    d.text(280, 250, "Udc ≈ 1,35 × U", size=12, weight="600")
+    return d
+
+
+def m10_mosfet():
+    d = Drawing(520, 260, "Transistor MOSFET en commutation : il commande le moteur 12 V ; la diode de roue libre écoule le courant du moteur à chaque coupure")
+    d.text(300, 24, "+12 V", weight="600"); d.wire((300, 30), (300, 50))
+    motor(d, 300, 76, r=24, phases="="); d.wire((300, 100), (300, 130))
+    d.diode((380, 130), (380, 50)); d.wire((380, 50), (300, 50)); d.wire((380, 130), (300, 130))
+    d.add(f'<rect x="270" y="140" width="60" height="50" rx="6" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>'); d.text(300, 170, "MOSFET", size=11, weight="600")
+    d.wire((300, 130), (300, 140)); d.wire((300, 190), (300, 220)); d.ground((300, 220))
+    d.wire((180, 165), (270, 165)); d.text(170, 170, "commande", anchor="end", size=12)
+    d.text(400, 95, "diode de roue libre", anchor="start", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m10_pertes():
+    d = Drawing(560, 230, "En commutation, le transistor est soit bloqué (aucun courant) soit saturé (presque aucune tension) : il dissipe très peu")
+    for k, (state, u, i, p) in enumerate((("bloqué", "12 V", "0 A", "0 W"), ("saturé", "0,1 V", "2 A", "0,2 W"))):
+        x = 40 + 260 * k
+        block(d, x, 40, 220, 40, state, size=13)
+        d.text(x + 110, 112, f"U = {u}", size=12); d.text(x + 110, 136, f"I = {i}", size=12); d.text(x + 110, 166, f"P = U × I = {p}", size=12, weight="700", color=ACCENT)
+    d.text(280, 212, "à 12 V et 2 A, la charge reçoit 24 W ; le transistor en perd 0,2", size=11, color=SOFT)
+    return d
+
+
+def m10_igbt():
+    d = Drawing(500, 230, "Symbole de l'IGBT : grille G, collecteur C, émetteur E ; une diode est montée en antiparallèle pour le courant de retour")
+    d.wire((200, 110), (230, 110)); d.wire((235, 80), (235, 140), width=3); d.wire((243, 80), (243, 140), width=3)
+    d.wire((243, 92), (280, 70), (280, 40)); d.wire((243, 128), (280, 150), (280, 180)); d.arrow((262, 140), (279, 150), color=INK)
+    d.text(190, 115, "G", anchor="end", weight="700", color=ACCENT); d.text(292, 44, "C", anchor="start", weight="700"); d.text(292, 184, "E", anchor="start", weight="700")
+    d.diode((360, 170), (360, 50)); d.wire((280, 40), (360, 40), (360, 50)); d.wire((280, 180), (360, 180), (360, 170))
+    d.text(380, 115, "diode antiparallèle", anchor="start", size=12)
+    return d
+
+
+def m10_comparaison():
+    d = Drawing(600, 230, "Choisir un composant de puissance : MOSFET pour les basses tensions et hautes fréquences, IGBT pour les variateurs, thyristor pour les très fortes puissances")
+    rows = (("MOSFET", "jusqu'à quelques centaines de V", "très rapide"), ("IGBT", "600 à 1 700 V", "rapide : variateurs"),
+            ("thyristor", "jusqu'à plusieurs kV", "lent : 50 Hz, ne s'éteint pas seul"))
+    for k, (name, volt, speed) in enumerate(rows):
+        y = 30 + 62 * k
+        block(d, 20, y, 120, 44, name, size=13)
+        d.text(160, y + 18, volt, anchor="start", size=12); d.text(160, y + 38, speed, anchor="start", size=12, color=SOFT)
+    return d
+
+
+def m10_thyristor():
+    d = Drawing(500, 230, "Thyristor : il conduit d'anode à cathode après une impulsion sur sa gâchette, et reste conducteur jusqu'à ce que le courant s'annule")
+    d.wire((140, 40), (140, 80)); d.add(f'<polygon points="118,80 162,80 140,118" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.wire((116, 118), (164, 118)); d.wire((140, 118), (140, 170)); d.wire((150, 112), (190, 150), color=ACCENT)
+    d.text(152, 44, "A (anode)", anchor="start", size=12); d.text(152, 170, "K (cathode)", anchor="start", size=12); d.text(198, 160, "G (gâchette)", anchor="start", size=12, color=ACCENT, weight="600")
+    d.text(380, 80, "1. impulsion sur G", anchor="middle", size=12); d.text(380, 110, "2. il conduit", anchor="middle", size=12)
+    d.text(380, 140, "3. il s'éteint quand I = 0", anchor="middle", size=12, weight="600")
+    return d
+
+
+def m10_angle():
+    d = Drawing(560, 260, "Redressement commandé : le thyristor est amorcé avec un retard (angle α = 60°) ; plus α est grand, plus la tension moyenne est faible")
+    pts = [(k, 10 * math.sin(math.radians(k))) for k in range(0, 721, 3)]
+    out = [(k, 10 * math.sin(math.radians(k)) if (k % 360) >= 60 and (k % 360) <= 180 else 0) for k in range(0, 721, 3)]
+    d.graph(70, 30, 420, 180, (0, 720), (-11, 11), [(pts, SOFT, ""), (out, ACCENT, "tension sur la charge", (200, 12))], "angle (°)", "",
+            marks=(((60, 8.66), "α = 60°"),), xticks=((180, "180"), (360, "360"), (540, "540")))
+    return d
+
+
+def m10_triac():
+    d = Drawing(480, 220, "Triac : deux thyristors tête-bêche en un seul composant ; une impulsion de gâchette le fait conduire dans les deux sens")
+    d.wire((160, 30), (160, 80))
+    d.add(f'<polygon points="140,80 180,80 160,110" fill="{PAPER}" stroke="{INK}" stroke-width="2"/><polygon points="140,140 180,140 160,110" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.wire((136, 80), (184, 80)); d.wire((136, 140), (184, 140)); d.wire((160, 140), (160, 190)); d.wire((170, 135), (210, 170), color=ACCENT)
+    d.text(172, 36, "A2 (MT2)", anchor="start", size=12); d.text(172, 194, "A1 (MT1)", anchor="start", size=12); d.text(214, 178, "G", anchor="start", weight="700", color=ACCENT)
+    d.text(330, 110, "conduit dans les deux sens", size=12, weight="600")
+    return d
+
+
+def m10_gradateur():
+    d = Drawing(560, 260, "Gradateur à triac : amorcé à 90° de chaque alternance, il ne laisse passer que la fin de chacune ; la lampe reçoit environ la moitié de la puissance")
+    pts = [(k, 10 * math.sin(math.radians(k))) for k in range(0, 721, 3)]
+    out = [(k, 10 * math.sin(math.radians(k)) if (k % 180) >= 90 else 0) for k in range(0, 721, 3)]
+    d.graph(70, 30, 420, 180, (0, 720), (-11, 11), [(pts, SOFT, ""), (out, ACCENT, "tension sur la lampe", (300, 12))], "angle (°)", "",
+            marks=(((90, 10), "amorçage à 90°"),), xticks=((180, "180"), (360, "360"), (540, "540")))
+    return d
+
+
+def m10_555():
+    d = Drawing(520, 230, "Un circuit intégré 555 monté en astable produit les impulsions d'un variateur MLI ; un potentiomètre règle le rapport cyclique")
+    block(d, 160, 60, 120, 90, "555", size=16)
+    d.resistor((100, 40), (100, 100), "R1"); d.wire((100, 40), (100, 30), (220, 30), (220, 60)); d.wire((100, 100), (160, 100))
+    d.resistor((100, 120), (100, 180), "pot."); d.wire((100, 100), (100, 120)); d.capacitor((100, 190), (100, 220), "C"); d.wire((100, 180), (100, 190))
+    d.wire((280, 105), (340, 105)); d.text(350, 110, "sortie MLI → transistor", anchor="start", size=12, weight="600", color=ACCENT)
+    return d
+
+
+def m10_esd():
+    d = Drawing(560, 220, "Décharges électrostatiques : un composant peut être détruit par une décharge invisible ; bracelet relié à la terre, tapis antistatique, sachet blindé")
+    for k, label in enumerate(("bracelet relié à la terre", "tapis antistatique", "sachet blindé")):
+        block(d, 20 + 180 * k, 70, 160, 50, label, size=11)
+    d.text(280, 170, "une décharge de quelques milliers de volts passe inaperçue", size=12)
+    d.text(280, 195, "mais suffit à détruire la grille d'un MOSFET ou d'un IGBT", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m10_banc():
+    d = Drawing(560, 230, "Banc du mini-projet : module MLI 12 V commandant un moteur 12 V ; gradateur à triac alimenté par un transformateur moulé 12 V AC et une lampe 12 V")
+    block(d, 20, 40, 130, 44, "alimentation 12 V", size=11); block(d, 190, 40, 110, 44, "module MLI", size=12)
+    d.arrow((150, 62), (190, 62), color=INK); d.wire((300, 62), (350, 62)); motor(d, 380, 62, r=24, phases="=")
+    block(d, 20, 140, 130, 44, "transfo moulé 12 V AC", size=10); block(d, 190, 140, 110, 44, "gradateur à triac", size=11)
+    d.arrow((150, 162), (190, 162), color=INK); d.wire((300, 162), (350, 162)); d.lamp((350, 162), (410, 162))
+    d.text(280, 218, "rien au-delà de 12 V côté apprenant", size=12, color=ACCENT, weight="600")
+    return d
+
+
+# --- Module 11 : variateurs de vitesse -------------------------------------------------------------------------------
+
+
+def m11_blocs():
+    d = Drawing(640, 210, "Variateur de fréquence : un redresseur charge le bus continu, un onduleur à IGBT reconstitue un triphasé de fréquence et de tension réglables")
+    chain(d, 10, 60, ("réseau 400 V 50 Hz", "redresseur", "bus continu 540 V", "onduleur MLI", "moteur"), w=108, gap=20, size=11)
+    d.text(320, 150, "fréquence et tension réglables en sortie", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m11_mli():
+    d = Drawing(560, 260, "Modulation de largeur d'impulsion : l'onduleur envoie des impulsions de largeur variable ; leur moyenne suit une sinusoïde, et le courant du moteur aussi")
+    pulses, k = [], 0
+    for n in range(40):
+        t0 = n * 0.5
+        duty = 0.5 + 0.45 * math.sin(2 * math.pi * t0 / 20)
+        pulses += [(t0, -1), (t0, 1), (t0 + duty * 0.5, 1), (t0 + duty * 0.5, -1)]
+    sine = [(t / 10, 0.9 * math.sin(2 * math.pi * (t / 10) / 20)) for t in range(0, 201)]
+    d.graph(70, 30, 420, 180, (0, 20), (-1.3, 1.3), [(pulses, SOFT, ""), (sine, ACCENT, "moyenne (courant)", (11, 1.05))], "temps", "")
+    return d
+
+
+def m11_uf():
+    d = Drawing(520, 270, "Loi U/f : la tension varie proportionnellement à la fréquence jusqu'à 400 V à 50 Hz, pour garder le flux du moteur constant ; au-delà, la tension plafonne")
+    d.graph(70, 30, 380, 190, (0, 70), (0, 450), [([(0, 0), (50, 400), (70, 400)], ACCENT, "")], "fréquence (Hz)", "tension (V)",
+            marks=(((25, 200), "25 Hz : 200 V"), ((50, 400), "50 Hz : 400 V")), xticks=((25, "25"), (50, "50")), yticks=((200, "200"), (400, "400")))
+    return d
+
+
+def m11_courbes():
+    d = Drawing(560, 270, "En faisant varier la fréquence, le variateur décale toute la courbe couple-vitesse : le moteur garde son couple à 25 Hz comme à 50 Hz")
+    def curve(ns):
+        pts = []
+        for n in range(0, int(ns), max(1, int(ns) // 60)):
+            g = (ns - n) / ns
+            pts.append((n, 2 * 2.6 / (g / 0.18 + 0.18 / g) if g > 0 else 0))
+        pts.append((ns, 0))
+        return pts
+    d.graph(70, 30, 420, 190, (0, 1600), (0, 3), [(curve(750), SOFT, "25 Hz", (450, 2.75)), (curve(1500), ACCENT, "50 Hz", (1050, 2.75))],
+            "vitesse (tr/min)", "couple (× Cn)", xticks=((750, "750"), (1500, "1500")), yticks=((1, "1"), (2, "2")))
+    return d
+
+
+def m11_installation():
+    d = Drawing(640, 220, "Installation d'un variateur : sectionnement et fusibles, inductance de ligne, variateur, câble blindé jusqu'au moteur, tout relié à la terre")
+    chain(d, 10, 60, ("sectionneur et fusibles", "inductance de ligne", "variateur", "câble blindé", "moteur"), w=108, gap=20, size=10)
+    d.wire((60, 130), (580, 130), color=ACCENT, width=2); d.ground((320, 130)); d.text(320, 180, "terre commune, liaisons courtes", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m11_cem():
+    d = Drawing(560, 230, "Compatibilité électromagnétique : blindage du câble moteur relié à la terre sur toute sa circonférence aux deux bouts, câbles de puissance et de commande séparés")
+    d.add(f'<rect x="40" y="60" width="200" height="30" rx="15" fill="{SOFT}"/><rect x="40" y="66" width="200" height="18" rx="9" fill="#dfe8ea"/>')
+    d.text(140, 50, "câble moteur blindé", size=12, weight="600")
+    d.add(f'<rect x="28" y="56" width="16" height="38" fill="{ACCENT}"/><rect x="236" y="56" width="16" height="38" fill="{ACCENT}"/>')
+    d.text(140, 120, "blindage repris à 360° aux deux bouts", size=12, color=ACCENT)
+    d.wire((320, 70), (520, 70), width=4); d.wire((320, 150), (520, 150), color=SOFT)
+    d.arrow((420, 80), (420, 140), "≥ 30 cm", color=INK, offset=(34, 0)); d.text(420, 60, "puissance", size=12); d.text(420, 172, "commande", size=12)
+    return d
+
+
+def m11_rampes():
+    d = Drawing(540, 260, "Rampes : le variateur accélère le moteur en 5 s jusqu'à 50 Hz et le ralentit en 3 s, au lieu d'un démarrage et d'un arrêt brusques")
+    d.graph(70, 30, 400, 180, (0, 20), (0, 60), [([(0, 0), (5, 50), (14, 50), (17, 0), (20, 0)], ACCENT, "")], "temps (s)", "fréquence (Hz)",
+            xticks=((5, "5"), (14, "14"), (17, "17")), yticks=((50, "50"),))
+    d.text(130, 140, "accélération 5 s", size=12, weight="600"); d.text(420, 140, "décélération 3 s", size=12, weight="600")
+    return d
+
+
+def m11_parametres():
+    d = Drawing(560, 290, "Paramètres à saisir dans un variateur : les valeurs de la plaque du moteur, puis les rampes et les fréquences limites")
+    d.add(f'<rect x="40" y="20" width="480" height="250" rx="12" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    rows = (("tension nominale du moteur", "400 V"), ("courant nominal du moteur", "4,8 A"), ("fréquence nominale", "50 Hz"), ("vitesse nominale", "1 440 tr/min"),
+            ("temps d'accélération", "5 s"), ("temps de décélération", "3 s"), ("fréquence minimale", "10 Hz"), ("fréquence maximale", "50 Hz"))
+    for k, (left, right) in enumerate(rows):
+        y = 50 + 28 * k
+        d.text(70, y, left, anchor="start", size=12); d.text(490, y, right, anchor="end", size=12, weight="700", color=ACCENT if k < 4 else INK)
+        d.wire((60, y + 8), (500, y + 8), color=SOFT, width=1)
+    return d
+
+
+def m11_declassement():
+    d = Drawing(540, 260, "Moteur autoventilé sur variateur : à basse vitesse son ventilateur refroidit moins ; le couple permanent admissible baisse, sauf avec une ventilation forcée")
+    d.graph(70, 30, 400, 180, (0, 55), (0, 1.15), [([(0, 0.6), (25, 0.85), (50, 1.0)], ACCENT, "autoventilé", (28, 0.72)),
+                                                 ([(0, 1.0), (50, 1.0)], SOFT, "ventilation forcée", (3, 1.07))],
+            "fréquence (Hz)", "couple permanent (× Cn)", xticks=((25, "25"), (50, "50")), yticks=((0.6, "0,6"), (1, "1")))
+    return d
+
+
+def m11_defauts():
+    d = Drawing(600, 240, "Défauts courants d'un variateur et leurs causes probables")
+    rows = (("surintensité", "rampe trop courte, court-circuit moteur"), ("surtension du bus", "décélération trop rapide : il faut une résistance de freinage"),
+            ("sous-tension", "réseau faible ou coupure"), ("surchauffe", "ventilation obstruée, ambiance trop chaude"))
+    for k, (code, cause) in enumerate(rows):
+        y = 20 + 52 * k
+        block(d, 20, y, 160, 40, code, size=12)
+        d.text(200, y + 25, cause, anchor="start", size=12)
+    return d
+
+
+def m11_pont_cc():
+    d = Drawing(560, 220, "Variateur à courant continu : un pont de thyristors redresse le réseau et règle la tension d'induit par l'angle d'amorçage")
+    chain(d, 20, 70, ("réseau", "pont de thyristors", "induit du moteur"), w=130, gap=40, size=12)
+    d.text(280, 160, "angle d'amorçage α → tension d'induit → vitesse", size=12, color=ACCENT, weight="600")
+    return d
+
+
+def m11_quadrants():
+    d = Drawing(480, 280, "Les quatre quadrants : moteur ou frein, dans chaque sens de rotation ; un variateur régénératif renvoie l'énergie de freinage au réseau")
+    d.arrow((60, 140), (420, 140), "vitesse", color=INK, offset=(150, 18)); d.arrow((240, 260), (240, 20), "couple", color=INK, offset=(30, -110))
+    for (x, y), label in (((330, 80), "1 : moteur avant"), ((150, 80), "2 : frein arrière"), ((150, 200), "3 : moteur arrière"), ((330, 200), "4 : frein avant")):
+        d.text(x, y, label, size=12, weight="600", color=ACCENT if "frein" in label else INK)
+    return d
+
+
+def m11_tableau():
+    d = Drawing(560, 240, "Fiche de paramétrage du mini-projet : on reporte la plaque d'un vrai moteur, puis on choisit rampes et limites")
+    d.add(f'<rect x="40" y="20" width="480" height="200" rx="10" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for k, label in enumerate(("tension du moteur", "courant du moteur", "fréquence", "vitesse", "rampe d'accélération", "rampe de décélération")):
+        y = 52 + 28 * k
+        d.text(70, y, label, anchor="start", size=12); d.wire((330, y + 4), (490, y + 4), color=SOFT, width=1.5)
+    return d
+
+
+# --- Module 12 : automates programmables ----------------------------------------------------------------------------
+
+
+def lad_contact(d, x, y, label, nc=False):
+    """Contact ladder entre (x, y) et (x + 40, y) : deux barres verticales, barré en diagonale s'il est à ouverture."""
+    d.wire((x, y), (x + 14, y)); d.wire((x + 26, y), (x + 40, y))
+    d.wire((x + 14, y - 12), (x + 14, y + 12)); d.wire((x + 26, y - 12), (x + 26, y + 12))
+    if nc:
+        d.wire((x + 10, y + 12), (x + 30, y - 12))
+    d.text(x + 20, y - 18, label, size=11, weight="600", color=ACCENT)
+
+
+def lad_coil(d, x, y, label, kind=""):
+    d.add(f'<path d="M{x + 12} {y - 12} a14 14 0 0 0 0 24 M{x + 28} {y - 12} a14 14 0 0 1 0 24" fill="none" stroke="{INK}" stroke-width="2"/>')
+    d.wire((x, y), (x + 8, y)); d.wire((x + 32, y), (x + 40, y))
+    if kind:
+        d.text(x + 20, y + 5, kind, size=12, weight="700")
+    d.text(x + 20, y - 18, label, size=11, weight="600", color=ACCENT)
+
+
+def rails(d, x1, x2, y1, y2):
+    d.wire((x1, y1), (x1, y2), width=3); d.wire((x2, y1), (x2, y2), width=3)
+
+
+def m12_structure():
+    d = Drawing(600, 230, "Structure d'un automate : alimentation, unité centrale avec sa mémoire, cartes d'entrées et de sorties, communication")
+    block(d, 220, 70, 160, 60, "unité centrale + mémoire", size=11)
+    block(d, 20, 70, 150, 60, "entrées (capteurs, boutons)", size=10); block(d, 430, 70, 150, 60, "sorties (bobines, voyants)", size=10)
+    block(d, 220, 160, 160, 40, "alimentation 24 V", size=11); block(d, 220, 10, 160, 40, "communication", size=11)
+    d.arrow((170, 100), (220, 100), color=INK); d.arrow((380, 100), (430, 100), color=INK)
+    return d
+
+
+def m12_cycle():
+    d = Drawing(520, 260, "Cycle d'un automate : il lit toutes ses entrées, exécute le programme, puis écrit toutes ses sorties, et recommence, en quelques millisecondes")
+    for k, label in enumerate(("1. lire les entrées", "2. exécuter le programme", "3. écrire les sorties")):
+        a = math.radians(90 + 120 * k)
+        x, y = 260 + 140 * math.cos(a), 135 - 90 * math.sin(a)
+        block(d, x - 90, y - 20, 180, 40, label, size=11)
+    d.add(f'<path d="M330 60 A140 90 0 0 1 380 190" fill="none" stroke="{ACCENT}" stroke-width="2"/>')
+    d.text(260, 250, "un tour = le temps de cycle, quelques ms", size=12, color=SOFT)
+    return d
+
+
+def m12_entrees():
+    d = Drawing(540, 260, "Câblage des entrées en 24 V : chaque bouton ou capteur PNP relie le +24 V à une entrée ; l'automate y lit 1 ou 0")
+    d.text(60, 30, "+24 V", weight="600"); d.wire((90, 26), (300, 26))
+    for k, (dev, addr) in enumerate((("S1 arrêt (O)", "%IX0.0"), ("S2 marche (F)", "%IX0.1"), ("B1 capteur PNP", "%IX0.2"))):
+        x = 120 + 90 * k
+        d.wire((x, 26), (x, 60)); button(d, x, 60, "nc" if k == 0 else "no") if k < 2 else block(d, x - 30, 60, 60, 44, "PNP", size=11)
+        d.wire((x, 104), (x, 150)); d.text(x, 170, addr, size=11, weight="700", color=ACCENT); d.text(x, 190, dev, size=10, color=SOFT)
+    d.add(f'<rect x="80" y="150" width="280" height="50" rx="6" fill="none" stroke="{INK}" stroke-width="2" stroke-dasharray="5 4"/>')
+    d.text(450, 175, "automate", size=12, weight="600")
+    return d
+
+
+def m12_sorties():
+    d = Drawing(540, 260, "Câblage des sorties : la sortie %QX0.0 alimente la bobine du contacteur KM1, %QX0.1 un voyant ; le commun des sorties est relié au 0 V")
+    d.add(f'<rect x="80" y="30" width="280" height="50" rx="6" fill="none" stroke="{INK}" stroke-width="2" stroke-dasharray="5 4"/>')
+    d.text(450, 60, "automate", size=12, weight="600")
+    for k, (addr, kind) in enumerate((("%QX0.0", "coil"), ("%QX0.1", "lamp"))):
+        x = 150 + 140 * k
+        d.text(x, 62, addr, size=11, weight="700", color=ACCENT); d.wire((x, 80), (x, 110))
+        if kind == "coil":
+            coil(d, x, 110, tag="KM1")
+        else:
+            indicator(d, x, 110, tag="H1")
+        d.wire((x, 154), (x, 200))
+    d.wire((150, 200), (290, 200)); d.text(220, 222, "0 V", weight="600")
+    return d
+
+
+def m12_adresses():
+    d = Drawing(600, 230, "Correspondance des adresses : IEC 61131-3 neutre, et la façon dont deux constructeurs courants les écrivent")
+    head = ("élément", "IEC 61131-3", "Siemens", "Schneider")
+    rows = (("entrée 0", "%IX0.0", "I0.0", "%I0.0"), ("sortie 0", "%QX0.0", "Q0.0", "%Q0.0"), ("mémoire 0", "%MX0.0", "M0.0", "%M0"))
+    for c, h in enumerate(head):
+        d.text(90 + 140 * c, 40, h, weight="700", color=ACCENT if c == 1 else INK)
+    for r, row in enumerate(rows):
+        y = 84 + 40 * r
+        for c, v in enumerate(row):
+            d.text(90 + 140 * c, y, v, size=13, weight="700" if c == 1 else "400")
+        d.wire((20, y + 14), (580, y + 14), color=SOFT, width=1)
+    return d
+
+
+def m12_bits():
+    d = Drawing(560, 210, "Lire une adresse IEC : % marque une variable directe, I entrée (Q sortie, M mémoire), X un bit, puis le numéro de l'octet et du bit")
+    parts = (("%", "variable directe"), ("I", "entrée"), ("X", "bit"), ("0", "octet 0"), (".", ""), ("1", "bit 1"))
+    for k, (ch, meaning) in enumerate(parts):
+        x = 70 + 82 * k
+        d.text(x, 80, ch, size=34, weight="700", color=ACCENT if ch not in (".",) else INK)
+        if meaning:
+            d.text(x, 130, meaning, size=11)
+    d.text(280, 185, "%IX0.1 : le deuxième bit de l'octet d'entrées 0", size=12, weight="600")
+    return d
+
+
+def m12_maintien():
+    d = Drawing(600, 210, "Réseau ladder de marche-arrêt : arrêt %IX0.0 (bouton à ouverture câblé, testé à 1), marche %IX0.1 doublé par l'auto-maintien %QX0.0, bobine %QX0.0")
+    rails(d, 40, 560, 30, 180)
+    d.wire((40, 80), (80, 80)); lad_contact(d, 80, 80, "%IX0.0"); d.wire((120, 80), (170, 80)); lad_contact(d, 170, 80, "%IX0.1")
+    d.wire((210, 80), (300, 80)); d.dot((150, 80)); d.wire((150, 80), (150, 140), (170, 140)); lad_contact(d, 170, 140, "%QX0.0"); d.wire((210, 140), (250, 140), (250, 80)); d.dot((250, 80))
+    lad_coil(d, 470, 80, "%QX0.0"); d.wire((300, 80), (470, 80)); d.wire((510, 80), (560, 80))
+    d.text(190, 200, "auto-maintien en parallèle sur la marche", size=11, color=SOFT)
+    return d
+
+
+def m12_set_reset():
+    d = Drawing(600, 210, "Bobines SET et RESET : %IX0.1 met la sortie à 1 et elle y reste ; %IX0.0 la remet à 0")
+    rails(d, 40, 560, 30, 180)
+    d.wire((40, 70), (180, 70)); lad_contact(d, 180, 70, "%IX0.1"); d.wire((220, 70), (470, 70)); lad_coil(d, 470, 70, "%QX0.0", "S"); d.wire((510, 70), (560, 70))
+    d.wire((40, 140), (180, 140)); lad_contact(d, 180, 140, "%IX0.0", nc=True); d.wire((220, 140), (470, 140)); lad_coil(d, 470, 140, "%QX0.0", "R"); d.wire((510, 140), (560, 140))
+    return d
+
+
+def m12_ton():
+    d = Drawing(600, 230, "Bloc TON : quand l'entrée IN passe à 1, la sortie Q passe à 1 après la durée PT (ici 5 s) ; ET affiche le temps écoulé")
+    rails(d, 40, 560, 30, 200)
+    d.wire((40, 90), (120, 90)); lad_contact(d, 120, 90, "%IX0.2"); d.wire((160, 90), (220, 90))
+    d.add(f'<rect x="220" y="50" width="120" height="110" rx="6" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(280, 70, "TON", weight="700"); d.text(232, 94, "IN", anchor="start", size=11); d.text(328, 94, "Q", anchor="end", size=11)
+    d.text(232, 134, "PT", anchor="start", size=11); d.text(328, 134, "ET", anchor="end", size=11)
+    d.wire((180, 130), (220, 130)); d.text(176, 134, "T#5s", anchor="end", size=11, weight="700", color=ACCENT)
+    d.wire((340, 90), (470, 90)); lad_coil(d, 470, 90, "%QX0.1"); d.wire((510, 90), (560, 90))
+    return d
+
+
+def m12_chronos():
+    d = Drawing(560, 260, "Chronogrammes des temporisations : TON retarde la montée, TOF retarde la descente, TP donne une impulsion de durée fixe")
+    timing(d, 140, 10, 380, [("IN", [(1, 6)]), ("TON : Q", [(3, 6)]), ("TOF : Q", [(1, 8)]), ("TP : Q", [(1, 3)])], row_h=50,
+           marks=((1, "0"), (3, "PT"), (6, "IN à 0"), (8, "+ PT")))
+    return d
+
+
+def m12_ctu():
+    d = Drawing(600, 230, "Compteur CTU : chaque front montant sur CU ajoute 1 ; quand le compte CV atteint la présélection PV (ici 10 pièces), la sortie Q passe à 1")
+    rails(d, 40, 560, 30, 200)
+    d.wire((40, 80), (120, 80)); lad_contact(d, 120, 80, "%IX0.3"); d.wire((160, 80), (220, 80))
+    d.wire((40, 140), (120, 140)); lad_contact(d, 120, 140, "%IX0.4"); d.wire((160, 140), (220, 140))
+    d.add(f'<rect x="220" y="50" width="120" height="130" rx="6" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(280, 70, "CTU", weight="700"); d.text(232, 84, "CU", anchor="start", size=11); d.text(232, 144, "R", anchor="start", size=11)
+    d.text(232, 168, "PV", anchor="start", size=11); d.text(328, 84, "Q", anchor="end", size=11); d.text(328, 144, "CV", anchor="end", size=11)
+    d.text(176, 172, "10", anchor="end", size=11, weight="700", color=ACCENT); d.wire((180, 168), (220, 168))
+    d.wire((340, 80), (470, 80)); lad_coil(d, 470, 80, "%QX0.2"); d.wire((510, 80), (560, 80))
+    d.text(120, 108, "capteur", size=10, color=SOFT); d.text(120, 168, "remise à 0", size=10, color=SOFT)
+    return d
+
+
+def m12_comptage():
+    d = Drawing(560, 210, "Comptage de pièces : chaque passage du capteur ajoute 1 au compte ; à 3 pièces (PV = 3), la sortie passe à 1")
+    timing(d, 140, 10, 380, [("capteur CU", [(1, 1.6), (3, 3.6), (5, 5.6), (7, 7.6)]), ("Q (PV = 3)", [(5, 10)])], row_h=60,
+           marks=((1, "1"), (3, "2"), (5, "3"), (7, "4")))
+    return d
+
+
+def m12_conversion():
+    d = Drawing(620, 260, "De la logique câblée au ladder : le schéma de commande vertical devient un réseau horizontal ; chaque contact devient une entrée, la bobine une sortie")
+    d.text(130, 24, "logique câblée", weight="700"); d.text(430, 24, "ladder", weight="700", color=ACCENT)
+    d.wire((130, 34), (130, 44)); button(d, 130, 44, "nc", tag="S1"); button(d, 130, 88, "no", tag="S2"); d.wire((130, 132), (130, 140)); coil(d, 130, 140, tag="KM1"); d.wire((130, 184), (130, 200))
+    rails(d, 280, 600, 60, 160)
+    d.wire((280, 110), (300, 110)); lad_contact(d, 300, 110, "%IX0.0"); d.wire((340, 110), (370, 110)); lad_contact(d, 370, 110, "%IX0.1"); d.wire((410, 110), (520, 110))
+    lad_coil(d, 520, 110, "%QX0.0"); d.wire((560, 110), (600, 110))
+    d.arrow((220, 110), (270, 110), color=SOFT)
+    d.text(430, 200, "S1 → %IX0.0, S2 → %IX0.1, KM1 → %QX0.0", size=11, color=SOFT)
+    return d
+
+
+def m12_securite():
+    d = Drawing(560, 230, "Bouton d'arrêt câblé à ouverture : l'entrée vaut 1 au repos ; on le teste par un contact à fermeture dans le programme ; un fil coupé arrête la machine")
+    d.text(140, 30, "câblage", weight="700"); d.text(420, 30, "programme", weight="700", color=ACCENT)
+    d.wire((140, 40), (140, 60)); button(d, 140, 60, "nc", tag="S1 arrêt"); d.wire((140, 104), (140, 140)); d.text(140, 160, "%IX0.0 = 1 au repos", size=11, weight="600", color=ACCENT)
+    rails(d, 320, 520, 60, 130); d.wire((320, 95), (390, 95)); lad_contact(d, 390, 95, "%IX0.0"); d.wire((430, 95), (520, 95))
+    d.text(420, 160, "contact à fermeture dans le ladder", size=11)
+    d.text(280, 210, "fil coupé = entrée à 0 = arrêt : sécurité positive", size=12, weight="600")
+    return d
+
+
+def m12_banc():
+    d = Drawing(560, 230, "Banc du mini-projet : relais programmable 24 V, interrupteurs sur ses entrées, voyants ou LED sur ses sorties")
+    block(d, 190, 70, 180, 80, "relais programmable 24 V", size=11)
+    for k in range(3):
+        d.wire((40, 80 + 25 * k), (190, 80 + 25 * k)); d.text(32, 85 + 25 * k, f"%IX0.{k}", anchor="end", size=11, color=ACCENT)
+    for k in range(2):
+        d.wire((370, 90 + 30 * k), (460, 90 + 30 * k)); d.lamp((460, 90 + 30 * k), (500, 90 + 30 * k)); d.text(520, 95 + 30 * k, f"%QX0.{k}", anchor="start", size=11, color=ACCENT)
+    d.text(280, 200, "alimentation 24 V par adaptateur mural", size=12, color=SOFT)
+    return d
+
 
 SECTION_DIAGRAMS = {
     1: [m1_seuils, m1_corps, m1_arc, m1_epi, m1_defaut, m1_ddr, m1_tt, m1_tn, m1_it, m1_etapes, m1_vat, m1_domaines, m1_normes, m1_banc],
@@ -1850,6 +2338,12 @@ SECTION_DIAGRAMS = {
         m8_et, m8_ou, m8_non, m8_banc],
     9: [m9_depart, m9_section, m9_postes, m9_courant_direct, m9_etoile_triangle, m9_courants, m9_inversion_puissance,
         m9_verrouillage, m9_injection, m9_frein, m9_dahlander, m9_deux_vitesses, m9_au, m9_manuel_auto, m9_banc],
+    10: [m10_pont, m10_triphase, m10_mosfet, m10_pertes, m10_igbt, m10_comparaison, m10_thyristor, m10_angle, m10_triac,
+         m10_gradateur, m10_555, m10_esd, m10_banc],
+    11: [m11_blocs, m11_mli, m11_uf, m11_courbes, m11_installation, m11_cem, m11_rampes, m11_parametres, m11_declassement,
+         m11_defauts, m11_pont_cc, m11_quadrants, m11_tableau],
+    12: [m12_structure, m12_cycle, m12_entrees, m12_sorties, m12_adresses, m12_bits, m12_maintien, m12_set_reset, m12_ton,
+         m12_chronos, m12_ctu, m12_comptage, m12_conversion, m12_securite, m12_banc],
 }
 
 
@@ -1979,9 +2473,47 @@ def q_m9_maintien():
     d.zone("arret", 116, 84, 50, 44); d.zone("marche", 116, 140, 50, 44); d.zone("maintien", 212, 154, 44, 44); d.zone("bobine", 128, 240, 50, 26)
     return d
 
+def q_m10_gachette():
+    d = Drawing(520, 260, "Gradateur à triac sans légendes : source alternative, lampe, triac et son circuit de déclenchement")
+    d.ac_source((60, 200), (60, 80))
+    d.wire((60, 80), (60, 40), (200, 40), (200, 60)); d.lamp((200, 60), (200, 110)); d.wire((200, 110), (200, 130))
+    d.wire((200, 130), (200, 150))
+    d.add(f'<polygon points="180,150 220,150 200,180" fill="{PAPER}" stroke="{INK}" stroke-width="2"/><polygon points="180,210 220,210 200,180" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.wire((176, 150), (224, 150)); d.wire((176, 210), (224, 210)); d.wire((200, 210), (200, 230), (60, 230), (60, 200))
+    d.wire((212, 204), (300, 204)); d.resistor((300, 204), (380, 204)); d.wire((380, 204), (420, 204), (420, 130), (200, 130)); d.dot((200, 130))
+    d.zone("lampe", 180, 62, 40, 46); d.zone("triac", 172, 148, 56, 64); d.zone("gachette", 222, 192, 64, 24)
+    return d
+
+
+def q_m11_bus():
+    d = Drawing(640, 200, "Schéma fonctionnel d'un variateur de fréquence sans légendes")
+    labels = ("", "", "", "", "")
+    for k in range(5):
+        x = 10 + 128 * k
+        block(d, x, 60, 108, 50, "", size=11)
+        if k < 4:
+            d.arrow((x + 108, 85), (x + 128, 85), color=INK)
+    d.add(f'<path d="M30 80 q8 -10 16 0 t16 0 t16 0" fill="none" stroke="{INK}" stroke-width="2"/>')
+    d.wire((150, 85), (198, 85), width=2); d.text(174, 100, "≈ → =", size=11)
+    d.wire((280, 75), (330, 75), width=3); d.wire((280, 95), (330, 95), width=3)
+    d.text(430, 90, "= → ≈", size=11)
+    motor(d, 576, 85, r=20)
+    d.zone("redresseur", 138, 60, 108, 50); d.zone("bus", 266, 60, 108, 50); d.zone("onduleur", 394, 60, 108, 50)
+    return d
+
+
+def q_m12_maintien():
+    d = Drawing(600, 210, "Réseau ladder de marche-arrêt sans légendes d'adresses")
+    rails(d, 40, 560, 30, 180)
+    d.wire((40, 80), (80, 80)); lad_contact(d, 80, 80, ""); d.wire((120, 80), (170, 80)); lad_contact(d, 170, 80, "")
+    d.wire((210, 80), (300, 80)); d.dot((150, 80)); d.wire((150, 80), (150, 140), (170, 140)); lad_contact(d, 170, 140, ""); d.wire((210, 140), (250, 140), (250, 80)); d.dot((250, 80))
+    lad_coil(d, 470, 80, ""); d.wire((300, 80), (470, 80)); d.wire((510, 80), (560, 80))
+    d.zone("arret", 76, 60, 48, 40); d.zone("marche", 166, 60, 48, 40); d.zone("maintien", 166, 120, 48, 40); d.zone("bobine", 466, 60, 48, 40)
+    return d
+
 
 QUESTION_DIAGRAMS = {1: q_m1_sectionneur, 2: q_m2_plaques, 3: q_m3_tc, 4: q_m4_pnp, 5: q_m5_collecteur, 6: q_m6_rotor,
-                     7: q_m7_thermique, 8: q_m8_ou, 9: q_m9_maintien}
+                     7: q_m7_thermique, 8: q_m8_ou, 9: q_m9_maintien, 10: q_m10_gachette, 11: q_m11_bus, 12: q_m12_maintien}
 
 PARTS = {"p1": range(1, 4), "p2": range(4, 7), "p3": range(7, 10), "p4": range(10, 13)}
 
