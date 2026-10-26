@@ -15,6 +15,8 @@ Règles du projet : AGENTS.md (source de vérité), critères 14, 15, 45 et 55 d
 - **Comptes de test temporaires** : créés dans `manage.py shell`, avec un mot de passe jetable généré pour l'occasion (jamais un mot de passe réel), puis supprimés avec leurs données, `history -c` dans la console et fichier local du mot de passe effacé.
 - **Production intacte** : aucune donnée d'apprenant lue, modifiée ou affichée pendant la fumée.
 
+- **Quota de CPU** (plan gratuit, 100 s par jour) : un déploiement avec fumée lance quatre processus Python sur le serveur (`deploy.sh`, mesure du disque, création puis suppression du compte de test) et consomme à lui seul une large part du quota. Au-delà, PythonAnywhere ouvre sa page « tarpit » et bride le compte jusqu'à la remise à zéro (le site reste servi, la console devient très lente). Regrouper les livraisons : plusieurs figures ou correctifs commités sur `develop`, puis un seul déploiement et une seule fumée par jour ; vérifier le compteur « CPU Usage » en haut de la page des consoles avant de lancer. Quota épuisé : ne lancer que la suppression d'un compte de test déjà créé, et remettre le reste au lendemain.
+
 ## Étapes
 
 ### 1. Contrôles locaux (poste Windows)
