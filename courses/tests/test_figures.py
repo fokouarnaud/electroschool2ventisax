@@ -51,8 +51,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "lc_tuning": Figure(
             drawing="figures/lc_tuning.svg", card="figures/lc_tuning.html", script="acad/js/figures/lc_tuning.js",
         ),
+        "lc_free": Figure(
+            drawing="figures/lc_free.svg", card="figures/lc_free.html", script="acad/js/figures/lc_free.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free")
 
 
 @pytest.mark.django_db
@@ -601,3 +604,37 @@ def test_tuning_section_carries_the_figure_after_the_stations_curve(lang, keep):
 def test_tuning_story_links_the_plates_to_the_resonant_frequency(lang, sense):
     """F1 : plus les lames sont rentrées, plus C est grand et plus f0 est basse."""
     assert sense in (M7 / f"05-accord.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_free_oscillation_card_maps_the_swing_to_the_lc_circuit_in_both_languages(client, enrolled, module):
+    """Oscillation libre : la balançoire de la section ; hauteur = énergie de C, vitesse = énergie de L, frottements = R."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Vers les oscillateurs", order=1, body_md_fr="[[fig:lc_free]]", body_md_en="[[fig:lc_free]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="lc_free"' in fr and 'id="fig-lc_free-r"' in fr
+    assert 'min="5" max="200" step="1"' in fr and "data-fig-r" in fr
+    assert 'data-play="Lâcher"' in fr and 'data-play="Release"' in en
+    assert "Hauteur du siège :</strong>" in fr and "Seat height:</strong>" in en and "Balançoire" not in en
+    assert 'src="/static/acad/js/figures/lc_free.js' in fr
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## Entretenir l'oscillation"), ("en", "## Sustaining the oscillation")])
+def test_free_oscillation_section_carries_the_figure_after_the_damped_curve(lang, keep):
+    """F10 : schéma de l'échange et courbe amortie gardés, puis récit et figure avant « Entretenir l'oscillation »."""
+    text = (M7 / f"06-oscillateurs.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:lc_free]]\n" in text
+    assert text.index("echange.svg") < text.index("amortie.svg") < text.index(RECIT[lang]) < text.index("[[fig:lc_free]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang, bottom", [("fr", "au point bas, Vc = 0 et le courant est maximal"), ("en", "at the bottom, Vc = 0 and the current is at its maximum")])
+def test_free_oscillation_story_puts_all_the_energy_in_the_inductor_at_the_bottom(lang, bottom):
+    """F1 : au point bas de la balançoire, le condensateur est vide et toute l'énergie est dans la bobine."""
+    assert bottom in (M7 / f"06-oscillateurs.{lang}.md").read_text(encoding="utf-8")

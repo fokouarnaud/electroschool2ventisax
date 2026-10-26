@@ -20,6 +20,14 @@ In a real circuit, the inductor's wire and the connections have a resistance tha
 
 The higher the Q factor (low losses), the longer the oscillation lasts.
 
+## What happens in the circuit
+
+On the swing below, set to the module's circuit (10 mH, 100 nF, charged to 1 V), the seat held up stands for the charged capacitor: 50 nJ, all the energy is electric. Released, it swings down: the current grows and the energy moves into the inductor; at the bottom, Vc = 0 and the current is at its maximum. The seat climbs the other side, Vc changes sign, and the cycle starts again about every 0.2 ms (close to 5 kHz).
+
+With 40 Ω of losses (Q ≈ 7.9, the curve above), only 45 % of the energy is left after one period, and Vc is down to 0.14 V after five. With 10 Ω (Q ≈ 32), the swinging lasts four times longer; with 100 Ω (Q ≈ 3.2), it dies out within one or two swings.
+
+[[fig:lc_free]]
+
 ## Sustaining the oscillation
 
 To get a permanent sine wave, the **energy lost** on each cycle must be **given back** to the circuit at the right moment, just as you push a swing at the right time. That job goes to an **amplifier** (a transistor) that feeds part of the signal back: the result is an **oscillator**. Amplifiers and oscillators are covered in Part 3.

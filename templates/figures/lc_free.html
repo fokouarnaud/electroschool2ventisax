@@ -1,0 +1,34 @@
+{% load i18n %}<figure class="fig" data-fig="lc_free">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "L’oscillation libre, sur la balançoire" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Balançoire sur son portique, tenue en haut avant d’être lâchée ; un pupitre montre en deux barres l’énergie du condensateur et celle de la bobine.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-lc_free-r">{% translate "Pertes R" %}</label>
+        <input id="fig-lc_free-r" type="range" min="5" max="200" step="1" value="40" data-fig-r>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="r10">10 Ω</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="r40">40 Ω</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="r100">100 Ω</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Lâcher' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Lâcher" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>Q</dt><dd data-fig-out="q"></dd></div>
+        <div><dt>{% translate "Périodes écoulées" %}</dt><dd data-fig-out="t"></dd></div>
+        <div><dt>Vc</dt><dd data-fig-out="v"></dd></div>
+        <div><dt>i</dt><dd data-fig-out="i"></dd></div>
+        <div><dt>{% translate "Énergie restante" %}</dt><dd data-fig-out="e"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Circuit LC du module (10 mH, 100 nF) chargé à 1 V. Mouvement ralenti : une période de 0,2 ms dure 2 s à l’écran ; amplitudes et amortissement sont exacts." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Hauteur du siège :" %}</strong> {% translate "charge du condensateur ; l’angle des cordes suit Vc (35° pour 1 V), la hauteur suit l’énergie ½ C Vc²" %}</li>
+      <li><strong>{% translate "Vitesse du siège :" %}</strong> {% translate "courant dans la bobine ; maximale au point bas, quand toute l’énergie est ½ L i²" %}</li>
+      <li><strong>{% translate "Frottements :" %}</strong> {% translate "pertes R ; elles éteignent le balancement d’autant plus vite que Q = √(L / C) / R est faible" %}</li>
+      <li><strong>{% translate "Tableau des énergies :" %}</strong> {% translate "barre du fond, énergie du condensateur ; barre de devant, énergie de la bobine ; une graduation par quart de l’énergie de départ" %}</li>
+    </ul>
+  </figcaption>
+</figure>

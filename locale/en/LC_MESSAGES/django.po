@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 01:55+0100\n"
+"POT-Creation-Date: 2026-10-26 02:15+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1714,14 +1714,99 @@ msgstr "Next"
 msgid "Fin du module"
 msgstr "End of module"
 
-#: .\templates\figures\lc_resonance.html:3 .\templates\figures\lc_tank.html:3
-#: .\templates\figures\lc_tuning.html:3 .\templates\figures\rc_cutoff.html:3
-#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
-#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
+#: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
+#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
+#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
+#: .\templates\figures\rl_lowpass.html:3
 #: .\templates\figures\rlc_bandwidth.html:3
 #: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
+
+#: .\templates\figures\lc_free.html:3
+msgid "L’oscillation libre, sur la balançoire"
+msgstr "Free oscillation, on the swing"
+
+#: .\templates\figures\lc_free.html:4
+msgid ""
+"Balançoire sur son portique, tenue en haut avant d’être lâchée ; un pupitre "
+"montre en deux barres l’énergie du condensateur et celle de la bobine."
+msgstr "A swing on its frame, held up before being released; a panel shows the capacitor's energy and the inductor's energy as two bars."
+
+#: .\templates\figures\lc_free.html:7
+msgid "Pertes R"
+msgstr "Losses R"
+
+#: .\templates\figures\lc_free.html:14
+msgid "Lâcher"
+msgstr "Release"
+
+#: .\templates\figures\lc_free.html:14 .\templates\figures\lc_resonance.html:14
+#: .\templates\figures\lc_tank.html:14 .\templates\figures\lc_tuning.html:14
+#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
+#: .\templates\figures\rlc_bandwidth.html:14
+#: .\templates\figures\rlc_response.html:14
+msgid "Pause"
+msgstr "Pause"
+
+#: .\templates\figures\lc_free.html:18
+msgid "Périodes écoulées"
+msgstr "Periods elapsed"
+
+#: .\templates\figures\lc_free.html:21
+msgid "Énergie restante"
+msgstr "Energy left"
+
+#: .\templates\figures\lc_free.html:23
+msgid ""
+"Circuit LC du module (10 mH, 100 nF) chargé à 1 V. Mouvement ralenti : une "
+"période de 0,2 ms dure 2 s à l’écran ; amplitudes et amortissement sont "
+"exacts."
+msgstr "The module's LC circuit (10 mH, 100 nF) charged to 1 V. Slow motion: one 0.2 ms period lasts 2 s on screen; amplitudes and damping are exact."
+
+#: .\templates\figures\lc_free.html:28
+msgid "Hauteur du siège :"
+msgstr "Seat height:"
+
+#: .\templates\figures\lc_free.html:28
+msgid ""
+"charge du condensateur ; l’angle des cordes suit Vc (35° pour 1 V), la "
+"hauteur suit l’énergie ½ C Vc²"
+msgstr "charge of the capacitor; the rope angle follows Vc (35° for 1 V), the height follows the energy ½ C Vc²"
+
+#: .\templates\figures\lc_free.html:29
+msgid "Vitesse du siège :"
+msgstr "Seat speed:"
+
+#: .\templates\figures\lc_free.html:29
+msgid ""
+"courant dans la bobine ; maximale au point bas, quand toute l’énergie est ½ "
+"L i²"
+msgstr "current in the inductor; greatest at the bottom, when all the energy is ½ L i²"
+
+#: .\templates\figures\lc_free.html:30
+msgid "Frottements :"
+msgstr "Friction:"
+
+#: .\templates\figures\lc_free.html:30
+msgid ""
+"pertes R ; elles éteignent le balancement d’autant plus vite que Q = √(L / "
+"C) / R est faible"
+msgstr "losses R; they stop the swinging all the faster as Q = √(L / C) / R is low"
+
+#: .\templates\figures\lc_free.html:31
+msgid "Tableau des énergies :"
+msgstr "Energy panel:"
+
+#: .\templates\figures\lc_free.html:31
+msgid ""
+"barre du fond, énergie du condensateur ; barre de devant, énergie de la "
+"bobine ; une graduation par quart de l’énergie de départ"
+msgstr "back bar, capacitor energy; front bar, inductor energy; one mark per quarter of the starting energy"
 
 #: .\templates\figures\lc_resonance.html:3
 msgid "La résonance, côté eau"
@@ -1753,16 +1838,6 @@ msgstr "Frequency"
 #: .\templates\figures\rl_lowpass.html:14
 msgid "Lecture"
 msgstr "Play"
-
-#: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
-#: .\templates\figures\lc_tuning.html:14 .\templates\figures\rc_cutoff.html:14
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
-#: .\templates\figures\rl_lowpass.html:14
-#: .\templates\figures\rlc_bandwidth.html:14
-#: .\templates\figures\rlc_response.html:14
-msgid "Pause"
-msgstr "Pause"
 
 #: .\templates\figures\lc_resonance.html:20
 msgid "I (sous 1 V)"
@@ -1925,7 +2000,11 @@ msgid ""
 "mobiles entrent entre les lames fixes, une bobine d’accord, une antenne, "
 "trois galvanomètres, un par station, et un cadran gradué de 0,8 à 1,2 MHz "
 "dont l’index montre la fréquence d’accord."
-msgstr "Radio seen from above: a variable capacitor whose moving plates slide between the fixed plates, a tuning coil, an antenna, three meters, one per station, and a dial graduated from 0.8 to 1.2 MHz whose pointer shows the tuned frequency."
+msgstr ""
+"Radio seen from above: a variable capacitor whose moving plates slide "
+"between the fixed plates, a tuning coil, an antenna, three meters, one per "
+"station, and a dial graduated from 0.8 to 1.2 MHz whose pointer shows the "
+"tuned frequency."
 
 #: .\templates\figures\lc_tuning.html:7
 msgid "Condensateur variable"
@@ -1961,7 +2040,9 @@ msgstr "1.1 MHz station"
 msgid ""
 "Part de chaque station qui traverse le circuit, de 0 à 1 ; Balayer tourne le "
 "bouton d’un bout à l’autre."
-msgstr "Share of each station that gets through the circuit, from 0 to 1; Sweep turns the knob from one end to the other."
+msgstr ""
+"Share of each station that gets through the circuit, from 0 to 1; Sweep "
+"turns the knob from one end to the other."
 
 #: .\templates\figures\lc_tuning.html:28
 msgid "Condensateur variable :"
@@ -1971,7 +2052,9 @@ msgstr "Variable capacitor:"
 msgid ""
 "les lames mobiles (teal) tournent avec le bouton et entrent entre les lames "
 "fixes ; plus elles sont rentrées, plus C est grand, de 180 pF à 360 pF"
-msgstr "the moving plates (teal) turn with the knob and slide between the fixed plates; the further in they go, the larger C, from 180 pF to 360 pF"
+msgstr ""
+"the moving plates (teal) turn with the knob and slide between the fixed "
+"plates; the further in they go, the larger C, from 180 pF to 360 pF"
 
 #: .\templates\figures\lc_tuning.html:29
 msgid "Bobine d’accord :"
@@ -1989,7 +2072,9 @@ msgstr "Dial:"
 msgid ""
 "de 0,8 à 1,2 MHz ; l’index montre f0 = 1 / (2π × √(L × C)) ; les trois "
 "repères teal sont les stations"
-msgstr "from 0.8 to 1.2 MHz; the pointer shows f0 = 1 / (2π × √(L × C)); the three teal marks are the stations"
+msgstr ""
+"from 0.8 to 1.2 MHz; the pointer shows f0 = 1 / (2π × √(L × C)); the three "
+"teal marks are the stations"
 
 #: .\templates\figures\lc_tuning.html:31
 msgid "Galvanomètres :"
@@ -1999,7 +2084,9 @@ msgstr "Meters:"
 msgid ""
 "un par station, de gauche à droite 0,9, 1 et 1,1 MHz ; leur aiguille montre "
 "la part de la station qui traverse le circuit (Q = 40)"
-msgstr "one per station, from left to right 0.9, 1 and 1.1 MHz; their needle shows the share of the station that gets through the circuit (Q = 40)"
+msgstr ""
+"one per station, from left to right 0.9, 1 and 1.1 MHz; their needle shows "
+"the share of the station that gets through the circuit (Q = 40)"
 
 #: .\templates\figures\lc_tuning.html:32
 msgid "Antenne :"
