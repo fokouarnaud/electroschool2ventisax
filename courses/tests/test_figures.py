@@ -54,8 +54,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "lc_free": Figure(
             drawing="figures/lc_free.svg", card="figures/lc_free.html", script="acad/js/figures/lc_free.js",
         ),
+        "amp_gain": Figure(
+            drawing="figures/amp_gain.svg", card="figures/amp_gain.html", script="acad/js/figures/amp_gain.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain")
 
 
 @pytest.mark.django_db
@@ -638,3 +641,41 @@ def test_free_oscillation_section_carries_the_figure_after_the_damped_curve(lang
 def test_free_oscillation_story_puts_all_the_energy_in_the_inductor_at_the_bottom(lang, bottom):
     """F1 : au point bas de la balançoire, le condensateur est vide et toute l'énergie est dans la bobine."""
     assert bottom in (M7 / f"06-oscillateurs.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_amplifier_gain_card_maps_the_bench_to_the_block_diagram_in_both_languages(client, enrolled, module):
+    """Rôle de l'amplificateur : micro (ve = 50 mV), amplificateur alimenté, haut-parleur (vs) ; commande = gain de −40 à +40."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Le rôle de l'amplificateur et le gain", order=1, body_md_fr="[[fig:amp_gain]]", body_md_en="[[fig:amp_gain]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="amp_gain"' in fr and 'id="fig-amp_gain-gain"' in fr
+    assert 'min="-40" max="40" step="1"' in fr and "data-fig-gain" in fr
+    assert 'data-fig-preset="a40">Av = 40<' in fr and 'data-fig-preset="am39">Av = −39<' in fr
+    assert 'data-in-phase="en phase"' in fr and 'data-inverted="inversée"' in fr and 'data-inverted="inverted"' in en
+    assert "Batterie :</strong>" in fr and "Battery:</strong>" in en and "Batterie" not in en
+    assert 'src="/static/acad/js/figures/amp_gain.js' in fr
+
+
+M8 = ROOT / "content" / "electro" / "p3" / "m8"
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## À retenir"), ("en", "## Key points")])
+def test_amplifier_gain_section_carries_the_figure_after_the_sign_of_the_gain(lang, keep):
+    """F10 : schéma-bloc et signaux gardés, puis récit et figure avant « À retenir »."""
+    text = (M8 / f"01-role-gain.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:amp_gain]]\n" in text
+    assert text.index("bloc.svg") < text.index("signaux.svg") < text.index(RECIT[lang]) < text.index("[[fig:amp_gain]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang, energy", [("fr", "vient de la batterie, pas du micro"), ("en", "comes from the battery, not from the microphone")])
+def test_amplifier_gain_story_takes_the_energy_from_the_supply(lang, energy):
+    """F1 : l'amplificateur ne crée pas d'énergie ; la sortie la puise dans l'alimentation."""
+    assert energy in (M8 / f"01-role-gain.{lang}.md").read_text(encoding="utf-8")

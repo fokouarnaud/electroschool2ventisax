@@ -1,0 +1,33 @@
+{% load i18n %}<figure class="fig" data-fig="amp_gain">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "L’amplificateur, du micro au haut-parleur" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc d’écoute : un micro relié à un amplificateur alimenté par une batterie, lui-même relié à un haut-parleur ; deux galvanomètres sur l’amplificateur montrent l’entrée et la sortie, un bouton règle le gain.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-amp_gain-gain">{% translate "Gain Av" %}</label>
+        <input id="fig-amp_gain-gain" type="range" min="-40" max="40" step="1" value="40" data-fig-gain>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="a40">Av = 40</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="am39">Av = −39</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Lecture' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Lecture" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>Av</dt><dd data-fig-out="a"></dd></div>
+        <div><dt>{% translate "ve crête" %}</dt><dd data-fig-out="ve"></dd></div>
+        <div><dt>{% translate "vs crête" %}</dt><dd data-fig-out="vs"></dd></div>
+        <div><dt>{% translate "Sortie" %}</dt><dd data-fig-out="ph" data-in-phase="{% translate 'en phase' %}" data-inverted="{% translate 'inversée' %}"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement ralenti : une période dure 2 s à l’écran ; les amplitudes et le sens sont exacts." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Micro :" %}</strong> {% translate "il fournit le signal d’entrée, ve = 50 mV crête ; sa membrane bouge avec ve" %}</li>
+      <li><strong>{% translate "Amplificateur :" %}</strong> {% translate "il reproduit ve en Av fois plus grand ; son bouton règle Av de −40 à +40" %}</li>
+      <li><strong>{% translate "Batterie :" %}</strong> {% translate "elle fournit l’énergie de la sortie ; l’amplificateur n’en crée pas" %}</li>
+      <li><strong>{% translate "Haut-parleur :" %}</strong> {% translate "sa membrane (teal) bouge avec vs, à la même échelle que celle du micro" %}</li>
+      <li><strong>{% translate "Galvanomètres :" %}</strong> {% translate "à gauche l’entrée (±60 mV), à droite la sortie (±2,4 V) ; avec Av = 40, les deux aiguilles battent ensemble, avec un gain négatif elles battent en sens contraires" %}</li>
+    </ul>
+  </figcaption>
+</figure>

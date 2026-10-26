@@ -24,6 +24,14 @@ Always compare values of the same kind: peak with peak, or rms with rms. The rat
 
 Some circuits give an **inverted** output: when the input rises, the output falls. Their gain is negative, for example Av = −39. The sign only says that the output is in antiphase; the **absolute value** (39) says how much the signal is enlarged. In the exercises, read carefully whether you are asked for the gain "as an absolute value" or "with its sign".
 
+## What happens in the circuit
+
+On the bench below, the microphone supplies 50 mV peak: its diaphragm barely moves. The amplifier makes a copy forty times bigger, 2 V peak, and the loudspeaker cone, drawn on the same scale, moves forty times more. The energy for that large movement comes from the battery, not from the microphone: the microphone only controls it, like the hand turning a tap.
+
+The two meters have scales in the ratio 40: with Av = 40, their needles swing together. With Av = −39, the output is only 1.95 V peak and it is inverted: when the input needle swings one way, the output needle swings the other.
+
+[[fig:amp_gain]]
+
 ## Key points
 
 - An amplifier enlarges a signal using energy taken from its power supply.

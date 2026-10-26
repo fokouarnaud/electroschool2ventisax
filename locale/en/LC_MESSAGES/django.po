@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 02:15+0100\n"
+"POT-Creation-Date: 2026-10-26 02:47+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1714,15 +1714,121 @@ msgstr "Next"
 msgid "Fin du module"
 msgstr "End of module"
 
-#: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
-#: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
-#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
-#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
-#: .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\amp_gain.html:3 .\templates\figures\lc_free.html:3
+#: .\templates\figures\lc_resonance.html:3 .\templates\figures\lc_tank.html:3
+#: .\templates\figures\lc_tuning.html:3 .\templates\figures\rc_cutoff.html:3
+#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
+#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
 #: .\templates\figures\rlc_bandwidth.html:3
 #: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
 msgstr "Fig. 1"
+
+#: .\templates\figures\amp_gain.html:3
+msgid "L’amplificateur, du micro au haut-parleur"
+msgstr "The amplifier, from microphone to loudspeaker"
+
+#: .\templates\figures\amp_gain.html:4
+msgid ""
+"Banc d’écoute : un micro relié à un amplificateur alimenté par une batterie, "
+"lui-même relié à un haut-parleur ; deux galvanomètres sur l’amplificateur "
+"montrent l’entrée et la sortie, un bouton règle le gain."
+msgstr "Listening bench: a microphone connected to an amplifier powered by a battery, itself connected to a loudspeaker; two meters on the amplifier show the input and the output, a knob sets the gain."
+
+#: .\templates\figures\amp_gain.html:7
+msgid "Gain Av"
+msgstr "Gain Av"
+
+#: .\templates\figures\amp_gain.html:13
+#: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
+#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
+msgid "Lecture"
+msgstr "Play"
+
+#: .\templates\figures\amp_gain.html:13 .\templates\figures\lc_free.html:14
+#: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
+#: .\templates\figures\lc_tuning.html:14 .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\rc_highpass.html:14
+#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
+#: .\templates\figures\rl_lowpass.html:14
+#: .\templates\figures\rlc_bandwidth.html:14
+#: .\templates\figures\rlc_response.html:14
+msgid "Pause"
+msgstr "Pause"
+
+#: .\templates\figures\amp_gain.html:17
+msgid "ve crête"
+msgstr "vin peak"
+
+#: .\templates\figures\amp_gain.html:18
+msgid "vs crête"
+msgstr "vout peak"
+
+#: .\templates\figures\amp_gain.html:19
+msgid "Sortie"
+msgstr "Output"
+
+#: .\templates\figures\amp_gain.html:19
+msgid "en phase"
+msgstr "in phase"
+
+#: .\templates\figures\amp_gain.html:19
+msgid "inversée"
+msgstr "inverted"
+
+#: .\templates\figures\amp_gain.html:21
+msgid ""
+"Mouvement ralenti : une période dure 2 s à l’écran ; les amplitudes et le "
+"sens sont exacts."
+msgstr "Slow motion: one period lasts 2 s on screen; the amplitudes and the direction are exact."
+
+#: .\templates\figures\amp_gain.html:26
+msgid "Micro :"
+msgstr "Microphone:"
+
+#: .\templates\figures\amp_gain.html:26
+msgid ""
+"il fournit le signal d’entrée, ve = 50 mV crête ; sa membrane bouge avec ve"
+msgstr "it supplies the input signal, vin = 50 mV peak; its diaphragm moves with vin"
+
+#: .\templates\figures\amp_gain.html:27
+msgid "Amplificateur :"
+msgstr "Amplifier:"
+
+#: .\templates\figures\amp_gain.html:27
+msgid ""
+"il reproduit ve en Av fois plus grand ; son bouton règle Av de −40 à +40"
+msgstr "it reproduces vin Av times bigger; its knob sets Av from −40 to +40"
+
+#: .\templates\figures\amp_gain.html:28
+msgid "Batterie :"
+msgstr "Battery:"
+
+#: .\templates\figures\amp_gain.html:28
+msgid "elle fournit l’énergie de la sortie ; l’amplificateur n’en crée pas"
+msgstr "it supplies the output energy; the amplifier creates none"
+
+#: .\templates\figures\amp_gain.html:29
+msgid "Haut-parleur :"
+msgstr "Loudspeaker:"
+
+#: .\templates\figures\amp_gain.html:29
+msgid "sa membrane (teal) bouge avec vs, à la même échelle que celle du micro"
+msgstr "its cone (teal) moves with vout, on the same scale as the microphone's diaphragm"
+
+#: .\templates\figures\amp_gain.html:30 .\templates\figures\lc_tuning.html:31
+msgid "Galvanomètres :"
+msgstr "Meters:"
+
+#: .\templates\figures\amp_gain.html:30
+msgid ""
+"à gauche l’entrée (±60 mV), à droite la sortie (±2,4 V) ; avec Av = 40, les "
+"deux aiguilles battent ensemble, avec un gain négatif elles battent en sens "
+"contraires"
+msgstr "on the left the input (±60 mV), on the right the output (±2.4 V); with Av = 40 both needles swing together, with a negative gain they swing in opposite directions"
 
 #: .\templates\figures\lc_free.html:3
 msgid "L’oscillation libre, sur la balançoire"
@@ -1732,7 +1838,9 @@ msgstr "Free oscillation, on the swing"
 msgid ""
 "Balançoire sur son portique, tenue en haut avant d’être lâchée ; un pupitre "
 "montre en deux barres l’énergie du condensateur et celle de la bobine."
-msgstr "A swing on its frame, held up before being released; a panel shows the capacitor's energy and the inductor's energy as two bars."
+msgstr ""
+"A swing on its frame, held up before being released; a panel shows the "
+"capacitor's energy and the inductor's energy as two bars."
 
 #: .\templates\figures\lc_free.html:7
 msgid "Pertes R"
@@ -1741,17 +1849,6 @@ msgstr "Losses R"
 #: .\templates\figures\lc_free.html:14
 msgid "Lâcher"
 msgstr "Release"
-
-#: .\templates\figures\lc_free.html:14 .\templates\figures\lc_resonance.html:14
-#: .\templates\figures\lc_tank.html:14 .\templates\figures\lc_tuning.html:14
-#: .\templates\figures\rc_cutoff.html:14
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
-#: .\templates\figures\rl_lowpass.html:14
-#: .\templates\figures\rlc_bandwidth.html:14
-#: .\templates\figures\rlc_response.html:14
-msgid "Pause"
-msgstr "Pause"
 
 #: .\templates\figures\lc_free.html:18
 msgid "Périodes écoulées"
@@ -1766,7 +1863,9 @@ msgid ""
 "Circuit LC du module (10 mH, 100 nF) chargé à 1 V. Mouvement ralenti : une "
 "période de 0,2 ms dure 2 s à l’écran ; amplitudes et amortissement sont "
 "exacts."
-msgstr "The module's LC circuit (10 mH, 100 nF) charged to 1 V. Slow motion: one 0.2 ms period lasts 2 s on screen; amplitudes and damping are exact."
+msgstr ""
+"The module's LC circuit (10 mH, 100 nF) charged to 1 V. Slow motion: one 0.2 "
+"ms period lasts 2 s on screen; amplitudes and damping are exact."
 
 #: .\templates\figures\lc_free.html:28
 msgid "Hauteur du siège :"
@@ -1776,7 +1875,9 @@ msgstr "Seat height:"
 msgid ""
 "charge du condensateur ; l’angle des cordes suit Vc (35° pour 1 V), la "
 "hauteur suit l’énergie ½ C Vc²"
-msgstr "charge of the capacitor; the rope angle follows Vc (35° for 1 V), the height follows the energy ½ C Vc²"
+msgstr ""
+"charge of the capacitor; the rope angle follows Vc (35° for 1 V), the height "
+"follows the energy ½ C Vc²"
 
 #: .\templates\figures\lc_free.html:29
 msgid "Vitesse du siège :"
@@ -1786,7 +1887,9 @@ msgstr "Seat speed:"
 msgid ""
 "courant dans la bobine ; maximale au point bas, quand toute l’énergie est ½ "
 "L i²"
-msgstr "current in the inductor; greatest at the bottom, when all the energy is ½ L i²"
+msgstr ""
+"current in the inductor; greatest at the bottom, when all the energy is ½ L "
+"i²"
 
 #: .\templates\figures\lc_free.html:30
 msgid "Frottements :"
@@ -1796,7 +1899,8 @@ msgstr "Friction:"
 msgid ""
 "pertes R ; elles éteignent le balancement d’autant plus vite que Q = √(L / "
 "C) / R est faible"
-msgstr "losses R; they stop the swinging all the faster as Q = √(L / C) / R is low"
+msgstr ""
+"losses R; they stop the swinging all the faster as Q = √(L / C) / R is low"
 
 #: .\templates\figures\lc_free.html:31
 msgid "Tableau des énergies :"
@@ -1806,7 +1910,9 @@ msgstr "Energy panel:"
 msgid ""
 "barre du fond, énergie du condensateur ; barre de devant, énergie de la "
 "bobine ; une graduation par quart de l’énergie de départ"
-msgstr "back bar, capacitor energy; front bar, inductor energy; one mark per quarter of the starting energy"
+msgstr ""
+"back bar, capacitor energy; front bar, inductor energy; one mark per quarter "
+"of the starting energy"
 
 #: .\templates\figures\lc_resonance.html:3
 msgid "La résonance, côté eau"
@@ -1830,14 +1936,6 @@ msgstr ""
 #: .\templates\figures\rlc_response.html:7
 msgid "Fréquence"
 msgstr "Frequency"
-
-#: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
-#: .\templates\figures\rc_cutoff.html:14
-#: .\templates\figures\rc_highpass.html:14
-#: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
-#: .\templates\figures\rl_lowpass.html:14
-msgid "Lecture"
-msgstr "Play"
 
 #: .\templates\figures\lc_resonance.html:20
 msgid "I (sous 1 V)"
@@ -2075,10 +2173,6 @@ msgid ""
 msgstr ""
 "from 0.8 to 1.2 MHz; the pointer shows f0 = 1 / (2π × √(L × C)); the three "
 "teal marks are the stations"
-
-#: .\templates\figures\lc_tuning.html:31
-msgid "Galvanomètres :"
-msgstr "Meters:"
 
 #: .\templates\figures\lc_tuning.html:31
 msgid ""

@@ -24,6 +24,14 @@ On compare des valeurs de même nature : crête avec crête, ou efficace avec ef
 
 Certains montages rendent une sortie **inversée** : quand l'entrée monte, la sortie descend. Leur gain est négatif, par exemple Av = −39. Le signe dit seulement que la sortie est en opposition de phase ; la **valeur absolue** (39) dit de combien le signal est agrandi. Dans les exercices, lisez bien si l'on vous demande le gain « en valeur absolue » ou « avec son signe ».
 
+## Ce qui se passe dans le circuit
+
+Sur le banc ci-dessous, le micro fournit 50 mV crête : sa membrane bouge à peine. L'amplificateur en fait une copie quarante fois plus grande, 2 V crête, et la membrane du haut-parleur, dessinée à la même échelle, bouge quarante fois plus. L'énergie de ce grand mouvement vient de la batterie, pas du micro : le micro ne fait que commander, comme la main qui tourne un robinet.
+
+Les deux galvanomètres ont des échelles dans le rapport 40 : avec Av = 40, leurs aiguilles battent ensemble. Avec Av = −39, la sortie ne vaut plus que 1,95 V crête et elle est inversée : quand l'aiguille d'entrée part d'un côté, celle de sortie part de l'autre.
+
+[[fig:amp_gain]]
+
 ## À retenir
 
 - Un amplificateur agrandit un signal en puisant l'énergie dans son alimentation.
