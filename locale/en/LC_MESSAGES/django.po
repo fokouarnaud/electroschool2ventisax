@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 20:37+0100\n"
+"POT-Creation-Date: 2026-10-26 01:55+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1715,9 +1715,9 @@ msgid "Fin du module"
 msgstr "End of module"
 
 #: .\templates\figures\lc_resonance.html:3 .\templates\figures\lc_tank.html:3
-#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
-#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
-#: .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\lc_tuning.html:3 .\templates\figures\rc_cutoff.html:3
+#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
+#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
 #: .\templates\figures\rlc_bandwidth.html:3
 #: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
@@ -1755,7 +1755,7 @@ msgid "Lecture"
 msgstr "Play"
 
 #: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
-#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\lc_tuning.html:14 .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
 #: .\templates\figures\rl_lowpass.html:14
@@ -1865,7 +1865,11 @@ msgid ""
 "coiffée d’un débitmètre jusqu’à un nœud coiffé d’un manomètre ; du nœud "
 "partent en parallèle, vers le bac, une roue à volant à l’arrière et une "
 "cloche à membrane à l’avant."
-msgstr "Hydraulic bench: a piston pushes water through a throttled valve topped by a flow meter up to a node topped by a pressure gauge; from the node, a flywheel turbine at the back and a membrane bell at the front run in parallel to the tray."
+msgstr ""
+"Hydraulic bench: a piston pushes water through a throttled valve topped by a "
+"flow meter up to a node topped by a pressure gauge; from the node, a "
+"flywheel turbine at the back and a membrane bell at the front run in "
+"parallel to the tray."
 
 #: .\templates\figures\lc_tank.html:18
 msgid "Z du bouchon"
@@ -1883,7 +1887,9 @@ msgstr "Vt / Vin"
 msgid ""
 "résistance Rs = 10 kΩ, en série ; son débitmètre (aiguille teal) lit le "
 "courant de ligne"
-msgstr "resistor Rs = 10 kΩ, in series; its flow meter (teal needle) reads the line current"
+msgstr ""
+"resistor Rs = 10 kΩ, in series; its flow meter (teal needle) reads the line "
+"current"
 
 #: .\templates\figures\lc_tank.html:30 .\templates\figures\rc_cutoff.html:32
 msgid "Manomètre du nœud :"
@@ -1897,7 +1903,9 @@ msgstr "voltage Vt across the tank, ±1 V at full scale"
 msgid ""
 "bobine L = 10 mH (10 Ω de pertes), en parallèle avec la cloche ; son repère "
 "suit le courant de la bobine, à la même échelle que le débitmètre (±2 mA)"
-msgstr "inductor L = 10 mH (10 Ω of losses), in parallel with the bell; its mark follows the inductor current, on the same scale as the flow meter (±2 mA)"
+msgstr ""
+"inductor L = 10 mH (10 Ω of losses), in parallel with the bell; its mark "
+"follows the inductor current, on the same scale as the flow meter (±2 mA)"
 
 #: .\templates\figures\lc_tank.html:32
 msgid "condensateur C = 100 nF, en parallèle avec la roue"
@@ -1906,6 +1914,100 @@ msgstr "capacitor C = 100 nF, in parallel with the wheel"
 #: .\templates\figures\lc_tank.html:33
 msgid "masse, où se rejoignent les deux branches"
 msgstr "ground, where the two branches meet"
+
+#: .\templates\figures\lc_tuning.html:3
+msgid "Le circuit d’accord, sur le poste"
+msgstr "The tuning circuit, on the radio"
+
+#: .\templates\figures\lc_tuning.html:4
+msgid ""
+"Poste de radio vu de dessus : un condensateur variable dont les lames "
+"mobiles entrent entre les lames fixes, une bobine d’accord, une antenne, "
+"trois galvanomètres, un par station, et un cadran gradué de 0,8 à 1,2 MHz "
+"dont l’index montre la fréquence d’accord."
+msgstr "Radio seen from above: a variable capacitor whose moving plates slide between the fixed plates, a tuning coil, an antenna, three meters, one per station, and a dial graduated from 0.8 to 1.2 MHz whose pointer shows the tuned frequency."
+
+#: .\templates\figures\lc_tuning.html:7
+msgid "Condensateur variable"
+msgstr "Variable capacitor"
+
+#: .\templates\figures\lc_tuning.html:11
+msgid "0,9 MHz"
+msgstr "0.9 MHz"
+
+#: .\templates\figures\lc_tuning.html:13
+msgid "1,1 MHz"
+msgstr "1.1 MHz"
+
+#: .\templates\figures\lc_tuning.html:14
+#: .\templates\figures\rlc_bandwidth.html:14
+#: .\templates\figures\rlc_response.html:14
+msgid "Balayer"
+msgstr "Sweep"
+
+#: .\templates\figures\lc_tuning.html:19
+msgid "Station à 0,9 MHz"
+msgstr "0.9 MHz station"
+
+#: .\templates\figures\lc_tuning.html:20
+msgid "Station à 1 MHz"
+msgstr "1 MHz station"
+
+#: .\templates\figures\lc_tuning.html:21
+msgid "Station à 1,1 MHz"
+msgstr "1.1 MHz station"
+
+#: .\templates\figures\lc_tuning.html:23
+msgid ""
+"Part de chaque station qui traverse le circuit, de 0 à 1 ; Balayer tourne le "
+"bouton d’un bout à l’autre."
+msgstr "Share of each station that gets through the circuit, from 0 to 1; Sweep turns the knob from one end to the other."
+
+#: .\templates\figures\lc_tuning.html:28
+msgid "Condensateur variable :"
+msgstr "Variable capacitor:"
+
+#: .\templates\figures\lc_tuning.html:28
+msgid ""
+"les lames mobiles (teal) tournent avec le bouton et entrent entre les lames "
+"fixes ; plus elles sont rentrées, plus C est grand, de 180 pF à 360 pF"
+msgstr "the moving plates (teal) turn with the knob and slide between the fixed plates; the further in they go, the larger C, from 180 pF to 360 pF"
+
+#: .\templates\figures\lc_tuning.html:29
+msgid "Bobine d’accord :"
+msgstr "Tuning coil:"
+
+#: .\templates\figures\lc_tuning.html:29
+msgid "L = 100 µH, en parallèle avec le condensateur"
+msgstr "L = 100 µH, in parallel with the capacitor"
+
+#: .\templates\figures\lc_tuning.html:30
+msgid "Cadran :"
+msgstr "Dial:"
+
+#: .\templates\figures\lc_tuning.html:30
+msgid ""
+"de 0,8 à 1,2 MHz ; l’index montre f0 = 1 / (2π × √(L × C)) ; les trois "
+"repères teal sont les stations"
+msgstr "from 0.8 to 1.2 MHz; the pointer shows f0 = 1 / (2π × √(L × C)); the three teal marks are the stations"
+
+#: .\templates\figures\lc_tuning.html:31
+msgid "Galvanomètres :"
+msgstr "Meters:"
+
+#: .\templates\figures\lc_tuning.html:31
+msgid ""
+"un par station, de gauche à droite 0,9, 1 et 1,1 MHz ; leur aiguille montre "
+"la part de la station qui traverse le circuit (Q = 40)"
+msgstr "one per station, from left to right 0.9, 1 and 1.1 MHz; their needle shows the share of the station that gets through the circuit (Q = 40)"
+
+#: .\templates\figures\lc_tuning.html:32
+msgid "Antenne :"
+msgstr "Antenna:"
+
+#: .\templates\figures\lc_tuning.html:32
+msgid "elle capte les trois stations à la fois"
+msgstr "it picks up all three stations at once"
 
 #: .\templates\figures\rc_cutoff.html:3
 msgid "La coupure, côté eau"
@@ -2230,11 +2332,6 @@ msgstr ""
 "Plotter: the curves of two series RLC circuits, scaled to their maximum, "
 "both peak at f0; a dashed line marks 0.707; on that line, a narrow teal "
 "bracket and a wide grey bracket mark their bandwidths."
-
-#: .\templates\figures\rlc_bandwidth.html:14
-#: .\templates\figures\rlc_response.html:14
-msgid "Balayer"
-msgstr "Sweep"
 
 #: .\templates\figures\rlc_bandwidth.html:18
 msgid "I / Imax, Q = 6,3"

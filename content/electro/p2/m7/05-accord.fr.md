@@ -25,6 +25,14 @@ Autre exemple : pour 100 kHz avec L = 1 mH, C ≈ 2,53 nF.
 
 Un circuit d'accord doit avoir un **Q assez élevé** pour séparer deux stations voisines, sans être trop étroit, sinon il couperait une partie du son transmis. Les récepteurs réels combinent plusieurs circuits accordés et des amplificateurs, sujets de la Partie 3.
 
+## Ce qui se passe dans le circuit
+
+L'antenne amène les trois stations en même temps au bouchon formé par la bobine de 100 µH et le condensateur variable. Tourner le bouton fait entrer les lames mobiles entre les lames fixes : la surface en regard grandit, C augmente et f0 descend. Lames sorties (180 pF), le circuit est accordé sur 1,19 MHz ; lames rentrées (360 pF), sur 0,839 MHz.
+
+Réglé sur 253 pF, il résonne à 1 MHz : la station centrale passe entièrement, tandis que celles à 0,9 MHz et 1,1 MHz ne passent qu'à 12 % et 13 % (Q = 40). À 313 pF, c'est la station à 0,9 MHz qui passe, et celle à 1,1 MHz tombe à 6 %.
+
+[[fig:lc_tuning]]
+
 ## À retenir
 
 - Le circuit d'accord est un bouchon LC réglé sur la fréquence de la station.

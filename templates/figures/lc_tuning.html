@@ -1,0 +1,35 @@
+{% load i18n %}<figure class="fig" data-fig="lc_tuning">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Le circuit d’accord, sur le poste" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Poste de radio vu de dessus : un condensateur variable dont les lames mobiles entrent entre les lames fixes, une bobine d’accord, une antenne, trois galvanomètres, un par station, et un cadran gradué de 0,8 à 1,2 MHz dont l’index montre la fréquence d’accord.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-freq">
+        <label for="fig-lc_tuning-c">{% translate "Condensateur variable" %}</label>
+        <input id="fig-lc_tuning-c" type="range" min="180" max="360" step="0.5" value="253.5" data-fig-c>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="s0">{% translate "0,9 MHz" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="s1">1 MHz</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="s2">{% translate "1,1 MHz" %}</button>
+        <button type="button" class="btn" data-fig-play data-play="{% translate 'Balayer' %}" data-pause="{% translate 'Pause' %}" aria-pressed="false">{% translate "Balayer" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>C</dt><dd data-fig-out="c"></dd></div>
+        <div><dt>f0</dt><dd data-fig-out="f"></dd></div>
+        <div><dt>{% translate "Station à 0,9 MHz" %}</dt><dd data-fig-out="g0"></dd></div>
+        <div><dt>{% translate "Station à 1 MHz" %}</dt><dd data-fig-out="g1"></dd></div>
+        <div><dt>{% translate "Station à 1,1 MHz" %}</dt><dd data-fig-out="g2"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Part de chaque station qui traverse le circuit, de 0 à 1 ; Balayer tourne le bouton d’un bout à l’autre." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Condensateur variable :" %}</strong> {% translate "les lames mobiles (teal) tournent avec le bouton et entrent entre les lames fixes ; plus elles sont rentrées, plus C est grand, de 180 pF à 360 pF" %}</li>
+      <li><strong>{% translate "Bobine d’accord :" %}</strong> {% translate "L = 100 µH, en parallèle avec le condensateur" %}</li>
+      <li><strong>{% translate "Cadran :" %}</strong> {% translate "de 0,8 à 1,2 MHz ; l’index montre f0 = 1 / (2π × √(L × C)) ; les trois repères teal sont les stations" %}</li>
+      <li><strong>{% translate "Galvanomètres :" %}</strong> {% translate "un par station, de gauche à droite 0,9, 1 et 1,1 MHz ; leur aiguille montre la part de la station qui traverse le circuit (Q = 40)" %}</li>
+      <li><strong>{% translate "Antenne :" %}</strong> {% translate "elle capte les trois stations à la fois" %}</li>
+    </ul>
+  </figcaption>
+</figure>

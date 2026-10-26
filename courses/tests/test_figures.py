@@ -48,8 +48,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "lc_tank": Figure(
             drawing="figures/lc_tank.svg", card="figures/lc_tank.html", script="acad/js/figures/lc_tank.js",
         ),
+        "lc_tuning": Figure(
+            drawing="figures/lc_tuning.svg", card="figures/lc_tuning.html", script="acad/js/figures/lc_tuning.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning")
 
 
 @pytest.mark.django_db
@@ -563,3 +566,38 @@ def test_tank_section_carries_the_figure_after_the_impedance_curve(lang, keep):
 def test_tank_story_compares_the_circulating_current_with_the_line_current(lang, ratio):
     """F1 : à f0, 1,58 mA vont et viennent entre L et C quand la ligne ne fournit que 50,0 µA."""
     assert ratio in (M7 / f"04-lc-parallele.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_tuning_card_drives_the_variable_capacitor_in_both_languages(client, enrolled, module):
+    """Circuit d'accord : la commande est le condensateur variable (180 à 360 pF) ; trois stations, trois galvanomètres."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Le circuit d'accord", order=1, body_md_fr="[[fig:lc_tuning]]", body_md_en="[[fig:lc_tuning]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="lc_tuning"' in fr and 'id="fig-lc_tuning-c"' in fr
+    assert 'min="180" max="360" step="0.5"' in fr and "data-fig-c" in fr
+    assert 'data-fig-preset="s0">0,9 MHz<' in fr and 'data-fig-preset="s2">1,1 MHz<' in fr
+    assert 'data-fig-preset="s0">0.9 MHz<' in en and "Variable capacitor" in en
+    assert "Condensateur variable :</strong>" in fr and "Galvanomètres :</strong>" in fr and "Meters:</strong>" in en
+    assert 'src="/static/acad/js/figures/lc_tuning.js' in fr
+
+
+@pytest.mark.parametrize("lang, keep", [("fr", "## À retenir"), ("en", "## Key points")])
+def test_tuning_section_carries_the_figure_after_the_stations_curve(lang, keep):
+    """F10 : schéma d'accord et courbe des stations gardés, puis récit et figure avant « À retenir »."""
+    text = (M7 / f"05-accord.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:lc_tuning]]\n" in text
+    assert text.index("accord.svg") < text.index("stations.svg") < text.index(RECIT[lang]) < text.index("[[fig:lc_tuning]]") < text.index(keep)
+
+
+@pytest.mark.parametrize("lang, sense", [("fr", "C augmente et f0 descend"), ("en", "C rises and f0 falls")])
+def test_tuning_story_links_the_plates_to_the_resonant_frequency(lang, sense):
+    """F1 : plus les lames sont rentrées, plus C est grand et plus f0 est basse."""
+    assert sense in (M7 / f"05-accord.{lang}.md").read_text(encoding="utf-8")

@@ -25,6 +25,14 @@ Another example: for 100 kHz with L = 1 mH, C ≈ 2.53 nF.
 
 A tuning circuit needs a **high enough Q** to separate two neighbouring stations, without being too narrow, or it would cut part of the transmitted sound. Real receivers combine several tuned circuits and amplifiers, which are Part 3 topics.
 
+## What happens in the circuit
+
+The antenna brings all three stations at once to the tank made of the 100 µH inductor and the variable capacitor. Turning the knob slides the moving plates between the fixed ones: the facing area grows, C rises and f0 falls. Plates out (180 pF), the circuit is tuned to 1.19 MHz; plates in (360 pF), to 0.839 MHz.
+
+Set to 253 pF, it resonates at 1 MHz: the middle station gets through entirely, while the 0.9 MHz and 1.1 MHz stations only get through at 12 % and 13 % (Q = 40). At 313 pF, the 0.9 MHz station gets through instead, and the 1.1 MHz one drops to 6 %.
+
+[[fig:lc_tuning]]
+
 ## Key points
 
 - The tuning circuit is an LC tank set to the station's frequency.
