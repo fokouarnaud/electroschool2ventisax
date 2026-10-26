@@ -8,8 +8,8 @@ description: Ajoute une figure interactive explicative (banc isométrique du ski
 Une figure explique **une** notion d'**une** section par un objet réel qu'on manipule (skill `anatomy` : « l'objet est l'explication »).
 Le pilote fait référence : `tools/figures/rc_lowpass/` (modèle, build, test), `templates/figures/rc_lowpass.html` (carte),
 `courses/figures.py` (registre), `courses/tests/test_figures.py` (tests), section `content/electro/p2/m6/03-passe-bas.*.md`.
-Figures déjà livrées (`electro`, dans l'ordre des sections) : M6 `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06), `rl_lowpass` (07) ; M7 `lc_resonance` (01), `rlc_response` (02), `rlc_bandwidth` (03), `lc_tank` (04), `lc_tuning` (05).
-« La section suivante » = la section qui suit la dernière figure livrée, en sautant les mini-projets (sections `practical`, sans figure) ; prochaine : M7 d'`electro`, `06-oscillateurs`.
+Figures déjà livrées (`electro`, dans l'ordre des sections) : M6 `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06), `rl_lowpass` (07) ; M7 `lc_resonance` (01), `rlc_response` (02), `rlc_bandwidth` (03), `lc_tank` (04), `lc_tuning` (05), `lc_free` (06).
+« La section suivante » = la section qui suit la dernière figure livrée, en sautant les mini-projets (sections `practical`, sans figure) ; M7 est couvert (`07-mini-projet` est un mini-projet) ; prochaine : la première section de contenu du module suivant d'`electro` (M8, Partie 3), ou ce que l'utilisateur désigne.
 Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. Lis d'abord le skill `anatomy` (SKILL.md et `references/craft.md`) si tu ne l'as pas en tête.
 
 ## Règles qui ne se négocient pas
@@ -39,7 +39,9 @@ Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. L
    - **Bande passante** (livrée, `rlc_bandwidth`) : la table traçante de `rlc_response` en I / Imax sur 2 à 8 kHz, ligne 0,707 et deux accolades f1 à f2 ; repères f1, f0, f2.
    - **LC parallèle** (livrée, `lc_tank`) : vanne Rs + débitmètre, nœud + manomètre (Vt), puis roue à volant (arrière) et cloche (avant) en parallèle vers le bac ; échelle de courant commune au débitmètre et au volant ; modèle avec pertes (sinon Z infinie à f0), phaseurs internes au calcul seulement.
    - **Circuit d'accord** (livrée, `lc_tuning`) : poste de radio vu de dessus ; la commande est le condensateur variable (en pF), pas la fréquence, parce que la section règle C ; lames mobiles en demi-disques recalculés à chaque réglage (`<g class="iso-solid" data-lit>` avec `iso-top` et `iso-edge` de même `d`), empilées en alternance avec les lames fixes dans le DOM pour un ordre de peinture juste quel que soit l'angle.
-   - **Oscillateurs** (M7, 06) : l'échange d'énergie entre L et C (schéma `m7_echange`) et l'oscillation amortie (`m7_amortie`) ; par exemple le bouchon seul, lancé une fois, dont la cloche et le volant échangent l'eau en s'amortissant, avec la pente e^(−t/τ) des pertes de la section.
+   - **Oscillateurs** (livrée, `lc_free`) : la balançoire de la section, réglée sur le LC du module ; angle des cordes ∝ Vc, siège translaté seulement ; commande = pertes R (lien Q ↔ durée), « Lâcher » au lieu de « Lecture », arrêt sous 0,1 % de l'énergie.
+   - La commande suit la notion : la fréquence par défaut, mais C pour un circuit d'accord, R pour l'amortissement. Une image que la section propose elle-même (balançoire) vaut mieux qu'un banc forcé, à condition que chaque mouvement sorte du modèle exact.
+   - Avant de remplir le `.po`, vérifie qu'aucun `msgid` du dictionnaire n'existe déjà avec une autre traduction (« Pupitre : » servait déjà) : sinon choisis un autre libellé français.
    - Quand la section fixe une valeur qu'une figure doit reprendre (Q, R, gabarit d'une courbe), lis le générateur de ses schémas (`tools/schemas/electro.py`) et reprends-en la formule et les constantes.
    - Deux cadrans, deux branches et un nœud dépassent vite 80 Ko : mesure les octets par classe de tracé (`iso-shade` et `iso-edge` dominent), puis réduis les segments des pièces rondes et retire les détails secondaires (boulons, cerclages, réglette, plaque signalétique) avant de supprimer une pièce qui porte le sens.
    - Le script d'une figure part du même repère que son état figé sans JavaScript (sinon les aiguilles sautent au chargement).
