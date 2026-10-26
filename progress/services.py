@@ -1,6 +1,6 @@
 """Progression (AGENTS.md, Q9) : sections vues + quiz envoyé ; examen ouvert quand tous les modules sont terminés."""
 from assessments.models import Assessment, Attempt, Question
-from courses.models import Section
+from courses.models import Module, Section
 
 from .models import SectionView
 
@@ -42,6 +42,14 @@ def module_completed(user, module):
     return done == total
 
 
+def module_row(user, module):
+    """État d'un module pour « Mes cours » : étapes faites, terminé, prochaine section à lire (None : il reste le quiz ou rien)."""
+    done, total = _module_steps(user, module)
+    viewed = set(SectionView.objects.filter(user=user, section__module=module).values_list("section_id", flat=True))
+    next_section = next((s for s in module.sections.all() if s.pk not in viewed), None)
+    return {"module": module, "done": done == total, "steps_done": done, "steps_total": total, "next_section": next_section}
+
+
 def exam_unlocked(user, partie):
     return all(module_completed(user, m) for m in partie.modules.all())
 
@@ -66,10 +74,13 @@ def outline(user, partie, current_section=None, current_module=None):
     viewed = set(
         SectionView.objects.filter(user=user, section__module__partie=partie).values_list("section_id", flat=True)
     )
+    # Numérotation sur toute la formation (M1, M2…), comme « Mes cours » et le texte des cours.
+    first = Module.objects.filter(partie__formation=partie.formation_id, partie__order__lt=partie.order).count()
     rows = []
-    for module in partie.modules.prefetch_related("sections"):
+    for number, module in enumerate(partie.modules.prefetch_related("sections"), start=first + 1):
         rows.append({
             "module": module,
+            "number": number,
             "current": current_module is not None and module.pk == current_module.pk,
             "done": module_completed(user, module),
             "sections": [

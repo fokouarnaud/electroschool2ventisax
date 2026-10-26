@@ -8,7 +8,7 @@
         <li class="outline-module">
           <a href="{% url 'module_detail' row.module.public_id %}"{% if row.current %} aria-current="true"{% endif %}>
             {% if row.done %}{% include "icons/circle-check.svg" %}<span class="visually-hidden">{% translate "terminé" %}</span>{% else %}<span class="dot-todo" aria-hidden="true"></span>{% endif %}
-            <span{{ row.module|lang_attr:"title" }}>{{ forloop.counter }}. {{ row.module.title }}</span>
+            <span{{ row.module|lang_attr:"title" }}>M{{ row.number }}. {{ row.module.title }}</span>
           </a>
           {% if row.current %}
             <ol class="outline-sections">

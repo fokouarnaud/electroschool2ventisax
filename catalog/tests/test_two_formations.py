@@ -80,7 +80,7 @@ def test_dashboard_shows_both_formations_in_catalogue_order_each_with_its_icon(c
 
     assert [row["partie"].formation.slug for row in response.context["parts"]] == ["electro", "moteurs"]
     html = response.content.decode()
-    electro, moteurs = html.split('course-formation"')[1:3]
+    electro, moteurs = (tab.split("</a>")[0] for tab in html.split('class="formation-tab"')[1:3])
     assert CPU_PATH in electro and ENGINE_PATH not in electro
     assert ENGINE_PATH in moteurs and CPU_PATH not in moteurs
 
@@ -155,7 +155,7 @@ def two_parts(partie, module, moteurs_module):
     return module, second
 
 
-def test_dashboard_groups_parts_by_formation_with_a_resume_link(client, both, two_parts):
+def test_dashboard_groups_parts_by_formation(client, both, two_parts):
     first, _ = two_parts
     client.force_login(both)
 
@@ -165,7 +165,6 @@ def test_dashboard_groups_parts_by_formation_with_a_resume_link(client, both, tw
     assert [b["formation"].slug for b in blocks] == ["electro", "moteurs"]
     assert [[row["partie"].slug for row in b["parts"]] for b in blocks] == [["p1", "p2"], ["p1"]]
     assert blocks[0]["resume"] == first and blocks[0]["progress"] == 0
-    assert f'class="btn formation-resume" href="/fr/modules/{first.public_id}/"' in response.content.decode()
 
 
 def test_resume_moves_past_finished_modules_and_formation_progress_counts_their_steps(client, both, two_parts):
@@ -192,30 +191,104 @@ def test_finished_formation_has_no_resume_link(client, both, two_parts):
 
     electro = client.get("/fr/").context["formations"][0]
 
-    assert (electro["resume"], electro["progress"]) == (None, 100)
+    assert (electro["resume"], electro["resume_section"]) == (None, None)
+    assert electro["progress"] == 100
 
 
-def test_only_the_part_holding_the_resume_module_is_unfolded(client, both, two_parts):
+# --- « Mes cours » : une formation à la fois, reprise à la section, plan numéroté M1, M2… ---------------------------
+
+
+def test_dashboard_shows_one_formation_at_a_time(client, both, two_parts, moteurs_module):
+    first, _ = two_parts
+    client.force_login(both)
+
+    html = client.get("/fr/").content.decode()
+
+    assert first.title in html and moteurs_module.title not in html
+
+
+def test_the_selector_switches_to_the_other_formation(client, both, two_parts, moteurs, moteurs_module):
+    first, _ = two_parts
+    client.force_login(both)
+
+    response = client.get(f"/fr/?formation={moteurs.public_id}")
+
+    html = response.content.decode()
+    assert response.context["current"]["formation"] == moteurs
+    assert moteurs_module.title in html and first.title not in html
+    assert f'href="?formation={moteurs.public_id}" aria-current="page"' in html
+
+
+def test_default_formation_is_the_last_one_worked_on(client, both, two_parts, moteurs, moteurs_module):
     from progress.services import mark_section_viewed
 
+    first, _ = two_parts
+    mark_section_viewed(both, first.sections.first())
+    mark_section_viewed(both, moteurs_module.sections.first())
+    client.force_login(both)
+
+    assert client.get("/fr/").context["current"]["formation"] == moteurs
+
+
+def test_a_formation_outside_the_enrollments_or_unknown_falls_back_to_the_default(client, both, two_parts, learner):
+    other = Formation.objects.create(title_fr="Autre formation", slug="autre", order=3, is_open=True, icon="cpu")
+    Module.objects.create(
+        partie=Partie.objects.create(formation=other, title_fr="Partie secrète", order=1, slug="p1"),
+        title_fr="Module secret", order=1, duration_hours=1,
+    )
+    client.force_login(both)
+
+    for query in (f"?formation={other.public_id}", "?formation=pas-un-uuid"):
+        response = client.get(f"/fr/{query}")
+        assert response.status_code == 200
+        assert response.context["current"]["formation"].slug == "electro"
+        assert "Module secret" not in response.content.decode()
+
+
+def test_resume_links_to_the_first_unread_section_then_to_the_quiz(client, both, two_parts):
+    from progress.services import mark_section_viewed
+
+    first, _ = two_parts
+    s1, s2 = first.sections.all()
+    client.force_login(both)
+    assert f'class="btn resume-go" href="/fr/sections/{s1.public_id}/"' in client.get("/fr/").content.decode()
+
+    mark_section_viewed(both, s1)
+    assert f'class="btn resume-go" href="/fr/sections/{s2.public_id}/"' in client.get("/fr/").content.decode()
+
+    make_question(first)  # le module a désormais un quiz ; ses sections sont toutes lues
+    mark_section_viewed(both, s2)
+    html = client.get("/fr/").content.decode()
+    assert f'method="post" action="/fr/quiz/{first.public_id}/"' in html  # lancer un quiz modifie l'état : POST
+    assert 'class="btn resume-go" type="submit"' in html
+
+
+def test_modules_are_numbered_across_the_formation(client, both, two_parts):
+    _, second = two_parts
+    client.force_login(both)
+
+    html = client.get("/fr/").content.decode()
+
+    row = html.split(f'href="/fr/modules/{second.public_id}/"')[1].split("</a>")[0]
+    assert '<span class="num">M2</span>' in row
+
+
+def test_every_part_of_the_plan_is_unfolded_with_its_exam(client, both, two_parts):
     first, second = two_parts
-    for section in first.sections.all():
-        mark_section_viewed(both, section)
     client.force_login(both)
 
     html = client.get("/fr/").content.decode()
 
-    electro = html.split('<section class="formation"')[1]
-    p1, p2 = electro.split('<details class="part')[1:3]
-    assert not p1.startswith(' panel" open') and p2.startswith(' panel" open')
+    assert "<details" not in html.split('class="plan"')[1]
+    assert html.count('class="plan-exam') == 2
 
 
-def test_jump_links_appear_only_for_a_learner_of_two_formations(client, both, learner, two_parts, moteurs):
+def test_the_selector_appears_only_for_a_learner_of_two_formations(client, both, learner, two_parts, moteurs):
     client.force_login(both)
     html = client.get("/fr/").content.decode()
-    assert f'href="#formation-{moteurs.public_id}"' in html
+    assert f'href="?formation={moteurs.public_id}"' in html
 
     solo = User.objects.create_user(username="solo", password="x-Secret-123")
     Enrollment.objects.create(user=solo, formation=moteurs)
     client.force_login(solo)
-    assert 'class="formation-jump"' not in client.get("/fr/").content.decode()
+    assert 'class="formation-tabs"' not in client.get("/fr/").content.decode()

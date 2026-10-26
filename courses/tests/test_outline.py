@@ -51,3 +51,18 @@ def test_dashboard_reports_module_status_and_exam_availability(client, enrolled,
     [row] = client.get("/fr/").context["parts"]
     assert [(m["module"], m["done"]) for m in row["modules"]] == [(course["modules"][0], True), (course["modules"][1], False)]
     assert row["exam_unlocked"] is False
+
+
+@pytest.mark.django_db
+def test_outline_numbers_modules_across_the_formation_like_the_dashboard(client, enrolled, course, partie):
+    from courses.models import Partie
+
+    second_part = Partie.objects.create(formation=partie.formation, title_fr="Courant alternatif", order=2, slug="p2")
+    later = Module.objects.create(partie=second_part, title_fr="Le courant alternatif", order=1)
+    section = Section.objects.create(module=later, title_fr="Sinusoïde", order=1)
+    client.force_login(enrolled)
+
+    response = client.get(f"/fr/sections/{section.public_id}/")
+
+    assert [row["number"] for row in response.context["outline"]] == [3]  # deux modules dans la Partie 1
+    assert "M3. Le courant alternatif" in response.content.decode()

@@ -8,8 +8,8 @@ from django.utils.translation import gettext as _
 
 from courses.access import accessible_formations
 from courses.models import Partie
-from progress.models import Announcement
-from progress.services import exam_unlocked, module_completed, progress_pct, steps_pct
+from progress.models import Announcement, SectionView
+from progress.services import exam_unlocked, module_row, progress_pct, steps_pct
 
 from .models import SignupThrottle, User
 from .signup import (
@@ -20,6 +20,7 @@ from .signup import (
 
 @login_required
 def dashboard(request):
+    """« Mes cours » : une formation à la fois (sélecteur), reprise à la section, plan complet numéroté M1, M2…"""
     if request.user.is_trainer or (request.user.is_platform_admin and not request.user.enrollments.exists()):
         return redirect("trainer_table")
     parts = []
@@ -29,24 +30,45 @@ def dashboard(request):
         parts.append({
             "partie": partie,
             "progress": progress_pct(request.user, partie),
-            "modules": [{"module": m, "done": module_completed(request.user, m)} for m in partie.modules.all()],
+            "modules": [module_row(request.user, m) for m in partie.modules.prefetch_related("sections")],
             "exam_unlocked": exam_unlocked(request.user, partie),
         })
-    # Une formation par bloc : sa progression, le premier module à finir (« Continuer ») et seule sa partie en cours dépliée.
     formation_blocks = []
     for row in parts:
         if not formation_blocks or formation_blocks[-1]["formation"] != row["partie"].formation:
-            formation_blocks.append({"formation": row["partie"].formation, "parts": [], "resume": None})
+            formation_blocks.append({"formation": row["partie"].formation, "parts": [], "modules": [], "resume": None})
         block = formation_blocks[-1]
         block["parts"].append(row)
-        pending = next((item["module"] for item in row["modules"] if not item["done"]), None)
-        row["open"] = block["resume"] is None and pending is not None
-        if row["open"]:
-            block["resume"] = pending
+        for item in row["modules"]:
+            block["modules"].append(item["module"])
+            item["number"] = len(block["modules"])  # numérotation sur toute la formation, comme le texte des cours
+            if block["resume"] is None and not item["done"]:
+                block["resume"], block["resume_row"], block["resume_part"] = item["module"], item, row["partie"]
     for block in formation_blocks:
-        block["progress"] = steps_pct(request.user, [item["module"] for row in block["parts"] for item in row["modules"]])
+        block["progress"] = steps_pct(request.user, block["modules"])
+        block["resume_section"] = block["resume_row"]["next_section"] if block["resume"] else None
     announcements = Announcement.objects.filter(promotion__enrollments__user=request.user)[:5]
-    return render(request, "accounts/dashboard.html", {"parts": parts, "formations": formation_blocks, "announcements": announcements})
+    return render(request, "accounts/dashboard.html", {
+        "parts": parts,
+        "formations": formation_blocks,
+        "current": _current_formation(request, formation_blocks),
+        "announcements": announcements,
+    })
+
+
+def _current_formation(request, blocks):
+    """Formation affichée : celle du sélecteur si l'utilisateur y a accès, sinon la dernière travaillée, sinon la première."""
+    if not blocks:
+        return None
+    wanted = request.GET.get("formation", "")
+    chosen = next((b for b in blocks if str(b["formation"].public_id) == wanted), None)
+    if chosen is None:
+        last = (
+            SectionView.objects.filter(user=request.user, section__module__partie__formation__in=[b["formation"] for b in blocks])
+            .order_by("-viewed_at", "-pk").values_list("section__module__partie__formation", flat=True).first()
+        )
+        chosen = next((b for b in blocks if b["formation"].pk == last), blocks[0])
+    return chosen
 
 
 def signup(request):
