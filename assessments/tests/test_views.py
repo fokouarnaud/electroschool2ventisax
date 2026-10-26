@@ -96,7 +96,7 @@ def test_answer_after_deadline_is_rejected_with_conflict(client, enrolled, parti
 def test_submitting_a_quiz_shows_the_correction(client, enrolled, module, quiz_question):
     client.force_login(enrolled)
     attempt = start_attempt(enrolled, Assessment.quiz_for(module))
-    response = client.post(f"/fr/tentatives/{attempt.public_id}/envoyer/")
+    response = client.post(f"/fr/tentatives/{attempt.public_id}/envoyer/", {"confirm": "1"})  # question laissée vide
     assert response.status_code == 302
     result = client.get(response.url)
     assert result.context["show_correction"] is True
@@ -122,7 +122,7 @@ def test_locked_exam_page_lists_unfinished_modules(client, enrolled, partie, mod
     response = client.get(f"/fr/examen/{partie.public_id}/")
     assert response.status_code == 200
     assert response.context["unlocked"] is False
-    assert response.context["missing_modules"] == [module]
+    assert [m["module"] for m in response.context["missing_modules"]] == [module]
 
 
 @pytest.mark.django_db

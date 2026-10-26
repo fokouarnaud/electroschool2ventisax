@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 20:22+0100\n"
+"POT-Creation-Date: 2026-10-26 21:05+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -551,9 +551,7 @@ msgid "Choisissez un quiz ou un examen de la formation de cette promotion."
 msgstr "Choose a quiz or an exam from this cohort's course."
 
 #: .\templates\accounts\dashboard.html:2 .\templates\accounts\dashboard.html:6
-#: .\templates\assessments\exam.html:4 .\templates\base.html:25
-#: .\templates\certificates\mine.html:40
-#: .\templates\courses\module_detail.html:7
+#: .\templates\base.html:25 .\templates\certificates\mine.html:40
 msgid "Mes cours"
 msgstr "My courses"
 
@@ -573,74 +571,77 @@ msgstr "Announcements"
 msgid "Mes formations"
 msgstr "My courses"
 
-#: .\templates\accounts\dashboard.html:33
+#: .\templates\accounts\dashboard.html:34
 msgid "Progression"
 msgstr "Progress"
 
-#: .\templates\accounts\dashboard.html:38
+#: .\templates\accounts\dashboard.html:39
 #, python-format
 msgid "Partie %(n)s, module M%(m)s :"
 msgstr "Part %(n)s, module M%(m)s:"
 
-#: .\templates\accounts\dashboard.html:41
+#: .\templates\accounts\dashboard.html:42
 msgid "Reprendre"
 msgstr "Resume"
 
-#: .\templates\accounts\dashboard.html:43
+#: .\templates\accounts\dashboard.html:44
 msgid "Sections lues : il reste le quiz du module."
 msgstr "Sections read: only the module quiz is left."
 
-#: .\templates\accounts\dashboard.html:44
-#: .\templates\courses\module_detail.html:36
+#: .\templates\accounts\dashboard.html:45
+#: .\templates\courses\module_detail.html:16
+#: .\templates\courses\module_detail.html:18
 msgid "Faire le quiz"
 msgstr "Take the quiz"
 
-#: .\templates\accounts\dashboard.html:48
+#: .\templates\accounts\dashboard.html:49
 msgid "Tous les modules sont terminés. Il reste les examens des parties."
 msgstr "All modules are completed. Only the part exams remain."
 
-#: .\templates\accounts\dashboard.html:51
+#: .\templates\accounts\dashboard.html:52
 msgid "Parties de la formation"
 msgstr "Parts of the course"
 
-#: .\templates\accounts\dashboard.html:52
+#: .\templates\accounts\dashboard.html:53 .\templates\courses\_crumbs.html:5
 #, python-format
 msgid "Partie %(n)s"
 msgstr "Part %(n)s"
 
-#: .\templates\accounts\dashboard.html:70
+#: .\templates\accounts\dashboard.html:71
 msgid "Terminé"
 msgstr "Completed"
 
-#: .\templates\accounts\dashboard.html:70
+#: .\templates\accounts\dashboard.html:71
 msgid "étapes faites"
 msgstr "steps done"
 
-#: .\templates\accounts\dashboard.html:70 .\templates\catalog\catalogue.html:19
+#: .\templates\accounts\dashboard.html:71 .\templates\catalog\catalogue.html:19
 #: .\templates\catalog\formation_detail.html:17
 #: .\templates\catalog\formation_detail.html:26
 #, python-format
 msgid "%(h)s h"
 msgstr "%(h)s h"
 
-#: .\templates\accounts\dashboard.html:77
+#: .\templates\accounts\dashboard.html:78
+#: .\templates\assessments\result.html:26 .\templates\courses\_outline.html:31
+#: .\templates\courses\module_detail.html:24
 #, python-format
 msgid "Examen de la Partie %(n)s"
 msgstr "Part %(n)s exam"
 
-#: .\templates\accounts\dashboard.html:78
+#: .\templates\accounts\dashboard.html:79
 msgid "Ouvert"
 msgstr "Open"
 
-#: .\templates\accounts\dashboard.html:78
+#: .\templates\accounts\dashboard.html:79
 msgid "Ce qu'il reste à faire"
 msgstr "What is left to do"
 
-#: .\templates\accounts\dashboard.html:88
+#: .\templates\accounts\dashboard.html:89
 msgid "Aucune formation pour le moment"
 msgstr "No course yet"
 
-#: .\templates\accounts\dashboard.html:89
+#: .\templates\accounts\dashboard.html:90
 msgid ""
 "Vous n'êtes inscrit à aucune formation. Choisissez-en une dans le catalogue "
 "ou saisissez le code de votre promotion."
@@ -648,11 +649,11 @@ msgstr ""
 "You are not enrolled in any course yet. Pick one from the catalogue or enter "
 "your cohort code."
 
-#: .\templates\accounts\dashboard.html:90
+#: .\templates\accounts\dashboard.html:91
 msgid "Voir le catalogue"
 msgstr "Browse the catalogue"
 
-#: .\templates\accounts\dashboard.html:90
+#: .\templates\accounts\dashboard.html:91
 msgid "J'ai un code"
 msgstr "I have a code"
 
@@ -963,7 +964,7 @@ msgstr ""
 "Enter a value: comma or dot, prefixes p n µ m k M G accepted (e.g. 4.7 k)."
 
 #: .\templates\assessments\attempt.html:34
-#: .\templates\assessments\result.html:63
+#: .\templates\assessments\result.html:78
 msgid "Votre réponse"
 msgstr "Your answer"
 
@@ -995,19 +996,30 @@ msgstr "Save this answer"
 msgid "Aucune question publiée pour le moment."
 msgstr "No published question yet."
 
-#: .\templates\assessments\attempt.html:86
+#: .\templates\assessments\attempt.html:88
+#, python-format
+msgid "%(n)s question sans réponse"
+msgid_plural "%(n)s questions sans réponse"
+msgstr[0] "%(n)s unanswered question"
+msgstr[1] "%(n)s unanswered questions"
+
+#: .\templates\assessments\attempt.html:92
+msgid "Envoyer quand même"
+msgstr "Submit anyway"
+
+#: .\templates\assessments\attempt.html:94
 msgid "Une fois envoyé, l'examen ne peut plus être modifié."
 msgstr "Once submitted, the exam can no longer be changed."
 
-#: .\templates\assessments\attempt.html:86
+#: .\templates\assessments\attempt.html:94
 msgid "Vous verrez la correction juste après l'envoi."
 msgstr "You will see the answers right after submitting."
 
-#: .\templates\assessments\attempt.html:87
+#: .\templates\assessments\attempt.html:95
 msgid "Envoyer l'examen"
 msgstr "Submit the exam"
 
-#: .\templates\assessments\attempt.html:87
+#: .\templates\assessments\attempt.html:95
 msgid "Voir la correction"
 msgstr "See the answers"
 
@@ -1110,57 +1122,90 @@ msgid "Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez."
 msgstr ""
 "This quiz does not count towards your grade. Retake it as often as you like."
 
-#: .\templates\assessments\result.html:16
+#: .\templates\assessments\result.html:15
+#, python-format
+msgid "Module terminé. Suivant : M%(n)s. %(t)s"
+msgstr "Module completed. Next: M%(n)s. %(t)s"
+
+#: .\templates\assessments\result.html:15
+msgid "Module terminé : c'était le dernier de la partie."
+msgstr "Module completed: it was the last one of the part."
+
+#: .\templates\assessments\result.html:17
 msgid "Temps écoulé : vos réponses ont été envoyées automatiquement."
 msgstr "Time is up: your answers were submitted automatically."
 
-#: .\templates\assessments\result.html:19
+#: .\templates\assessments\result.html:20
 msgid "Retour à mes cours"
 msgstr "Back to my courses"
 
-#: .\templates\assessments\result.html:21
+#: .\templates\assessments\result.html:23
+#: .\templates\courses\module_detail.html:22
+#, python-format
+msgid "Module suivant : M%(n)s"
+msgstr "Next module: M%(n)s"
+
+#: .\templates\assessments\result.html:24
+#: .\templates\assessments\result.html:27
+#: .\templates\assessments\result.html:29
 msgid "Retour au module"
 msgstr "Back to the module"
 
-#: .\templates\assessments\result.html:22
+#: .\templates\assessments\result.html:31
+#: .\templates\courses\module_detail.html:26
 msgid "Refaire le quiz"
 msgstr "Retake the quiz"
 
-#: .\templates\assessments\result.html:30
+#: .\templates\assessments\result.html:39
 msgid "Score par module"
 msgstr "Score by module"
 
-#: .\templates\assessments\result.html:43
+#: .\templates\assessments\result.html:48
+msgid "Filtrer la correction"
+msgstr "Filter the answers"
+
+#: .\templates\assessments\result.html:49
+#, python-format
+msgid "Toutes (%(n)s)"
+msgstr "All (%(n)s)"
+
+#: .\templates\assessments\result.html:50
+#, python-format
+msgid "Seulement les erreurs (%(n)s)"
+msgstr "Mistakes only (%(n)s)"
+
+#: .\templates\assessments\result.html:58
 msgid "Correct"
 msgstr "Correct"
 
-#: .\templates\assessments\result.html:43
+#: .\templates\assessments\result.html:58
 #: .\templates\progress\attempt_review.html:23
 msgid "Partiel"
 msgstr "Partial"
 
-#: .\templates\assessments\result.html:43
+#: .\templates\assessments\result.html:58
 msgid "Incorrect"
 msgstr "Incorrect"
 
-#: .\templates\assessments\result.html:46
+#: .\templates\assessments\result.html:61
 msgid "Votre réponse :"
 msgstr "Your answer:"
 
-#: .\templates\assessments\result.html:46
+#: .\templates\assessments\result.html:61
+#: .\templates\assessments\result.html:68
+msgid "Sans réponse"
+msgstr "No answer"
+
+#: .\templates\assessments\result.html:61
 msgid "Valeur attendue :"
 msgstr "Expected value:"
 
-#: .\templates\assessments\result.html:53
+#: .\templates\assessments\result.html:68
 #, python-format
 msgid "Vous : %(g)s"
 msgstr "You: %(g)s"
 
-#: .\templates\assessments\result.html:53
-msgid "Sans réponse"
-msgstr "No answer"
-
-#: .\templates\assessments\result.html:67
+#: .\templates\assessments\result.html:82
 msgid "Sans réponse."
 msgstr "No answer."
 
@@ -1344,9 +1389,9 @@ msgstr "No certificate yet"
 #, python-format
 msgid ""
 "Terminez les modules d'une partie, puis réussissez son examen avec au moins "
-"70 %% pour obtenir votre certificat."
+"70 %% pour obtenir votre certificat."
 msgstr ""
-"Complete the modules of a part, then pass its exam with at least 70 %% to "
+"Complete the modules of a part, then pass its exam with at least 70%% to "
 "earn your certificate."
 
 #: .\templates\certificates\mine.html:46
@@ -1651,6 +1696,10 @@ msgstr "current in star"
 msgid "couple en étoile"
 msgstr "torque in star"
 
+#: .\templates\courses\_crumbs.html:2
+msgid "Fil d'Ariane"
+msgstr "Breadcrumb"
+
 #: .\templates\courses\_outline.html:3
 msgid "Sommaire"
 msgstr "Contents"
@@ -1659,67 +1708,90 @@ msgstr "Contents"
 msgid "Sommaire de la partie"
 msgstr "Part contents"
 
+#: .\templates\courses\_outline.html:5
+#: .\templates\includes\partie_heading.html:2
+#, python-format
+msgid "Partie %(n)s :"
+msgstr "Part %(n)s:"
+
 #: .\templates\courses\_outline.html:10
 #: .\templates\progress\trainer_table.html:31
 msgid "terminé"
 msgstr "completed"
 
 #: .\templates\courses\_outline.html:18
-#: .\templates\courses\module_detail.html:25
+#: .\templates\courses\module_detail.html:41
 msgid "lu"
 msgstr "read"
+
+#: .\templates\courses\_outline.html:24
+msgid "Quiz du module"
+msgstr "Module quiz"
+
+#: .\templates\courses\_outline.html:32
+msgid "Toutes les parties"
+msgstr "All parts"
 
 #: .\templates\courses\module_detail.html:10
 #, python-format
 msgid "%(h)s heures"
 msgstr "%(h)s hours"
 
-#: .\templates\courses\module_detail.html:11
-msgid "Quiz d'entraînement"
-msgstr "Practice quiz"
+#: .\templates\courses\module_detail.html:15
+msgid "Reprendre la lecture"
+msgstr "Resume reading"
 
 #: .\templates\courses\module_detail.html:15
-msgid "Compétence visée"
-msgstr "Target skill"
-
-#: .\templates\courses\module_detail.html:20
-#: .\templates\courses\section_detail.html:26
-msgid "Sections"
-msgstr "Sections"
-
-#: .\templates\courses\module_detail.html:27
-msgid "Pratique"
-msgstr "Practical"
-
-#: .\templates\courses\module_detail.html:31
-msgid "Le contenu de ce module arrive bientôt."
-msgstr "This module's content is coming soon."
-
-#: .\templates\courses\module_detail.html:35
 msgid "Commencer la lecture"
 msgstr "Start reading"
 
+#: .\templates\courses\module_detail.html:19
+msgid "Relire depuis le début"
+msgstr "Read again from the start"
+
+#: .\templates\courses\module_detail.html:31
+msgid "Compétence visée"
+msgstr "Target skill"
+
+#: .\templates\courses\module_detail.html:36
+#: .\templates\courses\section_detail.html:27
+msgid "Sections"
+msgstr "Sections"
+
+#: .\templates\courses\module_detail.html:43
+msgid "Pratique"
+msgstr "Practical"
+
+#: .\templates\courses\module_detail.html:47
+msgid "Le contenu de ce module arrive bientôt."
+msgstr "This module's content is coming soon."
+
 #: .\templates\courses\section_detail.html:11
+#, python-format
+msgid "Section %(n)s sur %(t)s"
+msgstr "Section %(n)s of %(t)s"
+
+#: .\templates\courses\section_detail.html:12
 msgid "Activité pratique"
 msgstr "Practical activity"
 
-#: .\templates\courses\section_detail.html:12
+#: .\templates\courses\section_detail.html:13
 msgid "Contenu disponible en français uniquement"
 msgstr "Content available in French only"
 
-#: .\templates\courses\section_detail.html:20
+#: .\templates\courses\section_detail.html:21
 msgid "Annexes à télécharger"
 msgstr "Downloadable appendices"
 
-#: .\templates\courses\section_detail.html:27
+#: .\templates\courses\section_detail.html:28
 msgid "Précédent"
 msgstr "Previous"
 
-#: .\templates\courses\section_detail.html:29
+#: .\templates\courses\section_detail.html:30
 msgid "Suivant"
 msgstr "Next"
 
-#: .\templates\courses\section_detail.html:31
+#: .\templates\courses\section_detail.html:32
 msgid "Fin du module"
 msgstr "End of module"
 
@@ -2666,11 +2738,6 @@ msgid ""
 msgstr ""
 "frequency across, from 0 to 11 kHz (one line per kilohertz), current in "
 "depth, from 0 to 20 mA (one line per 5 mA); the dashed line marks f0"
-
-#: .\templates\includes\partie_heading.html:2
-#, python-format
-msgid "Partie %(n)s :"
-msgstr "Part %(n)s:"
 
 #: .\templates\progress\_trainer_nav.html:2
 msgid "Espace formateur"

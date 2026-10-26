@@ -9,7 +9,7 @@ from django.views.decorators.http import require_POST
 
 from courses.access import accessible_formations
 from courses.models import Module, Partie
-from progress.services import module_completed
+from progress.services import module_completed, module_number, next_module
 
 from .models import Assessment, Attempt, AttemptQuestion
 from .services import (
@@ -56,7 +56,7 @@ def exam(request, partie_id):
         except (ExamLocked, AttemptLimitReached):
             return HttpResponse(status=403)
         return redirect("attempt_detail", public_id=attempt.public_id)
-    missing = [m for m in partie.modules.all() if not module_completed(request.user, m)]
+    missing = [{"module": m, "number": module_number(m)} for m in partie.modules.all() if not module_completed(request.user, m)]
     open_attempt = assessment.attempts.filter(user=request.user, submitted_at__isnull=True).last()
     if open_attempt and close_if_expired(open_attempt).submitted_at:
         open_attempt = None
@@ -87,6 +87,7 @@ def attempt_detail(request, public_id):
                 {"pair": p, "chosen": aq.answer_json.get(str(p.public_id), "")} for p in aq.question.pairs.all()
             ],
             "rights": aq.ordered_pairs(),
+            "answered": aq.answered_at is not None,
         }
         for aq in attempt.attempt_questions.select_related("question").prefetch_related(
             "question__choices", "question__pairs", "selected_choices"
@@ -95,7 +96,13 @@ def attempt_detail(request, public_id):
     remaining = None
     if attempt.deadline:
         remaining = max(0, int((attempt.deadline - timezone.now()).total_seconds()))
-    return render(request, "assessments/attempt.html", {"attempt": attempt, "rows": rows, "remaining_seconds": remaining})
+    # Envoi demandé avec des questions sans réponse : on les liste et on demande confirmation (aucun envoi à l'aveugle).
+    unanswered = [
+        {"number": n, "question": row["question"]} for n, row in enumerate(rows, start=1) if not row["answered"]
+    ] if request.GET.get("envoi") else []
+    return render(request, "assessments/attempt.html", {
+        "attempt": attempt, "rows": rows, "remaining_seconds": remaining, "unanswered": unanswered,
+    })
 
 
 @login_required
@@ -133,6 +140,9 @@ def save_answer_view(request, public_id):
 def submit_view(request, public_id):
     attempt = close_if_expired(_own_attempt(request, public_id))
     if attempt.submitted_at is None:
+        blank = attempt.attempt_questions.filter(answered_at__isnull=True).exists()
+        if blank and request.POST.get("confirm") != "1":
+            return redirect(reverse("attempt_detail", args=[attempt.public_id]) + "?envoi=1#envoi")
         submit_attempt(attempt)
     return redirect("attempt_result", public_id=attempt.public_id)
 
@@ -143,10 +153,23 @@ def result(request, public_id):
     if attempt.submitted_at is None:
         return redirect("attempt_detail", public_id=attempt.public_id)
     is_exam = attempt.assessment.is_exam
-    return render(request, "assessments/result.html", {
+    feedback = [] if is_exam else attempt.feedback()
+    mistakes = [item for item in feedback if item["score"] < 1]
+    context = {
         "attempt": attempt,
         "show_correction": not is_exam,
-        "feedback": [] if is_exam else attempt.feedback(),
+        "feedback": mistakes if request.GET.get("erreurs") else feedback,
+        "mistakes_only": bool(request.GET.get("erreurs")),
+        "total_count": len(feedback),
+        "mistake_count": len(mistakes),
         "module_scores": attempt.module_scores() if is_exam else {},
         "attempts_left": _attempts_left(request.user, attempt.assessment),
-    })
+    }
+    if not is_exam and module_completed(request.user, attempt.assessment.module):
+        # Le quiz termine le module : proposer la suite (module suivant de la partie, sinon son examen).
+        module = attempt.assessment.module
+        following = next_module(module)
+        context["module_done"] = True
+        if following is not None and following.partie_id == module.partie_id:
+            context["next_module"], context["next_number"] = following, module_number(following)
+    return render(request, "assessments/result.html", context)

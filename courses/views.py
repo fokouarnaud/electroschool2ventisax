@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.utils.translation import get_language
 
 from progress.models import SectionView
-from progress.services import module_has_quiz, mark_section_viewed, outline
+from progress.services import mark_section_viewed, module_has_quiz, module_number, next_module, next_step, outline
 
 from . import figures
 from .access import accessible_formations
@@ -27,11 +27,18 @@ def module_detail(request, public_id):
         return _catalogue_or_404({"parties__modules__public_id": public_id})
     viewed = set(SectionView.objects.filter(user=request.user, section__module=module).values_list("section_id", flat=True))
     sections = [{"section": s, "viewed": s.pk in viewed} for s in module.sections.all()]
+    step = next_step(request.user, module)
+    following = next_module(module) if step is None else None
     return render(request, "courses/module_detail.html", {
         "module": module,
+        "number": module_number(module),
         "sections": sections,
         "outline": outline(request.user, module.partie, current_module=module),
         "has_quiz": module_has_quiz(module),
+        "step": step,
+        # Module terminé : l'examen de la partie si c'était son dernier module, sinon le module suivant.
+        "next_module": following if following is not None and following.partie_id == module.partie_id else None,
+        "next_number": module_number(following) if following is not None else None,
     })
 
 
@@ -54,6 +61,9 @@ def section_detail(request, public_id):
         "figures": section_figures,
         "figure_scripts": [figures.REGISTRY[name].script for name in section_figures],
         "motor_calculators": any(f'data-calc="{kind}"' in body_html for kind in MOTOR_CALCULATORS),
+        "number": module_number(section.module),
+        "position": index + 1,
+        "total": len(siblings),
         "previous": siblings[index - 1] if index > 0 else None,
         "next": siblings[index + 1] if index + 1 < len(siblings) else None,
         "fallback_fr": lang != "fr" and not getattr(section, f"body_md_{lang}", ""),

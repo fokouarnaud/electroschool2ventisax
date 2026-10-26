@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n acad_i18n %}
 {% block title %}{% translate "Résultat" %}{% endblock %}
 {% block content %}
 {% with a=attempt.assessment %}
@@ -12,13 +12,22 @@
       {% if attempts_left is not None %}{% blocktranslate count n=attempts_left %}{{ n }} tentative restante.{% plural %}{{ n }} tentatives restantes.{% endblocktranslate %}{% endif %}</p>
     {% else %}
       <p class="muted">{% translate "Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez." %}</p>
+      {% if module_done %}<div class="notice notice-success" role="status">{% include "icons/circle-check.svg" %}<div>{% if next_module %}{% blocktranslate with n=next_number t=next_module.title %}Module terminé. Suivant : M{{ n }}. {{ t }}{% endblocktranslate %}{% else %}{% translate "Module terminé : c'était le dernier de la partie." %}{% endif %}</div></div>{% endif %}
     {% endif %}
     {% if attempt.auto_submitted %}<div class="notice" role="status">{% include "icons/clock.svg" %}<div>{% translate "Temps écoulé : vos réponses ont été envoyées automatiquement." %}</div></div>{% endif %}
     <div class="cta-row" style="margin-top:1rem">
       {% if a.is_exam %}
         <a class="btn" href="{% url 'dashboard' %}">{% translate "Retour à mes cours" %}</a>
       {% else %}
-        <a class="btn" href="{% url 'module_detail' a.module.public_id %}">{% translate "Retour au module" %}</a>
+        {% if next_module %}
+          <a class="btn" href="{% url 'module_detail' next_module.public_id %}">{% blocktranslate with n=next_number %}Module suivant : M{{ n }}{% endblocktranslate %}{% include "icons/chevron-right.svg" %}</a>
+          <a class="btn btn-ghost" href="{% url 'module_detail' a.module.public_id %}">{% translate "Retour au module" %}</a>
+        {% elif module_done %}
+          <a class="btn" href="{% url 'exam' a.module.partie.public_id %}">{% blocktranslate with n=a.module.partie.order %}Examen de la Partie {{ n }}{% endblocktranslate %}{% include "icons/chevron-right.svg" %}</a>
+          <a class="btn btn-ghost" href="{% url 'module_detail' a.module.public_id %}">{% translate "Retour au module" %}</a>
+        {% else %}
+          <a class="btn" href="{% url 'module_detail' a.module.public_id %}">{% translate "Retour au module" %}</a>
+        {% endif %}
         <form class="inline-form" method="post" action="{% url 'start_quiz' a.module.public_id %}">{% csrf_token %}<button class="btn btn-ghost" type="submit">{% translate "Refaire le quiz" %}</button></form>
       {% endif %}
     </div>
@@ -35,6 +44,12 @@
 {% endif %}
 
 {% if show_correction %}
+  {% if mistake_count and mistake_count < total_count %}
+    <nav class="review-filter" aria-label="{% translate 'Filtrer la correction' %}">
+      <a href="?"{% if not mistakes_only %} aria-current="page"{% endif %}>{% blocktranslate with n=total_count %}Toutes ({{ n }}){% endblocktranslate %}</a>
+      <a href="?erreurs=1"{% if mistakes_only %} aria-current="page"{% endif %}>{% blocktranslate with n=mistake_count %}Seulement les erreurs ({{ n }}){% endblocktranslate %}</a>
+    </nav>
+  {% endif %}
   <div class="review">
     {% for item in feedback %}
       <section class="panel" aria-labelledby="rq-{{ forloop.counter }}">
@@ -43,7 +58,7 @@
           {% if item.score == 1 %}<span class="badge badge-done">{% include "icons/check.svg" %}{% translate "Correct" %}</span>{% elif item.score > 0 %}<span class="badge badge-warn">{% translate "Partiel" %}</span>{% else %}<span class="badge">{% translate "Incorrect" %}</span>{% endif %}
         </div>
         {% if item.question.qtype == "numeric" %}
-          <p>{% translate "Votre réponse :" %} <strong>{{ item.answer_text|default:"-" }}</strong> · {% translate "Valeur attendue :" %} <strong>{{ item.expected_value }}</strong>{% if item.question.tolerance_pct %} (± {{ item.question.tolerance_pct|floatformat:"-2" }} %){% endif %}</p>
+          <p>{% translate "Votre réponse :" %} <strong>{% if item.answer_text %}{{ item.answer_text }}{% else %}{% translate "Sans réponse" %}{% endif %}</strong> · {% translate "Valeur attendue :" %} <strong>{{ item.expected_value }}</strong>{% if item.question.tolerance_pct %} (± {{ item.question.tolerance_pct|floatformat:"-2" }} %){% endif %}</p>
         {% elif item.question.qtype == "matching" %}
           <ul>
             {% for row in item.pair_rows %}

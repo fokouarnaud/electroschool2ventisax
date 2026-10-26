@@ -28,7 +28,8 @@
 {% if block %}
   <div class="dash">
     <section class="dash-side panel" aria-labelledby="formation-titre">
-      <h2 id="formation-titre" class="course-formation">{% include "icons/"|add:block.formation.icon|add:".svg" %}<span{{ block.formation|lang_attr:"title" }}>{{ block.formation.title }}</span></h2>
+      {# Avec le sélecteur, le nom est déjà dans l'onglet courant : le titre ne sert plus qu'aux lecteurs d'écran. #}
+      <h2 id="formation-titre" class="course-formation{% if formations|length > 1 %} visually-hidden{% endif %}">{% include "icons/"|add:block.formation.icon|add:".svg" %}<span{{ block.formation|lang_attr:"title" }}>{{ block.formation.title }}</span></h2>
       <div class="course-meter">
         <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ block.progress }}" aria-label="{% translate 'Progression' %}"><span style="width: {{ block.progress }}%"></span></div>
         <strong>{{ block.progress }} %</strong>

@@ -1,7 +1,7 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n acad_i18n %}
 {% block title %}{% translate "Examen" %}{% endblock %}
 {% block content %}
-<a class="crumb" href="{% url 'dashboard' %}">{% include "icons/chevron-left.svg" %}{% translate "Mes cours" %}</a>
+{% include "courses/_crumbs.html" with partie=partie module=None %}
 <div class="course">
   <section class="panel" aria-labelledby="titre-examen">
     <h1 id="titre-examen">{% blocktranslate with p=partie.title %}Examen : {{ p }}{% endblocktranslate %}</h1>
@@ -13,7 +13,7 @@
     {% if not unlocked %}
       <div class="notice" role="status">{% include "icons/lock.svg" %}<div>{% translate "L'examen s'ouvre quand ces modules sont terminés :" %}</div></div>
       <ol class="section-list todo-list">
-        {% for m in missing_modules %}<li><a href="{% url 'module_detail' m.public_id %}"><span class="num" aria-hidden="true">{{ forloop.counter }}</span><span>{{ m.title }}</span><span class="badge badge-warn">{% translate "À terminer" %}</span>{% include "icons/chevron-right.svg" %}</a></li>{% endfor %}
+        {% for m in missing_modules %}<li><a href="{% url 'module_detail' m.module.public_id %}"><span class="num" aria-hidden="true">M{{ m.number }}</span><span><span class="visually-hidden">M{{ m.number }}. </span><span{{ m.module|lang_attr:"title" }}>{{ m.module.title }}</span></span><span class="badge badge-warn">{% translate "À terminer" %}</span>{% include "icons/chevron-right.svg" %}</a></li>{% endfor %}
       </ol>
     {% elif open_attempt %}
       <div class="notice" role="status">{% include "icons/clock.svg" %}<div>{% translate "Un examen est en cours. Le chrono continue de tourner." %}</div></div>

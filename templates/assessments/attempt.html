@@ -82,9 +82,18 @@
     {% endfor %}
   </div>
 
-  <form class="submit-zone" method="post" action="{% url 'submit_attempt' attempt.public_id %}">{% csrf_token %}
-    <p class="muted">{% if attempt.assessment.is_exam %}{% translate "Une fois envoyé, l'examen ne peut plus être modifié." %}{% else %}{% translate "Vous verrez la correction juste après l'envoi." %}{% endif %}</p>
-    <button class="btn" type="submit">{% if attempt.assessment.is_exam %}{% translate "Envoyer l'examen" %}{% else %}{% translate "Voir la correction" %}{% endif %}</button>
+  <form class="submit-zone" id="envoi" method="post" action="{% url 'submit_attempt' attempt.public_id %}">{% csrf_token %}
+    {% if unanswered %}
+      <div class="notice" role="alert">{% include "icons/alert-triangle.svg" %}<div>
+        <p><strong>{% blocktranslate count n=unanswered|length %}{{ n }} question sans réponse{% plural %}{{ n }} questions sans réponse{% endblocktranslate %}</strong></p>
+        <p class="unanswered">{% for u in unanswered %}<a href="#q-{{ u.question.public_id }}">{{ u.number }}</a>{% endfor %}</p>
+      </div></div>
+      <input type="hidden" name="confirm" value="1">
+      <button class="btn" type="submit">{% translate "Envoyer quand même" %}</button>
+    {% else %}
+      <p class="muted">{% if attempt.assessment.is_exam %}{% translate "Une fois envoyé, l'examen ne peut plus être modifié." %}{% else %}{% translate "Vous verrez la correction juste après l'envoi." %}{% endif %}</p>
+      <button class="btn" type="submit">{% if attempt.assessment.is_exam %}{% translate "Envoyer l'examen" %}{% else %}{% translate "Voir la correction" %}{% endif %}</button>
+    {% endif %}
   </form>
 </div>
 {% endblock %}

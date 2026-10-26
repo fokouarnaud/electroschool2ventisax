@@ -1,4 +1,6 @@
 """Progression (AGENTS.md, Q9) : sections vues + quiz envoyé ; examen ouvert quand tous les modules sont terminés."""
+from django.db.models import Q
+
 from assessments.models import Assessment, Attempt, Question
 from courses.models import Module, Section
 
@@ -50,6 +52,32 @@ def module_row(user, module):
     return {"module": module, "done": done == total, "steps_done": done, "steps_total": total, "next_section": next_section}
 
 
+def module_number(module):
+    """Numéro M1, M2… d'un module sur toute sa formation, comme le texte des cours et le tableau formateur."""
+    earlier = Module.objects.filter(partie__formation=module.partie.formation_id, partie__order__lt=module.partie.order).count()
+    return earlier + list(module.partie.modules.values_list("pk", flat=True)).index(module.pk) + 1
+
+
+def next_module(module):
+    """Module qui suit dans la formation (partie suivante comprise), ou None pour le dernier."""
+    return (
+        Module.objects.filter(partie__formation=module.partie.formation_id)
+        .filter(Q(partie__order__gt=module.partie.order) | Q(partie=module.partie_id, order__gt=module.order))
+        .order_by("partie__order", "order").select_related("partie").first()
+    )
+
+
+def next_step(user, module):
+    """Étape suivante d'un module : première section non lue, sinon son quiz à envoyer, sinon None (module terminé)."""
+    viewed = set(SectionView.objects.filter(user=user, section__module=module).values_list("section_id", flat=True))
+    section = next((s for s in module.sections.all() if s.pk not in viewed), None)
+    if section is not None:
+        return {"section": section, "started": bool(viewed)}
+    if module_has_quiz(module) and not _quiz_submitted(user, module):
+        return {"quiz": True}
+    return None
+
+
 def exam_unlocked(user, partie):
     return all(module_completed(user, m) for m in partie.modules.all())
 
@@ -82,6 +110,7 @@ def outline(user, partie, current_section=None, current_module=None):
             "module": module,
             "number": number,
             "current": current_module is not None and module.pk == current_module.pk,
+            "has_quiz": current_module is not None and module.pk == current_module.pk and module_has_quiz(module),
             "done": module_completed(user, module),
             "sections": [
                 {
