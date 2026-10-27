@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 21:05+0100\n"
+"POT-Creation-Date: 2026-10-27 21:49+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1795,11 +1795,13 @@ msgstr "Next"
 msgid "Fin du module"
 msgstr "End of module"
 
-#: .\templates\figures\amp_gain.html:3 .\templates\figures\lc_free.html:3
-#: .\templates\figures\lc_resonance.html:3 .\templates\figures\lc_tank.html:3
-#: .\templates\figures\lc_tuning.html:3 .\templates\figures\rc_cutoff.html:3
-#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
-#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\amp_gain.html:3
+#: .\templates\figures\contact_marking.html:3
+#: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
+#: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
+#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
+#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
+#: .\templates\figures\rl_lowpass.html:3
 #: .\templates\figures\rlc_bandwidth.html:3
 #: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
@@ -1921,6 +1923,132 @@ msgstr ""
 "on the left the input (±60 mV), on the right the output (±2.4 V); with Av = "
 "40 both needles swing together, with a negative gain they swing in opposite "
 "directions"
+
+#: .\templates\figures\contact_marking.html:3
+msgid "Les repères gravés d’un contacteur"
+msgstr "The engraved markings of a contactor"
+
+#: .\templates\figures\contact_marking.html:4
+msgid ""
+"Contacteur KM1 et son bloc auxiliaire sur un rail, vus de dessus : chaque "
+"borne porte son repère gravé (A1 et A2, 1 à 6, 13-14, 21-22, 31-32, 43-44) ; "
+"une fenêtre montre les plots et les ponts de l’équipage mobile ; une "
+"alimentation 24 V est reliée à A1 et A2."
+msgstr "Contactor KM1 and its auxiliary block on a rail, seen from above: each terminal carries its engraved marking (A1 and A2, 1 to 6, 13-14, 21-22, 31-32, 43-44); a window shows the fixed contacts and the bridges of the moving carriage; a 24 V supply is connected to A1 and A2."
+
+#: .\templates\figures\contact_marking.html:15
+msgid "Alimenter A1-A2"
+msgstr "Energize A1-A2"
+
+#: .\templates\figures\contact_marking.html:15
+msgid "Couper A1-A2"
+msgstr "De-energize A1-A2"
+
+#: .\templates\figures\contact_marking.html:18
+msgid "Repère"
+msgstr "Marking"
+
+#: .\templates\figures\contact_marking.html:19
+msgid "Numéro d’ordre"
+msgstr "Sequence number"
+
+#: .\templates\figures\contact_marking.html:19
+msgid "aucun"
+msgstr "none"
+
+#: .\templates\figures\contact_marking.html:20
+msgid "Fonction"
+msgstr "Function"
+
+#: .\templates\figures\contact_marking.html:20
+msgid "à fermeture"
+msgstr "make"
+
+#: .\templates\figures\contact_marking.html:20
+msgid "à ouverture"
+msgstr "break"
+
+#: .\templates\figures\contact_marking.html:20
+msgid "pôle de puissance"
+msgstr "power pole"
+
+#: .\templates\figures\contact_marking.html:20
+msgid "bobine"
+msgstr "coil"
+
+#: .\templates\figures\contact_marking.html:21
+msgid "État"
+msgstr "State"
+
+#: .\templates\figures\contact_marking.html:21
+msgid "fermé"
+msgstr "closed"
+
+#: .\templates\figures\contact_marking.html:21
+msgid "ouvert"
+msgstr "open"
+
+#: .\templates\figures\contact_marking.html:21
+msgid "alimentée"
+msgstr "energized"
+
+#: .\templates\figures\contact_marking.html:21
+msgid "non alimentée"
+msgstr "de-energized"
+
+#: .\templates\figures\contact_marking.html:23
+msgid ""
+"Mouvement ralenti : l’équipage mobile met 0,6 s à faire sa course ; les "
+"repères et les états sont exacts."
+msgstr "Slowed motion: the moving carriage takes 0.6 s to travel; the markings and the states are exact."
+
+#: .\templates\figures\contact_marking.html:28
+msgid "Contacteur KM1 :"
+msgstr "Contactor KM1:"
+
+#: .\templates\figures\contact_marking.html:28
+msgid ""
+"bobine A1-A2 à gauche, pôles de puissance 1-2, 3-4, 5-6 ; entrées impaires "
+"au fond, sorties paires devant"
+msgstr "coil A1-A2 on the left, power poles 1-2, 3-4, 5-6; odd inputs at the back, even outputs at the front"
+
+#: .\templates\figures\contact_marking.html:29
+msgid "Bloc auxiliaire :"
+msgstr "Auxiliary block:"
+
+#: .\templates\figures\contact_marking.html:29
+msgid ""
+"quatre contacts numérotés 1 à 4 par leur premier chiffre ; le second dit la "
+"fonction, 3-4 à fermeture, 1-2 à ouverture"
+msgstr "four contacts numbered 1 to 4 by their first digit; the second gives the function, 3-4 make, 1-2 break"
+
+#: .\templates\figures\contact_marking.html:30
+msgid "Fenêtre :"
+msgstr "Window:"
+
+#: .\templates\figures\contact_marking.html:30
+msgid ""
+"deux plots par contact, reliés à leurs bornes, et un pont porté par "
+"l’équipage mobile ; le contact est fermé quand le pont recouvre ses plots"
+msgstr "two fixed contacts per contact, connected to their terminals, and a bridge carried by the moving carriage; the contact is closed when the bridge covers its fixed contacts"
+
+#: .\templates\figures\contact_marking.html:31
+msgid "Alimentation 24 V :"
+msgstr "24 V supply:"
+
+#: .\templates\figures\contact_marking.html:31
+msgid ""
+"reliée à A1 et A2 ; alimentée, la bobine attire l’équipage mobile et tous "
+"les ponts coulissent ensemble"
+msgstr "connected to A1 and A2; when energized, the coil pulls the moving carriage and all the bridges slide together"
+
+#: .\templates\figures\contact_marking.html:32
+msgid "En teal :"
+msgstr "In teal:"
+
+#: .\templates\figures\contact_marking.html:32
+msgid "les bornes et le pont du contact choisi"
+msgstr "the terminals and the bridge of the chosen contact"
 
 #: .\templates\figures\lc_free.html:3
 msgid "L’oscillation libre, sur la balançoire"

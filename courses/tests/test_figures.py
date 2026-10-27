@@ -57,8 +57,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "amp_gain": Figure(
             drawing="figures/amp_gain.svg", card="figures/amp_gain.html", script="acad/js/figures/amp_gain.js",
         ),
+        "contact_marking": Figure(
+            drawing="figures/contact_marking.svg", card="figures/contact_marking.html", script="acad/js/figures/contact_marking.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking")
 
 
 @pytest.mark.django_db
@@ -679,3 +682,47 @@ def test_amplifier_gain_section_carries_the_figure_after_the_sign_of_the_gain(la
 def test_amplifier_gain_story_takes_the_energy_from_the_supply(lang, energy):
     """F1 : l'amplificateur ne crée pas d'énergie ; la sortie la puise dans l'alimentation."""
     assert energy in (M8 / f"01-role-gain.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_contact_marking_card_maps_the_contactor_to_its_markings_in_both_languages(client, enrolled, module):
+    """Repères (moteurs, M2) : contacteur KM1 et bloc auxiliaire ; commande = bobine A1-A2 ; repères = contact à lire."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Repérer les bornes et les contacts", order=1, body_md_fr="[[fig:contact_marking]]", body_md_en="[[fig:contact_marking]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="contact_marking"' in fr and "data-fig-power" in fr
+    for key, mark in (("p1", "1-2"), ("c1", "13-14"), ("c2", "21-22"), ("c3", "31-32"), ("c4", "43-44"), ("coil", "A1-A2")):
+        assert f'data-fig-preset="{key}" aria-pressed="false">{mark}<' in fr
+    assert 'data-on="Alimenter A1-A2"' in fr and 'data-on="Energize A1-A2"' in en
+    assert 'data-make="à fermeture"' in fr and 'data-break="à ouverture"' in fr
+    assert 'data-make="make"' in en and 'data-break="break"' in en and 'data-closed="closed"' in en
+    assert "Bloc auxiliaire :</strong>" in fr and "Auxiliary block:</strong>" in en and "Bloc auxiliaire" not in en
+    assert 'src="/static/acad/js/figures/contact_marking.js' in fr
+
+
+M2_MOTEURS = ROOT / "content" / "moteurs" / "p1" / "m2"
+CONTACTOR = {"fr": "## Ce qui se passe dans le contacteur", "en": "## What happens inside the contactor"}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_contact_marking_section_carries_the_figure_between_the_contacts_and_the_terminal_plate(lang):
+    """F10 : schéma des repères gardé, récit et figure, puis la plaque à bornes du moteur."""
+    text = (M2_MOTEURS / f"02-reperage.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:contact_marking]]\n" in text
+    assert text.index("contacts.svg") < text.index(CONTACTOR[lang]) < text.index("[[fig:contact_marking]]") < text.index("bornes.svg")
+
+
+@pytest.mark.parametrize("lang, rest", [
+    ("fr", "un schéma montre chaque contact au repos, bobine non alimentée"),
+    ("en", "a diagram shows every contact at rest, with the coil de-energized"),
+])
+def test_contact_marking_story_draws_the_contacts_at_rest(lang, rest):
+    """F1 : « à fermeture » et « à ouverture » décrivent l'état au repos ; la bobine alimentée les inverse tous ensemble."""
+    assert rest in (M2_MOTEURS / f"02-reperage.{lang}.md").read_text(encoding="utf-8")

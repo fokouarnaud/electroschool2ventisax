@@ -11,6 +11,14 @@ Chaque borne d'un appareil porte un **repère** gravé, et le schéma reprend ce
 
 Les appareils eux-mêmes portent une lettre : **Q** pour les appareils de sectionnement et de protection de puissance, **KM** pour les contacteurs, **F** pour les protections (relais thermique, fusibles), **S** pour les boutons, **H** pour les voyants, **M** pour les moteurs.
 
+## Ce qui se passe dans le contacteur
+
+Dans le contacteur, chaque contact est fait de deux plots fixes, reliés à ses deux bornes, et d'un pont qui les relie quand il les recouvre. Tous les ponts sont portés par un même équipage mobile. Quand A1-A2 reçoit sa tension (24 V ici), la bobine attire l'équipage et tous les ponts coulissent ensemble : les pôles 1-2, 3-4, 5-6 et les contacts 13-14 et 43-44 se ferment, les contacts 21-22 et 31-32 s'ouvrent. Quand la bobine n'est plus alimentée, un ressort ramène l'équipage et tout revient au repos.
+
+« À fermeture » et « à ouverture » disent donc ce que fait le contact quand la bobine est alimentée, à partir de son état au repos : c'est pourquoi un schéma montre chaque contact au repos, bobine non alimentée. Le second chiffre du repère suffit à le savoir sans ouvrir l'appareil : 3-4, ouvert au repos ; 1-2, fermé au repos. Le premier chiffre ne fait que numéroter les contacts du bloc, de 1 à 4.
+
+[[fig:contact_marking]]
+
 ## La plaque à bornes du moteur
 
 ![Plaque à bornes : entrées U1 V1 W1 en haut, sorties W2 U2 V2 en bas, décalées d'un cran](/static/content/moteurs/m2/bornes.svg)

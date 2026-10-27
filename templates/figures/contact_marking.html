@@ -1,0 +1,35 @@
+{% load i18n %}<figure class="fig" data-fig="contact_marking">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Les repères gravés d’un contacteur" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Contacteur KM1 et son bloc auxiliaire sur un rail, vus de dessus : chaque borne porte son repère gravé (A1 et A2, 1 à 6, 13-14, 21-22, 31-32, 43-44) ; une fenêtre montre les plots et les ponts de l’équipage mobile ; une alimentation 24 V est reliée à A1 et A2.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="p1" aria-pressed="false">1-2</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="c1" aria-pressed="false">13-14</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="c2" aria-pressed="false">21-22</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="c3" aria-pressed="false">31-32</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="c4" aria-pressed="false">43-44</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="coil" aria-pressed="false">A1-A2</button>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn" data-fig-power data-on="{% translate 'Alimenter A1-A2' %}" data-off="{% translate 'Couper A1-A2' %}" aria-pressed="false">{% translate "Alimenter A1-A2" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>{% translate "Repère" %}</dt><dd data-fig-out="mark"></dd></div>
+        <div><dt>{% translate "Numéro d’ordre" %}</dt><dd data-fig-out="order" data-none="{% translate 'aucun' %}"></dd></div>
+        <div><dt>{% translate "Fonction" %}</dt><dd data-fig-out="kind" data-make="{% translate 'à fermeture' %}" data-break="{% translate 'à ouverture' %}" data-pole="{% translate 'pôle de puissance' %}" data-coil="{% translate 'bobine' %}"></dd></div>
+        <div><dt>{% translate "État" %}</dt><dd data-fig-out="state" data-closed="{% translate 'fermé' %}" data-open="{% translate 'ouvert' %}" data-on="{% translate 'alimentée' %}" data-off="{% translate 'non alimentée' %}"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement ralenti : l’équipage mobile met 0,6 s à faire sa course ; les repères et les états sont exacts." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Contacteur KM1 :" %}</strong> {% translate "bobine A1-A2 à gauche, pôles de puissance 1-2, 3-4, 5-6 ; entrées impaires au fond, sorties paires devant" %}</li>
+      <li><strong>{% translate "Bloc auxiliaire :" %}</strong> {% translate "quatre contacts numérotés 1 à 4 par leur premier chiffre ; le second dit la fonction, 3-4 à fermeture, 1-2 à ouverture" %}</li>
+      <li><strong>{% translate "Fenêtre :" %}</strong> {% translate "deux plots par contact, reliés à leurs bornes, et un pont porté par l’équipage mobile ; le contact est fermé quand le pont recouvre ses plots" %}</li>
+      <li><strong>{% translate "Alimentation 24 V :" %}</strong> {% translate "reliée à A1 et A2 ; alimentée, la bobine attire l’équipage mobile et tous les ponts coulissent ensemble" %}</li>
+      <li><strong>{% translate "En teal :" %}</strong> {% translate "les bornes et le pont du contact choisi" %}</li>
+    </ul>
+  </figcaption>
+</figure>
