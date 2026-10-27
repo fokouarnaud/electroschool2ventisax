@@ -8,7 +8,7 @@ description: Ajoute une figure interactive explicative (banc isométrique du ski
 Une figure explique **une** notion d'**une** section par un objet réel qu'on manipule (skill `anatomy` : « l'objet est l'explication »).
 Le pilote fait référence : `tools/figures/rc_lowpass/` (modèle, build, test), `templates/figures/rc_lowpass.html` (carte),
 `courses/figures.py` (registre), `courses/tests/test_figures.py` (tests), section `content/electro/p2/m6/03-passe-bas.*.md`.
-Figures déjà livrées (`electro`, dans l'ordre des sections) : M6 `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06), `rl_lowpass` (07) ; M7 `lc_resonance` (01), `rlc_response` (02), `rlc_bandwidth` (03), `lc_tank` (04), `lc_tuning` (05), `lc_free` (06) ; M8 `amp_gain` (01).
+Figures déjà livrées (`electro`, dans l'ordre des sections) : M6 `rc_lowpass` (03), `rc_highpass` (04), `rc_cutoff` (05), `rc_phase` (06), `rl_lowpass` (07) ; M7 `lc_resonance` (01), `rlc_response` (02), `rlc_bandwidth` (03), `lc_tank` (04), `lc_tuning` (05), `lc_free` (06) ; M8 `amp_gain` (01). `moteurs` : M2 `contact_marking` (02).
 « La section suivante » = la section qui suit la dernière figure livrée, en sautant les mini-projets (sections `practical`, sans figure) ; prochaine : M8 d'`electro`, `02-polarisation`.
 Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. Lis d'abord le skill `anatomy` (SKILL.md et `references/craft.md`) si tu ne l'as pas en tête.
 
@@ -49,6 +49,7 @@ Les règles du grill F1 à F15 (AGENTS.md) s'appliquent à toutes les figures. L
    - Le script d'une figure part du même repère que son état figé sans JavaScript (sinon les aiguilles sautent au chargement).
    - Quand un littéral calculé à la main fait échouer le modèle, recalcule-le d'une seconde façon (par exemple f1 + BP) avant de toucher au modèle : c'est souvent le littéral qui est faux.
    - Si l'axe d'une courbe se lit mal, essaie plusieurs azimuts dans le scratchpad (`--out`) avant de choisir : dans ce kit, un azimut plus grand rend l'axe x plus horizontal.
+   - **Repères des contacts** (livrée, `contact_marking`, première de `moteurs`) : contacteur et bloc auxiliaire vus de dessus, repères **gravés en traits** par le build (chiffres et lettre A en polylignes, `data-free=""`, le SVG reste sans texte) ; section sans formule : le modèle est la règle des repères et la géométrie des ponts ; commande = bobine (bouton), repères = choix du contact lu (`aria-pressed`, teal déplacé par le script) ; azimut 60° pour que les repères se lisent.
    - **Champ tournant** (`moteurs`) : trois bobines à 120° et une aiguille aimantée ; vitesse de synchronisme 60·f/p.
    - **Glissement** : disque synchrone stroboscopique et rotor qui décroche ; g = (ns − n)/ns en %.
    - **Auto-maintien** : contacteur 24 V, boutons marche-arrêt, contact 13-14 qui garde la bobine alimentée.
