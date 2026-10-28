@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 21:49+0100\n"
+"POT-Creation-Date: 2026-10-28 04:28+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1934,7 +1934,11 @@ msgid ""
 "borne porte son repère gravé (A1 et A2, 1 à 6, 13-14, 21-22, 31-32, 43-44) ; "
 "une fenêtre montre les plots et les ponts de l’équipage mobile ; une "
 "alimentation 24 V est reliée à A1 et A2."
-msgstr "Contactor KM1 and its auxiliary block on a rail, seen from above: each terminal carries its engraved marking (A1 and A2, 1 to 6, 13-14, 21-22, 31-32, 43-44); a window shows the fixed contacts and the bridges of the moving carriage; a 24 V supply is connected to A1 and A2."
+msgstr ""
+"Contactor KM1 and its auxiliary block on a rail, seen from above: each "
+"terminal carries its engraved marking (A1 and A2, 1 to 6, 13-14, 21-22, "
+"31-32, 43-44); a window shows the fixed contacts and the bridges of the "
+"moving carriage; a 24 V supply is connected to A1 and A2."
 
 #: .\templates\figures\contact_marking.html:15
 msgid "Alimenter A1-A2"
@@ -2000,7 +2004,9 @@ msgstr "de-energized"
 msgid ""
 "Mouvement ralenti : l’équipage mobile met 0,6 s à faire sa course ; les "
 "repères et les états sont exacts."
-msgstr "Slowed motion: the moving carriage takes 0.6 s to travel; the markings and the states are exact."
+msgstr ""
+"Slowed motion: the moving carriage takes 0.6 s to travel; the markings and "
+"the states are exact."
 
 #: .\templates\figures\contact_marking.html:28
 msgid "Contacteur KM1 :"
@@ -2010,7 +2016,9 @@ msgstr "Contactor KM1:"
 msgid ""
 "bobine A1-A2 à gauche, pôles de puissance 1-2, 3-4, 5-6 ; entrées impaires "
 "au fond, sorties paires devant"
-msgstr "coil A1-A2 on the left, power poles 1-2, 3-4, 5-6; odd inputs at the back, even outputs at the front"
+msgstr ""
+"coil A1-A2 on the left, power poles 1-2, 3-4, 5-6; odd inputs at the back, "
+"even outputs at the front"
 
 #: .\templates\figures\contact_marking.html:29
 msgid "Bloc auxiliaire :"
@@ -2020,7 +2028,9 @@ msgstr "Auxiliary block:"
 msgid ""
 "quatre contacts numérotés 1 à 4 par leur premier chiffre ; le second dit la "
 "fonction, 3-4 à fermeture, 1-2 à ouverture"
-msgstr "four contacts numbered 1 to 4 by their first digit; the second gives the function, 3-4 make, 1-2 break"
+msgstr ""
+"four contacts numbered 1 to 4 by their first digit; the second gives the "
+"function, 3-4 make, 1-2 break"
 
 #: .\templates\figures\contact_marking.html:30
 msgid "Fenêtre :"
@@ -2030,7 +2040,10 @@ msgstr "Window:"
 msgid ""
 "deux plots par contact, reliés à leurs bornes, et un pont porté par "
 "l’équipage mobile ; le contact est fermé quand le pont recouvre ses plots"
-msgstr "two fixed contacts per contact, connected to their terminals, and a bridge carried by the moving carriage; the contact is closed when the bridge covers its fixed contacts"
+msgstr ""
+"two fixed contacts per contact, connected to their terminals, and a bridge "
+"carried by the moving carriage; the contact is closed when the bridge covers "
+"its fixed contacts"
 
 #: .\templates\figures\contact_marking.html:31
 msgid "Alimentation 24 V :"
@@ -2040,9 +2053,12 @@ msgstr "24 V supply:"
 msgid ""
 "reliée à A1 et A2 ; alimentée, la bobine attire l’équipage mobile et tous "
 "les ponts coulissent ensemble"
-msgstr "connected to A1 and A2; when energized, the coil pulls the moving carriage and all the bridges slide together"
+msgstr ""
+"connected to A1 and A2; when energized, the coil pulls the moving carriage "
+"and all the bridges slide together"
 
 #: .\templates\figures\contact_marking.html:32
+#: .\templates\figures\terminal_plate.html:31
 msgid "En teal :"
 msgstr "In teal:"
 
@@ -2866,6 +2882,105 @@ msgid ""
 msgstr ""
 "frequency across, from 0 to 11 kHz (one line per kilohertz), current in "
 "depth, from 0 to 20 mA (one line per 5 mA); the dashed line marks f0"
+
+#: .\templates\figures\terminal_plate.html:3
+msgid "Fig. 2"
+msgstr "Fig. 2"
+
+#: .\templates\figures\terminal_plate.html:3
+msgid "La plaque à bornes et ses barrettes"
+msgstr "The terminal plate and its links"
+
+#: .\templates\figures\terminal_plate.html:4
+msgid ""
+"Plaque à bornes d’un moteur triphasé vue de dessus : entrées U1 V1 W1 au "
+"fond, sorties W2 U2 V2 devant, décalées d’un cran ; devant la plaque, les "
+"enroulements W, U et V, reliés à leurs deux bornes ; le réseau L1 L2 L3 "
+"arrive sur U1 V1 W1 ; une barrette horizontale relie W2, U2 et V2 (couplage "
+"étoile)."
+msgstr "Terminal plate of a three-phase motor seen from above: inputs U1 V1 W1 at the back, outputs W2 U2 V2 at the front, offset by one place; in front of the plate, windings W, U and V, connected to their two terminals; the supply L1 L2 L3 arrives on U1 V1 W1; a horizontal link joins W2, U2 and V2 (star connection)."
+
+#: .\templates\figures\terminal_plate.html:7
+msgid "Étoile"
+msgstr "Star"
+
+#: .\templates\figures\terminal_plate.html:8
+msgid "Triangle"
+msgstr "Delta"
+
+#: .\templates\figures\terminal_plate.html:16
+msgid "Couplage"
+msgstr "Connection"
+
+#: .\templates\figures\terminal_plate.html:16
+msgid "étoile"
+msgstr "star"
+
+#: .\templates\figures\terminal_plate.html:16
+msgid "triangle"
+msgstr "delta"
+
+#: .\templates\figures\terminal_plate.html:17
+msgid "Barrettes"
+msgstr "Links"
+
+#: .\templates\figures\terminal_plate.html:18
+msgid "Enroulement"
+msgstr "Winding"
+
+#: .\templates\figures\terminal_plate.html:19
+msgid "Réseau (moteur 230/400 V)"
+msgstr "Supply (230/400 V motor)"
+
+#: .\templates\figures\terminal_plate.html:20
+msgid "Par enroulement"
+msgstr "Per winding"
+
+#: .\templates\figures\terminal_plate.html:22
+msgid ""
+"Mouvement illustratif : sur un vrai moteur, on ne change les barrettes que "
+"moteur consigné. Les repères et les tensions sont exacts."
+msgstr "Illustrative motion: on a real motor, the links are moved only with the motor locked out. The markings and voltages are exact."
+
+#: .\templates\figures\terminal_plate.html:27
+msgid "Plaque à bornes :"
+msgstr "Terminal plate:"
+
+#: .\templates\figures\terminal_plate.html:27
+msgid "entrées U1 V1 W1 au fond, sorties W2 U2 V2 devant, décalées d’un cran"
+msgstr "inputs U1 V1 W1 at the back, outputs W2 U2 V2 at the front, offset by one place"
+
+#: .\templates\figures\terminal_plate.html:28
+msgid "Enroulements :"
+msgstr "Windings:"
+
+#: .\templates\figures\terminal_plate.html:28
+msgid ""
+"U, V et W, logés dans le moteur, ramenés ici devant la plaque ; leurs fils "
+"suivent les pistes jusqu’à leurs deux bornes"
+msgstr "U, V and W, housed in the motor, brought here in front of the plate; their leads follow the tracks to their two terminals"
+
+#: .\templates\figures\terminal_plate.html:29
+msgid "Barrettes :"
+msgstr "Links:"
+
+#: .\templates\figures\terminal_plate.html:29
+msgid ""
+"une barrette horizontale sur W2 U2 V2 en étoile, trois barrettes verticales "
+"en triangle ; le décalage les garde droites"
+msgstr "one horizontal link on W2 U2 V2 in star, three vertical links in delta; the offset keeps them straight"
+
+#: .\templates\figures\terminal_plate.html:30
+msgid "Câbles L1 L2 L3 :"
+msgstr "Cables L1 L2 L3:"
+
+#: .\templates\figures\terminal_plate.html:30
+msgid "le réseau, sur U1 V1 W1, dans les deux couplages"
+msgstr "the supply, on U1 V1 W1, in both connections"
+
+#: .\templates\figures\terminal_plate.html:31
+msgid "l’enroulement choisi, ses fils et ses deux bornes"
+msgstr "the chosen winding, its leads and its two terminals"
 
 #: .\templates\progress\_trainer_nav.html:2
 msgid "Espace formateur"

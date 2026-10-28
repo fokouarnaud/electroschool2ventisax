@@ -25,6 +25,16 @@ Inside the contactor, each contact is made of two fixed contacts, connected to i
 
 A three-phase motor has three windings: U1-U2, V1-V2, W1-W2. On the plate, the outputs are **offset** (W2 under U1, U2 under V1, V2 under W1): this offset lets you make the star and delta connections with simple straight links (section 5).
 
+## What happens on the plate
+
+Each winding joins an input at the back to an output at the front, but not the one just below it: U1 is on the left at the back, U2 in the middle at the front. This offset by one place is what lets you connect the motor with straight links.
+
+In **star**, a horizontal link joins W2, U2 and V2: the three winding ends form the common point, and each winding sits between a phase (L1, L2 or L3, arriving on U1, V1 or W1) and that point. It receives U / √3, about 230 V on a 400 V supply.
+
+In **delta**, three vertical links join U1 to W2, V1 to U2 and W1 to V2: each one joins the start of a winding to the end of another, so the three windings close into a loop. Each one then sits between two phases and receives the whole of U, 230 V on a 230 V supply. If the outputs were not offset (U2 under U1), a vertical link would join the two ends of the same winding: it would short-circuit it instead of connecting it.
+
+[[fig:terminal_plate]]
+
 ## Key points
 
 - 13-14 make, 21-22 break, A1-A2 coil, 95-96 overload relay.

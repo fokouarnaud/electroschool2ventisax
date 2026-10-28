@@ -60,8 +60,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "contact_marking": Figure(
             drawing="figures/contact_marking.svg", card="figures/contact_marking.html", script="acad/js/figures/contact_marking.js",
         ),
+        "terminal_plate": Figure(
+            drawing="figures/terminal_plate.svg", card="figures/terminal_plate.html", script="acad/js/figures/terminal_plate.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate")
 
 
 @pytest.mark.django_db
@@ -726,3 +729,55 @@ def test_contact_marking_section_carries_the_figure_between_the_contacts_and_the
 def test_contact_marking_story_draws_the_contacts_at_rest(lang, rest):
     """F1 : « à fermeture » et « à ouverture » décrivent l'état au repos ; la bobine alimentée les inverse tous ensemble."""
     assert rest in (M2_MOTEURS / f"02-reperage.{lang}.md").read_text(encoding="utf-8")
+
+
+@pytest.mark.django_db
+def test_terminal_plate_card_switches_star_and_delta_in_both_languages(client, enrolled, module):
+    """Plaque à bornes (moteurs, M2) : commande = couplage (étoile, triangle) ; repères = enroulement à suivre."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Repérer les bornes et les contacts", order=1,
+        body_md_fr="[[fig:contact_marking]]\n\n[[fig:terminal_plate]]", body_md_en="[[fig:contact_marking]]\n\n[[fig:terminal_plate]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="terminal_plate"' in fr
+    assert 'data-fig-coupling="star" aria-pressed="true">Étoile<' in fr and 'data-fig-coupling="delta" aria-pressed="false">Triangle<' in fr
+    assert 'data-fig-coupling="star" aria-pressed="true">Star<' in en and 'data-fig-coupling="delta" aria-pressed="false">Delta<' in en
+    for letter in "UVW":
+        assert f'data-fig-preset="{letter}" aria-pressed="{"true" if letter == "U" else "false"}">{letter}1-{letter}2<' in fr
+    assert "Fig. 2" in fr and "Enroulements :</strong>" in fr and "Windings:</strong>" in en and "Enroulements" not in en
+    assert 'data-star="star" data-delta="delta"' in en
+    # Deux figures sur la même page : chacune son script, une seule fois.
+    assert fr.count('src="/static/acad/js/figures/terminal_plate.js') == 1 and 'src="/static/acad/js/figures/contact_marking.js' in fr
+
+
+PLATE_STORY = {"fr": "## Ce qui se passe sur la plaque", "en": "## What happens on the plate"}
+KEY_POINTS = {"fr": "## À retenir", "en": "## Key points"}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_terminal_plate_section_carries_the_figure_after_the_plate_diagram(lang):
+    """F10 : schéma de la plaque gardé, puis récit et figure, avant « À retenir »."""
+    text = (M2_MOTEURS / f"02-reperage.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:terminal_plate]]\n" in text
+    assert text.index("[[fig:contact_marking]]") < text.index("bornes.svg") < text.index(PLATE_STORY[lang]) < text.index("[[fig:terminal_plate]]") < text.index(KEY_POINTS[lang])
+
+
+@pytest.mark.parametrize("lang, short", [
+    ("fr", "relierait les deux bouts du même enroulement"),
+    ("en", "would join the two ends of the same winding"),
+])
+def test_terminal_plate_story_explains_why_the_outputs_are_offset(lang, short):
+    """F1 : sans décalage, une barrette verticale court-circuiterait un enroulement ; avec, elle ferme le triangle."""
+    assert short in (M2_MOTEURS / f"02-reperage.{lang}.md").read_text(encoding="utf-8")
+
+
+def test_pressed_figure_buttons_are_shown_without_relying_on_focus():
+    """Repères et couplages à bascule (`aria-pressed`) : l'état choisi se voit, souris comme clavier."""
+    css = (ROOT / "static" / "acad" / "css" / "figures.css").read_text(encoding="utf-8")
+    assert '.fig-buttons .btn-ghost[aria-pressed="true"]' in css

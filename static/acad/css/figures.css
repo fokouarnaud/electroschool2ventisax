@@ -25,6 +25,7 @@
 .fig-freq input { width: 100%; min-height: 44px; accent-color: var(--teal-ink); }
 .fig-buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
 .fig-buttons .btn { min-height: 44px; }
+.fig-buttons .btn-ghost[aria-pressed="true"] { border-color: var(--teal-ink); box-shadow: inset 0 0 0 1px var(--teal-ink); background: var(--mist); }
 .fig-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .5rem; margin: 0; }
 .fig-readout div { padding: .4rem .6rem; border-radius: var(--radius-sm); background: var(--mist); }
 .fig-readout dt { color: var(--muted); font-size: .8rem; }

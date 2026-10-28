@@ -1,0 +1,34 @@
+{% load i18n %}<figure class="fig" data-fig="terminal_plate">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 2" %}</span><span>{% translate "La plaque à bornes et ses barrettes" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Plaque à bornes d’un moteur triphasé vue de dessus : entrées U1 V1 W1 au fond, sorties W2 U2 V2 devant, décalées d’un cran ; devant la plaque, les enroulements W, U et V, reliés à leurs deux bornes ; le réseau L1 L2 L3 arrive sur U1 V1 W1 ; une barrette horizontale relie W2, U2 et V2 (couplage étoile).' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-coupling="star" aria-pressed="true">{% translate "Étoile" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-coupling="delta" aria-pressed="false">{% translate "Triangle" %}</button>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="U" aria-pressed="true">U1-U2</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="V" aria-pressed="false">V1-V2</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="W" aria-pressed="false">W1-W2</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>{% translate "Couplage" %}</dt><dd data-fig-out="coupling" data-star="{% translate 'étoile' %}" data-delta="{% translate 'triangle' %}"></dd></div>
+        <div><dt>{% translate "Barrettes" %}</dt><dd data-fig-out="links"></dd></div>
+        <div><dt>{% translate "Enroulement" %}</dt><dd data-fig-out="winding"></dd></div>
+        <div><dt>{% translate "Réseau (moteur 230/400 V)" %}</dt><dd data-fig-out="network"></dd></div>
+        <div><dt>{% translate "Par enroulement" %}</dt><dd data-fig-out="volts"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement illustratif : sur un vrai moteur, on ne change les barrettes que moteur consigné. Les repères et les tensions sont exacts." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Plaque à bornes :" %}</strong> {% translate "entrées U1 V1 W1 au fond, sorties W2 U2 V2 devant, décalées d’un cran" %}</li>
+      <li><strong>{% translate "Enroulements :" %}</strong> {% translate "U, V et W, logés dans le moteur, ramenés ici devant la plaque ; leurs fils suivent les pistes jusqu’à leurs deux bornes" %}</li>
+      <li><strong>{% translate "Barrettes :" %}</strong> {% translate "une barrette horizontale sur W2 U2 V2 en étoile, trois barrettes verticales en triangle ; le décalage les garde droites" %}</li>
+      <li><strong>{% translate "Câbles L1 L2 L3 :" %}</strong> {% translate "le réseau, sur U1 V1 W1, dans les deux couplages" %}</li>
+      <li><strong>{% translate "En teal :" %}</strong> {% translate "l’enroulement choisi, ses fils et ses deux bornes" %}</li>
+    </ul>
+  </figcaption>
+</figure>
