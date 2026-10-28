@@ -18,6 +18,14 @@ Il est alimenté en très basse tension (ici 24 V). On le lit comme un chemin : 
 4. On appuie sur **S1** (arrêt, à ouverture) : le chemin est coupé, KM1 retombe, son contact 13-14 s'ouvre, le moteur s'arrête et ne redémarre pas seul.
 5. En cas de surcharge, le contact **95-96 de F1** s'ouvre et produit le même effet.
 
+## Ce qui se passe sur la platine
+
+Dans l'armoire, les deux schémas ne sont pas deux équipements séparés : ils partagent deux appareils. Les pôles de KM1 sont dans le circuit de puissance, mais c'est sa bobine A1-A2, dans le circuit de commande, qui les ferme. Le relais thermique F1 surveille le courant du moteur côté puissance, mais c'est son contact 95-96, côté commande, qui agit : il ne coupe pas lui-même le courant du moteur, il fait retomber KM1, dont les pôles coupent.
+
+Le circuit de commande ne transporte que le petit courant de la bobine, en 24 V ; le circuit de puissance transporte le courant du moteur. Appuyer sur S2 ne fait jamais passer le courant du moteur dans le bouton : on alimente la bobine, et c'est KM1 qui établit le courant du moteur. C'est ce qui permet de commander un gros moteur avec un petit bouton, placé loin de lui.
+
+[[fig:power_control]]
+
 ## À retenir
 
 - Puissance et commande sont deux schémas distincts, lus de haut en bas.

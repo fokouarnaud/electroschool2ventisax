@@ -1,0 +1,39 @@
+{% load i18n %}<figure class="fig" data-fig="power_control">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Une platine, deux schémas" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Platine d’un démarrage direct vue de dessus, partagée par un trait gravé : à gauche la puissance (L1 L2 L3, sectionneur Q1, contacteur KM1, relais thermique F1, moteur M1, reliés par des câbles épais), à droite la commande 24 V (alimentation, fusible F2, boutons S1 et S2, reliés par des fils fins) ; KM1 et F1 sont à cheval sur le trait.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-buttons">
+        <button type="button" class="btn" data-fig-press="s2">{% translate "Marche S2" %}</button>
+        <button type="button" class="btn" data-fig-press="s1">{% translate "Arrêt S1" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-trip data-trip="{% translate 'Surcharge F1' %}" data-reset="{% translate 'Réarmer F1' %}" aria-pressed="false">{% translate "Surcharge F1" %}</button>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="power" aria-pressed="true">{% translate "Puissance" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="control" aria-pressed="false">{% translate "Commande" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="link" aria-pressed="false">{% translate "Liaison" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>{% translate "Schéma" %}</dt><dd data-fig-out="view" data-power="{% translate 'puissance' %}" data-control="{% translate 'commande' %}" data-link="{% translate 'liaison des deux' %}"></dd></div>
+        <div><dt>{% translate "Bobine KM1" %}</dt><dd data-fig-out="coil" data-on="{% translate 'alimentée' %}" data-off="{% translate 'non alimentée' %}"></dd></div>
+        <div><dt>{% translate "Contact 13-14" %}</dt><dd data-fig-out="c1314" data-closed="{% translate 'fermé' %}" data-open="{% translate 'ouvert' %}"></dd></div>
+        <div><dt>{% translate "Contact 95-96" %}</dt><dd data-fig-out="f9596" data-closed="{% translate 'fermé' %}" data-open="{% translate 'ouvert' %}"></dd></div>
+        <div><dt>{% translate "Moteur M1" %}</dt><dd data-fig-out="motor" data-on="{% translate 'tourne' %}" data-off="{% translate 'arrêté' %}"></dd></div>
+      </dl>
+      <p class="fig-note" data-fig-out="role" aria-live="polite"
+        data-power="{% translate 'Puissance : le réseau traverse Q1, les pôles de KM1 et F1 jusqu’au moteur. Ce schéma transporte l’énergie, il ne décide de rien.' %}"
+        data-control="{% translate 'Commande : en 24 V, le courant passe par F2, 95-96 de F1 et S1, puis par S2 ou par 13-14 de KM1, jusqu’à la bobine A1-A2. Ce schéma décide quand KM1 se ferme.' %}"
+        data-link="{% translate 'Liaison : KM1 et F1 sont chacun un seul appareil. La bobine de KM1 (commande) ferme ses pôles (puissance) ; le relais de F1 (puissance) ouvre son contact 95-96 (commande).' %}"></p>
+      <p class="fig-note">{% translate "Mouvement ralenti : l’arbre fait un tour en 1,2 s et un bouton reste enfoncé 0,5 s. Les états des contacts sont exacts." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Zone de puissance :" %}</strong> {% translate "à gauche du trait gravé ; L1 L2 L3, sectionneur Q1, pôles de KM1, relais thermique F1 et moteur M1, reliés par des câbles épais" %}</li>
+      <li><strong>{% translate "Zone de commande (24 V) :" %}</strong> {% translate "à droite ; alimentation, fusible F2, boutons S1 (arrêt) et S2 (marche), reliés par des fils fins" %}</li>
+      <li><strong>{% translate "KM1 et F1 :" %}</strong> {% translate "un seul appareil chacun, à cheval sur le trait : pôles et relais côté puissance, bobine A1-A2 et contacts 13-14, 95-96 côté commande" %}</li>
+      <li><strong>{% translate "Câble ou fil foncé :" %}</strong> {% translate "parcouru par un courant" %}</li>
+      <li><strong>{% translate "En teal :" %}</strong> {% translate "les appareils du schéma choisi" %}</li>
+    </ul>
+  </figcaption>
+</figure>

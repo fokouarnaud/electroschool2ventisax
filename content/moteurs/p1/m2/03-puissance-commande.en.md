@@ -18,6 +18,14 @@ It is supplied at extra-low voltage (here 24 V). It is read like a path: current
 4. Press **S1** (stop, break contact): the path is cut, KM1 drops out, its contact 13-14 opens, the motor stops and does not restart by itself.
 5. On overload, contact **95-96 of F1** opens and has the same effect.
 
+## What happens on the panel
+
+In the cabinet, the two diagrams are not two separate pieces of equipment: they share two devices. The poles of KM1 are in the power circuit, but it is its coil A1-A2, in the control circuit, that closes them. The overload relay F1 watches the motor current on the power side, but it is its contact 95-96, on the control side, that acts: it does not cut the motor current itself, it makes KM1 drop out, and the poles of KM1 cut.
+
+The control circuit only carries the small coil current, at 24 V; the power circuit carries the motor current. Pressing S2 never sends the motor current through the button: it energizes the coil, and KM1 makes the motor current. This is what lets a small button, placed far from the motor, control a large one.
+
+[[fig:power_control]]
+
 ## Key points
 
 - Power and control are two separate diagrams, read from top to bottom.

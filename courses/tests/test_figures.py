@@ -63,8 +63,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "terminal_plate": Figure(
             drawing="figures/terminal_plate.svg", card="figures/terminal_plate.html", script="acad/js/figures/terminal_plate.js",
         ),
+        "power_control": Figure(
+            drawing="figures/power_control.svg", card="figures/power_control.html", script="acad/js/figures/power_control.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control")
 
 
 @pytest.mark.django_db
@@ -781,3 +784,50 @@ def test_pressed_figure_buttons_are_shown_without_relying_on_focus():
     """Repères et couplages à bascule (`aria-pressed`) : l'état choisi se voit, souris comme clavier."""
     css = (ROOT / "static" / "acad" / "css" / "figures.css").read_text(encoding="utf-8")
     assert '.fig-buttons .btn-ghost[aria-pressed="true"]' in css
+
+
+@pytest.mark.django_db
+def test_power_control_card_links_both_diagrams_in_both_languages(client, enrolled, module):
+    """Puissance et commande (moteurs, M2) : actions de la section (S2, S1, F1) ; repères = schéma expliqué (puissance, commande, liaison)."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Schéma de puissance et schéma de commande", order=1,
+        body_md_fr="[[fig:power_control]]", body_md_en="[[fig:power_control]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="power_control"' in fr
+    assert 'data-fig-press="s2">Marche S2<' in fr and 'data-fig-press="s1">Arrêt S1<' in fr
+    assert 'data-fig-press="s2">Start S2<' in en and 'data-fig-press="s1">Stop S1<' in en
+    assert 'data-trip="Surcharge F1" data-reset="Réarmer F1"' in fr and 'data-trip="Overload F1" data-reset="Reset F1"' in en
+    for view, label in (("power", "Puissance"), ("control", "Commande"), ("link", "Liaison")):
+        assert f'data-fig-preset="{view}" aria-pressed="{"true" if view == "power" else "false"}">{label}<' in fr
+    assert 'data-fig-preset="link" aria-pressed="false">Link<' in en
+    assert "Zone de commande (24 V) :</strong>" in fr and "Control zone (24 V):</strong>" in en
+    assert 'data-on="energized" data-off="de-energized"' in en
+    assert 'src="/static/acad/js/figures/power_control.js' in fr
+
+
+PANEL_STORY = {"fr": "## Ce qui se passe sur la platine", "en": "## What happens on the panel"}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_power_control_section_carries_the_figure_after_both_diagrams(lang):
+    """F10 : schémas de puissance et de commande gardés, puis récit et figure, avant « À retenir »."""
+    text = (M2_MOTEURS / f"03-puissance-commande.{lang}.md").read_text(encoding="utf-8")
+
+    assert "\n[[fig:power_control]]\n" in text
+    assert text.index("puissance.svg") < text.index("commande.svg") < text.index(PANEL_STORY[lang]) < text.index("[[fig:power_control]]") < text.index(KEY_POINTS[lang])
+
+
+@pytest.mark.parametrize("lang, overload, button", [
+    ("fr", "il ne coupe pas lui-même le courant du moteur", "ne fait jamais passer le courant du moteur dans le bouton"),
+    ("en", "it does not cut the motor current itself", "never sends the motor current through the button"),
+])
+def test_power_control_story_keeps_the_motor_current_in_the_power_circuit(lang, overload, button):
+    """F1 : F1 fait retomber KM1 par 95-96 ; S2 n'alimente que la bobine, KM1 établit le courant du moteur."""
+    text = (M2_MOTEURS / f"03-puissance-commande.{lang}.md").read_text(encoding="utf-8")
+    assert overload in text and button in text

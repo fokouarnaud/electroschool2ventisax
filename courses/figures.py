@@ -35,6 +35,9 @@ REGISTRY = {
     "terminal_plate": Figure(
         drawing="figures/terminal_plate.svg", card="figures/terminal_plate.html", script="acad/js/figures/terminal_plate.js",
     ),
+    "power_control": Figure(
+        drawing="figures/power_control.svg", card="figures/power_control.html", script="acad/js/figures/power_control.js",
+    ),
 }
 FIGURES = tuple(REGISTRY)
 SLOT = re.compile(r'<div class="fig" data-fig="(%s)"></div>' % "|".join(FIGURES))

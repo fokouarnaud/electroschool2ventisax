@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 04:28+0100\n"
+"POT-Creation-Date: 2026-10-28 05:31+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1799,6 +1799,7 @@ msgstr "End of module"
 #: .\templates\figures\contact_marking.html:3
 #: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
 #: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
+#: .\templates\figures\power_control.html:3
 #: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
 #: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
 #: .\templates\figures\rl_lowpass.html:3
@@ -1985,18 +1986,24 @@ msgid "État"
 msgstr "State"
 
 #: .\templates\figures\contact_marking.html:21
+#: .\templates\figures\power_control.html:19
+#: .\templates\figures\power_control.html:20
 msgid "fermé"
 msgstr "closed"
 
 #: .\templates\figures\contact_marking.html:21
+#: .\templates\figures\power_control.html:19
+#: .\templates\figures\power_control.html:20
 msgid "ouvert"
 msgstr "open"
 
 #: .\templates\figures\contact_marking.html:21
+#: .\templates\figures\power_control.html:18
 msgid "alimentée"
 msgstr "energized"
 
 #: .\templates\figures\contact_marking.html:21
+#: .\templates\figures\power_control.html:18
 msgid "non alimentée"
 msgstr "de-energized"
 
@@ -2058,6 +2065,7 @@ msgstr ""
 "and all the bridges slide together"
 
 #: .\templates\figures\contact_marking.html:32
+#: .\templates\figures\power_control.html:36
 #: .\templates\figures\terminal_plate.html:31
 msgid "En teal :"
 msgstr "In teal:"
@@ -2425,6 +2433,155 @@ msgstr "Antenna:"
 #: .\templates\figures\lc_tuning.html:32
 msgid "elle capte les trois stations à la fois"
 msgstr "it picks up all three stations at once"
+
+#: .\templates\figures\power_control.html:3
+msgid "Une platine, deux schémas"
+msgstr "One panel, two diagrams"
+
+#: .\templates\figures\power_control.html:4
+msgid ""
+"Platine d’un démarrage direct vue de dessus, partagée par un trait gravé : à "
+"gauche la puissance (L1 L2 L3, sectionneur Q1, contacteur KM1, relais "
+"thermique F1, moteur M1, reliés par des câbles épais), à droite la commande "
+"24 V (alimentation, fusible F2, boutons S1 et S2, reliés par des fils "
+"fins) ; KM1 et F1 sont à cheval sur le trait."
+msgstr "Direct-on-line starter panel seen from above, split by an engraved line: on the left the power circuit (L1 L2 L3, isolator Q1, contactor KM1, overload relay F1, motor M1, joined by thick cables), on the right the 24 V control circuit (supply, fuse F2, buttons S1 and S2, joined by thin wires); KM1 and F1 straddle the line."
+
+#: .\templates\figures\power_control.html:7
+msgid "Marche S2"
+msgstr "Start S2"
+
+#: .\templates\figures\power_control.html:8
+msgid "Arrêt S1"
+msgstr "Stop S1"
+
+#: .\templates\figures\power_control.html:9
+msgid "Surcharge F1"
+msgstr "Overload F1"
+
+#: .\templates\figures\power_control.html:9
+msgid "Réarmer F1"
+msgstr "Reset F1"
+
+#: .\templates\figures\power_control.html:12
+msgid "Puissance"
+msgstr "Power"
+
+#: .\templates\figures\power_control.html:13
+msgid "Commande"
+msgstr "Control"
+
+#: .\templates\figures\power_control.html:14
+msgid "Liaison"
+msgstr "Link"
+
+#: .\templates\figures\power_control.html:17
+msgid "Schéma"
+msgstr "Diagram"
+
+#: .\templates\figures\power_control.html:17
+msgid "puissance"
+msgstr "power"
+
+#: .\templates\figures\power_control.html:17
+msgid "commande"
+msgstr "control"
+
+#: .\templates\figures\power_control.html:17
+msgid "liaison des deux"
+msgstr "link between both"
+
+#: .\templates\figures\power_control.html:18
+msgid "Bobine KM1"
+msgstr "Coil KM1"
+
+#: .\templates\figures\power_control.html:19
+msgid "Contact 13-14"
+msgstr "Contact 13-14"
+
+#: .\templates\figures\power_control.html:20
+msgid "Contact 95-96"
+msgstr "Contact 95-96"
+
+#: .\templates\figures\power_control.html:21
+msgid "Moteur M1"
+msgstr "Motor M1"
+
+#: .\templates\figures\power_control.html:21
+msgid "tourne"
+msgstr "running"
+
+#: .\templates\figures\power_control.html:21
+msgid "arrêté"
+msgstr "stopped"
+
+#: .\templates\figures\power_control.html:24
+msgid ""
+"Puissance : le réseau traverse Q1, les pôles de KM1 et F1 jusqu’au moteur. "
+"Ce schéma transporte l’énergie, il ne décide de rien."
+msgstr "Power: the supply goes through Q1, the poles of KM1 and F1 to the motor. This diagram carries the energy, it decides nothing."
+
+#: .\templates\figures\power_control.html:25
+msgid ""
+"Commande : en 24 V, le courant passe par F2, 95-96 de F1 et S1, puis par S2 "
+"ou par 13-14 de KM1, jusqu’à la bobine A1-A2. Ce schéma décide quand KM1 se "
+"ferme."
+msgstr "Control: at 24 V, the current goes through F2, 95-96 of F1 and S1, then through S2 or 13-14 of KM1, to coil A1-A2. This diagram decides when KM1 closes."
+
+#: .\templates\figures\power_control.html:26
+msgid ""
+"Liaison : KM1 et F1 sont chacun un seul appareil. La bobine de KM1 "
+"(commande) ferme ses pôles (puissance) ; le relais de F1 (puissance) ouvre "
+"son contact 95-96 (commande)."
+msgstr "Link: KM1 and F1 are each a single device. The coil of KM1 (control) closes its poles (power); the relay of F1 (power) opens its contact 95-96 (control)."
+
+#: .\templates\figures\power_control.html:27
+msgid ""
+"Mouvement ralenti : l’arbre fait un tour en 1,2 s et un bouton reste enfoncé "
+"0,5 s. Les états des contacts sont exacts."
+msgstr "Slowed motion: the shaft turns once in 1.2 s and a button stays pressed for 0.5 s. The contact states are exact."
+
+#: .\templates\figures\power_control.html:32
+msgid "Zone de puissance :"
+msgstr "Power zone:"
+
+#: .\templates\figures\power_control.html:32
+msgid ""
+"à gauche du trait gravé ; L1 L2 L3, sectionneur Q1, pôles de KM1, relais "
+"thermique F1 et moteur M1, reliés par des câbles épais"
+msgstr "left of the engraved line; L1 L2 L3, isolator Q1, poles of KM1, overload relay F1 and motor M1, joined by thick cables"
+
+#: .\templates\figures\power_control.html:33
+msgid "Zone de commande (24 V) :"
+msgstr "Control zone (24 V):"
+
+#: .\templates\figures\power_control.html:33
+msgid ""
+"à droite ; alimentation, fusible F2, boutons S1 (arrêt) et S2 (marche), "
+"reliés par des fils fins"
+msgstr "on the right; supply, fuse F2, buttons S1 (stop) and S2 (start), joined by thin wires"
+
+#: .\templates\figures\power_control.html:34
+msgid "KM1 et F1 :"
+msgstr "KM1 and F1:"
+
+#: .\templates\figures\power_control.html:34
+msgid ""
+"un seul appareil chacun, à cheval sur le trait : pôles et relais côté "
+"puissance, bobine A1-A2 et contacts 13-14, 95-96 côté commande"
+msgstr "a single device each, straddling the line: poles and relay on the power side, coil A1-A2 and contacts 13-14, 95-96 on the control side"
+
+#: .\templates\figures\power_control.html:35
+msgid "Câble ou fil foncé :"
+msgstr "Dark cable or wire:"
+
+#: .\templates\figures\power_control.html:35
+msgid "parcouru par un courant"
+msgstr "carrying a current"
+
+#: .\templates\figures\power_control.html:36
+msgid "les appareils du schéma choisi"
+msgstr "the devices of the chosen diagram"
 
 #: .\templates\figures\rc_cutoff.html:3
 msgid "La coupure, côté eau"
@@ -2898,7 +3055,12 @@ msgid ""
 "enroulements W, U et V, reliés à leurs deux bornes ; le réseau L1 L2 L3 "
 "arrive sur U1 V1 W1 ; une barrette horizontale relie W2, U2 et V2 (couplage "
 "étoile)."
-msgstr "Terminal plate of a three-phase motor seen from above: inputs U1 V1 W1 at the back, outputs W2 U2 V2 at the front, offset by one place; in front of the plate, windings W, U and V, connected to their two terminals; the supply L1 L2 L3 arrives on U1 V1 W1; a horizontal link joins W2, U2 and V2 (star connection)."
+msgstr ""
+"Terminal plate of a three-phase motor seen from above: inputs U1 V1 W1 at "
+"the back, outputs W2 U2 V2 at the front, offset by one place; in front of "
+"the plate, windings W, U and V, connected to their two terminals; the supply "
+"L1 L2 L3 arrives on U1 V1 W1; a horizontal link joins W2, U2 and V2 (star "
+"connection)."
 
 #: .\templates\figures\terminal_plate.html:7
 msgid "Étoile"
@@ -2940,7 +3102,9 @@ msgstr "Per winding"
 msgid ""
 "Mouvement illustratif : sur un vrai moteur, on ne change les barrettes que "
 "moteur consigné. Les repères et les tensions sont exacts."
-msgstr "Illustrative motion: on a real motor, the links are moved only with the motor locked out. The markings and voltages are exact."
+msgstr ""
+"Illustrative motion: on a real motor, the links are moved only with the "
+"motor locked out. The markings and voltages are exact."
 
 #: .\templates\figures\terminal_plate.html:27
 msgid "Plaque à bornes :"
@@ -2948,7 +3112,9 @@ msgstr "Terminal plate:"
 
 #: .\templates\figures\terminal_plate.html:27
 msgid "entrées U1 V1 W1 au fond, sorties W2 U2 V2 devant, décalées d’un cran"
-msgstr "inputs U1 V1 W1 at the back, outputs W2 U2 V2 at the front, offset by one place"
+msgstr ""
+"inputs U1 V1 W1 at the back, outputs W2 U2 V2 at the front, offset by one "
+"place"
 
 #: .\templates\figures\terminal_plate.html:28
 msgid "Enroulements :"
@@ -2958,7 +3124,9 @@ msgstr "Windings:"
 msgid ""
 "U, V et W, logés dans le moteur, ramenés ici devant la plaque ; leurs fils "
 "suivent les pistes jusqu’à leurs deux bornes"
-msgstr "U, V and W, housed in the motor, brought here in front of the plate; their leads follow the tracks to their two terminals"
+msgstr ""
+"U, V and W, housed in the motor, brought here in front of the plate; their "
+"leads follow the tracks to their two terminals"
 
 #: .\templates\figures\terminal_plate.html:29
 msgid "Barrettes :"
@@ -2968,7 +3136,9 @@ msgstr "Links:"
 msgid ""
 "une barrette horizontale sur W2 U2 V2 en étoile, trois barrettes verticales "
 "en triangle ; le décalage les garde droites"
-msgstr "one horizontal link on W2 U2 V2 in star, three vertical links in delta; the offset keeps them straight"
+msgstr ""
+"one horizontal link on W2 U2 V2 in star, three vertical links in delta; the "
+"offset keeps them straight"
 
 #: .\templates\figures\terminal_plate.html:30
 msgid "Câbles L1 L2 L3 :"
