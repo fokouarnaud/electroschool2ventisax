@@ -514,6 +514,15 @@ def esp32_sketches(lang):
 
 
 @ESP32[0]
+def test_esp32_is_open_in_the_catalogue_with_its_three_parts_after_the_production_smoke_test():
+    # C23 : fermée pour la fumée en production (écart 72), puis ouverte au catalogue, avec l'icône `code`.
+    esp32 = manifest("esp32")
+    assert esp32["open"] is True
+    assert esp32["icon"] == "code"
+    assert [p["slug"] for p in esp32["parties"]] == ["p1", "p2", "p3"]
+
+
+@ESP32[0]
 def test_esp32_modules_follow_the_plan_of_c14_to_c16():
     counts = {m["dir"]: len(m["sections"]) for _, m in iter_modules("esp32")}
     assert counts == {folder: ESP32_SECTIONS[folder] for folder in counts}

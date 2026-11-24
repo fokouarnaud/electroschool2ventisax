@@ -1,6 +1,6 @@
 {
   "slug": "esp32",
-  "open": false,
+  "open": true,
   "icon": "code",
   "title": {
     "fr": "Microcontrôleurs : l'ESP32",
