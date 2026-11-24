@@ -206,3 +206,44 @@ def test_score_numeric_in_electrical_engineering_units(unit, answer, score):
 ])
 def test_a_lone_m_is_the_milli_prefix_unless_metres_are_expected(expected, unit, answer, score):
     assert score_numeric(Decimal(expected), unit, Decimal("2"), answer) == Fraction(score)
+
+
+# --- US-110 (formation `esp32`, C8) : débit série en bit/s -----------------------------------------------------------
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("115200 bit/s", (Decimal("115200"), "bit/s")),
+    ("115,2 kbit/s", (Decimal("115200"), "bit/s")),
+    ("115200 bps", (Decimal("115200"), "bit/s")),
+    ("115,2 kbps", (Decimal("115200"), "bit/s")),
+    ("115200 Bd", (Decimal("115200"), "bit/s")),
+    ("115200 bauds", (Decimal("115200"), "bit/s")),
+    ("9600bit/s", (Decimal("9600"), "bit/s")),
+    ("1 Mbit/s", (Decimal("1000000"), "bit/s")),
+])
+def test_parse_quantity_reads_serial_bit_rates(text, expected):
+    assert parse_quantity(text) == expected
+
+
+@pytest.mark.parametrize("answer, score", [
+    ("115200 bit/s", 1),
+    ("115,2 kbit/s", 1),
+    ("115200 bauds", 1),
+    ("115200", 1),             # unité facultative
+    ("115200 Hz", 0),          # autre unité
+    ("9600 bit/s", 0),
+])
+def test_score_numeric_in_bits_per_second(answer, score):
+    assert score_numeric(Decimal("115200"), "bit/s", Decimal("2"), answer) == Fraction(score)
+
+
+def test_a_bit_rate_is_displayed_with_its_si_prefix_in_each_language():
+    from django.utils import translation
+
+    from assessments.scoring import format_quantity
+
+    with translation.override("fr"):
+        assert format_quantity(Decimal("115200"), "bit/s") == "115,2 kbit/s"
+        assert format_quantity(Decimal("9600"), "bit/s") == "9,6 kbit/s"
+    with translation.override("en"):
+        assert format_quantity(Decimal("115200"), "bit/s") == "115.2 kbit/s"

@@ -80,3 +80,34 @@ def test_moteurs_calculators_are_accepted():
     """US-68 (formation `moteurs`, M8) : courant d'un moteur, vitesse, couple, étoile-triangle."""
     for kind in ("motor_current", "speed", "torque", "stardelta"):
         assert f'<div class="calc" data-calc="{kind}"></div>' in render_markdown(f"[[calc:{kind}]]")
+
+
+# --- US-108 (formation `esp32`, C6) : blocs de code délimités dans les sections --------------------------------------
+
+BLINK = "```cpp\nconst uint8_t LED_PIN = 2;\nvoid loop() {\n  if (a < b && c > d) digitalWrite(LED_PIN, HIGH);\n}\n```"
+
+
+def test_a_fenced_code_block_becomes_a_pre_code_block():
+    html = render_markdown("Le programme :\n\n" + BLINK)
+
+    assert "<pre><code>const uint8_t LED_PIN = 2;\nvoid loop() {" in html
+    assert "```" not in html
+
+
+def test_a_fenced_code_block_is_escaped_and_keeps_no_attribute():
+    html = render_markdown(BLINK)
+
+    assert "if (a &lt; b &amp;&amp; c &gt; d)" in html
+    assert "class=" not in html
+
+
+def test_a_fenced_block_without_language_is_rendered_too():
+    assert "<pre><code>Serial.begin(115200);\n</code></pre>" in render_markdown("```\nSerial.begin(115200);\n```")
+
+
+def test_markers_inside_a_code_block_are_never_expanded():
+    html = render_markdown("```\n[[calc:ohm]]\n\n[[fig:rc_lowpass]]\n```")
+
+    assert "data-calc" not in html
+    assert "data-fig" not in html
+    assert "[[calc:ohm]]" in html

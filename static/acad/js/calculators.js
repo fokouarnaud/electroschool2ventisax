@@ -207,8 +207,8 @@
       run();
     }
   };
-  // Calculateurs d'une autre formation (calculators-moteurs.js, chargé avant) : mêmes outils, aucun code copié.
-  var extra = window.acadMotorCalculators || {};
+  // Calculateurs d'une autre formation (calculators-moteurs.js ou calculators-esp32.js, chargé avant) : mêmes outils.
+  var extra = Object.assign({}, window.acadMotorCalculators, window.acadEsp32Calculators);
   var tools = { L: L, parse: parse, show: show, field: field, choice: choice, frame: frame };
   Object.keys(extra).forEach(function (kind) {
     builders[kind] = function (slot) { extra[kind](slot, tools); };

@@ -1,4 +1,5 @@
-{% extends "base.html" %}{% load i18n acad_i18n %}
+{% extends "base.html" %}{% load i18n static acad_i18n acad_text %}
+{% block head %}{% if shows_code %}<link rel="stylesheet" href="{% static 'acad/css/code.css' %}">{% endif %}{% endblock %}
 {% block title %}{% translate "Résultat" %}{% endblock %}
 {% block content %}
 {% with a=attempt.assessment %}
@@ -54,9 +55,10 @@
     {% for item in feedback %}
       <section class="panel" aria-labelledby="rq-{{ forloop.counter }}">
         <div class="review-head">
-          <h2 id="rq-{{ forloop.counter }}">{{ forloop.counter }}. {{ item.question.prompt }}</h2>
+          <h2 id="rq-{{ forloop.counter }}">{% blocktranslate with n=forloop.counter %}Question {{ n }}{% endblocktranslate %}</h2>
           {% if item.score == 1 %}<span class="badge badge-done">{% include "icons/check.svg" %}{% translate "Correct" %}</span>{% elif item.score > 0 %}<span class="badge badge-warn">{% translate "Partiel" %}</span>{% else %}<span class="badge">{% translate "Incorrect" %}</span>{% endif %}
         </div>
+        <div class="prompt">{{ item.question.prompt|qtext }}</div>
         {% if item.question.qtype == "numeric" %}
           <p>{% translate "Votre réponse :" %} <strong>{% if item.answer_text %}{{ item.answer_text }}{% else %}{% translate "Sans réponse" %}{% endif %}</strong> · {% translate "Valeur attendue :" %} <strong>{{ item.expected_value }}</strong>{% if item.question.tolerance_pct %} (± {{ item.question.tolerance_pct|floatformat:"-2" }} %){% endif %}</p>
         {% elif item.question.qtype == "matching" %}
@@ -64,8 +66,8 @@
             {% for row in item.pair_rows %}
               <li class="{% if row.ok %}is-correct{% else %}is-wrong{% endif %}">
                 {% if row.ok %}{% include "icons/check.svg" %}{% else %}{% include "icons/alert-triangle.svg" %}{% endif %}
-                <span>{{ row.left }} → {{ row.expected }}</span>
-                {% if not row.ok %}<span class="your-answer">{% if row.given %}{% blocktranslate with g=row.given %}Vous : {{ g }}{% endblocktranslate %}{% else %}{% translate "Sans réponse" %}{% endif %}</span>{% endif %}
+                <span>{{ row.left|qtext }} → {{ row.expected|qtext }}</span>
+                {% if not row.ok %}<span class="your-answer">{% if row.given %}{% blocktranslate with g=row.given|qtext %}Vous : {{ g }}{% endblocktranslate %}{% else %}{% translate "Sans réponse" %}{% endif %}</span>{% endif %}
               </li>
             {% endfor %}
           </ul>
@@ -74,14 +76,14 @@
           {% for choice in item.question.choices.all %}
             <li class="{% if choice.pk in item.correct_choice_ids %}is-correct{% elif choice.pk in item.selected_choice_ids %}is-wrong{% endif %}">
               {% if choice.pk in item.correct_choice_ids %}{% include "icons/check.svg" %}{% elif choice.pk in item.selected_choice_ids %}{% include "icons/alert-triangle.svg" %}{% endif %}
-              <span>{{ choice.text }}</span>
+              <span>{{ choice.text|qtext }}</span>
               {% if choice.pk in item.selected_choice_ids %}<span class="your-answer">{% translate "Votre réponse" %}</span>{% endif %}
             </li>
           {% endfor %}
         </ul>
         {% if not item.selected_choice_ids %}<p class="muted">{% translate "Sans réponse." %}</p>{% endif %}
         {% endif %}
-        {% if item.explanation %}<p class="explain">{{ item.explanation }}</p>{% endif %}
+        {% if item.explanation %}<div class="explain">{{ item.explanation|qtext }}</div>{% endif %}
       </section>
     {% endfor %}
   </div>

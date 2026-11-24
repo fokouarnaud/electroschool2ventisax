@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 05:31+0100\n"
+"POT-Creation-Date: 2026-11-24 01:09+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -217,7 +217,7 @@ msgstr "image"
 msgid "valeur attendue"
 msgstr "expected value"
 
-#: .\assessments\models.py:48 .\templates\assessments\attempt.html:37
+#: .\assessments\models.py:48 .\templates\assessments\attempt.html:38
 msgid "unité"
 msgstr "unit"
 
@@ -321,12 +321,12 @@ msgstr "questions per module"
 msgid "mélanger questions et choix"
 msgstr "shuffle questions and choices"
 
-#: .\assessments\scoring.py:88 .\templates\courses\_calc_labels.html:25
+#: .\assessments\scoring.py:90 .\templates\courses\_calc_labels.html:25
 msgctxt "unité de vitesse de rotation"
 msgid "tr/min"
 msgstr "rpm"
 
-#: .\assessments\scoring.py:91
+#: .\assessments\scoring.py:93
 #, python-format
 msgctxt "pourcentage"
 msgid "%(number)s %%"
@@ -441,48 +441,52 @@ msgstr "Electronics (chip)"
 msgid "Moteur"
 msgstr "Motor"
 
-#: .\courses\models.py:16 .\courses\models.py:36 .\courses\models.py:54
-#: .\courses\models.py:83 .\courses\models.py:99 .\progress\models.py:19
+#: .\courses\models.py:14
+msgid "Microcontrôleur (code)"
+msgstr "Microcontroller (code)"
+
+#: .\courses\models.py:17 .\courses\models.py:37 .\courses\models.py:55
+#: .\courses\models.py:84 .\courses\models.py:100 .\progress\models.py:19
 msgid "titre"
 msgstr "title"
 
-#: .\courses\models.py:18 .\courses\models.py:37
+#: .\courses\models.py:19 .\courses\models.py:38
 msgid "description"
 msgstr "description"
 
-#: .\courses\models.py:21
+#: .\courses\models.py:22
 msgid "ouverte au catalogue"
 msgstr "open in the catalogue"
 
-#: .\courses\models.py:22
+#: .\courses\models.py:23
 msgid "Visible dans le catalogue public et ouverte à l’inscription libre."
 msgstr "Listed in the public catalogue and open to self-enrolment."
 
-#: .\courses\models.py:24
+#: .\courses\models.py:25
 msgid "icône"
 msgstr "icon"
 
-#: .\courses\models.py:56
+#: .\courses\models.py:57
 msgid "durée (heures)"
 msgstr "duration (hours)"
 
-#: .\courses\models.py:57
+#: .\courses\models.py:58
 msgid "compétence visée"
 msgstr "target skill"
 
-#: .\courses\models.py:58
+#: .\courses\models.py:59
 msgid "modalités d'évaluation"
 msgstr "assessment method"
 
-#: .\courses\models.py:78
+#: .\courses\models.py:79
 msgid "Contenu"
 msgstr "Content"
 
-#: .\courses\models.py:79
+#: .\courses\models.py:80
 msgid "Activités pratiques"
 msgstr "Practical activities"
 
-#: .\courses\models.py:86
+#: .\courses\models.py:87
 msgid "contenu (Markdown)"
 msgstr "content (Markdown)"
 
@@ -951,75 +955,81 @@ msgstr "Quiz: %(m)s"
 msgid "Temps restant"
 msgstr "Time left"
 
-#: .\templates\assessments\attempt.html:29
+#: .\templates\assessments\attempt.html:23
+#: .\templates\assessments\result.html:57
+#, python-format
+msgid "Question %(n)s"
+msgstr "Question %(n)s"
+
+#: .\templates\assessments\attempt.html:30
 msgid ""
 "Saisissez un angle en degrés : virgule ou point, sans préfixe (ex. 26,6)."
 msgstr "Enter an angle in degrees: comma or dot, no prefix (e.g. 26.6)."
 
-#: .\templates\assessments\attempt.html:31
+#: .\templates\assessments\attempt.html:32
 msgid ""
 "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés "
 "(ex. 4,7 k)."
 msgstr ""
 "Enter a value: comma or dot, prefixes p n µ m k M G accepted (e.g. 4.7 k)."
 
-#: .\templates\assessments\attempt.html:34
-#: .\templates\assessments\result.html:78
+#: .\templates\assessments\attempt.html:35
+#: .\templates\assessments\result.html:79
 msgid "Votre réponse"
 msgstr "Your answer"
 
-#: .\templates\assessments\attempt.html:41
+#: .\templates\assessments\attempt.html:42
 msgid "Associez chaque élément à sa correspondance."
 msgstr "Match each item with its counterpart."
 
-#: .\templates\assessments\attempt.html:48
+#: .\templates\assessments\attempt.html:49
 msgid "Choisir"
 msgstr "Choose"
 
-#: .\templates\assessments\attempt.html:55
+#: .\templates\assessments\attempt.html:56
 msgid "Cliquez la bonne zone du schéma, ou choisissez-la dans la liste."
 msgstr "Click the right area of the diagram, or pick it from the list."
 
-#: .\templates\assessments\attempt.html:66
+#: .\templates\assessments\attempt.html:67
 msgid "Plusieurs réponses possibles."
 msgstr "Several answers possible."
 
-#: .\templates\assessments\attempt.html:66
+#: .\templates\assessments\attempt.html:67
 msgid "Une seule réponse."
 msgstr "One answer only."
 
-#: .\templates\assessments\attempt.html:77
+#: .\templates\assessments\attempt.html:78
 msgid "Enregistrer cette réponse"
 msgstr "Save this answer"
 
-#: .\templates\assessments\attempt.html:81
+#: .\templates\assessments\attempt.html:82
 msgid "Aucune question publiée pour le moment."
 msgstr "No published question yet."
 
-#: .\templates\assessments\attempt.html:88
+#: .\templates\assessments\attempt.html:89
 #, python-format
 msgid "%(n)s question sans réponse"
 msgid_plural "%(n)s questions sans réponse"
 msgstr[0] "%(n)s unanswered question"
 msgstr[1] "%(n)s unanswered questions"
 
-#: .\templates\assessments\attempt.html:92
+#: .\templates\assessments\attempt.html:93
 msgid "Envoyer quand même"
 msgstr "Submit anyway"
 
-#: .\templates\assessments\attempt.html:94
+#: .\templates\assessments\attempt.html:95
 msgid "Une fois envoyé, l'examen ne peut plus être modifié."
 msgstr "Once submitted, the exam can no longer be changed."
 
-#: .\templates\assessments\attempt.html:94
+#: .\templates\assessments\attempt.html:95
 msgid "Vous verrez la correction juste après l'envoi."
 msgstr "You will see the answers right after submitting."
 
-#: .\templates\assessments\attempt.html:95
+#: .\templates\assessments\attempt.html:96
 msgid "Envoyer l'examen"
 msgstr "Submit the exam"
 
-#: .\templates\assessments\attempt.html:95
+#: .\templates\assessments\attempt.html:96
 msgid "Voir la correction"
 msgstr "See the answers"
 
@@ -1187,25 +1197,25 @@ msgstr "Partial"
 msgid "Incorrect"
 msgstr "Incorrect"
 
-#: .\templates\assessments\result.html:61
+#: .\templates\assessments\result.html:62
 msgid "Votre réponse :"
 msgstr "Your answer:"
 
-#: .\templates\assessments\result.html:61
-#: .\templates\assessments\result.html:68
+#: .\templates\assessments\result.html:62
+#: .\templates\assessments\result.html:69
 msgid "Sans réponse"
 msgstr "No answer"
 
-#: .\templates\assessments\result.html:61
+#: .\templates\assessments\result.html:62
 msgid "Valeur attendue :"
 msgstr "Expected value:"
 
-#: .\templates\assessments\result.html:68
+#: .\templates\assessments\result.html:69
 #, python-format
 msgid "Vous : %(g)s"
 msgstr "You: %(g)s"
 
-#: .\templates\assessments\result.html:82
+#: .\templates\assessments\result.html:83
 msgid "Sans réponse."
 msgstr "No answer."
 
@@ -1695,6 +1705,84 @@ msgstr "current in star"
 #: .\templates\courses\_calc_labels.html:34
 msgid "couple en étoile"
 msgstr "torque in star"
+
+#: .\templates\courses\_calc_labels.html:35
+msgid "Calculateur : résistance d’une LED"
+msgstr "Calculator: LED resistor"
+
+#: .\templates\courses\_calc_labels.html:35
+msgid ""
+"Saisissez la tension directe de la LED (moins de 3,3 V), puis le courant "
+"voulu ou la résistance choisie."
+msgstr "Enter the LED forward voltage (below 3.3 V), then the wanted current or the chosen resistor."
+
+#: .\templates\courses\_calc_labels.html:36
+msgid "Tension directe de la LED Vf"
+msgstr "LED forward voltage Vf"
+
+#: .\templates\courses\_calc_labels.html:36
+msgid "Courant voulu I"
+msgstr "Wanted current I"
+
+#: .\templates\courses\_calc_labels.html:36
+msgid "Résistance choisie"
+msgstr "Chosen resistor"
+
+#: .\templates\courses\_calc_labels.html:36
+msgid "courant réel"
+msgstr "actual current"
+
+#: .\templates\courses\_calc_labels.html:37
+msgid "Calculateur : conversion ADC 12 bits"
+msgstr "Calculator: 12-bit ADC conversion"
+
+#: .\templates\courses\_calc_labels.html:37
+msgid "Saisissez une tension de 0 à 3,3 V ou une valeur de 0 à 4095."
+msgstr "Enter a voltage from 0 to 3.3 V or a value from 0 to 4095."
+
+#: .\templates\courses\_calc_labels.html:37
+msgid "valeur lue"
+msgstr "value read"
+
+#: .\templates\courses\_calc_labels.html:38
+msgid "Calculateur : MLI (LEDC)"
+msgstr "Calculator: PWM (LEDC)"
+
+#: .\templates\courses\_calc_labels.html:38
+msgid "Saisissez une résolution entière de 1 à 20 bits."
+msgstr "Enter a whole resolution from 1 to 20 bits."
+
+#: .\templates\courses\_calc_labels.html:38
+msgid "Résolution"
+msgstr "Resolution"
+
+#: .\templates\courses\_calc_labels.html:38
+msgid "Rapport cyclique"
+msgstr "Duty cycle"
+
+#: .\templates\courses\_calc_labels.html:38
+msgid "valeur à écrire"
+msgstr "value to write"
+
+#: .\templates\courses\_calc_labels.html:38
+msgid "fréquence maximale"
+msgstr "maximum frequency"
+
+#: .\templates\courses\_calc_labels.html:39
+msgid "Calculateur : trame série (8N1)"
+msgstr "Calculator: serial frame (8N1)"
+
+#: .\templates\courses\_calc_labels.html:39
+msgid "Débit"
+msgstr "Bit rate"
+
+#: .\templates\courses\_calc_labels.html:39
+msgid "durée d’un octet"
+msgstr "time per byte"
+
+#: .\templates\courses\_calc_labels.html:39
+msgid "octets par seconde"
+msgstr "bytes per second"
 
 #: .\templates\courses\_crumbs.html:2
 msgid "Fil d'Ariane"
@@ -2445,7 +2533,12 @@ msgid ""
 "thermique F1, moteur M1, reliés par des câbles épais), à droite la commande "
 "24 V (alimentation, fusible F2, boutons S1 et S2, reliés par des fils "
 "fins) ; KM1 et F1 sont à cheval sur le trait."
-msgstr "Direct-on-line starter panel seen from above, split by an engraved line: on the left the power circuit (L1 L2 L3, isolator Q1, contactor KM1, overload relay F1, motor M1, joined by thick cables), on the right the 24 V control circuit (supply, fuse F2, buttons S1 and S2, joined by thin wires); KM1 and F1 straddle the line."
+msgstr ""
+"Direct-on-line starter panel seen from above, split by an engraved line: on "
+"the left the power circuit (L1 L2 L3, isolator Q1, contactor KM1, overload "
+"relay F1, motor M1, joined by thick cables), on the right the 24 V control "
+"circuit (supply, fuse F2, buttons S1 and S2, joined by thin wires); KM1 and "
+"F1 straddle the line."
 
 #: .\templates\figures\power_control.html:7
 msgid "Marche S2"
@@ -2519,27 +2612,36 @@ msgstr "stopped"
 msgid ""
 "Puissance : le réseau traverse Q1, les pôles de KM1 et F1 jusqu’au moteur. "
 "Ce schéma transporte l’énergie, il ne décide de rien."
-msgstr "Power: the supply goes through Q1, the poles of KM1 and F1 to the motor. This diagram carries the energy, it decides nothing."
+msgstr ""
+"Power: the supply goes through Q1, the poles of KM1 and F1 to the motor. "
+"This diagram carries the energy, it decides nothing."
 
 #: .\templates\figures\power_control.html:25
 msgid ""
 "Commande : en 24 V, le courant passe par F2, 95-96 de F1 et S1, puis par S2 "
 "ou par 13-14 de KM1, jusqu’à la bobine A1-A2. Ce schéma décide quand KM1 se "
 "ferme."
-msgstr "Control: at 24 V, the current goes through F2, 95-96 of F1 and S1, then through S2 or 13-14 of KM1, to coil A1-A2. This diagram decides when KM1 closes."
+msgstr ""
+"Control: at 24 V, the current goes through F2, 95-96 of F1 and S1, then "
+"through S2 or 13-14 of KM1, to coil A1-A2. This diagram decides when KM1 "
+"closes."
 
 #: .\templates\figures\power_control.html:26
 msgid ""
 "Liaison : KM1 et F1 sont chacun un seul appareil. La bobine de KM1 "
 "(commande) ferme ses pôles (puissance) ; le relais de F1 (puissance) ouvre "
 "son contact 95-96 (commande)."
-msgstr "Link: KM1 and F1 are each a single device. The coil of KM1 (control) closes its poles (power); the relay of F1 (power) opens its contact 95-96 (control)."
+msgstr ""
+"Link: KM1 and F1 are each a single device. The coil of KM1 (control) closes "
+"its poles (power); the relay of F1 (power) opens its contact 95-96 (control)."
 
 #: .\templates\figures\power_control.html:27
 msgid ""
 "Mouvement ralenti : l’arbre fait un tour en 1,2 s et un bouton reste enfoncé "
 "0,5 s. Les états des contacts sont exacts."
-msgstr "Slowed motion: the shaft turns once in 1.2 s and a button stays pressed for 0.5 s. The contact states are exact."
+msgstr ""
+"Slowed motion: the shaft turns once in 1.2 s and a button stays pressed for "
+"0.5 s. The contact states are exact."
 
 #: .\templates\figures\power_control.html:32
 msgid "Zone de puissance :"
@@ -2549,7 +2651,9 @@ msgstr "Power zone:"
 msgid ""
 "à gauche du trait gravé ; L1 L2 L3, sectionneur Q1, pôles de KM1, relais "
 "thermique F1 et moteur M1, reliés par des câbles épais"
-msgstr "left of the engraved line; L1 L2 L3, isolator Q1, poles of KM1, overload relay F1 and motor M1, joined by thick cables"
+msgstr ""
+"left of the engraved line; L1 L2 L3, isolator Q1, poles of KM1, overload "
+"relay F1 and motor M1, joined by thick cables"
 
 #: .\templates\figures\power_control.html:33
 msgid "Zone de commande (24 V) :"
@@ -2559,7 +2663,9 @@ msgstr "Control zone (24 V):"
 msgid ""
 "à droite ; alimentation, fusible F2, boutons S1 (arrêt) et S2 (marche), "
 "reliés par des fils fins"
-msgstr "on the right; supply, fuse F2, buttons S1 (stop) and S2 (start), joined by thin wires"
+msgstr ""
+"on the right; supply, fuse F2, buttons S1 (stop) and S2 (start), joined by "
+"thin wires"
 
 #: .\templates\figures\power_control.html:34
 msgid "KM1 et F1 :"
@@ -2569,7 +2675,9 @@ msgstr "KM1 and F1:"
 msgid ""
 "un seul appareil chacun, à cheval sur le trait : pôles et relais côté "
 "puissance, bobine A1-A2 et contacts 13-14, 95-96 côté commande"
-msgstr "a single device each, straddling the line: poles and relay on the power side, coil A1-A2 and contacts 13-14, 95-96 on the control side"
+msgstr ""
+"a single device each, straddling the line: poles and relay on the power "
+"side, coil A1-A2 and contacts 13-14, 95-96 on the control side"
 
 #: .\templates\figures\power_control.html:35
 msgid "Câble ou fil foncé :"

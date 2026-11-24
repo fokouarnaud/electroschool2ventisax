@@ -226,3 +226,46 @@ def test_import_content_takes_every_manifest_given(content_dir, second_dir):
     call_command("import_content", str(content_dir / "formation.json"), str(second_dir / "formation.json"), verbosity=0)
 
     assert list(Formation.objects.values_list("slug", flat=True).order_by("slug")) == ["froid", "moteurs"]
+
+
+# --- US-116 (formation `esp32`) : import idempotent, identifiants en « s- », autres formations intactes -------------
+
+
+@pytest.fixture
+def esp32_dir(tmp_path_factory, second_dir):
+    """La formation `esp32`, construite sur le modèle de `moteurs`, avec l'icône `code` et une question « s- »."""
+    root = tmp_path_factory.mktemp("esp32")
+    module_dir = root / "p1" / "m1"
+    module_dir.mkdir(parents=True)
+    (module_dir / "01-composants.fr.md").write_text("```cpp\nvoid setup() {}\n```", encoding="utf-8")
+    (module_dir / "01-composants.en.md").write_text("```cpp\nvoid setup() {}\n```", encoding="utf-8")
+    (module_dir / "questions.json").write_text(json.dumps([{**QUESTION, "id": "s-p1-m1-q01"}]), encoding="utf-8")
+    manifest = json.loads((second_dir / "formation.json").read_text(encoding="utf-8"))
+    manifest.update(slug="esp32", icon="code", title={"fr": "Microcontrôleurs : l'ESP32", "en": "Microcontrollers: the ESP32"})
+    manifest["parties"][0]["modules"][0]["sections"][0]["file"] = "01-composants"
+    (root / "formation.json").write_text(json.dumps(manifest), encoding="utf-8")
+    return root
+
+
+@pytest.mark.django_db
+def test_importing_esp32_twice_gives_the_same_state_and_leaves_moteurs_untouched(second_dir, esp32_dir):
+    run_import(second_dir)
+    run_import(esp32_dir)
+    run_import(esp32_dir)
+
+    formation = Formation.objects.get(slug="esp32")
+    assert formation.icon == "code"
+    assert Section.objects.filter(module__partie__formation=formation).count() == 1
+    assert Question.objects.get(external_id="s-p1-m1-q01").module.partie.formation == formation
+    assert Question.objects.get(external_id="m-p1-m1-q01").module.partie.formation.slug == "moteurs"
+
+
+@pytest.mark.django_db
+def test_an_esp32_question_id_without_the_s_prefix_is_refused(esp32_dir):
+    (esp32_dir / "p1" / "m1" / "questions.json").write_text(json.dumps([{**QUESTION, "id": "p1-m1-q01"}]), encoding="utf-8")
+
+    with pytest.raises(Exception) as error:
+        run_import(esp32_dir)
+
+    assert "p1-m1-q01" in str(error.value)
+    assert not Formation.objects.filter(slug="esp32").exists()

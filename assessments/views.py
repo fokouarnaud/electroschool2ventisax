@@ -71,6 +71,14 @@ def exam(request, partie_id):
     })
 
 
+def _shows_code(questions):
+    """Vrai si un énoncé, une explication ou un choix contient du code (US-119) : la page charge alors code.css."""
+    return any(
+        "`" in (q.prompt or "") or "`" in (q.explanation or "") or any("`" in (c.text or "") for c in q.choices.all())
+        for q in questions
+    )
+
+
 @login_required
 def attempt_detail(request, public_id):
     attempt = close_if_expired(_own_attempt(request, public_id))
@@ -102,6 +110,7 @@ def attempt_detail(request, public_id):
     ] if request.GET.get("envoi") else []
     return render(request, "assessments/attempt.html", {
         "attempt": attempt, "rows": rows, "remaining_seconds": remaining, "unanswered": unanswered,
+        "shows_code": _shows_code(row["question"] for row in rows),
     })
 
 
@@ -164,6 +173,7 @@ def result(request, public_id):
         "mistake_count": len(mistakes),
         "module_scores": attempt.module_scores() if is_exam else {},
         "attempts_left": _attempts_left(request.user, attempt.assessment),
+        "shows_code": _shows_code(item["question"] for item in feedback),
     }
     if not is_exam and module_completed(request.user, attempt.assessment.module):
         # Le quiz termine le module : proposer la suite (module suivant de la partie, sinon son examen).

@@ -14,9 +14,9 @@ ROCKWELL = re.compile(r"\b[IO]:\d+/\d+\b")
 SECTION_LINK = re.compile(r"\]\((/(?:fr|en)/(?:sections|modules)/[^)\s]*)\)")
 
 
-def practical_problems(text, lang, voltage):
+def practical_problems(text, lang, voltage, headings=PRACTICAL_HEADINGS):
     """Mini-projet : sécurité en tête, deux variantes de mesure, tension de travail écrite."""
-    variant_a, variant_b, safety = PRACTICAL_HEADINGS[lang]
+    variant_a, variant_b, safety = headings[lang]
     problems = [f"titre manquant : {h}" for h in (variant_a, variant_b, safety) if h not in text]
     if not problems and text.find(safety) > min(text.find(variant_a), text.find(variant_b)):
         problems.append("la sécurité vient avant les variantes")

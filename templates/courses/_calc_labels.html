@@ -1,4 +1,4 @@
-{% load i18n %}{% get_current_language as lang %}{# Libellés traduits des calculateurs (US-13, US-42, US-50, US-69), lus par calculators.js et calculators-moteurs.js : aucun script en ligne. #}
+{% load i18n %}{% get_current_language as lang %}{# Libellés traduits des calculateurs (US-13, US-42, US-50, US-69), lus par calculators.js, calculators-moteurs.js et calculators-esp32.js : aucun script en ligne. #}
 <div id="calc-labels" hidden data-decimal="{% if lang == 'fr' %},{% else %}.{% endif %}"
      data-ohm-title="{% translate 'Calculateur : loi d’Ohm' %}" data-ohm-hint="{% translate 'Remplissez deux des trois grandeurs : la troisième est calculée.' %}"
      data-voltage="{% translate 'Tension U' %}" data-current="{% translate 'Intensité I' %}" data-resistance="{% translate 'Résistance R' %}"
@@ -31,4 +31,9 @@
      data-torque-title="{% translate 'Calculateur : couple utile' %}"
      data-star-delta-title="{% translate 'Calculateur : démarrage étoile-triangle' %}" data-star-delta-hint="{% translate 'Saisissez la tension du réseau, puis le courant ou le couple en démarrage direct.' %}"
      data-line-voltage="{% translate 'Tension entre phases U' %}" data-direct-current="{% translate 'Courant en démarrage direct' %}" data-direct-torque="{% translate 'Couple en démarrage direct' %}"
-     data-winding-star="{% translate 'Tension d’un enroulement en étoile' %}" data-current-star="{% translate 'courant en étoile' %}" data-torque-star="{% translate 'couple en étoile' %}"></div>
+     data-winding-star="{% translate 'Tension d’un enroulement en étoile' %}" data-current-star="{% translate 'courant en étoile' %}" data-torque-star="{% translate 'couple en étoile' %}"
+     data-led-title="{% translate 'Calculateur : résistance d’une LED' %}" data-led-hint="{% translate 'Saisissez la tension directe de la LED (moins de 3,3 V), puis le courant voulu ou la résistance choisie.' %}"
+     data-forward-voltage="{% translate 'Tension directe de la LED Vf' %}" data-led-current="{% translate 'Courant voulu I' %}" data-chosen-resistance="{% translate 'Résistance choisie' %}" data-real-current="{% translate 'courant réel' %}"
+     data-adc-title="{% translate 'Calculateur : conversion ADC 12 bits' %}" data-adc-hint="{% translate 'Saisissez une tension de 0 à 3,3 V ou une valeur de 0 à 4095.' %}" data-adc-value="{% translate 'valeur lue' %}"
+     data-pwm-title="{% translate 'Calculateur : MLI (LEDC)' %}" data-pwm-hint="{% translate 'Saisissez une résolution entière de 1 à 20 bits.' %}" data-resolution="{% translate 'Résolution' %}" data-duty-cycle="{% translate 'Rapport cyclique' %}" data-pwm-value="{% translate 'valeur à écrire' %}" data-max-frequency="{% translate 'fréquence maximale' %}"
+     data-uart-title="{% translate 'Calculateur : trame série (8N1)' %}" data-bit-rate="{% translate 'Débit' %}" data-byte-time="{% translate 'durée d’un octet' %}" data-bytes-per-second="{% translate 'octets par seconde' %}"></div>

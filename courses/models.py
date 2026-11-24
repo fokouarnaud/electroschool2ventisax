@@ -11,6 +11,7 @@ class Formation(models.Model):
         # Icônes Tabler du projet (templates/icons/<nom>.svg), M13 : une par formation, liste fermée.
         CPU = "cpu", _("Électronique (puce)")
         ENGINE = "engine", _("Moteur")
+        CODE = "code", _("Microcontrôleur (code)")
 
     public_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)  # identifiant des URL et formulaires
     title = models.CharField(_("titre"), max_length=200)

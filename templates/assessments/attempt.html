@@ -1,4 +1,5 @@
-{% extends "base.html" %}{% load i18n static acad_svg %}
+{% extends "base.html" %}{% load i18n static acad_svg acad_text %}
+{% block head %}{% if shows_code %}<link rel="stylesheet" href="{% static 'acad/css/code.css' %}">{% endif %}{% endblock %}
 {% block title %}{% if attempt.assessment.is_exam %}{% translate "Examen" %}{% else %}{% translate "Quiz" %}{% endif %}{% endblock %}
 {% block content %}
 <div data-attempt
@@ -19,8 +20,9 @@
     {% for row in rows %}
       <form class="panel" id="q-{{ row.question.public_id }}" method="post" action="{% url 'save_answer' attempt.public_id %}"
             hx-post="{% url 'save_answer' attempt.public_id %}" hx-trigger="change" hx-swap="none">{% csrf_token %}
-        <fieldset class="question">
-          <legend>{{ forloop.counter }}. {{ row.question.prompt }}</legend>
+        <fieldset class="question" aria-labelledby="ql-{{ forloop.counter }} qp-{{ forloop.counter }}">
+          <legend id="ql-{{ forloop.counter }}">{% blocktranslate with n=forloop.counter %}Question {{ n }}{% endblocktranslate %}</legend>
+          <div class="prompt" id="qp-{{ forloop.counter }}">{{ row.question.prompt|qtext }}</div>
           {% if row.question.image %}<img src="{{ row.question.image.url }}" alt="" loading="lazy">{% endif %}
           <input type="hidden" name="question" value="{{ row.question.public_id }}">
           <input type="hidden" name="time_spent" value="0" data-time-spent>
@@ -42,11 +44,11 @@
             <div class="matching" data-matching>
               {% for left in row.lefts %}
                 <div class="match-row">
-                  <label for="p-{{ left.pair.public_id }}">{{ left.pair.left }}</label>
+                  <label for="p-{{ left.pair.public_id }}">{{ left.pair.left|qtext }}</label>
                   <span class="match-link" aria-hidden="true">{% include "icons/arrows-exchange.svg" %}</span>
                   <select name="pair_{{ left.pair.public_id }}" id="p-{{ left.pair.public_id }}">
                     <option value="">{% translate "Choisir" %}</option>
-                    {% for right in row.rights %}<option value="{{ right.public_id }}"{% if left.chosen == right.public_id|stringformat:"s" %} selected{% endif %}>{{ right.right }}</option>{% endfor %}
+                    {% for right in row.rights %}<option value="{{ right.public_id }}"{% if left.chosen == right.public_id|stringformat:"s" %} selected{% endif %}>{{ right.right|qplain }}</option>{% endfor %}
                   </select>
                 </div>
               {% endfor %}
@@ -58,7 +60,7 @@
               {% for choice in row.choices %}
                 <label class="choice" data-zone="{{ choice.shape.x }},{{ choice.shape.y }},{{ choice.shape.w }},{{ choice.shape.h }}">
                   <input type="radio" name="choices" value="{{ choice.public_id }}"{% if choice.public_id in row.selected %} checked{% endif %}>
-                  <span>{{ choice.text }}</span>
+                  <span>{{ choice.text|qtext }}</span>
                 </label>
               {% endfor %}
             </div>
@@ -68,7 +70,7 @@
               {% for choice in row.choices %}
                 <label class="choice">
                   <input type="{% if row.question.qtype == 'multiple' %}checkbox{% else %}radio{% endif %}" name="choices" value="{{ choice.public_id }}"{% if choice.public_id in row.selected %} checked{% endif %}>
-                  <span>{{ choice.text }}</span>
+                  <span>{{ choice.text|qtext }}</span>
                 </label>
               {% endfor %}
             </div>

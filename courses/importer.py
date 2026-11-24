@@ -10,6 +10,8 @@ from assessments.models import Question
 from .models import Formation, Module, Partie, Section
 
 LANGS = ("fr", "en")
+# Préfixe imposé aux identifiants de questions d'une formation (US-116) ; les autres formations n'en imposent pas.
+QUESTION_ID_PREFIXES = {"esp32": "s-"}
 
 
 def _translated(data, field):
@@ -43,7 +45,10 @@ def _import_questions(module, path, stats):
     folder = path.parent
     if not path.exists():
         return
+    prefix = QUESTION_ID_PREFIXES.get(module.partie.formation.slug, "")
     for data in json.loads(path.read_text(encoding="utf-8")):
+        if not data["id"].startswith(prefix):
+            raise ValueError(f"Identifiant de question sans le préfixe « {prefix} » de sa formation : {data['id']}")
         question = Question.objects.filter(external_id=data["id"]).select_related("module__partie").first()
         if question and question.module.partie.formation_id != module.partie.formation_id:
             # US-62 : un identifiant pris par une autre formation ne déplace jamais sa question.

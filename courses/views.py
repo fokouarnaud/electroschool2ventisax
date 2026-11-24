@@ -9,7 +9,7 @@ from progress.services import mark_section_viewed, module_has_quiz, module_numbe
 from . import figures
 from .access import accessible_formations
 from .models import Formation, Module, Section
-from .rendering import MOTOR_CALCULATORS, render_markdown
+from .rendering import ESP32_CALCULATORS, MOTOR_CALCULATORS, render_markdown
 
 
 def _catalogue_or_404(formation_filter):
@@ -61,6 +61,7 @@ def section_detail(request, public_id):
         "figures": section_figures,
         "figure_scripts": [figures.REGISTRY[name].script for name in section_figures],
         "motor_calculators": any(f'data-calc="{kind}"' in body_html for kind in MOTOR_CALCULATORS),
+        "esp32_calculators": any(f'data-calc="{kind}"' in body_html for kind in ESP32_CALCULATORS),
         "number": module_number(section.module),
         "position": index + 1,
         "total": len(siblings),

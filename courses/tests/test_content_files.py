@@ -9,6 +9,7 @@ from django.core.management import call_command
 
 from assessments.models import Question
 from courses.models import Module, Section
+from courses.tests import esp32_rules
 from courses.tests.content_rules import (
     numeric_shortfalls,
     practical_problems,
@@ -40,11 +41,18 @@ RULES = {
         "numeric": {folder: 2 if folder in ("p1/m1", "p1/m2", "p2/m4", "p3/m8", "p4/m12") else 4 for folder in MOTEURS_DIRS},
         "interactive": "1 matching et 1 hotspot",
     },
+    "esp32": {
+        "id_prefix": "s-",
+        # C7 : au moins 3 numériques au quiz de chaque module.
+        "numeric": {folder: 3 for folder in ["p1/m1", "p1/m2", "p1/m3", "p2/m4", "p2/m5", "p2/m6", "p3/m7", "p3/m8", "p3/m9"]},
+        "interactive": "1 matching et 1 hotspot",
+    },
 }
 
 
 def formation_param(slug):
-    """Justification (DoD, critère 2) : le contenu de `moteurs` est rédigé partie par partie (M14, livraisons 2 à 5).
+    """Justification (DoD, critère 2) : le contenu de `moteurs` (M14, livraisons 2 à 5) et celui d'`esp32` (C23, livraisons
+    2 à 4) sont rédigés partie par partie.
     Dès que son manifeste existe, ces garde-fous s'exécutent sans condition."""
     missing = not (content_dir(slug) / "formation.json").exists()
     return pytest.param(slug, marks=pytest.mark.skipif(missing, reason=f"content/{slug}/formation.json pas encore rédigé"))
@@ -492,3 +500,73 @@ def test_moteurs_content_uses_iec_mains_and_plc_addresses_and_links_only_to_its_
     """M2, M7, M11 et US-78 : ni 60 Hz, 460 V ou 120 V, ni adresse Rockwell (I:1/0), ni lien vers une section d'`electro`
     (un rappel renvoie à la fiche du catalogue)."""
     assert scan_folder(content_dir("moteurs")) == []
+
+
+# --- Formation `esp32` (grill C1 à C23), vérifiée partie par partie dès que son manifeste existe ----------------------
+
+ESP32 = formation_param("esp32").marks  # même justification que FORMATIONS
+ESP32_SECTIONS = {"p1/m1": 8, "p1/m2": 8, "p1/m3": 8, "p2/m4": 7, "p2/m5": 8, "p2/m6": 8, "p3/m7": 7, "p3/m8": 7, "p3/m9": 8}
+SKETCHES = content_dir("esp32") / "sketches"
+
+
+def esp32_sketches(lang):
+    return [path.read_text(encoding="utf-8") for path in sorted(SKETCHES.glob(f"m*/*/main.{lang}.cpp"))]
+
+
+@ESP32[0]
+def test_esp32_modules_follow_the_plan_of_c14_to_c16():
+    counts = {m["dir"]: len(m["sections"]) for _, m in iter_modules("esp32")}
+    assert counts == {folder: ESP32_SECTIONS[folder] for folder in counts}
+    assert list(counts) == [f for f in ESP32_SECTIONS if f in counts]
+
+
+@ESP32[0]
+def test_esp32_mini_projects_put_safety_first_at_12_volts_with_both_variants():
+    """C9, C10 : 12 V CC au plus, sécurité en tête, variantes kit complet et multimètre seul."""
+    for _, module in iter_modules("esp32"):
+        [practical] = [s for s in module["sections"] if s["kind"] == "practical"]
+        for lang in LANGS:
+            assert esp32_rules.esp32_practical_problems(section_text("esp32", module, practical, lang), lang) == [], module["dir"]
+
+
+@ESP32[0]
+def test_esp32_quiz_has_three_code_reading_questions_and_one_hotspot_per_module():
+    """C7, C18."""
+    by_dir = {m["dir"]: qs for m, qs in questions_by_module("esp32")}
+    assert esp32_rules.code_reading_shortfalls(by_dir, 3) == []
+    assert all(sum(q["type"] == "hotspot" for q in qs) >= 1 for qs in by_dir.values())
+
+
+@ESP32[0]
+def test_every_esp32_code_block_comes_from_a_sketch_of_its_language():
+    """C17 : un bloc de code d'une section est un croquis entier ou un extrait contigu d'un croquis compilé."""
+    orphans = []
+    for _, module in iter_modules("esp32"):
+        for section in module["sections"]:
+            for lang in LANGS:
+                found = esp32_rules.orphan_code_blocks(section_text("esp32", module, section, lang), esp32_sketches(lang))
+                orphans += [f"{module['dir']}/{section['file']}.{lang} : {line}" for line in found]
+    assert orphans == []
+
+
+@ESP32[0]
+def test_esp32_sketches_are_the_same_program_in_both_languages_with_core_3_api_and_safe_pins():
+    """C3, C9, C16, C20."""
+    problems = []
+    for fr in sorted(SKETCHES.glob("m*/*/main.fr.cpp")):
+        en = fr.with_name("main.en.cpp")
+        assert en.exists(), f"{fr.parent.name} : version anglaise manquante"
+        code = fr.read_text(encoding="utf-8")
+        problems += esp32_rules.sketch_pair_differences(code, en.read_text(encoding="utf-8"))
+        problems += esp32_rules.removed_api_calls(code) + esp32_rules.forbidden_pins(code)
+        problems += esp32_rules.wifi_credentials_in_code(code)
+    assert problems == []
+
+
+@ESP32[0]
+def test_esp32_content_has_no_video_or_simulator_link_and_a_pinned_reference_ini():
+    """C4, C10, C11."""
+    texts = [p.read_text(encoding="utf-8") for p in content_dir("esp32").rglob("*") if p.suffix in (".md", ".json", ".cpp")]
+    assert [link for text in texts for link in esp32_rules.external_links(text)] == []
+    assert esp32_rules.reference_ini_problems((SKETCHES / "platformio.ini").read_text(encoding="utf-8")) == []
+

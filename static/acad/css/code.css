@@ -1,0 +1,8 @@
+/* Blocs de code (formation esp32, US-119), chargé seulement par les pages qui en contiennent. */
+code { font-family: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace; font-size: .9em; }
+pre { max-width: 100%; overflow-x: auto; margin: 1rem 0; padding: .8rem 1rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; line-height: 1.45; }
+pre code { font-size: .85rem; white-space: pre; }
+.prompt pre, .explain pre { font-size: .9rem; }
+:not(pre) > code { overflow-wrap: anywhere; }
+/* Un fieldset s'élargit par défaut à son contenu : sans min-width: 0, un bloc de code déborderait de la page. */
+fieldset.question, .prompt, .questions > .panel, .review > .panel { min-width: 0; }

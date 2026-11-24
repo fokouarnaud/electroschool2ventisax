@@ -10,15 +10,17 @@ SI_PREFIXES = {
 }
 DEGREE = "°"  # déphasage (US-41) : jamais de préfixe SI
 RPM, PERCENT, CELSIUS, NEWTON_METRE, METRE = "tr/min", "%", "°C", "N·m", "m"
+BIT_RATE = "bit/s"  # débit série (US-110), préfixes k et M admis
 # Vitesse, pourcentage et température (US-66) ne prennent pas plus de préfixe que les degrés.
 UNPREFIXED = {DEGREE, RPM, PERCENT, CELSIUS}
 # Saisie normalisée en NFKC : le signe ohm U+2126 devient oméga U+03A9, le micro U+00B5 devient mu U+03BC.
 UNIT_ALIASES = {
     "ohm": "Ω", "ohms": "Ω", "Ohm": "Ω", "Ohms": "Ω",
     "rpm": RPM, "tr.min-1": RPM, "N.m": NEWTON_METRE, "Nm": NEWTON_METRE,
+    "bps": BIT_RATE, "Bd": BIT_RATE, "bauds": BIT_RATE,
 }
 # Unités lues telles quelles, avant tout préfixe : « 8 m » vaut 8 mètres, pas 8 milli.
-WHOLE_UNITS = UNPREFIXED | {NEWTON_METRE, METRE} | set(UNIT_ALIASES)
+WHOLE_UNITS = UNPREFIXED | {NEWTON_METRE, METRE, BIT_RATE} | set(UNIT_ALIASES)
 QUANTITY = re.compile(r"^([+-]?\d+(?:[.,]\d+)?(?:[eE][+-]?\d+)?)\s*(\S*)$")
 LETTER_UNIT = re.compile(r"[A-Za-zΩΩ]+")
 
