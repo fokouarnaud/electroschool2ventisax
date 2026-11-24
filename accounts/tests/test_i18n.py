@@ -102,3 +102,39 @@ def test_french_pages_never_add_a_language_override(client, enrolled, partie, mo
     client.force_login(enrolled)
     html = client.get("/fr/").content.decode()
     assert "<span>Sécurité dans les travaux</span>" in html
+
+
+# --- Sélecteur de langue : le bouton choisi l'emporte toujours (signalé le 2026-11-24) ---------------------------------
+# /i18n/setlang/ n'a pas de préfixe de langue : Django y active la langue du cookie ou du navigateur, et `resolve()` ne
+# reconnaît que le préfixe de la langue active. Arrivé sur une page /en/ par un lien avec un cookie (ou un navigateur)
+# en français, un clic sur FR renvoyait sur la même page /en/.
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "cookie, accept, page, chosen, expected",
+    [
+        ("fr", "", "/en/catalogue/", "fr", "/fr/catalogue/"),
+        ("", "fr-FR,fr;q=0.9", "/en/catalogue/", "fr", "/fr/catalogue/"),
+        ("en", "", "/fr/catalogue/", "en", "/en/catalogue/"),
+        ("", "en-US,en;q=0.9", "/fr/connexion/", "en", "/en/connexion/"),
+        ("fr", "", "/en/?formation=abc", "fr", "/fr/?formation=abc"),
+        ("en", "", "/en/catalogue/", "fr", "/fr/catalogue/"),
+    ],
+)
+def test_language_button_switches_the_page_whatever_the_cookie_or_browser_language(client, cookie, accept, page, chosen, expected):
+    if cookie:
+        client.cookies["django_language"] = cookie
+    headers = {"HTTP_ACCEPT_LANGUAGE": accept} if accept else {}
+    response = client.post("/i18n/setlang/", {"language": chosen, "next": page}, **headers)
+    assert response.status_code == 302
+    assert response["Location"] == expected
+    assert response.cookies["django_language"].value == chosen
+
+
+@pytest.mark.django_db
+def test_language_button_refuses_a_foreign_next_url(client):
+    client.cookies["django_language"] = "fr"
+    response = client.post("/i18n/setlang/", {"language": "fr", "next": "https://example.com/en/"})
+    assert response.status_code == 302
+    assert "example.com" not in response["Location"]
