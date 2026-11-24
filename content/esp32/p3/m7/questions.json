@@ -1,0 +1,1039 @@
+[
+  {
+    "id": "s-p3-m7-q01",
+    "section": "01-bus",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien de fils le bus I2C utilise-t-il pour les données et l'horloge ?",
+      "en": "How many wires does the I2C bus use for data and clock?"
+    },
+    "explanation": {
+      "fr": "Deux : SDA pour les données, SCL pour l'horloge.",
+      "en": "Two: SDA for data, SCL for the clock."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "2",
+          "en": "2"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "4",
+          "en": "4"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "1",
+          "en": "1"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q02",
+    "section": "01-bus",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque bus à ce qui le caractérise.",
+      "en": "Match each bus with what characterises it."
+    },
+    "explanation": {
+      "fr": "L'UART relie deux appareils sans horloge ; l'I2C choisit par adresse ; le SPI choisit par une ligne CS ; I2C et SPI sont synchrones.",
+      "en": "The UART connects two devices without a clock; I2C selects by address; SPI selects with a CS line; I2C and SPI are synchronous."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "UART",
+          "en": "UART"
+        },
+        "right": {
+          "fr": "Deux appareils, sans fil d'horloge",
+          "en": "Two devices, no clock wire"
+        }
+      },
+      {
+        "left": {
+          "fr": "I2C",
+          "en": "I2C"
+        },
+        "right": {
+          "fr": "Appareil choisi par son adresse",
+          "en": "Device chosen by its address"
+        }
+      },
+      {
+        "left": {
+          "fr": "SPI",
+          "en": "SPI"
+        },
+        "right": {
+          "fr": "Appareil choisi par sa ligne CS",
+          "en": "Device chosen by its CS line"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q03",
+    "section": "02-i2c",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Cliquez sur les résistances de tirage du bus I2C.",
+      "en": "Click the pull-up resistors of the I2C bus."
+    },
+    "explanation": {
+      "fr": "Les deux résistances reliées au 3,3 V ramènent SDA et SCL au niveau haut ; les appareils ne font que tirer les lignes vers 0.",
+      "en": "The two resistors connected to 3.3 V bring SDA and SCL back high; the devices only pull the lines to 0."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m7-tirages.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "Les deux résistances du haut",
+          "en": "The two top resistors"
+        },
+        "correct": true,
+        "shape": {
+          "x": 160,
+          "y": 50,
+          "w": 80,
+          "h": 90
+        }
+      },
+      {
+        "text": {
+          "fr": "L'ESP32",
+          "en": "The ESP32"
+        },
+        "correct": false,
+        "shape": {
+          "x": 20,
+          "y": 140,
+          "w": 110,
+          "h": 70
+        }
+      },
+      {
+        "text": {
+          "fr": "Le premier appareil",
+          "en": "The first device"
+        },
+        "correct": false,
+        "shape": {
+          "x": 290,
+          "y": 70,
+          "w": 110,
+          "h": 50
+        }
+      },
+      {
+        "text": {
+          "fr": "Le second appareil",
+          "en": "The second device"
+        },
+        "correct": false,
+        "shape": {
+          "x": 420,
+          "y": 70,
+          "w": 110,
+          "h": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q04",
+    "section": "02-i2c",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien d'adresses différentes permet une adresse I2C de 7 bits ? Répondez en décimal (exemple : 64).",
+      "en": "How many different addresses does a 7-bit I2C address allow? Answer in decimal (example: 64)."
+    },
+    "explanation": {
+      "fr": "2⁷ = 128 (dont 127 utilisables).",
+      "en": "2⁷ = 128 (127 of them usable)."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "128",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m7-q05",
+    "section": "02-i2c",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que signifie un retour 0 de `Wire.endTransmission()` dans ce scanner ?\n\n```cpp\nWire.beginTransmission(address);\nif (Wire.endTransmission() == 0) {\n  Serial.printf(\"0x%02X\\n\", address);\n}\n```",
+      "en": "What does a 0 returned by `Wire.endTransmission()` mean in this scanner?\n\n```cpp\nWire.beginTransmission(address);\nif (Wire.endTransmission() == 0) {\n  Serial.printf(\"0x%02X\\n\", address);\n}\n```"
+    },
+    "explanation": {
+      "fr": "0 : un appareil a reconnu l'adresse et l'a acquittée.",
+      "en": "0: a device recognised the address and acknowledged it."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Un appareil a acquitté cette adresse",
+          "en": "A device acknowledged this address"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Aucun appareil ne répond",
+          "en": "No device replies"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le bus est en court-circuit",
+          "en": "The bus is short-circuited"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q06",
+    "section": "03-oled",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une image de 128 × 64 pixels en noir et blanc compte un bit par pixel. Combien d'octets pèse-t-elle ? Répondez en décimal (exemple : 512).",
+      "en": "A 128 × 64 black-and-white image has one bit per pixel. How many bytes does it weigh? Answer in decimal (example: 512)."
+    },
+    "explanation": {
+      "fr": "128 × 64 / 8 = 1 024 octets.",
+      "en": "128 × 64 / 8 = 1024 bytes."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "1024",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m7-q07",
+    "section": "03-oled",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Après ces lignes, que montre l'écran ?\n\n```cpp\ndisplay.clearDisplay();\ndisplay.setCursor(0, 0);\ndisplay.println(\"23,5 C\");\n```",
+      "en": "After these lines, what does the display show?\n\n```cpp\ndisplay.clearDisplay();\ndisplay.setCursor(0, 0);\ndisplay.println(\"23,5 C\");\n```"
+    },
+    "explanation": {
+      "fr": "Rien de nouveau : tout est dessiné en mémoire tant que `display.display()` n'est pas appelée.",
+      "en": "Nothing new: everything is drawn in memory until `display.display()` is called."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Rien de nouveau : il manque `display.display()`",
+          "en": "Nothing new: `display.display()` is missing"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le texte 23,5 C",
+          "en": "The text 23.5 C"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Un écran blanc",
+          "en": "A white screen"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q08",
+    "section": "04-bme280",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "`readPressure()` renvoie 98 500 Pa. Combien de hectopascals cela fait-il ? Répondez en décimal, sans unité (exemple : 1000).",
+      "en": "`readPressure()` returns 98500 Pa. How many hectopascals is that? Answer in decimal, without a unit (example: 1000)."
+    },
+    "explanation": {
+      "fr": "98 500 / 100 = 985 hPa.",
+      "en": "98500 / 100 = 985 hPa."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "985",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m7-q09",
+    "section": "04-bme280",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Pourquoi divise-t-on par 100 ?\n\n```cpp\nfloat pressure = bme.readPressure() / 100.0f;\n```",
+      "en": "Why divide by 100?\n\n```cpp\nfloat pressure = bme.readPressure() / 100.0f;\n```"
+    },
+    "explanation": {
+      "fr": "`readPressure()` renvoie des pascals ; 1 hPa = 100 Pa.",
+      "en": "`readPressure()` returns pascals; 1 hPa = 100 Pa."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour passer des pascals aux hectopascals",
+          "en": "To go from pascals to hectopascals"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour passer des °C aux °F",
+          "en": "To go from °C to °F"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour arrondir",
+          "en": "To round"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q10",
+    "section": "05-spi",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Comment l'ESP32 choisit-il l'appareil SPI auquel il parle ?",
+      "en": "How does the ESP32 choose the SPI device it talks to?"
+    },
+    "explanation": {
+      "fr": "Il met la ligne CS de cet appareil au niveau bas ; il n'y a pas d'adresse en SPI.",
+      "en": "It sets that device's CS line low; there is no address in SPI."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "En mettant sa ligne CS au niveau bas",
+          "en": "By setting its CS line low"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Par une adresse de 7 bits",
+          "en": "By a 7-bit address"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Par la vitesse",
+          "en": "By the speed"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q11",
+    "section": "05-spi",
+    "type": "multiple",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelles lignes SPI sont partagées par tous les appareils ?",
+      "en": "Which SPI lines are shared by every device?"
+    },
+    "explanation": {
+      "fr": "MOSI, MISO et SCK sont partagées ; chaque appareil a sa propre ligne CS ; SDA appartient à l'I2C.",
+      "en": "MOSI, MISO and SCK are shared; each device has its own CS line; SDA belongs to I2C."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "MOSI",
+          "en": "MOSI"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "MISO",
+          "en": "MISO"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "SCK",
+          "en": "SCK"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "CS",
+          "en": "CS"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "SDA",
+          "en": "SDA"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q12",
+    "section": "06-microsd",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : chaque exécution de ces lignes ajoute une ligne à la fin du fichier, sans effacer les précédentes.\n\n```cpp\nFile file = SD.open(\"/journal.csv\", FILE_APPEND);\nfile.println(\"5000;1650\");\nfile.close();\n```",
+      "en": "True or false: each run of these lines adds a line at the end of the file, without erasing the previous ones.\n\n```cpp\nFile file = SD.open(\"/journal.csv\", FILE_APPEND);\nfile.println(\"5000;1650\");\nfile.close();\n```"
+    },
+    "explanation": {
+      "fr": "Vrai : `FILE_APPEND` ouvre en ajout ; `FILE_WRITE` aurait écrasé le fichier.",
+      "en": "True: `FILE_APPEND` opens for appending; `FILE_WRITE` would have overwritten the file."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q13",
+    "section": "06-microsd",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Le journal ajoute une ligne toutes les 5 s (`PERIOD_MS = 5000`). Combien de lignes en une minute ? Répondez en décimal (exemple : 6).",
+      "en": "The log adds a line every 5 s (`PERIOD_MS = 5000`). How many lines in one minute? Answer in decimal (example: 6)."
+    },
+    "explanation": {
+      "fr": "60 / 5 = 12 lignes.",
+      "en": "60 / 5 = 12 lines."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "12",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m7-q14",
+    "section": "06-microsd",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Pourquoi appelle-t-on `file.close()` après chaque écriture ?",
+      "en": "Why is `file.close()` called after each write?"
+    },
+    "explanation": {
+      "fr": "La fermeture termine l'écriture : une carte retirée avant peut perdre les dernières lignes.",
+      "en": "Closing finishes the write: a card removed before may lose the last lines."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour que les données soient vraiment écrites",
+          "en": "So that the data is really written"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour économiser de la mémoire RTC",
+          "en": "To save RTC memory"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour changer de broche CS",
+          "en": "To change the CS pin"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-q15",
+    "section": "02-i2c",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Sur quelles broches se trouve le bus I2C habituel de l'ESP32 ?",
+      "en": "On which pins is the usual ESP32 I2C bus?"
+    },
+    "explanation": {
+      "fr": "SDA sur GPIO 21, SCL sur GPIO 22.",
+      "en": "SDA on GPIO 21, SCL on GPIO 22."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "SDA 21, SCL 22",
+          "en": "SDA 21, SCL 22"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "SDA 1, SCL 3",
+          "en": "SDA 1, SCL 3"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "SDA 34, SCL 35",
+          "en": "SDA 34, SCL 35"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x01",
+    "section": "01-bus",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que veut dire qu'un bus est synchrone ?",
+      "en": "What does it mean for a bus to be synchronous?"
+    },
+    "explanation": {
+      "fr": "Un fil d'horloge partagé indique quand lire chaque bit.",
+      "en": "A shared clock wire tells when to read each bit."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Un fil d'horloge partagé dit quand lire chaque bit",
+          "en": "A shared clock wire tells when to read each bit"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il va toujours à 115 200 bit/s",
+          "en": "It always runs at 115200 bit/s"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il n'a qu'un seul fil",
+          "en": "It has a single wire"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x02",
+    "section": "02-i2c",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Sur un bus I2C, qu'est-ce qui ramène SDA et SCL au niveau haut ?",
+      "en": "On an I2C bus, what brings SDA and SCL back high?"
+    },
+    "explanation": {
+      "fr": "Les résistances de tirage vers 3,3 V ; les appareils ne font que tirer vers 0.",
+      "en": "The pull-up resistors to 3.3 V; the devices only pull to 0."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Les résistances de tirage",
+          "en": "The pull-up resistors"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "L'écran OLED",
+          "en": "The OLED display"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La broche 5V",
+          "en": "The 5V pin"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x03",
+    "section": "02-i2c",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle est l'adresse I2C habituelle de l'écran OLED SSD1306 ?",
+      "en": "What is the usual I2C address of the SSD1306 OLED display?"
+    },
+    "explanation": {
+      "fr": "0x3C.",
+      "en": "0x3C."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "0x3C",
+          "en": "0x3C"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "0x76",
+          "en": "0x76"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "0x00",
+          "en": "0x00"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x04",
+    "section": "03-oled",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Où se trouve l'origine (0, 0) de l'écran OLED ?",
+      "en": "Where is the origin (0, 0) of the OLED display?"
+    },
+    "explanation": {
+      "fr": "En haut à gauche ; y grandit vers le bas.",
+      "en": "At the top left; y grows downwards."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "En haut à gauche",
+          "en": "At the top left"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "En bas à gauche",
+          "en": "At the bottom left"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Au centre",
+          "en": "In the centre"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x05",
+    "section": "03-oled",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Combien de pixels compte un écran de 128 × 64 ? Répondez en décimal (exemple : 4096).",
+      "en": "How many pixels does a 128 × 64 display have? Answer in decimal (example: 4096)."
+    },
+    "explanation": {
+      "fr": "128 × 64 = 8 192.",
+      "en": "128 × 64 = 8192."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "8192",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m7-x06",
+    "section": "04-bme280",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Comment l'écran et le BME280 partagent-ils les mêmes fils sans se gêner ?",
+      "en": "How do the display and the BME280 share the same wires without getting in each other's way?"
+    },
+    "explanation": {
+      "fr": "Chacun ne répond qu'à son adresse.",
+      "en": "Each replies only to its own address."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Chacun a son adresse",
+          "en": "Each has its own address"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Ils parlent à tour de rôle toutes les secondes",
+          "en": "They take turns every second"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Ils n'ont pas besoin de masse",
+          "en": "They need no ground"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x07",
+    "section": "04-bme280",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "La pression baisse d'environ 12 hPa tous les 100 m. De combien de hectopascals baisse-t-elle en montant de 300 m ? Répondez sans unité (exemple : 24).",
+      "en": "Pressure drops by about 12 hPa every 100 m. By how many hectopascals does it drop when climbing 300 m? Answer without a unit (example: 24)."
+    },
+    "explanation": {
+      "fr": "3 × 12 = 36 hPa.",
+      "en": "3 × 12 = 36 hPa."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "36",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m7-x08",
+    "section": "05-spi",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Sur quelle broche se trouve MOSI par défaut ?",
+      "en": "On which pin is MOSI by default?"
+    },
+    "explanation": {
+      "fr": "GPIO 23.",
+      "en": "GPIO 23."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 23",
+          "en": "GPIO 23"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 19",
+          "en": "GPIO 19"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "GPIO 21",
+          "en": "GPIO 21"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x09",
+    "section": "05-spi",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi utilise-t-on le SPI plutôt que l'I2C pour une carte microSD ?",
+      "en": "Why use SPI rather than I2C for a microSD card?"
+    },
+    "explanation": {
+      "fr": "Le SPI est bien plus rapide, ce qui convient au volume de données d'une carte mémoire.",
+      "en": "SPI is much faster, which suits the data volume of a memory card."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il est bien plus rapide",
+          "en": "It is much faster"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il n'utilise que deux fils",
+          "en": "It uses only two wires"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il n'a pas besoin d'horloge",
+          "en": "It needs no clock"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x10",
+    "section": "06-microsd",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Comment la carte microSD doit-elle être formatée ?",
+      "en": "How must the microSD card be formatted?"
+    },
+    "explanation": {
+      "fr": "En FAT32.",
+      "en": "As FAT32."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "En FAT32",
+          "en": "As FAT32"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "En NTFS",
+          "en": "As NTFS"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Aucun formatage",
+          "en": "No formatting"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m7-x11",
+    "section": "06-microsd",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un journal ajoute une ligne toutes les 10 s. Combien de lignes en une heure ? Répondez en décimal (exemple : 60).",
+      "en": "A log adds a line every 10 s. How many lines in one hour? Answer in decimal (example: 60)."
+    },
+    "explanation": {
+      "fr": "3 600 / 10 = 360.",
+      "en": "3600 / 10 = 360."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "360",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m7-x12",
+    "section": "06-microsd",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que fait `FILE_WRITE` sur un fichier existant, contrairement à `FILE_APPEND` ?",
+      "en": "What does `FILE_WRITE` do to an existing file, unlike `FILE_APPEND`?"
+    },
+    "explanation": {
+      "fr": "Il l'écrase au lieu d'ajouter à la fin.",
+      "en": "It overwrites it instead of adding at the end."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il l'écrase",
+          "en": "It overwrites it"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il ajoute à la fin",
+          "en": "It adds at the end"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il le supprime de la carte",
+          "en": "It deletes it from the card"
+        },
+        "correct": false
+      }
+    ]
+  }
+]

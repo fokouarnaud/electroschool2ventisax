@@ -1,0 +1,849 @@
+{
+  "slug": "esp32",
+  "open": false,
+  "icon": "code",
+  "title": {
+    "fr": "Microcontrôleurs : l'ESP32",
+    "en": "Microcontrollers: the ESP32"
+  },
+  "description": {
+    "fr": "Câbler et programmer un ESP32 avec PlatformIO : entrées-sorties, temporisations, terminal série, mesures, bus, veille et Wi-Fi. Conseillé après la Partie 1 de la formation Électronique.",
+    "en": "Wire and program an ESP32 with PlatformIO: inputs and outputs, timing, serial terminal, measurement, buses, sleep and Wi-Fi. Recommended after Part 1 of the Electronics course."
+  },
+  "parties": [
+    {
+      "slug": "p1",
+      "order": 1,
+      "title": {
+        "fr": "Premiers pas et entrées-sorties",
+        "en": "First steps, inputs and outputs"
+      },
+      "description": {
+        "fr": "Découvrir la carte, choisir ses broches sans risque, allumer une LED et lire un bouton. Conseillé après la Partie 1 de la formation Électronique (loi d'Ohm, diode, transistor en commutation).",
+        "en": "Discover the board, choose pins safely, light an LED and read a button. Recommended after Part 1 of the Electronics course (Ohm's law, diode, switching transistor)."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p1/m1",
+          "duration_hours": 6,
+          "title": {
+            "fr": "L'ESP32 et sa carte",
+            "en": "The ESP32 and its board"
+          },
+          "competence": {
+            "fr": "Décrire l'ESP32 et sa carte, choisir une broche sans risque et téléverser un premier programme avec PlatformIO.",
+            "en": "Describe the ESP32 and its board, choose a pin safely and upload a first program with PlatformIO."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis carte d'identité de la puce affichée dans le moniteur série.",
+            "en": "Module quiz, then the chip identity card shown in the serial monitor."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-composants",
+              "kind": "content",
+              "title": {
+                "fr": "Du composant discret au microcontrôleur",
+                "en": "From discrete components to the microcontroller"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-architecture",
+              "kind": "content",
+              "title": {
+                "fr": "L'architecture de l'ESP32",
+                "en": "The ESP32 architecture"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-carte",
+              "kind": "content",
+              "title": {
+                "fr": "La carte de développement DevKit",
+                "en": "The DevKit development board"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-brochage",
+              "kind": "content",
+              "title": {
+                "fr": "Le brochage et les broches à éviter",
+                "en": "The pinout and the pins to avoid"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-regles-or",
+              "kind": "content",
+              "title": {
+                "fr": "Les trois règles d'or",
+                "en": "The three golden rules"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-platformio",
+              "kind": "content",
+              "title": {
+                "fr": "Installer PlatformIO",
+                "en": "Installing PlatformIO"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-premier-programme",
+              "kind": "content",
+              "title": {
+                "fr": "Le premier programme",
+                "en": "The first program"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : la carte d'identité de la puce",
+                "en": "Mini-project: the chip identity card"
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p1/m2",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Sorties numériques",
+            "en": "Digital outputs"
+          },
+          "competence": {
+            "fr": "Allumer une LED en logique directe ou inversée, dimensionner sa résistance et commander une charge 12 V par MOSFET.",
+            "en": "Light an LED in direct or inverted logic, size its resistor and drive a 12 V load through a MOSFET."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis feu tricolore et lampe 12 V câblés et mesurés.",
+            "en": "Module quiz, then traffic light and 12 V lamp wired and measured."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-sortie",
+              "kind": "content",
+              "title": {
+                "fr": "Une sortie numérique : 0 V ou 3,3 V",
+                "en": "A digital output: 0 V or 3.3 V"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-led-resistance",
+              "kind": "content",
+              "title": {
+                "fr": "LED et résistance de limitation",
+                "en": "LED and limiting resistor"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-source-puits",
+              "kind": "content",
+              "title": {
+                "fr": "Source et puits : logique directe et inversée",
+                "en": "Source and sink: direct and inverted logic"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-blink",
+              "kind": "content",
+              "title": {
+                "fr": "pinMode, digitalWrite et le Blink",
+                "en": "pinMode, digitalWrite and Blink"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-sous-le-capot",
+              "kind": "content",
+              "title": {
+                "fr": "Sous le capot : registre, ESP-IDF, Arduino",
+                "en": "Under the hood: register, ESP-IDF, Arduino"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-mosfet",
+              "kind": "content",
+              "title": {
+                "fr": "Commander 12 V avec un MOSFET",
+                "en": "Driving 12 V with a MOSFET"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-sequences",
+              "kind": "content",
+              "title": {
+                "fr": "Séquences de LED : le feu tricolore",
+                "en": "LED sequences: the traffic light"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : feu tricolore et lampe 12 V",
+                "en": "Mini-project: traffic light and 12 V lamp"
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p1/m3",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Entrées numériques",
+            "en": "Digital inputs"
+          },
+          "competence": {
+            "fr": "Lire un bouton sans entrée flottante ni rebond, détecter un appui et programmer une machine à états.",
+            "en": "Read a button without a floating input or bounces, detect a press and program a state machine."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis feu tricolore à bouton et mode veille.",
+            "en": "Module quiz, then traffic light with a button and standby mode."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-entree",
+              "kind": "content",
+              "title": {
+                "fr": "Entrée numérique et état flottant",
+                "en": "Digital input and floating state"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-tirage",
+              "kind": "content",
+              "title": {
+                "fr": "Pull-down, pull-up et résistances internes",
+                "en": "Pull-down, pull-up and internal resistors"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-lire-ecrire",
+              "kind": "content",
+              "title": {
+                "fr": "digitalRead : lire puis écrire",
+                "en": "digitalRead: read then write"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-rebonds",
+              "kind": "content",
+              "title": {
+                "fr": "Les rebonds et l'anti-rebond",
+                "en": "Bounces and debouncing"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-front",
+              "kind": "content",
+              "title": {
+                "fr": "Détecter un front : appui et bascule",
+                "en": "Detecting an edge: press and toggle"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-machine-etats",
+              "kind": "content",
+              "title": {
+                "fr": "Machine à états : cycle et mode veille",
+                "en": "State machine: cycle and standby"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-signal-5v",
+              "kind": "content",
+              "title": {
+                "fr": "Lire un signal 5 V : pont diviseur",
+                "en": "Reading a 5 V signal: voltage divider"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : le feu à bouton",
+                "en": "Mini-project: the traffic light with a button"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "p2",
+      "order": 2,
+      "title": {
+        "fr": "Temps, mesures et terminal",
+        "en": "Timing, measurement and terminal"
+      },
+      "description": {
+        "fr": "Mesurer le temps sans bloquer, réagir aux interruptions, dialoguer par le terminal série, mesurer une tension et régler une puissance. Conseillé après la Partie 1.",
+        "en": "Measure time without blocking, react to interrupts, talk through the serial terminal, measure a voltage and set a power level. Recommended after Part 1."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p2/m4",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Temporisations et interruptions",
+            "en": "Timing and interrupts"
+          },
+          "competence": {
+            "fr": "Remplacer delay par millis, faire tourner plusieurs tâches, réagir à une interruption et régler un timer matériel.",
+            "en": "Replace delay with millis, run several tasks, react to an interrupt and set a hardware timer."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis chronomètre de réaction.",
+            "en": "Module quiz, then reaction timer."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-delay",
+              "kind": "content",
+              "title": {
+                "fr": "delay : attendre en bloquant",
+                "en": "delay: waiting while blocking"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-millis",
+              "kind": "content",
+              "title": {
+                "fr": "millis : le temps qui passe",
+                "en": "millis: the passing time"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-sans-bloquer",
+              "kind": "content",
+              "title": {
+                "fr": "Clignoter sans bloquer",
+                "en": "Blinking without blocking"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-rythmes",
+              "kind": "content",
+              "title": {
+                "fr": "Plusieurs rythmes en parallèle",
+                "en": "Several rhythms in parallel"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-interruptions",
+              "kind": "content",
+              "title": {
+                "fr": "Les interruptions externes",
+                "en": "External interrupts"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-timers",
+              "kind": "content",
+              "title": {
+                "fr": "Les timers matériels",
+                "en": "Hardware timers"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : le chronomètre de réaction",
+                "en": "Mini-project: the reaction timer"
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p2/m5",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Le terminal série",
+            "en": "The serial terminal"
+          },
+          "competence": {
+            "fr": "Configurer la liaison série, envoyer et recevoir du texte, interpréter des commandes et déboguer par une trace.",
+            "en": "Set up the serial link, send and receive text, interpret commands and debug with a trace."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis pupitre de commande du feu tricolore.",
+            "en": "Module quiz, then traffic-light control desk."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-uart",
+              "kind": "content",
+              "title": {
+                "fr": "L'UART et le pont USB",
+                "en": "The UART and the USB bridge"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-serial-begin",
+              "kind": "content",
+              "title": {
+                "fr": "Serial.begin et monitor_speed",
+                "en": "Serial.begin and monitor_speed"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-envoyer",
+              "kind": "content",
+              "title": {
+                "fr": "Envoyer : print, println, printf",
+                "en": "Sending: print, println, printf"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-recevoir",
+              "kind": "content",
+              "title": {
+                "fr": "Recevoir : available, read et le code ASCII",
+                "en": "Receiving: available, read and ASCII codes"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-commande",
+              "kind": "content",
+              "title": {
+                "fr": "Lire une commande",
+                "en": "Reading a command"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-deboguer",
+              "kind": "content",
+              "title": {
+                "fr": "Déboguer avec le terminal",
+                "en": "Debugging with the terminal"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-serial2",
+              "kind": "content",
+              "title": {
+                "fr": "Une deuxième UART : Serial2",
+                "en": "A second UART: Serial2"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : le pupitre de commande",
+                "en": "Mini-project: the control desk"
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p2/m6",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Analogique et tactile",
+            "en": "Analog and touch"
+          },
+          "competence": {
+            "fr": "Mesurer une tension, régler une luminosité ou une vitesse par MLI, produire un son, détecter un doigt et produire une tension.",
+            "en": "Measure a voltage, set a brightness or a speed with PWM, make a sound, detect a finger and produce a voltage."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis lampe de chevet tactile.",
+            "en": "Module quiz, then touch bedside lamp."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-adc",
+              "kind": "content",
+              "title": {
+                "fr": "L'ADC 12 bits",
+                "en": "The 12-bit ADC"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-potentiometre",
+              "kind": "content",
+              "title": {
+                "fr": "Potentiomètre et pont diviseur",
+                "en": "Potentiometer and voltage divider"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-mli",
+              "kind": "content",
+              "title": {
+                "fr": "La MLI avec LEDC",
+                "en": "PWM with LEDC"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-moteur-mli",
+              "kind": "content",
+              "title": {
+                "fr": "MLI et MOSFET : la vitesse d'un moteur 12 V",
+                "en": "PWM and MOSFET: the speed of a 12 V motor"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-buzzer",
+              "kind": "content",
+              "title": {
+                "fr": "Le buzzer et les notes",
+                "en": "The buzzer and the notes"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-touch",
+              "kind": "content",
+              "title": {
+                "fr": "Les capteurs tactiles",
+                "en": "Touch sensors"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-dac",
+              "kind": "content",
+              "title": {
+                "fr": "Le DAC 8 bits",
+                "en": "The 8-bit DAC"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : la lampe de chevet tactile",
+                "en": "Mini-project: the touch bedside lamp"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "p3",
+      "order": 3,
+      "title": {
+        "fr": "Bus, mémoire et connectivité",
+        "en": "Buses, memory and connectivity"
+      },
+      "description": {
+        "fr": "Dialoguer avec un écran, un capteur et une carte mémoire, économiser l'énergie et commander la carte depuis un téléphone. Conseillé après les Parties 1 et 2.",
+        "en": "Talk to a display, a sensor and a memory card, save energy and control the board from a phone. Recommended after Parts 1 and 2."
+      },
+      "modules": [
+        {
+          "order": 1,
+          "dir": "p3/m7",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Bus I2C et SPI",
+            "en": "I2C and SPI buses"
+          },
+          "competence": {
+            "fr": "Câbler et programmer un écran OLED et un capteur sur le bus I2C, et une carte microSD sur le bus SPI.",
+            "en": "Wire and program an OLED display and a sensor on the I2C bus, and a microSD card on the SPI bus."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis station de mesure.",
+            "en": "Module quiz, then measuring station."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-bus",
+              "kind": "content",
+              "title": {
+                "fr": "Bus synchrones : I2C et SPI face à l'UART",
+                "en": "Synchronous buses: I2C and SPI versus the UART"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-i2c",
+              "kind": "content",
+              "title": {
+                "fr": "Le bus I2C et le scanner",
+                "en": "The I2C bus and the scanner"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-oled",
+              "kind": "content",
+              "title": {
+                "fr": "L'écran OLED",
+                "en": "The OLED display"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-bme280",
+              "kind": "content",
+              "title": {
+                "fr": "Le capteur BME280",
+                "en": "The BME280 sensor"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-spi",
+              "kind": "content",
+              "title": {
+                "fr": "Le bus SPI",
+                "en": "The SPI bus"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-microsd",
+              "kind": "content",
+              "title": {
+                "fr": "La carte microSD : un journal de mesures",
+                "en": "The microSD card: a measurement log"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : la station de mesure",
+                "en": "Mini-project: the measuring station"
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "dir": "p3/m8",
+          "duration_hours": 8,
+          "title": {
+            "fr": "Mémoire et énergie",
+            "en": "Memory and energy"
+          },
+          "competence": {
+            "fr": "Choisir où garder une valeur, enregistrer un réglage durable et faire dormir la carte pour économiser l'énergie.",
+            "en": "Choose where to keep a value, store a lasting setting and put the board to sleep to save energy."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis enregistreur sobre.",
+            "en": "Module quiz, then frugal logger."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-memoires",
+              "kind": "content",
+              "title": {
+                "fr": "Flash, SRAM et mémoire RTC",
+                "en": "Flash, SRAM and RTC memory"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-preferences",
+              "kind": "content",
+              "title": {
+                "fr": "Preferences : garder un réglage",
+                "en": "Preferences: keeping a setting"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-consommation",
+              "kind": "content",
+              "title": {
+                "fr": "Consommation et modes de veille",
+                "en": "Power consumption and sleep modes"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-deep-sleep",
+              "kind": "content",
+              "title": {
+                "fr": "La veille profonde et le réveil par minuterie",
+                "en": "Deep sleep and timer wake-up"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-reveils",
+              "kind": "content",
+              "title": {
+                "fr": "Réveil par le toucher et par une broche",
+                "en": "Wake-up by touch and by a pin"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-rtc-data",
+              "kind": "content",
+              "title": {
+                "fr": "RTC_DATA_ATTR : survivre au réveil",
+                "en": "RTC_DATA_ATTR: surviving wake-up"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : l'enregistreur sobre",
+                "en": "Mini-project: the frugal logger"
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "dir": "p3/m9",
+          "duration_hours": 10,
+          "title": {
+            "fr": "Wi-Fi et serveur web",
+            "en": "Wi-Fi and web server"
+          },
+          "competence": {
+            "fr": "Connecter la carte au Wi-Fi, servir une page et des données, commander une charge depuis un téléphone, sans exposer ses secrets.",
+            "en": "Connect the board to Wi-Fi, serve a page and data, control a load from a phone, without exposing secrets."
+          },
+          "evaluation_note": {
+            "fr": "Quiz du module, puis tableau de bord web.",
+            "en": "Module quiz, then web dashboard."
+          },
+          "sections": [
+            {
+              "order": 1,
+              "file": "01-modes",
+              "kind": "content",
+              "title": {
+                "fr": "Station et point d'accès",
+                "en": "Station and access point"
+              }
+            },
+            {
+              "order": 2,
+              "file": "02-connexion",
+              "kind": "content",
+              "title": {
+                "fr": "Se connecter : IP, RSSI, reconnexion",
+                "en": "Connecting: IP, RSSI, reconnection"
+              }
+            },
+            {
+              "order": 3,
+              "file": "03-serveur",
+              "kind": "content",
+              "title": {
+                "fr": "Le serveur web : page et routes",
+                "en": "The web server: page and routes"
+              }
+            },
+            {
+              "order": 4,
+              "file": "04-commande",
+              "kind": "content",
+              "title": {
+                "fr": "Commander la lampe 12 V du téléphone",
+                "en": "Controlling the 12 V lamp from the phone"
+              }
+            },
+            {
+              "order": 5,
+              "file": "05-mesure",
+              "kind": "content",
+              "title": {
+                "fr": "Afficher une mesure en JSON",
+                "en": "Showing a measurement in JSON"
+              }
+            },
+            {
+              "order": 6,
+              "file": "06-securite",
+              "kind": "content",
+              "title": {
+                "fr": "Sécurité : secrets.h et réseau local",
+                "en": "Security: secrets.h and the local network"
+              }
+            },
+            {
+              "order": 7,
+              "file": "07-ouvertures",
+              "kind": "content",
+              "title": {
+                "fr": "Ouvertures : BLE, ESP-IDF et FreeRTOS",
+                "en": "Going further: BLE, ESP-IDF and FreeRTOS"
+              }
+            },
+            {
+              "order": 8,
+              "file": "08-mini-projet",
+              "kind": "practical",
+              "title": {
+                "fr": "Mini-projet : le tableau de bord web",
+                "en": "Mini-project: the web dashboard"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1012 @@
+[
+  {
+    "id": "s-p1-m2-q01",
+    "section": "01-sortie",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle tension impose `digitalWrite(LED_PIN, HIGH)` sur la broche ?",
+      "en": "What voltage does `digitalWrite(LED_PIN, HIGH)` impose on the pin?"
+    },
+    "explanation": {
+      "fr": "Le niveau haut de l'ESP32 vaut 3,3 V ; le niveau bas, 0 V.",
+      "en": "The ESP32 high level is 3.3 V; the low level, 0 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "3,3 V",
+          "en": "3.3 V"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "5 V",
+          "en": "5 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "0 V",
+          "en": "0 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "12 V",
+          "en": "12 V"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q02",
+    "section": "01-sortie",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : une broche de sortie peut alimenter directement un moteur de 12 V.",
+      "en": "True or false: an output pin can directly power a 12 V motor."
+    },
+    "explanation": {
+      "fr": "Faux : la broche donne 3,3 V et une douzaine de milliampères au plus ; elle commande un MOSFET qui alimente le moteur.",
+      "en": "False: the pin gives 3.3 V and about a dozen milliamps at most; it drives a MOSFET that powers the motor."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q03",
+    "section": "02-led-resistance",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une LED verte a une tension directe de 2,2 V. Quelle résistance faut-il pour un courant de 5 mA sur une broche à 3,3 V ? (exemple : 1,5 kΩ)",
+      "en": "A green LED has a forward voltage of 2.2 V. What resistor is needed for a 5 mA current on a 3.3 V pin? (example: 1.5 kΩ)"
+    },
+    "explanation": {
+      "fr": "R = (3,3 − 2,2) / 0,005 = 220 Ω.",
+      "en": "R = (3.3 − 2.2) / 0.005 = 220 Ω."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "220.00",
+      "unit": "Ω",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m2-q04",
+    "section": "02-led-resistance",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une LED jaune (tension directe 2,1 V) est montée avec 220 Ω sur une broche à 3,3 V. Quel courant la traverse ? (exemple : 2,5 mA)",
+      "en": "A yellow LED (forward voltage 2.1 V) is fitted with 220 Ω on a 3.3 V pin. What current flows through it? (example: 2.5 mA)"
+    },
+    "explanation": {
+      "fr": "I = (3,3 − 2,1) / 220 ≈ 5,45 mA.",
+      "en": "I = (3.3 − 2.1) / 220 ≈ 5.45 mA."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.0054545",
+      "unit": "A",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m2-q05",
+    "section": "03-source-puits",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Cliquez sur le montage où la LED s'allume quand la broche est au niveau bas (logique inversée).",
+      "en": "Click the circuit in which the LED lights when the pin is low (inverted logic)."
+    },
+    "explanation": {
+      "fr": "Au milieu, la LED va du 3,3 V à la broche : au niveau bas, le courant entre dans la broche. À gauche, c'est la logique directe ; à droite, la LED ne dépend d'aucune broche.",
+      "en": "In the middle, the LED goes from 3.3 V to the pin: at the low level, current enters the pin. On the left it is direct logic; on the right the LED depends on no pin."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m2-puits.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "Montage du milieu",
+          "en": "Middle circuit"
+        },
+        "correct": true,
+        "shape": {
+          "x": 230,
+          "y": 15,
+          "w": 140,
+          "h": 235
+        }
+      },
+      {
+        "text": {
+          "fr": "Montage de gauche",
+          "en": "Left circuit"
+        },
+        "correct": false,
+        "shape": {
+          "x": 30,
+          "y": 15,
+          "w": 140,
+          "h": 235
+        }
+      },
+      {
+        "text": {
+          "fr": "Montage de droite",
+          "en": "Right circuit"
+        },
+        "correct": false,
+        "shape": {
+          "x": 430,
+          "y": 15,
+          "w": 140,
+          "h": 235
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q06",
+    "section": "03-source-puits",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La LED est câblée en logique inversée. Que fait la boucle de ce programme ?\n\n```cpp\nconst uint8_t LED_PIN = 26;\nconst uint8_t LED_ON = LOW;\nconst uint8_t LED_OFF = HIGH;\n\nvoid loop() {\n  digitalWrite(LED_PIN, LED_ON);\n  delay(500);\n}\n```",
+      "en": "The LED is wired in inverted logic. What does the loop of this program do?\n\n```cpp\nconst uint8_t LED_PIN = 26;\nconst uint8_t LED_ON = LOW;\nconst uint8_t LED_OFF = HIGH;\n\nvoid loop() {\n  digitalWrite(LED_PIN, LED_ON);\n  delay(500);\n}\n```"
+    },
+    "explanation": {
+      "fr": "`LED_ON` vaut `LOW` : la broche passe à 0 V et, en logique inversée, le courant entre dans la broche : la LED s'allume et le reste.",
+      "en": "`LED_ON` is `LOW`: the pin goes to 0 V and, in inverted logic, current enters the pin: the LED lights and stays on."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle met la broche à 0 V : la LED s'allume",
+          "en": "It sets the pin to 0 V: the LED lights"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle met la broche à 3,3 V : la LED s'allume",
+          "en": "It sets the pin to 3.3 V: the LED lights"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle éteint la LED",
+          "en": "It switches the LED off"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q07",
+    "section": "04-blink",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle est la fréquence de clignotement de ce programme ? (exemple : 2 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 25;\nconst uint32_t HALF_PERIOD_MS = 100;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
+      "en": "What is the blinking frequency of this program? (example: 2 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 25;\nconst uint32_t HALF_PERIOD_MS = 100;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
+    },
+    "explanation": {
+      "fr": "100 ms allumée + 100 ms éteinte = 200 ms de période, soit 1 / 0,2 = 5 Hz.",
+      "en": "100 ms on + 100 ms off = 200 ms period, that is 1 / 0.2 = 5 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "5",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m2-q08",
+    "section": "04-blink",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Ce programme ne fait pas clignoter la LED. Quelle ligne manque dans `setup()` ?\n\n```cpp\nconst uint8_t LED_PIN = 25;\n\nvoid setup() {\n}\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(500);\n  digitalWrite(LED_PIN, LOW);\n  delay(500);\n}\n```",
+      "en": "This program does not blink the LED. Which line is missing from `setup()`?\n\n```cpp\nconst uint8_t LED_PIN = 25;\n\nvoid setup() {\n}\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(500);\n  digitalWrite(LED_PIN, LOW);\n  delay(500);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Sans `pinMode(LED_PIN, OUTPUT)`, la broche n'est pas une sortie : `digitalWrite` n'impose aucune tension.",
+      "en": "Without `pinMode(LED_PIN, OUTPUT)`, the pin is not an output: `digitalWrite` imposes no voltage."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`pinMode(LED_PIN, OUTPUT);`",
+          "en": "`pinMode(LED_PIN, OUTPUT);`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`Serial.begin(115200);`",
+          "en": "`Serial.begin(115200);`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`delay(500);`",
+          "en": "`delay(500);`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q09",
+    "section": "04-blink",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Pourquoi déclare-t-on la broche avec `const uint8_t LED_PIN = 25;` ?",
+      "en": "Why is the pin declared with `const uint8_t LED_PIN = 25;`?"
+    },
+    "explanation": {
+      "fr": "`const` empêche toute modification par erreur, `uint8_t` (0 à 255) suffit pour un numéro de broche, et le nom rend le programme lisible.",
+      "en": "`const` prevents any change by mistake, `uint8_t` (0 to 255) is enough for a pin number, and the name makes the program readable."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour un nom lisible, une valeur non modifiable et un type à sa taille",
+          "en": "For a readable name, an unchangeable value and a type of the right size"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour que la broche fournisse plus de courant",
+          "en": "So that the pin supplies more current"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Parce que `digitalWrite` refuse un nombre écrit directement",
+          "en": "Because `digitalWrite` refuses a number written directly"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q10",
+    "section": "05-sous-le-capot",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque niveau à sa façon de mettre GPIO 25 au niveau haut.",
+      "en": "Match each level with its way of setting GPIO 25 high."
+    },
+    "explanation": {
+      "fr": "Arduino appelle le pilote ESP-IDF, qui écrit dans le registre de sortie.",
+      "en": "Arduino calls the ESP-IDF driver, which writes to the output register."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "Arduino",
+          "en": "Arduino"
+        },
+        "right": {
+          "fr": "`digitalWrite(LED_PIN, HIGH)`",
+          "en": "`digitalWrite(LED_PIN, HIGH)`"
+        }
+      },
+      {
+        "left": {
+          "fr": "ESP-IDF",
+          "en": "ESP-IDF"
+        },
+        "right": {
+          "fr": "`gpio_set_level((gpio_num_t)LED_PIN, 1)`",
+          "en": "`gpio_set_level((gpio_num_t)LED_PIN, 1)`"
+        }
+      },
+      {
+        "left": {
+          "fr": "Registre",
+          "en": "Register"
+        },
+        "right": {
+          "fr": "`REG_WRITE(GPIO_OUT_W1TS_REG, 1UL << LED_PIN)`",
+          "en": "`REG_WRITE(GPIO_OUT_W1TS_REG, 1UL << LED_PIN)`"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q11",
+    "section": "06-mosfet",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "À quoi sert la résistance de 10 kΩ entre la grille du MOSFET et la masse ?",
+      "en": "What is the 10 kΩ resistor between the MOSFET gate and ground for?"
+    },
+    "explanation": {
+      "fr": "Pendant le démarrage, la broche n'impose encore rien : la résistance de rappel garde la grille à 0 V, donc le moteur arrêté.",
+      "en": "During boot, the pin imposes nothing yet: the pull-down keeps the gate at 0 V, so the motor stopped."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Garder le MOSFET bloqué pendant le démarrage",
+          "en": "Keep the MOSFET off during boot"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Augmenter la vitesse du moteur",
+          "en": "Increase the motor speed"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Abaisser le 12 V à 3,3 V",
+          "en": "Lower the 12 V to 3.3 V"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q12",
+    "section": "06-mosfet",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Pourquoi place-t-on une diode de roue libre en parallèle sur le moteur ?",
+      "en": "Why is a freewheeling diode placed in parallel with the motor?"
+    },
+    "explanation": {
+      "fr": "Le moteur est une bobine : à chaque coupure, il produit une surtension que la diode écoule, ce qui protège le MOSFET.",
+      "en": "The motor is a coil: at each switch-off it produces a surge that the diode drains, which protects the MOSFET."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour écouler la surtension du moteur à chaque coupure",
+          "en": "To drain the motor surge at each switch-off"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour faire tourner le moteur dans les deux sens",
+          "en": "To run the motor both ways"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour éclairer le montage",
+          "en": "To light the circuit"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q13",
+    "section": "06-mosfet",
+    "type": "multiple",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quels éléments sont nécessaires pour commander un moteur 12 V depuis l'ESP32 ?",
+      "en": "Which items are needed to drive a 12 V motor from the ESP32?"
+    },
+    "explanation": {
+      "fr": "Un MOSFET logic-level, une diode de roue libre et une masse commune ; on ne relie jamais le 12 V à une broche.",
+      "en": "A logic-level MOSFET, a freewheeling diode and a common ground; the 12 V is never connected to a pin."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Un MOSFET logic-level",
+          "en": "A logic-level MOSFET"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Une diode de roue libre",
+          "en": "A freewheeling diode"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Une masse commune",
+          "en": "A common ground"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Relier le 12 V à une broche",
+          "en": "Connecting the 12 V to a pin"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Une LED en série avec le moteur",
+          "en": "An LED in series with the motor"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-q14",
+    "section": "07-sequences",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien de temps dure un cycle complet de ce feu ? (exemple : 15 s)\n\n```cpp\nconst uint32_t GREEN_MS = 4000;\nconst uint32_t AMBER_MS = 1000;\nconst uint32_t RED_MS = 4000;\n\nvoid loop() {\n  showLight(GREEN_PIN);\n  delay(GREEN_MS);\n  showLight(AMBER_PIN);\n  delay(AMBER_MS);\n  showLight(RED_PIN);\n  delay(RED_MS);\n}\n```",
+      "en": "How long does a complete cycle of this traffic light last? (example: 15 s)\n\n```cpp\nconst uint32_t GREEN_MS = 4000;\nconst uint32_t AMBER_MS = 1000;\nconst uint32_t RED_MS = 4000;\n\nvoid loop() {\n  showLight(GREEN_PIN);\n  delay(GREEN_MS);\n  showLight(AMBER_PIN);\n  delay(AMBER_MS);\n  showLight(RED_PIN);\n  delay(RED_MS);\n}\n```"
+    },
+    "explanation": {
+      "fr": "4 + 1 + 4 = 9 s.",
+      "en": "4 + 1 + 4 = 9 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "9",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m2-q15",
+    "section": "07-sequences",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : après l'appel `showLight(RED_PIN)`, la LED verte est éteinte.\n\n```cpp\nvoid showLight(uint8_t pin) {\n  digitalWrite(GREEN_PIN, pin == GREEN_PIN ? HIGH : LOW);\n  digitalWrite(AMBER_PIN, pin == AMBER_PIN ? HIGH : LOW);\n  digitalWrite(RED_PIN, pin == RED_PIN ? HIGH : LOW);\n}\n```",
+      "en": "True or false: after the call `showLight(RED_PIN)`, the green LED is off.\n\n```cpp\nvoid showLight(uint8_t pin) {\n  digitalWrite(GREEN_PIN, pin == GREEN_PIN ? HIGH : LOW);\n  digitalWrite(AMBER_PIN, pin == AMBER_PIN ? HIGH : LOW);\n  digitalWrite(RED_PIN, pin == RED_PIN ? HIGH : LOW);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Vrai : `pin == GREEN_PIN` est faux, la LED verte reçoit `LOW`.",
+      "en": "True: `pin == GREEN_PIN` is false, the green LED receives `LOW`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x01",
+    "section": "01-sortie",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle tension correspond au niveau `LOW` ?",
+      "en": "Which voltage corresponds to the `LOW` level?"
+    },
+    "explanation": {
+      "fr": "`LOW` = 0 V = 0 logique.",
+      "en": "`LOW` = 0 V = logic 0."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "0 V",
+          "en": "0 V"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "3,3 V",
+          "en": "3.3 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "1,65 V",
+          "en": "1.65 V"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x02",
+    "section": "01-sortie",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quel courant vise-t-on au plus par broche de sortie ?",
+      "en": "What current is aimed for at most per output pin?"
+    },
+    "explanation": {
+      "fr": "Environ 12 mA : la fiche technique va jusqu'à 40 mA au réglage maximal, mais la tension de sortie chute et la puce chauffe.",
+      "en": "About 12 mA: the datasheet goes up to 40 mA at the maximum setting, but the output voltage drops and the chip heats up."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Environ 12 mA",
+          "en": "About 12 mA"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Environ 1 A",
+          "en": "About 1 A"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Environ 500 mA",
+          "en": "About 500 mA"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x03",
+    "section": "02-led-resistance",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Une LED rouge (tension directe 2,0 V) doit être traversée par 2 mA sur une broche à 3,3 V. Quelle résistance faut-il ? (exemple : 1,5 kΩ)",
+      "en": "A red LED (forward voltage 2.0 V) must carry 2 mA on a 3.3 V pin. What resistor is needed? (example: 1.5 kΩ)"
+    },
+    "explanation": {
+      "fr": "R = (3,3 − 2,0) / 0,002 = 650 Ω.",
+      "en": "R = (3.3 − 2.0) / 0.002 = 650 Ω."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "650.00",
+      "unit": "Ω",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m2-x04",
+    "section": "02-led-resistance",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi place-t-on une résistance en série avec une LED ?",
+      "en": "Why is a resistor placed in series with an LED?"
+    },
+    "explanation": {
+      "fr": "Elle limite le courant : sans elle, la LED et la broche seraient abîmées.",
+      "en": "It limits the current: without it, the LED and the pin would be damaged."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour limiter le courant",
+          "en": "To limit the current"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour augmenter la tension de la LED",
+          "en": "To raise the LED voltage"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour changer la couleur",
+          "en": "To change the colour"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x05",
+    "section": "03-source-puits",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "En logique inversée (LED entre 3,3 V et la broche), quel niveau allume la LED ?",
+      "en": "In inverted logic (LED between 3.3 V and the pin), which level lights the LED?"
+    },
+    "explanation": {
+      "fr": "`LOW` : la broche à 0 V laisse le courant entrer.",
+      "en": "`LOW`: the pin at 0 V lets current in."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`LOW`",
+          "en": "`LOW`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`HIGH`",
+          "en": "`HIGH`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x06",
+    "section": "03-source-puits",
+    "type": "truefalse",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Vrai ou faux : en logique directe (LED entre la broche et la masse), `HIGH` allume la LED.",
+      "en": "True or false: in direct logic (LED between the pin and ground), `HIGH` lights the LED."
+    },
+    "explanation": {
+      "fr": "Vrai : la broche à 3,3 V fournit le courant.",
+      "en": "True: the pin at 3.3 V supplies the current."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x07",
+    "section": "04-blink",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans un Blink, `HALF_PERIOD_MS` vaut 250. Quelle est la période du clignotement ? (exemple : 2 s)",
+      "en": "In a Blink, `HALF_PERIOD_MS` is 250. What is the blinking period? (example: 2 s)"
+    },
+    "explanation": {
+      "fr": "250 ms allumée + 250 ms éteinte = 0,5 s.",
+      "en": "250 ms on + 250 ms off = 0.5 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.5",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m2-x08",
+    "section": "04-blink",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que fait `pinMode(LED_PIN, OUTPUT)` ?",
+      "en": "What does `pinMode(LED_PIN, OUTPUT)` do?"
+    },
+    "explanation": {
+      "fr": "Il règle la broche en sortie ; `digitalWrite` choisit ensuite son niveau.",
+      "en": "It sets the pin as an output; `digitalWrite` then chooses its level."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il fait de la broche une sortie",
+          "en": "It makes the pin an output"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il allume la LED",
+          "en": "It lights the LED"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il ouvre le moniteur série",
+          "en": "It opens the serial monitor"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x09",
+    "section": "06-mosfet",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi choisit-on un MOSFET « logic-level » ?",
+      "en": "Why choose a \"logic-level\" MOSFET?"
+    },
+    "explanation": {
+      "fr": "Il devient pleinement passant avec 3,3 V sur la grille ; un MOSFET ordinaire en demande 10.",
+      "en": "It becomes fully on with 3.3 V on the gate; an ordinary MOSFET needs 10."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il conduit pleinement avec 3,3 V sur sa grille",
+          "en": "It fully conducts with 3.3 V on its gate"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il supporte le 230 V",
+          "en": "It withstands 230 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il n'a pas besoin de masse commune",
+          "en": "It needs no common ground"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x10",
+    "section": "06-mosfet",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quel est le rôle de la résistance de 220 Ω entre la broche et la grille ?",
+      "en": "What is the role of the 220 Ω resistor between the pin and the gate?"
+    },
+    "explanation": {
+      "fr": "Elle limite le pic de courant à chaque commutation.",
+      "en": "It limits the current peak at each switching."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Limiter le pic de courant à la commutation",
+          "en": "Limit the current peak when switching"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Garder le MOSFET bloqué au démarrage",
+          "en": "Keep the MOSFET off at boot"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Protéger le moteur des surtensions",
+          "en": "Protect the motor from surges"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x11",
+    "section": "07-sequences",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi `showLight` règle-t-elle les trois LED à chaque appel ?\n\n```cpp\nvoid showLight(uint8_t pin) {\n  digitalWrite(GREEN_PIN, pin == GREEN_PIN ? HIGH : LOW);\n  digitalWrite(AMBER_PIN, pin == AMBER_PIN ? HIGH : LOW);\n  digitalWrite(RED_PIN, pin == RED_PIN ? HIGH : LOW);\n}\n```",
+      "en": "Why does `showLight` set all three LEDs at each call?\n\n```cpp\nvoid showLight(uint8_t pin) {\n  digitalWrite(GREEN_PIN, pin == GREEN_PIN ? HIGH : LOW);\n  digitalWrite(AMBER_PIN, pin == AMBER_PIN ? HIGH : LOW);\n  digitalWrite(RED_PIN, pin == RED_PIN ? HIGH : LOW);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Ainsi deux couleurs ne peuvent jamais rester allumées ensemble par oubli.",
+      "en": "So two colours can never stay on together by oversight."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour qu'une seule couleur soit allumée à la fois",
+          "en": "So that only one colour is on at a time"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour faire clignoter le feu",
+          "en": "To make the light blink"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour économiser la mémoire",
+          "en": "To save memory"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m2-x12",
+    "section": "07-sequences",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un feu reste 5 s au vert, 2 s à l'orange et 5 s au rouge. Combien dure un cycle ? (exemple : 15 s)",
+      "en": "A light stays 5 s on green, 2 s on amber and 5 s on red. How long is a cycle? (example: 15 s)"
+    },
+    "explanation": {
+      "fr": "5 + 2 + 5 = 12 s.",
+      "en": "5 + 2 + 5 = 12 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "12",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  }
+]

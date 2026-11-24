@@ -1,0 +1,1031 @@
+[
+  {
+    "id": "s-p3-m8-q01",
+    "section": "01-memoires",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque mémoire à ce qu'elle garde.",
+      "en": "Match each memory with what it keeps."
+    },
+    "explanation": {
+      "fr": "La Flash garde tout ; la SRAM perd tout à la coupure et en veille profonde ; la mémoire RTC garde ses données en veille profonde seulement.",
+      "en": "Flash keeps everything; SRAM loses everything at power-off and in deep sleep; RTC memory keeps its data in deep sleep only."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "Flash",
+          "en": "Flash"
+        },
+        "right": {
+          "fr": "Garde tout, même sans courant",
+          "en": "Keeps everything, even without power"
+        }
+      },
+      {
+        "left": {
+          "fr": "SRAM",
+          "en": "SRAM"
+        },
+        "right": {
+          "fr": "Perd tout à la coupure et en veille profonde",
+          "en": "Loses everything at power-off and in deep sleep"
+        }
+      },
+      {
+        "left": {
+          "fr": "Mémoire RTC",
+          "en": "RTC memory"
+        },
+        "right": {
+          "fr": "Garde en veille profonde, perd à la coupure",
+          "en": "Keeps in deep sleep, loses at power-off"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q02",
+    "section": "01-memoires",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que vaut une variable ordinaire (en SRAM) après un réveil de veille profonde ?",
+      "en": "What is an ordinary variable (in SRAM) worth after waking from deep sleep?"
+    },
+    "explanation": {
+      "fr": "La SRAM n'est pas gardée : la variable reprend sa valeur initiale.",
+      "en": "SRAM is not kept: the variable takes its initial value again."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Sa valeur initiale",
+          "en": "Its initial value"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Sa dernière valeur",
+          "en": "Its last value"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Une valeur au hasard qui ne change plus",
+          "en": "A random value that never changes"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q03",
+    "section": "02-preferences",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Lors du tout premier démarrage, quelle valeur ces lignes enregistrent-elles pour « starts » ?\n\n```cpp\nprefs.begin(\"reglages\", false);\nuint32_t starts = prefs.getUInt(\"starts\", 0);\nstarts++;\nprefs.putUInt(\"starts\", starts);\nprefs.end();\n```",
+      "en": "On the very first start-up, which value do these lines store for \"starts\"?\n\n```cpp\nprefs.begin(\"reglages\", false);\nuint32_t starts = prefs.getUInt(\"starts\", 0);\nstarts++;\nprefs.putUInt(\"starts\", starts);\nprefs.end();\n```"
+    },
+    "explanation": {
+      "fr": "La clé n'existe pas : `getUInt` renvoie 0, puis `starts++` donne 1.",
+      "en": "The key does not exist: `getUInt` returns 0, then `starts++` gives 1."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "1",
+          "en": "1"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "0",
+          "en": "0"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "2",
+          "en": "2"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q04",
+    "section": "02-preferences",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une cellule de Flash supporte environ 100 000 écritures. Un programme y écrit toutes les 10 s. Au bout de combien de secondes l'use-t-il ? (exemple : 3600 s)",
+      "en": "A Flash cell withstands about 100000 writes. A program writes to it every 10 s. After how many seconds does it wear it out? (example: 3600 s)"
+    },
+    "explanation": {
+      "fr": "100 000 × 10 = 1 000 000 s, à peine 12 jours.",
+      "en": "100000 × 10 = 1000000 s, barely 12 days."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "1000000",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m8-q05",
+    "section": "02-preferences",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quand faut-il écrire dans Preferences ?",
+      "en": "When should Preferences be written to?"
+    },
+    "explanation": {
+      "fr": "Seulement quand la valeur a changé : la Flash s'use.",
+      "en": "Only when the value has changed: Flash wears out."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Seulement quand la valeur change",
+          "en": "Only when the value changes"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "À chaque tour de `loop()`",
+          "en": "At every pass through `loop()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Toutes les millisecondes",
+          "en": "Every millisecond"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q06",
+    "section": "03-consommation",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une pile de 2 000 mAh alimente un montage qui consomme 20 mA. Combien d'heures dure-t-elle ? Répondez par un nombre d'heures, sans unité (exemple : 50).",
+      "en": "A 2000 mAh battery powers a circuit drawing 20 mA. How many hours does it last? Answer with a number of hours, without a unit (example: 50)."
+    },
+    "explanation": {
+      "fr": "2 000 / 20 = 100 h.",
+      "en": "2000 / 20 = 100 h."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "100",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m8-q07",
+    "section": "03-consommation",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un appareil mesure 0,5 s à 50 mA puis dort 10 s à 0,01 mA. Quel est son courant moyen ? (exemple : 5 mA)",
+      "en": "A device measures for 0.5 s at 50 mA then sleeps for 10 s at 0.01 mA. What is its average current? (example: 5 mA)"
+    },
+    "explanation": {
+      "fr": "(0,5 × 50 + 10 × 0,01) / 10,5 ≈ 2,39 mA.",
+      "en": "(0.5 × 50 + 10 × 0.01) / 10.5 ≈ 2.39 mA."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.0023905",
+      "unit": "A",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m8-q08",
+    "section": "03-consommation",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quel est l'ordre de grandeur du courant de la puce en veille profonde ?",
+      "en": "What is the order of magnitude of the chip current in deep sleep?"
+    },
+    "explanation": {
+      "fr": "Une dizaine de microampères.",
+      "en": "About ten microamps."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Environ 10 µA",
+          "en": "About 10 µA"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Environ 10 mA",
+          "en": "About 10 mA"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Environ 1 A",
+          "en": "About 1 A"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q09",
+    "section": "04-deep-sleep",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Le texte « fin » s'affiche-t-il ?\n\n```cpp\nesp_sleep_enable_timer_wakeup(10ULL * 1000000ULL);\nesp_deep_sleep_start();\nSerial.println(\"fin\");\n```",
+      "en": "Is the text \"fin\" shown?\n\n```cpp\nesp_sleep_enable_timer_wakeup(10ULL * 1000000ULL);\nesp_deep_sleep_start();\nSerial.println(\"fin\");\n```"
+    },
+    "explanation": {
+      "fr": "Non : `esp_deep_sleep_start()` endort la puce ; au réveil, elle redémarre depuis `setup()`.",
+      "en": "No: `esp_deep_sleep_start()` puts the chip to sleep; on waking it restarts from `setup()`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Non, jamais",
+          "en": "No, never"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Oui, au réveil",
+          "en": "Yes, on waking"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Oui, avant de dormir",
+          "en": "Yes, before sleeping"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q10",
+    "section": "04-deep-sleep",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "`esp_sleep_enable_timer_wakeup` attend des microsecondes. Quelle valeur faut-il pour 10 s ? Répondez en décimal (exemple : 1000).",
+      "en": "`esp_sleep_enable_timer_wakeup` expects microseconds. Which value is needed for 10 s? Answer in decimal (example: 1000)."
+    },
+    "explanation": {
+      "fr": "10 × 1 000 000 = 10 000 000.",
+      "en": "10 × 1000000 = 10000000."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "10000000",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m8-q11",
+    "section": "05-reveils",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Cliquez sur la broche utilisable pour réveiller la puce par un bouton (réveil ext0).",
+      "en": "Click the pin usable to wake the chip with a button (ext0 wake-up)."
+    },
+    "explanation": {
+      "fr": "GPIO 33 est une broche RTC ; GPIO 5, 16, 17 et 23 ne sont pas surveillées en veille profonde.",
+      "en": "GPIO 33 is an RTC pin; GPIO 5, 16, 17 and 23 are not watched in deep sleep."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m8-ext0.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 33",
+          "en": "GPIO 33"
+        },
+        "correct": true,
+        "shape": {
+          "x": 62,
+          "y": 220,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 23",
+          "en": "GPIO 23"
+        },
+        "correct": false,
+        "shape": {
+          "x": 272,
+          "y": 70,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 5",
+          "en": "GPIO 5"
+        },
+        "correct": false,
+        "shape": {
+          "x": 272,
+          "y": 270,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 17",
+          "en": "GPIO 17"
+        },
+        "correct": false,
+        "shape": {
+          "x": 272,
+          "y": 295,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 16",
+          "en": "GPIO 16"
+        },
+        "correct": false,
+        "shape": {
+          "x": 272,
+          "y": 320,
+          "w": 88,
+          "h": 24
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q12",
+    "section": "05-reveils",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quand la puce se réveille-t-elle ?\n\n```cpp\nesp_sleep_enable_ext0_wakeup(GPIO_NUM_33, 0);\n```",
+      "en": "When does the chip wake up?\n\n```cpp\nesp_sleep_enable_ext0_wakeup(GPIO_NUM_33, 0);\n```"
+    },
+    "explanation": {
+      "fr": "Le dernier paramètre 0 : quand GPIO 33 passe au niveau bas.",
+      "en": "The last parameter 0: when GPIO 33 goes low."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Quand GPIO 33 passe au niveau bas",
+          "en": "When GPIO 33 goes low"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Toutes les 33 s",
+          "en": "Every 33 s"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Quand GPIO 33 passe au niveau haut",
+          "en": "When GPIO 33 goes high"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q13",
+    "section": "06-rtc-data",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Après le troisième réveil, que valent `bootCount` et `ramCount` ?\n\n```cpp\nRTC_DATA_ATTR uint32_t bootCount = 0;\nuint32_t ramCount = 0;\n\nvoid setup() {\n  bootCount++;\n  ramCount++;\n  esp_sleep_enable_timer_wakeup(5ULL * 1000000ULL);\n  esp_deep_sleep_start();\n}\n```",
+      "en": "After the third wake-up, what are `bootCount` and `ramCount`?\n\n```cpp\nRTC_DATA_ATTR uint32_t bootCount = 0;\nuint32_t ramCount = 0;\n\nvoid setup() {\n  bootCount++;\n  ramCount++;\n  esp_sleep_enable_timer_wakeup(5ULL * 1000000ULL);\n  esp_deep_sleep_start();\n}\n```"
+    },
+    "explanation": {
+      "fr": "`bootCount`, en mémoire RTC, compte 1, 2, 3 ; `ramCount`, en SRAM, repart de 0 et vaut 1.",
+      "en": "`bootCount`, in RTC memory, counts 1, 2, 3; `ramCount`, in SRAM, starts again from 0 and is 1."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "3 et 1",
+          "en": "3 and 1"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "3 et 3",
+          "en": "3 and 3"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "1 et 1",
+          "en": "1 and 1"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q14",
+    "section": "06-rtc-data",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : une variable `RTC_DATA_ATTR` garde sa valeur après une coupure de courant.",
+      "en": "True or false: an `RTC_DATA_ATTR` variable keeps its value after a power cut."
+    },
+    "explanation": {
+      "fr": "Faux : la mémoire RTC n'est gardée qu'en veille profonde ; pour survivre à une coupure, il faut Preferences.",
+      "en": "False: RTC memory is kept only in deep sleep; to survive a power cut, Preferences is needed."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-q15",
+    "section": "04-deep-sleep",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : avec ce programme, la LED de GPIO 25 finit par s'allumer.\n\n```cpp\nvoid setup() {\n  esp_sleep_enable_timer_wakeup(10ULL * 1000000ULL);\n  esp_deep_sleep_start();\n}\n\nvoid loop() {\n  digitalWrite(25, HIGH);\n}\n```",
+      "en": "True or false: with this program, the GPIO 25 LED ends up lighting.\n\n```cpp\nvoid setup() {\n  esp_sleep_enable_timer_wakeup(10ULL * 1000000ULL);\n  esp_deep_sleep_start();\n}\n\nvoid loop() {\n  digitalWrite(25, HIGH);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Faux : `setup()` endort la puce à chaque fois ; `loop()` n'est jamais atteinte.",
+      "en": "False: `setup()` puts the chip to sleep every time; `loop()` is never reached."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x01",
+    "section": "01-memoires",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle mémoire garde ses données en veille profonde, mais pas après une coupure ?",
+      "en": "Which memory keeps its data in deep sleep, but not after a power-off?"
+    },
+    "explanation": {
+      "fr": "La mémoire RTC.",
+      "en": "The RTC memory."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La mémoire RTC",
+          "en": "The RTC memory"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La Flash",
+          "en": "Flash"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La SRAM",
+          "en": "SRAM"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x02",
+    "section": "02-preferences",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Où Preferences range-t-elle ses valeurs ?",
+      "en": "Where does Preferences store its values?"
+    },
+    "explanation": {
+      "fr": "En Flash, dans la zone NVS.",
+      "en": "In Flash, in the NVS area."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "En Flash (NVS)",
+          "en": "In Flash (NVS)"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "En SRAM",
+          "en": "In SRAM"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Sur la carte microSD",
+          "en": "On the microSD card"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x03",
+    "section": "02-preferences",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle règle évite d'user la Flash ?",
+      "en": "Which rule avoids wearing out the Flash?"
+    },
+    "explanation": {
+      "fr": "N'écrire que si la valeur a changé, jamais en boucle.",
+      "en": "Write only if the value has changed, never in a loop."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Écrire seulement quand la valeur change",
+          "en": "Write only when the value changes"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Écrire à chaque tour",
+          "en": "Write at every pass"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Ne jamais lire",
+          "en": "Never read"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x04",
+    "section": "03-consommation",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Une pile de 2 000 mAh alimente un montage qui consomme 100 mA. Combien d'heures dure-t-elle ? Répondez sans unité (exemple : 50).",
+      "en": "A 2000 mAh battery powers a circuit drawing 100 mA. How many hours does it last? Answer without a unit (example: 50)."
+    },
+    "explanation": {
+      "fr": "2 000 / 100 = 20 h.",
+      "en": "2000 / 100 = 20 h."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "20",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m8-x05",
+    "section": "03-consommation",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi une carte DevKit consomme-t-elle bien plus que la puce seule en veille ?",
+      "en": "Why does a DevKit board draw much more than the chip alone in sleep?"
+    },
+    "explanation": {
+      "fr": "Son régulateur, son pont USB-série et sa LED d'alimentation consomment à eux seuls plusieurs milliampères.",
+      "en": "Its regulator, USB-serial bridge and power LED alone draw several milliamps."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Régulateur, pont USB-série et LED consomment",
+          "en": "Regulator, USB-serial bridge and LED draw current"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La Flash chauffe",
+          "en": "The Flash heats up"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le Wi-Fi reste allumé",
+          "en": "Wi-Fi stays on"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x06",
+    "section": "04-deep-sleep",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que se passe-t-il au réveil d'une veille profonde ?",
+      "en": "What happens on waking from deep sleep?"
+    },
+    "explanation": {
+      "fr": "La puce redémarre : `setup()` s'exécute depuis le début.",
+      "en": "The chip restarts: `setup()` runs from the start."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La puce redémarre depuis `setup()`",
+          "en": "The chip restarts from `setup()`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le programme reprend après `esp_deep_sleep_start()`",
+          "en": "The program resumes after `esp_deep_sleep_start()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`loop()` reprend où elle s'était arrêtée",
+          "en": "`loop()` resumes where it stopped"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x07",
+    "section": "04-deep-sleep",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle valeur passer à `esp_sleep_enable_timer_wakeup` pour 5 minutes ? Répondez en décimal (exemple : 1000).",
+      "en": "Which value should be passed to `esp_sleep_enable_timer_wakeup` for 5 minutes? Answer in decimal (example: 1000)."
+    },
+    "explanation": {
+      "fr": "5 × 60 × 1 000 000 = 300 000 000 µs.",
+      "en": "5 × 60 × 1000000 = 300000000 µs."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "300000000",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m8-x08",
+    "section": "05-reveils",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle broche convient pour un bouton de réveil par niveau ?",
+      "en": "Which pin suits a level wake-up button?"
+    },
+    "explanation": {
+      "fr": "GPIO 33 est une broche RTC sûre.",
+      "en": "GPIO 33 is a safe RTC pin."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 33",
+          "en": "GPIO 33"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 23",
+          "en": "GPIO 23"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "GPIO 16",
+          "en": "GPIO 16"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x09",
+    "section": "05-reveils",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle fonction indique ce qui a réveillé la puce ?",
+      "en": "Which function tells what woke the chip?"
+    },
+    "explanation": {
+      "fr": "`esp_sleep_get_wakeup_cause()`.",
+      "en": "`esp_sleep_get_wakeup_cause()`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`esp_sleep_get_wakeup_cause()`",
+          "en": "`esp_sleep_get_wakeup_cause()`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`millis()`",
+          "en": "`millis()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`touchRead()`",
+          "en": "`touchRead()`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x10",
+    "section": "06-rtc-data",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle est la taille de la mémoire RTC ?",
+      "en": "What is the size of the RTC memory?"
+    },
+    "explanation": {
+      "fr": "8 Ko.",
+      "en": "8 KB."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "8 Ko",
+          "en": "8 KB"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "4 Mo",
+          "en": "4 MB"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "520 Ko",
+          "en": "520 KB"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x11",
+    "section": "06-rtc-data",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "À quoi sert `RTC_DATA_ATTR` ?",
+      "en": "What is `RTC_DATA_ATTR` for?"
+    },
+    "explanation": {
+      "fr": "À ranger une variable en mémoire RTC pour qu'elle traverse les veilles profondes.",
+      "en": "To store a variable in RTC memory so that it crosses deep sleeps."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Garder une variable d'un réveil à l'autre",
+          "en": "Keep a variable from one wake-up to the next"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Écrire en Flash",
+          "en": "Write to Flash"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Réveiller la puce",
+          "en": "Wake the chip"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m8-x12",
+    "section": "03-consommation",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un appareil est actif 1 s à 80 mA puis dort 59 s à 0,01 mA. Quel est son courant moyen ? (exemple : 5 mA)",
+      "en": "A device is active for 1 s at 80 mA then sleeps for 59 s at 0.01 mA. What is its average current? (example: 5 mA)"
+    },
+    "explanation": {
+      "fr": "(1 × 80 + 59 × 0,01) / 60 ≈ 1,34 mA.",
+      "en": "(1 × 80 + 59 × 0.01) / 60 ≈ 1.34 mA."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.0013432",
+      "unit": "A",
+      "tolerance_pct": 2
+    }
+  }
+]

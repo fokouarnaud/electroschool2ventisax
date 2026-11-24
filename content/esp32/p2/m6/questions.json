@@ -1,0 +1,997 @@
+[
+  {
+    "id": "s-p2-m6-q01",
+    "section": "01-adc",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Dans le modèle idéal (0 à 3,3 V pour 0 à 4 095), quelle valeur l'ADC donne-t-il pour 1,65 V ? Répondez en décimal (exemple : 1000).",
+      "en": "In the ideal model (0 to 3.3 V for 0 to 4095), what value does the ADC give for 1.65 V? Answer in decimal (example: 1000)."
+    },
+    "explanation": {
+      "fr": "1,65 / 3,3 × 4 095 ≈ 2 048.",
+      "en": "1.65 / 3.3 × 4095 ≈ 2048."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2047.5",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-q02",
+    "section": "01-adc",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "`analogRead` renvoie 1 024. Quelle tension cela représente-t-il dans le modèle idéal ? (exemple : 2,5 V)",
+      "en": "`analogRead` returns 1024. What voltage does it stand for in the ideal model? (example: 2.5 V)"
+    },
+    "explanation": {
+      "fr": "1 024 × 3,3 / 4 095 ≈ 0,825 V.",
+      "en": "1024 × 3.3 / 4095 ≈ 0.825 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.82520",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-q03",
+    "section": "01-adc",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Pourquoi mesure-t-on de préférence sur l'ADC 1 (GPIO 32 à 39) ?",
+      "en": "Why are measurements preferably made on ADC 1 (GPIO 32 to 39)?"
+    },
+    "explanation": {
+      "fr": "L'ADC 2 est indisponible quand le Wi-Fi fonctionne.",
+      "en": "ADC 2 is unavailable while Wi-Fi is running."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "L'ADC 2 est indisponible quand le Wi-Fi fonctionne",
+          "en": "ADC 2 is unavailable while Wi-Fi is running"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "L'ADC 1 a 16 bits",
+          "en": "ADC 1 has 16 bits"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "L'ADC 2 n'existe pas",
+          "en": "ADC 2 does not exist"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q04",
+    "section": "02-potentiometre",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "À quelle broche de la carte relie-t-on l'extrémité haute du potentiomètre ?",
+      "en": "To which board pin is the top end of the potentiometer connected?"
+    },
+    "explanation": {
+      "fr": "À la broche 3V3 : alimenté en 5 V, le curseur dépasserait ce que tolère l'entrée.",
+      "en": "To the 3V3 pin: supplied at 5 V, the wiper would exceed what the input tolerates."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "3V3",
+          "en": "3V3"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "5V",
+          "en": "5V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "GPIO 34",
+          "en": "GPIO 34"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q05",
+    "section": "03-mli",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une sortie MLI de 3,3 V a un rapport cyclique de 25 %. Quelle est sa tension moyenne ? (exemple : 1,2 V)",
+      "en": "A 3.3 V PWM output has a 25 % duty cycle. What is its average voltage? (example: 1.2 V)"
+    },
+    "explanation": {
+      "fr": "0,25 × 3,3 = 0,825 V.",
+      "en": "0.25 × 3.3 = 0.825 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.825",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-q06",
+    "section": "03-mli",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Avec une résolution de 8 bits, quelle valeur passer à `ledcWrite` pour un rapport cyclique de 50 % ? Répondez en décimal (exemple : 64).",
+      "en": "With an 8-bit resolution, which value should be passed to `ledcWrite` for a 50 % duty cycle? Answer in decimal (example: 64)."
+    },
+    "explanation": {
+      "fr": "0,5 × 255 = 127,5 : 127 ou 128 conviennent.",
+      "en": "0.5 × 255 = 127.5: 127 or 128 are fine."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "127.5",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-q07",
+    "section": "03-mli",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : ces lignes compilent avec le cœur Arduino-ESP32 3.x de la formation.\n\n```cpp\nledcSetup(0, 5000, 8);\nledcAttachPin(25, 0);\n```",
+      "en": "True or false: these lines build with the Arduino-ESP32 3.x core of the course.\n\n```cpp\nledcSetup(0, 5000, 8);\nledcAttachPin(25, 0);\n```"
+    },
+    "explanation": {
+      "fr": "Faux : `ledcSetup` et `ledcAttachPin` appartiennent au cœur 2.x ; en 3.x on écrit `ledcAttach(25, 5000, 8)`.",
+      "en": "False: `ledcSetup` and `ledcAttachPin` belong to the 2.x core; in 3.x write `ledcAttach(25, 5000, 8)`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q08",
+    "section": "04-moteur-mli",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle valeur prend `duty` ?\n\n```cpp\nuint32_t duty = map(2048, 0, 4095, 0, 255);\n```",
+      "en": "What value does `duty` take?\n\n```cpp\nuint32_t duty = map(2048, 0, 4095, 0, 255);\n```"
+    },
+    "explanation": {
+      "fr": "`map` convertit linéairement : 2 048 sur 4 095 donne 127 sur 255 (division entière).",
+      "en": "`map` converts linearly: 2048 out of 4095 gives 127 out of 255 (integer division)."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "127",
+          "en": "127"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "2048",
+          "en": "2048"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "255",
+          "en": "255"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q09",
+    "section": "04-moteur-mli",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un moteur 12 V est commandé par MLI à 25 % de rapport cyclique. Quelle tension moyenne reçoit-il ? (exemple : 6 V)",
+      "en": "A 12 V motor is driven by PWM at a 25 % duty cycle. What average voltage does it receive? (example: 6 V)"
+    },
+    "explanation": {
+      "fr": "0,25 × 12 = 3 V.",
+      "en": "0.25 × 12 = 3 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "3",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-q10",
+    "section": "05-buzzer",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une octave plus haut, que devient la fréquence d'une note ?",
+      "en": "One octave up, what happens to the frequency of a note?"
+    },
+    "explanation": {
+      "fr": "Elle double : do 262 Hz, do aigu 523 Hz.",
+      "en": "It doubles: C 262 Hz, high C 523 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle double",
+          "en": "It doubles"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle est divisée par deux",
+          "en": "It is halved"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle ne change pas",
+          "en": "It does not change"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q11",
+    "section": "05-buzzer",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que fait cette ligne ?\n\n```cpp\nledcWriteTone(BUZZER_PIN, 0);\n```",
+      "en": "What does this line do?\n\n```cpp\nledcWriteTone(BUZZER_PIN, 0);\n```"
+    },
+    "explanation": {
+      "fr": "Une fréquence de 0 coupe le son.",
+      "en": "A frequency of 0 stops the sound."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle coupe le son",
+          "en": "It stops the sound"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle joue un la à 440 Hz",
+          "en": "It plays an A at 440 Hz"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle prépare la broche",
+          "en": "It prepares the pin"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q12",
+    "section": "06-touch",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Cliquez sur une broche capable de détecter un doigt (broche tactile).",
+      "en": "Click a pin that can detect a finger (touch pin)."
+    },
+    "explanation": {
+      "fr": "GPIO 4 est T0 ; GPIO 25 et 26 portent le DAC, GPIO 34 est une entrée seule sans tactile, GPIO 22 sert au bus I2C.",
+      "en": "GPIO 4 is T0; GPIO 25 and 26 carry the DAC, GPIO 34 is an input-only pin without touch, GPIO 22 serves the I2C bus."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m6-touch.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 4",
+          "en": "GPIO 4"
+        },
+        "correct": true,
+        "shape": {
+          "x": 272,
+          "y": 345,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 34",
+          "en": "GPIO 34"
+        },
+        "correct": false,
+        "shape": {
+          "x": 62,
+          "y": 145,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 25",
+          "en": "GPIO 25"
+        },
+        "correct": false,
+        "shape": {
+          "x": 62,
+          "y": 245,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 26",
+          "en": "GPIO 26"
+        },
+        "correct": false,
+        "shape": {
+          "x": 62,
+          "y": 270,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 22",
+          "en": "GPIO 22"
+        },
+        "correct": false,
+        "shape": {
+          "x": 272,
+          "y": 95,
+          "w": 88,
+          "h": 24
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q13",
+    "section": "06-touch",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "`touchRead` renvoie 15. Que fait la LED ?\n\n```cpp\nconst uint32_t TOUCH_THRESHOLD = 30;\nuint32_t value = touchRead(TOUCH_PIN);  // value = 15\nbool touched = (value < TOUCH_THRESHOLD);\ndigitalWrite(LED_PIN, touched ? HIGH : LOW);\n```",
+      "en": "`touchRead` returns 15. What does the LED do?\n\n```cpp\nconst uint32_t TOUCH_THRESHOLD = 30;\nuint32_t value = touchRead(TOUCH_PIN);  // value = 15\nbool touched = (value < TOUCH_THRESHOLD);\ndigitalWrite(LED_PIN, touched ? HIGH : LOW);\n```"
+    },
+    "explanation": {
+      "fr": "15 < 30 : `touched` est vrai, la LED s'allume ; sur l'ESP32, la valeur chute au contact.",
+      "en": "15 < 30: `touched` is true, the LED lights; on the ESP32, the value drops on touch."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle s'allume",
+          "en": "It lights up"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle s'éteint",
+          "en": "It goes out"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle clignote",
+          "en": "It blinks"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-q14",
+    "section": "07-dac",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "`dacWrite(25, 128)` : quelle tension sort sur GPIO 25 dans le modèle idéal (0 à 255 pour 0 à 3,3 V) ? (exemple : 2,5 V)",
+      "en": "`dacWrite(25, 128)`: what voltage comes out on GPIO 25 in the ideal model (0 to 255 for 0 to 3.3 V)? (example: 2.5 V)"
+    },
+    "explanation": {
+      "fr": "128 × 3,3 / 255 ≈ 1,66 V.",
+      "en": "128 × 3.3 / 255 ≈ 1.66 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "1.65647",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-q15",
+    "section": "07-dac",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque besoin à la fonction qui le réalise.",
+      "en": "Match each need with the function that meets it."
+    },
+    "explanation": {
+      "fr": "`analogRead` mesure, `ledcWrite` règle une MLI, `dacWrite` produit une vraie tension continue, `touchRead` détecte un doigt.",
+      "en": "`analogRead` measures, `ledcWrite` sets a PWM, `dacWrite` produces a true DC voltage, `touchRead` detects a finger."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "Mesurer une tension",
+          "en": "Measure a voltage"
+        },
+        "right": {
+          "fr": "`analogRead`",
+          "en": "`analogRead`"
+        }
+      },
+      {
+        "left": {
+          "fr": "Régler la luminosité d'une LED",
+          "en": "Set the brightness of an LED"
+        },
+        "right": {
+          "fr": "`ledcWrite`",
+          "en": "`ledcWrite`"
+        }
+      },
+      {
+        "left": {
+          "fr": "Produire une vraie tension continue",
+          "en": "Produce a true DC voltage"
+        },
+        "right": {
+          "fr": "`dacWrite`",
+          "en": "`dacWrite`"
+        }
+      },
+      {
+        "left": {
+          "fr": "Détecter un doigt",
+          "en": "Detect a finger"
+        },
+        "right": {
+          "fr": "`touchRead`",
+          "en": "`touchRead`"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x01",
+    "section": "01-adc",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Entre quelles valeurs `analogRead` renvoie-t-il son résultat sur l'ESP32 ?",
+      "en": "Between which values does `analogRead` return its result on the ESP32?"
+    },
+    "explanation": {
+      "fr": "ADC 12 bits : de 0 à 4 095.",
+      "en": "12-bit ADC: from 0 to 4095."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "De 0 à 4 095",
+          "en": "From 0 to 4095"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "De 0 à 1 023",
+          "en": "From 0 to 1023"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "De 0 à 255",
+          "en": "From 0 to 255"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x02",
+    "section": "01-adc",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans le modèle idéal, quelle valeur l'ADC donne-t-il pour 2,0 V ? Répondez en décimal (exemple : 1000).",
+      "en": "In the ideal model, what value does the ADC give for 2.0 V? Answer in decimal (example: 1000)."
+    },
+    "explanation": {
+      "fr": "2,0 / 3,3 × 4 095 ≈ 2 482.",
+      "en": "2.0 / 3.3 × 4095 ≈ 2482."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2481.8",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-x03",
+    "section": "02-potentiometre",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un potentiomètre alimenté en 3,3 V a son curseur au milieu. Quelle tension lit-on ?",
+      "en": "A potentiometer supplied at 3.3 V has its wiper in the middle. What voltage is read?"
+    },
+    "explanation": {
+      "fr": "Pont diviseur à moitié : 1,65 V.",
+      "en": "Divider at half: 1.65 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "1,65 V",
+          "en": "1.65 V"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "3,3 V",
+          "en": "3.3 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "0 V",
+          "en": "0 V"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x04",
+    "section": "03-mli",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle est la tension moyenne d'une MLI de 3,3 V à 75 % de rapport cyclique ? (exemple : 1,2 V)",
+      "en": "What is the average voltage of a 3.3 V PWM at a 75 % duty cycle? (example: 1.2 V)"
+    },
+    "explanation": {
+      "fr": "0,75 × 3,3 ≈ 2,48 V.",
+      "en": "0.75 × 3.3 ≈ 2.48 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2.475",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-x05",
+    "section": "03-mli",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Avec une résolution de 10 bits, quelle est la fréquence MLI maximale (80 MHz / 2^bits) ? (exemple : 100 kHz)",
+      "en": "With a 10-bit resolution, what is the maximum PWM frequency (80 MHz / 2^bits)? (example: 100 kHz)"
+    },
+    "explanation": {
+      "fr": "80 000 000 / 1 024 = 78 125 Hz.",
+      "en": "80000000 / 1024 = 78125 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "78125",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-x06",
+    "section": "04-moteur-mli",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi la diode de roue libre est-elle indispensable quand un moteur est commandé par MLI ?",
+      "en": "Why is the freewheeling diode essential when a motor is driven by PWM?"
+    },
+    "explanation": {
+      "fr": "À chaque coupure, des milliers de fois par seconde, la bobine du moteur produit une surtension que la diode écoule.",
+      "en": "At each switch-off, thousands of times a second, the motor coil produces a surge that the diode drains."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle écoule la surtension de la bobine à chaque coupure",
+          "en": "It drains the coil surge at each switch-off"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle double la vitesse",
+          "en": "It doubles the speed"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle remplace le MOSFET",
+          "en": "It replaces the MOSFET"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x07",
+    "section": "05-buzzer",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle est la différence entre un buzzer passif et un buzzer actif ?",
+      "en": "What is the difference between a passive buzzer and an active buzzer?"
+    },
+    "explanation": {
+      "fr": "Le passif joue la fréquence qu'on lui envoie ; l'actif a son oscillateur et une seule note.",
+      "en": "The passive one plays the frequency sent to it; the active one has its oscillator and a single note."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Le passif joue la fréquence reçue, l'actif une seule note",
+          "en": "The passive one plays the received frequency, the active one a single note"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "L'actif a besoin de 12 V",
+          "en": "The active one needs 12 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Aucune",
+          "en": "None"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x08",
+    "section": "06-touch",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Sur l'ESP32 classique, que fait la valeur de `touchRead` quand on touche l'électrode ?",
+      "en": "On the classic ESP32, what does the `touchRead` value do when the electrode is touched?"
+    },
+    "explanation": {
+      "fr": "Elle chute : le doigt ajoute sa capacité.",
+      "en": "It drops: the finger adds its capacitance."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle chute",
+          "en": "It drops"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle augmente",
+          "en": "It rises"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle ne change pas",
+          "en": "It does not change"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x09",
+    "section": "06-touch",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle broche tactile préférer pour débuter ?",
+      "en": "Which touch pin should be preferred to start with?"
+    },
+    "explanation": {
+      "fr": "T0 (GPIO 4) n'est pas une broche de strapping, contrairement à T1, T2, T3 et T5.",
+      "en": "T0 (GPIO 4) is not a strapping pin, unlike T1, T2, T3 and T5."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "T0 (GPIO 4)",
+          "en": "T0 (GPIO 4)"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "T1 (GPIO 0)",
+          "en": "T1 (GPIO 0)"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "T5 (GPIO 12)",
+          "en": "T5 (GPIO 12)"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x10",
+    "section": "07-dac",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Sur quelles broches l'ESP32 classique offre-t-il un DAC ?",
+      "en": "On which pins does the classic ESP32 offer a DAC?"
+    },
+    "explanation": {
+      "fr": "GPIO 25 (DAC 1) et GPIO 26 (DAC 2).",
+      "en": "GPIO 25 (DAC 1) and GPIO 26 (DAC 2)."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 25 et 26",
+          "en": "GPIO 25 and 26"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 34 et 35",
+          "en": "GPIO 34 and 35"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Toutes les broches",
+          "en": "Every pin"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m6-x11",
+    "section": "07-dac",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Le DAC de 8 bits couvre 0 à 3,3 V en 255 pas. Combien vaut un pas ? (exemple : 5 mV)",
+      "en": "The 8-bit DAC covers 0 to 3.3 V in 255 steps. How much is one step? (example: 5 mV)"
+    },
+    "explanation": {
+      "fr": "3,3 / 255 ≈ 12,9 mV.",
+      "en": "3.3 / 255 ≈ 12.9 mV."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.012941",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m6-x12",
+    "section": "01-adc",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que renvoie `analogReadMilliVolts(34)` ?",
+      "en": "What does `analogReadMilliVolts(34)` return?"
+    },
+    "explanation": {
+      "fr": "La tension en millivolts, corrigée par l'étalonnage d'usine de la puce.",
+      "en": "The voltage in millivolts, corrected by the chip's factory calibration."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La tension corrigée, en millivolts",
+          "en": "The corrected voltage, in millivolts"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Une valeur de 0 à 4 095",
+          "en": "A value from 0 to 4095"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La température de la puce",
+          "en": "The chip temperature"
+        },
+        "correct": false
+      }
+    ]
+  }
+]

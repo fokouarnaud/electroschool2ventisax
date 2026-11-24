@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "s-p3-m9-q01",
+    "section": "01-modes",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que fait l'ESP32 en mode station ?",
+      "en": "What does the ESP32 do in station mode?"
+    },
+    "explanation": {
+      "fr": "Il rejoint le réseau existant de la box, comme un téléphone.",
+      "en": "It joins the router's existing network, like a phone."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il rejoint le réseau de la box",
+          "en": "It joins the router's network"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il crée son propre réseau",
+          "en": "It creates its own network"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il coupe le Wi-Fi",
+          "en": "It switches Wi-Fi off"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q02",
+    "section": "01-modes",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "En point d'accès, quelle adresse la carte prend-elle par défaut ?",
+      "en": "As an access point, which address does the board take by default?"
+    },
+    "explanation": {
+      "fr": "192.168.4.1.",
+      "en": "192.168.4.1."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "192.168.4.1",
+          "en": "192.168.4.1"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "127.0.0.1",
+          "en": "127.0.0.1"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "8.8.8.8",
+          "en": "8.8.8.8"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q03",
+    "section": "02-connexion",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quand cette boucle se termine-t-elle ?\n\n```cpp\nWiFi.begin(WIFI_SSID, WIFI_PASSWORD);\nwhile (WiFi.status() != WL_CONNECTED) {\n  delay(250);\n}\n```",
+      "en": "When does this loop end?\n\n```cpp\nWiFi.begin(WIFI_SSID, WIFI_PASSWORD);\nwhile (WiFi.status() != WL_CONNECTED) {\n  delay(250);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Quand `WiFi.status()` vaut `WL_CONNECTED` ; sans limite de temps, elle attendrait pour toujours si la box est éteinte.",
+      "en": "When `WiFi.status()` is `WL_CONNECTED`; without a time limit, it would wait forever if the router is off."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Quand la carte est connectée",
+          "en": "When the board is connected"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Après 250 ms",
+          "en": "After 250 ms"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Jamais",
+          "en": "Never"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q04",
+    "section": "02-connexion",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quel RSSI indique le meilleur signal ?",
+      "en": "Which RSSI shows the best signal?"
+    },
+    "explanation": {
+      "fr": "Plus le RSSI est proche de 0, meilleur est le signal : -50 dBm.",
+      "en": "The closer the RSSI is to 0, the better the signal: -50 dBm."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "-50 dBm",
+          "en": "-50 dBm"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "-80 dBm",
+          "en": "-80 dBm"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "-95 dBm",
+          "en": "-95 dBm"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q05",
+    "section": "02-connexion",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La boucle d'attente du programme s'arrête après 15 000 ms. Combien de secondes cela fait-il ? (exemple : 30 s)",
+      "en": "The waiting loop of the program stops after 15000 ms. How many seconds is that? (example: 30 s)"
+    },
+    "explanation": {
+      "fr": "15 000 ms = 15 s.",
+      "en": "15000 ms = 15 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "15",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m9-q06",
+    "section": "03-serveur",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Sur quel port le serveur web écoute-t-il (`WebServer server(...)`) ? Répondez en décimal (exemple : 8080).",
+      "en": "On which port does the web server listen (`WebServer server(...)`)? Answer in decimal (example: 8080)."
+    },
+    "explanation": {
+      "fr": "Le port 80, celui du web.",
+      "en": "Port 80, the web port."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "80",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p3-m9-q07",
+    "section": "03-serveur",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Ce serveur ne répond jamais. Pourquoi ?\n\n```cpp\nvoid setup() {\n  server.on(\"/\", handleRoot);\n  server.begin();\n}\n\nvoid loop() {\n}\n```",
+      "en": "This server never replies. Why?\n\n```cpp\nvoid setup() {\n  server.on(\"/\", handleRoot);\n  server.begin();\n}\n\nvoid loop() {\n}\n```"
+    },
+    "explanation": {
+      "fr": "`loop()` doit appeler `server.handleClient()` pour traiter les requêtes reçues.",
+      "en": "`loop()` must call `server.handleClient()` to handle the received requests."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`server.handleClient()` manque dans `loop()`",
+          "en": "`server.handleClient()` is missing from `loop()`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le port est faux",
+          "en": "The port is wrong"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il faut un `delay` dans `loop()`",
+          "en": "A `delay` is needed in `loop()`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q08",
+    "section": "03-serveur",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque élément de réponse à sa signification.",
+      "en": "Match each response item with its meaning."
+    },
+    "explanation": {
+      "fr": "200 = réussi, 404 = introuvable, text/html = une page, application/json = des données.",
+      "en": "200 = success, 404 = not found, text/html = a page, application/json = data."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "200",
+          "en": "200"
+        },
+        "right": {
+          "fr": "Requête réussie",
+          "en": "Successful request"
+        }
+      },
+      {
+        "left": {
+          "fr": "404",
+          "en": "404"
+        },
+        "right": {
+          "fr": "Page introuvable",
+          "en": "Page not found"
+        }
+      },
+      {
+        "left": {
+          "fr": "text/html",
+          "en": "text/html"
+        },
+        "right": {
+          "fr": "Une page web",
+          "en": "A web page"
+        }
+      },
+      {
+        "left": {
+          "fr": "application/json",
+          "en": "application/json"
+        },
+        "right": {
+          "fr": "Des données JSON",
+          "en": "JSON data"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q09",
+    "section": "04-commande",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La route /on met GPIO 26 au niveau haut. Cliquez sur le transistor qu'elle commande.",
+      "en": "The /on route sets GPIO 26 high. Click the transistor it drives."
+    },
+    "explanation": {
+      "fr": "Le transistor du haut est relié à GPIO 26 et commande la lampe 12 V ; celui du bas, sur GPIO 27, commande le buzzer.",
+      "en": "The top transistor is connected to GPIO 26 and drives the 12 V lamp; the bottom one, on GPIO 27, drives the buzzer."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m9-route.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "Transistor du haut",
+          "en": "Top transistor"
+        },
+        "correct": true,
+        "shape": {
+          "x": 300,
+          "y": 90,
+          "w": 70,
+          "h": 40
+        }
+      },
+      {
+        "text": {
+          "fr": "Transistor du bas",
+          "en": "Bottom transistor"
+        },
+        "correct": false,
+        "shape": {
+          "x": 300,
+          "y": 150,
+          "w": 70,
+          "h": 40
+        }
+      },
+      {
+        "text": {
+          "fr": "L'ESP32",
+          "en": "The ESP32"
+        },
+        "correct": false,
+        "shape": {
+          "x": 20,
+          "y": 90,
+          "w": 140,
+          "h": 80
+        }
+      },
+      {
+        "text": {
+          "fr": "La lampe",
+          "en": "The lamp"
+        },
+        "correct": false,
+        "shape": {
+          "x": 420,
+          "y": 90,
+          "w": 120,
+          "h": 40
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q10",
+    "section": "04-commande",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que fait une requête vers la route reliée à cette fonction ?\n\n```cpp\nvoid handleOff() {\n  digitalWrite(LAMP_PIN, LOW);\n  server.send(200, \"text/plain\", \"off\");\n}\n```",
+      "en": "What does a request to the route connected to this function do?\n\n```cpp\nvoid handleOff() {\n  digitalWrite(LAMP_PIN, LOW);\n  server.send(200, \"text/plain\", \"off\");\n}\n```"
+    },
+    "explanation": {
+      "fr": "Elle met GPIO 26 au niveau bas : le MOSFET se bloque et la lampe s'éteint.",
+      "en": "It sets GPIO 26 low: the MOSFET turns off and the lamp goes out."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle éteint la lampe",
+          "en": "It switches the lamp off"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle allume la lampe",
+          "en": "It switches the lamp on"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle redémarre la carte",
+          "en": "It restarts the board"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q11",
+    "section": "05-mesure",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quel texte contient `json` ?\n\n```cpp\nString json = \"{\\\"tension_mV\\\": \" + String(1650) + \"}\";\n```",
+      "en": "What text does `json` hold?\n\n```cpp\nString json = \"{\\\"tension_mV\\\": \" + String(1650) + \"}\";\n```"
+    },
+    "explanation": {
+      "fr": "Les `\\\"` deviennent des guillemets : `{\"tension_mV\": 1650}`.",
+      "en": "The `\\\"` become quotes: `{\"tension_mV\": 1650}`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`{\"tension_mV\": 1650}`",
+          "en": "`{\"tension_mV\": 1650}`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`tension_mV = 1650`",
+          "en": "`tension_mV = 1650`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`1650`",
+          "en": "`1650`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q12",
+    "section": "05-mesure",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La page relit `/mesure` toutes les 2 000 ms. Combien de secondes entre deux mises à jour ? (exemple : 5 s)",
+      "en": "The page reads `/mesure` again every 2000 ms. How many seconds between two updates? (example: 5 s)"
+    },
+    "explanation": {
+      "fr": "2 000 ms = 2 s.",
+      "en": "2000 ms = 2 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p3-m9-q13",
+    "section": "06-securite",
+    "type": "multiple",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelles pratiques protègent un appareil connecté de la formation ?",
+      "en": "Which practices protect a connected device of the course?"
+    },
+    "explanation": {
+      "fr": "Identifiants dans secrets.h, exemple sans valeurs, aucune redirection de port ; jamais d'identifiants dans le programme ni en capture partagée.",
+      "en": "Credentials in secrets.h, an example without values, no port forwarding; never credentials in the program nor in a shared screenshot."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Ranger les identifiants dans `secrets.h`",
+          "en": "Store the credentials in `secrets.h`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Fournir un `secrets.example.h` sans valeurs",
+          "en": "Provide a `secrets.example.h` without values"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Ne faire aucune redirection de port sur la box",
+          "en": "Set up no port forwarding on the router"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Écrire le mot de passe dans `main.cpp`",
+          "en": "Write the password in `main.cpp`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Partager une capture avec le mot de passe",
+          "en": "Share a screenshot showing the password"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q14",
+    "section": "07-ouvertures",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que fait `vTaskDelay` dans cette tâche ?\n\n```cpp\nvoid blinkTask(void *parameter) {\n  for (;;) {\n    digitalWrite(LED_PIN, !digitalRead(LED_PIN));\n    vTaskDelay(pdMS_TO_TICKS(250));\n  }\n}\n```",
+      "en": "What does `vTaskDelay` do in this task?\n\n```cpp\nvoid blinkTask(void *parameter) {\n  for (;;) {\n    digitalWrite(LED_PIN, !digitalRead(LED_PIN));\n    vTaskDelay(pdMS_TO_TICKS(250));\n  }\n}\n```"
+    },
+    "explanation": {
+      "fr": "Il met la tâche en pause 250 ms sans bloquer les autres tâches, dont `loop()`.",
+      "en": "It pauses the task for 250 ms without blocking the other tasks, including `loop()`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il met la tâche en pause sans bloquer les autres",
+          "en": "It pauses the task without blocking the others"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il bloque toute la carte 250 ms",
+          "en": "It blocks the whole board for 250 ms"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il endort la puce",
+          "en": "It puts the chip to sleep"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-q15",
+    "section": "03-serveur",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : avec cette boucle, le serveur répond toujours aussitôt.\n\n```cpp\nvoid loop() {\n  server.handleClient();\n  delay(5000);\n}\n```",
+      "en": "True or false: with this loop, the server always replies at once.\n\n```cpp\nvoid loop() {\n  server.handleClient();\n  delay(5000);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Faux : `handleClient()` n'est appelée que toutes les 5 s ; une requête peut attendre jusqu'à 5 s.",
+      "en": "False: `handleClient()` is called only every 5 s; a request may wait up to 5 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x01",
+    "section": "01-modes",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quand le mode point d'accès est-il utile ?",
+      "en": "When is access point mode useful?"
+    },
+    "explanation": {
+      "fr": "Quand il n'y a pas de box : le téléphone se connecte directement à l'ESP32.",
+      "en": "When there is no router: the phone connects directly to the ESP32."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Quand il n'y a pas de box",
+          "en": "When there is no router"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour aller plus vite",
+          "en": "To go faster"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour économiser la pile",
+          "en": "To save the battery"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x02",
+    "section": "01-modes",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Avec le Wi-Fi actif, sur quel ADC fait-on les mesures analogiques ?",
+      "en": "With Wi-Fi active, on which ADC are analog measurements made?"
+    },
+    "explanation": {
+      "fr": "L'ADC 1 (GPIO 32 à 39) : l'ADC 2 est occupé par le Wi-Fi.",
+      "en": "ADC 1 (GPIO 32 to 39): ADC 2 is taken by Wi-Fi."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "L'ADC 1",
+          "en": "ADC 1"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "L'ADC 2",
+          "en": "ADC 2"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Aucun",
+          "en": "None"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x03",
+    "section": "02-connexion",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi limite-t-on la durée de la boucle d'attente de connexion ?",
+      "en": "Why is the duration of the connection waiting loop limited?"
+    },
+    "explanation": {
+      "fr": "Sans limite, une box éteinte bloquerait la carte pour toujours.",
+      "en": "Without a limit, a switched-off router would block the board forever."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour ne pas bloquer la carte si la box est absente",
+          "en": "So as not to block the board if the router is missing"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour accélérer le Wi-Fi",
+          "en": "To speed up Wi-Fi"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour économiser la Flash",
+          "en": "To save Flash"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x04",
+    "section": "02-connexion",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que renvoie `WiFi.localIP()` ?",
+      "en": "What does `WiFi.localIP()` return?"
+    },
+    "explanation": {
+      "fr": "L'adresse IP attribuée à la carte par la box.",
+      "en": "The IP address assigned to the board by the router."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "L'adresse IP de la carte",
+          "en": "The board's IP address"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La force du signal",
+          "en": "The signal strength"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le nom du réseau",
+          "en": "The network name"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x05",
+    "section": "03-serveur",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que signifie le code de réponse 404 ?",
+      "en": "What does response code 404 mean?"
+    },
+    "explanation": {
+      "fr": "Page introuvable.",
+      "en": "Page not found."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Page introuvable",
+          "en": "Page not found"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Requête réussie",
+          "en": "Successful request"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Serveur en veille",
+          "en": "Server asleep"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x06",
+    "section": "03-serveur",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "À quoi sert `charset=utf-8` dans le type de contenu ?",
+      "en": "What is `charset=utf-8` for in the content type?"
+    },
+    "explanation": {
+      "fr": "À afficher correctement les caractères accentués.",
+      "en": "To display accented characters correctly."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Afficher correctement les accents",
+          "en": "Display accents correctly"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Chiffrer la page",
+          "en": "Encrypt the page"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Accélérer la réponse",
+          "en": "Speed up the response"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x07",
+    "section": "04-commande",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi la lampe doit-elle être éteinte au démarrage ?",
+      "en": "Why must the lamp be off at start-up?"
+    },
+    "explanation": {
+      "fr": "Une coupure de courant ne doit jamais la rallumer toute seule.",
+      "en": "A power cut must never switch it back on by itself."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour qu'une coupure ne la rallume pas toute seule",
+          "en": "So that a power cut does not switch it back on by itself"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour économiser le Wi-Fi",
+          "en": "To save Wi-Fi"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Parce que le serveur l'exige",
+          "en": "Because the server requires it"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x08",
+    "section": "05-mesure",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que signifie le type `application/json` d'une réponse ?",
+      "en": "What does the `application/json` type of a response mean?"
+    },
+    "explanation": {
+      "fr": "La réponse contient des données JSON, pas une page.",
+      "en": "The response holds JSON data, not a page."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Des données JSON",
+          "en": "JSON data"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Une image",
+          "en": "An image"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Une page HTML",
+          "en": "An HTML page"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x09",
+    "section": "05-mesure",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Comment écrit-on un guillemet à l'intérieur d'une chaîne C++ ?",
+      "en": "How is a quote written inside a C++ string?"
+    },
+    "explanation": {
+      "fr": "`\\\"`.",
+      "en": "`\\\"`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`\\\"`",
+          "en": "`\\\"`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`''`",
+          "en": "`''`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`\"\"`",
+          "en": "`\"\"`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x10",
+    "section": "06-securite",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Où ranger le nom et le mot de passe du réseau Wi-Fi ?",
+      "en": "Where should the Wi-Fi network name and password be stored?"
+    },
+    "explanation": {
+      "fr": "Dans `include/secrets.h`, jamais partagé.",
+      "en": "In `include/secrets.h`, never shared."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Dans `secrets.h`",
+          "en": "In `secrets.h`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Dans `main.cpp`",
+          "en": "In `main.cpp`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Dans `platformio.ini`",
+          "en": "In `platformio.ini`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x11",
+    "section": "06-securite",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi le serveur de la formation reste-t-il sur le réseau local ?",
+      "en": "Why does the course's server stay on the local network?"
+    },
+    "explanation": {
+      "fr": "Il n'a ni mot de passe ni chiffrement : n'importe qui pourrait l'appeler depuis Internet.",
+      "en": "It has neither password nor encryption: anyone could call it from the Internet."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Il n'a ni mot de passe ni chiffrement",
+          "en": "It has neither password nor encryption"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le Wi-Fi ne porte pas plus loin",
+          "en": "Wi-Fi does not reach further"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Internet est trop lent",
+          "en": "The Internet is too slow"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p3-m9-x12",
+    "section": "07-ouvertures",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Une tâche inverse une LED puis attend `vTaskDelay(pdMS_TO_TICKS(250))`. Quelle est la fréquence du clignotement ? (exemple : 1 Hz)",
+      "en": "A task inverts an LED then waits `vTaskDelay(pdMS_TO_TICKS(250))`. What is the blinking frequency? (example: 1 Hz)"
+    },
+    "explanation": {
+      "fr": "250 ms allumée, 250 ms éteinte : période 0,5 s, soit 2 Hz.",
+      "en": "250 ms on, 250 ms off: 0.5 s period, that is 2 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  }
+]

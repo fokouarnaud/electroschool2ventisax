@@ -1,0 +1,990 @@
+[
+  {
+    "id": "s-p1-m3-q01",
+    "section": "01-entree",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une entrée est reliée à un bouton seul, sans résistance de tirage. Que lit-elle bouton relâché ?",
+      "en": "An input is connected to a button alone, with no pull resistor. What does it read with the button released?"
+    },
+    "explanation": {
+      "fr": "Reliée à rien, l'entrée flotte : elle lit des 0 et des 1 au hasard.",
+      "en": "Connected to nothing, the input floats: it reads 0s and 1s at random."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "N'importe quoi : elle flotte",
+          "en": "Anything: it floats"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Toujours `LOW`",
+          "en": "Always `LOW`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Toujours `HIGH`",
+          "en": "Always `HIGH`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q02",
+    "section": "01-entree",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une entrée de l'ESP32 lit 1 au-dessus de 75 % de sa tension d'alimentation de 3,3 V. Quel est ce seuil ? (exemple : 1,2 V)",
+      "en": "An ESP32 input reads 1 above 75 % of its 3.3 V supply voltage. What is this threshold? (example: 1.2 V)"
+    },
+    "explanation": {
+      "fr": "0,75 × 3,3 ≈ 2,48 V.",
+      "en": "0.75 × 3.3 ≈ 2.48 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2.4750",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m3-q03",
+    "section": "02-tirage",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Cliquez sur la résistance de tirage du bouton.",
+      "en": "Click the pull resistor of the button."
+    },
+    "explanation": {
+      "fr": "En haut à gauche, la résistance relie l'entrée au 3,3 V : c'est le pull-up. Celle de droite limite le courant de la LED.",
+      "en": "Top left, the resistor connects the input to 3.3 V: it is the pull-up. The one on the right limits the LED current."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m3-pullup.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "Résistance en haut à gauche",
+          "en": "Top-left resistor"
+        },
+        "correct": true,
+        "shape": {
+          "x": 95,
+          "y": 50,
+          "w": 50,
+          "h": 70
+        }
+      },
+      {
+        "text": {
+          "fr": "Bouton",
+          "en": "Button"
+        },
+        "correct": false,
+        "shape": {
+          "x": 85,
+          "y": 145,
+          "w": 70,
+          "h": 60
+        }
+      },
+      {
+        "text": {
+          "fr": "Résistance de droite",
+          "en": "Right-hand resistor"
+        },
+        "correct": false,
+        "shape": {
+          "x": 415,
+          "y": 140,
+          "w": 50,
+          "h": 45
+        }
+      },
+      {
+        "text": {
+          "fr": "LED",
+          "en": "LED"
+        },
+        "correct": false,
+        "shape": {
+          "x": 415,
+          "y": 186,
+          "w": 50,
+          "h": 44
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q04",
+    "section": "02-tirage",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un bouton appuyé relie l'entrée à la masse ; la résistance de pull-up vaut 10 kΩ et l'alimentation 3,3 V. Quel courant traverse la résistance ? (exemple : 1,5 mA)",
+      "en": "A pressed button connects the input to ground; the pull-up is 10 kΩ and the supply 3.3 V. What current flows through the resistor? (example: 1.5 mA)"
+    },
+    "explanation": {
+      "fr": "I = 3,3 / 10 000 = 0,33 mA.",
+      "en": "I = 3.3 / 10000 = 0.33 mA."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.000330",
+      "unit": "A",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m3-q05",
+    "section": "02-tirage",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Le bouton est câblé entre la broche et GND, avec `INPUT_PULLUP`. Que lit `digitalRead` bouton appuyé ?",
+      "en": "The button is wired between the pin and GND, with `INPUT_PULLUP`. What does `digitalRead` read with the button pressed?"
+    },
+    "explanation": {
+      "fr": "Appuyé, le bouton relie la broche à la masse : `LOW`. Relâché, le tirage interne donne `HIGH`.",
+      "en": "Pressed, the button connects the pin to ground: `LOW`. Released, the internal pull-up gives `HIGH`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`LOW`",
+          "en": "`LOW`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`HIGH`",
+          "en": "`HIGH`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q06",
+    "section": "03-lire-ecrire",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Avec ce programme, que fait la LED quand on maintient le bouton appuyé ?\n\n```cpp\nvoid setup() {\n  pinMode(BUTTON_PIN, INPUT_PULLUP);\n  pinMode(LED_PIN, OUTPUT);\n}\n\nvoid loop() {\n  bool pressed = (digitalRead(BUTTON_PIN) == LOW);\n  digitalWrite(LED_PIN, pressed ? HIGH : LOW);\n}\n```",
+      "en": "With this program, what does the LED do while the button is held pressed?\n\n```cpp\nvoid setup() {\n  pinMode(BUTTON_PIN, INPUT_PULLUP);\n  pinMode(LED_PIN, OUTPUT);\n}\n\nvoid loop() {\n  bool pressed = (digitalRead(BUTTON_PIN) == LOW);\n  digitalWrite(LED_PIN, pressed ? HIGH : LOW);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Appuyé, la broche lit `LOW` : `pressed` vaut vrai et la LED reçoit `HIGH` tant que dure l'appui.",
+      "en": "Pressed, the pin reads `LOW`: `pressed` is true and the LED receives `HIGH` for as long as the press lasts."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle reste allumée",
+          "en": "It stays on"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle reste éteinte",
+          "en": "It stays off"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle clignote",
+          "en": "It blinks"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q07",
+    "section": "03-lire-ecrire",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : ce réglage permet de lire le bouton de façon fiable.\n\n```cpp\n// Bouton entre GPIO 4 et GND, aucune résistance externe\nvoid setup() {\n  pinMode(BUTTON_PIN, INPUT);\n}\n```",
+      "en": "True or false: this setting lets the button be read reliably.\n\n```cpp\n// Button between GPIO 4 and GND, no external resistor\nvoid setup() {\n  pinMode(BUTTON_PIN, INPUT);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Faux : sans tirage, l'entrée flotte bouton relâché. Il faut `INPUT_PULLUP`.",
+      "en": "False: without a pull, the input floats with the button released. `INPUT_PULLUP` is needed."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q08",
+    "section": "04-rebonds",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien de temps durent en général les rebonds d'un bouton ?",
+      "en": "How long do the bounces of a button usually last?"
+    },
+    "explanation": {
+      "fr": "Moins de 10 ms le plus souvent, d'où une attente de 20 ms pour l'anti-rebond.",
+      "en": "Usually less than 10 ms, hence a 20 ms wait for debouncing."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Quelques millisecondes",
+          "en": "A few milliseconds"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Quelques secondes",
+          "en": "A few seconds"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Quelques microsecondes",
+          "en": "A few microseconds"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q09",
+    "section": "04-rebonds",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "On appuie une fois sur le bouton, puis on le relâche. Combien de messages ce programme affiche-t-il en tout ? Répondez par un entier, en décimal (exemple : 4).\n\n```cpp\nvoid loop() {\n  int level = digitalRead(BUTTON_PIN);\n  if (level != stableLevel) {\n    delay(DEBOUNCE_MS);\n    if (digitalRead(BUTTON_PIN) == level) {\n      stableLevel = level;\n      Serial.println(stableLevel == LOW ? \"appuyé\" : \"relâché\");\n    }\n  }\n}\n```",
+      "en": "The button is pressed once, then released. How many messages does this program show in all? Answer with a whole number, in decimal (example: 4).\n\n```cpp\nvoid loop() {\n  int level = digitalRead(BUTTON_PIN);\n  if (level != stableLevel) {\n    delay(DEBOUNCE_MS);\n    if (digitalRead(BUTTON_PIN) == level) {\n      stableLevel = level;\n      Serial.println(stableLevel == LOW ? \"pressed\" : \"released\");\n    }\n  }\n}\n```"
+    },
+    "explanation": {
+      "fr": "Un message à l'appui et un au relâchement : les rebonds sont filtrés, soit 2.",
+      "en": "One message on the press and one on the release: the bounces are filtered, that is 2."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p1-m3-q10",
+    "section": "05-front",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La LED est éteinte au départ. Dans quel état est-elle après trois appuis ?\n\n```cpp\nuint8_t ledState = 0;\n\nvoid loop() {\n  int level = digitalRead(BUTTON_PIN);\n  if (previousLevel == HIGH && level == LOW) {\n    ledState ^= 1;\n    delay(DEBOUNCE_MS);\n  }\n  previousLevel = level;\n  digitalWrite(LED_PIN, ledState);\n}\n```",
+      "en": "The LED is off at the start. What state is it in after three presses?\n\n```cpp\nuint8_t ledState = 0;\n\nvoid loop() {\n  int level = digitalRead(BUTTON_PIN);\n  if (previousLevel == HIGH && level == LOW) {\n    ledState ^= 1;\n    delay(DEBOUNCE_MS);\n  }\n  previousLevel = level;\n  digitalWrite(LED_PIN, ledState);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Chaque front descendant inverse `ledState` : 1, puis 0, puis 1. La LED est allumée.",
+      "en": "Each falling edge inverts `ledState`: 1, then 0, then 1. The LED is on."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Allumée",
+          "en": "On"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Éteinte",
+          "en": "Off"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q11",
+    "section": "05-front",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque élément à sa signification.",
+      "en": "Match each item with its meaning."
+    },
+    "explanation": {
+      "fr": "Avec `INPUT_PULLUP`, l'appui produit un front descendant ; `^= 1` inverse un état ; `previousLevel` garde le niveau du tour précédent.",
+      "en": "With `INPUT_PULLUP`, a press produces a falling edge; `^= 1` inverts a state; `previousLevel` keeps the level of the previous pass."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "`HIGH` puis `LOW`",
+          "en": "`HIGH` then `LOW`"
+        },
+        "right": {
+          "fr": "Front descendant",
+          "en": "Falling edge"
+        }
+      },
+      {
+        "left": {
+          "fr": "`LOW` puis `HIGH`",
+          "en": "`LOW` then `HIGH`"
+        },
+        "right": {
+          "fr": "Front montant",
+          "en": "Rising edge"
+        }
+      },
+      {
+        "left": {
+          "fr": "`ledState ^= 1`",
+          "en": "`ledState ^= 1`"
+        },
+        "right": {
+          "fr": "Inverser un état 0 ou 1",
+          "en": "Invert a 0 or 1 state"
+        }
+      },
+      {
+        "left": {
+          "fr": "`previousLevel`",
+          "en": "`previousLevel`"
+        },
+        "right": {
+          "fr": "Niveau lu au tour précédent",
+          "en": "Level read on the previous pass"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q12",
+    "section": "06-machine-etats",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "L'état courant est `STATE_RED`. Que devient-il après un appui ?\n\n```cpp\nswitch (state) {\n  case STATE_OFF:   state = STATE_RED;   break;\n  case STATE_RED:   state = STATE_AMBER; break;\n  case STATE_AMBER: state = STATE_GREEN; break;\n  case STATE_GREEN: state = STATE_OFF;   break;\n}\n```",
+      "en": "The current state is `STATE_RED`. What does it become after a press?\n\n```cpp\nswitch (state) {\n  case STATE_OFF:   state = STATE_RED;   break;\n  case STATE_RED:   state = STATE_AMBER; break;\n  case STATE_AMBER: state = STATE_GREEN; break;\n  case STATE_GREEN: state = STATE_OFF;   break;\n}\n```"
+    },
+    "explanation": {
+      "fr": "La ligne `case STATE_RED` donne `STATE_AMBER`.",
+      "en": "The `case STATE_RED` line gives `STATE_AMBER`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`STATE_AMBER`",
+          "en": "`STATE_AMBER`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`STATE_GREEN`",
+          "en": "`STATE_GREEN`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`STATE_OFF`",
+          "en": "`STATE_OFF`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-q13",
+    "section": "06-machine-etats",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une boucle tourne toutes les 20 ms (`TICK_MS = 20`). Combien de tours faut-il compter pour 5 s ? Répondez par un entier, en décimal (exemple : 40).",
+      "en": "A loop runs every 20 ms (`TICK_MS = 20`). How many passes must be counted for 5 s? Answer with a whole number, in decimal (example: 40)."
+    },
+    "explanation": {
+      "fr": "5 000 ms / 20 ms = 250 tours.",
+      "en": "5000 ms / 20 ms = 250 passes."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "250",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p1-m3-q14",
+    "section": "07-signal-5v",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un capteur sort 5 V au niveau haut. Un pont R1 = 10 kΩ (côté capteur) et R2 = 20 kΩ (côté masse) le relie à l'entrée. Quelle tension reçoit l'entrée ? (exemple : 2,5 V)",
+      "en": "A sensor outputs 5 V at the high level. A divider R1 = 10 kΩ (sensor side) and R2 = 20 kΩ (ground side) connects it to the input. What voltage does the input get? (example: 2.5 V)"
+    },
+    "explanation": {
+      "fr": "5 × 20 / 30 ≈ 3,33 V : au-dessus du seuil de 2,5 V, l'entrée lit `HIGH`.",
+      "en": "5 × 20 / 30 ≈ 3.33 V: above the 2.5 V threshold, the input reads `HIGH`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "3.3333",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m3-q15",
+    "section": "07-signal-5v",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "L'entrée lit un capteur 5 V à travers un pont diviseur. Quel réglage choisir ?",
+      "en": "The input reads a 5 V sensor through a voltage divider. Which setting should be chosen?"
+    },
+    "explanation": {
+      "fr": "`INPUT` : le pont fixe déjà le niveau ; un tirage interne fausserait la tension du pont.",
+      "en": "`INPUT`: the divider already sets the level; an internal pull would distort the divider voltage."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`pinMode(SENSOR_PIN, INPUT)`",
+          "en": "`pinMode(SENSOR_PIN, INPUT)`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`pinMode(SENSOR_PIN, INPUT_PULLUP)`",
+          "en": "`pinMode(SENSOR_PIN, INPUT_PULLUP)`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`pinMode(SENSOR_PIN, OUTPUT)`",
+          "en": "`pinMode(SENSOR_PIN, OUTPUT)`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x01",
+    "section": "01-entree",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "En dessous de quelle tension environ une entrée de l'ESP32 lit-elle 0 ?",
+      "en": "Below roughly what voltage does an ESP32 input read 0?"
+    },
+    "explanation": {
+      "fr": "Environ 25 % de 3,3 V, soit 0,8 V.",
+      "en": "About 25 % of 3.3 V, that is 0.8 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "0,8 V",
+          "en": "0.8 V"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "2,5 V",
+          "en": "2.5 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "3,3 V",
+          "en": "3.3 V"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x02",
+    "section": "02-tirage",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Avec une résistance de tirage vers la masse (pull-down), que lit l'entrée bouton relâché ?",
+      "en": "With a pull-down resistor to ground, what does the input read with the button released?"
+    },
+    "explanation": {
+      "fr": "La résistance tire l'entrée à 0 V : `LOW`.",
+      "en": "The resistor pulls the input to 0 V: `LOW`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`LOW`",
+          "en": "`LOW`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`HIGH`",
+          "en": "`HIGH`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x03",
+    "section": "02-tirage",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelles broches n'ont pas de résistance de tirage interne ?",
+      "en": "Which pins have no internal pull resistor?"
+    },
+    "explanation": {
+      "fr": "Les entrées seules, GPIO 34 à 39.",
+      "en": "The input-only pins, GPIO 34 to 39."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 34 à 39",
+          "en": "GPIO 34 to 39"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 25 à 27",
+          "en": "GPIO 25 to 27"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "GPIO 4 et 13",
+          "en": "GPIO 4 and 13"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x04",
+    "section": "02-tirage",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Le tirage interne vaut environ 45 kΩ. Bouton appuyé (broche à la masse), quel courant le traverse sous 3,3 V ? (exemple : 0,5 mA)",
+      "en": "The internal pull-up is about 45 kΩ. Button pressed (pin to ground), what current flows through it at 3.3 V? (example: 0.5 mA)"
+    },
+    "explanation": {
+      "fr": "I = 3,3 / 45 000 ≈ 73 µA.",
+      "en": "I = 3.3 / 45000 ≈ 73 µA."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.000073333",
+      "unit": "A",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m3-x05",
+    "section": "03-lire-ecrire",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans quel ordre range-t-on le travail dans `loop()` ?",
+      "en": "In what order is the work arranged in `loop()`?"
+    },
+    "explanation": {
+      "fr": "Lire toutes les entrées, calculer, puis écrire toutes les sorties.",
+      "en": "Read all inputs, compute, then write all outputs."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Lire les entrées, calculer, écrire les sorties",
+          "en": "Read inputs, compute, write outputs"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Écrire les sorties, puis lire les entrées",
+          "en": "Write outputs, then read inputs"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Peu importe l'ordre",
+          "en": "The order does not matter"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x06",
+    "section": "04-rebonds",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quel est le principe de l'anti-rebond logiciel ?",
+      "en": "What is the principle of software debouncing?"
+    },
+    "explanation": {
+      "fr": "Après un changement, attendre la fin des rebonds puis relire ; n'accepter que si le niveau tient.",
+      "en": "After a change, wait for the bounces to end then read again; accept only if the level holds."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Attendre environ 20 ms puis relire avant d'accepter le changement",
+          "en": "Wait about 20 ms then read again before accepting the change"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Lire le bouton une seule fois par seconde",
+          "en": "Read the button only once a second"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Supprimer le tirage interne",
+          "en": "Remove the internal pull-up"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x07",
+    "section": "04-rebonds",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un bouton rebondit pendant 6 ms. L'anti-rebond attend `DEBOUNCE_MS = 20`. Combien de millisecondes de marge reste-t-il ? (exemple : 5 ms)",
+      "en": "A button bounces for 6 ms. The debouncing waits `DEBOUNCE_MS = 20`. How many milliseconds of margin are left? (example: 5 ms)"
+    },
+    "explanation": {
+      "fr": "20 − 6 = 14 ms.",
+      "en": "20 − 6 = 14 ms."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.014",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m3-x08",
+    "section": "05-front",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Le bouton est câblé avec `INPUT_PULLUP`. Que signifie un front descendant ?",
+      "en": "The button is wired with `INPUT_PULLUP`. What does a falling edge mean?"
+    },
+    "explanation": {
+      "fr": "`HIGH` puis `LOW` : le bouton vient d'être appuyé.",
+      "en": "`HIGH` then `LOW`: the button has just been pressed."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Le bouton vient d'être appuyé",
+          "en": "The button has just been pressed"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le bouton vient d'être relâché",
+          "en": "The button has just been released"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le bouton est débranché",
+          "en": "The button is disconnected"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x09",
+    "section": "05-front",
+    "type": "truefalse",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Vrai ou faux : après ces lignes, `ledState` vaut 0.\n\n```cpp\nuint8_t ledState = 1;\nledState ^= 1;\n```",
+      "en": "True or false: after these lines, `ledState` is 0.\n\n```cpp\nuint8_t ledState = 1;\nledState ^= 1;\n```"
+    },
+    "explanation": {
+      "fr": "Vrai : 1 XOR 1 = 0.",
+      "en": "True: 1 XOR 1 = 0."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x10",
+    "section": "06-machine-etats",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "À quoi sert `enum State { STATE_OFF, STATE_RED, STATE_AMBER, STATE_GREEN };` ?",
+      "en": "What is `enum State { STATE_OFF, STATE_RED, STATE_AMBER, STATE_GREEN };` for?"
+    },
+    "explanation": {
+      "fr": "Il crée un type dont les valeurs sont nommées : les états de la machine.",
+      "en": "It creates a type whose values have names: the states of the machine."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Nommer les états de la machine",
+          "en": "Name the states of the machine"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Allumer les trois LED",
+          "en": "Light the three LEDs"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Mesurer une durée",
+          "en": "Measure a duration"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m3-x11",
+    "section": "07-signal-5v",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un pont R1 = 15 kΩ (côté capteur) et R2 = 27 kΩ (côté masse) reçoit 5 V. Quelle tension sort ? (exemple : 2,5 V)",
+      "en": "A divider R1 = 15 kΩ (sensor side) and R2 = 27 kΩ (ground side) receives 5 V. What voltage comes out? (example: 2.5 V)"
+    },
+    "explanation": {
+      "fr": "5 × 27 / 42 ≈ 3,21 V.",
+      "en": "5 × 27 / 42 ≈ 3.21 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "3.2143",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m3-x12",
+    "section": "07-signal-5v",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi n'active-t-on pas `INPUT_PULLUP` derrière un pont diviseur ?",
+      "en": "Why is `INPUT_PULLUP` not enabled behind a voltage divider?"
+    },
+    "explanation": {
+      "fr": "Le pont fixe déjà le niveau ; un tirage en plus modifierait sa tension.",
+      "en": "The divider already sets the level; an extra pull would change its voltage."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Le pont fixe déjà le niveau",
+          "en": "The divider already sets the level"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La broche deviendrait une sortie",
+          "en": "The pin would become an output"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le tirage interne vaut 5 V",
+          "en": "The internal pull-up is 5 V"
+        },
+        "correct": false
+      }
+    ]
+  }
+]

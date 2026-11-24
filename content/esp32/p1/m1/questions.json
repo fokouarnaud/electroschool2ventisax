@@ -1,0 +1,1069 @@
+[
+  {
+    "id": "s-p1-m1-q01",
+    "section": "01-composants",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quel composant permet à l'ESP32 de commander un moteur alimenté en 12 V ?",
+      "en": "Which component lets the ESP32 drive a motor supplied with 12 V?"
+    },
+    "explanation": {
+      "fr": "Une broche ne fournit que quelques milliampères en 3,3 V : elle commande la grille d'un MOSFET, qui commute le 12 V.",
+      "en": "A pin supplies only a few milliamps at 3.3 V: it drives the gate of a MOSFET, which switches the 12 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Un MOSFET",
+          "en": "A MOSFET"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Un condensateur",
+          "en": "A capacitor"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Une résistance seule",
+          "en": "A resistor alone"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Rien : la broche suffit",
+          "en": "Nothing: the pin is enough"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q02",
+    "section": "01-composants",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque composant à son rôle autour de l'ESP32.",
+      "en": "Match each component with its role around the ESP32."
+    },
+    "explanation": {
+      "fr": "La résistance limite le courant, le condensateur filtre l'alimentation, la diode absorbe la surtension d'une charge inductive, le MOSFET commute la puissance.",
+      "en": "The resistor limits current, the capacitor filters the supply, the diode absorbs the surge of an inductive load, the MOSFET switches the power."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "Résistance",
+          "en": "Resistor"
+        },
+        "right": {
+          "fr": "Limiter le courant d'une LED",
+          "en": "Limit the current of an LED"
+        }
+      },
+      {
+        "left": {
+          "fr": "Condensateur",
+          "en": "Capacitor"
+        },
+        "right": {
+          "fr": "Filtrer l'alimentation 3,3 V",
+          "en": "Filter the 3.3 V supply"
+        }
+      },
+      {
+        "left": {
+          "fr": "Diode",
+          "en": "Diode"
+        },
+        "right": {
+          "fr": "Absorber la surtension d'un relais",
+          "en": "Absorb the surge of a relay"
+        }
+      },
+      {
+        "left": {
+          "fr": "MOSFET",
+          "en": "MOSFET"
+        },
+        "right": {
+          "fr": "Commuter une charge de 12 V",
+          "en": "Switch a 12 V load"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q03",
+    "section": "02-architecture",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle mémoire garde le programme quand la carte n'est plus alimentée ?",
+      "en": "Which memory keeps the program when the board is no longer powered?"
+    },
+    "explanation": {
+      "fr": "La Flash (4 Mo) conserve le programme sans courant ; la SRAM s'efface à chaque coupure.",
+      "en": "Flash (4 MB) keeps the program without power; SRAM is erased at every power-off."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La Flash",
+          "en": "Flash"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La SRAM",
+          "en": "SRAM"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le registre de la LED",
+          "en": "The LED register"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q04",
+    "section": "02-architecture",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle est la fréquence maximale des cœurs de l'ESP32 ? (exemple : 80 MHz)",
+      "en": "What is the maximum frequency of the ESP32 cores? (example: 80 MHz)"
+    },
+    "explanation": {
+      "fr": "Les deux cœurs Xtensa LX6 tournent jusqu'à 240 MHz.",
+      "en": "The two Xtensa LX6 cores run at up to 240 MHz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "240000000",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m1-q05",
+    "section": "03-carte",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "À quoi sert le bouton BOOT de la carte DevKit ?",
+      "en": "What is the BOOT button of the DevKit board for?"
+    },
+    "explanation": {
+      "fr": "Maintenu pendant un redémarrage, il met la puce en mode téléversement ; le bouton EN, lui, redémarre la puce.",
+      "en": "Held during a restart, it puts the chip into upload mode; the EN button restarts the chip."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Mettre la puce en mode téléversement au redémarrage",
+          "en": "Put the chip into upload mode at restart"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Éteindre la carte",
+          "en": "Switch the board off"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Allumer la LED intégrée",
+          "en": "Light the built-in LED"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q06",
+    "section": "03-carte",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : la broche 5V peut être reliée directement à une entrée GPIO.",
+      "en": "True or false: the 5V pin can be connected directly to a GPIO input."
+    },
+    "explanation": {
+      "fr": "Faux : la broche 5V porte le 5 V de l'USB, et 5 V détruit une broche de l'ESP32, qui travaille en 3,3 V.",
+      "en": "False: the 5V pin carries the USB 5 V, and 5 V destroys an ESP32 pin, which works at 3.3 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q07",
+    "section": "04-brochage",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Cliquez sur la broche qu'il ne faut jamais utiliser.",
+      "en": "Click the pin that must never be used."
+    },
+    "explanation": {
+      "fr": "D2 est GPIO 9, l'une des broches reliées à la mémoire Flash (GPIO 6 à 11) ; 34 est une entrée seule, 12 une broche de strapping, 25 et 4 sont sûres.",
+      "en": "D2 is GPIO 9, one of the pins wired to the Flash memory (GPIO 6 to 11); 34 is input only, 12 a strapping pin, 25 and 4 are safe."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m1-flash.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "D2 (GPIO 9)",
+          "en": "D2 (GPIO 9)"
+        },
+        "correct": true,
+        "shape": {
+          "x": 62,
+          "y": 420,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 34",
+          "en": "GPIO 34"
+        },
+        "correct": false,
+        "shape": {
+          "x": 62,
+          "y": 145,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 25",
+          "en": "GPIO 25"
+        },
+        "correct": false,
+        "shape": {
+          "x": 62,
+          "y": 245,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 12",
+          "en": "GPIO 12"
+        },
+        "correct": false,
+        "shape": {
+          "x": 62,
+          "y": 345,
+          "w": 88,
+          "h": 24
+        }
+      },
+      {
+        "text": {
+          "fr": "GPIO 4",
+          "en": "GPIO 4"
+        },
+        "correct": false,
+        "shape": {
+          "x": 272,
+          "y": 345,
+          "w": 88,
+          "h": 24
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q08",
+    "section": "04-brochage",
+    "type": "multiple",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelles broches sont des entrées seules ?",
+      "en": "Which pins are input only?"
+    },
+    "explanation": {
+      "fr": "GPIO 34, 35, 36 (VP) et 39 (VN) savent lire mais pas écrire ; GPIO 25 et 4 sont des broches sûres.",
+      "en": "GPIO 34, 35, 36 (VP) and 39 (VN) can read but not write; GPIO 25 and 4 are safe pins."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 34",
+          "en": "GPIO 34"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 35",
+          "en": "GPIO 35"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 39",
+          "en": "GPIO 39"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 25",
+          "en": "GPIO 25"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "GPIO 4",
+          "en": "GPIO 4"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q09",
+    "section": "05-regles-or",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un capteur sort 5 V. Un pont diviseur R1 = 1 kΩ (côté capteur) et R2 = 2 kΩ (côté masse) abaisse le signal. Quelle tension arrive sur la broche ? (exemple : 2,5 V)",
+      "en": "A sensor outputs 5 V. A divider R1 = 1 kΩ (sensor side) and R2 = 2 kΩ (ground side) lowers the signal. What voltage reaches the pin? (example: 2.5 V)"
+    },
+    "explanation": {
+      "fr": "Vs = 5 × 2 000 / 3 000 ≈ 3,33 V : la broche reste sous ses 3,3 V nominaux, à la tolérance près.",
+      "en": "Vout = 5 × 2000 / 3000 ≈ 3.33 V: the pin stays at its nominal 3.3 V, within tolerance."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "3.3333",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m1-q10",
+    "section": "05-regles-or",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Une LED rouge (tension directe 2,0 V) est alimentée par une broche à 3,3 V à travers 330 Ω. Quel courant la traverse ? (exemple : 2,5 mA)",
+      "en": "A red LED (forward voltage 2.0 V) is fed by a 3.3 V pin through 330 Ω. What current flows through it? (example: 2.5 mA)"
+    },
+    "explanation": {
+      "fr": "I = (3,3 − 2,0) / 330 ≈ 3,94 mA : bien en dessous de la douzaine de milliampères admise par broche.",
+      "en": "I = (3.3 − 2.0) / 330 ≈ 3.94 mA: well below the dozen milliamps allowed per pin."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.003939",
+      "unit": "A",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m1-q11",
+    "section": "06-platformio",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Dans ce fichier `platformio.ini`, que règle la dernière ligne ?\n\n```ini\n[env:esp32dev]\nplatform = espressif32 @ 8.0.0\nboard = esp32dev\nframework = arduino\nmonitor_speed = 115200\n```",
+      "en": "In this `platformio.ini` file, what does the last line set?\n\n```ini\n[env:esp32dev]\nplatform = espressif32 @ 8.0.0\nboard = esp32dev\nframework = arduino\nmonitor_speed = 115200\n```"
+    },
+    "explanation": {
+      "fr": "`monitor_speed` fixe la vitesse du moniteur série ; elle doit être celle de `Serial.begin(115200)`.",
+      "en": "`monitor_speed` sets the speed of the serial monitor; it must match `Serial.begin(115200)`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La vitesse du moniteur série, en bit/s",
+          "en": "The serial monitor speed, in bit/s"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La fréquence du processeur",
+          "en": "The processor frequency"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La taille de la Flash",
+          "en": "The Flash size"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q12",
+    "section": "07-premier-programme",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien de fois ce programme affiche-t-il son message dans le moniteur série ?\n\n```cpp\nvoid setup() {\n  Serial.begin(115200);\n  Serial.println(\"Bonjour\");\n}\n\nvoid loop() {\n  delay(1000);\n}\n```",
+      "en": "How many times does this program show its message in the serial monitor?\n\n```cpp\nvoid setup() {\n  Serial.begin(115200);\n  Serial.println(\"Hello\");\n}\n\nvoid loop() {\n  delay(1000);\n}\n```"
+    },
+    "explanation": {
+      "fr": "`setup()` ne s'exécute qu'une fois après la mise sous tension ; `loop()` ne fait qu'attendre.",
+      "en": "`setup()` runs only once after power-up; `loop()` only waits."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Une seule fois, après chaque démarrage",
+          "en": "Only once, after each start"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Une fois par seconde",
+          "en": "Once a second"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Jamais",
+          "en": "Never"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q13",
+    "section": "07-premier-programme",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Ce programme fait clignoter une LED. Quelle est la fréquence du clignotement ? (exemple : 5 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
+      "en": "This program blinks an LED. What is the blinking frequency? (example: 5 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
+    },
+    "explanation": {
+      "fr": "La LED est allumée 250 ms puis éteinte 250 ms : une période de 0,5 s, soit 2 Hz.",
+      "en": "The LED is on for 250 ms then off for 250 ms: a 0.5 s period, that is 2 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m1-q14",
+    "section": "07-premier-programme",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle ligne fait de la broche une sortie ?\n\n```cpp\nvoid setup() {\n  Serial.begin(115200);          // ligne A\n  pinMode(LED_PIN, OUTPUT);      // ligne B\n  digitalWrite(LED_PIN, HIGH);   // ligne C\n}\n```",
+      "en": "Which line makes the pin an output?\n\n```cpp\nvoid setup() {\n  Serial.begin(115200);          // line A\n  pinMode(LED_PIN, OUTPUT);      // line B\n  digitalWrite(LED_PIN, HIGH);   // line C\n}\n```"
+    },
+    "explanation": {
+      "fr": "`pinMode(LED_PIN, OUTPUT)` règle le sens de la broche ; `digitalWrite` choisit ensuite son niveau.",
+      "en": "`pinMode(LED_PIN, OUTPUT)` sets the direction of the pin; `digitalWrite` then chooses its level."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La ligne B",
+          "en": "Line B"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La ligne A",
+          "en": "Line A"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La ligne C",
+          "en": "Line C"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-q15",
+    "section": "07-premier-programme",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : avec ce programme, la LED reste allumée en permanence.\n\n```cpp\nconst uint8_t LED_PIN = 2;\n\nvoid setup() {\n  pinMode(LED_PIN, OUTPUT);\n  digitalWrite(LED_PIN, HIGH);\n}\n\nvoid loop() {\n}\n```",
+      "en": "True or false: with this program, the LED stays on all the time.\n\n```cpp\nconst uint8_t LED_PIN = 2;\n\nvoid setup() {\n  pinMode(LED_PIN, OUTPUT);\n  digitalWrite(LED_PIN, HIGH);\n}\n\nvoid loop() {\n}\n```"
+    },
+    "explanation": {
+      "fr": "Vrai : `setup()` allume la LED une fois et `loop()`, vide, ne la touche plus.",
+      "en": "True: `setup()` lights the LED once and the empty `loop()` never touches it again."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x01",
+    "section": "01-composants",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que trouve-t-on dans une seule puce de microcontrôleur ?",
+      "en": "What is found inside a single microcontroller chip?"
+    },
+    "explanation": {
+      "fr": "Un microcontrôleur réunit processeur, mémoire et broches d'entrée et de sortie.",
+      "en": "A microcontroller brings together processor, memory and input and output pins."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Un processeur, de la mémoire et des broches d'entrée et de sortie",
+          "en": "A processor, memory and input and output pins"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Seulement un processeur",
+          "en": "Only a processor"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Seulement de la mémoire",
+          "en": "Only memory"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x02",
+    "section": "02-architecture",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que contient la SRAM pendant que le programme tourne ?",
+      "en": "What does SRAM hold while the program runs?"
+    },
+    "explanation": {
+      "fr": "La SRAM porte les variables ; elle s'efface à la coupure, contrairement à la Flash.",
+      "en": "SRAM holds the variables; it is erased at power-off, unlike Flash."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Les variables, effacées à la coupure",
+          "en": "The variables, erased at power-off"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le programme de démarrage gravé en usine",
+          "en": "The factory boot program"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le programme, gardé sans courant",
+          "en": "The program, kept without power"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x03",
+    "section": "02-architecture",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Combien de cœurs de processeur possède l'ESP32 ? Répondez par un entier, en décimal (exemple : 4).",
+      "en": "How many processor cores does the ESP32 have? Answer with a whole number, in decimal (example: 4)."
+    },
+    "explanation": {
+      "fr": "Deux cœurs Xtensa LX6.",
+      "en": "Two Xtensa LX6 cores."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p1-m1-x04",
+    "section": "03-carte",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quel est le rôle du pont USB-série (CP2102 ou CH340) de la carte ?",
+      "en": "What is the role of the board's USB-serial bridge (CP2102 or CH340)?"
+    },
+    "explanation": {
+      "fr": "Il traduit l'USB de l'ordinateur en liaison série pour le téléversement et le moniteur série.",
+      "en": "It turns the computer's USB into a serial link for uploading and the serial monitor."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Traduire l'USB en liaison série",
+          "en": "Turn USB into a serial link"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Abaisser 5 V en 3,3 V",
+          "en": "Lower 5 V to 3.3 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Émettre le Wi-Fi",
+          "en": "Transmit Wi-Fi"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x05",
+    "section": "03-carte",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle tension trouve-t-on entre la broche 3V3 et GND ?",
+      "en": "What voltage is found between the 3V3 pin and GND?"
+    },
+    "explanation": {
+      "fr": "La broche 3V3 est la sortie du régulateur : 3,3 V.",
+      "en": "The 3V3 pin is the regulator output: 3.3 V."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "3,3 V",
+          "en": "3.3 V"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "5 V",
+          "en": "5 V"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "12 V",
+          "en": "12 V"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x06",
+    "section": "04-brochage",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un montage force GPIO 12 au niveau haut pendant le démarrage. Que se passe-t-il ?",
+      "en": "A circuit forces GPIO 12 high during boot. What happens?"
+    },
+    "explanation": {
+      "fr": "GPIO 12 est une broche de strapping : haute au démarrage, elle fait croire à une Flash en 1,8 V et la carte ne démarre pas.",
+      "en": "GPIO 12 is a strapping pin: high at boot, it makes the chip believe its Flash runs at 1.8 V and the board does not start."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La carte ne démarre pas",
+          "en": "The board does not start"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Rien de particulier",
+          "en": "Nothing special"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La LED intégrée s'allume",
+          "en": "The built-in LED lights up"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x07",
+    "section": "04-brochage",
+    "type": "multiple",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelles broches conviennent pour allumer une LED ?",
+      "en": "Which pins are suitable to light an LED?"
+    },
+    "explanation": {
+      "fr": "GPIO 25 et 26 sont sûres ; GPIO 34 est une entrée seule et GPIO 9 est reliée à la Flash.",
+      "en": "GPIO 25 and 26 are safe; GPIO 34 is input only and GPIO 9 is wired to the Flash."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "GPIO 25",
+          "en": "GPIO 25"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 26",
+          "en": "GPIO 26"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "GPIO 34",
+          "en": "GPIO 34"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "GPIO 9",
+          "en": "GPIO 9"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x08",
+    "section": "05-regles-or",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "L'ESP32 est alimenté par l'USB et un moteur par une batterie de 12 V. Que faut-il relier ?",
+      "en": "The ESP32 is powered over USB and a motor by a 12 V battery. What must be joined?"
+    },
+    "explanation": {
+      "fr": "Les deux GND : la masse commune donne une référence unique à tous les signaux.",
+      "en": "Both GNDs: the common ground gives a single reference to every signal."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Les GND des deux alimentations",
+          "en": "The GNDs of both supplies"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le 12 V à la broche 5V",
+          "en": "The 12 V to the 5V pin"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Rien, elles restent séparées",
+          "en": "Nothing, they stay separate"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x09",
+    "section": "05-regles-or",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un pont diviseur R1 = 10 kΩ (côté capteur) et R2 = 20 kΩ (côté masse) reçoit 5 V. Quelle tension sort ? (exemple : 2,5 V)",
+      "en": "A divider R1 = 10 kΩ (sensor side) and R2 = 20 kΩ (ground side) receives 5 V. What voltage comes out? (example: 2.5 V)"
+    },
+    "explanation": {
+      "fr": "Vs = 5 × 20 / 30 ≈ 3,33 V : seul le rapport des résistances compte.",
+      "en": "Vout = 5 × 20 / 30 ≈ 3.33 V: only the ratio of the resistors matters."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "3.3333",
+      "unit": "V",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m1-x10",
+    "section": "06-platformio",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans `platformio.ini`, que désigne `board = esp32dev` ?",
+      "en": "In `platformio.ini`, what does `board = esp32dev` designate?"
+    },
+    "explanation": {
+      "fr": "La carte cible : une DevKit à ESP32-WROOM-32.",
+      "en": "The target board: a DevKit with an ESP32-WROOM-32."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "La carte DevKit à ESP32-WROOM-32",
+          "en": "The DevKit board with an ESP32-WROOM-32"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La version de VS Code",
+          "en": "The VS Code version"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La vitesse du moniteur série",
+          "en": "The serial monitor speed"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p1-m1-x11",
+    "section": "07-premier-programme",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pendant combien de temps la LED reste-t-elle éteinte à chaque période ? (exemple : 2 s)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 500;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
+      "en": "For how long does the LED stay off in each period? (example: 2 s)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 500;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
+    },
+    "explanation": {
+      "fr": "`delay(HALF_PERIOD_MS)` attend 500 ms après `digitalWrite(LED_PIN, LOW)` : 0,5 s.",
+      "en": "`delay(HALF_PERIOD_MS)` waits 500 ms after `digitalWrite(LED_PIN, LOW)`: 0.5 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.5",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p1-m1-x12",
+    "section": "07-premier-programme",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quand la fonction `setup()` s'exécute-t-elle ?",
+      "en": "When does the `setup()` function run?"
+    },
+    "explanation": {
+      "fr": "Une fois, après chaque mise sous tension ou appui sur EN ; ensuite `loop()` se répète.",
+      "en": "Once, after each power-up or press on EN; then `loop()` repeats."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Une fois, après chaque démarrage",
+          "en": "Once, after each start"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Sans fin, en boucle",
+          "en": "Forever, in a loop"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Seulement au téléversement",
+          "en": "Only when uploading"
+        },
+        "correct": false
+      }
+    ]
+  }
+]

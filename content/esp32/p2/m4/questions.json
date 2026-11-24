@@ -1,0 +1,1001 @@
+[
+  {
+    "id": "s-p2-m4-q01",
+    "section": "01-delay",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien de fois par seconde ce programme lit-il le bouton ?\n\n```cpp\nvoid loop() {\n  digitalWrite(BUTTON_LED_PIN, digitalRead(BUTTON_PIN) == LOW ? HIGH : LOW);\n  digitalWrite(LED_PIN, HIGH);\n  delay(500);\n  digitalWrite(LED_PIN, LOW);\n  delay(500);\n}\n```",
+      "en": "How many times a second does this program read the button?\n\n```cpp\nvoid loop() {\n  digitalWrite(BUTTON_LED_PIN, digitalRead(BUTTON_PIN) == LOW ? HIGH : LOW);\n  digitalWrite(LED_PIN, HIGH);\n  delay(500);\n  digitalWrite(LED_PIN, LOW);\n  delay(500);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Un tour de `loop()` dure 1 s à cause des deux `delay(500)` : le bouton n'est lu qu'une fois par seconde.",
+      "en": "One pass through `loop()` lasts 1 s because of the two `delay(500)`: the button is read only once a second."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Une fois",
+          "en": "Once"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Des milliers de fois",
+          "en": "Thousands of times"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Deux fois",
+          "en": "Twice"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q02",
+    "section": "01-delay",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : pendant un `delay(500)`, `loop()` continue de lire les entrées.",
+      "en": "True or false: during a `delay(500)`, `loop()` keeps reading the inputs."
+    },
+    "explanation": {
+      "fr": "Faux : `delay` bloque le programme ; rien d'autre ne s'exécute dans `loop()` pendant l'attente.",
+      "en": "False: `delay` blocks the program; nothing else runs in `loop()` during the wait."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q03",
+    "section": "01-delay",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Sur ce chronogramme d'un clignotant écrit avec `delay`, cliquez sur l'intervalle pendant lequel un appui sur le bouton ne peut pas être vu.",
+      "en": "On this timing diagram of a blinker written with `delay`, click the interval during which a button press cannot be seen."
+    },
+    "explanation": {
+      "fr": "Pendant `delay(500)`, le programme attend sans lire le bouton ; il ne le lit qu'au bref instant où `loop()` recommence.",
+      "en": "During `delay(500)`, the program waits without reading the button; it reads it only at the brief moment when `loop()` starts again."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m4-sourd.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "L'intervalle « delay(500) »",
+          "en": "The \"delay(500)\" interval"
+        },
+        "correct": true,
+        "shape": {
+          "x": 110,
+          "y": 70,
+          "w": 210,
+          "h": 36
+        }
+      },
+      {
+        "text": {
+          "fr": "La courte case « loop »",
+          "en": "The short \"loop\" box"
+        },
+        "correct": false,
+        "shape": {
+          "x": 320,
+          "y": 70,
+          "w": 40,
+          "h": 36
+        }
+      },
+      {
+        "text": {
+          "fr": "Le niveau haut de la LED",
+          "en": "The high level of the LED"
+        },
+        "correct": false,
+        "shape": {
+          "x": 110,
+          "y": 0,
+          "w": 210,
+          "h": 40
+        }
+      },
+      {
+        "text": {
+          "fr": "La fin du chronogramme",
+          "en": "The end of the diagram"
+        },
+        "correct": false,
+        "shape": {
+          "x": 360,
+          "y": 70,
+          "w": 170,
+          "h": 36
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q04",
+    "section": "02-millis",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "`millis()` est un entier de 32 bits qui revient à 0 après 4 294 967 295 ms. Combien de secondes cela fait-il ? (exemple : 3600 s)",
+      "en": "`millis()` is a 32-bit integer that goes back to 0 after 4294967295 ms. How many seconds is that? (example: 3600 s)"
+    },
+    "explanation": {
+      "fr": "4 294 967 295 / 1 000 ≈ 4 294 967 s, soit environ 49,7 jours.",
+      "en": "4294967295 / 1000 ≈ 4294967 s, about 49.7 days."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "4294967.295",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-q05",
+    "section": "02-millis",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un événement est noté à `millis()` = 1 200. Plus tard, `millis()` vaut 1 950. Combien de temps s'est écoulé ? (exemple : 2 s)",
+      "en": "An event is recorded at `millis()` = 1200. Later, `millis()` is 1950. How much time has passed? (example: 2 s)"
+    },
+    "explanation": {
+      "fr": "1 950 − 1 200 = 750 ms = 0,75 s.",
+      "en": "1950 − 1200 = 750 ms = 0.75 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.75",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-q06",
+    "section": "02-millis",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Dans quel type range-t-on les instants lus avec `millis()` ?",
+      "en": "In which type are the times read with `millis()` stored?"
+    },
+    "explanation": {
+      "fr": "`millis()` renvoie un entier sans signe de 32 bits : `uint32_t`. Un `uint16_t` déborde après 65,5 s.",
+      "en": "`millis()` returns a 32-bit unsigned integer: `uint32_t`. A `uint16_t` overflows after 65.5 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`uint32_t`",
+          "en": "`uint32_t`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`uint8_t`",
+          "en": "`uint8_t`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`uint16_t`",
+          "en": "`uint16_t`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q07",
+    "section": "03-sans-bloquer",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quand la LED change-t-elle d'état ?\n\n```cpp\nif (now - lastToggleMs >= HALF_PERIOD_MS) {\n  lastToggleMs = now;\n  ledState ^= 1;\n  digitalWrite(LED_PIN, ledState);\n}\n```",
+      "en": "When does the LED change state?\n\n```cpp\nif (now - lastToggleMs >= HALF_PERIOD_MS) {\n  lastToggleMs = now;\n  ledState ^= 1;\n  digitalWrite(LED_PIN, ledState);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Quand le temps écoulé depuis le dernier changement atteint la demi-période ; le reste du temps, rien ne se passe et `loop()` continue.",
+      "en": "When the time elapsed since the last change reaches the half-period; the rest of the time nothing happens and `loop()` carries on."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Quand le temps écoulé depuis le dernier changement atteint `HALF_PERIOD_MS`",
+          "en": "When the time since the last change reaches `HALF_PERIOD_MS`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "À chaque tour de `loop()`",
+          "en": "At every pass through `loop()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Une seule fois, au démarrage",
+          "en": "Only once, at start-up"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q08",
+    "section": "03-sans-bloquer",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle est la fréquence de clignotement de cette LED ? (exemple : 5 Hz)\n\n```cpp\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  uint32_t now = millis();\n  if (now - lastToggleMs >= HALF_PERIOD_MS) {\n    lastToggleMs = now;\n    ledState ^= 1;\n    digitalWrite(LED_PIN, ledState);\n  }\n}\n```",
+      "en": "What is the blinking frequency of this LED? (example: 5 Hz)\n\n```cpp\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  uint32_t now = millis();\n  if (now - lastToggleMs >= HALF_PERIOD_MS) {\n    lastToggleMs = now;\n    ledState ^= 1;\n    digitalWrite(LED_PIN, ledState);\n  }\n}\n```"
+    },
+    "explanation": {
+      "fr": "250 ms allumée + 250 ms éteinte : période 0,5 s, soit 2 Hz.",
+      "en": "250 ms on + 250 ms off: 0.5 s period, that is 2 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-q09",
+    "section": "04-rythmes",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La LED 2 change d'état toutes les 120 ms (`LED2_HALF_MS = 120`). Quelle est sa période ? (exemple : 1 s)",
+      "en": "LED 2 changes state every 120 ms (`LED2_HALF_MS = 120`). What is its period? (example: 1 s)"
+    },
+    "explanation": {
+      "fr": "Allumée 120 ms puis éteinte 120 ms : 240 ms = 0,24 s.",
+      "en": "On for 120 ms then off for 120 ms: 240 ms = 0.24 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.24",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-q10",
+    "section": "04-rythmes",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque besoin à l'outil qui lui convient.",
+      "en": "Match each need with the right tool."
+    },
+    "explanation": {
+      "fr": "`delay` pour une seule tâche, `millis()` pour plusieurs rythmes, l'interruption pour un front, le timer pour un rythme très régulier.",
+      "en": "`delay` for a single task, `millis()` for several rhythms, the interrupt for an edge, the timer for a very regular rhythm."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "Attendre, quand il n'y a qu'une chose à faire",
+          "en": "Wait, when there is only one thing to do"
+        },
+        "right": {
+          "fr": "`delay`",
+          "en": "`delay`"
+        }
+      },
+      {
+        "left": {
+          "fr": "Plusieurs rythmes dans la même boucle",
+          "en": "Several rhythms in the same loop"
+        },
+        "right": {
+          "fr": "`millis()`",
+          "en": "`millis()`"
+        }
+      },
+      {
+        "left": {
+          "fr": "Réagir tout de suite à un front sur une broche",
+          "en": "React at once to an edge on a pin"
+        },
+        "right": {
+          "fr": "Interruption de broche",
+          "en": "Pin interrupt"
+        }
+      },
+      {
+        "left": {
+          "fr": "Un rythme très régulier, indépendant de `loop()`",
+          "en": "A very regular rhythm, independent of `loop()`"
+        },
+        "right": {
+          "fr": "Timer matériel",
+          "en": "Hardware timer"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q11",
+    "section": "05-interruptions",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Pourquoi `pressCount` est-elle déclarée `volatile` ?\n\n```cpp\nvolatile uint32_t pressCount = 0;\n\nvoid IRAM_ATTR onPress() {\n  pressCount++;\n}\n```",
+      "en": "Why is `pressCount` declared `volatile`?\n\n```cpp\nvolatile uint32_t pressCount = 0;\n\nvoid IRAM_ATTR onPress() {\n  pressCount++;\n}\n```"
+    },
+    "explanation": {
+      "fr": "Elle est modifiée par la routine d'interruption et lue par `loop()` : `volatile` oblige à la relire en mémoire à chaque usage.",
+      "en": "It is changed by the interrupt routine and read by `loop()`: `volatile` forces it to be read again from memory at each use."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Parce qu'elle est partagée entre la routine d'interruption et `loop()`",
+          "en": "Because it is shared between the interrupt routine and `loop()`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour qu'elle garde sa valeur sans courant",
+          "en": "So that it keeps its value without power"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour la rendre plus rapide à afficher",
+          "en": "To make it faster to show"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q12",
+    "section": "05-interruptions",
+    "type": "multiple",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelles règles s'appliquent à une routine d'interruption ?",
+      "en": "Which rules apply to an interrupt routine?"
+    },
+    "explanation": {
+      "fr": "Courte, placée en mémoire rapide avec `IRAM_ATTR`, variables partagées `volatile` ; jamais de `delay` ni de `Serial`.",
+      "en": "Short, placed in fast memory with `IRAM_ATTR`, shared variables `volatile`; never `delay` nor `Serial`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Elle reste courte",
+          "en": "It stays short"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle porte `IRAM_ATTR`",
+          "en": "It carries `IRAM_ATTR`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Ses variables partagées sont `volatile`",
+          "en": "Its shared variables are `volatile`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Elle affiche son résultat avec `Serial.print`",
+          "en": "It shows its result with `Serial.print`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Elle attend avec `delay(10)`",
+          "en": "It waits with `delay(10)`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q13",
+    "section": "06-timers",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Un timer est créé avec `timerBegin(1000000)` (1 MHz) et son alarme réglée à 250 000 pas. Quel intervalle sépare deux alarmes ? (exemple : 2 s)",
+      "en": "A timer is created with `timerBegin(1000000)` (1 MHz) and its alarm set to 250000 steps. What interval separates two alarms? (example: 2 s)"
+    },
+    "explanation": {
+      "fr": "250 000 pas / 1 000 000 pas par seconde = 0,25 s.",
+      "en": "250000 steps / 1000000 steps per second = 0.25 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.25",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-q14",
+    "section": "06-timers",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : cette ligne compile avec le cœur Arduino-ESP32 3.x de la formation.\n\n```cpp\nhw_timer_t *timer = timerBegin(0, 80, true);\n```",
+      "en": "True or false: this line builds with the Arduino-ESP32 3.x core of the course.\n\n```cpp\nhw_timer_t *timer = timerBegin(0, 80, true);\n```"
+    },
+    "explanation": {
+      "fr": "Faux : c'est l'API du cœur 2.x ; en 3.x, `timerBegin` ne prend que la fréquence du compteur.",
+      "en": "False: this is the 2.x core API; in 3.x, `timerBegin` takes only the counter frequency."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-q15",
+    "section": "05-interruptions",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Avec le bouton entre GPIO 4 et GND et le tirage interne, quand `onPress` est-elle appelée ?\n\n```cpp\nattachInterrupt(digitalPinToInterrupt(BUTTON_PIN), onPress, FALLING);\n```",
+      "en": "With the button between GPIO 4 and GND and the internal pull-up, when is `onPress` called?\n\n```cpp\nattachInterrupt(digitalPinToInterrupt(BUTTON_PIN), onPress, FALLING);\n```"
+    },
+    "explanation": {
+      "fr": "`FALLING` = front descendant ; avec `INPUT_PULLUP`, c'est l'appui.",
+      "en": "`FALLING` = falling edge; with `INPUT_PULLUP`, this is the press."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "À chaque appui",
+          "en": "On each press"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "À chaque relâchement",
+          "en": "On each release"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "En permanence tant que le bouton est appuyé",
+          "en": "Continuously while the button is held"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x01",
+    "section": "01-delay",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que signifie « `delay` est bloquant » ?",
+      "en": "What does \"`delay` is blocking\" mean?"
+    },
+    "explanation": {
+      "fr": "Pendant l'attente, le programme ne fait rien d'autre.",
+      "en": "During the wait, the program does nothing else."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pendant l'attente, le programme ne fait rien d'autre",
+          "en": "During the wait, the program does nothing else"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Il bloque la carte jusqu'au prochain démarrage",
+          "en": "It blocks the board until the next start-up"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Il empêche le téléversement",
+          "en": "It prevents uploading"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x02",
+    "section": "02-millis",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un événement est noté à `millis()` = 1 200 ; maintenant `millis()` vaut 3 500. Quelle durée s'est écoulée ? (exemple : 2 s)",
+      "en": "An event is recorded at `millis()` = 1200; now `millis()` is 3500. What duration has elapsed? (example: 2 s)"
+    },
+    "explanation": {
+      "fr": "3 500 − 1 200 = 2 300 ms = 2,3 s.",
+      "en": "3500 − 1200 = 2300 ms = 2.3 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2.3",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-x03",
+    "section": "02-millis",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle comparaison reste juste quand `millis()` revient à 0 après 49,7 jours ?",
+      "en": "Which comparison stays correct when `millis()` goes back to 0 after 49.7 days?"
+    },
+    "explanation": {
+      "fr": "La soustraction de deux `uint32_t` reste juste à travers le débordement ; l'addition, non.",
+      "en": "The subtraction of two `uint32_t` stays correct across the overflow; the addition does not."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`millis() - lastMs >= periodMs`",
+          "en": "`millis() - lastMs >= periodMs`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`millis() >= lastMs + periodMs`",
+          "en": "`millis() >= lastMs + periodMs`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x04",
+    "section": "03-sans-bloquer",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans un clignotant sans blocage, que fait-on juste après avoir inversé la LED ?",
+      "en": "In a non-blocking blinker, what is done right after inverting the LED?"
+    },
+    "explanation": {
+      "fr": "On note l'instant de l'action (`lastToggleMs = now`) pour mesurer la demi-période suivante.",
+      "en": "The time of the action is recorded (`lastToggleMs = now`) to measure the next half-period."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "On note l'instant : `lastToggleMs = now`",
+          "en": "The time is recorded: `lastToggleMs = now`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "On appelle `delay(500)`",
+          "en": "`delay(500)` is called"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "On remet `millis()` à zéro",
+          "en": "`millis()` is reset to zero"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x05",
+    "section": "03-sans-bloquer",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans un clignotant sans blocage, `HALF_PERIOD_MS` vaut 100. Quelle est la fréquence du clignotement ? (exemple : 2 Hz)",
+      "en": "In a non-blocking blinker, `HALF_PERIOD_MS` is 100. What is the blinking frequency? (example: 2 Hz)"
+    },
+    "explanation": {
+      "fr": "Période 200 ms, soit 5 Hz.",
+      "en": "200 ms period, that is 5 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "5",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-x06",
+    "section": "04-rythmes",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi lit-on `millis()` une seule fois en tête de `loop()` quand plusieurs tâches s'y partagent le temps ?",
+      "en": "Why is `millis()` read only once at the start of `loop()` when several tasks share the time?"
+    },
+    "explanation": {
+      "fr": "Toutes les tâches décident d'après la même photographie de l'horloge.",
+      "en": "All tasks decide from the same snapshot of the clock."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour que toutes les tâches décident d'après le même instant",
+          "en": "So that all tasks decide from the same time"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Parce que `millis()` ne peut être appelée qu'une fois",
+          "en": "Because `millis()` can be called only once"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour remettre l'horloge à zéro",
+          "en": "To reset the clock"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x07",
+    "section": "04-rythmes",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Une LED change d'état toutes les 200 ms. Quelle est sa fréquence de clignotement ? (exemple : 2 Hz)",
+      "en": "An LED changes state every 200 ms. What is its blinking frequency? (example: 2 Hz)"
+    },
+    "explanation": {
+      "fr": "Période 400 ms, soit 2,5 Hz.",
+      "en": "400 ms period, that is 2.5 Hz."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "2.5",
+      "unit": "Hz",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-x08",
+    "section": "05-interruptions",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle ligne relie la routine `onPress` aux appuis sur un bouton de GPIO 4 câblé avec `INPUT_PULLUP` ?",
+      "en": "Which line connects the `onPress` routine to presses on a GPIO 4 button wired with `INPUT_PULLUP`?"
+    },
+    "explanation": {
+      "fr": "L'appui est un front descendant : `FALLING`.",
+      "en": "The press is a falling edge: `FALLING`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`attachInterrupt(digitalPinToInterrupt(4), onPress, FALLING);`",
+          "en": "`attachInterrupt(digitalPinToInterrupt(4), onPress, FALLING);`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`attachInterrupt(digitalPinToInterrupt(4), onPress, RISING);`",
+          "en": "`attachInterrupt(digitalPinToInterrupt(4), onPress, RISING);`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`digitalRead(onPress);`",
+          "en": "`digitalRead(onPress);`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x09",
+    "section": "05-interruptions",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Une routine d'interruption compte des appuis. Où affiche-t-on le compte ?",
+      "en": "An interrupt routine counts presses. Where is the count shown?"
+    },
+    "explanation": {
+      "fr": "Dans `loop()` : la routine note l'événement, `loop()` affiche.",
+      "en": "In `loop()`: the routine records the event, `loop()` shows it."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Dans `loop()`",
+          "en": "In `loop()`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Dans la routine d'interruption",
+          "en": "In the interrupt routine"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Dans `setup()`",
+          "en": "In `setup()`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x10",
+    "section": "06-timers",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un timer compte à 1 MHz et son alarme vaut 500 000 pas. Quel intervalle sépare deux alarmes ? (exemple : 2 s)",
+      "en": "A timer counts at 1 MHz and its alarm is 500000 steps. What interval separates two alarms? (example: 2 s)"
+    },
+    "explanation": {
+      "fr": "500 000 / 1 000 000 = 0,5 s.",
+      "en": "500000 / 1000000 = 0.5 s."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.5",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m4-x11",
+    "section": "06-timers",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Dans `timerAlarm(timer, 1000000, true, 0)`, que signifie `true` ?",
+      "en": "In `timerAlarm(timer, 1000000, true, 0)`, what does `true` mean?"
+    },
+    "explanation": {
+      "fr": "L'alarme se recharge et se répète ; `0` signifie sans limite.",
+      "en": "The alarm reloads and repeats; `0` means without limit."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "L'alarme se répète",
+          "en": "The alarm repeats"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le timer compte à rebours",
+          "en": "The timer counts down"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La LED s'allume",
+          "en": "The LED lights up"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m4-x12",
+    "section": "06-timers",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quel outil choisir pour un rythme très régulier, indépendant de ce que fait `loop()` ?",
+      "en": "Which tool should be chosen for a very regular rhythm, independent of what `loop()` does?"
+    },
+    "explanation": {
+      "fr": "Un timer matériel compte seul et déclenche une interruption à chaque alarme.",
+      "en": "A hardware timer counts on its own and triggers an interrupt at each alarm."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Un timer matériel",
+          "en": "A hardware timer"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`delay`",
+          "en": "`delay`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`Serial.read`",
+          "en": "`Serial.read`"
+        },
+        "correct": false
+      }
+    ]
+  }
+]

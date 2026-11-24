@@ -1,0 +1,1035 @@
+[
+  {
+    "id": "s-p2-m5-q01",
+    "section": "01-uart",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien de bits la ligne transporte-t-elle pour un octet en trame 8N1 ? Répondez par un entier, en décimal (exemple : 12).",
+      "en": "How many bits does the line carry for one byte in an 8N1 frame? Answer with a whole number, in decimal (example: 12)."
+    },
+    "explanation": {
+      "fr": "1 bit de départ + 8 bits de données + 1 bit d'arrêt = 10.",
+      "en": "1 start bit + 8 data bits + 1 stop bit = 10."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "10",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p2-m5-q02",
+    "section": "01-uart",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Combien d'octets par seconde au plus passent sur une liaison 8N1 à 9 600 bit/s ? Répondez par un entier, en décimal (exemple : 100).",
+      "en": "How many bytes per second at most go through an 8N1 link at 9600 bit/s? Answer with a whole number, in decimal (example: 100)."
+    },
+    "explanation": {
+      "fr": "10 bits par octet : 9 600 / 10 = 960 octets par seconde.",
+      "en": "10 bits per byte: 9600 / 10 = 960 bytes per second."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "960",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m5-q03",
+    "section": "01-uart",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Sur quelles broches l'UART 0 (moniteur série) émet-elle et reçoit-elle ?",
+      "en": "On which pins does UART 0 (serial monitor) transmit and receive?"
+    },
+    "explanation": {
+      "fr": "TX sur GPIO 1, RX sur GPIO 3, reliés au pont USB-série.",
+      "en": "TX on GPIO 1, RX on GPIO 3, connected to the USB-serial bridge."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "TX sur GPIO 1, RX sur GPIO 3",
+          "en": "TX on GPIO 1, RX on GPIO 3"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "TX sur GPIO 21, RX sur GPIO 22",
+          "en": "TX on GPIO 21, RX on GPIO 22"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "TX sur GPIO 34, RX sur GPIO 35",
+          "en": "TX on GPIO 34, RX on GPIO 35"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q04",
+    "section": "02-serial-begin",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Le moniteur série n'affiche que des caractères illisibles. Quelle est la cause la plus probable ?",
+      "en": "The serial monitor shows only unreadable characters. What is the most likely cause?"
+    },
+    "explanation": {
+      "fr": "`Serial.begin` et `monitor_speed` n'ont pas la même vitesse : les bits sont découpés au mauvais rythme.",
+      "en": "`Serial.begin` and `monitor_speed` do not have the same speed: the bits are sliced at the wrong rhythm."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Les vitesses de `Serial.begin` et de `monitor_speed` diffèrent",
+          "en": "The `Serial.begin` and `monitor_speed` speeds differ"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "La LED est mal câblée",
+          "en": "The LED is wired wrongly"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le programme est trop long",
+          "en": "The program is too long"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q05",
+    "section": "02-serial-begin",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quelle vitesse la formation fixe-t-elle dans `Serial.begin` et `monitor_speed` ? (exemple : 9600 bit/s)",
+      "en": "What speed does the course set in `Serial.begin` and `monitor_speed`? (example: 9600 bit/s)"
+    },
+    "explanation": {
+      "fr": "115 200 bit/s des deux côtés.",
+      "en": "115200 bit/s on both sides."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "115200",
+      "unit": "bit/s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m5-q06",
+    "section": "03-envoyer",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Qu'affiche cette ligne dans le moniteur ?\n\n```cpp\nSerial.println(3.3);\n```",
+      "en": "What does this line show in the monitor?\n\n```cpp\nSerial.println(3.3);\n```"
+    },
+    "explanation": {
+      "fr": "Un nombre à virgule s'écrit avec deux décimales et un point : `3.30`, suivi d'un retour à la ligne.",
+      "en": "A decimal number is written with two decimals and a point: `3.30`, followed by a new line."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`3.30` puis un retour à la ligne",
+          "en": "`3.30` then a new line"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`3,3`",
+          "en": "`3,3`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`3`",
+          "en": "`3`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q07",
+    "section": "03-envoyer",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Qu'affiche cette ligne ?\n\n```cpp\nSerial.printf(\"%d mA\\n\", 12);\n```",
+      "en": "What does this line show?\n\n```cpp\nSerial.printf(\"%d mA\\n\", 12);\n```"
+    },
+    "explanation": {
+      "fr": "`%d` est remplacé par 12, `\\n` passe à la ligne.",
+      "en": "`%d` is replaced by 12, `\\n` starts a new line."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`12 mA` puis un retour à la ligne",
+          "en": "`12 mA` then a new line"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`%d mA`",
+          "en": "`%d mA`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`12`",
+          "en": "`12`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q08",
+    "section": "04-recevoir",
+    "type": "numeric",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Quel est le code ASCII de la lettre A majuscule ? Répondez en décimal (exemple : 97).",
+      "en": "What is the ASCII code of capital A? Answer in decimal (example: 97)."
+    },
+    "explanation": {
+      "fr": "A vaut 65 ; a minuscule vaut 97.",
+      "en": "A is 65; lower-case a is 97."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "65",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p2-m5-q09",
+    "section": "04-recevoir",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que contient `code` après cette ligne ?\n\n```cpp\n// Le tampon de réception est vide\nint code = Serial.read();\n```",
+      "en": "What does `code` hold after this line?\n\n```cpp\n// The receive buffer is empty\nint code = Serial.read();\n```"
+    },
+    "explanation": {
+      "fr": "Tampon vide : `Serial.read()` renvoie -1.",
+      "en": "Empty buffer: `Serial.read()` returns -1."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "-1",
+          "en": "-1"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "0",
+          "en": "0"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Le dernier caractère reçu",
+          "en": "The last character received"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q10",
+    "section": "04-recevoir",
+    "type": "matching",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Associez chaque caractère à son code ASCII.",
+      "en": "Match each character with its ASCII code."
+    },
+    "explanation": {
+      "fr": "a = 97, A = 65, 0 = 48, Entrée (saut de ligne) = 10.",
+      "en": "a = 97, A = 65, 0 = 48, Enter (line feed) = 10."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "pairs": [
+      {
+        "left": {
+          "fr": "a",
+          "en": "a"
+        },
+        "right": {
+          "fr": "97",
+          "en": "97"
+        }
+      },
+      {
+        "left": {
+          "fr": "A",
+          "en": "A"
+        },
+        "right": {
+          "fr": "65",
+          "en": "65"
+        }
+      },
+      {
+        "left": {
+          "fr": "0",
+          "en": "0"
+        },
+        "right": {
+          "fr": "48",
+          "en": "48"
+        }
+      },
+      {
+        "left": {
+          "fr": "Entrée",
+          "en": "Enter"
+        },
+        "right": {
+          "fr": "10",
+          "en": "10"
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q11",
+    "section": "05-commande",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "À quoi sert `line.trim()` ?\n\n```cpp\nString line = Serial.readStringUntil('\\n');\nline.trim();\nif (line == \"on\") {\n  digitalWrite(LED_PIN, HIGH);\n}\n```",
+      "en": "What is `line.trim()` for?\n\n```cpp\nString line = Serial.readStringUntil('\\n');\nline.trim();\nif (line == \"on\") {\n  digitalWrite(LED_PIN, HIGH);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Elle retire espaces et retour chariot en bord de ligne : sans elle, `\"on\\r\"` ne vaudrait pas `\"on\"`.",
+      "en": "It removes spaces and the carriage return at the ends of the line: without it, `\"on\\r\"` would not equal `\"on\"`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Enlever les espaces et le retour chariot en début et fin de ligne",
+          "en": "Remove spaces and the carriage return at the start and end of the line"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Mettre la ligne en majuscules",
+          "en": "Put the line in upper case"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Vider le tampon de réception",
+          "en": "Empty the receive buffer"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q12",
+    "section": "06-deboguer",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que faut-il tracer dans le moniteur pour déboguer une bascule ?",
+      "en": "What should be traced in the monitor to debug a toggle?"
+    },
+    "explanation": {
+      "fr": "Les changements, horodatés avec `millis()` : on voit l'ordre et la durée des événements sans noyer le moniteur.",
+      "en": "The changes, time-stamped with `millis()`: the order and duration of events show without flooding the monitor."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Chaque changement du bouton, avec l'instant",
+          "en": "Each change of the button, with the time"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Une ligne à chaque tour de `loop()`",
+          "en": "One line at every pass through `loop()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Rien : il faut un oscilloscope",
+          "en": "Nothing: an oscilloscope is needed"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q13",
+    "section": "07-serial2",
+    "type": "hotspot",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "La carte de droite reçoit sur RX ce que l'ESP32 émet. Cliquez sur la broche TX de l'ESP32.",
+      "en": "The board on the right receives on RX what the ESP32 transmits. Click the TX pin of the ESP32."
+    },
+    "explanation": {
+      "fr": "Le fil qui part de la broche du haut arrive sur le RX de la carte de droite : c'est donc le TX de l'ESP32. Le câblage est croisé.",
+      "en": "The wire leaving the top pin arrives at the RX of the right-hand board: it is therefore the ESP32 TX. The wiring is crossed."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "svg": "schemas/m5-tx.svg",
+    "choices": [
+      {
+        "text": {
+          "fr": "Broche du haut",
+          "en": "Top pin"
+        },
+        "correct": true,
+        "shape": {
+          "x": 150,
+          "y": 57,
+          "w": 50,
+          "h": 26
+        }
+      },
+      {
+        "text": {
+          "fr": "Deuxième broche",
+          "en": "Second pin"
+        },
+        "correct": false,
+        "shape": {
+          "x": 150,
+          "y": 87,
+          "w": 50,
+          "h": 26
+        }
+      },
+      {
+        "text": {
+          "fr": "Troisième broche",
+          "en": "Third pin"
+        },
+        "correct": false,
+        "shape": {
+          "x": 150,
+          "y": 117,
+          "w": 50,
+          "h": 26
+        }
+      },
+      {
+        "text": {
+          "fr": "Broche du bas",
+          "en": "Bottom pin"
+        },
+        "correct": false,
+        "shape": {
+          "x": 150,
+          "y": 147,
+          "w": 50,
+          "h": 26
+        }
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q14",
+    "section": "07-serial2",
+    "type": "single",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Que signifient 16 et 17 dans `Serial2.begin(9600, SERIAL_8N1, 16, 17)` ?",
+      "en": "What do 16 and 17 mean in `Serial2.begin(9600, SERIAL_8N1, 16, 17)`?"
+    },
+    "explanation": {
+      "fr": "Le troisième paramètre est la broche RX, le quatrième la broche TX.",
+      "en": "The third parameter is the RX pin, the fourth the TX pin."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "RX sur GPIO 16, TX sur GPIO 17",
+          "en": "RX on GPIO 16, TX on GPIO 17"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "TX sur GPIO 16, RX sur GPIO 17",
+          "en": "TX on GPIO 16, RX on GPIO 17"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Deux vitesses possibles",
+          "en": "Two possible speeds"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-q15",
+    "section": "05-commande",
+    "type": "truefalse",
+    "usage": "quiz",
+    "prompt": {
+      "fr": "Vrai ou faux : si l'on tape `ON` en majuscules, ce programme allume la LED.\n\n```cpp\nString line = Serial.readStringUntil('\\n');\nline.trim();\nif (line == \"on\") {\n  digitalWrite(LED_PIN, HIGH);\n}\n```",
+      "en": "True or false: if `ON` is typed in upper case, this program lights the LED.\n\n```cpp\nString line = Serial.readStringUntil('\\n');\nline.trim();\nif (line == \"on\") {\n  digitalWrite(LED_PIN, HIGH);\n}\n```"
+    },
+    "explanation": {
+      "fr": "Faux : la comparaison respecte la casse ; il faudrait `line.toLowerCase()` avant de comparer.",
+      "en": "False: the comparison is case-sensitive; `line.toLowerCase()` would be needed before comparing."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Vrai",
+          "en": "True"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Faux",
+          "en": "False"
+        },
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x01",
+    "section": "01-uart",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Combien de temps dure la transmission d'un octet en 8N1 à 9 600 bit/s ? (exemple : 2 ms)",
+      "en": "How long does transmitting one byte in 8N1 at 9600 bit/s take? (example: 2 ms)"
+    },
+    "explanation": {
+      "fr": "10 bits / 9 600 bit/s ≈ 1,04 ms.",
+      "en": "10 bits / 9600 bit/s ≈ 1.04 ms."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "0.0010417",
+      "unit": "s",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m5-x02",
+    "section": "01-uart",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que signifie 8N1 ?",
+      "en": "What does 8N1 mean?"
+    },
+    "explanation": {
+      "fr": "8 bits de données, pas de parité, 1 bit d'arrêt.",
+      "en": "8 data bits, no parity, 1 stop bit."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "8 bits de données, pas de parité, 1 bit d'arrêt",
+          "en": "8 data bits, no parity, 1 stop bit"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "8 broches, aucune masse, 1 fil",
+          "en": "8 pins, no ground, 1 wire"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "8 octets par seconde",
+          "en": "8 bytes per second"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x03",
+    "section": "02-serial-begin",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Où règle-t-on la vitesse d'écoute du moniteur série de PlatformIO ?",
+      "en": "Where is the listening speed of the PlatformIO serial monitor set?"
+    },
+    "explanation": {
+      "fr": "Par `monitor_speed` dans `platformio.ini`.",
+      "en": "With `monitor_speed` in `platformio.ini`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Par `monitor_speed` dans `platformio.ini`",
+          "en": "With `monitor_speed` in `platformio.ini`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Dans `loop()`",
+          "en": "In `loop()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Avec le bouton BOOT",
+          "en": "With the BOOT button"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x04",
+    "section": "03-envoyer",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle est la différence entre `Serial.print` et `Serial.println` ?",
+      "en": "What is the difference between `Serial.print` and `Serial.println`?"
+    },
+    "explanation": {
+      "fr": "`println` ajoute un retour à la ligne après le texte.",
+      "en": "`println` adds a new line after the text."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`println` passe à la ligne après le texte",
+          "en": "`println` starts a new line after the text"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`println` envoie plus vite",
+          "en": "`println` sends faster"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`print` ne sait pas écrire de nombres",
+          "en": "`print` cannot write numbers"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x05",
+    "section": "03-envoyer",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quel marqueur de `printf` affiche un nombre à virgule avec deux décimales ?",
+      "en": "Which `printf` marker shows a decimal number with two decimals?"
+    },
+    "explanation": {
+      "fr": "`%.2f`.",
+      "en": "`%.2f`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`%.2f`",
+          "en": "`%.2f`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`%d`",
+          "en": "`%d`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`%s`",
+          "en": "`%s`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x06",
+    "section": "04-recevoir",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Un programme reçoit le caractère `'5'` et calcule `c - '0'`. Quelle valeur obtient-il ? Répondez en décimal (exemple : 3).",
+      "en": "A program receives the character `'5'` and computes `c - '0'`. What value does it get? Answer in decimal (example: 3)."
+    },
+    "explanation": {
+      "fr": "53 − 48 = 5.",
+      "en": "53 − 48 = 5."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "5",
+      "unit": "",
+      "tolerance_pct": 0
+    }
+  },
+  {
+    "id": "s-p2-m5-x07",
+    "section": "04-recevoir",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Que renvoie `Serial.available()` ?",
+      "en": "What does `Serial.available()` return?"
+    },
+    "explanation": {
+      "fr": "Le nombre d'octets reçus qui attendent dans le tampon.",
+      "en": "The number of received bytes waiting in the buffer."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Le nombre d'octets en attente",
+          "en": "The number of bytes waiting"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Le dernier caractère reçu",
+          "en": "The last character received"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "La vitesse de la liaison",
+          "en": "The link speed"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x08",
+    "section": "05-commande",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Quelle fonction lit une ligne entière jusqu'à la touche Entrée ?",
+      "en": "Which function reads a whole line up to the Enter key?"
+    },
+    "explanation": {
+      "fr": "`Serial.readStringUntil('\\n')`.",
+      "en": "`Serial.readStringUntil('\\n')`."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "`Serial.readStringUntil('\\n')`",
+          "en": "`Serial.readStringUntil('\\n')`"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "`Serial.available()`",
+          "en": "`Serial.available()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "`Serial.println()`",
+          "en": "`Serial.println()`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x09",
+    "section": "06-deboguer",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Où ne faut-il jamais placer une ligne de trace `Serial.printf` ?",
+      "en": "Where must a `Serial.printf` trace line never be placed?"
+    },
+    "explanation": {
+      "fr": "Dans une routine d'interruption : elle note l'événement, `loop()` l'affiche.",
+      "en": "In an interrupt routine: it records the event, `loop()` shows it."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Dans une routine d'interruption",
+          "en": "In an interrupt routine"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Dans `loop()`",
+          "en": "In `loop()`"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Dans `setup()`",
+          "en": "In `setup()`"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x10",
+    "section": "07-serial2",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Comment relie-t-on deux cartes par une liaison série ?",
+      "en": "How are two boards connected by a serial link?"
+    },
+    "explanation": {
+      "fr": "TX vers RX, RX vers TX, et les GND ensemble.",
+      "en": "TX to RX, RX to TX, and the GNDs together."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "TX vers RX, RX vers TX, GND commun",
+          "en": "TX to RX, RX to TX, common GND"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "TX vers TX, RX vers RX",
+          "en": "TX to TX, RX to RX"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "TX vers 3V3",
+          "en": "TX to 3V3"
+        },
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "s-p2-m5-x11",
+    "section": "07-serial2",
+    "type": "numeric",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Combien d'octets par seconde au plus passent sur une liaison 8N1 à 57 600 bit/s ? Répondez en décimal (exemple : 100).",
+      "en": "How many bytes per second at most go through an 8N1 link at 57600 bit/s? Answer in decimal (example: 100)."
+    },
+    "explanation": {
+      "fr": "57 600 / 10 = 5 760.",
+      "en": "57600 / 10 = 5760."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [],
+    "numeric": {
+      "value": "5760",
+      "unit": "",
+      "tolerance_pct": 2
+    }
+  },
+  {
+    "id": "s-p2-m5-x12",
+    "section": "07-serial2",
+    "type": "single",
+    "usage": "exam",
+    "prompt": {
+      "fr": "Pourquoi relie-t-on les GND de deux cartes reliées en série ?",
+      "en": "Why are the GNDs of two serially connected boards joined?"
+    },
+    "explanation": {
+      "fr": "Sans masse commune, les niveaux 0 et 3,3 V n'ont pas de référence commune.",
+      "en": "Without a common ground, the 0 and 3.3 V levels have no common reference."
+    },
+    "reviewed": {
+      "fr": true,
+      "en": true
+    },
+    "choices": [
+      {
+        "text": {
+          "fr": "Pour que les niveaux aient la même référence",
+          "en": "So that the levels share the same reference"
+        },
+        "correct": true
+      },
+      {
+        "text": {
+          "fr": "Pour alimenter la seconde carte",
+          "en": "To power the second board"
+        },
+        "correct": false
+      },
+      {
+        "text": {
+          "fr": "Pour doubler la vitesse",
+          "en": "To double the speed"
+        },
+        "correct": false
+      }
+    ]
+  }
+]
