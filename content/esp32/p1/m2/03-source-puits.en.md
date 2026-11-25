@@ -12,6 +12,17 @@ The LED and its resistor go from 3.3 V to the pin. At the low level, the pin sin
 
 ![Inverted logic (sink): the LED goes from 3.3 V to the pin; LOW lights it, current enters the pin](/static/content/esp32/en/m2/puits.svg)
 
+## What happens in the pin
+
+Behind the pin, the output stage of the chip has only two switches: P to 3.3 V, N to ground (section 1). The bit of the `GPIO_OUT` register chooses which one is closed: `HIGH` closes P, `LOW` closes N.
+
+- **As a source**, the LED goes from the pin to ground. `HIGH`: P closed, the pin is at 3.3 V, the current leaves the pin, flows through the resistor and the LED to GND: (3.3 − 2.0) / 330 ≈ 3.94 mA. `LOW`: N closed, the pin is at 0 V like ground, no current.
+- **As a sink**, the LED goes from 3.3 V to the pin. `LOW`: N closed, the current starts from 3.3 V, flows through the LED and the resistor, then **enters** the pin and reaches ground through N: the same 3.94 mA. `HIGH`: P closed, both ends of the LED are at 3.3 V; with no voltage difference, no current flows and the LED stays off.
+
+The figure shows both wirings. Choose one, then write `HIGH` or `LOW`: watch which switch closes and where the current flows.
+
+[[fig:led_output]]
+
 ## Write a readable program
 
 In inverted logic, `digitalWrite(LED_PIN, LOW)` to light surprises the reader. So name both states once and for all:

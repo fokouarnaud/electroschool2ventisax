@@ -12,6 +12,17 @@ La LED et sa résistance vont du 3,3 V à la broche. Au niveau bas, la broche ab
 
 ![Logique inversée (puits) : la LED va du 3,3 V à la broche ; LOW l'allume, le courant entre dans la broche](/static/content/esp32/m2/puits.svg)
 
+## Ce qui se passe dans la broche
+
+Derrière la broche, l'étage de sortie de la puce n'a que deux interrupteurs : P vers le 3,3 V, N vers la masse (section 1). Le bit du registre `GPIO_OUT` choisit lequel est fermé : `HIGH` ferme P, `LOW` ferme N.
+
+- **En source**, la LED va de la broche à la masse. `HIGH` : P fermé, la broche est à 3,3 V, le courant sort de la broche, traverse la résistance et la LED vers GND : (3,3 − 2,0) / 330 ≈ 3,94 mA. `LOW` : N fermé, la broche est à 0 V comme la masse, aucun courant.
+- **En puits**, la LED va du 3,3 V à la broche. `LOW` : N fermé, le courant part du 3,3 V, traverse la LED et la résistance, puis **entre** dans la broche et rejoint la masse par N : les mêmes 3,94 mA. `HIGH` : P fermé, les deux bornes de la LED sont à 3,3 V ; sans différence de tension, aucun courant ne circule et la LED reste éteinte.
+
+La figure montre les deux câblages. Choisissez-en un, puis écrivez `HIGH` ou `LOW` : observez quel interrupteur se ferme et par où passe le courant.
+
+[[fig:led_output]]
+
 ## Écrire un programme lisible
 
 En logique inversée, `digitalWrite(LED_PIN, LOW)` pour allumer surprend le lecteur. On nomme donc les deux états une fois pour toutes :

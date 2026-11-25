@@ -68,9 +68,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         ),
         "pull_wiring": Figure(
             drawing="figures/pull_wiring.svg", card="figures/pull_wiring.html", script="acad/js/figures/pull_wiring.js",
+        ),        "led_output": Figure(
+            drawing="figures/led_output.svg", card="figures/led_output.html", script="acad/js/figures/led_output.js",
         ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control", "pull_wiring")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control", "pull_wiring", "led_output")
 
 
 @pytest.mark.django_db
@@ -872,3 +874,51 @@ def test_pull_wiring_section_carries_the_figure_after_the_four_circuits(lang):
     text = (M3_ESP32 / f"02-tirage.{lang}.md").read_text(encoding="utf-8")
     assert "\n[[fig:pull_wiring]]\n" in text
     assert text.index("pulldown-interne.svg") < text.index(PULL_STORY[lang]) < text.index("[[fig:pull_wiring]]") < text.index(KEY_POINTS[lang])
+
+
+# --- Sortie LED, source et puits (esp32, M2, section 03-source-puits) -------------------------------------------------
+
+M2_ESP32 = ROOT / "content" / "esp32" / "p1" / "m2"
+
+
+@pytest.mark.django_db
+def test_led_output_card_offers_both_wirings_and_the_level_in_both_languages(client, enrolled, module):
+    """Source ou puits (`aria-pressed`), niveau HIGH ou LOW ; relevé : interrupteur fermé, LED, courant et son sens."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Source et puits", order=1,
+        body_md_fr="[[fig:led_output]]", body_md_en="[[fig:led_output]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="led_output"' in fr
+    assert 'data-fig-preset="source" aria-pressed="true">Source (logique directe)<' in fr
+    assert 'data-fig-preset="sink" aria-pressed="false">Puits (logique inversée)<' in fr
+    assert 'data-fig-preset="sink" aria-pressed="false">Sink (inverted logic)<' in en
+    assert 'data-high="Écrire HIGH" data-low="Écrire LOW"' in fr and 'data-high="Write HIGH" data-low="Write LOW"' in en
+    assert 'data-out="sort de la broche" data-in="entre dans la broche"' in fr and 'data-out="leaves the pin" data-in="enters the pin"' in en
+    assert "<dt>Interrupteur fermé</dt>" in fr and "<dt>Closed switch</dt>" in en
+    assert 'src="/static/acad/js/figures/led_output.js' in fr
+
+
+LED_STORY = {"fr": "## Ce qui se passe dans la broche", "en": "## What happens in the pin"}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_led_output_section_carries_the_figure_after_both_circuits(lang):
+    """Schémas de la source et du puits gardés ; récit puis figure, avant le tableau des câblages de sortie."""
+    text = (M2_ESP32 / f"03-source-puits.{lang}.md").read_text(encoding="utf-8")
+    assert "\n[[fig:led_output]]\n" in text
+    assert text.index("source.svg") < text.index("puits.svg") < text.index(LED_STORY[lang]) < text.index("[[fig:led_output]]") < text.index(KEY_POINTS[lang])
+
+
+@pytest.mark.parametrize("lang, phrase", [
+    ("fr", "les deux bornes de la LED sont à 3,3 V"),
+    ("en", "both ends of the LED are at 3.3 V"),
+])
+def test_led_output_story_explains_why_a_sink_led_is_off_at_high(lang, phrase):
+    """En puits, HIGH n'allume pas : aucune différence de tension, donc aucun courant."""
+    assert phrase in (M2_ESP32 / f"03-source-puits.{lang}.md").read_text(encoding="utf-8")

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 02:42+0100\n"
+"POT-Creation-Date: 2026-11-25 04:36+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1889,6 +1889,7 @@ msgstr "End of module"
 #: .\templates\figures\contact_marking.html:3
 #: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
 #: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
+#: .\templates\figures\led_output.html:3
 #: .\templates\figures\power_control.html:3
 #: .\templates\figures\pull_wiring.html:3 .\templates\figures\rc_cutoff.html:3
 #: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
@@ -2155,6 +2156,7 @@ msgstr ""
 "and all the bridges slide together"
 
 #: .\templates\figures\contact_marking.html:32
+#: .\templates\figures\led_output.html:31
 #: .\templates\figures\power_control.html:36
 #: .\templates\figures\pull_wiring.html:31
 #: .\templates\figures\terminal_plate.html:31
@@ -2525,6 +2527,141 @@ msgstr "Antenna:"
 msgid "elle capte les trois stations à la fois"
 msgstr "it picks up all three stations at once"
 
+#: .\templates\figures\led_output.html:3
+msgid "Une broche, deux interrupteurs"
+msgstr "One pin, two switches"
+
+#: .\templates\figures\led_output.html:4
+msgid ""
+"Banc vu de dessus. À gauche, la puce ESP32 ouverte : le drapeau du registre "
+"GPIO_OUT commande l’étage de sortie, un interrupteur P du rail 3,3 V vers la "
+"piste de la broche et un interrupteur N de la piste vers le rail GND. À "
+"droite, hors de la puce : la broche, la résistance de 330 Ω et la LED rouge, "
+"vers le rail GND (source) ou depuis le rail 3,3 V (puits)."
+msgstr "Bench seen from above. On the left, the ESP32 chip opened: the flag of the GPIO_OUT register drives the output stage, a switch P from the 3.3 V rail to the pin track and a switch N from the track to the GND rail. On the right, outside the chip: the pin, the 330 Ω resistor and the red LED, to the GND rail (source) or from the 3.3 V rail (sink)."
+
+#: .\templates\figures\led_output.html:7
+msgid "Source (logique directe)"
+msgstr "Source (direct logic)"
+
+#: .\templates\figures\led_output.html:8
+msgid "Puits (logique inversée)"
+msgstr "Sink (inverted logic)"
+
+#: .\templates\figures\led_output.html:11
+msgid "Écrire HIGH"
+msgstr "Write HIGH"
+
+#: .\templates\figures\led_output.html:11
+msgid "Écrire LOW"
+msgstr "Write LOW"
+
+#: .\templates\figures\led_output.html:14
+#: .\templates\figures\pull_wiring.html:16
+msgid "Câblage"
+msgstr "Circuit"
+
+#: .\templates\figures\led_output.html:15
+msgid "Niveau écrit"
+msgstr "Level written"
+
+#: .\templates\figures\led_output.html:16
+msgid "Tension de la broche"
+msgstr "Pin voltage"
+
+#: .\templates\figures\led_output.html:17
+msgid "Interrupteur fermé"
+msgstr "Closed switch"
+
+#: .\templates\figures\led_output.html:17
+msgid "P, vers 3,3 V"
+msgstr "P, to 3.3 V"
+
+#: .\templates\figures\led_output.html:17
+msgid "N, vers GND"
+msgstr "N, to GND"
+
+#: .\templates\figures\led_output.html:18
+msgid "LED"
+msgstr "LED"
+
+#: .\templates\figures\led_output.html:18
+msgid "allumée"
+msgstr "on"
+
+#: .\templates\figures\led_output.html:18
+msgid "éteinte"
+msgstr "off"
+
+#: .\templates\figures\led_output.html:19
+msgid "Courant dans la LED"
+msgstr "LED current"
+
+#: .\templates\figures\led_output.html:20
+msgid "Sens du courant"
+msgstr "Current direction"
+
+#: .\templates\figures\led_output.html:20
+msgid "sort de la broche"
+msgstr "leaves the pin"
+
+#: .\templates\figures\led_output.html:20
+msgid "entre dans la broche"
+msgstr "enters the pin"
+
+#: .\templates\figures\led_output.html:20
+msgid "aucun courant"
+msgstr "no current"
+
+#: .\templates\figures\led_output.html:22
+msgid ""
+"Mouvement illustratif : le drapeau GPIO_OUT se déplace en 0,25 s. Tensions "
+"et courants sont exacts : LED rouge (2,0 V) et 330 Ω sur 3,3 V."
+msgstr "Illustrative motion: the GPIO_OUT flag moves in 0.25 s. Voltages and currents are exact: red LED (2.0 V) and 330 Ω on 3.3 V."
+
+#: .\templates\figures\led_output.html:27
+msgid "Drapeau GPIO_OUT :"
+msgstr "GPIO_OUT flag:"
+
+#: .\templates\figures\led_output.html:27
+msgid "le bit 25 du registre, levé pour 1 (HIGH), baissé pour 0 (LOW)"
+msgstr "bit 25 of the register, raised for 1 (HIGH), lowered for 0 (LOW)"
+
+#: .\templates\figures\led_output.html:28
+msgid "Étage de sortie :"
+msgstr "Output stage:"
+
+#: .\templates\figures\led_output.html:28
+msgid ""
+"l’interrupteur P relie la broche au rail 3,3 V (+, au fond), l’interrupteur "
+"N au rail GND (−, devant) ; un seul des deux est fermé"
+msgstr "switch P ties the pin to the 3.3 V rail (+, at the back), switch N to the GND rail (−, at the front); only one of them is closed"
+
+#: .\templates\figures\led_output.html:29
+#: .\templates\figures\pull_wiring.html:29
+msgid "Hors de la puce :"
+msgstr "Outside the chip:"
+
+#: .\templates\figures\led_output.html:29
+msgid ""
+"la broche GPIO 25, la résistance de 330 Ω et la LED, vers GND (source) ou "
+"depuis le 3,3 V (puits)"
+msgstr "pin GPIO 25, the 330 Ω resistor and the LED, to GND (source) or from 3.3 V (sink)"
+
+#: .\templates\figures\led_output.html:30
+#: .\templates\figures\pull_wiring.html:30
+msgid "Fil foncé :"
+msgstr "Dark wire:"
+
+#: .\templates\figures\led_output.html:30
+#: .\templates\figures\power_control.html:35
+msgid "parcouru par un courant"
+msgstr "carrying a current"
+
+#: .\templates\figures\led_output.html:31
+msgid "la LED quand elle est allumée"
+msgstr "the LED when it is on"
+
 #: .\templates\figures\power_control.html:3
 msgid "Une platine, deux schémas"
 msgstr "One panel, two diagrams"
@@ -2686,10 +2823,6 @@ msgstr ""
 msgid "Câble ou fil foncé :"
 msgstr "Dark cable or wire:"
 
-#: .\templates\figures\power_control.html:35
-msgid "parcouru par un courant"
-msgstr "carrying a current"
-
 #: .\templates\figures\power_control.html:36
 msgid "les appareils du schéma choisi"
 msgstr "the devices of the chosen diagram"
@@ -2706,7 +2839,13 @@ msgid ""
 "drapeau GPIO_IN. À droite, hors de la puce : la broche, la résistance de 10 "
 "kΩ et le bouton S1, branchés vers le rail 3,3 V ou vers le rail GND selon le "
 "câblage."
-msgstr "Bench seen from above. On the left, the ESP32 chip opened: 3.3 V rail at the back, GND rail at the front, two internal pull resistors of about 45 kΩ behind their switches, track of pin GPIO 4 to the input buffer and the GPIO_IN flag. On the right, outside the chip: the pin, the 10 kΩ resistor and button S1, wired to the 3.3 V rail or to the GND rail depending on the circuit."
+msgstr ""
+"Bench seen from above. On the left, the ESP32 chip opened: 3.3 V rail at the "
+"back, GND rail at the front, two internal pull resistors of about 45 kΩ "
+"behind their switches, track of pin GPIO 4 to the input buffer and the "
+"GPIO_IN flag. On the right, outside the chip: the pin, the 10 kΩ resistor "
+"and button S1, wired to the 3.3 V rail or to the GND rail depending on the "
+"circuit."
 
 #: .\templates\figures\pull_wiring.html:7
 msgid "Pull-down externe"
@@ -2723,10 +2862,6 @@ msgstr "Press S1"
 #: .\templates\figures\pull_wiring.html:13
 msgid "Relâcher S1"
 msgstr "Release S1"
-
-#: .\templates\figures\pull_wiring.html:16
-msgid "Câblage"
-msgstr "Circuit"
 
 #: .\templates\figures\pull_wiring.html:17
 msgid "Bouton S1"
@@ -2756,7 +2891,9 @@ msgstr "Current in the pull"
 msgid ""
 "Mouvement illustratif : le bouton et le drapeau se déplacent en 0,25 s. "
 "Tensions, niveaux et courants sont exacts."
-msgstr "Illustrative motion: the button and the flag move in 0.25 s. Voltages, levels and currents are exact."
+msgstr ""
+"Illustrative motion: the button and the flag move in 0.25 s. Voltages, "
+"levels and currents are exact."
 
 #: .\templates\figures\pull_wiring.html:27
 msgid "Dans la puce :"
@@ -2767,7 +2904,10 @@ msgid ""
 "rail 3,3 V (+) au fond, rail GND (−) devant ; deux tirages internes "
 "d’environ 45 kΩ, chacun derrière un interrupteur que le programme ferme "
 "(INPUT_PULLUP ou INPUT_PULLDOWN)"
-msgstr "3.3 V rail (+) at the back, GND rail (−) at the front; two internal pull resistors of about 45 kΩ, each behind a switch the program closes (INPUT_PULLUP or INPUT_PULLDOWN)"
+msgstr ""
+"3.3 V rail (+) at the back, GND rail (−) at the front; two internal pull "
+"resistors of about 45 kΩ, each behind a switch the program closes "
+"(INPUT_PULLUP or INPUT_PULLDOWN)"
 
 #: .\templates\figures\pull_wiring.html:28
 msgid "Tampon et drapeau GPIO_IN :"
@@ -2777,21 +2917,17 @@ msgstr "Buffer and GPIO_IN flag:"
 msgid ""
 "le tampon compare la tension de la broche aux seuils ; le drapeau se lève "
 "quand le niveau lu vaut 1"
-msgstr "the buffer compares the pin voltage with the thresholds; the flag rises when the level read is 1"
-
-#: .\templates\figures\pull_wiring.html:29
-msgid "Hors de la puce :"
-msgstr "Outside the chip:"
+msgstr ""
+"the buffer compares the pin voltage with the thresholds; the flag rises when "
+"the level read is 1"
 
 #: .\templates\figures\pull_wiring.html:29
 msgid ""
 "la broche GPIO 4, la résistance de 10 kΩ (câblages externes seulement) et le "
 "bouton S1, branchés vers le rail 3,3 V (au fond) ou vers le rail GND (devant)"
-msgstr "pin GPIO 4, the 10 kΩ resistor (external circuits only) and button S1, wired to the 3.3 V rail (at the back) or to the GND rail (at the front)"
-
-#: .\templates\figures\pull_wiring.html:30
-msgid "Fil foncé :"
-msgstr "Dark wire:"
+msgstr ""
+"pin GPIO 4, the 10 kΩ resistor (external circuits only) and button S1, wired "
+"to the 3.3 V rail (at the back) or to the GND rail (at the front)"
 
 #: .\templates\figures\pull_wiring.html:30
 msgid "parcouru par un courant, seulement bouton appuyé"

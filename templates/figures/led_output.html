@@ -1,0 +1,34 @@
+{% load i18n %}<figure class="fig" data-fig="led_output">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Une broche, deux interrupteurs" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc vu de dessus. À gauche, la puce ESP32 ouverte : le drapeau du registre GPIO_OUT commande l’étage de sortie, un interrupteur P du rail 3,3 V vers la piste de la broche et un interrupteur N de la piste vers le rail GND. À droite, hors de la puce : la broche, la résistance de 330 Ω et la LED rouge, vers le rail GND (source) ou depuis le rail 3,3 V (puits).' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="source" aria-pressed="true">{% translate "Source (logique directe)" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="sink" aria-pressed="false">{% translate "Puits (logique inversée)" %}</button>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn" data-fig-level data-high="{% translate 'Écrire HIGH' %}" data-low="{% translate 'Écrire LOW' %}">{% translate "Écrire LOW" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>{% translate "Câblage" %}</dt><dd data-fig-out="wiring"></dd></div>
+        <div><dt>{% translate "Niveau écrit" %}</dt><dd data-fig-out="level"></dd></div>
+        <div><dt>{% translate "Tension de la broche" %}</dt><dd data-fig-out="volts"></dd></div>
+        <div><dt>{% translate "Interrupteur fermé" %}</dt><dd data-fig-out="closed" data-p="{% translate 'P, vers 3,3 V' %}" data-n="{% translate 'N, vers GND' %}"></dd></div>
+        <div><dt>{% translate "LED" %}</dt><dd data-fig-out="led" data-on="{% translate 'allumée' %}" data-off="{% translate 'éteinte' %}"></dd></div>
+        <div><dt>{% translate "Courant dans la LED" %}</dt><dd data-fig-out="amps"></dd></div>
+        <div><dt>{% translate "Sens du courant" %}</dt><dd data-fig-out="flow" data-out="{% translate 'sort de la broche' %}" data-in="{% translate 'entre dans la broche' %}" data-none="{% translate 'aucun courant' %}"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement illustratif : le drapeau GPIO_OUT se déplace en 0,25 s. Tensions et courants sont exacts : LED rouge (2,0 V) et 330 Ω sur 3,3 V." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Drapeau GPIO_OUT :" %}</strong> {% translate "le bit 25 du registre, levé pour 1 (HIGH), baissé pour 0 (LOW)" %}</li>
+      <li><strong>{% translate "Étage de sortie :" %}</strong> {% translate "l’interrupteur P relie la broche au rail 3,3 V (+, au fond), l’interrupteur N au rail GND (−, devant) ; un seul des deux est fermé" %}</li>
+      <li><strong>{% translate "Hors de la puce :" %}</strong> {% translate "la broche GPIO 25, la résistance de 330 Ω et la LED, vers GND (source) ou depuis le 3,3 V (puits)" %}</li>
+      <li><strong>{% translate "Fil foncé :" %}</strong> {% translate "parcouru par un courant" %}</li>
+      <li><strong>{% translate "En teal :" %}</strong> {% translate "la LED quand elle est allumée" %}</li>
+    </ul>
+  </figcaption>
+</figure>
