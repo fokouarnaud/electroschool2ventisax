@@ -66,8 +66,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
         "power_control": Figure(
             drawing="figures/power_control.svg", card="figures/power_control.html", script="acad/js/figures/power_control.js",
         ),
+        "pull_wiring": Figure(
+            drawing="figures/pull_wiring.svg", card="figures/pull_wiring.html", script="acad/js/figures/pull_wiring.js",
+        ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control", "pull_wiring")
 
 
 @pytest.mark.django_db
@@ -831,3 +834,41 @@ def test_power_control_story_keeps_the_motor_current_in_the_power_circuit(lang, 
     """F1 : F1 fait retomber KM1 par 95-96 ; S2 n'alimente que la bobine, KM1 établit le courant du moteur."""
     text = (M2_MOTEURS / f"03-puissance-commande.{lang}.md").read_text(encoding="utf-8")
     assert overload in text and button in text
+
+
+# --- Quatre câblages d'un bouton (esp32, M3, section 02-tirage) -------------------------------------------------------
+
+M3_ESP32 = ROOT / "content" / "esp32" / "p1" / "m3"
+
+
+@pytest.mark.django_db
+def test_pull_wiring_card_offers_the_four_wirings_and_the_button_in_both_languages(client, enrolled, module):
+    """Quatre câblages à bascule (`aria-pressed`), un bouton à enfoncer ; relevé : tension de la broche, niveau lu, courant."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="Les résistances de tirage", order=1,
+        body_md_fr="[[fig:pull_wiring]]", body_md_en="[[fig:pull_wiring]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="pull_wiring"' in fr
+    for wiring, label in (("ext-down", "Pull-down externe"), ("ext-up", "Pull-up externe"), ("int-up", "INPUT_PULLUP"), ("int-down", "INPUT_PULLDOWN")):
+        assert f'data-fig-preset="{wiring}" aria-pressed="{"true" if wiring == "ext-down" else "false"}">{label}<' in fr
+    assert 'data-fig-preset="ext-up" aria-pressed="false">External pull-up<' in en
+    assert 'data-press="Appuyer sur S1" data-release="Relâcher S1"' in fr and 'data-press="Press S1" data-release="Release S1"' in en
+    assert "<dt>Niveau lu</dt>" in fr and "<dt>Level read</dt>" in en and "Dans la puce :</strong>" in fr and "Inside the chip:</strong>" in en
+    assert 'src="/static/acad/js/figures/pull_wiring.js' in fr
+
+
+PULL_STORY = {"fr": "## Voir les quatre câblages", "en": "## Seeing the four circuits"}
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_pull_wiring_section_carries_the_figure_after_the_four_circuits(lang):
+    """Les quatre schémas restent en place ; la figure les reprend avant la comparaison."""
+    text = (M3_ESP32 / f"02-tirage.{lang}.md").read_text(encoding="utf-8")
+    assert "\n[[fig:pull_wiring]]\n" in text
+    assert text.index("pulldown-interne.svg") < text.index(PULL_STORY[lang]) < text.index("[[fig:pull_wiring]]") < text.index(KEY_POINTS[lang])

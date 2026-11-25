@@ -1,0 +1,34 @@
+{% load i18n %}<figure class="fig" data-fig="pull_wiring">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Dedans et dehors" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc vu de dessus. À gauche, la puce ESP32 ouverte : rail 3,3 V au fond, rail GND devant, deux tirages internes d’environ 45 kΩ derrière leur interrupteur, piste de la broche GPIO 4 vers le tampon d’entrée et le drapeau GPIO_IN. À droite, hors de la puce : la broche, la résistance de 10 kΩ et le bouton S1, branchés vers le rail 3,3 V ou vers le rail GND selon le câblage.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-preset="ext-down" aria-pressed="true">{% translate "Pull-down externe" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="ext-up" aria-pressed="false">{% translate "Pull-up externe" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="int-up" aria-pressed="false">INPUT_PULLUP</button>
+        <button type="button" class="btn btn-ghost" data-fig-preset="int-down" aria-pressed="false">INPUT_PULLDOWN</button>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn" data-fig-push data-press="{% translate 'Appuyer sur S1' %}" data-release="{% translate 'Relâcher S1' %}" aria-pressed="false">{% translate "Appuyer sur S1" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>{% translate "Câblage" %}</dt><dd data-fig-out="wiring"></dd></div>
+        <div><dt>{% translate "Bouton S1" %}</dt><dd data-fig-out="button" data-pressed="{% translate 'appuyé' %}" data-released="{% translate 'relâché' %}"></dd></div>
+        <div><dt>{% translate "Tension de GPIO 4" %}</dt><dd data-fig-out="volts"></dd></div>
+        <div><dt>{% translate "Niveau lu" %}</dt><dd data-fig-out="level"></dd></div>
+        <div><dt>{% translate "Courant dans le tirage" %}</dt><dd data-fig-out="amps"></dd></div>
+      </dl>
+      <p class="fig-note">{% translate "Mouvement illustratif : le bouton et le drapeau se déplacent en 0,25 s. Tensions, niveaux et courants sont exacts." %}</p>
+    </div>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "Dans la puce :" %}</strong> {% translate "rail 3,3 V (+) au fond, rail GND (−) devant ; deux tirages internes d’environ 45 kΩ, chacun derrière un interrupteur que le programme ferme (INPUT_PULLUP ou INPUT_PULLDOWN)" %}</li>
+      <li><strong>{% translate "Tampon et drapeau GPIO_IN :" %}</strong> {% translate "le tampon compare la tension de la broche aux seuils ; le drapeau se lève quand le niveau lu vaut 1" %}</li>
+      <li><strong>{% translate "Hors de la puce :" %}</strong> {% translate "la broche GPIO 4, la résistance de 10 kΩ (câblages externes seulement) et le bouton S1, branchés vers le rail 3,3 V (au fond) ou vers le rail GND (devant)" %}</li>
+      <li><strong>{% translate "Fil foncé :" %}</strong> {% translate "parcouru par un courant, seulement bouton appuyé" %}</li>
+      <li><strong>{% translate "En teal :" %}</strong> {% translate "la résistance de tirage du câblage choisi" %}</li>
+    </ul>
+  </figcaption>
+</figure>

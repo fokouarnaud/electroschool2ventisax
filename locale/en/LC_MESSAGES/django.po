@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 01:09+0100\n"
+"POT-Creation-Date: 2026-11-25 02:42+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -42,7 +42,7 @@ msgid "Activer le code d'accès"
 msgstr "Activate the join code"
 
 #: .\accounts\admin.py:75 .\templates\progress\_trainer_nav.html:3
-#: .\templates\progress\attempt_review.html:5
+#: .\templates\progress\attempt_review.html:6
 msgid "Apprenants"
 msgstr "Learners"
 
@@ -217,7 +217,7 @@ msgstr "image"
 msgid "valeur attendue"
 msgstr "expected value"
 
-#: .\assessments\models.py:48 .\templates\assessments\attempt.html:38
+#: .\assessments\models.py:48 .\templates\assessments\attempt.html:39
 msgid "unité"
 msgstr "unit"
 
@@ -627,7 +627,7 @@ msgid "%(h)s h"
 msgstr "%(h)s h"
 
 #: .\templates\accounts\dashboard.html:78
-#: .\templates\assessments\result.html:26 .\templates\courses\_outline.html:31
+#: .\templates\assessments\result.html:27 .\templates\courses\_outline.html:31
 #: .\templates\courses\module_detail.html:24
 #, python-format
 msgid "Examen de la Partie %(n)s"
@@ -907,129 +907,129 @@ msgstr "Usernames already taken, skipped:"
 msgid "Importer"
 msgstr "Import"
 
-#: .\templates\assessments\attempt.html:2 .\templates\assessments\exam.html:2
+#: .\templates\assessments\attempt.html:3 .\templates\assessments\exam.html:2
 #: .\templates\progress\trainer_table.html:39
 msgid "Examen"
 msgstr "Exam"
 
-#: .\templates\assessments\attempt.html:2
+#: .\templates\assessments\attempt.html:3
 msgid "Quiz"
 msgstr "Quiz"
 
-#: .\templates\assessments\attempt.html:5
+#: .\templates\assessments\attempt.html:6
 msgid "Enregistrement…"
 msgstr "Saving…"
 
-#: .\templates\assessments\attempt.html:6
+#: .\templates\assessments\attempt.html:7
 msgid "Réponse enregistrée"
 msgstr "Answer saved"
 
-#: .\templates\assessments\attempt.html:7
+#: .\templates\assessments\attempt.html:8
 msgid "Échec de l’enregistrement. Vérifiez la connexion puis recochez."
 msgstr "Saving failed. Check your connection, then select the answer again."
 
-#: .\templates\assessments\attempt.html:8
+#: .\templates\assessments\attempt.html:9
 msgid "Temps écoulé : la tentative est envoyée."
 msgstr "Time is up: the attempt has been submitted."
 
-#: .\templates\assessments\attempt.html:9
+#: .\templates\assessments\attempt.html:10
 #, python-format
 msgid "%%(done)s / %%(total)s répondues"
 msgstr "%%(done)s / %%(total)s answered"
 
-#: .\templates\assessments\attempt.html:11 .\templates\assessments\exam.html:7
-#: .\templates\progress\attempt_review.html:10
+#: .\templates\assessments\attempt.html:12 .\templates\assessments\exam.html:7
+#: .\templates\progress\attempt_review.html:11
 #: .\templates\progress\deadlines.html:20
 #, python-format
 msgid "Examen : %(p)s"
 msgstr "Exam: %(p)s"
 
-#: .\templates\assessments\attempt.html:11
-#: .\templates\progress\attempt_review.html:10
+#: .\templates\assessments\attempt.html:12
+#: .\templates\progress\attempt_review.html:11
 #: .\templates\progress\deadlines.html:19
 #, python-format
 msgid "Quiz : %(m)s"
 msgstr "Quiz: %(m)s"
 
-#: .\templates\assessments\attempt.html:14
+#: .\templates\assessments\attempt.html:15
 msgid "Temps restant"
 msgstr "Time left"
 
-#: .\templates\assessments\attempt.html:23
-#: .\templates\assessments\result.html:57
+#: .\templates\assessments\attempt.html:24
+#: .\templates\assessments\result.html:58
 #, python-format
 msgid "Question %(n)s"
 msgstr "Question %(n)s"
 
-#: .\templates\assessments\attempt.html:30
+#: .\templates\assessments\attempt.html:31
 msgid ""
 "Saisissez un angle en degrés : virgule ou point, sans préfixe (ex. 26,6)."
 msgstr "Enter an angle in degrees: comma or dot, no prefix (e.g. 26.6)."
 
-#: .\templates\assessments\attempt.html:32
+#: .\templates\assessments\attempt.html:33
 msgid ""
 "Saisissez une valeur : virgule ou point, préfixes p n µ m k M G acceptés "
 "(ex. 4,7 k)."
 msgstr ""
 "Enter a value: comma or dot, prefixes p n µ m k M G accepted (e.g. 4.7 k)."
 
-#: .\templates\assessments\attempt.html:35
-#: .\templates\assessments\result.html:79
+#: .\templates\assessments\attempt.html:36
+#: .\templates\assessments\result.html:80
 msgid "Votre réponse"
 msgstr "Your answer"
 
-#: .\templates\assessments\attempt.html:42
+#: .\templates\assessments\attempt.html:43
 msgid "Associez chaque élément à sa correspondance."
 msgstr "Match each item with its counterpart."
 
-#: .\templates\assessments\attempt.html:49
+#: .\templates\assessments\attempt.html:50
 msgid "Choisir"
 msgstr "Choose"
 
-#: .\templates\assessments\attempt.html:56
+#: .\templates\assessments\attempt.html:57
 msgid "Cliquez la bonne zone du schéma, ou choisissez-la dans la liste."
 msgstr "Click the right area of the diagram, or pick it from the list."
 
-#: .\templates\assessments\attempt.html:67
+#: .\templates\assessments\attempt.html:68
 msgid "Plusieurs réponses possibles."
 msgstr "Several answers possible."
 
-#: .\templates\assessments\attempt.html:67
+#: .\templates\assessments\attempt.html:68
 msgid "Une seule réponse."
 msgstr "One answer only."
 
-#: .\templates\assessments\attempt.html:78
+#: .\templates\assessments\attempt.html:79
 msgid "Enregistrer cette réponse"
 msgstr "Save this answer"
 
-#: .\templates\assessments\attempt.html:82
+#: .\templates\assessments\attempt.html:83
 msgid "Aucune question publiée pour le moment."
 msgstr "No published question yet."
 
-#: .\templates\assessments\attempt.html:89
+#: .\templates\assessments\attempt.html:90
 #, python-format
 msgid "%(n)s question sans réponse"
 msgid_plural "%(n)s questions sans réponse"
 msgstr[0] "%(n)s unanswered question"
 msgstr[1] "%(n)s unanswered questions"
 
-#: .\templates\assessments\attempt.html:93
+#: .\templates\assessments\attempt.html:94
 msgid "Envoyer quand même"
 msgstr "Submit anyway"
 
-#: .\templates\assessments\attempt.html:95
+#: .\templates\assessments\attempt.html:96
 msgid "Une fois envoyé, l'examen ne peut plus être modifié."
 msgstr "Once submitted, the exam can no longer be changed."
 
-#: .\templates\assessments\attempt.html:95
+#: .\templates\assessments\attempt.html:96
 msgid "Vous verrez la correction juste après l'envoi."
 msgstr "You will see the answers right after submitting."
 
-#: .\templates\assessments\attempt.html:96
+#: .\templates\assessments\attempt.html:97
 msgid "Envoyer l'examen"
 msgstr "Submit the exam"
 
-#: .\templates\assessments\attempt.html:96
+#: .\templates\assessments\attempt.html:97
 msgid "Voir la correction"
 msgstr "See the answers"
 
@@ -1098,124 +1098,124 @@ msgstr "Not passed yet"
 msgid "Aucune tentative pour le moment."
 msgstr "No attempt yet."
 
-#: .\templates\assessments\result.html:2
-#: .\templates\progress\attempt_review.html:17
+#: .\templates\assessments\result.html:3
+#: .\templates\progress\attempt_review.html:18
 msgid "Résultat"
 msgstr "Result"
 
-#: .\templates\assessments\result.html:9
+#: .\templates\assessments\result.html:10
 msgid "Examen réussi"
 msgstr "Exam passed"
 
-#: .\templates\assessments\result.html:9
+#: .\templates\assessments\result.html:10
 msgid "Examen non réussi"
 msgstr "Exam not passed"
 
-#: .\templates\assessments\result.html:9
+#: .\templates\assessments\result.html:10
 msgid "Correction du quiz"
 msgstr "Quiz answers"
 
-#: .\templates\assessments\result.html:11
+#: .\templates\assessments\result.html:12
 #, python-format
 msgid "Seuil de réussite : %(t)s %%."
 msgstr "Pass mark: %(t)s %%."
 
-#: .\templates\assessments\result.html:12
+#: .\templates\assessments\result.html:13
 #, python-format
 msgid "%(n)s tentative restante."
 msgid_plural "%(n)s tentatives restantes."
 msgstr[0] "%(n)s attempt left."
 msgstr[1] "%(n)s attempts left."
 
-#: .\templates\assessments\result.html:14
+#: .\templates\assessments\result.html:15
 msgid "Ce quiz ne compte pas dans la note. Refaites-le autant que vous voulez."
 msgstr ""
 "This quiz does not count towards your grade. Retake it as often as you like."
 
-#: .\templates\assessments\result.html:15
+#: .\templates\assessments\result.html:16
 #, python-format
 msgid "Module terminé. Suivant : M%(n)s. %(t)s"
 msgstr "Module completed. Next: M%(n)s. %(t)s"
 
-#: .\templates\assessments\result.html:15
+#: .\templates\assessments\result.html:16
 msgid "Module terminé : c'était le dernier de la partie."
 msgstr "Module completed: it was the last one of the part."
 
-#: .\templates\assessments\result.html:17
+#: .\templates\assessments\result.html:18
 msgid "Temps écoulé : vos réponses ont été envoyées automatiquement."
 msgstr "Time is up: your answers were submitted automatically."
 
-#: .\templates\assessments\result.html:20
+#: .\templates\assessments\result.html:21
 msgid "Retour à mes cours"
 msgstr "Back to my courses"
 
-#: .\templates\assessments\result.html:23
+#: .\templates\assessments\result.html:24
 #: .\templates\courses\module_detail.html:22
 #, python-format
 msgid "Module suivant : M%(n)s"
 msgstr "Next module: M%(n)s"
 
-#: .\templates\assessments\result.html:24
-#: .\templates\assessments\result.html:27
-#: .\templates\assessments\result.html:29
+#: .\templates\assessments\result.html:25
+#: .\templates\assessments\result.html:28
+#: .\templates\assessments\result.html:30
 msgid "Retour au module"
 msgstr "Back to the module"
 
-#: .\templates\assessments\result.html:31
+#: .\templates\assessments\result.html:32
 #: .\templates\courses\module_detail.html:26
 msgid "Refaire le quiz"
 msgstr "Retake the quiz"
 
-#: .\templates\assessments\result.html:39
+#: .\templates\assessments\result.html:40
 msgid "Score par module"
 msgstr "Score by module"
 
-#: .\templates\assessments\result.html:48
+#: .\templates\assessments\result.html:49
 msgid "Filtrer la correction"
 msgstr "Filter the answers"
 
-#: .\templates\assessments\result.html:49
+#: .\templates\assessments\result.html:50
 #, python-format
 msgid "Toutes (%(n)s)"
 msgstr "All (%(n)s)"
 
-#: .\templates\assessments\result.html:50
+#: .\templates\assessments\result.html:51
 #, python-format
 msgid "Seulement les erreurs (%(n)s)"
 msgstr "Mistakes only (%(n)s)"
 
-#: .\templates\assessments\result.html:58
+#: .\templates\assessments\result.html:59
 msgid "Correct"
 msgstr "Correct"
 
-#: .\templates\assessments\result.html:58
-#: .\templates\progress\attempt_review.html:23
+#: .\templates\assessments\result.html:59
+#: .\templates\progress\attempt_review.html:24
 msgid "Partiel"
 msgstr "Partial"
 
-#: .\templates\assessments\result.html:58
+#: .\templates\assessments\result.html:59
 msgid "Incorrect"
 msgstr "Incorrect"
 
-#: .\templates\assessments\result.html:62
+#: .\templates\assessments\result.html:63
 msgid "Votre réponse :"
 msgstr "Your answer:"
 
-#: .\templates\assessments\result.html:62
-#: .\templates\assessments\result.html:69
+#: .\templates\assessments\result.html:63
+#: .\templates\assessments\result.html:70
 msgid "Sans réponse"
 msgstr "No answer"
 
-#: .\templates\assessments\result.html:62
+#: .\templates\assessments\result.html:63
 msgid "Valeur attendue :"
 msgstr "Expected value:"
 
-#: .\templates\assessments\result.html:69
+#: .\templates\assessments\result.html:70
 #, python-format
 msgid "Vous : %(g)s"
 msgstr "You: %(g)s"
 
-#: .\templates\assessments\result.html:83
+#: .\templates\assessments\result.html:84
 msgid "Sans réponse."
 msgstr "No answer."
 
@@ -1714,7 +1714,9 @@ msgstr "Calculator: LED resistor"
 msgid ""
 "Saisissez la tension directe de la LED (moins de 3,3 V), puis le courant "
 "voulu ou la résistance choisie."
-msgstr "Enter the LED forward voltage (below 3.3 V), then the wanted current or the chosen resistor."
+msgstr ""
+"Enter the LED forward voltage (below 3.3 V), then the wanted current or the "
+"chosen resistor."
 
 #: .\templates\courses\_calc_labels.html:36
 msgid "Tension directe de la LED Vf"
@@ -1888,9 +1890,9 @@ msgstr "End of module"
 #: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
 #: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
 #: .\templates\figures\power_control.html:3
-#: .\templates\figures\rc_cutoff.html:3 .\templates\figures\rc_highpass.html:3
-#: .\templates\figures\rc_lowpass.html:3 .\templates\figures\rc_phase.html:3
-#: .\templates\figures\rl_lowpass.html:3
+#: .\templates\figures\pull_wiring.html:3 .\templates\figures\rc_cutoff.html:3
+#: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
+#: .\templates\figures\rc_phase.html:3 .\templates\figures\rl_lowpass.html:3
 #: .\templates\figures\rlc_bandwidth.html:3
 #: .\templates\figures\rlc_response.html:3
 msgid "Fig. 1"
@@ -2154,6 +2156,7 @@ msgstr ""
 
 #: .\templates\figures\contact_marking.html:32
 #: .\templates\figures\power_control.html:36
+#: .\templates\figures\pull_wiring.html:31
 #: .\templates\figures\terminal_plate.html:31
 msgid "En teal :"
 msgstr "In teal:"
@@ -2690,6 +2693,113 @@ msgstr "carrying a current"
 #: .\templates\figures\power_control.html:36
 msgid "les appareils du schéma choisi"
 msgstr "the devices of the chosen diagram"
+
+#: .\templates\figures\pull_wiring.html:3
+msgid "Dedans et dehors"
+msgstr "Inside and outside"
+
+#: .\templates\figures\pull_wiring.html:4
+msgid ""
+"Banc vu de dessus. À gauche, la puce ESP32 ouverte : rail 3,3 V au fond, "
+"rail GND devant, deux tirages internes d’environ 45 kΩ derrière leur "
+"interrupteur, piste de la broche GPIO 4 vers le tampon d’entrée et le "
+"drapeau GPIO_IN. À droite, hors de la puce : la broche, la résistance de 10 "
+"kΩ et le bouton S1, branchés vers le rail 3,3 V ou vers le rail GND selon le "
+"câblage."
+msgstr "Bench seen from above. On the left, the ESP32 chip opened: 3.3 V rail at the back, GND rail at the front, two internal pull resistors of about 45 kΩ behind their switches, track of pin GPIO 4 to the input buffer and the GPIO_IN flag. On the right, outside the chip: the pin, the 10 kΩ resistor and button S1, wired to the 3.3 V rail or to the GND rail depending on the circuit."
+
+#: .\templates\figures\pull_wiring.html:7
+msgid "Pull-down externe"
+msgstr "External pull-down"
+
+#: .\templates\figures\pull_wiring.html:8
+msgid "Pull-up externe"
+msgstr "External pull-up"
+
+#: .\templates\figures\pull_wiring.html:13
+msgid "Appuyer sur S1"
+msgstr "Press S1"
+
+#: .\templates\figures\pull_wiring.html:13
+msgid "Relâcher S1"
+msgstr "Release S1"
+
+#: .\templates\figures\pull_wiring.html:16
+msgid "Câblage"
+msgstr "Circuit"
+
+#: .\templates\figures\pull_wiring.html:17
+msgid "Bouton S1"
+msgstr "Button S1"
+
+#: .\templates\figures\pull_wiring.html:17
+msgid "appuyé"
+msgstr "pressed"
+
+#: .\templates\figures\pull_wiring.html:17
+msgid "relâché"
+msgstr "released"
+
+#: .\templates\figures\pull_wiring.html:18
+msgid "Tension de GPIO 4"
+msgstr "Voltage of GPIO 4"
+
+#: .\templates\figures\pull_wiring.html:19
+msgid "Niveau lu"
+msgstr "Level read"
+
+#: .\templates\figures\pull_wiring.html:20
+msgid "Courant dans le tirage"
+msgstr "Current in the pull"
+
+#: .\templates\figures\pull_wiring.html:22
+msgid ""
+"Mouvement illustratif : le bouton et le drapeau se déplacent en 0,25 s. "
+"Tensions, niveaux et courants sont exacts."
+msgstr "Illustrative motion: the button and the flag move in 0.25 s. Voltages, levels and currents are exact."
+
+#: .\templates\figures\pull_wiring.html:27
+msgid "Dans la puce :"
+msgstr "Inside the chip:"
+
+#: .\templates\figures\pull_wiring.html:27
+msgid ""
+"rail 3,3 V (+) au fond, rail GND (−) devant ; deux tirages internes "
+"d’environ 45 kΩ, chacun derrière un interrupteur que le programme ferme "
+"(INPUT_PULLUP ou INPUT_PULLDOWN)"
+msgstr "3.3 V rail (+) at the back, GND rail (−) at the front; two internal pull resistors of about 45 kΩ, each behind a switch the program closes (INPUT_PULLUP or INPUT_PULLDOWN)"
+
+#: .\templates\figures\pull_wiring.html:28
+msgid "Tampon et drapeau GPIO_IN :"
+msgstr "Buffer and GPIO_IN flag:"
+
+#: .\templates\figures\pull_wiring.html:28
+msgid ""
+"le tampon compare la tension de la broche aux seuils ; le drapeau se lève "
+"quand le niveau lu vaut 1"
+msgstr "the buffer compares the pin voltage with the thresholds; the flag rises when the level read is 1"
+
+#: .\templates\figures\pull_wiring.html:29
+msgid "Hors de la puce :"
+msgstr "Outside the chip:"
+
+#: .\templates\figures\pull_wiring.html:29
+msgid ""
+"la broche GPIO 4, la résistance de 10 kΩ (câblages externes seulement) et le "
+"bouton S1, branchés vers le rail 3,3 V (au fond) ou vers le rail GND (devant)"
+msgstr "pin GPIO 4, the 10 kΩ resistor (external circuits only) and button S1, wired to the 3.3 V rail (at the back) or to the GND rail (at the front)"
+
+#: .\templates\figures\pull_wiring.html:30
+msgid "Fil foncé :"
+msgstr "Dark wire:"
+
+#: .\templates\figures\pull_wiring.html:30
+msgid "parcouru par un courant, seulement bouton appuyé"
+msgstr "carrying a current, only with the button pressed"
+
+#: .\templates\figures\pull_wiring.html:31
+msgid "la résistance de tirage du câblage choisi"
+msgstr "the pull resistor of the chosen circuit"
 
 #: .\templates\figures\rc_cutoff.html:3
 msgid "La coupure, côté eau"
@@ -3294,46 +3404,46 @@ msgstr "Published"
 msgid "Aucune annonce pour le moment."
 msgstr "No announcement yet."
 
-#: .\templates\progress\attempt_review.html:2
+#: .\templates\progress\attempt_review.html:3
 msgid "Détail de la tentative"
 msgstr "Attempt details"
 
-#: .\templates\progress\attempt_review.html:11
+#: .\templates\progress\attempt_review.html:12
 #, python-format
 msgid "tentative %(n)s"
 msgstr "attempt %(n)s"
 
-#: .\templates\progress\attempt_review.html:12
+#: .\templates\progress\attempt_review.html:13
 msgid "envoyée automatiquement"
 msgstr "submitted automatically"
 
-#: .\templates\progress\attempt_review.html:15
+#: .\templates\progress\attempt_review.html:16
 #: .\templates\progress\question_stats.html:11
 msgid "Réponses"
 msgstr "Answers"
 
-#: .\templates\progress\attempt_review.html:17
+#: .\templates\progress\attempt_review.html:18
 #: .\templates\progress\question_stats.html:11
 msgid "Question"
 msgstr "Question"
 
-#: .\templates\progress\attempt_review.html:17
+#: .\templates\progress\attempt_review.html:18
 msgid "Réponse donnée"
 msgstr "Answer given"
 
-#: .\templates\progress\attempt_review.html:17
+#: .\templates\progress\attempt_review.html:18
 msgid "Temps"
 msgstr "Time"
 
-#: .\templates\progress\attempt_review.html:23
+#: .\templates\progress\attempt_review.html:24
 msgid "Juste"
 msgstr "Right"
 
-#: .\templates\progress\attempt_review.html:23
+#: .\templates\progress\attempt_review.html:24
 msgid "Faux"
 msgstr "Wrong"
 
-#: .\templates\progress\attempt_review.html:24
+#: .\templates\progress\attempt_review.html:25
 #, python-format
 msgid "%(s)s s"
 msgstr "%(s)s s"
