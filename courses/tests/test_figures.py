@@ -70,9 +70,11 @@ def test_registry_describes_each_figure_by_its_drawing_card_and_script():
             drawing="figures/pull_wiring.svg", card="figures/pull_wiring.html", script="acad/js/figures/pull_wiring.js",
         ),        "led_output": Figure(
             drawing="figures/led_output.svg", card="figures/led_output.html", script="acad/js/figures/led_output.js",
+        ),        "pin_path": Figure(
+            drawing="figures/pin_path.svg", card="figures/pin_path.html", script="acad/js/figures/pin_path.js",
         ),
     }
-    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control", "pull_wiring", "led_output")
+    assert FIGURES == ("rc_lowpass", "rc_highpass", "rc_cutoff", "rc_phase", "rl_lowpass", "lc_resonance", "rlc_response", "rlc_bandwidth", "lc_tank", "lc_tuning", "lc_free", "amp_gain", "contact_marking", "terminal_plate", "power_control", "pull_wiring", "led_output", "pin_path")
 
 
 @pytest.mark.django_db
@@ -922,3 +924,44 @@ def test_led_output_section_carries_the_figure_after_both_circuits(lang):
 def test_led_output_story_explains_why_a_sink_led_is_off_at_high(lang, phrase):
     """En puits, HIGH n'allume pas : aucune différence de tension, donc aucun courant."""
     assert phrase in (M2_ESP32 / f"03-source-puits.{lang}.md").read_text(encoding="utf-8")
+
+
+# --- Du programme à la broche de la carte (esp32, M1, section 02-architecture) ------------------------------------------
+
+M1_ESP32 = ROOT / "content" / "esp32" / "p1" / "m1"
+
+
+@pytest.mark.django_db
+def test_pin_path_card_walks_the_six_steps_in_both_languages(client, enrolled, module):
+    """Étape par étape : précédente, suivante, lecture, niveau ; les six étapes restent lisibles sans JavaScript."""
+    from courses.models import Section
+
+    section = Section.objects.create(
+        module=module, title_fr="L'architecture de l'ESP32", order=1,
+        body_md_fr="[[fig:pin_path]]", body_md_en="[[fig:pin_path]]",
+    )
+    client.force_login(enrolled)
+    fr = client.get(f"/fr/sections/{section.public_id}/").content.decode()
+    en = client.get(f"/en/sections/{section.public_id}/").content.decode()
+
+    assert 'class="fig" data-fig="pin_path"' in fr
+    assert fr.count("data-fig-step=") == 6 and en.count("data-fig-step=") == 6
+    assert "data-fig-next>Étape suivante<" in fr and "data-fig-next>Next step<" in en
+    assert "GPIO_OUT_W1TS (0x3FF44008)" in fr and "1 &lt;&lt; 25 = 0x02000000" in fr
+    assert "<strong>Matrice GPIO et IO MUX :</strong>" in fr and "<strong>GPIO matrix and IO MUX:</strong>" in en
+    assert 'src="/static/acad/js/figures/pin_path.js' in fr
+
+
+@pytest.mark.parametrize("lang", ["fr", "en"])
+def test_pin_path_section_carries_the_figure_after_the_block_diagram(lang):
+    """Le schéma bloc et sa liste restent ; la figure suit la phrase de synthèse, avant « À retenir »."""
+    text = (M1_ESP32 / f"02-architecture.{lang}.md").read_text(encoding="utf-8")
+    assert "\n[[fig:pin_path]]\n" in text
+    summary = {"fr": "Ainsi, `digitalWrite(25, HIGH)`", "en": "So `digitalWrite(25, HIGH)`"}[lang]
+    assert text.index("bloc.svg") < text.index(summary) < text.index("[[fig:pin_path]]") < text.index(KEY_POINTS[lang])
+
+
+def test_steps_list_marks_the_current_step():
+    """La liste des étapes signale l'étape en cours autrement que par la couleur (graisse et repère)."""
+    css = (ROOT / "static" / "acad" / "css" / "figures.css").read_text(encoding="utf-8")
+    assert '.fig-steps li[aria-current="step"]' in css

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Acad Ventisax\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 04:36+0100\n"
+"POT-Creation-Date: 2026-11-25 05:15+0100\n"
 "PO-Revision-Date: 2026-10-17 12:00+0100\n"
 "Last-Translator: Acad Ventisax\n"
 "Language-Team: English\n"
@@ -1889,7 +1889,7 @@ msgstr "End of module"
 #: .\templates\figures\contact_marking.html:3
 #: .\templates\figures\lc_free.html:3 .\templates\figures\lc_resonance.html:3
 #: .\templates\figures\lc_tank.html:3 .\templates\figures\lc_tuning.html:3
-#: .\templates\figures\led_output.html:3
+#: .\templates\figures\led_output.html:3 .\templates\figures\pin_path.html:3
 #: .\templates\figures\power_control.html:3
 #: .\templates\figures\pull_wiring.html:3 .\templates\figures\rc_cutoff.html:3
 #: .\templates\figures\rc_highpass.html:3 .\templates\figures\rc_lowpass.html:3
@@ -1919,7 +1919,7 @@ msgstr "Gain Av"
 
 #: .\templates\figures\amp_gain.html:13
 #: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
-#: .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\pin_path.html:9 .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
 #: .\templates\figures\rl_lowpass.html:14
@@ -1928,7 +1928,8 @@ msgstr "Play"
 
 #: .\templates\figures\amp_gain.html:13 .\templates\figures\lc_free.html:14
 #: .\templates\figures\lc_resonance.html:14 .\templates\figures\lc_tank.html:14
-#: .\templates\figures\lc_tuning.html:14 .\templates\figures\rc_cutoff.html:14
+#: .\templates\figures\lc_tuning.html:14 .\templates\figures\pin_path.html:9
+#: .\templates\figures\rc_cutoff.html:14
 #: .\templates\figures\rc_highpass.html:14
 #: .\templates\figures\rc_lowpass.html:14 .\templates\figures\rc_phase.html:15
 #: .\templates\figures\rl_lowpass.html:14
@@ -2156,7 +2157,7 @@ msgstr ""
 "and all the bridges slide together"
 
 #: .\templates\figures\contact_marking.html:32
-#: .\templates\figures\led_output.html:31
+#: .\templates\figures\led_output.html:31 .\templates\figures\pin_path.html:38
 #: .\templates\figures\power_control.html:36
 #: .\templates\figures\pull_wiring.html:31
 #: .\templates\figures\terminal_plate.html:31
@@ -2538,7 +2539,12 @@ msgid ""
 "piste de la broche et un interrupteur N de la piste vers le rail GND. À "
 "droite, hors de la puce : la broche, la résistance de 330 Ω et la LED rouge, "
 "vers le rail GND (source) ou depuis le rail 3,3 V (puits)."
-msgstr "Bench seen from above. On the left, the ESP32 chip opened: the flag of the GPIO_OUT register drives the output stage, a switch P from the 3.3 V rail to the pin track and a switch N from the track to the GND rail. On the right, outside the chip: the pin, the 330 Ω resistor and the red LED, to the GND rail (source) or from the 3.3 V rail (sink)."
+msgstr ""
+"Bench seen from above. On the left, the ESP32 chip opened: the flag of the "
+"GPIO_OUT register drives the output stage, a switch P from the 3.3 V rail to "
+"the pin track and a switch N from the track to the GND rail. On the right, "
+"outside the chip: the pin, the 330 Ω resistor and the red LED, to the GND "
+"rail (source) or from the 3.3 V rail (sink)."
 
 #: .\templates\figures\led_output.html:7
 msgid "Source (logique directe)"
@@ -2548,11 +2554,11 @@ msgstr "Source (direct logic)"
 msgid "Puits (logique inversée)"
 msgstr "Sink (inverted logic)"
 
-#: .\templates\figures\led_output.html:11
+#: .\templates\figures\led_output.html:11 .\templates\figures\pin_path.html:12
 msgid "Écrire HIGH"
 msgstr "Write HIGH"
 
-#: .\templates\figures\led_output.html:11
+#: .\templates\figures\led_output.html:11 .\templates\figures\pin_path.html:12
 msgid "Écrire LOW"
 msgstr "Write LOW"
 
@@ -2569,27 +2575,27 @@ msgstr "Level written"
 msgid "Tension de la broche"
 msgstr "Pin voltage"
 
-#: .\templates\figures\led_output.html:17
+#: .\templates\figures\led_output.html:17 .\templates\figures\pin_path.html:21
 msgid "Interrupteur fermé"
 msgstr "Closed switch"
 
-#: .\templates\figures\led_output.html:17
+#: .\templates\figures\led_output.html:17 .\templates\figures\pin_path.html:21
 msgid "P, vers 3,3 V"
 msgstr "P, to 3.3 V"
 
-#: .\templates\figures\led_output.html:17
+#: .\templates\figures\led_output.html:17 .\templates\figures\pin_path.html:21
 msgid "N, vers GND"
 msgstr "N, to GND"
 
-#: .\templates\figures\led_output.html:18
+#: .\templates\figures\led_output.html:18 .\templates\figures\pin_path.html:23
 msgid "LED"
 msgstr "LED"
 
-#: .\templates\figures\led_output.html:18
+#: .\templates\figures\led_output.html:18 .\templates\figures\pin_path.html:23
 msgid "allumée"
 msgstr "on"
 
-#: .\templates\figures\led_output.html:18
+#: .\templates\figures\led_output.html:18 .\templates\figures\pin_path.html:23
 msgid "éteinte"
 msgstr "off"
 
@@ -2617,7 +2623,9 @@ msgstr "no current"
 msgid ""
 "Mouvement illustratif : le drapeau GPIO_OUT se déplace en 0,25 s. Tensions "
 "et courants sont exacts : LED rouge (2,0 V) et 330 Ω sur 3,3 V."
-msgstr "Illustrative motion: the GPIO_OUT flag moves in 0.25 s. Voltages and currents are exact: red LED (2.0 V) and 330 Ω on 3.3 V."
+msgstr ""
+"Illustrative motion: the GPIO_OUT flag moves in 0.25 s. Voltages and "
+"currents are exact: red LED (2.0 V) and 330 Ω on 3.3 V."
 
 #: .\templates\figures\led_output.html:27
 msgid "Drapeau GPIO_OUT :"
@@ -2635,7 +2643,9 @@ msgstr "Output stage:"
 msgid ""
 "l’interrupteur P relie la broche au rail 3,3 V (+, au fond), l’interrupteur "
 "N au rail GND (−, devant) ; un seul des deux est fermé"
-msgstr "switch P ties the pin to the 3.3 V rail (+, at the back), switch N to the GND rail (−, at the front); only one of them is closed"
+msgstr ""
+"switch P ties the pin to the 3.3 V rail (+, at the back), switch N to the "
+"GND rail (−, at the front); only one of them is closed"
 
 #: .\templates\figures\led_output.html:29
 #: .\templates\figures\pull_wiring.html:29
@@ -2646,9 +2656,11 @@ msgstr "Outside the chip:"
 msgid ""
 "la broche GPIO 25, la résistance de 330 Ω et la LED, vers GND (source) ou "
 "depuis le 3,3 V (puits)"
-msgstr "pin GPIO 25, the 330 Ω resistor and the LED, to GND (source) or from 3.3 V (sink)"
+msgstr ""
+"pin GPIO 25, the 330 Ω resistor and the LED, to GND (source) or from 3.3 V "
+"(sink)"
 
-#: .\templates\figures\led_output.html:30
+#: .\templates\figures\led_output.html:30 .\templates\figures\pin_path.html:39
 #: .\templates\figures\pull_wiring.html:30
 msgid "Fil foncé :"
 msgstr "Dark wire:"
@@ -2661,6 +2673,143 @@ msgstr "carrying a current"
 #: .\templates\figures\led_output.html:31
 msgid "la LED quand elle est allumée"
 msgstr "the LED when it is on"
+
+#: .\templates\figures\pin_path.html:3
+msgid "Le chemin d’un digitalWrite"
+msgstr "The path of a digitalWrite"
+
+#: .\templates\figures\pin_path.html:4
+msgid ""
+"Banc vu de dessus, de gauche à droite. Dans la puce ESP32 ouverte : le CPU, "
+"le bus interne, le registre GPIO_OUT et le bloc de son bit 25, la matrice "
+"GPIO et l’IO MUX, le plot 25 et son levier vers le contact P (3,3 V) ou N "
+"(GND). Hors de la puce : la patte du module, la broche G25 de la carte, la "
+"résistance de 330 Ω, la LED et le rail GND."
+msgstr "Bench seen from above, from left to right. In the opened ESP32 chip: the CPU, the internal bus, the GPIO_OUT register and the block of its bit 25, the GPIO matrix and the IO MUX, pad 25 and its lever towards contact P (3.3 V) or N (GND). Outside the chip: the module leg, pin G25 of the board, the 330 Ω resistor, the LED and the GND rail."
+
+#: .\templates\figures\pin_path.html:7
+msgid "Étape précédente"
+msgstr "Previous step"
+
+#: .\templates\figures\pin_path.html:8
+msgid "Étape suivante"
+msgstr "Next step"
+
+#: .\templates\figures\pin_path.html:15
+msgid "Étape"
+msgstr "Step"
+
+#: .\templates\figures\pin_path.html:16
+msgid "Instruction"
+msgstr "Statement"
+
+#: .\templates\figures\pin_path.html:17
+msgid "Masque écrit"
+msgstr "Mask written"
+
+#: .\templates\figures\pin_path.html:18
+msgid "Registre visé"
+msgstr "Target register"
+
+#: .\templates\figures\pin_path.html:19
+msgid "Adresse"
+msgstr "Address"
+
+#: .\templates\figures\pin_path.html:20
+msgid "Bit 25 de GPIO_OUT"
+msgstr "Bit 25 of GPIO_OUT"
+
+#: .\templates\figures\pin_path.html:22
+msgid "Tension de G25"
+msgstr "Voltage of G25"
+
+#: .\templates\figures\pin_path.html:27
+msgid "CPU :"
+msgstr "CPU:"
+
+#: .\templates\figures\pin_path.html:27
+msgid ""
+"il exécute digitalWrite(25, HIGH) ou digitalWrite(25, LOW) et calcule le "
+"masque 1 << 25 = 0x02000000, un nombre dont seul le bit 25 vaut 1 ; ce "
+"masque est le même pour les deux niveaux."
+msgstr "it runs digitalWrite(25, HIGH) or digitalWrite(25, LOW) and computes the mask 1 << 25 = 0x02000000, a number in which only bit 25 is 1; this mask is the same for both levels."
+
+#: .\templates\figures\pin_path.html:28
+msgid "Bus interne :"
+msgstr "Internal bus:"
+
+#: .\templates\figures\pin_path.html:28
+msgid ""
+"le CPU écrit ce masque à l’adresse de GPIO_OUT_W1TS (0x3FF44008) pour HIGH, "
+"de GPIO_OUT_W1TC (0x3FF4400C) pour LOW."
+msgstr "the CPU writes this mask to the address of GPIO_OUT_W1TS (0x3FF44008) for HIGH, of GPIO_OUT_W1TC (0x3FF4400C) for LOW."
+
+#: .\templates\figures\pin_path.html:29
+msgid "Registre GPIO_OUT :"
+msgstr "GPIO_OUT register:"
+
+#: .\templates\figures\pin_path.html:29
+msgid ""
+"son bit 25 passe à 1 (HIGH) ou à 0 (LOW) ; les 31 autres bits, donc les "
+"autres broches, ne changent pas."
+msgstr "its bit 25 becomes 1 (HIGH) or 0 (LOW); the 31 other bits, hence the other pins, do not change."
+
+#: .\templates\figures\pin_path.html:30
+msgid "Matrice GPIO et IO MUX :"
+msgstr "GPIO matrix and IO MUX:"
+
+#: .\templates\figures\pin_path.html:30
+msgid ""
+"réglés par pinMode(25, OUTPUT), ils relient le bit 25 au plot 25, et à lui "
+"seul."
+msgstr "set by pinMode(25, OUTPUT), they connect bit 25 to pad 25, and to it alone."
+
+#: .\templates\figures\pin_path.html:31 .\templates\figures\pin_path.html:41
+msgid "Plot 25 :"
+msgstr "Pad 25:"
+
+#: .\templates\figures\pin_path.html:31
+msgid ""
+"bit à 1, l’interrupteur P se ferme vers 3,3 V ; bit à 0, l’interrupteur N se "
+"ferme vers GND."
+msgstr "bit at 1, switch P closes towards 3.3 V; bit at 0, switch N closes towards GND."
+
+#: .\templates\figures\pin_path.html:32
+msgid "Broche G25 de la carte :"
+msgstr "Pin G25 of the board:"
+
+#: .\templates\figures\pin_path.html:32
+msgid ""
+"une piste du module puis de la carte la relie au plot ; elle passe à 3,3 V "
+"et la LED s’allume, ou à 0 V et la LED s’éteint."
+msgstr "a track of the module, then of the board, connects it to the pad; it goes to 3.3 V and the LED lights, or to 0 V and the LED goes out."
+
+#: .\templates\figures\pin_path.html:34
+msgid ""
+"Chaque pièce garde son état précédent tant que le signal ne l’a pas "
+"atteinte. En réalité, tout le chemin est parcouru en moins d’une "
+"microseconde : la figure le découpe en étapes."
+msgstr "Each part keeps its previous state until the signal reaches it. In reality, the whole path is covered in less than a microsecond: the figure splits it into steps."
+
+#: .\templates\figures\pin_path.html:38
+msgid "l’étape en cours, puis la LED quand elle est allumée"
+msgstr "the current step, then the LED when it is on"
+
+#: .\templates\figures\pin_path.html:39
+msgid "chemin déjà parcouru par le signal"
+msgstr "path already covered by the signal"
+
+#: .\templates\figures\pin_path.html:40
+msgid "Bloc du bit 25 :"
+msgstr "Block of bit 25:"
+
+#: .\templates\figures\pin_path.html:40
+msgid "levé pour 1, baissé pour 0"
+msgstr "raised for 1, lowered for 0"
+
+#: .\templates\figures\pin_path.html:41
+msgid "contact P au fond (3,3 V), contact N devant (GND)"
+msgstr "contact P at the back (3.3 V), contact N at the front (GND)"
 
 #: .\templates\figures\power_control.html:3
 msgid "Une platine, deux schémas"

@@ -44,6 +44,10 @@ Comment une ligne du programme finit-elle par allumer une LED branchée sur la c
 
 Ainsi, `digitalWrite(25, HIGH)` met à 1 le bit 25 d'un registre ; l'aiguillage relie ce bit au plot 25 ; le plot ferme son interrupteur vers 3,3 V ; la broche G25 de la carte passe à 3,3 V.
 
+La figure suit ce chemin étape par étape, une LED branchée sur G25. Avancez avec « Étape suivante » : l'étape en cours passe en teal et chaque pièce garde son ancien état tant que le signal ne l'a pas atteinte. Écrivez ensuite `LOW` et refaites le chemin : seul le registre visé change (W1TC au lieu de W1TS), puis l'interrupteur fermé (N au lieu de P).
+
+[[fig:pin_path]]
+
 ## À retenir
 
 - Deux cœurs à 240 MHz, une Flash de 4 Mo pour le programme, 520 Ko de SRAM pour les variables.

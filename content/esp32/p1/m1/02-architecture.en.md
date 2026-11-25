@@ -44,6 +44,10 @@ How does a line of the program end up lighting an LED wired to the board? The bl
 
 So `digitalWrite(25, HIGH)` sets bit 25 of a register to 1; the switchboard connects that bit to pad 25; the pad closes its switch towards 3.3 V; pin G25 of the board goes to 3.3 V.
 
+The figure follows this path step by step, with an LED wired to G25. Move on with "Next step": the current step turns teal and each part keeps its old state until the signal reaches it. Then write `LOW` and walk the path again: only the register targeted changes (W1TC instead of W1TS), then the closed switch (N instead of P).
+
+[[fig:pin_path]]
+
 ## Key points
 
 - Two cores at 240 MHz, 4 MB of Flash for the program, 520 KB of SRAM for the variables.

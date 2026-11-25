@@ -31,6 +31,9 @@
 .fig-readout dt { color: var(--muted); font-size: .8rem; }
 .fig-readout dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; overflow-wrap: anywhere; }
 .fig-note { margin: 0; color: var(--muted); font-size: .85rem; }
+.fig-steps { margin: .75rem 0; padding-left: 1.4rem; font-size: .9rem; }
+.fig-steps li { padding: .15rem .4rem; border-left: 3px solid transparent; }
+.fig-steps li[aria-current="step"] { border-left-color: var(--teal-ink); background: var(--mist); font-weight: 600; }
 .fig-legend ul { margin: .75rem 0 0; padding-left: 1.2rem; color: var(--muted); font-size: .9rem; }
 
 .iso-svg { display: block; width: 100%; height: auto; overflow: visible; }

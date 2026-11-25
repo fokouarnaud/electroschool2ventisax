@@ -1,0 +1,44 @@
+{% load i18n %}<figure class="fig" data-fig="pin_path">
+  <div class="fig-plate">
+    <div class="fig-corners" aria-hidden="true"><span>{% translate "Fig. 1" %}</span><span>{% translate "Le chemin d’un digitalWrite" %}</span></div>
+    <div class="fig-stage" role="img" aria-label="{% translate 'Banc vu de dessus, de gauche à droite. Dans la puce ESP32 ouverte : le CPU, le bus interne, le registre GPIO_OUT et le bloc de son bit 25, la matrice GPIO et l’IO MUX, le plot 25 et son levier vers le contact P (3,3 V) ou N (GND). Hors de la puce : la patte du module, la broche G25 de la carte, la résistance de 330 Ω, la LED et le rail GND.' %}">{{ svg }}</div>
+    <div class="fig-controls" data-fig-controls hidden>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-prev>{% translate "Étape précédente" %}</button>
+        <button type="button" class="btn" data-fig-next>{% translate "Étape suivante" %}</button>
+        <button type="button" class="btn btn-ghost" data-fig-play data-play="{% translate 'Lecture' %}" data-pause="{% translate 'Pause' %}">{% translate "Lecture" %}</button>
+      </div>
+      <div class="fig-buttons">
+        <button type="button" class="btn btn-ghost" data-fig-level data-high="{% translate 'Écrire HIGH' %}" data-low="{% translate 'Écrire LOW' %}">{% translate "Écrire LOW" %}</button>
+      </div>
+      <dl class="fig-readout" aria-live="polite">
+        <div><dt>{% translate "Étape" %}</dt><dd data-fig-out="step"></dd></div>
+        <div><dt>{% translate "Instruction" %}</dt><dd data-fig-out="code"></dd></div>
+        <div><dt>{% translate "Masque écrit" %}</dt><dd data-fig-out="mask"></dd></div>
+        <div><dt>{% translate "Registre visé" %}</dt><dd data-fig-out="register"></dd></div>
+        <div><dt>{% translate "Adresse" %}</dt><dd data-fig-out="address"></dd></div>
+        <div><dt>{% translate "Bit 25 de GPIO_OUT" %}</dt><dd data-fig-out="bit"></dd></div>
+        <div><dt>{% translate "Interrupteur fermé" %}</dt><dd data-fig-out="switch" data-p="{% translate 'P, vers 3,3 V' %}" data-n="{% translate 'N, vers GND' %}"></dd></div>
+        <div><dt>{% translate "Tension de G25" %}</dt><dd data-fig-out="volts"></dd></div>
+        <div><dt>{% translate "LED" %}</dt><dd data-fig-out="led" data-on="{% translate 'allumée' %}" data-off="{% translate 'éteinte' %}"></dd></div>
+      </dl>
+    </div>
+    <ol class="fig-steps">
+      <li data-fig-step="1"><strong>{% translate "CPU :" %}</strong> {% translate "il exécute digitalWrite(25, HIGH) ou digitalWrite(25, LOW) et calcule le masque 1 << 25 = 0x02000000, un nombre dont seul le bit 25 vaut 1 ; ce masque est le même pour les deux niveaux." as cpu_step %}{{ cpu_step|force_escape }}</li>
+      <li data-fig-step="2"><strong>{% translate "Bus interne :" %}</strong> {% translate "le CPU écrit ce masque à l’adresse de GPIO_OUT_W1TS (0x3FF44008) pour HIGH, de GPIO_OUT_W1TC (0x3FF4400C) pour LOW." %}</li>
+      <li data-fig-step="3"><strong>{% translate "Registre GPIO_OUT :" %}</strong> {% translate "son bit 25 passe à 1 (HIGH) ou à 0 (LOW) ; les 31 autres bits, donc les autres broches, ne changent pas." %}</li>
+      <li data-fig-step="4"><strong>{% translate "Matrice GPIO et IO MUX :" %}</strong> {% translate "réglés par pinMode(25, OUTPUT), ils relient le bit 25 au plot 25, et à lui seul." %}</li>
+      <li data-fig-step="5"><strong>{% translate "Plot 25 :" %}</strong> {% translate "bit à 1, l’interrupteur P se ferme vers 3,3 V ; bit à 0, l’interrupteur N se ferme vers GND." %}</li>
+      <li data-fig-step="6"><strong>{% translate "Broche G25 de la carte :" %}</strong> {% translate "une piste du module puis de la carte la relie au plot ; elle passe à 3,3 V et la LED s’allume, ou à 0 V et la LED s’éteint." %}</li>
+    </ol>
+    <p class="fig-note">{% translate "Chaque pièce garde son état précédent tant que le signal ne l’a pas atteinte. En réalité, tout le chemin est parcouru en moins d’une microseconde : la figure le découpe en étapes." %}</p>
+  </div>
+  <figcaption class="fig-legend">
+    <ul>
+      <li><strong>{% translate "En teal :" %}</strong> {% translate "l’étape en cours, puis la LED quand elle est allumée" %}</li>
+      <li><strong>{% translate "Fil foncé :" %}</strong> {% translate "chemin déjà parcouru par le signal" %}</li>
+      <li><strong>{% translate "Bloc du bit 25 :" %}</strong> {% translate "levé pour 1, baissé pour 0" %}</li>
+      <li><strong>{% translate "Plot 25 :" %}</strong> {% translate "contact P au fond (3,3 V), contact N devant (GND)" %}</li>
+    </ul>
+  </figcaption>
+</figure>
