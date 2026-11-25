@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-// LED intégrée de la carte (souvent reliée à GPIO 2)
-const uint8_t LED_PIN = 2;
+// LED externe et sa résistance de 330 ohms, sur GPIO 25
+const uint8_t LED_PIN = 25;
 // Durée de chaque état de la LED, en millisecondes
 const uint32_t HALF_PERIOD_MS = 500;
 

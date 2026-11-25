@@ -2,7 +2,7 @@ This mini-project checks the whole chain: installation, build, upload and serial
 
 ## Goal
 
-Upload a program that reads the characteristics of the chip, shows them in the serial monitor and blinks the built-in LED.
+Upload a program that reads the characteristics of the chip, shows them in the serial monitor and blinks the LED wired on GPIO 25 in section 7.
 
 ## Safety
 
@@ -16,7 +16,9 @@ Upload a program that reads the characteristics of the chip, shows them in the s
 
 | Quantity | Item |
 |---|---|
-| 1 | DevKit ESP32-WROOM-32 board, 38 pins |
+| 1 | ESP32-DevKitC V4 board (or 38-pin clone), ESP32-WROOM-32 |
+| 1 | breadboard and wires |
+| 1 | red LED and 330 Ω resistor, wired between G25 and GND (section 7) |
 | 1 | USB cable that carries data |
 | 1 | computer with VS Code and PlatformIO |
 | 1 | multimeter |
@@ -26,8 +28,8 @@ Upload a program that reads the characteristics of the chip, shows them in the s
 ```cpp
 #include <Arduino.h>
 
-// Built-in LED: it blinks to show that the program is running
-const uint8_t LED_PIN = 2;
+// LED on GPIO 25: it blinks to show that the program is running
+const uint8_t LED_PIN = 25;
 const uint32_t BLINK_MS = 1000;
 
 void setup() {
@@ -53,13 +55,13 @@ void loop() {
 
 1. Create the PlatformIO project with the reference `platformio.ini` and copy the program into `src/main.cpp`.
 2. Upload, open the serial monitor, then press EN: the identity card is shown again.
-3. If you have an oscilloscope, measure the voltage of pin GPIO 2 against GND: a square wave from 0 to 3.3 V with a 2 s period.
+3. If you have an oscilloscope, measure the voltage of pin GPIO 25 (G25) against GND: a square wave from 0 to 3.3 V with a 2 s period.
 
 ## Multimeter-only variant
 
 1. Same program. Write down the serial monitor lines in the table.
 2. With the multimeter on DC volts, measure between 5V and GND, then between 3V3 and GND.
-3. Measure between GPIO 2 and GND: the reading switches every second between 0 V and 3.3 V.
+3. Measure between G25 and GND: the reading switches every second between 0 V and 3.3 V.
 
 | Measurement | Expected | Measured |
 |---|---|---|
@@ -69,7 +71,8 @@ void loop() {
 | Flash size | 4194304 bytes | |
 | voltage 5V / GND | about 5 V | |
 | voltage 3V3 / GND | 3.3 V | |
-| voltage GPIO 2 / GND | 0 V then 3.3 V | |
+| voltage G25 / GND | 0 V then 3.3 V | |
+| voltage across the lit LED | about 2.0 V | |
 
 ## To conclude
 

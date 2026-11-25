@@ -29,7 +29,7 @@ lib_deps =
 ```
 
 - `platform` : la plateforme officielle espressif32 8.0.0, qui embarque le cœur Arduino-ESP32 3.3.12 ;
-- `board = esp32dev` : la carte DevKit à ESP32-WROOM-32 ;
+- `board = esp32dev` : une carte à ESP32-WROOM-32, comme la DevKitC V4 ;
 - `monitor_speed = 115200` : la vitesse du moniteur série, la même que dans le programme (module M5) ;
 - `lib_deps` : les bibliothèques de l'écran et du capteur du module M7, téléchargées toutes seules.
 

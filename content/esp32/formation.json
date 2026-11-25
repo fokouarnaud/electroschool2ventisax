@@ -63,8 +63,8 @@
               "file": "03-carte",
               "kind": "content",
               "title": {
-                "fr": "La carte de développement DevKit",
-                "en": "The DevKit development board"
+                "fr": "La carte ESP32-DevKitC V4",
+                "en": "The ESP32-DevKitC V4 board"
               }
             },
             {

@@ -1,10 +1,30 @@
-Voici le premier programme complet. Copiez-le dans `src/main.cpp`, téléversez-le, puis ouvrez le moniteur série : la LED intégrée clignote et la carte vous salue.
+Voici le premier programme complet : il fait clignoter une LED et la carte vous salue dans le moniteur série. La carte ESP32-DevKitC V4 n'a **aucune LED commandable par programme** : sa seule LED, rouge, indique qu'elle est sous tension. On câble donc d'abord une LED externe sur GPIO 25.
+
+## Câbler la LED
+
+![Câblage du premier programme : GPIO 25 (G25), résistance de 330 Ω, anode de la LED, cathode vers la broche GND de la carte](/static/content/esp32/m1/cablage.svg)
+
+Le circuit part de la broche **G25** (GPIO 25), traverse une **résistance de 330 Ω**, puis la **LED**, et revient à une broche **GND** de la carte. C'est une boucle fermée : quand le programme met G25 à 3,3 V, un courant d'environ 4 mA la parcourt et la LED s'allume ; à 0 V, plus de courant, la LED s'éteint.
+
+| Élément | Branchement | Pourquoi |
+|---|---|---|
+| broche G25 | début du circuit | broche sûre, côté gauche de la carte (module M1, section 4) |
+| résistance 330 Ω | entre G25 et l'anode | limite le courant à environ 4 mA ; sans elle, la LED et la broche seraient abîmées |
+| LED rouge, anode | côté résistance | l'anode est la **patte longue** |
+| LED rouge, cathode | vers GND | la cathode est la **patte courte**, du côté du **méplat** du boîtier |
+| broche GND | fin du circuit | la référence 0 V, entre G12 et G13 sur la carte |
+
+Câblez **carte débranchée de l'USB**, puis vérifiez le sens de la LED avant de rebrancher : montée à l'envers, elle ne s'allume pas, sans dommage. Le calcul de la résistance et les autres façons de câbler une sortie sont l'objet du module M2.
+
+## Le programme
+
+Copiez-le dans `src/main.cpp`, téléversez-le, puis ouvrez le moniteur série.
 
 ```cpp
 #include <Arduino.h>
 
-// LED intégrée de la carte (souvent reliée à GPIO 2)
-const uint8_t LED_PIN = 2;
+// LED externe et sa résistance de 330 ohms, sur GPIO 25
+const uint8_t LED_PIN = 25;
 // Durée de chaque état de la LED, en millisecondes
 const uint32_t HALF_PERIOD_MS = 500;
 
@@ -34,11 +54,11 @@ void loop() {
 ## Ligne par ligne
 
 - `#include <Arduino.h>` donne accès aux fonctions Arduino (`pinMode`, `digitalWrite`, `delay`, `Serial`).
-- `const uint8_t LED_PIN = 2;` nomme la broche. `uint8_t` est un entier de 0 à 255, assez pour un numéro de broche ; `const` interdit de le modifier par erreur. Changer de broche ne demande qu'une ligne.
+- `const uint8_t LED_PIN = 25;` nomme la broche : GPIO 25, marquée G25 sur la carte. `uint8_t` est un entier de 0 à 255, assez pour un numéro de broche ; `const` interdit de le modifier par erreur. Changer de broche ne demande qu'une ligne.
 - `const uint32_t HALF_PERIOD_MS = 500;` : un entier de 32 bits pour une durée en millisecondes. Le suffixe `_MS` rappelle l'unité.
 - `Serial.begin(115200);` ouvre la liaison série à 115 200 bit/s, la vitesse de `monitor_speed`.
 - `pinMode(LED_PIN, OUTPUT);` fait de la broche une sortie.
-- `digitalWrite(LED_PIN, HIGH);` la met à 3,3 V ; `LOW` la remet à 0 V.
+- `digitalWrite(LED_PIN, HIGH);` la met à 3,3 V : le courant traverse la résistance et la LED ; `LOW` la remet à 0 V et le courant cesse.
 - `delay(HALF_PERIOD_MS);` attend 500 ms. La LED reste 500 ms allumée puis 500 ms éteinte : une période de 1 s, soit 1 Hz.
 
 ## Ce qui se passe au téléversement
@@ -49,6 +69,7 @@ Si le téléversement échoue avec un message du type *Failed to connect*, maint
 
 ## À retenir
 
+- La DevKitC V4 n'a pas de LED programmable : G25, une résistance de 330 Ω, la LED (patte longue côté résistance), puis GND.
 - `setup()` une fois, `loop()` sans fin.
 - Nommez broches et durées par des constantes typées : `const uint8_t`, `const uint32_t`.
 - Le programme est écrit dans la Flash : il redémarre tout seul à la prochaine mise sous tension.

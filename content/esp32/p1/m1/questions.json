@@ -179,8 +179,8 @@
     "type": "single",
     "usage": "quiz",
     "prompt": {
-      "fr": "À quoi sert le bouton BOOT de la carte DevKit ?",
-      "en": "What is the BOOT button of the DevKit board for?"
+      "fr": "À quoi sert le bouton BOOT de la carte DevKitC V4 ?",
+      "en": "What is the BOOT button of the DevKitC V4 board for?"
     },
     "explanation": {
       "fr": "Maintenu pendant un redémarrage, il met la puce en mode téléversement ; le bouton EN, lui, redémarre la puce.",
@@ -207,8 +207,8 @@
       },
       {
         "text": {
-          "fr": "Allumer la LED intégrée",
-          "en": "Light the built-in LED"
+          "fr": "Allumer la LED rouge d'alimentation",
+          "en": "Light the red power LED"
         },
         "correct": false
       }
@@ -344,8 +344,8 @@
       "en": "Which pins are input only?"
     },
     "explanation": {
-      "fr": "GPIO 34, 35, 36 (VP) et 39 (VN) savent lire mais pas écrire ; GPIO 25 et 4 sont des broches sûres.",
-      "en": "GPIO 34, 35, 36 (VP) and 39 (VN) can read but not write; GPIO 25 and 4 are safe pins."
+      "fr": "GPIO 34, 35, 36 (SVP) et 39 (SVN) savent lire mais pas écrire ; GPIO 25 et 4 sont des broches sûres.",
+      "en": "GPIO 34, 35, 36 (SVP) and 39 (SVN) can read but not write; GPIO 25 and 4 are safe pins."
     },
     "reviewed": {
       "fr": true,
@@ -525,8 +525,8 @@
     "type": "numeric",
     "usage": "quiz",
     "prompt": {
-      "fr": "Ce programme fait clignoter une LED. Quelle est la fréquence du clignotement ? (exemple : 5 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
-      "en": "This program blinks an LED. What is the blinking frequency? (example: 5 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
+      "fr": "Ce programme fait clignoter une LED. Quelle est la fréquence du clignotement ? (exemple : 5 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 25;\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
+      "en": "This program blinks an LED. What is the blinking frequency? (example: 5 Hz)\n\n```cpp\nconst uint8_t LED_PIN = 25;\nconst uint32_t HALF_PERIOD_MS = 250;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
     },
     "explanation": {
       "fr": "La LED est allumée 250 ms puis éteinte 250 ms : une période de 0,5 s, soit 2 Hz.",
@@ -590,8 +590,8 @@
     "type": "truefalse",
     "usage": "quiz",
     "prompt": {
-      "fr": "Vrai ou faux : avec ce programme, la LED reste allumée en permanence.\n\n```cpp\nconst uint8_t LED_PIN = 2;\n\nvoid setup() {\n  pinMode(LED_PIN, OUTPUT);\n  digitalWrite(LED_PIN, HIGH);\n}\n\nvoid loop() {\n}\n```",
-      "en": "True or false: with this program, the LED stays on all the time.\n\n```cpp\nconst uint8_t LED_PIN = 2;\n\nvoid setup() {\n  pinMode(LED_PIN, OUTPUT);\n  digitalWrite(LED_PIN, HIGH);\n}\n\nvoid loop() {\n}\n```"
+      "fr": "Vrai ou faux : avec ce programme, la LED reste allumée en permanence.\n\n```cpp\nconst uint8_t LED_PIN = 25;\n\nvoid setup() {\n  pinMode(LED_PIN, OUTPUT);\n  digitalWrite(LED_PIN, HIGH);\n}\n\nvoid loop() {\n}\n```",
+      "en": "True or false: with this program, the LED stays on all the time.\n\n```cpp\nconst uint8_t LED_PIN = 25;\n\nvoid setup() {\n  pinMode(LED_PIN, OUTPUT);\n  digitalWrite(LED_PIN, HIGH);\n}\n\nvoid loop() {\n}\n```"
     },
     "explanation": {
       "fr": "Vrai : `setup()` allume la LED une fois et `loop()`, vide, ne la touche plus.",
@@ -840,8 +840,8 @@
       },
       {
         "text": {
-          "fr": "La LED intégrée s'allume",
-          "en": "The built-in LED lights up"
+          "fr": "La LED rouge s'éteint",
+          "en": "The red LED goes out"
         },
         "correct": false
       }
@@ -970,8 +970,8 @@
       "en": "In `platformio.ini`, what does `board = esp32dev` designate?"
     },
     "explanation": {
-      "fr": "La carte cible : une DevKit à ESP32-WROOM-32.",
-      "en": "The target board: a DevKit with an ESP32-WROOM-32."
+      "fr": "La carte cible : une carte à ESP32-WROOM-32, comme la DevKitC V4.",
+      "en": "The target board: a board with an ESP32-WROOM-32, such as the DevKitC V4."
     },
     "reviewed": {
       "fr": true,
@@ -980,8 +980,8 @@
     "choices": [
       {
         "text": {
-          "fr": "La carte DevKit à ESP32-WROOM-32",
-          "en": "The DevKit board with an ESP32-WROOM-32"
+          "fr": "Une carte à ESP32-WROOM-32, comme la DevKitC V4",
+          "en": "A board with an ESP32-WROOM-32, such as the DevKitC V4"
         },
         "correct": true
       },
@@ -1007,8 +1007,8 @@
     "type": "numeric",
     "usage": "exam",
     "prompt": {
-      "fr": "Pendant combien de temps la LED reste-t-elle éteinte à chaque période ? (exemple : 2 s)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 500;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
-      "en": "For how long does the LED stay off in each period? (example: 2 s)\n\n```cpp\nconst uint8_t LED_PIN = 2;\nconst uint32_t HALF_PERIOD_MS = 500;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
+      "fr": "Pendant combien de temps la LED reste-t-elle éteinte à chaque période ? (exemple : 2 s)\n\n```cpp\nconst uint8_t LED_PIN = 25;\nconst uint32_t HALF_PERIOD_MS = 500;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```",
+      "en": "For how long does the LED stay off in each period? (example: 2 s)\n\n```cpp\nconst uint8_t LED_PIN = 25;\nconst uint32_t HALF_PERIOD_MS = 500;\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(HALF_PERIOD_MS);\n  digitalWrite(LED_PIN, LOW);\n  delay(HALF_PERIOD_MS);\n}\n```"
     },
     "explanation": {
       "fr": "`delay(HALF_PERIOD_MS)` attend 500 ms après `digitalWrite(LED_PIN, LOW)` : 0,5 s.",

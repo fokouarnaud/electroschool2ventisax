@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-// Built-in LED of the board (often wired to GPIO 2)
-const uint8_t LED_PIN = 2;
+// External LED and its 330 ohm resistor, on GPIO 25
+const uint8_t LED_PIN = 25;
 // Duration of each LED state, in milliseconds
 const uint32_t HALF_PERIOD_MS = 500;
 

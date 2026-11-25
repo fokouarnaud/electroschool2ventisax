@@ -38,7 +38,7 @@ EN = {
     "démarrage (gravée en usine)": "boot code (factory-programmed)",
     "Port USB": "USB port", "Pont USB-série": "USB-serial bridge", "Régulateur 3,3 V": "3,3 V regulator",
     "Module ESP32-WROOM-32": "ESP32-WROOM-32 module", "antenne": "antenna",
-    "bouton EN (redémarrage)": "EN button (restart)", "bouton BOOT (téléversement)": "BOOT button (upload)",
+    "bouton EN (redémarrage)": "EN button (restart)", "bouton BOOT (téléversement)": "BOOT button (upload)", "série": "serial",
     "ordinateur": "computer", "puce": "chip", "broche 5V": "5V pin", "broche 3V3": "3V3 pin",
     "Légende": "Key",
     "Capteur 5 V": "5 V sensor", "vers GPIO 34": "to GPIO 34", "jamais 5 V sur une broche": "never 5 V on a pin",
@@ -62,7 +62,15 @@ EN = {
     "le programme démarre : setup puis loop": "the program starts: setup then loop",
     "Moniteur série à 115 200 bit/s": "Serial monitor at 115200 bit/s",
     "Modèle, cœurs, fréquence, Flash": "Model, cores, frequency, Flash",
-    "LED intégrée": "built-in LED",
+    "LED sur GPIO 25": "LED on GPIO 25", "DevKitC V4": "DevKitC V4",
+    "antenne (vers le bord)": "antenna (towards the edge)", "Régulateur 3,3 V (AMS1117)": "3,3 V regulator (AMS1117)",
+    "LED rouge : carte sous tension": "red LED: board powered", "Pont USB-série (CP2102 ou CH340)": "USB-serial bridge (CP2102 or CH340)",
+    "Port micro-USB": "Micro-USB port",
+    "puce ESP32": "ESP32 chip", "2 cœurs, 240 MHz": "2 cores, 240 MHz", "bus interne": "internal bus",
+    "Registres GPIO": "GPIO registers", "matrice": "matrix", "et": "and", "plot": "pad", "broches": "pins",
+    "de la carte": "of the board",
+    "anode (patte longue)": "anode (long leg)", "cathode (méplat)": "cathode (flat side)",
+    "HIGH : la LED s'allume ; LOW : elle s'éteint": "HIGH: the LED lights; LOW: it goes out",
     # M2
     "niveau haut (1)": "high level (1)", "niveau bas (0)": "low level (0)", "broche": "pin",
     "HIGH : vers 3,3 V": "HIGH: towards 3,3 V", "LOW : vers GND": "LOW: towards GND",
@@ -74,7 +82,13 @@ EN = {
     "temps (ms)": "time (ms)",
     "Arduino : digitalWrite": "Arduino: digitalWrite", "ESP-IDF : gpio_set_level": "ESP-IDF: gpio_set_level",
     "registre GPIO_OUT_W1TS": "GPIO_OUT_W1TS register", "plus simple": "simpler", "plus proche du matériel": "closer to the hardware",
-    "un bit par broche": "one bit per pin", "écrire 1 au bit 25 met GPIO 25 à 3,3 V": "writing 1 to bit 25 sets GPIO 25 to 3,3 V",
+    "un bit par broche": "one bit per pin",
+    "GPIO_ENABLE : bit 25": "GPIO_ENABLE: bit 25", "GPIO_OUT : bit 25": "GPIO_OUT: bit 25", "GPIO_IN : bit 25": "GPIO_IN: bit 25",
+    "1 = sortie": "1 = output", "1 = HIGH, 0 = LOW": "1 = HIGH, 0 = LOW", "tampon d'entrée : compare aux seuils": "input buffer: compares with the thresholds",
+    "niveau écrit": "level written", "1 = mettre à 1": "1 = set to 1", "1 = mettre à 0": "1 = clear to 0", "niveau lu": "level read",
+    "un bit par broche : le bit 25 commande GPIO 25": "one bit per pin: bit 25 drives GPIO 25",
+    "hors de la puce": "outside the chip", "tampon": "buffer", "fermé": "closed", "ouvert": "open",
+    "broche GPIO 4": "pin GPIO 4",
     "roue libre": "freewheeling",
     "rappel 10 kΩ : MOSFET bloqué pendant le démarrage ; masse commune": "10 kΩ pull-down: MOSFET off during boot; common ground",
     "GPIO LOW : MOSFET bloqué, moteur arrêté": "GPIO LOW: MOSFET off, motor stopped",
@@ -87,7 +101,7 @@ EN = {
     "lu comme 1": "read as 1", "lu comme 0": "read as 0", "zone indéterminée": "undefined zone",
     "tirage vers la masse (pull-down)": "pull-down to ground", "tirage vers 3,3 V (pull-up)": "pull-up to 3,3 V",
     "relâché : LOW, appuyé : HIGH": "released: LOW, pressed: HIGH", "relâché : HIGH, appuyé : LOW": "released: HIGH, pressed: LOW",
-    "dans la puce": "inside the chip", "INPUT_PULLUP : environ 45 kΩ": "INPUT_PULLUP: about 45 kΩ",
+    "dans la puce": "inside the chip", 
     "1. lire les entrées": "1. read the inputs", "2. calculer": "2. compute", "3. écrire les sorties": "3. write the outputs",
     "loop() recommence": "loop() starts again",
     "rebonds": "bounces", "appui": "press", "relâché": "released", "appuyé": "pressed", "état stable": "stable state",
@@ -180,13 +194,13 @@ EN = {
 }
 
 PIN_H = 25
-# Carte DevKit 38 broches (ESP32-WROOM-32), de haut en bas : (libellé, catégorie)
-LEFT_PINS = [("3V3", "pwr"), ("EN", "pwr"), ("VP 36", "in"), ("VN 39", "in"), ("34", "in"), ("35", "in"), ("32", "ok"),
+# Carte ESP32-DevKitC V4 et ses clones 38 broches (ESP32-WROOM-32), sérigraphie de haut en bas : (libellé, catégorie)
+LEFT_PINS = [("3V3", "pwr"), ("EN", "pwr"), ("SVP 36", "in"), ("SVN 39", "in"), ("34", "in"), ("35", "in"), ("32", "ok"),
              ("33", "ok"), ("25", "ok"), ("26", "ok"), ("27", "ok"), ("14", "ok"), ("12", "strap"), ("GND", "pwr"),
-             ("13", "ok"), ("D2 9", "flash"), ("D3 10", "flash"), ("CMD 11", "flash"), ("5V", "pwr")]
-RIGHT_PINS = [("GND", "pwr"), ("23", "ok"), ("22", "ok"), ("TX 1", "uart"), ("RX 3", "uart"), ("21", "ok"), ("GND", "pwr"),
+             ("13", "ok"), ("SD2 9", "flash"), ("SD3 10", "flash"), ("CMD 11", "flash"), ("5V", "pwr")]
+RIGHT_PINS = [("GND", "pwr"), ("23", "ok"), ("22", "ok"), ("TXD 1", "uart"), ("RXD 3", "uart"), ("21", "ok"), ("GND", "pwr"),
               ("19", "ok"), ("18", "ok"), ("5", "strap"), ("17", "ok"), ("16", "ok"), ("4", "ok"), ("0", "strap"),
-              ("2", "strap"), ("15", "strap"), ("D1 8", "flash"), ("D0 7", "flash"), ("CLK 6", "flash")]
+              ("2", "strap"), ("15", "strap"), ("SD1 8", "flash"), ("SD0 7", "flash"), ("CLK 6", "flash")]
 
 
 def pin_box(d, x, y, kind, marks=True):
@@ -211,8 +225,14 @@ def devkit(d, x, y, marks=True, zones=()):
     d.add(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{width}" height="{board_h}" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
     d.add(f'<rect x="{fmt(x + 30)}" y="{fmt(y + 8)}" width="{width - 60}" height="70" rx="4" fill="#c9d8dd" stroke="{INK}" stroke-width="1.5"/>')
     d.text(x + width / 2, y + 48, "ESP32", size=13, weight="700")
+    d.text(x + width / 2, y + 100, "DevKitC V4", size=10, color=SOFT)
     d.add(f'<rect x="{fmt(x + 55)}" y="{fmt(y + board_h - 22)}" width="40" height="18" rx="3" fill="{PAPER}" stroke="{INK}" stroke-width="1.5"/>')
     d.text(x + width / 2, y + board_h - 9, "USB", size=10, weight="600")
+    # boutons EN (à gauche du port USB) et BOOT (à droite), comme sur la carte
+    for bx, name in ((x + 22, "EN"), (x + width - 44, "BOOT")):
+        d.add(f'<rect x="{fmt(bx)}" y="{fmt(y + board_h - 46)}" width="22" height="18" rx="3" fill="{PAPER}" stroke="{INK}" stroke-width="1.5"/>')
+        d.add(f'<circle cx="{fmt(bx + 11)}" cy="{fmt(y + board_h - 37)}" r="5" fill="none" stroke="{INK}" stroke-width="1.5"/>')
+        d.text(bx + 11, y + board_h - 52, name, size=9, weight="600")
     for side, pins in (("left", LEFT_PINS), ("right", RIGHT_PINS)):
         for i, (label, kind) in enumerate(pins):
             py = y + 18 + i * PIN_H
@@ -298,18 +318,88 @@ def m1_memoires():
 
 
 def m1_carte():
-    d = Drawing(560, 290, "Carte de développement DevKit : port USB, pont USB-série, régulateur 3,3 V, module ESP32-WROOM-32, boutons EN et BOOT")
-    d.add(f'<rect x="150" y="20" width="260" height="220" rx="12" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
-    block(d, 190, 35, 180, 70, "Module ESP32-WROOM-32", size=11)
-    d.text(280, 120, "antenne", size=10, color=SOFT)
-    block(d, 170, 150, 100, 36, "Pont USB-série", size=10)
-    block(d, 290, 150, 100, 36, "Régulateur 3,3 V", size=10)
-    block(d, 235, 205, 90, 28, "Port USB", size=11)
-    for x, label, anchor, lx in ((150, "bouton EN (redémarrage)", "middle", 150), (410, "bouton BOOT (téléversement)", "middle", 410)):
-        d.add(f'<rect x="{x - 12}" y="200" width="24" height="20" rx="4" fill="{PAPER}" stroke="{ACCENT}" stroke-width="2"/>')
-        d.text(lx, 268, label, anchor=anchor, size=11, weight="600", color=ACCENT)
-    d.wire((280, 205), (220, 186), width=1.5); d.wire((280, 205), (340, 186), width=1.5)
-    d.wire((220, 150), (240, 105), width=1.5); d.wire((340, 150), (320, 105), width=1.5)
+    d = Drawing(620, 330, "Carte ESP32-DevKitC V4 vue de dessus : module ESP32-WROOM-32 et son antenne en haut, régulateur 3,3 V, pont USB-série, LED rouge d'alimentation, port micro-USB entre les boutons EN et BOOT, 19 broches de chaque côté")
+    x0, x1, y0, y1 = 210, 410, 15, 315
+    d.add(f'<rect x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    for i in range(19):  # les deux rangées de 19 broches
+        for px in (x0 + 12, x1 - 12):
+            d.add(f'<circle cx="{px}" cy="{fmt(y0 + 22 + i * 15)}" r="3.5" fill="{PAPER}" stroke="{INK}" stroke-width="1.5"/>')
+    d.add(f'<rect x="250" y="25" width="120" height="125" rx="4" fill="#c9d8dd" stroke="{INK}" stroke-width="1.5"/>')
+    d.add(f'<rect x="250" y="25" width="120" height="24" fill="{PAPER}" stroke="{INK}" stroke-width="1.5" stroke-dasharray="4 3"/>')
+    d.text(310, 100, "ESP32", size=13, weight="700")
+    block(d, 240, 175, 50, 36, "3,3 V", size=10)
+    block(d, 300, 200, 55, 50, "série", size=10)
+    d.add(f'<circle cx="378" cy="180" r="6" fill="{PAPER}" stroke="{ACCENT}" stroke-width="2.5"/>')
+    d.add(f'<rect x="290" y="285" width="40" height="24" rx="3" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    for bx in (232, 368):
+        d.add(f'<rect x="{bx}" y="275" width="22" height="22" rx="3" fill="{PAPER}" stroke="{ACCENT}" stroke-width="2"/>')
+        d.add(f'<circle cx="{bx + 11}" cy="286" r="5" fill="none" stroke="{ACCENT}" stroke-width="1.5"/>')
+    # légendes à gauche et à droite, reliées à leur pièce
+    left = ((37, (250, 37), "antenne (vers le bord)"), (95, (250, 95), "Module ESP32-WROOM-32"),
+            (193, (240, 193), "Régulateur 3,3 V (AMS1117)"), (286, (232, 286), "bouton EN (redémarrage)"))
+    right = ((120, (378, 174), "LED rouge : carte sous tension"), (225, (355, 225), "Pont USB-série (CP2102 ou CH340)"),
+             (286, (390, 286), "bouton BOOT (téléversement)"), (318, (330, 300), "Port micro-USB"))
+    for ty, target, label in left:
+        d.wire((200, ty), (target[0] - 2, target[1]), color=SOFT, width=1.2)
+        d.text(196, ty + 4, label, anchor="end", size=11, weight="600")
+    for ty, target, label in right:
+        d.wire((420, ty), (target[0] + 2, target[1]), color=SOFT, width=1.2)
+        d.text(424, ty + 4, label, anchor="start", size=11, weight="600")
+    return d
+
+
+def m1_bloc():
+    d = Drawing(640, 330, "Schéma bloc fonctionnel : le CPU écrit dans les registres GPIO et les périphériques par le bus interne ; la matrice GPIO et l'IO MUX aiguillent chaque signal vers un plot d'entrée-sortie, relié à une broche du module puis à une broche de la carte")
+    d.add(f'<rect x="20" y="20" width="510" height="285" rx="12" fill="{PAPER}" stroke="{INK}" stroke-width="2" stroke-dasharray="6 4"/>')
+    d.text(120, 296, "puce ESP32", size=11, color=SOFT)
+    block(d, 35, 120, 115, 60, "CPU", size=14)
+    d.text(92, 198, "2 cœurs, 240 MHz", size=10, color=SOFT)
+    d.wire((172, 45), (172, 275), width=5)
+    d.text(172, 38, "bus interne", size=10, color=SOFT)
+    d.wire((150, 150), (170, 150), width=2)
+    block(d, 195, 55, 125, 60, "Registres GPIO", size=11)
+    d.text(257, 132, "ENABLE, OUT, IN", size=10, color=SOFT)
+    block(d, 195, 175, 125, 70, "Périphériques", size=11)
+    d.text(257, 262, "UART, I2C, SPI, LEDC", size=10, color=SOFT)
+    d.wire((174, 85), (193, 85), width=2)
+    d.wire((174, 210), (193, 210), width=2)
+    d.add(f'<rect x="345" y="45" width="70" height="230" rx="6" fill="#dfe8ea" stroke="{INK}" stroke-width="2"/>')
+    for k, word in enumerate(("matrice", "GPIO", "et", "IO MUX")):
+        d.text(380, 140 + k * 16, word, size=11, weight="600")
+    d.arrow((320, 85), (343, 85), color=INK)
+    d.arrow((320, 210), (343, 210), color=INK)
+    for k, (y, pin, board) in enumerate(((75, "GPIO 4", "G4"), (160, "GPIO 25", "G25"), (245, "GPIO 34", "G34"))):
+        d.wire((415, y), (438, y), width=2)
+        block(d, 438, y - 18, 80, 36, "plot", size=11)
+        d.text(478, y + 32, pin, size=10, color=SOFT)
+        d.wire((518, y), (568, y), color=ACCENT if k == 1 else INK, width=2.5)
+        d.add(f'<rect x="525" y="{y - 5}" width="10" height="10" fill="{INK}"/>')
+        node(d, 573, y, board, anchor="start")
+    d.text(598, 300, "broches", size=10, color=SOFT)
+    d.text(598, 314, "de la carte", size=10, color=SOFT)
+    return d
+
+
+def m1_cablage():
+    d = Drawing(560, 300, "Câblage du premier programme : GPIO 25 (G25), résistance de 330 Ω, anode de la LED, cathode vers la broche GND de la carte")
+    d.add(f'<rect x="330" y="20" width="200" height="262" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2"/>')
+    d.text(440, 272, "ESP32-DevKitC V4", size=10, color=SOFT)
+    rows = ("G33", "G25", "G26", "G27", "G14", "G12", "GND", "G13")
+    for i, label in enumerate(rows):
+        py = 32 + i * 28
+        used = label in ("G25", "GND")
+        d.add(f'<rect x="319" y="{py}" width="22" height="18" rx="3" fill="{"#d7ecea" if used else PAPER}" '
+              f'stroke="{ACCENT if used else INK}" stroke-width="{2.5 if used else 1.5}"/>')
+        d.text(350, py + 14, label, anchor="start", size=11, weight="700" if used else "400", color=INK if used else SOFT)
+    y_pin, y_gnd = 32 + 28 + 9, 32 + 6 * 28 + 9
+    d.wire((319, y_pin), (270, y_pin))
+    d.resistor((270, y_pin), (190, y_pin), "R", "330 Ω")
+    d.diode((190, y_pin), (100, y_pin), "LED", kind="led")
+    d.wire((100, y_pin), (60, y_pin), (60, y_gnd), (319, y_gnd))
+    d.text(190, y_pin + 34, "anode (patte longue)", size=10, color=SOFT)
+    d.text(100, y_pin + 50, "cathode (méplat)", size=10, color=SOFT)
+    d.arrow((280, y_pin + 70), (130, y_pin + 70), label="≈ 3,9 mA", offset=(0, -8))
+    d.text(190, y_gnd + 30, "HIGH : la LED s'allume ; LOW : elle s'éteint", size=11, weight="600", color=ACCENT)
     return d
 
 
@@ -445,14 +535,14 @@ def m1_identite():
     block(d, 380, 50, 160, 60, "carte ESP32", size=13)
     d.wire((170, 80), (378, 80), width=3); d.text(275, 70, "câble USB", size=11, color=SOFT)
     d.text(95, 140, "Moniteur série à 115 200 bit/s", size=11, weight="600", color=ACCENT)
-    d.text(460, 140, "LED intégrée", size=11)
+    d.text(460, 140, "LED sur GPIO 25", size=11)
     d.text(95, 160, "Modèle, cœurs, fréquence, Flash", size=10, color=SOFT)
     return d
 
 
 def q_m1_flash():
     d = Drawing(420, 560, "Carte DevKit 38 broches sans légende")
-    devkit(d, 135, 30, marks=False, zones={"D2 9": "flash", "34": "entree", "12": "strapping", "25": "sure", "4": "sure-droite"})
+    devkit(d, 135, 30, marks=False, zones={"SD2 9": "flash", "34": "entree", "12": "strapping", "25": "sure", "4": "sure-droite"})
     return d
 
 
@@ -565,16 +655,62 @@ def m2_trois_niveaux():
     return d
 
 
-def m2_registre():
-    d = Drawing(560, 170, "Un registre de sortie compte un bit par broche : écrire 1 au bit 25 met GPIO 25 au niveau haut")
-    for k in range(16):
-        bit = 31 - k
-        x = 40 + k * 30
-        d.add(f'<rect x="{x}" y="50" width="28" height="34" fill="{ACCENT if bit == 25 else PAPER}" stroke="{INK}" stroke-width="1.5"/>')
-        d.text(x + 14, 73, "1" if bit == 25 else "0", size=13, weight="700", color=PAPER if bit == 25 else INK)
-        d.text(x + 14, 102, str(bit), size=10, color=SOFT)
-    d.text(280, 35, "un bit par broche", size=12)
-    d.text(280, 140, "écrire 1 au bit 25 met GPIO 25 à 3,3 V", size=12, weight="600", color=ACCENT)
+def m2_broche_interne():
+    d = Drawing(660, 320, "Structure d'une broche dans la puce : GPIO_ENABLE autorise la sortie, GPIO_OUT ferme l'interrupteur vers 3,3 V ou vers GND, deux résistances de tirage d'environ 45 kΩ se branchent par programme, le tampon d'entrée recopie le niveau dans GPIO_IN")
+    d.add(f'<rect x="10" y="10" width="520" height="290" rx="12" fill="{PAPER}" stroke="{INK}" stroke-width="2" stroke-dasharray="6 4"/>')
+    d.text(80, 292, "dans la puce", size=11, color=SOFT)
+    block(d, 20, 38, 150, 36, "GPIO_ENABLE : bit 25", size=10)
+    block(d, 20, 102, 150, 36, "GPIO_OUT : bit 25", size=10)
+    block(d, 20, 232, 150, 36, "GPIO_IN : bit 25", size=10)
+    d.arrow((170, 56), (300, 56), label="1 = sortie", color=INK)
+    d.arrow((170, 120), (300, 120), label="1 = HIGH, 0 = LOW", color=INK)
+    # étage de sortie : deux interrupteurs, jamais fermés ensemble
+    d.text(330, 26, "3,3 V", size=12, weight="600"); d.wire((330, 32), (330, 66))
+    d.switch((330, 66), (330, 102), "P", closed=True, side=-1)
+    d.wire((330, 102), (330, 138)); d.dot((330, 120))
+    d.switch((330, 138), (330, 174), "N", closed=False, side=-1)
+    d.wire((330, 174), (330, 186)); d.ground((330, 186))
+    d.wire((330, 120), (555, 120))
+    node(d, 560, 120, "GPIO 25", anchor="start")
+    # tirages internes, branchés par programme
+    d.text(440, 26, "3,3 V", size=12, weight="600"); d.wire((440, 32), (440, 36))
+    d.resistor((440, 36), (440, 82), "≈ 45 kΩ")
+    d.switch((440, 82), (440, 118), "pull-up")
+    d.dot((440, 120))
+    d.switch((440, 122), (440, 158), "pull-down")
+    d.resistor((440, 158), (440, 204), "≈ 45 kΩ")
+    d.ground((440, 204))
+    d.text(455, 232, "IO_MUX : FUN_WPU, FUN_WPD", size=9, color=SOFT)
+    # tampon d'entrée
+    d.dot((375, 120)); d.wire((375, 120), (375, 250), (342, 250))
+    d.add(f'<polygon points="342,236 342,264 314,250" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.arrow((314, 250), (172, 250), color=INK)
+    d.text(330, 285, "tampon d'entrée : compare aux seuils", size=10, color=SOFT)
+    return d
+
+
+def m2_registres():
+    d = Drawing(620, 330, "Les registres d'une broche : GPIO_ENABLE choisit la direction, GPIO_OUT le niveau écrit, W1TS et W1TC changent un bit sans toucher aux autres, GPIO_IN donne le niveau lu ; chacun a son adresse en mémoire")
+    rows = (("GPIO_ENABLE_REG", "0x3FF44020", "1 = sortie", "1"), ("GPIO_OUT_REG", "0x3FF44004", "niveau écrit", "1"),
+            ("GPIO_OUT_W1TS_REG", "0x3FF44008", "1 = mettre à 1", "1"), ("GPIO_OUT_W1TC_REG", "0x3FF4400C", "1 = mettre à 0", "0"),
+            ("GPIO_IN_REG", "0x3FF4403C", "niveau lu", "1"))
+    bits = (28, 27, 26, 25, 24, 23, 22)
+    for k, b in enumerate(bits):
+        d.text(232 + k * 30, 28, str(b), size=10, color=SOFT)
+    d.text(196, 28, "bit", size=10, color=SOFT)
+    for i, (name, address, role, value) in enumerate(rows):
+        y = 40 + i * 52
+        d.text(170, y + 16, name, anchor="end", size=11, weight="700")
+        d.text(170, y + 32, address, anchor="end", size=10, color=SOFT)
+        d.text(206, y + 22, "…", size=13, color=SOFT)
+        for k, b in enumerate(bits):
+            x = 218 + k * 30
+            hot = b == 25
+            d.add(f'<rect x="{x}" y="{y}" width="28" height="34" fill="{ACCENT if hot else PAPER}" stroke="{INK}" stroke-width="1.5"/>')
+            d.text(x + 14, y + 23, value if hot else "0", size=13, weight="700", color=PAPER if hot else INK)
+        d.text(440, y + 22, "…", size=13, color=SOFT)
+        d.text(460, y + 22, role, anchor="start", size=11)
+    d.text(310, 318, "un bit par broche : le bit 25 commande GPIO 25", size=12, weight="600", color=ACCENT)
     return d
 
 
@@ -687,34 +823,67 @@ def m3_seuils():
     return d
 
 
-def m3_pull_down():
-    d = Drawing(320, 260, "Résistance de tirage vers la masse (pull-down) : bouton relâché, l'entrée lit LOW ; appuyé, HIGH")
-    d.text(100, 24, "3,3 V", weight="600"); d.wire((100, 30), (100, 50))
-    button(d, 100, 50, 120); d.wire((100, 120), (100, 140)); d.dot((100, 140)); d.wire((100, 140), (180, 140)); node(d, 185, 140, "GPIO", anchor="start")
-    d.resistor((100, 140), (100, 210), "R", "10 kΩ", side=-1); d.ground((100, 210))
-    d.text(160, 250, "relâché : LOW, appuyé : HIGH", size=11, weight="600", color=ACCENT)
+def pull_figure(title, inside, outside, code, result):
+    """Un câblage de bouton, intérieur de la puce compris : tampon d'entrée, tirages internes (interrupteurs ouverts ou
+    fermés), broche au bord de la puce, puis les composants extérieurs. inside ∈ {None, "up", "down"},
+    outside ∈ {"down", "up", None} (résistance externe de 10 kΩ vers GND, vers 3,3 V, ou aucune)."""
+    d = Drawing(600, 320, title)
+    d.add(f'<rect x="15" y="6" width="285" height="269" rx="12" fill="#eef4f3" stroke="{INK}" stroke-width="2" stroke-dasharray="6 4"/>')
+    d.text(80, 266, "dans la puce", size=11, color=SOFT)
+    d.text(450, 266, "hors de la puce", size=11, color=SOFT)
+    block(d, 25, 130, 95, 36, "GPIO_IN", size=11)
+    d.add(f'<polygon points="175,134 175,162 150,148" fill="{PAPER}" stroke="{INK}" stroke-width="2"/>')
+    d.arrow((150, 148), (122, 148), color=INK)
+    d.text(162, 182, "tampon", size=10, color=SOFT)
+    d.wire((175, 148), (292, 148))
+    # tirages internes : on ne les branche que par programme
+    up, down = inside == "up", inside == "down"
+    d.text(230, 32, "3,3 V", size=12, weight="600"); d.wire((230, 38), (230, 42))
+    d.resistor((230, 42), (230, 82), "≈ 45 kΩ", side=-1)
+    d.switch((230, 82), (230, 118), closed=up)
+    d.wire((230, 118), (230, 160)); d.dot((230, 148))
+    d.switch((230, 160), (230, 196), closed=down)
+    d.resistor((230, 196), (230, 236), "≈ 45 kΩ", side=-1); d.ground((230, 236))
+    d.text(248, 104, "fermé" if up else "ouvert", anchor="start", size=10, weight="700" if up else "400", color=ACCENT if up else SOFT)
+    d.text(248, 182, "fermé" if down else "ouvert", anchor="start", size=10, weight="700" if down else "400", color=ACCENT if down else SOFT)
+    # la broche, à la frontière
+    d.add(f'<rect x="292" y="140" width="16" height="16" fill="{ACCENT}" stroke="{INK}" stroke-width="1.5"/>')
+    d.text(318, 136, "broche GPIO 4", anchor="start", size=11, weight="700")
+    d.wire((308, 148), (440, 148)); d.dot((440, 148))
+    # composants extérieurs
+    if outside == "up":
+        d.text(440, 32, "3,3 V", size=12, weight="600"); d.wire((440, 38), (440, 50))
+        d.resistor((440, 50), (440, 120), "R", "10 kΩ"); d.wire((440, 120), (440, 148))
+    button_down = outside == "up" or inside == "up"
+    if button_down:
+        button(d, 440, 158, 222); d.wire((440, 148), (440, 158)); d.ground((440, 222))
+    else:
+        d.text(440, 32, "3,3 V", size=12, weight="600"); d.wire((440, 38), (440, 60)); button(d, 440, 60, 124); d.wire((440, 124), (440, 148))
+    if outside == "down":
+        d.resistor((440, 148), (440, 222), "R", "10 kΩ"); d.ground((440, 222))
+    d.text(450, 290, code, size=12, weight="700", color=ACCENT)
+    d.text(450, 310, result, size=11, weight="600")
     return d
+
+
+def m3_pull_down():
+    return pull_figure("Tirage externe vers la masse (pull-down) : dans la puce, les deux tirages internes sont ouverts ; hors de la puce, une résistance de 10 kΩ relie la broche à GND et le bouton la relie au 3,3 V",
+                       None, "down", "pinMode(4, INPUT)", "relâché : LOW, appuyé : HIGH")
 
 
 def m3_pull_up():
-    d = Drawing(320, 260, "Résistance de tirage vers 3,3 V (pull-up) : bouton relâché, l'entrée lit HIGH ; appuyé, LOW")
-    d.text(100, 24, "3,3 V", weight="600"); d.wire((100, 30), (100, 50))
-    d.resistor((100, 50), (100, 120), "R", "10 kΩ", side=-1); d.wire((100, 120), (100, 140)); d.dot((100, 140))
-    d.wire((100, 140), (180, 140)); node(d, 185, 140, "GPIO", anchor="start")
-    button(d, 100, 140, 210); d.ground((100, 210))
-    d.text(160, 250, "relâché : HIGH, appuyé : LOW", size=11, weight="600", color=ACCENT)
-    return d
+    return pull_figure("Tirage externe vers 3,3 V (pull-up) : dans la puce, les deux tirages internes sont ouverts ; hors de la puce, une résistance de 10 kΩ relie la broche au 3,3 V et le bouton la relie à GND",
+                       None, "up", "pinMode(4, INPUT)", "relâché : HIGH, appuyé : LOW")
 
 
-def m3_interne():
-    d = Drawing(520, 250, "INPUT_PULLUP active une résistance de tirage d'environ 45 kΩ dans la puce : le bouton se branche seul entre la broche et GND")
-    d.add(f'<rect x="40" y="30" width="230" height="190" rx="10" fill="#eef4f3" stroke="{INK}" stroke-width="2" stroke-dasharray="6 4"/>')
-    d.text(155, 52, "dans la puce", size=11, color=SOFT)
-    d.text(150, 72, "3,3 V", size=12, weight="600"); d.wire((150, 78), (150, 90))
-    d.resistor((150, 90), (150, 150), "INPUT_PULLUP : environ 45 kΩ", side=1)
-    d.wire((150, 150), (150, 170), (330, 170)); node(d, 335, 170, "GPIO 4", anchor="start")
-    d.wire((340, 170), (440, 170)); button(d, 440, 170, 230); d.ground((440, 230))
-    return d
+def m3_pullup_interne():
+    return pull_figure("Tirage interne vers 3,3 V : INPUT_PULLUP ferme l'interrupteur de la résistance d'environ 45 kΩ vers 3,3 V ; hors de la puce, seul le bouton relie la broche à GND",
+                       "up", None, "pinMode(4, INPUT_PULLUP)", "relâché : HIGH, appuyé : LOW")
+
+
+def m3_pulldown_interne():
+    return pull_figure("Tirage interne vers la masse : INPUT_PULLDOWN ferme l'interrupteur de la résistance d'environ 45 kΩ vers GND ; hors de la puce, seul le bouton relie la broche au 3,3 V",
+                       "down", None, "pinMode(4, INPUT_PULLDOWN)", "relâché : LOW, appuyé : HIGH")
 
 
 def m3_lire_ecrire():
@@ -1591,12 +1760,12 @@ def q_m9_route():
 
 
 SECTION_DIAGRAMS = {
-    1: [m1_composants, m1_chaine, m1_architecture, m1_memoires, m1_carte, m1_alimentation, m1_brochage, m1_categories,
-        m1_regle_tension, m1_masse_commune, m1_courant_broche, m1_outils, m1_projet, m1_setup_loop, m1_televersement,
+    1: [m1_composants, m1_chaine, m1_architecture, m1_bloc, m1_memoires, m1_carte, m1_alimentation, m1_brochage, m1_categories,
+        m1_regle_tension, m1_masse_commune, m1_courant_broche, m1_outils, m1_projet, m1_setup_loop, m1_cablage, m1_televersement,
         m1_identite],
     2: [m2_niveaux, m2_sortie_interne, m2_led_montage, m2_led_calcul, m2_source, m2_puits, m2_blink,
-        m2_blink_montage, m2_trois_niveaux, m2_registre, m2_mosfet, m2_mosfet_etats, m2_feu, m2_feu_chrono, m2_carrefour],
-    3: [m3_flottant, m3_seuils, m3_pull_down, m3_pull_up, m3_interne, m3_lire_ecrire, m3_bouton_led, m3_rebonds,
+        m2_blink_montage, m2_trois_niveaux, m2_broche_interne, m2_registres, m2_mosfet, m2_mosfet_etats, m2_feu, m2_feu_chrono, m2_carrefour],
+    3: [m3_flottant, m3_seuils, m3_pull_down, m3_pullup_interne, m3_pull_up, m3_pulldown_interne, m3_lire_ecrire, m3_bouton_led, m3_rebonds,
         m3_antirebond, m3_front, m3_bascule, m3_etats, m3_veille, m3_diviseur_entree, m3_niveaux_5v, m3_feu_bouton],
     4: [m4_delay, m4_boucle_delay, m4_millis, m4_debordement, m4_sans_bloquer, m4_rythmes, m4_interruption, m4_isr_regles,
         m4_timer, m4_timer_chrono, m4_reaction],

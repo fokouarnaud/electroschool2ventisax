@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-// LED intégrée : elle clignote pour montrer que le programme tourne
-const uint8_t LED_PIN = 2;
+// LED de GPIO 25 : elle clignote pour montrer que le programme tourne
+const uint8_t LED_PIN = 25;
 const uint32_t BLINK_MS = 1000;
 
 void setup() {

@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-// Built-in LED: it blinks to show that the program is running
-const uint8_t LED_PIN = 2;
+// LED on GPIO 25: it blinks to show that the program is running
+const uint8_t LED_PIN = 25;
 const uint32_t BLINK_MS = 1000;
 
 void setup() {

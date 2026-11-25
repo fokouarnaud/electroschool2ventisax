@@ -2,7 +2,7 @@ Ce mini-projet vérifie toute la chaîne : installation, compilation, télévers
 
 ## Objectif
 
-Téléverser un programme qui lit les caractéristiques de la puce, les affiche dans le moniteur série et fait clignoter la LED intégrée.
+Téléverser un programme qui lit les caractéristiques de la puce, les affiche dans le moniteur série et fait clignoter la LED câblée sur GPIO 25 à la section 7.
 
 ## Sécurité
 
@@ -16,7 +16,9 @@ Téléverser un programme qui lit les caractéristiques de la puce, les affiche 
 
 | Quantité | Élément |
 |---|---|
-| 1 | carte DevKit ESP32-WROOM-32, 38 broches |
+| 1 | carte ESP32-DevKitC V4 (ou clone 38 broches), ESP32-WROOM-32 |
+| 1 | plaque d'essai et fils |
+| 1 | LED rouge et résistance de 330 Ω, câblées entre G25 et GND (section 7) |
 | 1 | câble USB qui transporte des données |
 | 1 | ordinateur avec VS Code et PlatformIO |
 | 1 | multimètre |
@@ -26,8 +28,8 @@ Téléverser un programme qui lit les caractéristiques de la puce, les affiche 
 ```cpp
 #include <Arduino.h>
 
-// LED intégrée : elle clignote pour montrer que le programme tourne
-const uint8_t LED_PIN = 2;
+// LED de GPIO 25 : elle clignote pour montrer que le programme tourne
+const uint8_t LED_PIN = 25;
 const uint32_t BLINK_MS = 1000;
 
 void setup() {
@@ -53,13 +55,13 @@ void loop() {
 
 1. Créez le projet PlatformIO avec le `platformio.ini` de référence et copiez le programme dans `src/main.cpp`.
 2. Téléversez, ouvrez le moniteur série, puis appuyez sur EN : la carte d'identité s'affiche de nouveau.
-3. Si vous disposez d'un oscilloscope, mesurez la tension de la broche GPIO 2 par rapport à GND : un créneau de 0 à 3,3 V, de période 2 s.
+3. Si vous disposez d'un oscilloscope, mesurez la tension de la broche GPIO 25 (G25) par rapport à GND : un créneau de 0 à 3,3 V, de période 2 s.
 
 ## Variante multimètre seul
 
 1. Même programme. Relevez les lignes du moniteur série dans le tableau.
 2. Avec le multimètre en voltmètre continu, mesurez entre 5V et GND, puis entre 3V3 et GND.
-3. Mesurez entre GPIO 2 et GND : la valeur bascule chaque seconde entre 0 V et 3,3 V.
+3. Mesurez entre G25 et GND : la valeur bascule chaque seconde entre 0 V et 3,3 V.
 
 | Mesure | Attendue | Relevée |
 |---|---|---|
@@ -69,7 +71,8 @@ void loop() {
 | taille de la Flash | 4 194 304 octets | |
 | tension 5V / GND | environ 5 V | |
 | tension 3V3 / GND | 3,3 V | |
-| tension GPIO 2 / GND | 0 V puis 3,3 V | |
+| tension G25 / GND | 0 V puis 3,3 V | |
+| tension aux bornes de la LED allumée | environ 2,0 V | |
 
 ## Pour conclure
 

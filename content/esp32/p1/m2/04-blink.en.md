@@ -1,4 +1,4 @@
-The first program of any microcontroller blinks an LED: this is **Blink**. This time the LED is external, wired in direct logic on GPIO 25.
+The first program of any microcontroller blinks an LED: this is **Blink**. You uploaded it in module M1, with the LED wired in direct logic on GPIO 25; this section goes back over its circuit and each of its output functions.
 
 ![Blink circuit: an LED and its 330 Ω resistor on GPIO 25](/static/content/esp32/en/m2/blink-montage.svg)
 

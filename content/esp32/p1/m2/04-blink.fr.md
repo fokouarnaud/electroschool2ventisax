@@ -1,4 +1,4 @@
-Le premier programme de tout microcontrôleur fait clignoter une LED : c'est le **Blink**. Cette fois, la LED est externe, câblée en logique directe sur GPIO 25.
+Le premier programme de tout microcontrôleur fait clignoter une LED : c'est le **Blink**. Vous l'avez téléversé au module M1, avec la LED câblée en logique directe sur GPIO 25 ; cette section reprend son montage et chacune de ses fonctions de sortie.
 
 ![Montage du clignotant : une LED et sa résistance de 330 Ω sur GPIO 25](/static/content/esp32/m2/blink-montage.svg)
 
